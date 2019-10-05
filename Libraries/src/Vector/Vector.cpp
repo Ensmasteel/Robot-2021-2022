@@ -1,19 +1,31 @@
 #include "Vector.h"
-#include "Arduino.h"
 
-Vector initVector(float x,float y)
+Vector::Vector(float x = 0.0, float y = 0.0)
+{
+    _x = x;
+    _y = y;
+}
+
+Vector initVector(float x, float y)
 {
     Vector out;
-    out.x=x;
-    out.y=y;
+    out._x = x;
+    out._y = y;
     return out;
 }
 
-VectorE initVectorE(float x,float y,float theta)
+VectorE::VectorE(float x = 0.0, float y = 0.0, float theta = 0.0)
+{
+    _vec._x = x;
+    _vec._y = y;
+    _theta = theta;
+}
+
+VectorE initVectorE(float x, float y, float theta)
 {
     VectorE out;
-    out.vec.x=x;
-    out.vec.y=y;
-    out.theta=theta;
+    out._vec._x = x;
+    out._vec._y = y;
+    out._theta = theta;
     return out;
 }

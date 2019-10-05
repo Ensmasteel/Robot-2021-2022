@@ -1,20 +1,23 @@
-#ifndef VECTOR_INCLUDED
-#define VECTOR_INCLUDED
-
-#include "1_CONSTANT.h"
+#ifndef VECTOR_H
+#define VECTOR_H
 
 struct Vector
 {
-    float x;
-    float y;
+    Vector(float x = 0.0, float y = 0.0);
+    float _x;
+    float _y;
 };
 
 struct VectorE
 {
-    Vector vec;
-    float theta;
+    VectorE(float x, float y, float theta);
+
+    Vector _vec;
+    float _theta;
 };
 
-Vector const vecNull= {0.0,0.0};
-Vector initVector(float x,float y);
-VectorE initVectorE(float x,float y,float theta);
+Vector const vecNull = {0.0, 0.0};
+Vector initVector(float x, float y);
+VectorE initVectorE(float x, float y, float theta);
+
+#endif

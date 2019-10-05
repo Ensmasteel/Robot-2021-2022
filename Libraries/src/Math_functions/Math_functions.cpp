@@ -1,5 +1,16 @@
 #include "Math_functions.h"
 
+Polynome::Polynome(float a0 = 0.0, float a1 = 0.0, float a2 = 0.0, float a3 = 0.0, float a4 = 0.0, float a5 = 0.0, float a6 = 0.0)
+{
+    K[0] = a0;
+    K[1] = a1;
+    K[2] = a2;
+    K[3] = a3;
+    K[4] = a4;
+    K[5] = a5;
+    K[6] = a6;
+}
+
 float Polynome::f(float x)
 {
     float out = 0.0;
@@ -24,18 +35,18 @@ float Polynome::df(float x)
     return out;
 }
 
-void Polynome::set(float in_a0, float in_a1, float in_a2, float in_a3, float in_a4, float in_a5, float in_a6)
+void Polynome::set(float a0 = 0.0, float a1 = 0.0, float a2 = 0.0, float a3 = 0.0, float a4 = 0.0, float a5 = 0.0, float a6 = 0.0)
 {
-    K[0] = in_a0;
-    K[1] = in_a1;
-    K[2] = in_a2;
-    K[3] = in_a3;
-    K[4] = in_a4;
-    K[5] = in_a5;
-    K[6] = in_a6;
+    K[0] = a0;
+    K[1] = a1;
+    K[2] = a2;
+    K[3] = a3;
+    K[4] = a4;
+    K[5] = a5;
+    K[6] = a6;
 }
 
-Polynome init_polynome(float a0, float a1, float a2, float a3, float a4, float a5, float a6)
+Polynome init_polynome(float a0 = 0.0, float a1 = 0.0, float a2 = 0.0, float a3 = 0.0, float a4 = 0.0, float a5 = 0.0, float a6 = 0.0)
 {
     Polynome out;
     out.K[0] = a0;
@@ -48,46 +59,57 @@ Polynome init_polynome(float a0, float a1, float a2, float a3, float a4, float a
     return out;
 }
 
-Polynome Derivative_ptr(Polynome* P)
+Polynome Derivative_ptr(Polynome *P)
 {
     Polynome out;
-    out=init_polynome();
-    for (int d=1; d<=out.DEGRE_MAX; d++)
+    out = init_polynome();
+    for (int d = 1; d <= out.DEGRE_MAX; d++)
     {
-        out.K[d-1]=d*P->K[d];
+        out.K[d - 1] = d * P->K[d];
     }
     return out;
 }
 
-Polynome Multiplication_ptr(Polynome* P1,Polynome* P2)
+Polynome Multiplication_ptr(Polynome *P1, Polynome *P2)
 {
     Polynome out;
-    out=init_polynome();
-    for (int degreP=0; degreP<=out.DEGRE_MAX; degreP++)
+    out = init_polynome();
+    for (int degreP = 0; degreP <= out.DEGRE_MAX; degreP++)
     {
-        for (int d=0; d<=degreP; d++)
+        for (int d = 0; d <= degreP; d++)
         {
-            out.K[degreP]=out.K[degreP]+P1->K[d]*P2->K[degreP-d];
+            out.K[degreP] = out.K[degreP] + P1->K[d] * P2->K[degreP - d];
         }
     }
     return out;
 }
 
-Polynome Square_ptr(Polynome* P)
+Polynome Square_ptr(Polynome *P)
 {
     Polynome out;
-    out=init_polynome();
-    out=Multiplication_ptr(P,P);
+    out = init_polynome();
+    out = Multiplication_ptr(P, P);
     return out;
 }
 
-Polynome Sum_ptr(Polynome* P1,Polynome* P2)
+Polynome Sum_ptr(Polynome *P1, Polynome *P2)
 {
     Polynome out;
-    out=init_polynome();
-    for (int d=0; d<=out.DEGRE_MAX; d++)
+    out = init_polynome();
+    for (int d = 0; d <= out.DEGRE_MAX; d++)
     {
-        out.K[d]=P1->K[d]+P2->K[d];
+        out.K[d] = P1->K[d] + P2->K[d];
+    }
+    return out;
+}
+
+Polynome Sum(Polynome P1, Polynome P2)
+{
+    Polynome out;
+    out = init_polynome();
+    for (int d = 0; d <= out.DEGRE_MAX; d++)
+    {
+        out.K[d] = P1.K[d] + P2.K[d];
     }
     return out;
 }
@@ -101,7 +123,7 @@ float Trapezoidal_Function::f(float x)
         {
             out = x * _upRamp;
         }
-        else if (x < _duration - (_max/_downRamp))
+        else if (x < _duration - (_max / _downRamp))
         {
             out = _max;
         }
@@ -122,7 +144,7 @@ float Trapezoidal_Function::df(float x)
         {
             out = _upRamp;
         }
-        else if (x < _duration - (_max/_downRamp))
+        else if (x < _duration - (_max / _downRamp))
         {
             out = 0;
         }
@@ -134,15 +156,15 @@ float Trapezoidal_Function::df(float x)
     return out;
 }
 
-Trapezoidal_Function::Trapezoidal_Function()
+Trapezoidal_Function::Trapezoidal_Function(float upRamp = 1.0, float downRamp = 1.0, float max = 0.0, float duration = 0.0)
 {
-    _upRamp = 1;
-    _downRamp = 1;
-    _max = 0;
-    _duration = 0;
+    _upRamp = upRamp;
+    _downRamp = downRamp;
+    _max = max;
+    _duration = duration;
 }
 
-Trapezoidal_Function::Trapezoidal_Function(float upRamp, float downRamp, float max, float duration)
+void Trapezoidal_Function::set(float upRamp = 1.0, float downRamp = 1.0, float max = 0.0, float duration = 0.0)
 {
     _upRamp = upRamp;
     _downRamp = downRamp;
