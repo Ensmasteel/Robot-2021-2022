@@ -20,10 +20,11 @@ public:
     float durationTrajectory;
     float t = 0.0, t_e = 0.0; // t : time since new trajectory setup ; 0<t_e<1 virtual time of Bezier curves
 
+    static const float epsilonNoMove = 0.001; 
     // METHODES //
 
-    int rotate(float rotationTheta);                                                                         // Rotation of _theta_rad
-    int actuate(float dt);                                                                                   // Update position with trajectory
+    void Rotate(float rotationTheta);                                                                         // Rotation of _theta_rad
+    int ActuatePosition(float dt);                                                                                   // Update position with trajectory
     void Set_NewTrajectory(Polynome newTrajectoryX, Polynome newTrajectoryY, Trapezoidal_Function newSpeed); // store new trajectories
     void Compute_Trajectory(VectorE posFinal, float deltaCurve);
     void lock();

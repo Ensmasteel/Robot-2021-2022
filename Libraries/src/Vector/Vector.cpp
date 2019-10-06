@@ -29,3 +29,38 @@ VectorE initVectorE(float x, float y, float theta)
     out._theta = theta;
     return out;
 }
+
+float Norm(Vector V)
+{
+    float out = sqrt(V._x * V._x + V._y * V._y);
+    return out;
+}
+
+Vector Minus(Vector v1, Vector v2)
+{
+    Vector out;
+    out._x = v1._x - v2._x;
+    out._y = v1._y - v2._y;
+    return out;
+}
+
+Vector Sum(Vector v1, Vector v2)
+{
+    Vector out;
+    out._x = v1._x + v2._x;
+    out._y = v1._y + v2._y;
+    return out;
+}
+
+float VectorE::NormalizeTheta()
+{
+    float out;
+    out=_theta-(2*PI)*((int)(theta/(2*PI)));
+    if (out>PI)
+        return (out-2*PI);
+    else if (out<=-PI)
+        return (out+2*PI);
+    
+    _theta = out;
+    return out;
+}
