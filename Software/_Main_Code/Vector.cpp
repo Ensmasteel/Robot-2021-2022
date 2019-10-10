@@ -1,6 +1,6 @@
 #include "Vector.h"
 
-Vector::Vector(float x = 0.0, float y = 0.0)
+Vector::Vector(float x, float y)
 {
     _x = x;
     _y = y;
@@ -14,7 +14,7 @@ Vector initVector(float x, float y)
     return out;
 }
 
-VectorE::VectorE(float x = 0.0, float y = 0.0, float theta = 0.0)
+VectorE::VectorE(float x, float y, float theta)
 {
     _vec._x = x;
     _vec._y = y;
@@ -32,8 +32,7 @@ VectorE initVectorE(float x, float y, float theta)
 
 float Norm(Vector V)
 {
-    float out = sqrt(V._x * V._x + V._y * V._y);
-    return out;
+    return sqrt( (V._x * V._x) + (V._y * V._y) );
 }
 
 Vector Minus(Vector v1, Vector v2)
@@ -52,10 +51,20 @@ Vector Sum(Vector v1, Vector v2)
     return out;
 }
 
+VectorE Sum(VectorE v1, VectorE v2)
+{
+    VectorE out;
+    out._vec._x = v1._vec._x + v2._vec._x;
+    out._vec._y = v1._vec._y + v2._vec._y;
+    out._theta = v1._theta + v2._theta;
+    out.NormalizeTheta();
+    return out;
+}
+
 float VectorE::NormalizeTheta()
 {
     float out;
-    out=_theta-(2*PI)*((int)(theta/(2*PI)));
+    out=_theta-(2*PI)*((int)(_theta/(2*PI)));
     if (out>PI)
         return (out-2*PI);
     else if (out<=-PI)

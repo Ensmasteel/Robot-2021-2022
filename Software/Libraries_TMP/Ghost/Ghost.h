@@ -1,8 +1,9 @@
 #ifndef GHOST_H
 #define GHOST_H
 
-#include "Math_functions.h"
+#include "Arduino.h"
 #include "Vector.h"
+#include "Math_functions.h"
 
 class Ghost
 {

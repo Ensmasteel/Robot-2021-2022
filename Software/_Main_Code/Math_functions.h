@@ -1,7 +1,7 @@
 #ifndef MATH_FUNCTION_H
 #define MATH_FUNCTION_H
 
-//#include "Arduino.h"
+#include "Arduino.h"
 
 class Polynome
 {

@@ -1,6 +1,6 @@
 #include "Math_functions.h"
 
-Polynome::Polynome(float a0 = 0.0, float a1 = 0.0, float a2 = 0.0, float a3 = 0.0, float a4 = 0.0, float a5 = 0.0, float a6 = 0.0)
+Polynome::Polynome(float a0, float a1, float a2, float a3, float a4, float a5, float a6)
 {
     K[0] = a0;
     K[1] = a1;
@@ -15,7 +15,7 @@ float Polynome::f(float x)
 {
     float out = 0.0;
     float xn = 1.0;
-    for (int i = 0; i <= DEGRE_MAX; i++)
+    for (int i = 0; i < DEGRE_MAX; i+=1)
     {
         out = out + K[i] * xn;
         xn = xn * x;
@@ -27,7 +27,7 @@ float Polynome::df(float x)
 {
     float out = 0.0;
     float xn = 1.0;
-    for (int i = 1; i <= DEGRE_MAX; i++)
+    for (int i = 1; i < DEGRE_MAX; i+=1)
     {
         out = out + K[i] * xn * i;
         xn = xn * x;
@@ -35,7 +35,7 @@ float Polynome::df(float x)
     return out;
 }
 
-void Polynome::set(float a0 = 0.0, float a1 = 0.0, float a2 = 0.0, float a3 = 0.0, float a4 = 0.0, float a5 = 0.0, float a6 = 0.0)
+void Polynome::set(float a0, float a1, float a2, float a3, float a4, float a5, float a6)
 {
     K[0] = a0;
     K[1] = a1;
@@ -46,7 +46,7 @@ void Polynome::set(float a0 = 0.0, float a1 = 0.0, float a2 = 0.0, float a3 = 0.
     K[6] = a6;
 }
 
-Polynome init_polynome(float a0 = 0.0, float a1 = 0.0, float a2 = 0.0, float a3 = 0.0, float a4 = 0.0, float a5 = 0.0, float a6 = 0.0)
+Polynome init_polynome(float a0, float a1, float a2, float a3, float a4, float a5, float a6)
 {
     Polynome out;
     out.K[0] = a0;
@@ -138,7 +138,7 @@ float Trapezoidal_Function::f(float x)
 float Trapezoidal_Function::df(float x)
 {
     float out = 0.0;
-    if (x > 0.0)
+    if (x >= 0.0)
     {
         if (x < _max / _upRamp)
         {
@@ -156,7 +156,7 @@ float Trapezoidal_Function::df(float x)
     return out;
 }
 
-Trapezoidal_Function::Trapezoidal_Function(float upRamp = 1.0, float downRamp = 1.0, float max = 0.0, float duration = 0.0)
+Trapezoidal_Function::Trapezoidal_Function(float upRamp, float downRamp, float max, float duration)
 {
     _upRamp = upRamp;
     _downRamp = downRamp;
@@ -164,7 +164,7 @@ Trapezoidal_Function::Trapezoidal_Function(float upRamp = 1.0, float downRamp = 
     _duration = duration;
 }
 
-void Trapezoidal_Function::set(float upRamp = 1.0, float downRamp = 1.0, float max = 0.0, float duration = 0.0)
+void Trapezoidal_Function::set(float upRamp, float downRamp, float max, float duration)
 {
     _upRamp = upRamp;
     _downRamp = downRamp;
