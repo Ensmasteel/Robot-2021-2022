@@ -14,6 +14,7 @@ public:
     float df(float x);  //value of the derivative function in x
     float ddf(float x);
     void set(float a0 = 0.0, float a1 = 0.0, float a2 = 0.0, float a3 = 0.0, float a4 = 0.0, float a5 = 0.0, float a6 = 0.0);
+    void SerialPrint();
 };
 
 Polynome init_polynome(float a0 = 0.0, float a1 = 0.0, float a2 = 0.0, float a3 = 0.0, float a4 = 0.0, float a5 = 0.0, float a6 = 0.0);

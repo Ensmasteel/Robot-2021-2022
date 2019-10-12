@@ -1,7 +1,7 @@
 #include "Ghost.h"
 #include "Arduino.h"
 
-void Ghost::Ghost(VectorE posEIni)
+Ghost::Ghost(VectorE posEIni)
 {
     posCurrent = posEIni;
     t = 0.0;
@@ -10,14 +10,14 @@ void Ghost::Ghost(VectorE posEIni)
 
 void Ghost::Set_NewTrajectory(Polynome newTrajectoryX, Polynome newTrajectoryY, Trapezoidal_Function newSpeed)
 {
-    trajectoryX = newTrajectoryX;
-    trajectoryY = newTrajectoryY;
+    trajectory_X = newTrajectoryX;
+    trajectory_Y = newTrajectoryY;
     speedProfileLinear = newSpeed;
     t = 0.0;
     t_e = 0.0;
 }
 
-int Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, float cruisingSpeed, bool pureRotation)
+int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, float cruisingSpeed, bool pureRotation)
 {
     posAim = posFinal;
     t = 0.0;
@@ -32,8 +32,9 @@ int Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, flo
 
     if (pureRotation) // Only update orientation
     {
+        float rotationTheta = NormalizeAngle(posAim._theta - posCurrent._theta);
         // If the orientation is unchanged or a move is needed
-        if ((abs(posAim._theta - posCurrent._theta) < epsilonOrientation) or (normRawMove < epsilonPosition))
+        if ((abs(rotationTheta) < epsilonOrientation) or (normRawMove < epsilonPosition))
         {
             return 1;
         }
@@ -59,17 +60,17 @@ int Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, flo
         float y0 = posCurrent._vec._y;
         float x3 = posAim._vec._x;
         float y3 = posAim._vec._y;
-        float x1 = x0 + deltaCurve * normRawMove * cos(posCurrent.theta);
-        float y1 = y0 + deltaCurve * normRawMove * sin(posCurrent.theta);
-        float x2 = x3 - deltaCurve * normRawMove * cos(posAim.theta);
-        float y2 = y3 - deltaCurve * normRawMove * sin(posAim.theta);
+        float x1 = x0 + deltaCurve * normRawMove * cos(posCurrent._theta);
+        float y1 = y0 + deltaCurve * normRawMove * sin(posCurrent._theta);
+        float x2 = x3 - deltaCurve * normRawMove * cos(posAim._theta);
+        float y2 = y3 - deltaCurve * normRawMove * sin(posAim._theta);
 
-        trajectoryX.set(x0, 3.0 * (x1 - x0), 3.0 * (x0 - 2 * x1 + x2), 3.0 * x1 - x0 - 3.0 * x2 + x3);
-        trajectoryY.set(y0, 3.0 * (y1 - y0), 3.0 * (y0 - 2 * y1 + y2), 3.0 * y1 - y0 - 3.0 * y2 + y3);
+        trajectory_X.set(x0, 3.0 * (x1 - x0), 3.0 * (x0 - 2 * x1 + x2), 3.0 * x1 - x0 - 3.0 * x2 + x3);
+        trajectory_Y.set(y0, 3.0 * (y1 - y0), 3.0 * (y0 - 2 * y1 + y2), 3.0 * y1 - y0 - 3.0 * y2 + y3);
 
         // Define lengthTrajectory
-        Polynome SpeedX_e = Derivative_ptr(&trajectoryX);
-        Polynome SpeedY_e = Derivative_ptr(&trajectoryY);
+        Polynome SpeedX_e = Derivative_ptr(&trajectory_X);
+        Polynome SpeedY_e = Derivative_ptr(&trajectory_Y);
         speedSquare_e = Sum(Square_ptr(&SpeedX_e), Square_ptr(&SpeedY_e));
 
         float lengthTrajectory = 0.0;
@@ -119,7 +120,7 @@ int Ghost::ActuatePosition(float dt)
 
     t += dt;
 
-    if (!locked)
+    if ((!locked) and (t_e > 1.0))
     {
         if (rotating)
         {

@@ -27,5 +27,6 @@ float Norm(Vector V);
 Vector Minus(Vector v1, Vector v2);
 Vector Sum(Vector v1, Vector v2);
 VectorE Sum(VectorE v1, VectorE v2);
+float NormalizeAngle(float angle);
 
 #endif

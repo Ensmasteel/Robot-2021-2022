@@ -73,3 +73,15 @@ float VectorE::NormalizeTheta()
     _theta = out;
     return out;
 }
+
+float NormalizeAngle(float angle)
+{
+    float out;
+    out=angle-(2*PI)*((int)(angle/(2*PI)));
+    if (out>PI)
+        return (out-2*PI);
+    else if (out<=-PI)
+        return (out+2*PI);
+    
+    return out;
+}

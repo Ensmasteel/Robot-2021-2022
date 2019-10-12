@@ -15,7 +15,7 @@ float Polynome::f(float x)
 {
     float out = 0.0;
     float xn = 1.0;
-    for (int i = 0; i < DEGRE_MAX; i+=1)
+    for (int i = 0; i < DEGRE_MAX; i += 1)
     {
         out = out + K[i] * xn;
         xn = xn * x;
@@ -27,7 +27,7 @@ float Polynome::df(float x)
 {
     float out = 0.0;
     float xn = 1.0;
-    for (int i = 1; i < DEGRE_MAX; i+=1)
+    for (int i = 1; i < DEGRE_MAX; i += 1)
     {
         out = out + K[i] * xn * i;
         xn = xn * x;
@@ -44,6 +44,18 @@ void Polynome::set(float a0, float a1, float a2, float a3, float a4, float a5, f
     K[4] = a4;
     K[5] = a5;
     K[6] = a6;
+}
+
+void Polynome::SerialPrint()
+{
+    for (int i = 0; i < DEGRE_MAX; i += 1)
+    {
+        Serial.print(K[i]);
+        Serial.print(" x^");
+        Serial.print(i);
+        if (i < DEGRE_MAX - 1)
+            Serial.print(" + ");
+    }
 }
 
 Polynome init_polynome(float a0, float a1, float a2, float a3, float a4, float a5, float a6)

@@ -1,27 +1,50 @@
 #include <Arduino.h>
 #include <Vector.h>
 #include <Math_functions.h>
+#include <Ghost.h>
+
+void PrintPolynome_Python(Polynome P)
+{
+  Serial.print("[");
+  for (int i = 0; i < P.DEGRE_MAX; i += 1)
+  {
+    Serial.print(P.K[i]);
+    if (i < P.DEGRE_MAX - 1)
+      Serial.print(", ");
+  }
+  Serial.print("]");
+}
+
+void trajectoryRAW_test()
+{
+  VectorE posInitial(0.0, 0.0, 0.0);
+  VectorE posFinal(10.0, 10.0, -1.57);
+
+  float deltaCurve = 0.3;
+
+  Ghost botGhost(posInitial);
+  botGhost.Compute_Trajectory(posFinal, deltaCurve, 1.0, 5.0, false);
+
+  Serial.print("Aimed position : ");
+  Serial.print(botGhost.posAim._vec._x);
+  Serial.print(" ");
+  Serial.print(botGhost.posAim._vec._y);
+  Serial.print(" ");
+  Serial.print(botGhost.posAim._theta);
+  Serial.print("\n");
+  Serial.print("\nTrajectory X : ");
+  PrintPolynome_Python(botGhost.trajectory_X);
+  Serial.print("\nTrajectory Y : ");
+  PrintPolynome_Python(botGhost.trajectory_Y);
+}
 
 void setup()
 {
   Serial.begin(9600);
 
-    Vector coord_1(1.0,2.0 );
-    Vector coord_2(0.0, 1.5);
-    VectorE Coord_orient(1.0, 1.0, -3.24);
-
-    Serial.println(Norm(Minus(coord_1,coord_2)));
-    Serial.println(Coord_orient.NormalizeTheta());
-
-    /*
-    std::cout << "Norms : " << Norm(coord_1) << Norm(Minus(coord_1, coord_2))
-              << Norm(Sum(coord_1, coord_2)) << std::endl
-              << "Orientation : " << Coord_orient._theta
-              << Coord_orient.NormalizeTheta() << std::endl;
-              */
+  trajectoryRAW_test();
 }
 
 void loop()
 {
-  
 }
