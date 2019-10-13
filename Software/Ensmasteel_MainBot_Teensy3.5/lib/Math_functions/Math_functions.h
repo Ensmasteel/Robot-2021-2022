@@ -19,8 +19,11 @@ public:
 
 Polynome init_polynome(float a0 = 0.0, float a1 = 0.0, float a2 = 0.0, float a3 = 0.0, float a4 = 0.0, float a5 = 0.0, float a6 = 0.0);
 Polynome Derivative_ptr(Polynome *P);
-Polynome multiplication_ptr(Polynome *P1, Polynome *P2);
+Polynome Derivative(Polynome P);
+Polynome Multiplication_ptr(Polynome *P1, Polynome *P2); // Need K[i>=4] = 0 !
+Polynome Multiplication(Polynome P1, Polynome P2);
 Polynome Square_ptr(Polynome *P);
+Polynome Square(Polynome P);
 Polynome Sum_ptr(Polynome *P1, Polynome *P2);
 Polynome Sum(Polynome P1, Polynome P2);
 

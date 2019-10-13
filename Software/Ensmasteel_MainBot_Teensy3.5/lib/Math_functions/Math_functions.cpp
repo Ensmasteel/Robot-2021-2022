@@ -56,6 +56,7 @@ void Polynome::SerialPrint()
         if (i < DEGRE_MAX - 1)
             Serial.print(" + ");
     }
+    Serial.print("\n");
 }
 
 Polynome init_polynome(float a0, float a1, float a2, float a3, float a4, float a5, float a6)
@@ -75,9 +76,20 @@ Polynome Derivative_ptr(Polynome *P)
 {
     Polynome out;
     out = init_polynome();
-    for (int d = 1; d <= out.DEGRE_MAX; d++)
+    for (int d = 0 ; d < out.DEGRE_MAX - 1 ; d+=1)
     {
-        out.K[d - 1] = d * P->K[d];
+        out.K[d] = (float) (d+1) * P->K[d+1];
+    }
+    return out;
+}
+
+Polynome Derivative(Polynome P)
+{
+    Polynome out;
+    out = init_polynome();
+    for (int d = 0 ; d < out.DEGRE_MAX - 1 ; d+=1)
+    {
+        out.K[d] = (float) (d+1) * P.K[d+1];
     }
     return out;
 }
@@ -86,11 +98,25 @@ Polynome Multiplication_ptr(Polynome *P1, Polynome *P2)
 {
     Polynome out;
     out = init_polynome();
-    for (int degreP = 0; degreP <= out.DEGRE_MAX; degreP++)
+    for (int k = 0; k < out.DEGRE_MAX ; k+=1)
     {
-        for (int d = 0; d <= degreP; d++)
+        for (int i = 0; i <= k; i+=1)
         {
-            out.K[degreP] = out.K[degreP] + P1->K[d] * P2->K[degreP - d];
+            out.K[k] += P1->K[i] * P2->K[k - i];
+        }
+    }
+    return out;
+}
+
+Polynome Multiplication(Polynome P1, Polynome P2)
+{
+    Polynome out;
+    out = init_polynome();
+    for (int k = 0; k < out.DEGRE_MAX ; k+=1)
+    {
+        for (int i = 0; i <= k; i+=1)
+        {
+            out.K[k] += P1.K[i] * P2.K[k - i];
         }
     }
     return out;
@@ -104,11 +130,19 @@ Polynome Square_ptr(Polynome *P)
     return out;
 }
 
+Polynome Square(Polynome P)
+{
+    Polynome out;
+    out = init_polynome();
+    out = Multiplication(P, P);
+    return out;
+}
+
 Polynome Sum_ptr(Polynome *P1, Polynome *P2)
 {
     Polynome out;
     out = init_polynome();
-    for (int d = 0; d <= out.DEGRE_MAX; d++)
+    for (int d = 0; d < out.DEGRE_MAX; d+=1)
     {
         out.K[d] = P1->K[d] + P2->K[d];
     }
@@ -119,12 +153,13 @@ Polynome Sum(Polynome P1, Polynome P2)
 {
     Polynome out;
     out = init_polynome();
-    for (int d = 0; d <= out.DEGRE_MAX; d++)
+    for (int d = 0; d < out.DEGRE_MAX; d++)
     {
         out.K[d] = P1.K[d] + P2.K[d];
     }
     return out;
 }
+
 
 float Trapezoidal_Function::f(float x)
 {

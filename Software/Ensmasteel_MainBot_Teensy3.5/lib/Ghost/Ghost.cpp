@@ -34,7 +34,7 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
     {
         float rotationTheta = NormalizeAngle(posAim._theta - posCurrent._theta);
         // If the orientation is unchanged or a move is needed
-        if ((abs(rotationTheta) < epsilonOrientation) or (normRawMove < epsilonPosition))
+        if ((abs(rotationTheta) < epsilonOrientation) or (normRawMove > epsilonPosition))
         {
             return 1;
         }
@@ -69,13 +69,17 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
         trajectory_Y.set(y0, 3.0 * (y1 - y0), 3.0 * (y0 - 2 * y1 + y2), 3.0 * y1 - y0 - 3.0 * y2 + y3);
 
         // Define lengthTrajectory
-        Polynome SpeedX_e = Derivative_ptr(&trajectory_X);
-        Polynome SpeedY_e = Derivative_ptr(&trajectory_Y);
+        Polynome SpeedX_e = Derivative(trajectory_X);
+        Polynome SpeedY_e = Derivative(trajectory_Y);
         speedSquare_e = Sum(Square_ptr(&SpeedX_e), Square_ptr(&SpeedY_e));
 
-        float lengthTrajectory = 0.0;
+        //trajectory_Y.SerialPrint();
+        //SpeedY_e.SerialPrint();
+
+        float lengthTrajectory = 0.0; // [...] = cm
         float t_e_integral = 0.0, deltaIntegral = 0.01;
-        float V_e = speedSquare_e.f(t_e_integral), lastV_e = speedSquare_e.f(t_e_integral);
+        float V_e = sqrt(speedSquare_e.f(t_e_integral));
+        float lastV_e = sqrt(speedSquare_e.f(t_e_integral));
 
         while (t_e_integral <= 1.0)
         {
@@ -84,6 +88,8 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
             lengthTrajectory += ((V_e + lastV_e) / 2.0) * deltaIntegral;
             t_e_integral += deltaIntegral;
         }
+
+        Serial.println(lengthTrajectory);
 
         // Determine duration of trajectory given speed profile and trajectory's length
         durationTrajectory = (lengthTrajectory / cruisingSpeed) + (cruisingSpeed / speedRamps);
@@ -120,7 +126,7 @@ int Ghost::ActuatePosition(float dt)
 
     t += dt;
 
-    if ((!locked) and (t_e > 1.0))
+    if ((!locked) and (t_e < 1.0))
     {
         if (rotating)
         {

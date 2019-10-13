@@ -17,10 +17,11 @@ def plotpolynome(coefsx, coefsy):
     plt.clf()
     plt.plot([pln(k, coefsx) for k in valt],[pln(j,coefsy) for j in valt])
     plt.grid()
+    plt.axis('equal')
     plt.show()
 
 
-coeff1 = [0.00, 12.73, 4.53, -7.26, 0.00, 0.00, 0.00]
-coeff2 = [0.00, 0.00, 42.73, -32.73, 0.00, 0.00, 0.00]
+coeff1 = [0.00, 0.01, -0.04, 0.02, 0.00, 0.00, 0.00]
+coeff2 = [0.00, 15.00, -15.00, 10.00, 0.00, 0.00, 0.00]
 
 plotpolynome(coeff1, coeff2)
