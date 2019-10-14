@@ -1,15 +1,96 @@
+/**   Main bot teensy 3.5 tests
+ *
+ *  tests : 1 - polynome operation w\ pointers
+ *          2 - Bezier Curves
+ *          3 - Trajectories in real-time
+ *
+ *  author : Arthur FINDELAIR - EnsmaSteel, github.com/ArthurFDLR
+ *  date : October 2019
+*/
+
+// =============================
+// ===       Libraries       ===
+// =============================
+
 #include <Arduino.h>
 #include <Vector.h>
 #include <Math_functions.h>
 #include <Ghost.h>
 
-VectorE posInitial(0.0, 0.0, 1.57);
-VectorE posFinal(0.0, 20.0, 1.57);
+// ================================================
+// ===       VARIABLES and INSTANTIATIONS       ===
+// ================================================
 
-float deltaCurve = 0.5;
+const uint8_t MODE_TEST = 3;
+
+VectorE posInitial(0.0, 0.0, 0.7);
+VectorE posFinal(40.0, 15.0, 0.0);
+
 Ghost botGhost(posInitial);
-uint32_t timeLast = 0.0, timeCurrent = 0.0;
-const uint32_t deltaTime = 10;
+
+uint64_t timeLast = 0, timeCurrent = 0;
+const uint64_t deltaTime = 5e5;
+
+void PrintPolynome_Python(Polynome P);
+void PolynomePtrOperation_test();
+void TrajectoryRAW_Test();
+void Trajecotry_Init_Test();
+void Trajecotry_Loop_Test(float dt);
+
+// =====================================
+// ===       ARDUINO PROCESSES       ===
+// =====================================
+
+void setup()
+{
+  Serial.begin(9600);
+
+  switch (MODE_TEST)
+  {
+  case 1:
+    PolynomePtrOperation_test();
+    break;
+
+  case 2:
+    TrajectoryRAW_Test();
+    break;
+
+  case 3:
+    Trajecotry_Init_Test();
+    break;
+
+  default:
+    break;
+  }
+}
+
+void loop()
+{
+  switch (MODE_TEST)
+  {
+  case 3:
+
+    if (micros() - timeLast > deltaTime)
+    {
+      timeCurrent = micros();
+      //Serial.println((float)(timeCurrent - timeLast)/1e6);
+      Trajecotry_Loop_Test((float)(timeCurrent - timeLast) / 1e6);
+      timeLast = micros();
+    }
+    break;
+
+  default:
+    break;
+  }
+}
+
+// =============================
+// ===       FUNCTIONS       ===
+// =============================
+
+/*------------*/
+/*   TOOLS    */
+/*------------*/
 
 void PrintPolynome_Python(Polynome P)
 {
@@ -20,13 +101,17 @@ void PrintPolynome_Python(Polynome P)
     if (i < P.DEGRE_MAX - 1)
       Serial.print(", ");
   }
-  Serial.print("]");
+  Serial.print("]\n");
 }
+
+/*------------------------------------*/
+/*   TEST 1 : Polynomes operations    */
+/*------------------------------------*/
 
 void PolynomePtrOperation_test()
 {
-  Polynome P1(1.0,4.0,-1.0,4.0);
-  Polynome P2(-3.0,2.0,1.0);
+  Polynome P1(1.0, 4.0, -1.0, 4.0);
+  Polynome P2(-3.0, 2.0, 1.0);
   Polynome P12, P11, P11bis, P1_;
 
   //P12 = Multiplication_ptr(&P1,&P2);
@@ -45,9 +130,17 @@ void PolynomePtrOperation_test()
   Serial.println(P1.f(x) * P1.f(x));
 }
 
+/*-----------------------------*/
+/*   TEST 2 : Bezier Curves    */
+/*-----------------------------*/
+
 void TrajectoryRAW_Test()
 {
-  if (!botGhost.Compute_Trajectory(posFinal, deltaCurve, 1.0, 1.0, false))
+  float deltaCurve = 0.4;
+  float speedRamp = 50.0;
+  float cruisingSpeed = 50.0;
+
+  if (!botGhost.Compute_Trajectory(posFinal, deltaCurve, speedRamp, cruisingSpeed, false))
   {
     Serial.print("\nAimed position : ");
     Serial.print(botGhost.posAim._vec._x);
@@ -58,11 +151,23 @@ void TrajectoryRAW_Test()
     Serial.print("\n");
     Serial.print("\nTrajectory X : ");
     PrintPolynome_Python(botGhost.trajectory_X);
-    Serial.print("\nTrajectory Y : ");
+    Serial.print("Trajectory Y : ");
     PrintPolynome_Python(botGhost.trajectory_Y);
     Serial.print("\n");
-    Serial.print("\nTrajecotry duration : ");
+    Serial.print("Trajectory length : ");
+    Serial.print(botGhost.lengthTrajectory);
+    Serial.print("\n");
+    Serial.print("Trajectory duration : ");
     Serial.print(botGhost.durationTrajectory);
+    Serial.print("\n");
+    Serial.print("Bezier speed squared : ");
+    botGhost.speedSquare_e.SerialPrint();
+    Serial.print("\n");
+
+    for ( int i=0; i<=100; i+=1)
+    {
+      Serial.println(botGhost.speedProfileLinear.f((float)(i/100.0)*botGhost.durationTrajectory));
+    }
   }
   else
   {
@@ -70,19 +175,26 @@ void TrajectoryRAW_Test()
   }
 }
 
+/*----------------------------*/
+/*   TEST 3 : Trajecotries    */
+/*----------------------------*/
+
 void Trajecotry_Init_Test()
 {
-  float speedRamp = 0.5;
-  float cruisingSpeed = 1.0;
+  float deltaCurve = 0.4;
+  float speedRamp = 1.5;
+  float cruisingSpeed = 5.0;
 
-  timeLast = millis();
-  timeCurrent = millis();
+  timeLast = micros();
+  timeCurrent = micros();
 
   if (!botGhost.Compute_Trajectory(posFinal, deltaCurve, speedRamp, cruisingSpeed, false))
   {
     botGhost.lock(false);
     Serial.print("Trajectory duration : ");
     Serial.print(botGhost.durationTrajectory);
+    Serial.print("\nTrajectory length : ");
+    Serial.print(botGhost.lengthTrajectory);
     Serial.print("\nLocking state : ");
     Serial.print(botGhost.locked);
     Serial.print("\n");
@@ -90,7 +202,8 @@ void Trajecotry_Init_Test()
     PrintPolynome_Python(botGhost.trajectory_X);
     Serial.print("\nTrajectory Y : ");
     PrintPolynome_Python(botGhost.trajectory_Y);
-    Serial.print("\n ///////////////////////////////////////////////////////////////////// \n");
+    Serial.print("\n ///////////////////////////////////////////////////////////////////// \n\n");
+    Serial.print("t;t_e;V(t);x;y;theta\n");
   }
   else
   {
@@ -100,38 +213,22 @@ void Trajecotry_Init_Test()
 
 void Trajecotry_Loop_Test(float dt)
 {
-  if (!botGhost.ActuatePosition(dt))
+  if (botGhost.t_e < 1.0)
   {
-    Serial.print(botGhost.t);
-    Serial.print(", ");
-    Serial.print(botGhost.t_e);
-    Serial.print(", ");
-    Serial.print(botGhost.posCurrent._vec._x);
-    Serial.print(", ");
-    Serial.print(botGhost.posCurrent._vec._y);
-    Serial.print(", ");
-    Serial.print(botGhost.posCurrent._theta);
-    Serial.print("\n");
+    if (!botGhost.ActuatePosition(dt))
+    {
+      Serial.print(botGhost.t);
+      Serial.print(";");
+      Serial.print(botGhost.t_e);
+      Serial.print(";");
+      Serial.print(botGhost.speedProfileLinear.f(botGhost.t));
+      Serial.print(";");
+      Serial.print(botGhost.posCurrent._vec._x);
+      Serial.print(";");
+      Serial.print(botGhost.posCurrent._vec._y);
+      Serial.print(";");
+      Serial.print(botGhost.posCurrent._theta);
+      Serial.print("\n");
+    }
   }
-}
-
-void setup()
-{
-  Serial.begin(9600);
-
-  //PolynomePtrOperation_test();
-  TrajectoryRAW_Test();
-  //Trajecotry_Init_Test();
-}
-
-void loop()
-{
-  /*
-  if (millis() - timeLast > deltaTime)
-  {
-    timeLast = timeCurrent;
-    timeCurrent = millis();
-    Trajecotry_Loop_Test((float)(timeCurrent - timeLast));
-  }
-  */
 }

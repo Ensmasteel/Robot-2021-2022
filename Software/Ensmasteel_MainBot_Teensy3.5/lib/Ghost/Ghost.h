@@ -1,3 +1,9 @@
+/**   Ensmasteel Library - movement management
+ * 
+ * author : Arthur FINDELAIR - EnsmaSteel, github.com/ArthurFDLR
+ * date : October 2019
+*/
+
 #ifndef GHOST_H
 #define GHOST_H
 
@@ -21,7 +27,7 @@ public:
     Polynome speedSquare_e;                  // (V*)^2 Evolution speed of the theorical trajectory
     Trapezoidal_Function speedProfileLinear; // wanted speed of the bot along the trajectory [...] = cm/s
     Trapezoidal_Function speedProfileRotation; // wanted speed in rotation [...] = rad/s
-    float durationTrajectory;   // [...] = s
+    float durationTrajectory=0.0, lengthTrajectory=0.0;   // [...] = s ; [...] = cm
 
     // METHODES //
 

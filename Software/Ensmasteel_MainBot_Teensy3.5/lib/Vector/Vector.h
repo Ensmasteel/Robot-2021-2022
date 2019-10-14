@@ -1,3 +1,9 @@
+/**   Ensmasteel Library - Vector modelisation
+ * 
+ * author : Arthur FINDELAIR - EnsmaSteel, github.com/ArthurFDLR
+ * date : October 2019
+*/
+
 #ifndef VECTOR_H
 #define VECTOR_H
 

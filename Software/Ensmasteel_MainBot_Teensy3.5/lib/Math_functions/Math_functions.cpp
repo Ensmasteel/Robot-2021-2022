@@ -164,6 +164,12 @@ Polynome Sum(Polynome P1, Polynome P2)
 float Trapezoidal_Function::f(float x)
 {
     float out = 0.0;
+
+    if (((_max/_upRamp) + (_max/_downRamp)) > _duration)
+    {
+        Serial.println("SPEED JUMP ! cf. Trapezoidal_Function::f ");
+    }
+
     if (x > 0.0)
     {
         if (x < _max / _upRamp)

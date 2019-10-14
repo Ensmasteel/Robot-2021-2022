@@ -1,3 +1,9 @@
+/**   Ensmasteel Library - Polynome and trapezoidale functions modelisation
+ * 
+ * author : Arthur FINDELAIR - EnsmaSteel, github.com/ArthurFDLR
+ * date : October 2019
+*/
+
 #ifndef MATH_FUNCTION_H
 #define MATH_FUNCTION_H
 
