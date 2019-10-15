@@ -7,9 +7,9 @@
 
 struct PIDProfile
 {
-    float KP,KI,KD;
+    float KP, KI, KD;
     float IRelax;
-    float epsilon,dEpsilon;
+    float epsilon, dEpsilon;
     float maxErr;
 };
 
@@ -38,7 +38,6 @@ public:
     PID();
 };
 
-
 class Asservissement
 {
 public:
@@ -47,7 +46,7 @@ public:
     bool close;
     bool blocked;
     bool needToGoForward;
-    void compute(double* outTranslation, double* outRotation, VectorE posERobot, VectorE posEGhost, double vRobot, double vGhost, double wRobot, double wGhost, double dt );
+    void compute(double *outTranslation, double *outRotation, VectorE posERobot, VectorE posEGhost, double vRobot, double vGhost, double wRobot, double wGhost, double dt);
     Asservissement(float frequency);
 };
 

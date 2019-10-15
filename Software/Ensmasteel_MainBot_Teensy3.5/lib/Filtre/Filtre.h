@@ -7,10 +7,10 @@ class Filtre
 public:
     float lastValue;
     float wc;
-    void in(float newRaw,float dt);
+    void in(float newRaw, float dt);
     float out();
     void reset(float value);
-    Filtre(float initValue,float frequency);
+    Filtre(float initValue, float frequency);
     Filtre();
 };
 #endif
