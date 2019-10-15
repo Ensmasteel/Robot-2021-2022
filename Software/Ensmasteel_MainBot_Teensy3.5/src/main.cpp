@@ -191,7 +191,7 @@ void Trajecotry_Init_Test()
 
   if (!botGhost.Compute_Trajectory(posFinal, deltaCurve, speedRamp, cruisingSpeed, false))
   {
-    botGhost.lock(false);
+    botGhost.Lock(false);
     Serial.print("Trajectory duration : ");
     Serial.print(botGhost.durationTrajectory);
     Serial.print("\nTrajectory length : ");
@@ -214,21 +214,23 @@ void Trajecotry_Init_Test()
 
 void Trajecotry_Loop_Test(float dt)
 {
-  if (botGhost.t_e < 1.0)
+  if (botGhost.t_e_delayed < 1.0)
   {
     if (!botGhost.ActuatePosition(dt))
     {
       Serial.print(botGhost.t);
       Serial.print(";");
-      Serial.print(botGhost.t_e);
+      Serial.print(botGhost.t_delayed);
+      Serial.print(";");
+      Serial.print(botGhost.t_e_delayed);
       Serial.print(";");
       Serial.print(botGhost.speedProfileLinear.f(botGhost.t));
       Serial.print(";");
-      Serial.print(botGhost.posCurrent._x);
+      Serial.print(botGhost.posDelayed._vec._x);
       Serial.print(";");
-      Serial.print(botGhost.posCurrent._y);
+      Serial.print(botGhost.posDelayed._vec._y);
       Serial.print(";");
-      Serial.print(botGhost.posCurrent._theta);
+      Serial.print(botGhost.posDelayed._theta);
       Serial.print("\n");
     }
   }
