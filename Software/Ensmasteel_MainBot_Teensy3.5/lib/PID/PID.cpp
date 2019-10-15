@@ -74,7 +74,7 @@ PID::PID() {}
 
 void Asservissement::compute(double *outTranslation, double *outRotation, VectorE posERobot, VectorE posEGhost, double vRobot, double vGhost, double wRobot, double wGhost, double dt)
 {
-    float lagBehind = cross(minus(posEGhost._vec, posERobot._vec), directeur(posERobot._theta));
+    float lagBehind = ((Vector)(posEGhost - posERobot))*(directeur(posERobot._theta));
     if (lagBehind < 0)
         lagBehind = -1 * sqrt(-1 * lagBehind);
     else
@@ -83,7 +83,7 @@ void Asservissement::compute(double *outTranslation, double *outRotation, Vector
     needToGoForward = (lagBehind > 0);
 
     *outTranslation = pidTranslation.compute(lagBehind, vGhost, 0, vRobot, dt);
-    *outRotation = pidRotation.compute(posEGhost.theta, wGhost, posERobot.theta, wRobot, dt);
+    *outRotation = pidRotation.compute(posEGhost._theta, wGhost, posERobot._theta, wRobot, dt);
 
     close = pidTranslation.close && pidRotation.close;
     blocked = pidTranslation.blocked || pidRotation.blocked;

@@ -15,15 +15,17 @@ class Vector
 {
 public:
     float _x, _y;
-    Vector operator+(Vector &other);
-    Vector operator-(Vector &other);
+    Vector operator+(const Vector &other);
+    Vector operator-(const Vector &other);
     //Produit Scalaire
-    float operator*(Vector &other);
+    float operator*(const Vector &other);
     //Produit par un scalaire
-    Vector operator*(float scalaire);
+    Vector operator*(const float scalaire);
     float norm();
     Vector(float x = 0, float y = 0);
 };
+
+Vector directeur(float theta);
 
 class VectorE : public Vector
 {
@@ -32,8 +34,8 @@ public:
     void normalizeTheta();
     VectorE(float x = 0, float y = 0, float theta = 0);
 
-    VectorE operator+(VectorE &other);
-    VectorE operator-(VectorE &other);
+    VectorE operator+(const VectorE &other);
+    VectorE operator-(const VectorE &other);
     VectorE operator*(float scalaire);
 };
 
@@ -44,8 +46,8 @@ public:
     float _w;
     Cinetique(float x = 0, float y = 0, float theta = 0, float v = 0, float w = 0);
 
-    Cinetique operator+(Cinetique &other);
-    Cinetique operator-(Cinetique &other);
+    Cinetique operator+(const Cinetique &other);
+    Cinetique operator-(const Cinetique &other);
     Cinetique operator*(float scalaire);
 };
 
