@@ -3,15 +3,27 @@
 #include "Arduino.h"
 #include <cstring>
 
+Message newMessage(MessageID id, int32_t data)
+{
+    Message out;
+    out.ID=id;
+    out.data=data;
+    return out;
+}
+
 Message MessageBox::pull()
 {
     if (empty)
+    {
         Serial.println("The mailbox is empty");
+        return newMessage(MessageID::Empty,0);
+    }
     else
     {
         Message out =   box[iFirstEntry];
         iFirstEntry =   (iFirstEntry + 1)%MESSAGE_BOX_SIZE;
         empty = (iFirstEntry==iNextEntry);
+        return out;
     }
 
 }

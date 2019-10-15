@@ -6,11 +6,15 @@
 
 #include "Arduino.h"
 
+enum MessageID : uint16_t {Empty,Stop};
+
 struct Message
 {
     int32_t data;
     uint16_t ID;
-};//        Taille de 5 octets !
+};//        Taille de 6 octets !
+
+Message newMessage(MessageID id, int32_t data);
 
 class MessageBox
 {
