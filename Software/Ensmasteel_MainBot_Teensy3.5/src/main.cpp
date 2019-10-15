@@ -226,9 +226,9 @@ void Trajecotry_Loop_Test(float dt)
       Serial.print(";");
       Serial.print(botGhost.speedProfileLinear.f(botGhost.t));
       Serial.print(";");
-      Serial.print(botGhost.posDelayed._vec._x);
+      Serial.print(botGhost.posDelayed._x);
       Serial.print(";");
-      Serial.print(botGhost.posDelayed._vec._y);
+      Serial.print(botGhost.posDelayed._y);
       Serial.print(";");
       Serial.print(botGhost.posDelayed._theta);
       Serial.print("\n");
