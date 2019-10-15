@@ -28,7 +28,6 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
     posCurrent.normalizeTheta();
     rotating = pureRotation;
 
-    VectorE out = posAim - posCurrent;
     float normRawMove = (posAim - posCurrent).norm();
 
     if (pureRotation) // Only update orientation
