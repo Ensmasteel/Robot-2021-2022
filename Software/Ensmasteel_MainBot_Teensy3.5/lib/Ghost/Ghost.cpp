@@ -38,7 +38,7 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
 
     if (pureRotation) // Only update orientation
     {
-        rotationTheta = NormalizeAngle(posAim._theta - posCurrent._theta);
+        rotationTheta = normalizeAngle(posAim._theta - posCurrent._theta);
         // If the orientation is unchanged or a move is needed
         if ((abs(rotationTheta) < epsilonOrientation) or (normRawMove > epsilonPosition))
         {
@@ -179,8 +179,8 @@ int Ghost::ActuatePosition(float dt)
             t_e_delayed = ((t_e_delayed > 1.0) ? 1.0 : t_e_delayed);
 
             // Compute positions
-            posDelayed._vec._x = trajectory_X.f(t_e_delayed);
-            posDelayed._vec._y = trajectory_Y.f(t_e_delayed);
+            posDelayed._x = trajectory_X.f(t_e_delayed);
+            posDelayed._y = trajectory_Y.f(t_e_delayed);
             posDelayed._theta = atan2(trajectory_Y.df(t_e_delayed), trajectory_X.df(t_e_delayed));
 
             posPrevious = posCurrent;
