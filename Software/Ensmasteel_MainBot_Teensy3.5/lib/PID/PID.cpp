@@ -1,10 +1,7 @@
 #include "PID.h"
 
 //--------------ATTENTION, UTILISER LA VRAIE FONCTION DE NORMALISATION--------------------
-double normalize(float x)
-{
-    return x;
-}
+
 
 PIDProfile newPIDProfile(float KP, float KI, float KD, float IRelax, float epsilon, float dEpsilon, float maxErr)
 {
@@ -34,13 +31,13 @@ void PID::setCurrentProfile(uint8_t id)
     this->currentProfile = id;
 }
 
-double PID::compute(double xTarget, double dxTarget, double x, double dx, double dt)
+float PID::compute(float xTarget, float dxTarget, float x, float dx, float dt)
 {
-    double error;
-    double dError;
+    float error;
+    float dError;
 
     if (modulo360)
-        error = normalize(xTarget - x);
+        error = normalizeAngle(xTarget - x);
     else
         error = xTarget - x;
 
@@ -72,9 +69,9 @@ PID::PID(bool modulo360, float frequency)
 
 PID::PID() {}
 
-void Asservissement::compute(double *outTranslation, double *outRotation, VectorE posERobot, VectorE posEGhost, double vRobot, double vGhost, double wRobot, double wGhost, double dt)
+void Asservissement::compute(float *outTranslation, float *outRotation, Cinetique cRobot, Cinetique cGhost, float dt)
 {
-    float lagBehind = ((Vector)(posEGhost - posERobot))*(directeur(posERobot._theta));
+    float lagBehind = ((Vector)(cGhost - cRobot))*(directeur(cRobot._theta));
     if (lagBehind < 0)
         lagBehind = -1 * sqrt(-1 * lagBehind);
     else
@@ -82,8 +79,8 @@ void Asservissement::compute(double *outTranslation, double *outRotation, Vector
 
     needToGoForward = (lagBehind > 0);
 
-    *outTranslation = pidTranslation.compute(lagBehind, vGhost, 0, vRobot, dt);
-    *outRotation = pidRotation.compute(posEGhost._theta, wGhost, posERobot._theta, wRobot, dt);
+    *outTranslation = pidTranslation.compute(lagBehind, cGhost._v, 0, cRobot._v, dt);
+    *outRotation = pidRotation.compute(cGhost._theta, cGhost._w, cRobot._theta, cRobot._w, dt);
 
     close = pidTranslation.close && pidRotation.close;
     blocked = pidTranslation.blocked || pidRotation.blocked;

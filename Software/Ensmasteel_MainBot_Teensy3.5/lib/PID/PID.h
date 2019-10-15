@@ -33,7 +33,7 @@ public:
     void reset();
     void setPIDProfile(uint8_t id, PIDProfile pidProfile);
     void setCurrentProfile(uint8_t id);
-    double compute(double xTarget, double dxTarget, double x, double dx, double dt);
+    float compute(float xTarget, float dxTarget, float x, float dx, float dt);
     PID(bool modulo360, float frequency);
     PID();
 };
@@ -46,7 +46,7 @@ public:
     bool close;
     bool blocked;
     bool needToGoForward;
-    void compute(double *outTranslation, double *outRotation, VectorE posERobot, VectorE posEGhost, double vRobot, double vGhost, double wRobot, double wGhost, double dt);
+    void compute(float *outTranslation, float *outRotation, Cinetique cRobot, Cinetique cGhost, float dt);
     Asservissement(float frequency);
 };
 
