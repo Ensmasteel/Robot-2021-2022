@@ -4,8 +4,14 @@
 Ghost::Ghost(VectorE posEIni)
 {
     posCurrent = posEIni;
+    posPrevious = posEIni;
+    posAim = posEIni;
+    posDelayed = posEIni;
+    locked = true;
+    moving = false;
     t = 0.0;
     t_e = 0.0;
+    t_e_delayed = 0.0;
 }
 
 void Ghost::Set_NewTrajectory(Polynome newTrajectoryX, Polynome newTrajectoryY, Trapezoidal_Function newSpeed)
@@ -32,7 +38,7 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
 
     if (pureRotation) // Only update orientation
     {
-        float rotationTheta = normalizeAngle(posAim._theta - posCurrent._theta);
+        rotationTheta = NormalizeAngle(posAim._theta - posCurrent._theta);
         // If the orientation is unchanged or a move is needed
         if ((abs(rotationTheta) < epsilonOrientation) or (normRawMove > epsilonPosition))
         {
@@ -93,7 +99,22 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
     }
 }
 
-void Ghost::lock(bool state)
+bool Ghost::IsLocked()
+{
+    return locked;
+}
+
+bool Ghost::IsMoving()
+{
+    return moving;
+}
+
+bool Ghost::IsRotating()
+{
+    return rotating;
+}
+
+void Ghost::Lock(bool state)
 {
     locked = state;
 }
@@ -119,18 +140,19 @@ int Ghost::ActuatePosition(float dt)
     int errorStatus = 0;
 
     t += dt;
+    t_delayed = ((t > delayPosition/1e3) ? t - delayPosition/1e3 : 0.0);
 
-    if ((!locked) and (t_e < 1.0))
+    if ((!locked) and (t_e_delayed < 1.0))
     {
         if (rotating)
         {
-            //Serial.println("Rotating");
+            posCurrent._theta += rotationTheta * speedProfileRotation.f(t) * dt; // REALLY ? Not verify
         }
         else
         {
+            // Determine T_e
             float speed_e = sqrt(speedSquare_e.f(t_e)); // Virtual speed - associated to Bezier curves
             float speed = speedProfileLinear.f(t);      // Real (wanted) speed
-
 
             if (speed_e != 0.0)
             {
@@ -140,8 +162,26 @@ int Ghost::ActuatePosition(float dt)
             {
                 errorStatus = 1;
             }
-
             t_e = ((t_e > 1.0) ? 1.0 : t_e);
+
+            // Determine t_e_delayed
+            float speed_e_delayed = sqrt(speedSquare_e.f(t_e_delayed)); // Virtual speed - associated to Bezier curves
+            float speed_delayed = speedProfileLinear.f(t_delayed);      // Real (wanted) speed
+
+            if (speed_e_delayed != 0.0)
+            {
+                t_e_delayed += (speed_delayed / speed_e_delayed) * dt;
+            }
+            else
+            {
+                errorStatus = 1;
+            }
+            t_e_delayed = ((t_e_delayed > 1.0) ? 1.0 : t_e_delayed);
+
+            // Compute positions
+            posDelayed._vec._x = trajectory_X.f(t_e_delayed);
+            posDelayed._vec._y = trajectory_Y.f(t_e_delayed);
+            posDelayed._theta = atan2(trajectory_Y.df(t_e_delayed), trajectory_X.df(t_e_delayed));
 
             posPrevious = posCurrent;
 
