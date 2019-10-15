@@ -143,9 +143,9 @@ void TrajectoryRAW_Test()
   if (!botGhost.Compute_Trajectory(posFinal, deltaCurve, speedRamp, cruisingSpeed, false))
   {
     Serial.print("\nAimed position : ");
-    Serial.print(botGhost.posAim._vec._x);
+    Serial.print(botGhost.posAim._x);
     Serial.print(" ");
-    Serial.print(botGhost.posAim._vec._y);
+    Serial.print(botGhost.posAim._y);
     Serial.print(" ");
     Serial.print(botGhost.posAim._theta);
     Serial.print("\n");
@@ -223,9 +223,9 @@ void Trajecotry_Loop_Test(float dt)
       Serial.print(";");
       Serial.print(botGhost.speedProfileLinear.f(botGhost.t));
       Serial.print(";");
-      Serial.print(botGhost.posCurrent._vec._x);
+      Serial.print(botGhost.posCurrent._x);
       Serial.print(";");
-      Serial.print(botGhost.posCurrent._vec._y);
+      Serial.print(botGhost.posCurrent._y);
       Serial.print(";");
       Serial.print(botGhost.posCurrent._theta);
       Serial.print("\n");

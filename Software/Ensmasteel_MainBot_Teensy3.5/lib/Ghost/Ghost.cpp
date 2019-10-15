@@ -24,15 +24,16 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
     t_e = 0.0;
     moving = true;
 
-    posAim.NormalizeTheta();
-    posCurrent.NormalizeTheta();
+    posAim.normalizeTheta();
+    posCurrent.normalizeTheta();
     rotating = pureRotation;
 
-    float normRawMove = Norm(Minus(posAim._vec, posCurrent._vec));
+    VectorE out = posAim - posCurrent;
+    float normRawMove = (posAim - posCurrent).norm();
 
     if (pureRotation) // Only update orientation
     {
-        float rotationTheta = NormalizeAngle(posAim._theta - posCurrent._theta);
+        float rotationTheta = normalizeAngle(posAim._theta - posCurrent._theta);
         // If the orientation is unchanged or a move is needed
         if ((abs(rotationTheta) < epsilonOrientation) or (normRawMove > epsilonPosition))
         {
@@ -40,7 +41,7 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
         }
 
         posAim._theta += rotationTheta;
-        posAim.NormalizeTheta();
+        posAim.normalizeTheta();
 
         durationTrajectory = ((abs(posAim._theta - posCurrent._theta)) / cruisingSpeed) + (cruisingSpeed / speedRamps);
         speedProfileRotation.set(speedRamps, speedRamps, cruisingSpeed, durationTrajectory);
@@ -55,10 +56,10 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
         }
 
         // Define Trajectory
-        float x0 = posCurrent._vec._x;
-        float y0 = posCurrent._vec._y;
-        float x3 = posAim._vec._x;
-        float y3 = posAim._vec._y;
+        float x0 = posCurrent._x;
+        float y0 = posCurrent._y;
+        float x3 = posAim._x;
+        float y3 = posAim._y;
         float x1 = x0 + deltaCurve * normRawMove * cos(posCurrent._theta);
         float y1 = y0 + deltaCurve * normRawMove * sin(posCurrent._theta);
         float x2 = x3 - deltaCurve * normRawMove * cos(posAim._theta);
@@ -100,7 +101,7 @@ void Ghost::lock(bool state)
 
 int Ghost::failSafe_position()
 {
-    float normMove = Norm(Minus(posCurrent._vec, posPrevious._vec));
+    float normMove = (posCurrent - posPrevious).norm();
     if (normMove > deltaPositionMax)
     {
         locked = true;
@@ -145,8 +146,8 @@ int Ghost::ActuatePosition(float dt)
 
             posPrevious = posCurrent;
 
-            posCurrent._vec._x = trajectory_X.f(t_e);
-            posCurrent._vec._y = trajectory_Y.f(t_e);
+            posCurrent._x = trajectory_X.f(t_e);
+            posCurrent._y = trajectory_Y.f(t_e);
             posCurrent._theta = atan2(trajectory_Y.df(t_e), trajectory_X.df(t_e));
         }
 

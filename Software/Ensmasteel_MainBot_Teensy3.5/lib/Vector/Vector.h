@@ -9,30 +9,44 @@
 
 #include "Arduino.h"
 
-struct Vector
+float normalizeAngle(float angle);
+
+class Vector
 {
-    Vector(float x = 0.0, float y = 0.0);
-    float _x;
-    float _y;
+public:
+    float _x, _y;
+    Vector operator+(Vector &other);
+    Vector operator-(Vector &other);
+    //Produit Scalaire
+    float operator*(Vector &other);
+    //Produit par un scalaire
+    Vector operator*(float scalaire);
+    float norm();
+    Vector(float x = 0, float y = 0);
 };
 
-struct VectorE
+class VectorE : public Vector
 {
-    VectorE(float x = 0.0, float y = 0.0, float theta = 0.0);
-
-    Vector _vec;
+public:
     float _theta;
+    void normalizeTheta();
+    VectorE(float x = 0, float y = 0, float theta = 0);
 
-    float NormalizeTheta(); // Normalize theta in [+PI ; -PI]
+    VectorE operator+(VectorE &other);
+    VectorE operator-(VectorE &other);
+    VectorE operator*(float scalaire);
 };
 
-Vector const vecNull = {0.0, 0.0};
-Vector initVector(float x, float y);
-VectorE initVectorE(float x, float y, float theta);
-float Norm(Vector V);
-Vector Minus(Vector v1, Vector v2);
-Vector Sum(Vector v1, Vector v2);
-VectorE Sum(VectorE v1, VectorE v2);
-float NormalizeAngle(float angle);
+class Cinetique : public VectorE
+{
+public:
+    float _v;
+    float _w;
+    Cinetique(float x = 0, float y = 0, float theta = 0, float v = 0, float w = 0);
+
+    Cinetique operator+(Cinetique &other);
+    Cinetique operator-(Cinetique &other);
+    Cinetique operator*(float scalaire);
+};
 
 #endif

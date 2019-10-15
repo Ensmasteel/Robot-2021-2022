@@ -1,87 +1,86 @@
 #include "Vector.h"
 
+float normalizeAngle(float angle)
+{
+    float out;
+    out = angle - (2 * PI) * ((int)(angle / (2 * PI)));
+    if (out > PI)
+        return (out - 2 * PI);
+    else if (out <= -PI)
+        return (out + 2 * PI);
+
+    return out;
+}
+
 Vector::Vector(float x, float y)
 {
     _x = x;
     _y = y;
 }
 
-Vector initVector(float x, float y)
+Vector Vector::operator+(Vector &other)
 {
-    Vector out;
-    out._x = x;
-    out._y = y;
-    return out;
+    return Vector(_x + other._x, _y + other._y);
 }
 
-VectorE::VectorE(float x, float y, float theta)
+Vector Vector::operator-(Vector &other)
 {
-    _vec._x = x;
-    _vec._y = y;
+    return Vector(_x - other._x, _y - other._y);
+}
+
+float Vector::operator*(Vector &other)
+{
+    return _x * other._x + _y * other._y;
+}
+
+Vector Vector::operator*(float scalaire)
+{
+    return Vector(_x * scalaire, _y * scalaire);
+}
+
+float Vector::norm()
+{
+    return sqrt(_x * _x + _y * _y);
+}
+
+VectorE::VectorE(float x, float y, float theta) : Vector(x, y)
+{
     _theta = theta;
 }
 
-VectorE initVectorE(float x, float y, float theta)
+void VectorE::normalizeTheta()
 {
-    VectorE out;
-    out._vec._x = x;
-    out._vec._y = y;
-    out._theta = theta;
-    return out;
+    _theta = normalizeAngle(_theta);
 }
 
-float Norm(Vector V)
+VectorE VectorE::operator+(VectorE &other)
 {
-    return sqrt( (V._x * V._x) + (V._y * V._y) );
+    return VectorE(_x + other._x, _y + other._y, _theta);
+}
+VectorE VectorE::operator-(VectorE &other)
+{
+    return VectorE(_x - other._x, _y - other._y, _theta);
+}
+VectorE VectorE::operator*(float scalaire)
+{
+    return VectorE(_x * scalaire, _y * scalaire, _theta);
 }
 
-Vector Minus(Vector v1, Vector v2)
+Cinetique::Cinetique(float x, float y, float theta, float v, float w) : VectorE(x, y, theta)
 {
-    Vector out;
-    out._x = v1._x - v2._x;
-    out._y = v1._y - v2._y;
-    return out;
+    _v = v;
+    _w = w;
 }
 
-Vector Sum(Vector v1, Vector v2)
+Cinetique Cinetique::operator+(Cinetique &other)
 {
-    Vector out;
-    out._x = v1._x + v2._x;
-    out._y = v1._y + v2._y;
-    return out;
+    return Cinetique(_x + other._x, _y + other._y, _theta, _v, _w);
 }
-
-VectorE Sum(VectorE v1, VectorE v2)
+Cinetique Cinetique::operator-(Cinetique &other)
 {
-    VectorE out;
-    out._vec._x = v1._vec._x + v2._vec._x;
-    out._vec._y = v1._vec._y + v2._vec._y;
-    out._theta = v1._theta + v2._theta;
-    out.NormalizeTheta();
-    return out;
+    return Cinetique(_x - other._x, _y - other._y, _theta, _v, _w);
 }
-
-float VectorE::NormalizeTheta()
+Cinetique Cinetique::operator*(float scalaire)
 {
-    float out;
-    out=_theta-(2*PI)*((int)(_theta/(2*PI)));
-    if (out>PI)
-        return (out-2*PI);
-    else if (out<=-PI)
-        return (out+2*PI);
-    
-    _theta = out;
-    return out;
-}
-
-float NormalizeAngle(float angle)
-{
-    float out;
-    out=angle-(2*PI)*((int)(angle/(2*PI)));
-    if (out>PI)
-        return (out-2*PI);
-    else if (out<=-PI)
-        return (out+2*PI);
-    
-    return out;
+    return Cinetique(_x * scalaire, _y * scalaire, _theta, _v, _w);
 }
