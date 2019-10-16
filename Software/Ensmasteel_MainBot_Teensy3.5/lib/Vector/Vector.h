@@ -4,8 +4,8 @@
  * date : October 2019
 */
 
-#ifndef VECTOR_H
-#define VECTOR_H
+#ifndef VECTOR_H_
+#define VECTOR_H_
 
 #include "Arduino.h"
 
