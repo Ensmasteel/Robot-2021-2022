@@ -76,9 +76,9 @@ Polynome Derivative_ptr(Polynome *P)
 {
     Polynome out;
     out = init_polynome();
-    for (int d = 0 ; d < out.DEGRE_MAX - 1 ; d+=1)
+    for (int d = 0; d < out.DEGRE_MAX - 1; d += 1)
     {
-        out.K[d] = (float) (d+1) * P->K[d+1];
+        out.K[d] = (float)(d + 1) * P->K[d + 1];
     }
     return out;
 }
@@ -87,9 +87,9 @@ Polynome Derivative(Polynome P)
 {
     Polynome out;
     out = init_polynome();
-    for (int d = 0 ; d < out.DEGRE_MAX - 1 ; d+=1)
+    for (int d = 0; d < out.DEGRE_MAX - 1; d += 1)
     {
-        out.K[d] = (float) (d+1) * P.K[d+1];
+        out.K[d] = (float)(d + 1) * P.K[d + 1];
     }
     return out;
 }
@@ -98,9 +98,9 @@ Polynome Multiplication_ptr(Polynome *P1, Polynome *P2)
 {
     Polynome out;
     out = init_polynome();
-    for (int k = 0; k < out.DEGRE_MAX ; k+=1)
+    for (int k = 0; k < out.DEGRE_MAX; k += 1)
     {
-        for (int i = 0; i <= k; i+=1)
+        for (int i = 0; i <= k; i += 1)
         {
             out.K[k] += P1->K[i] * P2->K[k - i];
         }
@@ -112,9 +112,9 @@ Polynome Multiplication(Polynome P1, Polynome P2)
 {
     Polynome out;
     out = init_polynome();
-    for (int k = 0; k < out.DEGRE_MAX ; k+=1)
+    for (int k = 0; k < out.DEGRE_MAX; k += 1)
     {
-        for (int i = 0; i <= k; i+=1)
+        for (int i = 0; i <= k; i += 1)
         {
             out.K[k] += P1.K[i] * P2.K[k - i];
         }
@@ -142,7 +142,7 @@ Polynome Sum_ptr(Polynome *P1, Polynome *P2)
 {
     Polynome out;
     out = init_polynome();
-    for (int d = 0; d < out.DEGRE_MAX; d+=1)
+    for (int d = 0; d < out.DEGRE_MAX; d += 1)
     {
         out.K[d] = P1->K[d] + P2->K[d];
     }
@@ -160,29 +160,37 @@ Polynome Sum(Polynome P1, Polynome P2)
     return out;
 }
 
-
 float Trapezoidal_Function::f(float x)
 {
     float out = 0.0;
-
-    if (((_max/_upRamp) + (_max/_downRamp)) > _duration)
+    if (x >= 0.0)
     {
-        Serial.println("SPEED JUMP ! cf. Trapezoidal_Function::f ");
-    }
-
-    if (x > 0.0)
-    {
-        if (x < _max / _upRamp)
+        if (((_max / _upRamp) + (_max / _downRamp)) > _duration) // If _max nerver achieved
         {
-            out = x * _upRamp;
+            Serial.println("Trapezoidal_Function._max never achieved");
+            if (x < (_duration * _downRamp) / (_upRamp + _downRamp))
+            {
+                out = x * _upRamp;
+            }
+            else if (x < _duration)
+            {
+                out = (_duration - x) * _downRamp;
+            }
         }
-        else if (x < _duration - (_max / _downRamp))
+        else 
         {
-            out = _max;
-        }
-        else if (x < _duration)
-        {
-            out = (_duration - x) * _downRamp;
+            if (x < _max / _upRamp)
+            {
+                out = x * _upRamp;
+            }
+            else if (x < _duration - (_max / _downRamp))
+            {
+                out = _max;
+            }
+            else if (x < _duration)
+            {
+                out = (_duration - x) * _downRamp;
+            }
         }
     }
     return out;
@@ -191,19 +199,35 @@ float Trapezoidal_Function::f(float x)
 float Trapezoidal_Function::df(float x)
 {
     float out = 0.0;
+
     if (x >= 0.0)
     {
-        if (x < _max / _upRamp)
+        if (((_max / _upRamp) + (_max / _downRamp)) > _duration) // If _max nerver achieved
         {
-            out = _upRamp;
+            Serial.println("Trapezoidal_Function._max never achieved");
+            if (x < (_duration * _downRamp) / (_upRamp + _downRamp))
+            {
+                out = _upRamp;
+            }
+            else if (x < _duration)
+            {
+                out = _downRamp;
+            }
         }
-        else if (x < _duration - (_max / _downRamp))
+        else
         {
-            out = 0;
-        }
-        else if (x < _duration)
-        {
-            out = _downRamp;
+            if (x < _max / _upRamp)
+            {
+                out = _upRamp;
+            }
+            else if (x < _duration - (_max / _downRamp))
+            {
+                out = 0;
+            }
+            else if (x < _duration)
+            {
+                out = _downRamp;
+            }
         }
     }
     return out;

@@ -28,7 +28,7 @@ public:
 
     // Do not modify their values
     float t = 0.0, t_e = 0.0, t_delayed = 0.0, t_e_delayed = 0.0;            // t : time since new trajectory setup ; 0<t_e<1 virtual time of Bezier curves
-    float durationTrajectory = 0.0, lengthTrajectory = 0.0; // [...] = s ; [...] = cm
+    float durationTrajectory = 0.0, lengthTrajectory = 0.0; // [...] = s ; [...] = (rotating ? rad : cm)
     bool locked = true;                                     // locked=true => no movement allowed
     bool moving = false;                                    // moving=true => trajectory not ended
     bool rotating = false;                                  // rotating=true => the robot is doing a pure rotation
@@ -66,7 +66,7 @@ private:
     const float epsilonOrientation = 0.01;
     const float deltaPositionMax = 0.1;
 
-    float rotationTheta = 0.0; // Define the angle to rotate while pureRotation
+    //float rotationTheta = 0.0; // Define the angle to rotate while pureRotation
 
     int failSafe_position(); // Cancel comming movement if teleportation (movement > deltaPositionMax)
 };

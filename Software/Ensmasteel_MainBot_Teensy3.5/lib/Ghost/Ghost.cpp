@@ -38,17 +38,17 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
 
     if (pureRotation) // Only update orientation
     {
-        rotationTheta = normalizeAngle(posAim._theta - posCurrent._theta);
+        lengthTrajectory = normalizeAngle(posAim._theta - posCurrent._theta);
         // If the orientation is unchanged or a move is needed
-        if ((abs(rotationTheta) < epsilonOrientation) or (normRawMove > epsilonPosition))
+        if ((abs(lengthTrajectory) < epsilonOrientation) or (normRawMove > epsilonPosition))
         {
             return 1;
         }
 
-        posAim._theta += rotationTheta;
+        posAim._theta += lengthTrajectory;
         posAim.normalizeTheta();
 
-        durationTrajectory = ((abs(posAim._theta - posCurrent._theta)) / cruisingSpeed) + (cruisingSpeed / speedRamps);
+        durationTrajectory = ((abs(lengthTrajectory)) / cruisingSpeed) + (cruisingSpeed / speedRamps);
         speedProfileRotation.set(speedRamps, speedRamps, cruisingSpeed, durationTrajectory);
         return 0;
     }
@@ -146,7 +146,13 @@ int Ghost::ActuatePosition(float dt)
     {
         if (rotating)
         {
-            posCurrent._theta += rotationTheta * speedProfileRotation.f(t) * dt; // REALLY ? Not verify
+            posCurrent._theta += speedProfileRotation.f(t) * dt * ((lengthTrajectory > 0) ? 1 : -1);
+            posCurrent.normalizeTheta();
+            posDelayed._theta += speedProfileRotation.f(t_delayed) * dt * ((lengthTrajectory > 0) ? 1 : -1);
+            posDelayed.normalizeTheta();
+
+            t_e = t / durationTrajectory;
+            t_e_delayed = t_delayed / durationTrajectory;
         }
         else
         {

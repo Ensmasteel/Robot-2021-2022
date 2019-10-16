@@ -3,6 +3,7 @@
  *  tests : 1 - polynome operation w\ pointers
  *          2 - Bezier Curves
  *          3 - Trajectories in real-time
+ *          4 - Pure rotation
  *
  *  author : Arthur FINDELAIR - EnsmaSteel, github.com/ArthurFDLR
  *  date : October 2019
@@ -22,21 +23,23 @@
 // ===       VARIABLES and INSTANTIATIONS       ===
 // ================================================
 
-const uint8_t MODE_TEST = 3;
+const uint8_t MODE_TEST = 4;
 
-VectorE posInitial(0.0, 0.0, 0.7);
+VectorE posInitial(0.0, 0.0, 0.0);
 VectorE posFinal(40.0, 15.0, 0.0);
 
 Ghost botGhost(posInitial);
 
 uint64_t timeLast = 0, timeCurrent = 0;
-const uint64_t deltaTime = 5e5;
+const uint64_t deltaTime = 1e5;
 
 void PrintPolynome_Python(Polynome P);
 void PolynomePtrOperation_test();
 void TrajectoryRAW_Test();
 void Trajecotry_Init_Test();
 void Trajecotry_Loop_Test(float dt);
+void Rotation_Init_Test();
+void Rotation_Loop_Test(float dt);
 
 // =====================================
 // ===       ARDUINO PROCESSES       ===
@@ -60,6 +63,10 @@ void setup()
     Trajecotry_Init_Test();
     break;
 
+  case 4:
+    Rotation_Init_Test();
+    break;
+
   default:
     break;
   }
@@ -69,13 +76,23 @@ void loop()
 {
   switch (MODE_TEST)
   {
-  case 3:
 
+  case 3:
     if (micros() - timeLast > deltaTime)
     {
       timeCurrent = micros();
       //Serial.println((float)(timeCurrent - timeLast)/1e6);
       Trajecotry_Loop_Test((float)(timeCurrent - timeLast) / 1e6);
+      timeLast = micros();
+    }
+    break;
+
+  case 4:
+    if (micros() - timeLast > deltaTime)
+    {
+      timeCurrent = micros();
+      //Serial.println((float)(timeCurrent - timeLast)/1e6);
+      Rotation_Loop_Test((float)(timeCurrent - timeLast) / 1e6);
       timeLast = micros();
     }
     break;
@@ -214,7 +231,7 @@ void Trajecotry_Init_Test()
 
 void Trajecotry_Loop_Test(float dt)
 {
-  if (botGhost.t_e_delayed < 1.0)
+  if (botGhost.t_e_delayed <= 1.0)
   {
     if (!botGhost.ActuatePosition(dt))
     {
@@ -229,6 +246,61 @@ void Trajecotry_Loop_Test(float dt)
       Serial.print(botGhost.posDelayed._x);
       Serial.print(";");
       Serial.print(botGhost.posDelayed._y);
+      Serial.print(";");
+      Serial.print(botGhost.posDelayed._theta);
+      Serial.print("\n");
+    }
+  }
+}
+
+/*------------------------*/
+/*   TEST 4 : Rotation    */
+/*------------------------*/
+
+void Rotation_Init_Test()
+{
+  float deltaCurve = 0.4;
+  float speedRamp = 1.5;
+  float cruisingSpeed = 1.0;
+  float rotationRad = - 1.57 * 3.0;
+  
+  VectorE posFinalRotation(botGhost.posCurrent._x, botGhost.posCurrent._y, botGhost.posCurrent._theta + rotationRad);
+
+  timeLast = micros();
+  timeCurrent = micros();
+
+  if (!botGhost.Compute_Trajectory(posFinalRotation, deltaCurve, speedRamp, cruisingSpeed, true))
+  {
+    botGhost.Lock(false);
+    Serial.print("Rotation duration : ");
+    Serial.print(botGhost.durationTrajectory);
+    Serial.print("\nRotation length : ");
+    Serial.print(botGhost.lengthTrajectory);
+    Serial.print("\nLocking state : ");
+    Serial.print(botGhost.locked);
+    Serial.print("\n");
+    Serial.print("\n ///////////////////////////////////////////////////////////////////// \n\n");
+    Serial.print("t;t_e;V(t);x;y;theta\n");
+  }
+  else
+  {
+    Serial.println("Computation error");
+  }
+}
+
+void Rotation_Loop_Test(float dt)
+{
+  if (botGhost.t_e_delayed <= 1.0)
+  {
+    if (!botGhost.ActuatePosition(dt))
+    {
+      Serial.print(botGhost.t);
+      Serial.print(";");
+      Serial.print(botGhost.t_e);
+      Serial.print(";");
+      Serial.print(botGhost.t_e_delayed);
+      Serial.print(";");
+      Serial.print(botGhost.speedProfileRotation.f(botGhost.t));
       Serial.print(";");
       Serial.print(botGhost.posDelayed._theta);
       Serial.print("\n");
