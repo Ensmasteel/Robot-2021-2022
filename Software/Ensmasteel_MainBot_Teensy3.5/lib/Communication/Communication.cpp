@@ -16,10 +16,12 @@ Message MessageBox::pull()
     if (empty)
     {
         Serial.println("The mailbox is empty");
+        //Dans ce cas on renvoie le message vide
         return newMessage(MessageID::Empty, 0);
     }
     else
     {
+        //On recupere le message et on fait avancer le buffer
         Message out = box[iFirstEntry];
         iFirstEntry = (iFirstEntry + 1) % MESSAGE_BOX_SIZE;
         empty = (iFirstEntry == iNextEntry);
@@ -31,8 +33,10 @@ void MessageBox::push(Message message)
 {
     if ((iFirstEntry == iNextEntry) && !empty)
         Serial.print("The mailbox is full");
+    //Dans ce cas on n'empile pas
     else
     {
+        //Sinon on empile et on fait avancer l'indice de la prochaine entrée
         box[iNextEntry] = message;
         iNextEntry = (iNextEntry + 1) % MESSAGE_BOX_SIZE;
         empty = false;
@@ -46,25 +50,28 @@ int MessageBox::size()
     else if (iNextEntry == iFirstEntry)
         return MESSAGE_BOX_SIZE;
     else
-        return (iNextEntry - iFirstEntry + MESSAGE_BOX_SIZE) % MESSAGE_BOX_SIZE;
+        return (iNextEntry - iFirstEntry + MESSAGE_BOX_SIZE) % MESSAGE_BOX_SIZE; //Marche dans tous les cas
 }
 
 void Communication::actuate()
 {
-    if (Serial1.available() >= 6)
+    //RECEPTION
+    if (Serial1.available() >= 6) //On attend de voir 6 octets dans le buffer pour lire le message entier d'un coup
     {
         uint8_t in[6];
         for (int i = 0; i < 6; i++)
             in[i] = Serial.read();
         Message out;
-        memcpy(&out, in, sizeof(out));
+        memcpy(&out, in, sizeof(out)); //On convertit les octets en message
         receiveBox.push(out);
     }
+
+    //EMISSION
     if (!sendingBox.empty && ((millis() - millisLastSend) > ANTISPAM_MS))
     {
         Message toSend = sendingBox.pull();
         uint8_t out[6];
-        memcpy(out, &toSend, sizeof(out));
+        memcpy(out, &toSend, sizeof(out)); //On convertit le message en octet
         for (int i = 0; i < 6; i++)
             Serial.write(out[i]);
         millisLastSend = millis();
@@ -88,6 +95,7 @@ uint8_t Communication::inWaiting()
 
 Communication::Communication()
 {
+    //On vide les caractères qui pourrait trainer
     while (Serial.available() > 0)
     {
         Serial.read();

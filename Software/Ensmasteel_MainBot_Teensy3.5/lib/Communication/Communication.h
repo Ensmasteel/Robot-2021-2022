@@ -1,11 +1,15 @@
 #ifndef COMMUNICATION_H
 #define COMMUNICATION_H
 
+//Taille des boites d'envoie et reception
 #define MESSAGE_BOX_SIZE 10
+
+//Nombre de milliseconde entre deux envoi de message
 #define ANTISPAM_MS 300
 
 #include "Arduino.h"
 
+//En-tete d'un message
 enum MessageID : uint16_t
 {
     Empty,
@@ -14,7 +18,7 @@ enum MessageID : uint16_t
 
 struct Message
 {
-    int32_t data;
+    int32_t data; //La plus part du temps, ce champ sera vide....
     uint16_t ID;
 }; //        Taille de 6 octets !
 
