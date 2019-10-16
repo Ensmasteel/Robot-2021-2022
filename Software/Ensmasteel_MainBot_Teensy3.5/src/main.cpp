@@ -17,6 +17,8 @@
 #include <Math_functions.h>
 #include <Ghost.h>
 #include <PID.h>
+#include <Moteur.h>
+#include <Codeuse.h>
 
 // ================================================
 // ===       VARIABLES and INSTANTIATIONS       ===
