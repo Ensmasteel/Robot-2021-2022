@@ -53,8 +53,10 @@ float PID::compute(float xTarget, float dxTarget, float x, float dx, float dt)
         timeBlocked = 0;
 
     blocked = timeBlocked > TIMEBLOCKED;
-
-    return PIDProfiles[currentProfile].KP * error + PIDProfiles[currentProfile].KI * iTerm + PIDProfiles[currentProfile].KD * dError;
+    
+    return constrain( PIDProfiles[currentProfile].KP * error 
+                    + PIDProfiles[currentProfile].KI * iTerm 
+                    + PIDProfiles[currentProfile].KD * dError, -1.0, 1.0);
 }
 
 PID::PID(bool modulo360, float frequency)
