@@ -25,7 +25,7 @@
 // ===       VARIABLES and INSTANTIATIONS       ===
 // ================================================
 
-const uint8_t MODE_TEST = 3;
+const uint8_t MODE_TEST = 4;
 
 VectorE posInitial(0.0, 0.0, 0.0);
 VectorE posFinal(40.0, 15.0, 0.0);
@@ -208,7 +208,7 @@ void Trajecotry_Init_Test()
   timeLast = micros();
   timeCurrent = micros();
 
-  if (!botGhost.Compute_Trajectory(posFinal, deltaCurve, speedRamp, cruisingSpeed, false, true))
+  if (!botGhost.Compute_Trajectory(posFinal, deltaCurve, speedRamp, cruisingSpeed))
   {
     botGhost.Lock(false);
     Serial.print("Trajectory duration : ");
@@ -223,7 +223,7 @@ void Trajecotry_Init_Test()
     Serial.print("\nTrajectory Y : ");
     PrintPolynome_Python(botGhost.trajectory_Y);
     Serial.print("\n ///////////////////////////////////////////////////////////////////// \n\n");
-    Serial.print("t;t_e;V(t);x;y;theta\n");
+    Serial.print("t;t_e;t_e_delayed;V(t);x;y;theta\n");
   }
   else
   {
@@ -233,7 +233,7 @@ void Trajecotry_Init_Test()
 
 void Trajecotry_Loop_Test(float dt)
 {
-  if (botGhost.t_e_delayed <= 1.0)
+  if (botGhost.IsMoving())
   {
     if (!botGhost.ActuatePosition(dt))
     {
@@ -292,7 +292,7 @@ void Rotation_Init_Test()
 
 void Rotation_Loop_Test(float dt)
 {
-  if (botGhost.t_e_delayed <= 1.0)
+  if (botGhost.IsMoving())
   {
     if (!botGhost.ActuatePosition(dt))
     {

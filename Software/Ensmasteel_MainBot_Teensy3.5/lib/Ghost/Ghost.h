@@ -67,7 +67,7 @@ public:
 private:
     const float epsilonPosition = 0.01;
     const float epsilonOrientation = 0.01;
-    const float deltaPositionMax = 0.1;
+    const float deltaPositionMax = 1.1;
 
     //float rotationTheta = 0.0; // Define the angle to rotate while pureRotation
 

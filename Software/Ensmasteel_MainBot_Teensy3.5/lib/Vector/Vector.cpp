@@ -12,6 +12,16 @@ float normalizeAngle(float angle)
     return out;
 }
 
+float distanceBetween(Vector pos1, Vector pos2)
+{
+    return sqrt(((pos1._x - pos2._x) * (pos1._x - pos2._x)) + ((pos1._y - pos2._y) * (pos1._y - pos2._y)));
+}
+
+float distanceBetween(VectorE pos1, VectorE pos2)
+{
+    return sqrt(((pos1._x - pos2._x) * (pos1._x - pos2._x)) + ((pos1._y - pos2._y) * (pos1._y - pos2._y)));
+}
+
 Vector::Vector(float x, float y)
 {
     _x = x;

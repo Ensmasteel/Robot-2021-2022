@@ -133,7 +133,12 @@ void Ghost::Lock(bool state)
 
 int Ghost::failSafe_position()
 {
-    float normMove = (posCurrent - posPrevious).norm();
+    if (t_e_delayed > 1.0)
+    {
+        moving = false;
+    }
+    
+    float normMove = distanceBetween(posCurrent, posPrevious);
     if (normMove > deltaPositionMax)
     {
         locked = true;
@@ -226,6 +231,6 @@ int Ghost::ActuatePosition(float dt)
         //Serial.println("Fail");
     }
 
-    //errorStatus = failSafe_position();
+    errorStatus = failSafe_position();
     return errorStatus;
 }

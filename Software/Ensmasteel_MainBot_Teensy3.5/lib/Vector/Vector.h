@@ -39,6 +39,9 @@ public:
     VectorE operator*(float scalaire);
 };
 
+float distanceBetween(Vector pos1, Vector pos2);
+float distanceBetween(VectorE pos1, VectorE pos2);
+
 class Cinetique : public VectorE
 {
 public:
