@@ -23,6 +23,12 @@ Vector Vector::operator+(const Vector &other)
     return Vector(_x + other._x, _y + other._y);
 }
 
+void Vector::operator+=(const Vector &other)
+{
+    _x+=other._x;
+    _y+=other._y;
+}
+
 Vector Vector::operator-(const Vector &other)
 {
     return Vector(_x - other._x, _y - other._y);
@@ -46,7 +52,10 @@ float Vector::norm()
 float Vector::distanceWith(Vector &other)
 {
     return sqrt(((_x - other._x) * (_x - other._x)) + ((_y - other._y) * (_y - other._y)));
+    //Equivalent a:
+    //return operator-(other).norm()
 }
+
 
 Vector directeur(float theta)
 {

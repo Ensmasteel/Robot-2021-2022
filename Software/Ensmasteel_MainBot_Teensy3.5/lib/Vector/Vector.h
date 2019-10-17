@@ -16,6 +16,7 @@ class Vector
 public:
     float _x, _y;
     Vector operator+(const Vector &other);
+    void operator+=(const Vector &other);
     Vector operator-(const Vector &other);
     float operator%(const Vector &other); //Produit scalaire
     Vector operator*(const float scalaire); //Produit par un scalaire (homotetie)
