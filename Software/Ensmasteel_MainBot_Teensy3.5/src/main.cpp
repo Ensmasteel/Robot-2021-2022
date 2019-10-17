@@ -17,15 +17,15 @@
 #include <Vector.h>
 #include <Math_functions.h>
 #include <Ghost.h>
-#include <PID.h>
-#include <Moteur.h>
-#include <Codeuse.h>
+// #include <PID.h>
+// #include <Moteur.h>
+// #include <Codeuse.h>
 
 // ================================================
 // ===       VARIABLES and INSTANTIATIONS       ===
 // ================================================
 
-const uint8_t MODE_TEST = 4;
+const uint8_t MODE_TEST = 3;
 
 VectorE posInitial(0.0, 0.0, 0.0);
 VectorE posFinal(40.0, 15.0, 0.0);
@@ -208,7 +208,7 @@ void Trajecotry_Init_Test()
   timeLast = micros();
   timeCurrent = micros();
 
-  if (!botGhost.Compute_Trajectory(posFinal, deltaCurve, speedRamp, cruisingSpeed, false))
+  if (!botGhost.Compute_Trajectory(posFinal, deltaCurve, speedRamp, cruisingSpeed, false, true))
   {
     botGhost.Lock(false);
     Serial.print("Trajectory duration : ");

@@ -32,6 +32,7 @@ public:
     bool locked = true;                                     // locked=true => no movement allowed
     bool moving = false;                                    // moving=true => trajectory not ended
     bool rotating = false;                                  // rotating=true => the robot is doing a pure rotation
+    bool backward = false;                                  // backward=true => the robot is going backward
 
     // METHODES //
 
@@ -56,10 +57,12 @@ public:
     //      / To execute a pure rotation set pureRotation to True and set posFinal to posCurrent except for _theta
     // IN   / VectorE posFinal
     //      / float deltaCurve, speedRamps, cruisingSpeed : speed parameters of the trajectory [speedRamps] = cm/s^2 ; [cruisingSpeed] = cm/s
+    //      / bool pureRotation : true if a simple rotation is wanted
+    //      / bool backward     : true if the robot is going backaward
     // OUT  / int error : 0 if calculation completed
     //                    1 if no movement needed i.e. distance and orientation to the aimed position less than epsilon
     //      / Polynome trajectory_X, trajectory_Y, speedSquare_e
-    int Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, float cruisingSpeed, bool pureRotation);
+    int Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, float cruisingSpeed, bool pureRotation = false, bool backward = false);
 
 private:
     const float epsilonPosition = 0.01;

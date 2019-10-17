@@ -23,16 +23,18 @@ void Ghost::Set_NewTrajectory(Polynome newTrajectoryX, Polynome newTrajectoryY, 
     t_e = 0.0;
 }
 
-int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, float cruisingSpeed, bool pureRotation)
+int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, float cruisingSpeed, bool pureRotation, bool goBackward)
 {
+    // Set variables state
     posAim = posFinal;
     t = 0.0;
     t_e = 0.0;
     moving = true;
+    rotating = pureRotation;
+    backward = goBackward;
 
     posAim.normalizeTheta();
     posCurrent.normalizeTheta();
-    rotating = pureRotation;
 
     float normRawMove = (posAim - posCurrent).norm();
 
@@ -65,10 +67,20 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
         float y0 = posCurrent._y;
         float x3 = posAim._x;
         float y3 = posAim._y;
-        float x1 = x0 + deltaCurve * normRawMove * cos(posCurrent._theta);
-        float y1 = y0 + deltaCurve * normRawMove * sin(posCurrent._theta);
         float x2 = x3 - deltaCurve * normRawMove * cos(posAim._theta);
         float y2 = y3 - deltaCurve * normRawMove * sin(posAim._theta);
+        float x1;
+        float y1;
+        if (backward)
+        {
+            x1 = x0 + deltaCurve * normRawMove * cos(normalizeAngle(posCurrent._theta + PI));
+            y1 = y0 + deltaCurve * normRawMove * sin(normalizeAngle(posCurrent._theta + PI));
+        }
+        else
+        {
+            x1 = x0 + deltaCurve * normRawMove * cos(posCurrent._theta);
+            y1 = y0 + deltaCurve * normRawMove * sin(posCurrent._theta);
+        }
 
         trajectory_X.set(x0, 3.0 * (x1 - x0), 3.0 * (x0 - 2 * x1 + x2), 3.0 * x1 - x0 - 3.0 * x2 + x3);
         trajectory_Y.set(y0, 3.0 * (y1 - y0), 3.0 * (y0 - 2 * y1 + y2), 3.0 * y1 - y0 - 3.0 * y2 + y3);
@@ -94,9 +106,9 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
         // Determine duration of trajectory given speed profile and trajectory's length
         durationTrajectory = (lengthTrajectory / cruisingSpeed) + (cruisingSpeed / speedRamps);
         speedProfileLinear.set(speedRamps, speedRamps, cruisingSpeed, durationTrajectory);
-
-        return 0;
     }
+
+    return 0;
 }
 
 bool Ghost::IsLocked()
@@ -140,7 +152,7 @@ int Ghost::ActuatePosition(float dt)
     int errorStatus = 0;
 
     t += dt;
-    t_delayed = ((t > delayPosition/1e3) ? t - delayPosition/1e3 : 0.0);
+    t_delayed = ((t > delayPosition / 1e3) ? t - delayPosition / 1e3 : 0.0);
 
     if ((!locked) and (t_e_delayed < 1.0))
     {
@@ -185,15 +197,24 @@ int Ghost::ActuatePosition(float dt)
             t_e_delayed = ((t_e_delayed > 1.0) ? 1.0 : t_e_delayed);
 
             // Compute positions
+            posPrevious = posCurrent;
+
             posDelayed._x = trajectory_X.f(t_e_delayed);
             posDelayed._y = trajectory_Y.f(t_e_delayed);
-            posDelayed._theta = atan2(trajectory_Y.df(t_e_delayed), trajectory_X.df(t_e_delayed));
-
-            posPrevious = posCurrent;
 
             posCurrent._x = trajectory_X.f(t_e);
             posCurrent._y = trajectory_Y.f(t_e);
-            posCurrent._theta = atan2(trajectory_Y.df(t_e), trajectory_X.df(t_e));
+
+            if (backward)
+            {
+                posDelayed._theta = atan2(-trajectory_Y.df(t_e_delayed), -trajectory_X.df(t_e_delayed));
+                posCurrent._theta = atan2(-trajectory_Y.df(t_e), -trajectory_X.df(t_e));
+            }
+            else
+            {
+                posDelayed._theta = atan2(trajectory_Y.df(t_e_delayed), trajectory_X.df(t_e_delayed));
+                posCurrent._theta = atan2(trajectory_Y.df(t_e), trajectory_X.df(t_e));
+            }
         }
 
         moving = true;
