@@ -1,4 +1,5 @@
 #include "Vector.h"
+#include "Arduino.h"
 
 float normalizeAngle(float angle)
 {
@@ -56,6 +57,15 @@ float Vector::distanceWith(Vector &other)
     //return operator-(other).norm()
 }
 
+void Vector::print()
+{
+    Serial.print("x= ");
+    Serial.print(_x);
+    Serial.print("\t|y= ");
+    Serial.print(_y);
+    Serial.print("\t|");
+}
+
 
 Vector directeur(float theta)
 {
@@ -72,8 +82,25 @@ void VectorE::normalizeTheta()
     _theta = normalizeAngle(_theta);
 }
 
+void VectorE::print()
+{
+    Vector::print();
+    Serial.print("theta= ");
+    Serial.print(_theta);
+    Serial.print("\t|");
+}
+
 Cinetique::Cinetique(float x, float y, float theta, float v, float w) : VectorE(x, y, theta)
 {
     _v = v;
     _w = w;
+}
+
+void Cinetique::print()
+{
+    VectorE::print();
+    Serial.print("v= ");
+    Serial.print(_v);
+    Serial.print("\t|w= ");
+    Serial.print(_w);
 }

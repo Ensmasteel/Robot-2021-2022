@@ -22,6 +22,7 @@ public:
     Vector operator*(const float scalaire); //Produit par un scalaire (homotetie)
     float norm();
     float distanceWith(Vector &other);
+    void print();
     Vector(float x = 0.0, float y = 0.0);
 };
 
@@ -32,6 +33,7 @@ class VectorE : public Vector
 public:
     float _theta;
     void normalizeTheta();
+    void print();
     VectorE(float x = 0.0, float y = 0.0, float theta = 0.0);
 };
 
@@ -40,6 +42,7 @@ class Cinetique : public VectorE
 public:
     float _v;
     float _w;
+    void print();
     Cinetique(float x = 0.0, float y = 0.0, float theta = 0.0, float v = 0.0, float w = 0.0);
 };
 
