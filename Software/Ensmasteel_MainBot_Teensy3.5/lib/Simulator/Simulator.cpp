@@ -14,7 +14,7 @@ Simulator::Simulator(float size, float mass, float maxAcceleration, float maxSpe
     this->orderMotorRight=orderMotorRight;
 }
 
-void Simulator::letThePhysicsDoItsJob( float dt) {
+void Simulator::updateCinetique( float dt) {
     float vLeft,vRight;
     vLeft=cinetique->_v - cinetique->_w*size/2;
     vRight=cinetique->_v + cinetique->_w*size/2;

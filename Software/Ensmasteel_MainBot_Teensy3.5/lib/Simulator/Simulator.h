@@ -16,7 +16,7 @@ class Simulator
 public:
     Simulator(float size, float mass, float maxAcc, float maxSpeed
             , Cinetique * cinetique, float * orderMotorLeft, float * orderMotorRight);
-    void letThePhysicsDoItsJob(float dt);
+    void updateCinetique(float dt);
 };
 
 #endif // !SIMULATOR_H_
