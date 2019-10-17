@@ -26,7 +26,9 @@ public:
     Trapezoidal_Function speedProfileLinear;   // wanted speed of the bot along the trajectory [...] = cm/s
     Trapezoidal_Function speedProfileRotation; // wanted speed in rotation [...] = rad/s
 
-    // Do not modify their values
+    float speedLinearCurrent = 0.0, speedRotationalCurrent = 0.0;
+
+    // Do not modify their values -- When debuged, put in private
     float t = 0.0, t_e = 0.0, t_delayed = 0.0, t_e_delayed = 0.0;            // t : time since new trajectory setup ; 0<t_e<1 virtual time of Bezier curves
     float durationTrajectory = 0.0, lengthTrajectory = 0.0; // [...] = s ; [...] = (rotating ? rad : cm)
     bool locked = true;                                     // locked=true => no movement allowed
@@ -64,10 +66,18 @@ public:
     //      / Polynome trajectory_X, trajectory_Y, speedSquare_e
     int Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, float cruisingSpeed, bool pureRotation = false, bool backward = false);
 
+    // GOAL / Determine linear and rotational speed between to positions
+    // IN   / VectorE posNow, posLast
+    //      / float dt : delay between posNow and posLast
+    // OUT  / float : speedLinearCurrent, speedRotationalCurrent
+    void Update_Speeds(VectorE posNow, VectorE posLast, float dt);
+
+    Cinetique Get_Controller_Cinetique();
+
 private:
     const float epsilonPosition = 0.01;
     const float epsilonOrientation = 0.01;
-    const float deltaPositionMax = 1.1;
+    const float MAX_SPEED = 50.0;
 
     //float rotationTheta = 0.0; // Define the angle to rotate while pureRotation
 

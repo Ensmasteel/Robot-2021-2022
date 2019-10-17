@@ -22,7 +22,7 @@ public:
     //Produit par un scalaire
     Vector operator*(const float scalaire);
     float norm();
-    Vector(float x = 0, float y = 0);
+    Vector(float x = 0.0, float y = 0.0);
 };
 
 Vector directeur(float theta);
@@ -32,7 +32,7 @@ class VectorE : public Vector
 public:
     float _theta;
     void normalizeTheta();
-    VectorE(float x = 0, float y = 0, float theta = 0);
+    VectorE(float x = 0.0, float y = 0.0, float theta = 0.0);
 
     VectorE operator+(const VectorE &other);
     VectorE operator-(const VectorE &other);
@@ -47,7 +47,7 @@ class Cinetique : public VectorE
 public:
     float _v;
     float _w;
-    Cinetique(float x = 0, float y = 0, float theta = 0, float v = 0, float w = 0);
+    Cinetique(float x = 0.0, float y = 0.0, float theta = 0.0, float v = 0.0, float w = 0.0);
 
     Cinetique operator+(const Cinetique &other);
     Cinetique operator-(const Cinetique &other);

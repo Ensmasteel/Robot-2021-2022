@@ -25,7 +25,7 @@
 // ===       VARIABLES and INSTANTIATIONS       ===
 // ================================================
 
-const uint8_t MODE_TEST = 4;
+const uint8_t MODE_TEST = 3;
 
 VectorE posInitial(0.0, 0.0, 0.0);
 VectorE posFinal(40.0, 15.0, 0.0);
