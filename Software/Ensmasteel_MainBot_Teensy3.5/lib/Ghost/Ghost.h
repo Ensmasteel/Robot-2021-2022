@@ -81,7 +81,7 @@ private:
 
     //float rotationTheta = 0.0; // Define the angle to rotate while pureRotation
 
-    int failSafe_position(); // Cancel comming movement if teleportation (movement > deltaPositionMax)
+    int failSafe_position(); // Cancel coming movement if teleportation (movement > deltaPositionMax)
 };
 
 #endif
