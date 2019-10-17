@@ -20,6 +20,7 @@
 #include <PID.h>
 #include <Moteur.h>
 #include <Codeuse.h>
+#include <Simulator.h>
 
 // ================================================
 // ===       VARIABLES and INSTANTIATIONS       ===

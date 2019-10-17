@@ -3,6 +3,7 @@
 
 #include "Arduino.h"
 #include <Encoder.h>
+#include "Vector.h"
 
 class Codeuse
 {
@@ -19,4 +20,21 @@ public:
     Codeuse();
     Codeuse(uint8_t pinA, uint8_t pinB, uint16_t ticksPerRound, float diametreRoue);
 };
+
+class Odometrie
+{
+private:
+    Codeuse codeuseGauche,codeuseDroite;
+    Cinetique * cinetique;
+    float eloignementCodeuses;
+
+public:
+    void updateCinetique(float dt);
+    Odometrie(uint16_t ticksPerRound, Cinetique * cinetique, float eloignementCodeuses,
+     uint8_t pinACodeuseGauche, uint8_t pinBCodeuseGauche, float diametreRoueGauche,
+     uint8_t pinACodeuseDroite, uint8_t pinBCodeuseDroite, float diametreRoueDroite);
+
+};
+
+
 #endif
