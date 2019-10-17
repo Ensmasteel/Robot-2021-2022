@@ -138,8 +138,7 @@ int Ghost::failSafe_position()
         moving = false;
     }
     
-    float normMove = distanceBetween(posCurrent, posPrevious);
-    if (normMove > deltaPositionMax)
+    if (speedLinearCurrent > MAX_SPEED)
     {
         locked = true;
         moving = false;
@@ -231,6 +230,27 @@ int Ghost::ActuatePosition(float dt)
         //Serial.println("Fail");
     }
 
+    Update_Speeds(posCurrent, posPrevious, dt);
+
     errorStatus = failSafe_position();
     return errorStatus;
+}
+
+void Ghost::Update_Speeds(VectorE posNow, VectorE posLast, float dt)
+{
+    speedLinearCurrent = distanceBetween(posNow,posLast) / dt;
+    speedRotationalCurrent = normalizeAngle(posNow._theta - posLast._theta) / dt;
+}
+
+Cinetique Ghost::Get_Controller_Cinetique()
+{
+    Cinetique out;
+
+    out._x = posDelayed._x;
+    out._y = posDelayed._y;
+    out._theta = posDelayed._theta;
+    out._v = speedLinearCurrent;
+    out._w = speedRotationalCurrent;
+    
+    return out;
 }
