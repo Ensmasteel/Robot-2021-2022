@@ -12,16 +12,6 @@ float normalizeAngle(float angle)
     return out;
 }
 
-float distanceBetween(Vector pos1, Vector pos2)
-{
-    return sqrt(((pos1._x - pos2._x) * (pos1._x - pos2._x)) + ((pos1._y - pos2._y) * (pos1._y - pos2._y)));
-}
-
-float distanceBetween(VectorE pos1, VectorE pos2)
-{
-    return sqrt(((pos1._x - pos2._x) * (pos1._x - pos2._x)) + ((pos1._y - pos2._y) * (pos1._y - pos2._y)));
-}
-
 Vector::Vector(float x, float y)
 {
     _x = x;
@@ -38,7 +28,7 @@ Vector Vector::operator-(const Vector &other)
     return Vector(_x - other._x, _y - other._y);
 }
 
-float Vector::operator*(const Vector &other)
+float Vector::operator%(const Vector &other)
 {
     return _x * other._x + _y * other._y;
 }
@@ -51,6 +41,11 @@ Vector Vector::operator*(float scalaire)
 float Vector::norm()
 {
     return sqrt(_x * _x + _y * _y);
+}
+
+float Vector::distanceWith(Vector &other)
+{
+    return sqrt(((_x - other._x) * (_x - other._x)) + ((_y - other._y) * (_y - other._y)));
 }
 
 Vector directeur(float theta)
@@ -68,34 +63,8 @@ void VectorE::normalizeTheta()
     _theta = normalizeAngle(_theta);
 }
 
-VectorE VectorE::operator+(const VectorE &other)
-{
-    return VectorE(_x + other._x, _y + other._y, _theta);
-}
-VectorE VectorE::operator-(const VectorE &other)
-{
-    return VectorE(_x - other._x, _y - other._y, _theta);
-}
-VectorE VectorE::operator*(float scalaire)
-{
-    return VectorE(_x * scalaire, _y * scalaire, _theta);
-}
-
 Cinetique::Cinetique(float x, float y, float theta, float v, float w) : VectorE(x, y, theta)
 {
     _v = v;
     _w = w;
-}
-
-Cinetique Cinetique::operator+(const Cinetique &other)
-{
-    return Cinetique(_x + other._x, _y + other._y, _theta, _v, _w);
-}
-Cinetique Cinetique::operator-(const Cinetique &other)
-{
-    return Cinetique(_x - other._x, _y - other._y, _theta, _v, _w);
-}
-Cinetique Cinetique::operator*(float scalaire)
-{
-    return Cinetique(_x * scalaire, _y * scalaire, _theta, _v, _w);
 }

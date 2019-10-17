@@ -77,7 +77,7 @@ void Asservissement::compute(float *outTranslation, float *outRotation, Cinetiqu
 {
     //lag behind represente l'avance du ghost sur le robot
     //C'est une avance projetée selon la direction du robot
-    float lagBehind = ((Vector)(cGhost - cRobot)) * (directeur(cRobot._theta));
+    float lagBehind = (cGhost - cRobot) % (directeur(cRobot._theta));
     if (lagBehind < 0)
         lagBehind = -1 * sqrt(-1 * lagBehind);
     else

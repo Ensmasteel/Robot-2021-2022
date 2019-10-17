@@ -17,11 +17,10 @@ public:
     float _x, _y;
     Vector operator+(const Vector &other);
     Vector operator-(const Vector &other);
-    //Produit Scalaire
-    float operator*(const Vector &other);
-    //Produit par un scalaire
-    Vector operator*(const float scalaire);
+    float operator%(const Vector &other); //Produit scalaire
+    Vector operator*(const float scalaire); //Produit par un scalaire (homotetie)
     float norm();
+    float distanceWith(Vector &other);
     Vector(float x = 0.0, float y = 0.0);
 };
 
@@ -33,14 +32,7 @@ public:
     float _theta;
     void normalizeTheta();
     VectorE(float x = 0.0, float y = 0.0, float theta = 0.0);
-
-    VectorE operator+(const VectorE &other);
-    VectorE operator-(const VectorE &other);
-    VectorE operator*(float scalaire);
 };
-
-float distanceBetween(Vector pos1, Vector pos2);
-float distanceBetween(VectorE pos1, VectorE pos2);
 
 class Cinetique : public VectorE
 {
@@ -48,10 +40,6 @@ public:
     float _v;
     float _w;
     Cinetique(float x = 0.0, float y = 0.0, float theta = 0.0, float v = 0.0, float w = 0.0);
-
-    Cinetique operator+(const Cinetique &other);
-    Cinetique operator-(const Cinetique &other);
-    Cinetique operator*(float scalaire);
 };
 
 #endif

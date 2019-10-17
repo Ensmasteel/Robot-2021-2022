@@ -238,7 +238,7 @@ int Ghost::ActuatePosition(float dt)
 
 void Ghost::Update_Speeds(VectorE posNow, VectorE posLast, float dt)
 {
-    speedLinearCurrent = distanceBetween(posNow,posLast) / dt;
+    speedLinearCurrent = posNow.distanceWith(posLast) / dt;   //equivalent a (posLast-posNow).norm()
     speedRotationalCurrent = normalizeAngle(posNow._theta - posLast._theta) / dt;
 }
 
