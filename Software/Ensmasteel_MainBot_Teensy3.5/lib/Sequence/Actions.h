@@ -2,6 +2,7 @@
 #define CARDS_H
 #include "Vector.h"
 #include "Communication.h"
+#include "Arduino.h"
 
 class Ghost;
 class Sequence;
@@ -137,7 +138,6 @@ public:
     bool hasFinished(); //(Wait_Message) verifie que le message est recu
     //hasFailed(Action)
 };
-
 
 
 #endif // !CARDS_H_

@@ -20,6 +20,7 @@ public:
     Vector operator-(const Vector &other);
     float operator%(const Vector &other); //Produit scalaire
     Vector operator*(const float scalaire); //Produit par un scalaire (homotetie)
+    bool operator==(Vector const &other);
     float norm();
     float distanceWith(Vector &other);
     void print();
@@ -34,10 +35,11 @@ public:
     float _theta;
     void normalizeTheta();
     void print();
+    bool operator==(VectorE const &other);
     VectorE(float x = 0.0, float y = 0.0, float theta = 0.0);
 };
 
-bool operator==(VectorE const& a, VectorE const& b);
+
 
 class Cinetique : public VectorE
 {
@@ -45,6 +47,7 @@ public:
     float _v;
     float _w;
     void print();
+    bool operator==(Cinetique const &other);
     Cinetique(float x = 0.0, float y = 0.0, float theta = 0.0, float v = 0.0, float w = 0.0);
 };
 

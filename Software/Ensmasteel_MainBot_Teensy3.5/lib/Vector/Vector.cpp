@@ -66,6 +66,10 @@ void Vector::print()
     Serial.print("\t|");
 }
 
+bool Vector::operator==(Vector const &other)
+{
+    return _x==other._x && _y==other._y;
+}
 
 Vector directeur(float theta)
 {
@@ -90,12 +94,9 @@ void VectorE::print()
     Serial.print("\t|");
 }
 
-bool operator==(VectorE const& a, VectorE const& b)
+bool VectorE::operator==(VectorE const &other)
 {
-    if (a._x == b._x && a._y == b._y && a._theta == b._theta)
-        return true;
-    else
-        return false;
+    return Vector::operator==(other) && _theta==other._theta;
 }
 
 
@@ -112,4 +113,9 @@ void Cinetique::print()
     Serial.print(_v);
     Serial.print("\t|w= ");
     Serial.print(_w);
+}
+
+bool Cinetique::operator==(Cinetique const &other)
+{
+    return VectorE::operator==(other) && _v==other._v && _w==other._w;
 }
