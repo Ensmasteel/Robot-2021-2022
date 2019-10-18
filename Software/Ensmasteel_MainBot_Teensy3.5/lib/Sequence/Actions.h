@@ -88,8 +88,6 @@ public:
     //hasFailed(Action)
 };
 
-enum Compar {inf,sup,equal};
-
 class Set_Action : public Action
 {
 private:
@@ -103,6 +101,8 @@ public:
     //hasFailed(Action)
 
 };
+
+enum Compar {inf,sup,equal};
 
 class Jump_Action : public Action
 {
@@ -132,6 +132,8 @@ public:
 
 class Wait_Message_Action : public Action
 {
+private:
+    Message message;
 public:
     Wait_Message_Action(Message message, float timeout);
     //start(Action)
