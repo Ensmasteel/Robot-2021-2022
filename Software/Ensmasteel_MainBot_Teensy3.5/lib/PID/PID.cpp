@@ -73,11 +73,11 @@ PID::PID(bool modulo360, float frequency)
 
 PID::PID() {}
 
-void Asservissement::compute(float *outTranslation, float *outRotation, Cinetique cRobot, Cinetique cGhost, float dt)
+void Asservissement::compute(float dt)
 {
     //lag behind represente l'avance du ghost sur le robot
     //C'est une avance projetée selon la direction du robot
-    float lagBehind = (cGhost - cRobot) % (directeur(cRobot._theta));
+    float lagBehind = (*cGhost - *cRobot) % (directeur(cRobot->_theta));
     if (lagBehind < 0)
         lagBehind = -1 * sqrt(-1 * lagBehind);
     else
@@ -85,17 +85,21 @@ void Asservissement::compute(float *outTranslation, float *outRotation, Cinetiqu
 
     needToGoForward = (lagBehind > 0);
 
-    *outTranslation = pidTranslation.compute(lagBehind, cGhost._v, 0, cRobot._v, dt);
-    *outRotation = pidRotation.compute(cGhost._theta, cGhost._w, cRobot._theta, cRobot._w, dt);
+    *outTranslation = pidTranslation.compute(lagBehind, cGhost->_v, 0, cRobot->_v, dt);
+    *outRotation = pidRotation.compute(cGhost->_theta, cGhost->_w, cRobot->_theta, cRobot->_w, dt);
 
     close = pidTranslation.close && pidRotation.close;
-    tooFar = pidTranslation.tooFar || pidRotation.tooFar || (cGhost - cRobot).norm()>pidTranslation.getCurrentProfile().epsilon;
+    tooFar = pidTranslation.tooFar || pidRotation.tooFar || (*cGhost - *cRobot).norm()>pidTranslation.getCurrentProfile().epsilon;
 }
 
-Asservissement::Asservissement(float frequency)
+Asservissement::Asservissement(float *outTranslation, float *outRotation, Cinetique * cRobot, Cinetique * cGhost,float frequency)
 {
     pidRotation = PID(true, frequency);
     pidTranslation = PID(false, frequency);
+    this->outRotation=outTranslation;
+    this->outRotation=outRotation;
+    this->cRobot=cRobot;
+    this->cGhost=cGhost;
     this->tooFar = false;
     this->close = true;
     this->needToGoForward = false;

@@ -40,18 +40,19 @@ public:
 
 class Asservissement
 {
-public:
     PID pidTranslation;
     PID pidRotation;
+    Cinetique *cGhost,*cRobot;
+    float *outTranslation, *outRotation;
+public:
     bool close;           // Est ce qu'on est proche a la fois en position (projetée) ET en theta
                           //Il faut regarder la position projetée car le PID ne pourra rien y faire si on est à coté
-   
     bool tooFar;          //Est ce qu'on est trop loin position (absolue) OU en theta
     bool needToGoForward; //Est ce qu'on va devoir avancer ? Utile pour l'évitemment
 
     //Place dans outTranslation et outRotation les deux ordres (entre -1 et 1)
-    void compute(float *outTranslation, float *outRotation, Cinetique cRobot, Cinetique cGhost, float dt);
-    Asservissement(float frequency);
+    void compute(float dt);
+    Asservissement(float *outTranslation, float *outRotation, Cinetique * cRobot, Cinetique * cGhost,float frequency);
 };
 
 #endif

@@ -142,7 +142,7 @@ int Ghost::failSafe_position()
     {
         if (posCurrent == posPrevious)
         {
-            moving = false;
+            moving = false; //CHEMIN POTENTIELLEMENT NON SORTANT
         }
         else
         {
