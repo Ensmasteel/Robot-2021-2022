@@ -13,8 +13,8 @@ Chose qu'il est possible de faire:
 #define SEQUENCE_H_
 #define TAILLESEQUENCE 50
 #define TAILLEGLOBALS 50
-
-class Action;
+#include "Arduino.h"
+#include "Actions.h"
 
 class Sequence
 {
