@@ -21,7 +21,7 @@
 #include <Moteur.h>
 #include <Codeuse.h>
 #include <Simulator.h>
-#include <Actions.h>
+//#include <Actions.h>
 
 // ================================================
 // ===       VARIABLES and INSTANTIATIONS       ===
@@ -176,20 +176,9 @@ void TrajectoryRAW_Test()
     Serial.print("Trajectory Y : ");
     PrintPolynome_Python(botGhost.trajectory_Y);
     Serial.print("\n");
-    Serial.print("Trajectory length : ");
-    Serial.print(botGhost.lengthTrajectory);
-    Serial.print("\n");
-    Serial.print("Trajectory duration : ");
-    Serial.print(botGhost.durationTrajectory);
-    Serial.print("\n");
     Serial.print("Bezier speed squared : ");
     botGhost.speedSquare_e.SerialPrint();
     Serial.print("\n");
-
-    for ( int i=0; i<=100; i+=1)
-    {
-      Serial.println(botGhost.speedProfileLinear.f((float)(i/100.0)*botGhost.durationTrajectory));
-    }
   }
   else
   {
@@ -213,13 +202,6 @@ void Trajecotry_Init_Test()
   if (!botGhost.Compute_Trajectory(posFinal, deltaCurve, speedRamp, cruisingSpeed))
   {
     botGhost.Lock(false);
-    Serial.print("Trajectory duration : ");
-    Serial.print(botGhost.durationTrajectory);
-    Serial.print("\nTrajectory length : ");
-    Serial.print(botGhost.lengthTrajectory);
-    Serial.print("\nLocking state : ");
-    Serial.print(botGhost.locked);
-    Serial.print("\n");
     Serial.print("\nTrajectory X : ");
     PrintPolynome_Python(botGhost.trajectory_X);
     Serial.print("\nTrajectory Y : ");
@@ -240,10 +222,6 @@ void Trajecotry_Loop_Test(float dt)
     if (!botGhost.ActuatePosition(dt))
     {
       Serial.print(botGhost.t);
-      Serial.print(";");
-      Serial.print(botGhost.t_delayed);
-      Serial.print(";");
-      Serial.print(botGhost.t_e_delayed);
       Serial.print(";");
       Serial.print(botGhost.speedProfileLinear.f(botGhost.t));
       Serial.print(";");
@@ -276,13 +254,6 @@ void Rotation_Init_Test()
   if (!botGhost.Compute_Trajectory(posFinalRotation, deltaCurve, speedRamp, cruisingSpeed, true))
   {
     botGhost.Lock(false);
-    Serial.print("Rotation duration : ");
-    Serial.print(botGhost.durationTrajectory);
-    Serial.print("\nRotation length : ");
-    Serial.print(botGhost.lengthTrajectory);
-    Serial.print("\nLocking state : ");
-    Serial.print(botGhost.locked);
-    Serial.print("\n");
     Serial.print("\n ///////////////////////////////////////////////////////////////////// \n\n");
     Serial.print("t;t_e;V(t);x;y;theta\n");
   }
@@ -299,12 +270,6 @@ void Rotation_Loop_Test(float dt)
     if (!botGhost.ActuatePosition(dt))
     {
       Serial.print(botGhost.t);
-      Serial.print(";");
-      Serial.print(botGhost.t_e);
-      Serial.print(";");
-      Serial.print(botGhost.t_e_delayed);
-      Serial.print(";");
-      Serial.print(botGhost.speedProfileRotation.f(botGhost.t));
       Serial.print(";");
       Serial.print(botGhost.posDelayed._theta);
       Serial.print("\n");

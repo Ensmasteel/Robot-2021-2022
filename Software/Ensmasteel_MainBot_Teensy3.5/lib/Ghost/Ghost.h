@@ -19,6 +19,7 @@ public:
     // VARIABLES //
 
     const float delayPosition = 500.0;         // [...] = ms, Delay between posCurrent and posDelayed
+    float t = 0.0;                             // t : time since new trajectory setup
     VectorE posCurrent, posPrevious, posAim;   // VectorE : struct type containing X,Y,Orientation
     VectorE posDelayed;                        // Position _delayPosition_ ms ago. Used as input for the position controller
     Polynome trajectory_X, trajectory_Y;       // Bezier curves, function of t*
@@ -26,15 +27,7 @@ public:
     Trapezoidal_Function speedProfileLinear;   // wanted speed of the bot along the trajectory [...] = cm/s
     Trapezoidal_Function speedProfileRotation; // wanted speed in rotation [...] = rad/s
 
-    float speedLinearCurrent = 0.0, speedRotationalCurrent = 0.0;
-
-    // Do not modify their values -- When debuged, put in private
-    float t = 0.0, t_e = 0.0, t_delayed = 0.0, t_e_delayed = 0.0;            // t : time since new trajectory setup ; 0<t_e<1 virtual time of Bezier curves
-    float durationTrajectory = 0.0, lengthTrajectory = 0.0; // [...] = s ; [...] = (rotating ? rad : cm)
-    bool locked = true;                                     // locked=true => no movement allowed
-    bool moving = false;                                    // moving=true => trajectory not ended
-    bool rotating = false;                                  // rotating=true => the robot is doing a pure rotation
-    bool backward = false;                                  // backward=true => the robot is going backward
+    Cinetique cinetiqueController;
 
     // METHODES //
 
@@ -43,6 +36,7 @@ public:
     bool IsLocked();
     bool IsMoving();
     bool IsRotating();
+    bool IsBackward();
 
     void Lock(bool state);
 
@@ -79,7 +73,13 @@ private:
     const float epsilonOrientation = 0.01;
     const float MAX_SPEED = 50.0;
 
-    //float rotationTheta = 0.0; // Define the angle to rotate while pureRotation
+    float t_e = 0.0, t_delayed = 0.0, t_e_delayed = 0.0;          // 0<t_e<1 virtual time of Bezier curves
+    float durationTrajectory = 0.0, lengthTrajectory = 0.0;       // [...] = s ; [...] = (rotating ? rad : cm)
+    float speedLinearCurrent = 0.0, speedRotationalCurrent = 0.0; // Current speeds
+    bool locked = true;                                           // locked=true => no movement allowed
+    bool moving = false;                                          // moving=true => trajectory not ended
+    bool rotating = false;                                        // rotating=true => the robot is doing a pure rotation
+    bool backward = false;                                        // backward=true => the robot is going backward
 
     int failSafe_position(); // Cancel coming movement if teleportation (movement > deltaPositionMax)
 };

@@ -126,6 +126,11 @@ bool Ghost::IsRotating()
     return rotating;
 }
 
+bool Ghost::IsBackward()
+{
+    return backward;
+}
+
 void Ghost::Lock(bool state)
 {
     locked = state;
@@ -135,9 +140,16 @@ int Ghost::failSafe_position()
 {
     if (t_e_delayed > 1.0)
     {
-        moving = false;
+        if (posCurrent == posPrevious)
+        {
+            moving = false;
+        }
+        else
+        {
+            return 1;
+        }
     }
-    
+
     if (speedLinearCurrent > MAX_SPEED)
     {
         locked = true;
@@ -232,13 +244,16 @@ int Ghost::ActuatePosition(float dt)
 
     Update_Speeds(posCurrent, posPrevious, dt);
 
-    errorStatus = failSafe_position();
+    cinetiqueController = Get_Controller_Cinetique();
+
+    float errorFailSafe = failSafe_position(); //Avoid multiple call
+    errorStatus = max(errorFailSafe,errorStatus);
     return errorStatus;
 }
 
 void Ghost::Update_Speeds(VectorE posNow, VectorE posLast, float dt)
 {
-    speedLinearCurrent = posNow.distanceWith(posLast) / dt;   //equivalent a (posLast-posNow).norm()
+    speedLinearCurrent = posNow.distanceWith(posLast) / dt; //equivalent a (posLast-posNow).norm()
     speedRotationalCurrent = normalizeAngle(posNow._theta - posLast._theta) / dt;
 }
 
@@ -251,6 +266,6 @@ Cinetique Ghost::Get_Controller_Cinetique()
     out._theta = posDelayed._theta;
     out._v = speedLinearCurrent;
     out._w = speedRotationalCurrent;
-    
+
     return out;
 }

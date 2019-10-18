@@ -90,6 +90,15 @@ void VectorE::print()
     Serial.print("\t|");
 }
 
+bool operator==(VectorE const& a, VectorE const& b)
+{
+    if (a._x == b._x && a._y == b._y && a._theta == b._theta)
+        return true;
+    else
+        return false;
+}
+
+
 Cinetique::Cinetique(float x, float y, float theta, float v, float w) : VectorE(x, y, theta)
 {
     _v = v;

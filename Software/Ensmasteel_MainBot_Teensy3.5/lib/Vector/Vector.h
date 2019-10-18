@@ -37,6 +37,8 @@ public:
     VectorE(float x = 0.0, float y = 0.0, float theta = 0.0);
 };
 
+bool operator==(VectorE const& a, VectorE const& b);
+
 class Cinetique : public VectorE
 {
 public:
