@@ -34,6 +34,7 @@ public:
     uint8_t getGlobal(uint8_t number);
     Sequence();
     void add(const Action &action);
+    void debug();
 };
 
 #endif // !SEQUENCE_H_

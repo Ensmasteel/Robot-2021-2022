@@ -31,6 +31,7 @@ private:
 public:
     void update(float dt);
     void printCinetique();
+    void debug(){sequence.debug();}
     AbsolutelyNotRobot(float x,float y,float theta);
     AbsolutelyNotRobot(){}
 };

@@ -67,3 +67,9 @@ void Sequence::add(const Action &action)
     queue[lastIndex+1]=action;
     lastIndex++;
 }
+
+void Sequence::debug()
+{
+    Serial.print("Current index: ");
+    Serial.println(currentIndex);
+}

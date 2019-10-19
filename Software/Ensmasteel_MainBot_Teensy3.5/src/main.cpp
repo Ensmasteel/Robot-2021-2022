@@ -109,9 +109,11 @@ void loop()
     }
     break;
   case 5:
-    bender.update(0.1);
+    bender.update(0.5);
     bender.printCinetique();
-    delay(0.1);
+    Serial.println();
+    bender.debug();
+    delay(0.5);
     break;
 
   default:
