@@ -30,8 +30,7 @@ void Move_Action::start()
 
 bool Move_Action::isFinished()
 {
-    //return ------TODO------ ghost->hasFinished() && asser->close
-    return false;
+    return ghost->trajectoryIsFinished() && asser->close;
 }
 
 bool Move_Action::hasFailed()
@@ -59,7 +58,7 @@ Goto_Action::Goto_Action(float timeout, float x, float y, float theta, float del
  {/*Rien a faire d'autre*/}
 
  Spin_Action::Spin_Action(float timeout, float theta, Pace pace)
-  : Move_Action(timeout,VectorE(1.5,1,theta),0,pace,true,false)  //x et y seront modifié par start
+  : Move_Action(timeout,VectorE(0.0,0.0,theta),0.0,pace,true,false)  //x et y seront modifié par start
 {/*Rien a faire d'autre*/}
 
 void Spin_Action::start()
@@ -69,7 +68,7 @@ void Spin_Action::start()
     Move_Action::start();
 }
 
-End_Action::End_Action() : Move_Action(0.0,VectorE(0,0,0),0.0,accurate,false,false)
+End_Action::End_Action() : Move_Action(0.0,VectorE(0,0,0),0.0,accurate,false,false) // x, y, theta initialize in End_Action::start to current position
 {/*Rien a faire d'autre*/}
 
 void End_Action::start()

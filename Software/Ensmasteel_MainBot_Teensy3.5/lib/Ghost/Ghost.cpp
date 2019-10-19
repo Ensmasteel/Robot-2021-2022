@@ -131,6 +131,11 @@ bool Ghost::IsBackward()
     return backward;
 }
 
+bool Ghost::trajectoryIsFinished()
+{
+    return trajectoryFinished;
+}
+
 void Ghost::Lock(bool state)
 {
     locked = state;
@@ -138,29 +143,28 @@ void Ghost::Lock(bool state)
 
 int Ghost::failSafe_position()
 {
-    if (t_e_delayed > 1.0)
-    {
-        if (posCurrent == posPrevious)
-        {
-            moving = false; //CHEMIN POTENTIELLEMENT NON SORTANT
-        }
-        else
-        {
-            return 1;
-        }
-    }
+    uint8_t errorState = 0;
 
     if (speedLinearCurrent > MAX_SPEED)
     {
         locked = true;
         moving = false;
         posCurrent = posPrevious;
-        return 1;
+        errorState = 1;
     }
-    else
+
+    if (posCurrent == posPrevious)
+        moving = false; //CHEMIN POTENTIELLEMENT NON SORTANT
+
+    if (t_e_delayed > 1.0)
     {
-        return 0;
+        if (posCurrent == posAim)
+            trajectoryFinished = true;
+        else
+            errorState = 1;
     }
+
+    return errorState;
 }
 
 int Ghost::ActuatePosition(float dt)
@@ -247,7 +251,7 @@ int Ghost::ActuatePosition(float dt)
     cinetiqueController = Get_Controller_Cinetique();
 
     float errorFailSafe = failSafe_position(); //Avoid multiple call
-    errorStatus = max(errorFailSafe,errorStatus);
+    errorStatus = max(errorFailSafe, errorStatus);
     return errorStatus;
 }
 

@@ -23,7 +23,9 @@ void Sequence::update()
     else if (queue[currentIndex].hasFailed())
     {
         fails[currentIndex]=true;
-        Serial.print("An action failed");
+        Serial.print("Action ");
+        Serial.print(currentIndex);
+        Serial.print(" failed !\n");
         startNext();
     }
 }

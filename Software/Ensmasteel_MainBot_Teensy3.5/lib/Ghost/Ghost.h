@@ -15,11 +15,11 @@ class Ghost
 {
 public:
     Ghost(VectorE posEini);
-    Ghost(){}
+    Ghost() {}
 
     // VARIABLES //
 
-    float delayPosition = 500.0;         // [...] = ms, Delay between posCurrent and posDelayed
+    float delayPosition = 500.0;               // [...] = ms, Delay between posCurrent and posDelayed
     float t = 0.0;                             // t : time since new trajectory setup
     VectorE posCurrent, posPrevious, posAim;   // VectorE : struct type containing X,Y,Orientation
     VectorE posDelayed;                        // Position _delayPosition_ ms ago. Used as input for the position controller
@@ -38,7 +38,8 @@ public:
     bool IsMoving();
     bool IsRotating();
     bool IsBackward();
-
+    bool trajectoryIsFinished();
+    
     void Lock(bool state);
 
     // GOAL / Calculate next position of the robot along the trajectory in memory
@@ -77,10 +78,12 @@ private:
     float t_e = 0.0, t_delayed = 0.0, t_e_delayed = 0.0;          // 0<t_e<1 virtual time of Bezier curves
     float durationTrajectory = 0.0, lengthTrajectory = 0.0;       // [...] = s ; [...] = (rotating ? rad : cm)
     float speedLinearCurrent = 0.0, speedRotationalCurrent = 0.0; // Current speeds
-    bool locked = true;                                           // locked=true => no movement allowed
-    bool moving = false;                                          // moving=true => trajectory not ended
-    bool rotating = false;                                        // rotating=true => the robot is doing a pure rotation
-    bool backward = false;                                        // backward=true => the robot is going backward
+
+    bool locked = true;              // locked=true => no movement allowed
+    bool moving = false;             // moving=true => trajectory not ended
+    bool rotating = false;           // rotating=true => the robot is doing a pure rotation
+    bool backward = false;           // backward=true => the robot is going backward
+    bool trajectoryFinished = false; // trajectoryFinished=true => the robot has reached posAim
 
     int failSafe_position(); // Cancel coming movement if teleportation (movement > deltaPositionMax)
 };

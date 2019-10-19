@@ -68,7 +68,7 @@ void Vector::print()
 
 bool Vector::operator==(Vector const &other)
 {
-    return _x==other._x && _y==other._y;
+    return (abs(_x - other._x) <= 1e-9) && (abs(_y - other._y) <= 1e-9);
 }
 
 Vector directeur(float theta)
@@ -96,7 +96,7 @@ void VectorE::print()
 
 bool VectorE::operator==(VectorE const &other)
 {
-    return Vector::operator==(other) && _theta==other._theta;
+    return (Vector::operator==(other)) && (abs(_theta - other._theta) <= 1e-9);
 }
 
 
