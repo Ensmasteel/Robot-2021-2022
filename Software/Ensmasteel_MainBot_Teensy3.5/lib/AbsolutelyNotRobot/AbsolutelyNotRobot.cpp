@@ -18,7 +18,11 @@
 #define TICKS_PER_ROUND 16384
 
 void AbsolutelyNotRobot::update(float dt) {
+    #ifndef SIMULATOR
     odometrie.updateCinetique(dt);
+    #else
+    simu.updateCinetique(dt);
+    #endif
     ghost.ActuatePosition(dt);
     target=ghost.Get_Controller_Cinetique();
     asservissement.compute(dt);
@@ -27,9 +31,16 @@ void AbsolutelyNotRobot::update(float dt) {
     sequence.update();
 }
 
+void AbsolutelyNotRobot::printCinetique()
+{
+    cin.print();
+}
+
 AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta) {
     cin=Cinetique(x,y,theta);
+    #ifndef SIMULATOR
     odometrie=Odometrie(TICKS_PER_ROUND,&cin,ELOIGNEMENT_CODEUSES,PIN_CODEUSE_GAUCHE_A,PIN_CODEUSE_GAUCHE_B,DIAMETRE_ROUE_CODEUSE_GAUCHE,PIN_CODEUSE_DROITE_A,PIN_CODEUSE_DROITE_B,DIAMETRE_ROUE_CODEUSE_DROITE);
+    #endif
     motorLeft=Motor(PIN_MOTEUR_GAUCHE_PWR,PIN_MOTEUR_GAUCHE_SENS,10);
     pinMode(PIN_MOTEUR_DROITE_BRAKE,OUTPUT); digitalWrite(PIN_MOTEUR_DROITE_BRAKE,LOW); //Adaptation ancien driver
     motorRight=Motor(PIN_MOTEUR_DROITE_PWR,PIN_MOTEUR_DROITE_SENS,10);
@@ -43,4 +54,7 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta) {
     sequence.add(Spin_Action(5,3.14,fast));
     sequence.add(End_Action());
     sequence.reStart();
+    #ifdef SIMULATOR
+    simu=Simulator(0.30, 4.0, 1.5, 1.3, &cin, &motorLeft.order, &motorRight.order);
+    #endif // DEBUG
 }

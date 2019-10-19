@@ -149,6 +149,7 @@ class End_Action : public Move_Action //Une End_Action ne passe jamais a la suit
 {
 public:
     End_Action();
+    void start();
     bool isFinished(){return false;}
     bool hasFailed(){return false;}
 };

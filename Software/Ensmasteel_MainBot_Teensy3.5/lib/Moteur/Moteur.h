@@ -7,11 +7,12 @@ class Motor
     uint8_t pinPWR, pinSens;
     uint16_t maxPwm;
     uint8_t bitResolution;
-    float order, orderByPass;
+    float orderByPass;
     bool bypass = false; //Lorsque le bypass est activé, le moteur prend l'odre orderByPass comme ordre et ignore l'order
     //Cela permet notamment de faire des recallage: On impose une force sur les deux moteurs en boucle ouverte pendant un certain temps
 
 public:
+    float order; //Public pour le simulateur
     void actuate(); //Actualisation de la puissance moteur
     Motor(uint8_t pinPWR, uint8_t pinSens, uint8_t bitResolution=8);
     Motor(){}

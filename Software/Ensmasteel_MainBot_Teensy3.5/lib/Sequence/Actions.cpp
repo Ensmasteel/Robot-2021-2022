@@ -2,13 +2,19 @@
 #include "Ghost.h"
 #include "PID.h"
 
-void Action::setPointers(Cinetique * robotCinetique, Ghost * ghost, Sequence * sequence, Communication * communication, Asservissement * asser)
+Cinetique * Action::robotCinetique;
+Ghost * Action::ghost;
+Sequence * Action::sequence;
+Communication * Action::communication;
+Asservissement * Action::asser;
+
+void Action::setPointers(Cinetique * robotCinetique_, Ghost * ghost_, Sequence * sequence_, Communication * communication_, Asservissement * asser_)
 {
-    Action::robotCinetique=robotCinetique;
-    Action::ghost=ghost;
-    Action::sequence=sequence;
-    Action::communication=communication;
-    Action::asser=asser;
+    robotCinetique=robotCinetique_;
+    ghost=ghost_;
+    sequence=sequence_;
+    communication=communication_;
+    asser=asser_;
 }
 
 void Move_Action::start()
@@ -60,5 +66,16 @@ void Spin_Action::start()
 {
     posFinal._x=robotCinetique->_x;
     posFinal._y=robotCinetique->_y;
+    Move_Action::start();
+}
+
+End_Action::End_Action() : Move_Action(0.0,VectorE(0,0,0),0.0,accurate,false,false)
+{/*Rien a faire d'autre*/}
+
+void End_Action::start()
+{
+    posFinal._x=robotCinetique->_x;
+    posFinal._y=robotCinetique->_y;
+    posFinal._theta=robotCinetique->_theta;
     Move_Action::start();
 }

@@ -8,7 +8,7 @@
  *  author : Arthur FINDELAIR - EnsmaSteel, github.com/ArthurFDLR
  *  date : October 2019
 */
-
+#define SIMULATOR
 // =============================
 // ===       Libraries       ===
 // =============================
@@ -28,12 +28,13 @@
 // ===       VARIABLES and INSTANTIATIONS       ===
 // ================================================
 
-const uint8_t MODE_TEST = 3;
+const uint8_t MODE_TEST = 5;
 
 VectorE posInitial(0.0, 0.0, 0.0);
 VectorE posFinal(40.0, 15.0, 0.0);
 
 Ghost botGhost(posInitial);
+AbsolutelyNotRobot bender;
 
 uint64_t timeLast = 0, timeCurrent = 0;
 const uint64_t deltaTime = 1e5;
@@ -71,6 +72,12 @@ void setup()
   case 4:
     Rotation_Init_Test();
     break;
+  
+  case 5:
+    Serial.println("Bender's booting up");
+    bender=AbsolutelyNotRobot(0,0,0);
+    Serial.println("Hello, I'm bender");
+    break;
 
   default:
     break;
@@ -100,6 +107,11 @@ void loop()
       Rotation_Loop_Test((float)(timeCurrent - timeLast) / 1e6);
       timeLast = micros();
     }
+    break;
+  case 5:
+    bender.update(0.1);
+    bender.printCinetique();
+    delay(0.1);
     break;
 
   default:
