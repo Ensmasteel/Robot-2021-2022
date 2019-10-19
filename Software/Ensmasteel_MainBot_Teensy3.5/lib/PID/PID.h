@@ -52,6 +52,7 @@ public:
 
     //Place dans outTranslation et outRotation les deux ordres (entre -1 et 1)
     void compute(float dt);
+    void setCurrentProfile(uint8_t id);
     Asservissement(float *outTranslation, float *outRotation, Cinetique * cRobot, Cinetique * cGhost,float frequency);
 };
 

@@ -18,11 +18,21 @@ Chose qu'il est possible de faire:
 
 class Sequence
 {
-    public:
+private:
     uint8_t globals[TAILLEGLOBALS];
     Action queue[TAILLESEQUENCE];
+    bool fails[TAILLESEQUENCE];
     uint8_t currentIndex;
     uint8_t nextIndex;
+public:
+    void reStart();
+    void startNext();
+    void update();
+    void setNextIndex(uint8_t index);
+    void setGlobal(uint8_t number, uint8_t value);
+    uint8_t getGlobal(uint8_t number);
+    Sequence();
+    void setSequence(Action * seq);
 };
 
 #endif // !SEQUENCE_H_

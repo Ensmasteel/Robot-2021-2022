@@ -108,3 +108,9 @@ Asservissement::Asservissement(float *outTranslation, float *outRotation, Cineti
     pidRotation.setPIDProfile(0, newPIDProfile(5, 5, 50, 0.001, 0.001, 0.01));
     pidTranslation.setPIDProfile(0, newPIDProfile(5, 5, 50,  0.01, 0.01, 0.1));
 }
+
+void Asservissement::setCurrentProfile(uint8_t id)
+{
+    pidTranslation.setCurrentProfile(id);
+    pidRotation.setCurrentProfile(id);
+}

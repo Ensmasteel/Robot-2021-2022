@@ -21,7 +21,7 @@
 #include <Moteur.h>
 #include <Codeuse.h>
 #include <Simulator.h>
-//#include <Actions.h>
+#include <Sequence.h>
 
 // ================================================
 // ===       VARIABLES and INSTANTIATIONS       ===

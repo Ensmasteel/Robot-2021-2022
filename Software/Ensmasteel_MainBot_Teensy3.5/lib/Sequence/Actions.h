@@ -6,6 +6,7 @@
 
 class Ghost;
 class Sequence;
+class Asservissement;
 
 class Action //Classe abstraite
 {
@@ -13,16 +14,18 @@ public:
     void start() {timeStarted=millis()/1e3;}
     bool isFinished() {return done;}
     bool hasFailed() {return millis()/1e3 > timeStarted + timeout;}
-    static void setPointers(Ghost * ghost, Sequence * sequence, Communication * communication);
-    Action(float timeout){this->timeout=timeout;}
+    static void setPointers(Cinetique * robotCinetique,Ghost * ghost, Sequence * sequence, Communication * communication, Asservissement * asser);
+    Action(float timeout=0.1){this->timeout=timeout;done=false;}
 
 protected:
     bool done;
     float timeout;
     float timeStarted;
+    static Cinetique * robotCinetique;
     static Ghost * ghost;
     static Sequence * sequence;
     static Communication * communication;
+    static Asservissement * asser;
 };
 
 enum Pace {accurate,standard,fast};
@@ -38,6 +41,7 @@ public:
 protected:
     VectorE posFinal; 
     float deltaCurve,speedRamps,cruisingSpeed;
+    Pace pace;
     bool pureRotation, backward;
 };
 
@@ -139,6 +143,14 @@ public:
     //start(Action)
     bool hasFinished(); //(Wait_Message) verifie que le message est recu
     //hasFailed(Action)
+};
+
+class End_Action : public Move_Action //Une End_Action ne passe jamais a la suite
+{
+public:
+    End_Action();
+    bool isFinished(){return false;}
+    bool hasFailed(){return false;}
 };
 
 
