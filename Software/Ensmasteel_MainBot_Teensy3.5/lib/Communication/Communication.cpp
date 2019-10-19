@@ -1,7 +1,17 @@
 #include "Communication.h"
 
 #include "Arduino.h"
+#ifdef TEENSY35
 #include <cstring>
+#else
+#include <string.h>
+#endif
+
+#ifdef TEENSY35
+#define SERIALCOMM Serial1
+#else
+#define SERIALCOMM Serial
+#endif
 
 Message newMessage(MessageID id, int32_t data)
 {
@@ -56,11 +66,11 @@ int MessageBox::size()
 void Communication::actuate()
 {
     //RECEPTION
-    if (Serial1.available() >= 6) //On attend de voir 6 octets dans le buffer pour lire le message entier d'un coup
+    if (SERIALCOMM.available() >= 6) //On attend de voir 6 octets dans le buffer pour lire le message entier d'un coup
     {
         uint8_t in[6];
         for (int i = 0; i < 6; i++)
-            in[i] = Serial.read();
+            in[i] = SERIALCOMM.read();
         Message out;
         memcpy(&out, in, sizeof(out)); //On convertit les octets en message
         receiveBox.push(out);
@@ -73,7 +83,7 @@ void Communication::actuate()
         uint8_t out[6];
         memcpy(out, &toSend, sizeof(out)); //On convertit le message en octet
         for (int i = 0; i < 6; i++)
-            Serial.write(out[i]);
+            SERIALCOMM.write(out[i]);
         millisLastSend = millis();
     }
 }
@@ -96,9 +106,9 @@ uint8_t Communication::inWaiting()
 Communication::Communication()
 {
     //On vide les caractères qui pourrait trainer
-    while (Serial.available() > 0)
+    while (SERIALCOMM.available() > 0)
     {
-        Serial.read();
+        SERIALCOMM.read();
     }
     millisLastSend = millis();
 }
