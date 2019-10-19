@@ -14,6 +14,7 @@ class Motor
 public:
     void actuate(); //Actualisation de la puissance moteur
     Motor(uint8_t pinPWR, uint8_t pinSens, uint8_t bitResolution=8);
+    Motor(){}
     void setOrder(float order);    //Change la valeur de l'ordre courant
     void stop();                   //Arrete les moteurs et ignore l'ordre order jusqu'a l'appel de resume
     void bypassOrder(float order); //Impose cet ordre jusqu'a l'appel de resume

@@ -22,6 +22,7 @@
 #include <Codeuse.h>
 #include <Simulator.h>
 #include <Sequence.h>
+#include <AbsolutelyNotRobot.h>
 
 // ================================================
 // ===       VARIABLES and INSTANTIATIONS       ===

@@ -15,10 +15,11 @@ class Ghost
 {
 public:
     Ghost(VectorE posEini);
+    Ghost(){}
 
     // VARIABLES //
 
-    const float delayPosition = 500.0;         // [...] = ms, Delay between posCurrent and posDelayed
+    float delayPosition = 500.0;         // [...] = ms, Delay between posCurrent and posDelayed
     float t = 0.0;                             // t : time since new trajectory setup
     VectorE posCurrent, posPrevious, posAim;   // VectorE : struct type containing X,Y,Orientation
     VectorE posDelayed;                        // Position _delayPosition_ ms ago. Used as input for the position controller
@@ -69,9 +70,9 @@ public:
     Cinetique Get_Controller_Cinetique();
 
 private:
-    const float epsilonPosition = 0.01;
-    const float epsilonOrientation = 0.01;
-    const float MAX_SPEED = 50.0;
+    float epsilonPosition = 0.01;
+    float epsilonOrientation = 0.01;
+    float MAX_SPEED = 50.0;
 
     float t_e = 0.0, t_delayed = 0.0, t_e_delayed = 0.0;          // 0<t_e<1 virtual time of Bezier curves
     float durationTrajectory = 0.0, lengthTrajectory = 0.0;       // [...] = s ; [...] = (rotating ? rad : cm)

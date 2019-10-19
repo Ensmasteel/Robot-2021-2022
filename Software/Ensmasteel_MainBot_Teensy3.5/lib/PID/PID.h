@@ -54,6 +54,7 @@ public:
     void compute(float dt);
     void setCurrentProfile(uint8_t id);
     Asservissement(float *outTranslation, float *outRotation, Cinetique * cRobot, Cinetique * cGhost,float frequency);
+    Asservissement(){}
 };
 
 #endif

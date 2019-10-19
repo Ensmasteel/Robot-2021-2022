@@ -59,10 +59,11 @@ Sequence::Sequence()
 {
     currentIndex=0;
     nextIndex=1;
+    lastIndex=-1;
 }
 
-void Sequence::setSequence(Action seq[TAILLESEQUENCE])
+void Sequence::add(const Action &action)
 {
-    for (int i=0;i<TAILLESEQUENCE;i++)
-        queue[i]=seq[i];
+    queue[lastIndex+1]=action;
+    lastIndex++;
 }

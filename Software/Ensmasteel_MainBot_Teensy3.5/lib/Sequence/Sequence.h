@@ -24,6 +24,7 @@ private:
     bool fails[TAILLESEQUENCE];
     uint8_t currentIndex;
     uint8_t nextIndex;
+    int lastIndex;
 public:
     void reStart();
     void startNext();
@@ -32,7 +33,7 @@ public:
     void setGlobal(uint8_t number, uint8_t value);
     uint8_t getGlobal(uint8_t number);
     Sequence();
-    void setSequence(Action * seq);
+    void add(const Action &action);
 };
 
 #endif // !SEQUENCE_H_

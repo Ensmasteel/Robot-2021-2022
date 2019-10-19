@@ -33,6 +33,7 @@ public:
     Odometrie(uint16_t ticksPerRound, Cinetique * cinetique, float eloignementCodeuses,
      uint8_t pinACodeuseGauche, uint8_t pinBCodeuseGauche, float diametreRoueGauche,
      uint8_t pinACodeuseDroite, uint8_t pinBCodeuseDroite, float diametreRoueDroite);
+    Odometrie(){}
 
 };
 
