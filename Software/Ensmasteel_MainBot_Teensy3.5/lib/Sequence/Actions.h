@@ -65,18 +65,22 @@ public:
 
 class Forward_Action : public Move_Action
 {
+private:
+    float dist;
 public:
     Forward_Action(float timeout, float dist, Pace pace);
-    // void start(); //(Action + Forward)Le start doit etre redéfini car on ne connait pas posFinal a l'avance
+    void start(); //(Action + Forward)Le start doit etre redéfini car on ne connait pas posFinal a l'avance
     //isFinished(Move)
     //hasFailed(Action+Move)
 };
 
 class Backward_Action : public Move_Action
 {
+private:
+    float dist;
 public:
     Backward_Action(float timeout, float dist, Pace pace);
-    // void start(); //(Action + Backward)Le start doit etre redéfini car on ne connait pas posFinal a l'avance
+    void start(); //(Action + Backward)Le start doit etre redéfini car on ne connait pas posFinal a l'avance
     //isFinished(Move)
     //hasFailed(Action+Move)
 };

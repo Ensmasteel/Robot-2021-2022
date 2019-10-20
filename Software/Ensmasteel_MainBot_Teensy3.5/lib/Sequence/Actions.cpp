@@ -32,6 +32,7 @@ void Move_Action::start()
         break;
     }
     ghost->Compute_Trajectory(posFinal, deltaCurve, speedRamps, cruisingSpeed, pureRotation, backward);
+    Action::start();
 }
 
 bool Move_Action::isFinished()
@@ -98,20 +99,30 @@ void End_Action::start()
 }
 
 
-// ALEXAAAAAANDRE, Verifie ce qui suit plz
-
 Forward_Action::Forward_Action(float timeout, float dist, Pace pace)
     : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, pace, false, false)
+{
+    this->dist=dist;
+}
+
+void Forward_Action::start()
 {
     posFinal._theta = robotCinetique->_theta;
     posFinal._x = (robotCinetique->_x) + dist * cos(normalizeAngle(posFinal._theta));
     posFinal._y = (robotCinetique->_y) + dist * sin(normalizeAngle(posFinal._theta));
+    Move_Action::start();
 }
 
 Backward_Action::Backward_Action(float timeout, float dist, Pace pace)
     : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, pace, false, true)
 {
+    this->dist=dist;
+}
+
+void Backward_Action::start()
+{
     posFinal._theta = robotCinetique->_theta;
     posFinal._x = (robotCinetique->_x) + dist * cos( - normalizeAngle(posFinal._theta));
     posFinal._y = (robotCinetique->_y) + dist * sin( - normalizeAngle(posFinal._theta));
+    Move_Action::start();
 }
