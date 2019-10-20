@@ -1,4 +1,6 @@
 #include "PID.h"
+#define RECONVERGENCE 0.1
+//SI le robot est eloigné de plus de RECONVERGENCE metres, le PID angulaire s'occupe a 100% de rejoindre le ghost, pas de mimer le theta
 
 PIDProfile newPIDProfile(float KP, float KI, float KD, float epsilon, float dEpsilon, float maxErr)
 {
@@ -87,6 +89,36 @@ void Asservissement::compute(float dt)
 
     *outTranslation = pidTranslation.compute(lagBehind, cGhost->_v, 0, cRobot->_v, dt);
     *outRotation = pidRotation.compute(cGhost->_theta, cGhost->_w, cRobot->_theta, cRobot->_w, dt);
+
+    close = pidTranslation.close && pidRotation.close;
+    tooFar = pidTranslation.tooFar || pidRotation.tooFar || (*cGhost - *cRobot).norm()>pidTranslation.getCurrentProfile().epsilon;
+}
+
+void Asservissement::compute_dev(float dt)
+{
+    //lag behind represente l'avance du ghost sur le robot
+    //C'est une avance projetée selon la direction du robot
+    Vector deltaPos = *cGhost - *cRobot;
+    float lagBehind = deltaPos % (directeur(cRobot->_theta));
+    if (lagBehind < 0)
+        lagBehind = -1 * sqrt(-1 * lagBehind);
+    else
+        lagBehind = sqrt(lagBehind);
+
+    float thetaToReachGhost;
+    if (lagBehind>0)
+        thetaToReachGhost=normalizeAngle(deltaPos.angle());
+    else
+        thetaToReachGhost=normalizeAngle(deltaPos.angle() + PI);
+
+    needToGoForward = (lagBehind > 0);
+
+    *outTranslation = pidTranslation.compute(lagBehind, cGhost->_v, 0, cRobot->_v, dt);
+
+    //Plus on est pres, plus le but est de mimer le theta du Ghost
+    //Plus on est loin (deltaPos.norm()), plus le but est de rejoindre le Ghost
+    float farFromGhost = constrain(deltaPos.norm()*RECONVERGENCE,0,1);
+    *outRotation = pidRotation.compute(cGhost->_theta, cGhost->_w, (1-farFromGhost)*cRobot->_theta + farFromGhost*thetaToReachGhost, cRobot->_w, dt);
 
     close = pidTranslation.close && pidRotation.close;
     tooFar = pidTranslation.tooFar || pidRotation.tooFar || (*cGhost - *cRobot).norm()>pidTranslation.getCurrentProfile().epsilon;

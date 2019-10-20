@@ -71,6 +71,11 @@ bool Vector::operator==(Vector const &other)
     return (abs(_x - other._x) <= 1e-9) && (abs(_y - other._y) <= 1e-9);
 }
 
+float Vector::angle()
+{
+    return atan2(_y,_x);
+}
+
 Vector directeur(float theta)
 {
     return Vector(cos(theta),sin(theta));

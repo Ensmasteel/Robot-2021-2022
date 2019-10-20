@@ -22,6 +22,7 @@ public:
     Vector operator*(const float scalaire); //Produit par un scalaire (homotetie)
     bool operator==(Vector const &other);
     float norm();
+    float angle();
     float distanceWith(Vector &other);
     void print();
     Vector(float x = 0.0, float y = 0.0);
