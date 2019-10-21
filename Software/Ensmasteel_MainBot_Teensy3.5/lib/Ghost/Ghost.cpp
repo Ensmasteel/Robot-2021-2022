@@ -8,7 +8,6 @@ Ghost::Ghost(VectorE posEIni)
     posAim = posEIni;
     posDelayed = posEIni;
     locked = true;
-    moving = false;
     t = 0.0;
     t_e = 0.0;
     t_e_delayed = 0.0;
@@ -29,7 +28,6 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
     posAim = posFinal;
     t = 0.0;
     t_e = 0.0;
-    moving = true;
     rotating = pureRotation;
     backward = goBackward;
 
@@ -116,11 +114,6 @@ bool Ghost::IsLocked()
     return locked;
 }
 
-bool Ghost::IsMoving()
-{
-    return moving;
-}
-
 bool Ghost::IsRotating()
 {
     return rotating;
@@ -148,13 +141,9 @@ int Ghost::failSafe_position()
     if (speedLinearCurrent > MAX_SPEED)
     {
         locked = true;
-        moving = false;
         posCurrent = posPrevious;
         errorState = 1;
     }
-
-    if (posCurrent == posPrevious)
-        moving = false; //CHEMIN POTENTIELLEMENT NON SORTANT
 
     if (t_e_delayed > 1.0)
     {
@@ -236,12 +225,10 @@ int Ghost::ActuatePosition(float dt)
                 posCurrent._theta = atan2(trajectory_Y.df(t_e), trajectory_X.df(t_e));
             }
         }
-
-        moving = true;
     }
     else // Bot is locked in position, don't move
     {
-        moving = false;
+
         errorStatus = 1;
         //Serial.println("Fail");
     }
