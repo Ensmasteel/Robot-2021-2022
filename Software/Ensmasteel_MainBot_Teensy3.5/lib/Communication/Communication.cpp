@@ -8,10 +8,12 @@
 #endif
 
 #ifdef TEENSY35
-#define SERIALCOMM Serial1
+#define SERIALCOMM Serial
 #else
 #define SERIALCOMM Serial
 #endif
+
+#define DEBUGCOMM
 
 Message newMessage(MessageID id, int32_t data)
 {
@@ -39,6 +41,18 @@ Message MessageBox::pull()
     }
 }
 
+Message MessageBox::peek()
+{
+    if (empty)
+    {
+        Serial.println("The mailbox is empty");
+        //Dans ce cas on renvoie le message vide
+        return newMessage(MessageID::Empty, 0);
+    }
+    else
+        return box[iFirstEntry];
+}
+
 void MessageBox::push(Message message)
 {
     if ((iFirstEntry == iNextEntry) && !empty)
@@ -63,7 +77,7 @@ int MessageBox::size()
         return (iNextEntry - iFirstEntry + MESSAGE_BOX_SIZE) % MESSAGE_BOX_SIZE; //Marche dans tous les cas
 }
 
-void Communication::actuate()
+void Communication::update()
 {
     //RECEPTION
     if (SERIALCOMM.available() >= 6) //On attend de voir 6 octets dans le buffer pour lire le message entier d'un coup
@@ -86,6 +100,16 @@ void Communication::actuate()
             SERIALCOMM.write(out[i]);
         millisLastSend = millis();
     }
+
+    #ifdef DEBUGCOMM
+    Serial.print("In hardware buffer "); Serial.println(SERIALCOMM.available());
+    Serial.print("In my buffer "); Serial.println(receiveBox.size());
+    if (receiveBox.size()==1)
+    {
+        Serial.print("Id = ");Serial.println(receiveBox.peek().ID);
+        Serial.print("Value = ");Serial.println(receiveBox.peek().data);
+    }
+    #endif
 }
 
 void Communication::send(Message message)
@@ -96,6 +120,11 @@ void Communication::send(Message message)
 Message Communication::pullOldestMessage()
 {
     return receiveBox.pull();
+}
+
+Message Communication::peekOldestMessage()
+{
+    return receiveBox.peek();
 }
 
 uint8_t Communication::inWaiting()

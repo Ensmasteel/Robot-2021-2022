@@ -16,7 +16,7 @@ private:
     Odometrie odometrie;
     Simulator simu;
     Motor motorLeft,motorRight;
-    Ghost ghost;
+    Ghost ghost;    
     Asservissement asservissement;
     Communication communication;
     Sequence sequence;

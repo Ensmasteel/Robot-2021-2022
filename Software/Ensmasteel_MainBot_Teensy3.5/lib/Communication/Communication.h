@@ -13,7 +13,8 @@
 enum MessageID : uint16_t
 {
     Empty,
-    Stop
+    Stop,
+    Tirette
 };
 
 struct Message
@@ -28,6 +29,7 @@ class MessageBox
 {
 public:
     Message pull();
+    Message peek();
     void push(Message message);
     int size();
     bool empty = true;
@@ -43,8 +45,9 @@ class Communication
 public:
     void send(Message message);
     Message pullOldestMessage();
+    Message peekOldestMessage();
     uint8_t inWaiting();
-    void actuate();
+    void update();
     Communication();
 
 private:

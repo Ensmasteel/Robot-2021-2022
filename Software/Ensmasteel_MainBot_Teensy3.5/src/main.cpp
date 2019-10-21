@@ -34,7 +34,7 @@ VectorE posInitial(0.0, 0.0, 0.0);
 VectorE posFinal(40.0, 15.0, 0.0);
 
 Ghost botGhost(posInitial);
-AbsolutelyNotRobot bender;
+AbsolutelyNotRobot* bender;
 
 uint64_t timeLast = 0, timeCurrent = 0;
 const uint64_t deltaTime = 1e5;
@@ -53,7 +53,7 @@ void Rotation_Loop_Test(float dt);
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(250000);
 
   switch (MODE_TEST)
   {
@@ -76,9 +76,9 @@ void setup()
   case 5:
     delay(5000);
     Serial.println("Bender's booting up");
-    bender=AbsolutelyNotRobot(0,0,0,true);
+    bender=new AbsolutelyNotRobot(0,0,0,true);
     Serial.println("Hello, I'm bender");
-    bender.debug();
+    bender->debug();
 
     break;
 
@@ -112,12 +112,12 @@ void loop()
     }
     break;
   case 5:
-    bender.update(0.1);
-    bender.printCinetique();
-    
+
+    bender->update(0.005);
+    bender->printCinetique();
     Serial.println();
-    bender.debug();
-    delay(100);
+    bender->debug();
+    delay(5);
     break;
 
   default:

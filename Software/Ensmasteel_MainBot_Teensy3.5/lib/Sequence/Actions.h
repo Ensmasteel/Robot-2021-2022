@@ -14,10 +14,10 @@ public:
     String name;
     virtual void start() {timeStarted=millis()/1e3;}
     virtual bool isFinished() {return done;}
-    virtual bool hasFailed() {return millis()/1e3 > timeStarted + timeout;}
+    virtual bool hasFailed();   //Par convention, un timeout négatif indique qu'il n'y a pas de timeout
     static void setPointers(Cinetique * robotCinetique,Ghost * ghost, Sequence * sequence, Communication * communication, Asservissement * asser);
     Action(String name="Action", float timeout=0.1){this->name=name;this->timeout=timeout;done=false;}
-
+    
 protected:
     bool done;
     float timeout;
@@ -92,7 +92,7 @@ private:
     Message message;
 public:
     Send_Action(Message message);
-    void start(){Action::start(); communication->send(message);} //(Action+Send)
+    void start(); //(Action+Send)
     //isFinished(Action)
     //hasFailed(Action)
 };
@@ -142,9 +142,9 @@ public:
 class Wait_Message_Action : public Action
 {
 private:
-    Message message;
+    MessageID messageId;
 public:
-    Wait_Message_Action(Message message, float timeout);
+    Wait_Message_Action(MessageID messageId, float timeout);
     //start(Action)
     bool isFinished(); //(Wait_Message) verifie que le message est recu
     //hasFailed(Action)

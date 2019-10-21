@@ -18,6 +18,7 @@
 #define TICKS_PER_ROUND 16384
 
 void AbsolutelyNotRobot::update(float dt) {
+    communication.update();
     if (useSimulator)
     {
         simu.updateCinetique(dt);
@@ -32,6 +33,8 @@ void AbsolutelyNotRobot::update(float dt) {
     motorLeft.setOrder(outTranslation-outRotation);
     motorRight.setOrder(outTranslation+outRotation);
     sequence.update();
+    if (communication.inWaiting()>0)
+        communication.pullOldestMessage(); //Tout le monde a eu l'occasion de le peek, on le vire.
 }
 
 void AbsolutelyNotRobot::printCinetique()
@@ -57,13 +60,15 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta,bool useSim
     communication=Communication();
     sequence=Sequence();
     Action::setPointers(&cin,&ghost,&sequence,&communication,&asservissement);
+    //sequence.add(new Wait_Message_Action(Tirette,-1));
     sequence.add(new Goto_Action(10,2,1,0,0.2,fast));
     sequence.add(new Spin_Action(5,3.14,fast));
     sequence.add(new End_Action());
     if (useSimulator)
     {
-        simu=Simulator(0.30, 4.0, 1.5, 1.3, &cin, &motorLeft.order, &motorRight.order);
+        simu=Simulator(0.30, 6.0, 3.5, 1.5, &cin, &motorLeft.order, &motorRight.order);
         Serial.println("SIMULATOR MODE");
     }
     sequence.reStart();
+    ghost.Lock(false);
 }

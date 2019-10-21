@@ -8,6 +8,13 @@ Sequence *Action::sequence;
 Communication *Action::communication;
 Asservissement *Action::asser;
 
+bool Action::hasFailed()
+{
+    if (timeout<0)
+        return false;
+    return millis()/1e3 > timeStarted + timeout;
+}
+
 void Action::setPointers(Cinetique *robotCinetique_, Ghost *ghost_, Sequence *sequence_, Communication *communication_, Asservissement *asser_)
 {
     robotCinetique = robotCinetique_;
@@ -44,7 +51,7 @@ bool Move_Action::isFinished()
 
 bool Move_Action::hasFailed()
 {
-    return asser->tooFar || Action::hasFailed();
+    return /*asser->tooFar ||*/ Action::hasFailed();
 }
 
 Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace pace, bool pureRotation, bool backward,String name) : Action(name,timeout)
@@ -57,16 +64,16 @@ Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace
     switch (pace)
     {
     case accurate:
-        this->speedRamps = 1;
-        this->cruisingSpeed = 1;
+        this->speedRamps = 0.5;
+        this->cruisingSpeed = 0.1;
         break;
     case standard:
         this->speedRamps = 2;
-        this->cruisingSpeed = 2;
+        this->cruisingSpeed = 0.5;
         break;
     case fast:
-        this->speedRamps = 5;
-        this->cruisingSpeed = 3;
+        this->speedRamps = 3;
+        this->cruisingSpeed = 1;
         break;
     }
 }
@@ -85,18 +92,6 @@ void Spin_Action::start()
 {
     posFinal._x = robotCinetique->_x;
     posFinal._y = robotCinetique->_y;
-    Move_Action::start();
-}
-
-End_Action::End_Action() : Move_Action(0.0, VectorE(0, 0, 0), 0.0, accurate, false, false,"End") // x, y, theta initialize in End_Action::start to current position
-{                                                                                          /*Rien a faire d'autre*/
-}
-
-void End_Action::start()
-{
-    posFinal._x = robotCinetique->_x;
-    posFinal._y = robotCinetique->_y;
-    posFinal._theta = robotCinetique->_theta;
     Move_Action::start();
 }
 
@@ -127,4 +122,38 @@ void Backward_Action::start()
     posFinal._x = (robotCinetique->_x) + dist * cos( - normalizeAngle(posFinal._theta));
     posFinal._y = (robotCinetique->_y) + dist * sin( - normalizeAngle(posFinal._theta));
     Move_Action::start();
+}
+
+End_Action::End_Action() : Move_Action(0.0, VectorE(0, 0, 0), 0.0, accurate, false, false,"End") // x, y, theta initialize in End_Action::start to current position
+{                                                                                          /*Rien a faire d'autre*/
+}
+
+void End_Action::start()
+{
+    posFinal._x = robotCinetique->_x;
+    posFinal._y = robotCinetique->_y;
+    posFinal._theta = robotCinetique->_theta;
+    Move_Action::start();
+}
+
+Send_Action::Send_Action(Message message) : Action("Send",0.1)
+{
+    this->message=message;
+}
+
+void Send_Action::start()
+{
+    communication->send(message);
+    done=true;
+    Action::start();
+}
+
+Wait_Message_Action::Wait_Message_Action(MessageID messageId, float timeout) : Action("WaitMess",timeout)
+{
+    this->messageId=messageId;
+}
+
+bool Wait_Message_Action::isFinished()
+{
+    return communication->inWaiting()>0 && communication->peekOldestMessage().ID==messageId;
 }
