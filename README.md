@@ -11,63 +11,62 @@ L'orientation du robot est essentielle pour effectuer les actions, nous devons d
 
 Nous stockons toutes les informations relatives à la trajectoire dans un objet _Ghost_. Le robot physique se contentera de suivre cette trajectoire par un asservissement en position. Afin de permettre au robot de suivre la trajectoire, la position ne suffit pas, il faut aussi la vitesse de déplacement. La variable t* des courbes de Beziers n'a aucun sens temporellement. On souhaite imposer la vitesse progressivement. On définit alors une fonction _V(t)_ déterminant la vitesse d'avancer le long de l'abscisse curviligne décrivant la trajectoire. On a alors _dt*=(V(t)/V*(t*))x(dt)_ avec _dt_ le temps écoulé entre deux tour de boucle (de calcul), _V*(t*)_ la vitesse réelles _V*²(t*)=X’(t*)²+Y’(t*)²_ où _X_ et _Y_ sont les courbes de Beziers) et _dt*_ le pas d'incrémentation de _t*_ pour le calcul de la position suivante. _(cf Passation-CODE.docx pour plus de détails)_
 
+### Calculs du profil de vitesse d'une trajectoire
+
 <img src="./Doc/SpeedRamp_Def.jpg" width="90%">
 
-### Specifications
+<img src="./Doc/Trajectory_length_math.jpg" width="90%">
 
-```c++
-class Ghost {
-public:
-    Ghost(VectorE posEini);
 
-    // VARIABLES //
+### Utilisation de la classe __Ghost__
 
-    VectorE posCurrent;  // VectorE : struct type containing X,Y,Orientation
-    bool locked=true;    // locked=true => no movement allowed
-    bool moving=false;   // moving=true => trajectory not ended
-    Polynome trajectory_X, trajectory_Y, ; // Bezier curves, function of t*
+L'ensembles des positions sont stocker sous forme de _VectorE(x, y, theta)_ indiquant la position en coordonées x,y en mètres et l'orientation du robot en radiants _(note : theta est toujours compris dans [-PI; PI])_. Le type _Cinetique_ est attendu en entrée d'asservissement. Il contient la position et l'orientation du Ghost en temps réelle et sa vitesse linéaire et en rotation dans le futur d'un délai de _delayPosition_ en milli-secondes. Ce délai permet à l'asservissement de "prédire" les accélérations/décélérations afin d'etre plus fluide.
 
-    float t=0.0, t_e=0.0; // t : time since new trajectory setup ; 0<t_e<1 virtual time of Bezier curves
+__Méthodes utiles :__
 
-    // METHODES //
+*   ```c++
+    bool IsLocked();
+    bool IsRotating();
+    bool IsBackward();
+    bool trajectoryIsFinished();
+    ```
 
-    int rotate(float theta); // Rotation of _theta_rad
-    int actuate(float dt);   // Update position with trajectory
-    void Set_Trajectory(Polynome newTrajectoryX, Polynome newTrajectoryY); // store new trajectories
-    void Compute_Trajectory(VectorE posFinal, float deltaCurve);
-    void lock();
-};
-```
+    Méthodes d'accées aux variables homonymes.
 
-```c++
-class Polynome
-{
-public:
-    float K[7];        //Les 10 coefficients du polynome, K[i] est le coefficient devant x^i
-    float f(float x);  //value of the function in x
-    float df(float x); //value of the derivative function in x
-    float ddf(float x);
-    void set(float a0, float a1, float a2, float a3, float a4, float a5, float a6);
+    _locked = true_ : le Ghost est bloqué en position, l'actualisation de la position est bloqué.
 
-    int DEGRE_MAX = 7;
-};
+    _rotating = true_ : le Ghost effectue une simple rotation, seule l'orientation varie.
 
-Polynome init_polynome(float a0 = 0.0, float a1 = 0.0, float a2 = 0.0, float a3 = 0.0, float a4 = 0.0, float a5 = 0.0, float a6 = 0.0);
-Polynome Derivative_ptr(Polynome* P);
-Polynome multiplication_ptr(Polynome* P1,Polynome* P2);
-Polynome Square_ptr(Polynome* P);
-Polynome Sum_ptr(Polynome* P1,Polynome* P2);
+    _backward = true_ : le Ghost évolue en marche arrière.
 
-class Trapezoidal_Function
-{
-public:
-    Trapezoidal_Function();
-    Trapezoidal_Function(float upRamp, float downRamp, float max, float duration);
+    _trajectoryFinished = true_ : le Ghost est arrivé à la position souhaitée.
 
-    void set(float upRamp, float downRamp, float max, float duration);
-    float _upRamp, _downRamp, _max, _duration; //upRamp : acceleration ; max : maximum value ; downRamp : deceleration ; duration : totale duration of the function (f(x)!=0 <=> 0<x<duration)
-    float f(float x);                          //value of the function in x
-    float df(float x);                         //value of the derivative function in x
-    //float ddf(float x);
-};
-```
+* ```c++
+    void Lock(bool state);
+    ```
+
+    Permet de modifier l'état de _locked_
+
+* ```c++
+    int ActuatePosition(float dt);
+    ```
+
+    Met à jours la position (et orientation) du Ghost selon la trajectoire en mémoire. Le temps dt en seconde indique le temps écoulé depuis le dernier appel de la fonction afin de connaitre la distance à parcourir.
+
+* ```c++
+    int Compute_Trajectory(VectorE posFinal, float deltaCurve, 
+                           float speedRamps, float cruisingSpeed, 
+                           bool pureRotation = false, bool backward = false);
+    ```
+
+    Calcul et stocke la nouvelle trajectoire atteignat _posFinal_ avec un parametre de courbe _deltaCurve_. Le parametre _speedRamps_ en m/s indique l'accélération et la décélération. _cruisingSpeed_ est la vitesse de croisiere du Ghost. L'état de _pureRotation_ indique s'il est souhaité que le robot éxécute une simple rotation (x et y constants). L'état de _backward_ indique s'il est souhaité que le Ghost évolue en marche arriere.
+
+* ```c++
+    Cinetique Get_Controller_Cinetique();
+    ```
+
+    Renvoies la variable d'entrée de l'asservissement.
+
+## Les séquences d'actions
+
+...

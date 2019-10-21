@@ -236,7 +236,7 @@ void Trajecotry_Init_Test()
 
 void Trajecotry_Loop_Test(float dt)
 {
-  if (botGhost.IsMoving())
+  if (!botGhost.trajectoryIsFinished())
   {
     if (!botGhost.ActuatePosition(dt))
     {
@@ -284,7 +284,7 @@ void Rotation_Init_Test()
 
 void Rotation_Loop_Test(float dt)
 {
-  if (botGhost.IsMoving())
+  if (!botGhost.trajectoryIsFinished())
   {
     if (!botGhost.ActuatePosition(dt))
     {
