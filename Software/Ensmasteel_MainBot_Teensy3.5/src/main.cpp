@@ -74,9 +74,12 @@ void setup()
     break;
   
   case 5:
+    delay(5000);
     Serial.println("Bender's booting up");
-    bender=AbsolutelyNotRobot(0,0,0);
+    bender=AbsolutelyNotRobot(0,0,0,true);
     Serial.println("Hello, I'm bender");
+    bender.debug();
+
     break;
 
   default:
@@ -109,11 +112,12 @@ void loop()
     }
     break;
   case 5:
-    bender.update(0.5);
+    bender.update(0.1);
     bender.printCinetique();
+    
     Serial.println();
     bender.debug();
-    delay(0.5);
+    delay(100);
     break;
 
   default:

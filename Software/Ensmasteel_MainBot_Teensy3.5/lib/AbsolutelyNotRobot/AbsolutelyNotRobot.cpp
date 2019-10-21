@@ -18,11 +18,14 @@
 #define TICKS_PER_ROUND 16384
 
 void AbsolutelyNotRobot::update(float dt) {
-    #ifndef SIMULATOR
-    odometrie.updateCinetique(dt);
-    #else
-    simu.updateCinetique(dt);
-    #endif
+    if (useSimulator)
+    {
+        simu.updateCinetique(dt);
+    }
+    else
+    {
+        odometrie.updateCinetique(dt);
+    }
     ghost.ActuatePosition(dt);
     target=ghost.Get_Controller_Cinetique();
     asservissement.compute(dt);
@@ -33,14 +36,18 @@ void AbsolutelyNotRobot::update(float dt) {
 
 void AbsolutelyNotRobot::printCinetique()
 {
-    cin.print();
+    Serial.print("ROBOT CIN  ");cin.print();Serial.println();
+    Serial.print("GHOST CIN  ");ghost.Get_Controller_Cinetique().print();
 }
 
-AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta) {
+AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta,bool useSimulator) {
+    this->useSimulator=useSimulator;
     cin=Cinetique(x,y,theta);
-    #ifndef SIMULATOR
-    odometrie=Odometrie(TICKS_PER_ROUND,&cin,ELOIGNEMENT_CODEUSES,PIN_CODEUSE_GAUCHE_A,PIN_CODEUSE_GAUCHE_B,DIAMETRE_ROUE_CODEUSE_GAUCHE,PIN_CODEUSE_DROITE_A,PIN_CODEUSE_DROITE_B,DIAMETRE_ROUE_CODEUSE_DROITE);
-    #endif
+    if (not useSimulator)
+    {
+        odometrie=Odometrie(TICKS_PER_ROUND,&cin,ELOIGNEMENT_CODEUSES,PIN_CODEUSE_GAUCHE_A,PIN_CODEUSE_GAUCHE_B,DIAMETRE_ROUE_CODEUSE_GAUCHE,PIN_CODEUSE_DROITE_A,PIN_CODEUSE_DROITE_B,DIAMETRE_ROUE_CODEUSE_DROITE);
+        Serial.println("REAL MODE");
+    }
     motorLeft=Motor(PIN_MOTEUR_GAUCHE_PWR,PIN_MOTEUR_GAUCHE_SENS,10);
     pinMode(PIN_MOTEUR_DROITE_BRAKE,OUTPUT); digitalWrite(PIN_MOTEUR_DROITE_BRAKE,LOW); //Adaptation ancien driver
     motorRight=Motor(PIN_MOTEUR_DROITE_PWR,PIN_MOTEUR_DROITE_SENS,10);
@@ -50,11 +57,13 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta) {
     communication=Communication();
     sequence=Sequence();
     Action::setPointers(&cin,&ghost,&sequence,&communication,&asservissement);
-    sequence.add(Goto_Action(10,2,1,0,0.2,fast));
-    sequence.add(Spin_Action(5,3.14,fast));
-    sequence.add(End_Action());
+    sequence.add(new Goto_Action(10,2,1,0,0.2,fast));
+    sequence.add(new Spin_Action(5,3.14,fast));
+    sequence.add(new End_Action());
+    if (useSimulator)
+    {
+        simu=Simulator(0.30, 4.0, 1.5, 1.3, &cin, &motorLeft.order, &motorRight.order);
+        Serial.println("SIMULATOR MODE");
+    }
     sequence.reStart();
-    #ifdef SIMULATOR
-    simu=Simulator(0.30, 4.0, 1.5, 1.3, &cin, &motorLeft.order, &motorRight.order);
-    #endif // DEBUG
 }

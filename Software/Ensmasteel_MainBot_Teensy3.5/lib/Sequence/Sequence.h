@@ -20,7 +20,7 @@ class Sequence
 {
 private:
     uint8_t globals[TAILLEGLOBALS];
-    Action queue[TAILLESEQUENCE];
+    Action* queue[TAILLESEQUENCE];
     bool fails[TAILLESEQUENCE];
     uint8_t currentIndex;
     uint8_t nextIndex;
@@ -33,7 +33,7 @@ public:
     void setGlobal(uint8_t number, uint8_t value);
     uint8_t getGlobal(uint8_t number);
     Sequence();
-    void add(const Action &action);
+    void add(Action* action);
     void debug();
 };
 

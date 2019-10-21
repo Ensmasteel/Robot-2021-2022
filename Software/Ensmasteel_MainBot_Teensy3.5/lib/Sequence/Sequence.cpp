@@ -4,23 +4,23 @@ void Sequence::startNext()
 {
     currentIndex=nextIndex;
     nextIndex=currentIndex+1;
-    queue[currentIndex].start();
+    queue[currentIndex]->start();
 }
 
 void Sequence::reStart()
 {
     nextIndex=currentIndex+1;
-    queue[currentIndex].start();
+    queue[currentIndex]->start();
 }
 
 void Sequence::update()
 {
-    if (queue[currentIndex].isFinished())
+    if (queue[currentIndex]->isFinished())
     {
         fails[currentIndex]=false;
         startNext();
     }
-    else if (queue[currentIndex].hasFailed())
+    else if (queue[currentIndex]->hasFailed())
     {
         fails[currentIndex]=true;
         Serial.print("Action ");
@@ -64,7 +64,7 @@ Sequence::Sequence()
     lastIndex=-1;
 }
 
-void Sequence::add(const Action &action)
+void Sequence::add(Action* action)
 {
     queue[lastIndex+1]=action;
     lastIndex++;
@@ -73,5 +73,8 @@ void Sequence::add(const Action &action)
 void Sequence::debug()
 {
     Serial.print("Current index: ");
-    Serial.println(currentIndex);
+    Serial.print(currentIndex);Serial.print("\t");
+    for (int i=0;i<=lastIndex;i++)
+        {Serial.print(queue[i]->name);Serial.print("\t");}
+    Serial.println();
 }

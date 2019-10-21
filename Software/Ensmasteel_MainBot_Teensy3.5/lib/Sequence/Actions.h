@@ -11,11 +11,12 @@ class Asservissement;
 class Action //Classe abstraite
 {
 public:    
-    void start() {timeStarted=millis()/1e3;}
-    bool isFinished() {return done;}
-    bool hasFailed() {return millis()/1e3 > timeStarted + timeout;}
+    String name;
+    virtual void start() {timeStarted=millis()/1e3;}
+    virtual bool isFinished() {return done;}
+    virtual bool hasFailed() {return millis()/1e3 > timeStarted + timeout;}
     static void setPointers(Cinetique * robotCinetique,Ghost * ghost, Sequence * sequence, Communication * communication, Asservissement * asser);
-    Action(float timeout=0.1){this->timeout=timeout;done=false;}
+    Action(String name="Action", float timeout=0.1){this->name=name;this->timeout=timeout;done=false;}
 
 protected:
     bool done;
@@ -33,11 +34,11 @@ enum Pace {accurate,standard,fast};
 class Move_Action : public Action //Classe abstraite
 {
 public:
-    void start(); //(Action+Move)Dump les parametres dans le ghost et appelle Action::start()
-    bool isFinished(); //(Move) Verifie que le ghost est arrive et que le robot est sur le ghost
-    bool hasFailed(); //(Action+Move) Verifie que le pid n'a pas retourné d'erreur ou que Action::hasFailed n'est pas true
+    virtual void start(); //(Action+Move)Dump les parametres dans le ghost et appelle Action::start()
+    virtual bool isFinished(); //(Move) Verifie que le ghost est arrive et que le robot est sur le ghost
+    virtual bool hasFailed(); //(Action+Move) Verifie que le pid n'a pas retourné d'erreur ou que Action::hasFailed n'est pas true
     Move_Action(float timeout,VectorE posFinal, float deltaCurve, 
-                Pace pace, bool pureRotation, bool backward);
+                Pace pace, bool pureRotation, bool backward,String name="Move");
 protected:
     VectorE posFinal; 
     float deltaCurve,speedRamps,cruisingSpeed;
@@ -134,7 +135,7 @@ private:
 public:
     Sleep_Action(float timeToWait);
     //start(Action)
-    bool hasFinished(); //(Sleep) verifie que le temps prévu s'est ecoulé
+    bool isFinished(); //(Sleep) verifie que le temps prévu s'est ecoulé
     bool hasFailed(){return false;} //(Sleep) on en peut pas fail d'attendre
 };
 
@@ -145,7 +146,7 @@ private:
 public:
     Wait_Message_Action(Message message, float timeout);
     //start(Action)
-    bool hasFinished(); //(Wait_Message) verifie que le message est recu
+    bool isFinished(); //(Wait_Message) verifie que le message est recu
     //hasFailed(Action)
 };
 

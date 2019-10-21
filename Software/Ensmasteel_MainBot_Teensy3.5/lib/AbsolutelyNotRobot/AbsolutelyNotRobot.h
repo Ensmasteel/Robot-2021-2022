@@ -7,19 +7,14 @@
 #include "Ghost.h"
 #include "PID.h"
 #include "Sequence.h"
-#ifdef SIMULATOR
 #include "Simulator.h"
-#endif
 
 class AbsolutelyNotRobot
 {
 private:
     Cinetique cin;
-    #ifndef SIMULATOR
     Odometrie odometrie;
-    #else
     Simulator simu;
-    #endif
     Motor motorLeft,motorRight;
     Ghost ghost;
     Asservissement asservissement;
@@ -28,11 +23,12 @@ private:
 
     float outTranslation,outRotation;
     Cinetique target;
+    bool useSimulator;
 public:
     void update(float dt);
     void printCinetique();
     void debug(){sequence.debug();}
-    AbsolutelyNotRobot(float x,float y,float theta);
+    AbsolutelyNotRobot(float x,float y,float theta,bool useSimulator);
     AbsolutelyNotRobot(){}
 };
 

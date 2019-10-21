@@ -30,6 +30,8 @@ void Move_Action::start()
     case fast:
         asser->setCurrentProfile(3);
         break;
+    default:
+        Serial.print("Unmatched PID profile");
     }
     ghost->Compute_Trajectory(posFinal, deltaCurve, speedRamps, cruisingSpeed, pureRotation, backward);
     Action::start();
@@ -42,10 +44,10 @@ bool Move_Action::isFinished()
 
 bool Move_Action::hasFailed()
 {
-    return asser->tooFar;
+    return asser->tooFar || Action::hasFailed();
 }
 
-Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace pace, bool pureRotation, bool backward) : Action(timeout)
+Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace pace, bool pureRotation, bool backward,String name) : Action(name,timeout)
 {
     this->posFinal = posFinal;
     this->deltaCurve = deltaCurve;
@@ -70,12 +72,12 @@ Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace
 }
 
 Goto_Action::Goto_Action(float timeout, float x, float y, float theta, float deltaCurve, Pace pace, bool backward)
-    : Move_Action(timeout, VectorE(x, y, theta), deltaCurve, pace, false, backward)
+    : Move_Action(timeout, VectorE(x, y, theta), deltaCurve, pace, false, backward,"Goto")
 { /*Rien a faire d'autre*/
 }
 
 Spin_Action::Spin_Action(float timeout, float theta, Pace pace)
-    : Move_Action(timeout, VectorE(0.0, 0.0, theta), 0.0, pace, true, false) //x et y seront modifié par start
+    : Move_Action(timeout, VectorE(0.0, 0.0, theta), 0.0, pace, true, false,"Spin") //x et y seront modifié par start
 {                                                                            /*Rien a faire d'autre*/
 }
 
@@ -86,7 +88,7 @@ void Spin_Action::start()
     Move_Action::start();
 }
 
-End_Action::End_Action() : Move_Action(0.0, VectorE(0, 0, 0), 0.0, accurate, false, false) // x, y, theta initialize in End_Action::start to current position
+End_Action::End_Action() : Move_Action(0.0, VectorE(0, 0, 0), 0.0, accurate, false, false,"End") // x, y, theta initialize in End_Action::start to current position
 {                                                                                          /*Rien a faire d'autre*/
 }
 
@@ -100,7 +102,7 @@ void End_Action::start()
 
 
 Forward_Action::Forward_Action(float timeout, float dist, Pace pace)
-    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, pace, false, false)
+    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, pace, false, false,"Forward")
 {
     this->dist=dist;
 }
@@ -114,7 +116,7 @@ void Forward_Action::start()
 }
 
 Backward_Action::Backward_Action(float timeout, float dist, Pace pace)
-    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, pace, false, true)
+    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, pace, false, true,"Backward")
 {
     this->dist=dist;
 }
