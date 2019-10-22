@@ -1,6 +1,7 @@
 #include "Actions.h"
 #include "Ghost.h"
 #include "PID.h"
+#define DEBUGSEQUENCE
 
 Cinetique *Action::robotCinetique;
 Ghost *Action::ghost;
@@ -26,6 +27,9 @@ void Action::setPointers(Cinetique *robotCinetique_, Ghost *ghost_, Sequence *se
 
 void Move_Action::start()
 {
+    #ifdef DEBUGSEQUENCE
+    Serial.print("My method start has been called, I am a ");Serial.println(name);
+    #endif
     switch (pace)
     {
     case accurate:
@@ -40,7 +44,14 @@ void Move_Action::start()
     default:
         Serial.print("Unmatched PID profile");
     }
-    ghost->Compute_Trajectory(posFinal, deltaCurve, speedRamps, cruisingSpeed, pureRotation, backward);
+    int err;
+    err = ghost->Compute_Trajectory(posFinal, deltaCurve, speedRamps, cruisingSpeed, pureRotation, backward);
+    #ifdef DEBUGSEQUENCE
+    if (err==0)
+        Serial.println("Computation succeeded");
+    else
+        Serial.println("Computation failed");
+    #endif
     Action::start();
 }
 

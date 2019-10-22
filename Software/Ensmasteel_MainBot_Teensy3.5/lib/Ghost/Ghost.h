@@ -19,7 +19,7 @@ public:
 
     // VARIABLES // Public for debuging purposes, do NOT modify while trajectories running!
 
-    float delayPosition = 100.0;               // [...] = ms, Delay between posCurrent and posDelayed
+    float delayPosition = 40.0;               // [...] = ms, Delay between posCurrent and posDelayed
     float t = 0.0;                             // t : time since new trajectory setup
     VectorE posCurrent, posPrevious, posAim;   // VectorE : struct type containing X,Y,Orientation
     VectorE posDelayed;                        // Position _delayPosition_ ms ago. Used as input for the position controller

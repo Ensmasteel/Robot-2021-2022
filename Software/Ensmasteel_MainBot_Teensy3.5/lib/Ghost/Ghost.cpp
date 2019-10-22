@@ -40,7 +40,7 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
     {
         lengthTrajectory = normalizeAngle(posAim._theta - posCurrent._theta);
         // If the orientation is unchanged or a move is needed
-        if ((abs(lengthTrajectory) < epsilonOrientation) or (normRawMove > epsilonPosition))
+        if ((abs(lengthTrajectory) < epsilonOrientation)) //or (normRawMove > epsilonPosition))---------!!!!!!!------------
         {
             return 1;
         }
@@ -167,6 +167,8 @@ int Ghost::ActuatePosition(float dt)
     {
         if (rotating)
         {
+            posPrevious = posCurrent;
+            
             posCurrent._theta += speedProfileRotation.f(t) * dt * ((lengthTrajectory > 0) ? 1 : -1);
             posCurrent.normalizeTheta();
             posDelayed._theta += speedProfileRotation.f(t_delayed) * dt * ((lengthTrajectory > 0) ? 1 : -1);

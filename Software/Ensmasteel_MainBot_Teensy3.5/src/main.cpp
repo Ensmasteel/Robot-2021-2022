@@ -8,7 +8,6 @@
  *  author : Arthur FINDELAIR - EnsmaSteel, github.com/ArthurFDLR
  *  date : October 2019
 */
-#define SIMULATOR
 // =============================
 // ===       Libraries       ===
 // =============================
@@ -53,7 +52,7 @@ void Rotation_Loop_Test(float dt);
 
 void setup()
 {
-  Serial.begin(250000);
+  Serial.begin(115200);
 
   switch (MODE_TEST)
   {
@@ -74,7 +73,7 @@ void setup()
     break;
   
   case 5:
-    delay(5000);
+    delay(2000);
     Serial.println("Bender's booting up");
     bender=new AbsolutelyNotRobot(0,0,0,true);
     Serial.println("Hello, I'm bender");
@@ -117,7 +116,7 @@ void loop()
     bender->printCinetique();
     Serial.println();
     bender->debug();
-    delay(5);
+    delay(20);
     break;
 
   default:

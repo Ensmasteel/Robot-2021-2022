@@ -13,7 +13,7 @@
 #define SERIALCOMM Serial
 #endif
 
-#define DEBUGCOMM
+//#define DEBUGCOMM
 
 Message newMessage(MessageID id, int32_t data)
 {

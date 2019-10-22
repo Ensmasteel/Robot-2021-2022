@@ -1,9 +1,12 @@
 #include "Sequence.h"
-
+#define DEBUGSEQUENCE
 void Sequence::startNext()
 {
     currentIndex=nextIndex;
     nextIndex=currentIndex+1;
+    #ifdef DEBUGSEQUENCE
+    Serial.println("Sequence is calling start method of an Action: ");Serial.println(queue[currentIndex]->name);
+    #endif
     queue[currentIndex]->start();
 }
 
@@ -18,6 +21,11 @@ void Sequence::update()
     if (queue[currentIndex]->isFinished())
     {
         fails[currentIndex]=false;
+        #ifdef DEBUGSEQUENCE
+        Serial.print("Action ");
+        Serial.print(currentIndex);
+        Serial.print(" succeded !\n");
+        #endif
         startNext();
     }
     else if (queue[currentIndex]->hasFailed())
@@ -72,9 +80,11 @@ void Sequence::add(Action* action)
 
 void Sequence::debug()
 {
+    #ifdef DEBUGSEQUENCE
     Serial.print("Current index: ");
     Serial.print(currentIndex);Serial.print("\t");
     for (int i=0;i<=lastIndex;i++)
         {Serial.print(queue[i]->name);Serial.print("\t");}
     Serial.println();
+    #endif
 }
