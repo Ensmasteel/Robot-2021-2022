@@ -61,9 +61,9 @@ void Vector::print()
 {
     Serial.print("x= ");
     Serial.print(_x);
-    Serial.print("\t|y= ");
+    Serial.print(" |y= ");
     Serial.print(_y);
-    Serial.print("\t|");
+    Serial.print(" |");
 }
 
 bool Vector::operator==(Vector const &other)
@@ -95,8 +95,10 @@ void VectorE::print()
 {
     Vector::print();
     Serial.print("theta= ");
+    if(_theta>=0)
+        Serial.print("+");
     Serial.print(_theta);
-    Serial.print("\t|");
+    Serial.print(" |");
 }
 
 bool VectorE::operator==(VectorE const &other)
@@ -115,9 +117,14 @@ void Cinetique::print()
 {
     VectorE::print();
     Serial.print("v= ");
+    if (_v>=0)
+        Serial.print("+");
     Serial.print(_v);
-    Serial.print("\t|w= ");
+    Serial.print(" |w= ");
+    if (_w>=0)
+        Serial.print("+");
     Serial.print(_w);
+    Serial.print(" |");
 }
 
 bool Cinetique::operator==(Cinetique const &other)

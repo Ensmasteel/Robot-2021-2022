@@ -1,6 +1,10 @@
 #include "Ghost.h"
 #include "Arduino.h"
 
+#ifdef STM32L152xE
+#define max(a,b) (((a)>(b))?(a):(b))
+#endif
+
 Ghost::Ghost(VectorE posEIni)
 {
     posCurrent = posEIni;

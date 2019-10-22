@@ -1,9 +1,19 @@
 #ifndef CODEUSE_H_
 #define CODEUSE_H_
 
-#include "Arduino.h"
-#include <Encoder.h>
 #include "Vector.h"
+#include "Arduino.h"
+
+#ifndef STM32L152xE
+#include <Encoder.h>
+#else // !STM32L152xE
+class Encoder
+{
+public:
+    Encoder(uint8_t pinA, uint8_t pinB) {}
+    int32_t read() { return 0; }
+};
+#endif
 
 class Codeuse
 {
@@ -24,18 +34,16 @@ public:
 class Odometrie
 {
 private:
-    Codeuse codeuseGauche,codeuseDroite;
-    Cinetique * cinetique;
+    Codeuse codeuseGauche, codeuseDroite;
+    Cinetique *cinetique;
     float eloignementCodeuses;
 
 public:
     void updateCinetique(float dt);
-    Odometrie(uint16_t ticksPerRound, Cinetique * cinetique, float eloignementCodeuses,
-     uint8_t pinACodeuseGauche, uint8_t pinBCodeuseGauche, float diametreRoueGauche,
-     uint8_t pinACodeuseDroite, uint8_t pinBCodeuseDroite, float diametreRoueDroite);
-    Odometrie(){}
-
+    Odometrie(uint16_t ticksPerRound, Cinetique *cinetique, float eloignementCodeuses,
+              uint8_t pinACodeuseGauche, uint8_t pinBCodeuseGauche, float diametreRoueGauche,
+              uint8_t pinACodeuseDroite, uint8_t pinBCodeuseDroite, float diametreRoueDroite);
+    Odometrie() {}
 };
-
 
 #endif

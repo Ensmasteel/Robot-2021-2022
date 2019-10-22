@@ -15,21 +15,22 @@ private:
     Cinetique cin;
     Odometrie odometrie;
     Simulator simu;
-    Motor motorLeft,motorRight;
-    Ghost ghost;    
+    Motor motorLeft, motorRight;
+    Ghost ghost;
     Asservissement asservissement;
     Communication communication;
     Sequence sequence;
 
-    float outTranslation,outRotation;
+    float outTranslation, outRotation;
     Cinetique target;
     bool useSimulator;
+
 public:
     void update(float dt);
     void printCinetique();
-    void debug(){sequence.debug();}
-    AbsolutelyNotRobot(float x,float y,float theta,bool useSimulator);
-    AbsolutelyNotRobot(){}
+    void debug(bool robotCin = false, bool ghostCin = false, bool actionState = false, bool currentIndex = false, bool sequence = false);
+    AbsolutelyNotRobot(float x, float y, float theta, bool useSimulator);
+    AbsolutelyNotRobot() {}
 };
 
 #endif // !ABSOLUTELYNOTROBOT_H_

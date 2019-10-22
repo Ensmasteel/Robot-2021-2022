@@ -1,7 +1,7 @@
 #ifndef PID_H_
 #define PID_H_
 #define NBPROFILES 5
-#define TIMETOOFAR 0.2  //Temps qu'il faut rester trop loin pour etre considere tooFar
+#define TIMETOOFAR 0.2 //Temps qu'il faut rester trop loin pour etre considere tooFar
 #include "Filtre.h"
 #include "Vector.h"
 
@@ -42,8 +42,9 @@ class Asservissement
 {
     PID pidTranslation;
     PID pidRotation;
-    Cinetique *cGhost,*cRobot;
+    Cinetique *cGhost, *cRobot;
     float *outTranslation, *outRotation;
+
 public:
     bool close;           // Est ce qu'on est proche a la fois en position (projetée) ET en theta
                           //Il faut regarder la position projetée car le PID ne pourra rien y faire si on est à coté
@@ -54,8 +55,8 @@ public:
     void compute(float dt);
     void compute_dev(float dt);
     void setCurrentProfile(uint8_t id);
-    Asservissement(float *outTranslation, float *outRotation, Cinetique * cRobot, Cinetique * cGhost,float frequency);
-    Asservissement(){}
+    Asservissement(float *outTranslation, float *outRotation, Cinetique *cRobot, Cinetique *cGhost, float frequency);
+    Asservissement() {}
 };
 
 #endif

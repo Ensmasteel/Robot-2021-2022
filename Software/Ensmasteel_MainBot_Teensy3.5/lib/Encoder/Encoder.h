@@ -24,7 +24,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
+#ifdef STM32L152xE
+#define Encoder_h_
+#endif
 
 #ifndef Encoder_h_
 #define Encoder_h_

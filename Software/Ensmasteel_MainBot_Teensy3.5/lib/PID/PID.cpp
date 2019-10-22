@@ -47,7 +47,6 @@ float PID::compute(float xTarget, float dxTarget, float x, float dx, float dt)
     dxF.in(dx, dt);
     dError = dxTarget - dxF.out();
     iTerm += error * dt;
-    Serial.print("error ");Serial.print(abs(error));Serial.print(" epsilon ");Serial.println(PIDProfiles[currentProfile].epsilon);
     close = (abs(error) <= PIDProfiles[currentProfile].epsilon) && (abs(dError) <= PIDProfiles[currentProfile].dEpsilon);
     if (abs(error) > PIDProfiles[currentProfile].maxErr)
         timeTooFar += dt;
@@ -56,10 +55,7 @@ float PID::compute(float xTarget, float dxTarget, float x, float dx, float dt)
 
     tooFar = timeTooFar > TIMETOOFAR;
     return constrain(
-        PIDProfiles[currentProfile].KP * error 
-        + PIDProfiles[currentProfile].KI * iTerm 
-        + PIDProfiles[currentProfile].KD * dError
-        , -1.0, 1.0);
+        PIDProfiles[currentProfile].KP * error + PIDProfiles[currentProfile].KI * iTerm + PIDProfiles[currentProfile].KD * dError, -1.0, 1.0);
 }
 
 PID::PID(bool modulo360, float frequency)
@@ -85,13 +81,10 @@ void Asservissement::compute(float dt)
         lagBehind = sqrt(lagBehind);
 
     needToGoForward = (lagBehind > 0);
-    Serial.println("Translation");
     *outTranslation = pidTranslation.compute(lagBehind, cGhost->_v, 0, cRobot->_v, dt);
-    Serial.println("Rotation");
     *outRotation = pidRotation.compute(cGhost->_theta, cGhost->_w, cRobot->_theta, cRobot->_w, dt);
-    Serial.print("pidT close ");Serial.print(pidTranslation.close);Serial.print("pidR close ");Serial.println(pidRotation.close);
     close = pidTranslation.close && pidRotation.close;
-    tooFar = pidTranslation.tooFar || pidRotation.tooFar || (*cGhost - *cRobot).norm()>pidTranslation.getCurrentProfile().epsilon;
+    tooFar = pidTranslation.tooFar || pidRotation.tooFar || (*cGhost - *cRobot).norm() > pidTranslation.getCurrentProfile().epsilon;
 }
 
 void Asservissement::compute_dev(float dt)
@@ -106,11 +99,11 @@ void Asservissement::compute_dev(float dt)
         lagBehind = sqrt(lagBehind);
 
     float thetaToReachGhost;
-    Vector interception=*cGhost + directeur(cGhost->_theta)*cGhost->_v*0.5 - *cRobot; //On vise un peu en avance du ghost
-    if (lagBehind>0)
-        thetaToReachGhost=normalizeAngle(interception.angle());
+    Vector interception = *cGhost + directeur(cGhost->_theta) * cGhost->_v * 0.5 - *cRobot; //On vise un peu en avance du ghost
+    if (lagBehind > 0)
+        thetaToReachGhost = normalizeAngle(interception.angle());
     else
-        thetaToReachGhost=normalizeAngle(interception.angle() + PI);
+        thetaToReachGhost = normalizeAngle(interception.angle() + PI);
 
     needToGoForward = (lagBehind > 0);
 
@@ -118,38 +111,37 @@ void Asservissement::compute_dev(float dt)
 
     //Plus on est pres, plus le but est de mimer le theta du Ghost
     //Plus on est loin (deltaPos.norm()), plus le but est de rejoindre le Ghost
-    float farFromGhost = constrain(deltaPos.norm()/RECONVERGENCE*abs(cGhost->_v*5),0,1);
-    *outRotation = pidRotation.compute((1-farFromGhost)*cGhost->_theta + farFromGhost*thetaToReachGhost , cGhost->_w, cRobot->_theta , cRobot->_w, dt);
+    float farFromGhost = constrain(deltaPos.norm() / RECONVERGENCE * abs(cGhost->_v * 5), 0, 1);
+    *outRotation = pidRotation.compute((1 - farFromGhost) * cGhost->_theta + farFromGhost * thetaToReachGhost, cGhost->_w, cRobot->_theta, cRobot->_w, dt);
 
     close = pidTranslation.close && pidRotation.close;
-    tooFar = pidTranslation.tooFar || pidRotation.tooFar || (*cGhost - *cRobot).norm()>pidTranslation.getCurrentProfile().epsilon;
+    tooFar = pidTranslation.tooFar || pidRotation.tooFar || (*cGhost - *cRobot).norm() > pidTranslation.getCurrentProfile().epsilon;
 }
 
-Asservissement::Asservissement(float* outTranslation, float* outRotation, Cinetique * cRobot, Cinetique * cGhost,float frequency)
+Asservissement::Asservissement(float *outTranslation, float *outRotation, Cinetique *cRobot, Cinetique *cGhost, float frequency)
 {
     pidRotation = PID(true, frequency);
     pidTranslation = PID(false, frequency);
-    this->outTranslation=outTranslation;
-    this->outRotation=outRotation;
-    this->cRobot=cRobot;
-    this->cGhost=cGhost;
+    this->outTranslation = outTranslation;
+    this->outRotation = outRotation;
+    this->cRobot = cRobot;
+    this->cGhost = cGhost;
     this->tooFar = false;
     this->close = true;
     this->needToGoForward = false;
 
     //Définition des différents profils
-    pidRotation.setPIDProfile(0, newPIDProfile(0,0,0,0,0,100)); //OFF
-    pidRotation.setPIDProfile(0, newPIDProfile(0,0,0,0,0,100)); //OFF
+    pidRotation.setPIDProfile(0, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
+    pidRotation.setPIDProfile(0, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
 
-    pidRotation.setPIDProfile(1, newPIDProfile(4, 0.5, 8, 0.05, 0.01, 0.01)); //Accurate
+    pidRotation.setPIDProfile(1, newPIDProfile(4, 0.5, 8, 0.05, 0.01, 0.01));  //Accurate
     pidTranslation.setPIDProfile(1, newPIDProfile(6, 3, 35, 0.15, 0.05, 0.1)); //Accurate
 
-    pidRotation.setPIDProfile(2, newPIDProfile(4, 0.5, 8, 0.05, 0.01, 0.01)); //Standard
+    pidRotation.setPIDProfile(2, newPIDProfile(4, 0.5, 8, 0.05, 0.01, 0.01));  //Standard
     pidTranslation.setPIDProfile(2, newPIDProfile(6, 3, 35, 0.15, 0.05, 0.1)); //Standard
 
-    pidRotation.setPIDProfile(3, newPIDProfile(4, 0.5, 8, 0.05, 0.01, 0.01)); //Fast
+    pidRotation.setPIDProfile(3, newPIDProfile(4, 0.5, 8, 0.05, 0.01, 0.01));  //Fast
     pidTranslation.setPIDProfile(3, newPIDProfile(6, 3, 35, 0.15, 0.05, 0.1)); //Fast
-
 }
 
 void Asservissement::setCurrentProfile(uint8_t id)

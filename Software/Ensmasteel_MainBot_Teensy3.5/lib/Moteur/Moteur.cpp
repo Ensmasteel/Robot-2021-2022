@@ -57,8 +57,8 @@ void Motor::actuate()
 Motor::Motor(uint8_t pinPWR, uint8_t pinSens, uint8_t bitResolution)
 {
 
-this->bitResolution = bitResolution;
-this->maxPwm = (uint16_t)round(pow(2, bitResolution)) - 1;
+    this->bitResolution = bitResolution;
+    this->maxPwm = (uint16_t)round(pow(2, bitResolution)) - 1;
 #ifdef TEENSY35
     analogWriteResolution(bitResolution);
     analogWriteFrequency(pinPWR, idealFrequency(bitResolution));

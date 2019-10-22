@@ -101,15 +101,19 @@ void Communication::update()
         millisLastSend = millis();
     }
 
-    #ifdef DEBUGCOMM
-    Serial.print("In hardware buffer "); Serial.println(SERIALCOMM.available());
-    Serial.print("In my buffer "); Serial.println(receiveBox.size());
-    if (receiveBox.size()==1)
+#ifdef DEBUGCOMM
+    Serial.print("In hardware buffer ");
+    Serial.println(SERIALCOMM.available());
+    Serial.print("In my buffer ");
+    Serial.println(receiveBox.size());
+    if (receiveBox.size() == 1)
     {
-        Serial.print("Id = ");Serial.println(receiveBox.peek().ID);
-        Serial.print("Value = ");Serial.println(receiveBox.peek().data);
+        Serial.print("Id = ");
+        Serial.println(receiveBox.peek().ID);
+        Serial.print("Value = ");
+        Serial.println(receiveBox.peek().data);
     }
-    #endif
+#endif
 }
 
 void Communication::send(Message message)
