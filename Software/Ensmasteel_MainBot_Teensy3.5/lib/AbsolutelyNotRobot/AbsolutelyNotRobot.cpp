@@ -32,6 +32,8 @@ void AbsolutelyNotRobot::update(float dt) {
     asservissement.compute(dt);
     motorLeft.setOrder(outTranslation-outRotation);
     motorRight.setOrder(outTranslation+outRotation);
+    motorLeft.actuate();
+    motorRight.actuate();
     sequence.update();
     if (communication.inWaiting()>0)
         communication.pullOldestMessage(); //Tout le monde a eu l'occasion de le peek, on le vire.
@@ -61,8 +63,9 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta,bool useSim
     sequence=Sequence();
     Action::setPointers(&cin,&ghost,&sequence,&communication,&asservissement);
     //sequence.add(new Wait_Message_Action(Tirette,-1));
-    sequence.add(new Goto_Action(20,2,1,0,0.2,fast));
-    sequence.add(new Spin_Action(20,3.14,fast));
+    sequence.add(new Goto_Action(-1,1,0.5,0,0.2,accurate));
+    sequence.add(new Spin_Action(-1,3.14,accurate));
+    sequence.add(new Goto_Action(-1,0.0,0.0,3.14,0.2,accurate));
     sequence.add(new End_Action());
     if (useSimulator)
     {

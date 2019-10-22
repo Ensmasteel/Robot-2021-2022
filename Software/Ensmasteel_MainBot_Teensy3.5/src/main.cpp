@@ -75,7 +75,7 @@ void setup()
   case 5:
     delay(2000);
     Serial.println("Bender's booting up");
-    bender=new AbsolutelyNotRobot(0,0,0,true);
+    bender=new AbsolutelyNotRobot(0,0,0,false);
     Serial.println("Hello, I'm bender");
     bender->debug();
 

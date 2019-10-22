@@ -57,6 +57,7 @@ void Move_Action::start()
 
 bool Move_Action::isFinished()
 {
+    Serial.print("GHOST HAS FINISHED");Serial.println(ghost->trajectoryIsFinished());
     return ghost->trajectoryIsFinished() && asser->close;
 }
 

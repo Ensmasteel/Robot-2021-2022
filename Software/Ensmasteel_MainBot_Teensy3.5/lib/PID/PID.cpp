@@ -141,11 +141,11 @@ Asservissement::Asservissement(float* outTranslation, float* outRotation, Cineti
     pidRotation.setPIDProfile(0, newPIDProfile(0,0,0,0,0,100)); //OFF
     pidRotation.setPIDProfile(0, newPIDProfile(0,0,0,0,0,100)); //OFF
 
-    pidRotation.setPIDProfile(1, newPIDProfile(3, 0, 7, 0.001, 0.001, 0.01)); //Accurate
-    pidTranslation.setPIDProfile(1, newPIDProfile(3, 0, 30,  0.01, 0.01, 0.1)); //Accurate
+    pidRotation.setPIDProfile(1, newPIDProfile(4, 0.5, 8, 0.05, 0.01, 0.01)); //Accurate
+    pidTranslation.setPIDProfile(1, newPIDProfile(6, 3, 35, 0.15, 0.05, 0.1)); //Accurate
 
-    pidRotation.setPIDProfile(2, newPIDProfile(3, 0, 7, 0.001, 0.001, 0.01)); //Standard
-    pidTranslation.setPIDProfile(2, newPIDProfile(3, 0, 30,  0.01, 0.01, 0.1)); //Standard
+    pidRotation.setPIDProfile(2, newPIDProfile(4, 0.5, 8, 0.05, 0.01, 0.01)); //Standard
+    pidTranslation.setPIDProfile(2, newPIDProfile(6, 3, 35, 0.15, 0.05, 0.1)); //Standard
 
     pidRotation.setPIDProfile(3, newPIDProfile(4, 0.5, 8, 0.05, 0.01, 0.01)); //Fast
     pidTranslation.setPIDProfile(3, newPIDProfile(6, 3, 35, 0.15, 0.05, 0.1)); //Fast
