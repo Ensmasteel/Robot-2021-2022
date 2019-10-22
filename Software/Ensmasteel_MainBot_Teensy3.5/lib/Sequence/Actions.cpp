@@ -1,7 +1,7 @@
 #include "Actions.h"
 #include "Ghost.h"
 #include "PID.h"
-#define DEBUGSEQUENCE
+//#define DEBUGSEQUENCE
 
 Cinetique *Action::robotCinetique;
 Ghost *Action::ghost;

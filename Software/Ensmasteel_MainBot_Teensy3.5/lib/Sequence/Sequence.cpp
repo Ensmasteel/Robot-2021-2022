@@ -1,5 +1,6 @@
 #include "Sequence.h"
 #define DEBUGSEQUENCE
+
 void Sequence::startNext()
 {
     currentIndex=nextIndex;

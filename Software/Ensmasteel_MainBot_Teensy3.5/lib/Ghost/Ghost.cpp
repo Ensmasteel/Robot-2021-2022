@@ -28,8 +28,11 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
     posAim = posFinal;
     t = 0.0;
     t_e = 0.0;
+    t_e_delayed=0.0;
+    t_delayed=0.0;
     rotating = pureRotation;
     backward = goBackward;
+    trajectoryFinished=false;
 
     posAim.normalizeTheta();
     posCurrent.normalizeTheta();
@@ -147,6 +150,8 @@ int Ghost::failSafe_position()
 
     if (t_e_delayed > 1.0)
     {
+        trajectoryFinished = true;
+        
         if (posCurrent == posAim)
             trajectoryFinished = true;
         else
@@ -163,7 +168,7 @@ int Ghost::ActuatePosition(float dt)
     t += dt;
     t_delayed = ((t > delayPosition / 1e3) ? t - delayPosition / 1e3 : 0.0);
 
-    if ((!locked) and (t_e_delayed < 1.0))
+    if ((!locked) and (t_e_delayed <= 1.0))
     {
         if (rotating)
         {
@@ -205,7 +210,8 @@ int Ghost::ActuatePosition(float dt)
             {
                 errorStatus = 1;
             }
-            t_e_delayed = ((t_e_delayed > 1.0) ? 1.0 : t_e_delayed);
+            
+            // t_e_delayed = ((t_e_delayed > 1.0) ? 1.0 : t_e_delayed);
 
             // Compute positions
             posPrevious = posCurrent;
