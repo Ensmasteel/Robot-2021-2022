@@ -62,15 +62,15 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta, bool useSi
     sequence = Sequence();
     Action::setPointers(&cin, &ghost, &sequence, &communication, &asservissement);
     //sequence.add(new Wait_Message_Action(Tirette,-1));
-    sequence.add(new Spin_Action(-1, 1.57, Pace::standard));
-    sequence.add(new Goto_Action(-1, 1, 0.5, 0, 0.2, Pace::standard));
-    sequence.add(new Spin_Action(-1, 3.14, standard));
-    sequence.add(new Goto_Action(-1, 0.0, 0.0, 3.14, 0.2, standard));
-    sequence.add(new Spin_Action(-1, 0.0, standard));
+    sequence.add(new Spin_Action(-1, 1.57, fast));
+    sequence.add(new Goto_Action(-1, 1, 0.5, 0, 0.2, fast));
+    sequence.add(new Spin_Action(-1, 3.14, fast));
+    sequence.add(new Goto_Action(-1, 0.0, 0.0, 3.14, 0.2, fast));
+    sequence.add(new Spin_Action(-1, 0.0, fast));
     sequence.add(new End_Action());
     if (useSimulator)
     {
-        simu = Simulator(0.30, 6.0, 3.5, 1.5, &cin, &motorLeft.order, &motorRight.order);
+        simu = Simulator(0.30, 10.0, 6.5, 1.5, &cin, &motorLeft.order, &motorRight.order);
         Serial.println("SIMULATOR MODE");
     }
     sequence.reStart();

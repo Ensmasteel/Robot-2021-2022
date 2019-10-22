@@ -1,13 +1,14 @@
 #include "PID.h"
 #define RECONVERGENCE 0.05
 //SI le robot est eloigné de plus de RECONVERGENCE metres, le PID angulaire s'occupe a 100% de rejoindre le ghost, pas de mimer le theta
+#define SIMULATOR
 
 PIDProfile newPIDProfile(float KP, float KI, float KD, float epsilon, float dEpsilon, float maxErr)
 {
     PIDProfile out;
-    out.KP = KP;
-    out.KI = KI;
-    out.KD = KD;
+    out.KP = KP/4095.0; //Pour coller a l'ancien robot
+    out.KI = KI/4095.0; //Pour coller a l'ancien robot
+    out.KD = KD/4095.0; //Pour coller a l'ancien robot
     out.epsilon = epsilon;
     out.dEpsilon = dEpsilon;
     out.maxErr = maxErr;
@@ -131,17 +132,31 @@ Asservissement::Asservissement(float *outTranslation, float *outRotation, Cineti
     this->needToGoForward = false;
 
     //Définition des différents profils
+    #ifdef SIMULATOR
     pidRotation.setPIDProfile(0, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
     pidRotation.setPIDProfile(0, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
 
-    pidRotation.setPIDProfile(1, newPIDProfile(4, 0.5, 8, 0.05, 0.01, 0.01));  //Accurate
-    pidTranslation.setPIDProfile(1, newPIDProfile(6, 3, 35, 0.15, 0.05, 0.1)); //Accurate
+    pidRotation.setPIDProfile(1, newPIDProfile(3500, 300, 500, 0.05, 0.01, 0.01));  //Accurate
+    pidTranslation.setPIDProfile(1, newPIDProfile(3500, 300, 1000, 0.15, 0.05, 0.1)); //Accurate
 
-    pidRotation.setPIDProfile(2, newPIDProfile(4, 0.5, 8, 0.05, 0.01, 0.01));  //Standard
-    pidTranslation.setPIDProfile(2, newPIDProfile(6, 3, 35, 0.15, 0.05, 0.1)); //Standard
+    pidRotation.setPIDProfile(2, newPIDProfile(3500, 300, 500, 0.05, 0.01, 0.01));  //Standard
+    pidTranslation.setPIDProfile(2, newPIDProfile(3500, 300, 1000, 0.15, 0.05, 0.1)); //Standard
 
-    pidRotation.setPIDProfile(3, newPIDProfile(4, 0.5, 8, 0.05, 0.01, 0.01));  //Fast
-    pidTranslation.setPIDProfile(3, newPIDProfile(6, 3, 35, 0.15, 0.05, 0.1)); //Fast
+    pidRotation.setPIDProfile(3, newPIDProfile(1920, 300, 100, 0.05, 0.01, 0.01));  //Fast
+    pidTranslation.setPIDProfile(3, newPIDProfile(1200, 100, 2500, 0.15, 0.05, 0.1)); //Fast
+    #else
+    pidRotation.setPIDProfile(0, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
+    pidRotation.setPIDProfile(0, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
+
+    pidRotation.setPIDProfile(1, newPIDProfile(3500, 300, 500, 0.05, 0.01, 0.01));  //Accurate
+    pidTranslation.setPIDProfile(1, newPIDProfile(3500, 300, 1000, 0.15, 0.05, 0.1)); //Accurate
+
+    pidRotation.setPIDProfile(2, newPIDProfile(3500, 300, 500, 0.05, 0.01, 0.01));  //Standard
+    pidTranslation.setPIDProfile(2, newPIDProfile(3500, 300, 1000, 0.15, 0.05, 0.1)); //Standard
+
+    pidRotation.setPIDProfile(3, newPIDProfile(1920, 300, 100, 0.05, 0.01, 0.01));  //Fast
+    pidTranslation.setPIDProfile(3, newPIDProfile(1200, 100, 2500, 0.15, 0.05, 0.1)); //Fast
+    #endif
 }
 
 void Asservissement::setCurrentProfile(uint8_t id)
