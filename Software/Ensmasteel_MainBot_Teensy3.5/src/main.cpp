@@ -31,10 +31,10 @@ void setup()
 void loop()
 {
   currentMillis=millis();
-  if (true || (currentMillis-lastMillis)/1e3 > 1.0/FREQUENCY)
+  if ((currentMillis-lastMillis)/1e3 > 1.0/FREQUENCY)//ATTENTIONNNNNNNN
   {
     bender->update(1.0/FREQUENCY);
-    bender->debug(true,true,true,true);
+    bender->debug(true,true,true,true);//ATTENTIONNNNNNNN
     lastMillis=currentMillis;
   }
 }

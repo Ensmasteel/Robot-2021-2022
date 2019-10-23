@@ -87,6 +87,11 @@ Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace
         this->cruisingSpeed = 1;
         break;
     }
+    if (pureRotation)
+    {
+        this->speedRamps*=3.14;
+        this->cruisingSpeed*=3.14;  //Un robot qui avance a 1m/s est aussi impressionnant qu'un robot qui fait un demi tour par seconde
+    }
 }
 
 Goto_Action::Goto_Action(float timeout, float x, float y, float theta, float deltaCurve, Pace pace, bool backward)

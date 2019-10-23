@@ -1,7 +1,7 @@
 #include "PID.h"
 #define RECONVERGENCE 0.05
 //SI le robot est eloigné de plus de RECONVERGENCE metres, le PID angulaire s'occupe a 100% de rejoindre le ghost, pas de mimer le theta
-#define SIMULATOR
+//#define SIMULATOR
 
 PIDProfile newPIDProfile(float KP, float KI, float KD, float epsilon, float dEpsilon, float maxErr)
 {
@@ -137,8 +137,8 @@ Asservissement::Asservissement(float *outTranslation, float *outRotation, Cineti
     pidRotation.setPIDProfile(0, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
     pidRotation.setPIDProfile(0, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
 
-    pidRotation.setPIDProfile(1, newPIDProfile(3500, 300, 4000, 0.05, 0.01, 0.01));    //Accurate
-    pidTranslation.setPIDProfile(1, newPIDProfile(3500, 300, 6000, 0.15, 0.05, 0.1)); //Accurate
+    pidRotation.setPIDProfile(1, newPIDProfile(6000, 500, 500, 0.05, 0.01, 0.01));    //Accurate
+    pidTranslation.setPIDProfile(1, newPIDProfile(5000, 500, 1000, 0.15, 0.05, 0.1)); //Accurate
 
     pidRotation.setPIDProfile(2, newPIDProfile(3500, 300, 500, 0.05, 0.01, 0.01));    //Standard
     pidTranslation.setPIDProfile(2, newPIDProfile(3500, 300, 1000, 0.15, 0.05, 0.1)); //Standard
@@ -149,11 +149,11 @@ Asservissement::Asservissement(float *outTranslation, float *outRotation, Cineti
     pidRotation.setPIDProfile(0, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
     pidRotation.setPIDProfile(0, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
 
-    pidRotation.setPIDProfile(1, newPIDProfile(3500, 300, 500, 0.05, 0.01, 0.01));    //Accurate
-    pidTranslation.setPIDProfile(1, newPIDProfile(3500, 300, 1000, 0.15, 0.05, 0.1)); //Accurate
+    pidRotation.setPIDProfile(1, newPIDProfile(6000, 500, 500, 0.05, 0.01, 0.01));    //Accurate
+    pidTranslation.setPIDProfile(1, newPIDProfile(5000, 500, 1000, 0.15, 0.05, 0.1)); //Accurate
 
-    pidRotation.setPIDProfile(2, newPIDProfile(3500, 300, 500, 0.05, 0.01, 0.01));    //Standard
-    pidTranslation.setPIDProfile(2, newPIDProfile(3500, 300, 1000, 0.15, 0.05, 0.1)); //Standard
+    pidRotation.setPIDProfile(2, newPIDProfile(5000, 300, 500, 0.05, 0.01, 0.01));    //Standard
+    pidTranslation.setPIDProfile(2, newPIDProfile(4000, 300, 1000, 0.15, 0.05, 0.1)); //Standard
 
     pidRotation.setPIDProfile(3, newPIDProfile(1920, 300, 100, 0.05, 0.01, 0.01));    //Fast
     pidTranslation.setPIDProfile(3, newPIDProfile(1200, 100, 2500, 0.15, 0.05, 0.1)); //Fast
