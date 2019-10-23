@@ -62,11 +62,11 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta, bool useSi
     sequence = Sequence();
     Action::setPointers(&cin, &ghost, &sequence, &communication, &asservissement);
     //sequence.add(new Wait_Message_Action(Tirette,-1));
-    sequence.add(new Spin_Action(-1, 1.57, fast));
-    sequence.add(new Goto_Action(-1, 1, 0.5, 0, 0.2, fast));
-    sequence.add(new Spin_Action(-1, 3.14, fast));
-    sequence.add(new Goto_Action(-1, 0.0, 0.0, 3.14, 0.2, fast));
-    sequence.add(new Spin_Action(-1, 0.0, fast));
+    sequence.add(new Spin_Action(-1, 1.57, accurate));
+    sequence.add(new Goto_Action(-1, 1, 0.5, 0, 0.8, accurate));
+    sequence.add(new Spin_Action(-1, 3.14, accurate));
+    sequence.add(new Goto_Action(-1, 0.0, 0.0, 3.14, 0.2, accurate));
+    sequence.add(new Spin_Action(-1, 0.0, accurate));
     sequence.add(new End_Action());
     if (useSimulator)
     {

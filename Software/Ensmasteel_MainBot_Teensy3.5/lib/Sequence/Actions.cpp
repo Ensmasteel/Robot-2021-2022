@@ -75,15 +75,15 @@ Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace
     switch (pace)
     {
     case accurate:
-        this->speedRamps = 0.5;
+        this->speedRamps = 0.2;
         this->cruisingSpeed = 0.1;
         break;
     case standard:
-        this->speedRamps = 2;
+        this->speedRamps = 1.0;
         this->cruisingSpeed = 0.5;
         break;
     case fast:
-        this->speedRamps = 3;
+        this->speedRamps = 2.0;
         this->cruisingSpeed = 1;
         break;
     }
@@ -134,7 +134,7 @@ void Backward_Action::start()
     Move_Action::start();
 }
 
-End_Action::End_Action() : Move_Action(0.0, VectorE(0, 0, 0), 0.0, accurate, false, false, "End") // x, y, theta initialize in End_Action::start to current position
+End_Action::End_Action() : Move_Action(-1, VectorE(0, 0, 0), 0.01, accurate, false, false, "End") // x, y, theta initialize in End_Action::start to current position
 {                                                                                                 /*Rien a faire d'autre*/
 }
 
