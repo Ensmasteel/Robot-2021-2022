@@ -144,7 +144,7 @@ void Ghost::Lock(bool state)
 int Ghost::failSafe_position()
 {
     uint8_t errorState = 0;
-
+    Serial.println(t_e_delayed);
     if (speedLinearCurrent > MAX_SPEED)
     {
         locked = true;
@@ -152,14 +152,14 @@ int Ghost::failSafe_position()
         errorState = 1;
     }
 
-    if (t_e_delayed > 1.0)
+    if (t_e_delayed >= 0.98)
     {
-        trajectoryFinished = true;
-        
-        if (posCurrent == posAim)
+        if (t_e_delayed>=0.999 || (posCurrent == posPrevious))
             trajectoryFinished = true;
-        else
-            errorState = 1;
+        
+
+//        else
+//            errorState = 1;
     }
 
     return errorState;
@@ -168,10 +168,8 @@ int Ghost::failSafe_position()
 int Ghost::ActuatePosition(float dt)
 {
     int errorStatus = 0;
-
     t += dt;
     t_delayed = ((t > delayPosition / 1e3) ? t - delayPosition / 1e3 : 0.0);
-
     if ((!locked) and (t_e_delayed <= 1.0))
     {
         if (rotating)

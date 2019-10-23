@@ -68,7 +68,7 @@ void Vector::print()
 
 bool Vector::operator==(Vector const &other)
 {
-    return (abs(_x - other._x) <= 1e-9) && (abs(_y - other._y) <= 1e-9);
+    return (abs(_x - other._x) <= 1e-6) && (abs(_y - other._y) <= 1e-6);
 }
 
 float Vector::angle()
