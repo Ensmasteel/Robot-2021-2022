@@ -24,7 +24,7 @@ void setup()
   Serial.begin(115200);
   delay(2000);
   Serial.println("Bender's booting up");
-  bender=new AbsolutelyNotRobot(0,0,0,false);
+  bender=new AbsolutelyNotRobot(0,0,0,true);
   Serial.println("Hello, I'm bender");
 }
 

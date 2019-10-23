@@ -8,6 +8,8 @@ Sequence *Action::sequence;
 Communication *Action::communication;
 Asservissement *Action::asser;
 
+//========================================ACTION GENERIQUES========================================
+
 bool Action::hasFailed()
 {
     if (timeout < 0)
@@ -24,22 +26,43 @@ void Action::setPointers(Cinetique *robotCinetique_, Ghost *ghost_, Sequence *se
     asser = asser_;
 }
 
+void Double_Action::start()
+{
+    action1->start();
+    Action::start();
+}
+
+bool Double_Action::isFinished()
+{
+    if (action2->hasStarted())
+        return action2->isFinished();
+    else //On s'occupe de action1
+    {
+        if (action1->isFinished()) //Il faut passer à 2
+            action2->start();
+        return false;
+    }
+}
+
+bool Double_Action::hasFailed()
+{
+    if (action2->hasStarted())
+        return action2->hasFailed();
+    else //On s'occupe de action1
+        return action1->hasFailed();
+}
+
+Double_Action::Double_Action(float timeout, String name) : Action(name, timeout)
+{
+    this->action1 = nullptr;
+    this->action2 = nullptr;
+}
+
+//========================================ACTION MOVES========================================
+
 void Move_Action::start()
 {
-    switch (pace)
-    {
-    case accurate:
-        asser->setCurrentProfile(1);
-        break;
-    case standard:
-        asser->setCurrentProfile(2);
-        break;
-    case fast:
-        asser->setCurrentProfile(3);
-        break;
-    default:
-        Serial.print("Unmatched PID profile");
-    }
+    asser->setCurrentProfile(pace);
     int err;
     err = ghost->Compute_Trajectory(posFinal, deltaCurve, speedRamps, cruisingSpeed, pureRotation, backward);
     if (err == 0)
@@ -56,8 +79,12 @@ bool Move_Action::isFinished()
 
 void Move_Action::debug()
 {
-    Action::debug();Serial.print("Ghost ");Serial.print((ghost->trajectoryIsFinished())?("idle"):("work"));
-    Serial.print(" |PID ");Serial.print((asser->close)?("idle"):("work"));Serial.print(" |");
+    Action::debug();
+    Serial.print("Ghost ");
+    Serial.print((ghost->trajectoryIsFinished()) ? ("idle") : ("work"));
+    Serial.print(" |PID ");
+    Serial.print((asser->close) ? ("idle") : ("work"));
+    Serial.print(" |");
 }
 
 bool Move_Action::hasFailed()
@@ -86,11 +113,23 @@ Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace
         this->speedRamps = 2.0;
         this->cruisingSpeed = 1;
         break;
+    case recallage:
+        this->speedRamps = 0.2;
+        this->cruisingSpeed = 0.1;
+        break;
+    case off:
+        this->speedRamps = 0.01;
+        this->cruisingSpeed = 0.01;
+        break;
+    default:
+        this->speedRamps = 0.01;
+        this->cruisingSpeed = 0.01;
+        break;
     }
     if (pureRotation)
     {
-        this->speedRamps*=3.14;
-        this->cruisingSpeed*=3.14;  //Un robot qui avance a 1m/s est aussi impressionnant qu'un robot qui fait un demi tour par seconde
+        this->speedRamps *= 3.14;
+        this->cruisingSpeed *= 3.14; //Un robot qui avance a 1m/s est aussi impressionnant qu'un robot qui fait un demi tour par seconde
     }
 }
 
@@ -139,17 +178,26 @@ void Backward_Action::start()
     Move_Action::start();
 }
 
-End_Action::End_Action() : Move_Action(-1, VectorE(0, 0, 0), 0.01, accurate, false, false, "End") // x, y, theta initialize in End_Action::start to current position
-{                                                                                                 /*Rien a faire d'autre*/
+void StraightTo_Action::start()
+{
+    Vector delta = Vector(x, y) - *robotCinetique;
+    float cap = delta.angle();
+    spin = new Spin_Action(timeout, cap, pace);
+    goTo = new Goto_Action(timeout, x, y, cap, 0.1, pace);
+    action1 = spin;
+    action2 = goTo;
+    Double_Action::start();
 }
 
-void End_Action::start()
+StraightTo_Action::StraightTo_Action(float timeout, float x, float y, Pace pace) : Double_Action(timeout, "stTo")
 {
-    posFinal._x = robotCinetique->_x;
-    posFinal._y = robotCinetique->_y;
-    posFinal._theta = robotCinetique->_theta;
-    Move_Action::start();
+    this->x = x;
+    this->y = y;
+    this->pace = pace;
+    this->timeout = timeout;
 }
+
+//========================================ACTION COMM========================================
 
 Send_Action::Send_Action(Message message) : Action("Send", 0.1)
 {
@@ -171,4 +219,18 @@ Wait_Message_Action::Wait_Message_Action(MessageID messageId, float timeout) : A
 bool Wait_Message_Action::isFinished()
 {
     return communication->inWaiting() > 0 && communication->peekOldestMessage().ID == messageId;
+}
+
+//========================================ACTION MISC========================================
+
+End_Action::End_Action() : Move_Action(-1, VectorE(0, 0, 0), 0.01, accurate, false, false, "End") // x, y, theta initialize in End_Action::start to current position
+{                                                                                                 /*Rien a faire d'autre*/
+}
+
+void End_Action::start()
+{
+    posFinal._x = robotCinetique->_x;
+    posFinal._y = robotCinetique->_y;
+    posFinal._theta = robotCinetique->_theta;
+    Move_Action::start();
 }

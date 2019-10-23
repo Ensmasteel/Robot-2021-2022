@@ -1,6 +1,7 @@
 #ifndef PID_H_
 #define PID_H_
-#define NBPROFILES 5
+#include "Pace.h"
+#define NBPROFILES ((int)Pace::NB_PACE)
 #define TIMETOOFAR 0.2 //Temps qu'il faut rester trop loin pour etre considere tooFar
 #include "Filtre.h"
 #include "Vector.h"
@@ -20,7 +21,7 @@ class PID
 {
 private:
     PIDProfile PIDProfiles[NBPROFILES];
-    int8_t currentProfile;
+    uint8_t currentProfile;
     float iTerm;
     bool modulo360;   //Permet de dire si les valeurs sont a interprété modulo 360
     Filtre dxF;       //Filtre de la derivee
@@ -30,8 +31,8 @@ public:
     bool close;  //Est ce qu'on est proche de la target (cf epsilon et depsilon)
     bool tooFar; //Est ce qu'on est trop loin (cf errMax)
     void reset();
-    void setPIDProfile(uint8_t id, PIDProfile pidProfile);
-    void setCurrentProfile(uint8_t id);
+    void setPIDProfile(Pace pace, PIDProfile pidProfile);
+    void setCurrentProfile(Pace pace);
     float compute(float xTarget, float dxTarget, float x, float dx, float dt); //Renvoie un ordre entre -1 et 1
     PIDProfile getCurrentProfile();
     PID(bool modulo360, float frequency);
@@ -54,7 +55,7 @@ public:
     //Place dans outTranslation et outRotation les deux ordres (entre -1 et 1)
     void compute(float dt);
     void compute_dev(float dt);
-    void setCurrentProfile(uint8_t id);
+    void setCurrentProfile(Pace pace);
     Asservissement(float *outTranslation, float *outRotation, Cinetique *cRobot, Cinetique *cGhost, float frequency);
     Asservissement() {}
 };

@@ -3,24 +3,30 @@
 #include "Vector.h"
 #include "Communication.h"
 #include "Arduino.h"
+#include "Pace.h"
 
 class Ghost;
 class Sequence;
 class Asservissement;
 
+
+//========================================ACTION GENERIQUES========================================
+
 class Action //Classe abstraite
 {
 public:    
     String name;
-    virtual void start() {timeStarted=millis()/1e3;}
+    virtual void start() {timeStarted=millis()/1e3; started=true;}
     virtual bool isFinished() {return done;}
     virtual bool hasFailed();   //Par convention, un timeout négatif indique qu'il n'y a pas de timeout
     static void setPointers(Cinetique * robotCinetique,Ghost * ghost, Sequence * sequence, Communication * communication, Asservissement * asser);
-    Action(String name="Action", float timeout=0.1){this->name=name;this->timeout=timeout;done=false;}
+    Action(String name="Action", float timeout=0.1){this->name=name;this->timeout=timeout;done=false;started=false;}
     virtual void debug(){Serial.print("Action name ");Serial.print(name);Serial.print(" |");}
+    bool hasStarted() {return started;}
 
 protected:
     bool done;
+    bool started;
     float timeout;
     float timeStarted;
     static Cinetique * robotCinetique;
@@ -30,7 +36,20 @@ protected:
     static Asservissement * asser;
 };
 
-enum Pace {accurate,standard,fast};
+class Double_Action : public Action
+{
+protected:
+    Action* action1;
+    Action* action2;
+
+public:
+    virtual void start();
+    virtual bool isFinished();
+    virtual bool hasFailed();
+    Double_Action(float timeout,String name="Twin");
+};
+
+//========================================ACTION MOVES========================================
 
 class Move_Action : public Action //Classe abstraite
 {
@@ -89,6 +108,21 @@ public:
     //hasFailed(Action+Move)
 };
 
+class StraightTo_Action : public Double_Action
+{
+private:
+    Spin_Action* spin;
+    Goto_Action* goTo;
+    float x,y;
+    Pace pace;
+    float timeout;
+public:
+    void start();
+    StraightTo_Action(float timeout, float x, float y, Pace pace);
+};
+
+//========================================ACTION COMM========================================
+
 class Send_Action : public Action
 {
 private:
@@ -99,6 +133,19 @@ public:
     //isFinished(Action)
     //hasFailed(Action)
 };
+
+class Wait_Message_Action : public Action
+{
+private:
+    MessageID messageId;
+public:
+    Wait_Message_Action(MessageID messageId, float timeout);
+    //start(Action)
+    bool isFinished(); //(Wait_Message) verifie que le message est recu
+    //hasFailed(Action)
+};
+
+//========================================ACTION GLOBALS========================================
 
 class Set_Action : public Action
 {
@@ -131,6 +178,8 @@ public:
     Jump_Action(uint8_t globalIndex,Compar compar, uint8_t value, uint8_t whereToJumpTrue, uint8_t whereToJumpFalse);
 };
 
+//========================================ACTION MISC========================================
+
 class Sleep_Action : public Action
 {
 private:    
@@ -140,17 +189,6 @@ public:
     //start(Action)
     bool isFinished(); //(Sleep) verifie que le temps prévu s'est ecoulé
     bool hasFailed(){return false;} //(Sleep) on en peut pas fail d'attendre
-};
-
-class Wait_Message_Action : public Action
-{
-private:
-    MessageID messageId;
-public:
-    Wait_Message_Action(MessageID messageId, float timeout);
-    //start(Action)
-    bool isFinished(); //(Wait_Message) verifie que le message est recu
-    //hasFailed(Action)
 };
 
 class End_Action : public Move_Action //Une End_Action ne passe jamais a la suite
