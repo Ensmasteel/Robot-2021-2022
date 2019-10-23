@@ -62,6 +62,7 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta, bool useSi
     sequence = Sequence();
     Action::setPointers(&cin, &ghost, &sequence, &communication, &asservissement);
     //sequence.add(new Wait_Message_Action(Tirette,-1));
+    sequence.add(new Goto_Action(20, 2.0, 0.0, 0, 0.2, standard));
     sequence.add(new StraightTo_Action(-1,1,1,standard));
     sequence.add(new Spin_Action(-1, 3.14, standard));
     sequence.add(new Goto_Action(-1, 0.0, 0.0, -1.57, 0.2, standard));
