@@ -1,9 +1,28 @@
+/*
+Si tu veux faire un message de debug tu fais juste
+Logger::debug("I'm in")
+
+Pour faire un message d'info
+Logger::infoln("That's what she said")
+
+Et pour rajouter une variable a la telemetry
+Logger::toTelemetry("dickSize",String(dick->size))
+
+En sortie:
+Entre un # et un \n tu as un message informatif
+Entre un @ et un | tu as un nom de parametre
+Entre un | et un \n tu as sa valeur
+Tout ce qui est avant un @ ou un # est du debug
+*/
+
+
 #ifndef LOGGER_H_
 #define LOGGER_H_
 #include <Print.h>
 #include "Arduino.h"
 
 #define nameValue(a) #a+"= "+String(a)
+
 
 class Logger
 {
