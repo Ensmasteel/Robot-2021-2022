@@ -18,17 +18,13 @@ void Sequence::update()
     if (queue[currentIndex]->isFinished())
     {
         fails[currentIndex] = false;
-        Serial.print("Action ");
-        Serial.print(currentIndex);
-        Serial.print(" succeded !\n");
+        Logger::debugln("Action "+String(currentIndex)+"succeded !");
         startNext();
     }
     else if (queue[currentIndex]->hasFailed())
     {
         fails[currentIndex] = true;
-        Serial.print("Action ");
-        Serial.print(currentIndex);
-        Serial.print(" failed !\n");
+        Logger::infoln("Action "+String(currentIndex)+"failed !");
         startNext();
     }
 }
@@ -36,7 +32,7 @@ void Sequence::update()
 void Sequence::setNextIndex(uint8_t index)
 {
     if (index >= TAILLESEQUENCE)
-        Serial.println("Tried to reach an index out of range");
+        Logger::infoln("Tried to reach an index out of range");
     else
         nextIndex = index;
 }
@@ -44,7 +40,7 @@ void Sequence::setNextIndex(uint8_t index)
 void Sequence::setGlobal(uint8_t number, uint8_t value)
 {
     if (number >= TAILLEGLOBALS)
-        Serial.println("Tried to reach a global out of range");
+        Logger::infoln("Tried to reach a global out of range");
     else
         globals[number] = value;
 }
@@ -53,7 +49,7 @@ uint8_t Sequence::getGlobal(uint8_t number)
 {
     if (number >= TAILLEGLOBALS)
     {
-        Serial.println("Tried to reach a global out of range");
+        Logger::infoln("Tried to reach a global out of range");
         return 0;
     }
     else
@@ -73,22 +69,11 @@ void Sequence::add(Action *action)
     lastIndex++;
 }
 
-void Sequence::debug(bool showCurrentActionState, bool showCurrentIndex, bool showSequence)
+void Sequence::toTelemetry()
 {
-    if (showCurrentIndex)
+    Logger::toTelemetry("i",String(currentIndex));
+    for (int i = 0; i <= lastIndex; i++)
     {
-        Serial.print("Index: ");
-        Serial.print(currentIndex);
-        Serial.print(" |");
-    }
-    if (showCurrentActionState)
-        queue[currentIndex]->debug();
-    if (showSequence)
-    {
-        for (int i = 0; i <= lastIndex; i++)
-        {
-            Serial.print(queue[i]->name);
-            Serial.print(" ");
-        }
+        Logger::toTelemetry("A"+String(i),queue[i]->name);
     }
 }

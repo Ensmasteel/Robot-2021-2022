@@ -26,10 +26,10 @@ private:
     bool modulo360;   //Permet de dire si les valeurs sont a interprété modulo 360
     Filtre dxF;       //Filtre de la derivee
     float timeTooFar; //Temps depuis lequel on est trop loin
-
-public:
     bool close;  //Est ce qu'on est proche de la target (cf epsilon et depsilon)
     bool tooFar; //Est ce qu'on est trop loin (cf errMax)
+
+public:
     void reset();
     void setPIDProfile(Pace pace, PIDProfile pidProfile);
     void setCurrentProfile(Pace pace);
@@ -37,6 +37,8 @@ public:
     PIDProfile getCurrentProfile();
     PID(bool modulo360, float frequency);
     PID();
+
+friend class Asservissement;   //Rien n'est privé pour l'asservissement
 };
 
 class Asservissement

@@ -1,7 +1,7 @@
 // =============================
 // ===       Libraries       ===
 // =============================
-
+#include "Logger.h"
 #include <Arduino.h>
 #include <Vector.h>
 #include <Math_functions.h>
@@ -20,21 +20,21 @@ uint16_t currentMillis=0,lastMillis=0;
 
 void setup()
 {
-  
   Serial.begin(115200);
+  Logger::setup();
   delay(2000);
-  Serial.println("Bender's booting up");
+  Logger::infoln("Bender's booting up");
   bender=new AbsolutelyNotRobot(0,0,0,true);
-  Serial.println("Hello, I'm bender");
+  Logger::infoln("Hello, I'm bender");
 }
 
 void loop()
 {
   currentMillis=millis();
-  if ((currentMillis-lastMillis)/1e3 > 1.0/FREQUENCY)//ATTENTIONNNNNNNN
+  if ((currentMillis-lastMillis)/1e3 > 1.0/FREQUENCY)
   {
     bender->update(1.0/FREQUENCY);
-    bender->debug(true,true,true,true);//ATTENTIONNNNNNNN
+    bender->telemetry();
     lastMillis=currentMillis;
   }
 }

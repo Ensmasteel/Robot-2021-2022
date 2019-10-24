@@ -1,16 +1,11 @@
 #include "Communication.h"
 
 #include "Arduino.h"
+#include "Logger.h"
 #ifdef TEENSY35
 #include <cstring>
 #else
 #include <string.h>
-#endif
-
-#ifdef TEENSY35
-#define SERIALCOMM Serial
-#else
-#define SERIALCOMM Serial
 #endif
 
 //#define DEBUGCOMM
@@ -27,7 +22,7 @@ Message MessageBox::pull()
 {
     if (empty)
     {
-        Serial.println("The mailbox is empty");
+        Logger::infoln("The mailbox is empty");
         //Dans ce cas on renvoie le message vide
         return newMessage(MessageID::Empty, 0);
     }
@@ -45,7 +40,7 @@ Message MessageBox::peek()
 {
     if (empty)
     {
-        Serial.println("The mailbox is empty");
+        Logger::infoln("The mailbox is empty");
         //Dans ce cas on renvoie le message vide
         return newMessage(MessageID::Empty, 0);
     }
@@ -56,7 +51,7 @@ Message MessageBox::peek()
 void MessageBox::push(Message message)
 {
     if ((iFirstEntry == iNextEntry) && !empty)
-        Serial.print("The mailbox is full");
+        Logger::infoln("The mailbox is full");
     //Dans ce cas on n'empile pas
     else
     {
@@ -80,11 +75,11 @@ int MessageBox::size()
 void Communication::update()
 {
     //RECEPTION
-    if (SERIALCOMM.available() >= 6) //On attend de voir 6 octets dans le buffer pour lire le message entier d'un coup
+    if (port->available() >= 6) //On attend de voir 6 octets dans le buffer pour lire le message entier d'un coup
     {
         uint8_t in[6];
         for (int i = 0; i < 6; i++)
-            in[i] = SERIALCOMM.read();
+            in[i] = port->read();
         Message out;
         memcpy(&out, in, sizeof(out)); //On convertit les octets en message
         receiveBox.push(out);
@@ -97,21 +92,21 @@ void Communication::update()
         uint8_t out[6];
         memcpy(out, &toSend, sizeof(out)); //On convertit le message en octet
         for (int i = 0; i < 6; i++)
-            SERIALCOMM.write(out[i]);
+            port->write(out[i]);
         millisLastSend = millis();
     }
 
 #ifdef DEBUGCOMM
-    Serial.print("In hardware buffer ");
-    Serial.println(SERIALCOMM.available());
-    Serial.print("In my buffer ");
-    Serial.println(receiveBox.size());
+    Logger::debug("In hardware buffer ");
+    Logger::debugln(SERIALCOMM.available());
+    Logger::debug("In my buffer ");
+    Logger::debugln(receiveBox.size());
     if (receiveBox.size() == 1)
     {
-        Serial.print("Id = ");
-        Serial.println(receiveBox.peek().ID);
-        Serial.print("Value = ");
-        Serial.println(receiveBox.peek().data);
+        Logger::debug("Id = ");
+        Logger::debugln(receiveBox.peek().ID);
+        Logger::debug("Value = ");
+        Logger::debugln(receiveBox.peek().data);
     }
 #endif
 }
@@ -136,12 +131,13 @@ uint8_t Communication::inWaiting()
     return receiveBox.size();
 }
 
-Communication::Communication()
+Communication::Communication(Stream* port)
 {
+    this->port=port;
     //On vide les caractères qui pourrait trainer
-    while (SERIALCOMM.available() > 0)
+    while (port->available() > 0)
     {
-        SERIALCOMM.read();
+        port->read();
     }
     millisLastSend = millis();
 }

@@ -21,7 +21,6 @@ public:
     virtual bool hasFailed();   //Par convention, un timeout négatif indique qu'il n'y a pas de timeout
     static void setPointers(Cinetique * robotCinetique,Ghost * ghost, Sequence * sequence, Communication * communication, Asservissement * asser);
     Action(String name="Action", float timeout=0.1){this->name=name;this->timeout=timeout;done=false;started=false;}
-    virtual void debug(){Serial.print("Action name ");Serial.print(name);Serial.print(" |");}
     bool hasStarted() {return started;}
 
 protected:
@@ -59,7 +58,6 @@ public:
     virtual bool hasFailed(); //(Action+Move) Verifie que le pid n'a pas retourné d'erreur ou que Action::hasFailed n'est pas true
     Move_Action(float timeout,VectorE posFinal, float deltaCurve, 
                 Pace pace, bool pureRotation, bool backward,String name="Move");
-    virtual void debug();
 
 protected:
     VectorE posFinal; 

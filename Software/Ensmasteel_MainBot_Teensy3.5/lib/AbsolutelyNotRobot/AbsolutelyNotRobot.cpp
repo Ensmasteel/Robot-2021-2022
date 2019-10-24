@@ -41,14 +41,14 @@ void AbsolutelyNotRobot::update(float dt)
 }
 
 
-AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta, bool useSimulator)
+AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta, bool useSimulator,Stream* commPort)
 {
     this->useSimulator = useSimulator;
     cin = Cinetique(x, y, theta);
     if (not useSimulator)
     {
         odometrie = Odometrie(TICKS_PER_ROUND, &cin, ELOIGNEMENT_CODEUSES, PIN_CODEUSE_GAUCHE_A, PIN_CODEUSE_GAUCHE_B, DIAMETRE_ROUE_CODEUSE_GAUCHE, PIN_CODEUSE_DROITE_A, PIN_CODEUSE_DROITE_B, DIAMETRE_ROUE_CODEUSE_DROITE);
-        Serial.println("REAL MODE");
+        Logger::infoln("REAL MODE");
     }
     motorLeft = Motor(PIN_MOTEUR_GAUCHE_PWR, PIN_MOTEUR_GAUCHE_SENS, 10);
     pinMode(PIN_MOTEUR_DROITE_BRAKE, OUTPUT);
@@ -58,7 +58,7 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta, bool useSi
     digitalWrite(PIN_MOTEUR_GAUCHE_BRAKE, LOW); //Adaptation ancien driver
     ghost = Ghost(cin);
     asservissement = Asservissement(&outTranslation, &outRotation, &cin, &target, 30);
-    communication = Communication();
+    communication = Communication(commPort);
     sequence = Sequence();
     Action::setPointers(&cin, &ghost, &sequence, &communication, &asservissement);
     //sequence.add(new Wait_Message_Action(Tirette,-1));
@@ -70,25 +70,17 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta, bool useSi
     if (useSimulator)
     {
         simu = Simulator(0.30, 10.0, 6.5, 1.5, &cin, &motorLeft.order, &motorRight.order);
-        Serial.println("SIMULATOR MODE");
+        Logger::infoln("SIMULATOR MODE");
     }
     sequence.reStart();
     ghost.Lock(false);
 }
 
-void AbsolutelyNotRobot::debug(bool showRobotCin, bool showGhostCin, bool showCurrentActionState, bool showCurrentIndex, bool showSequence)
+void AbsolutelyNotRobot::telemetry()
 {
-    if (showRobotCin)
-    {
-        Serial.print("Robot: ");
-        cin.print();
-    }
-    if (showGhostCin)
-    {
-        Serial.print("Ghost: ");
-        ghost.Get_Controller_Cinetique().print();
-    }
-    if (showCurrentActionState)
-        sequence.debug(showCurrentActionState,showCurrentIndex,showSequence);
-    Serial.println();
+    cin.toTelemetry("R");
+    ghost.Get_Controller_Cinetique().toTelemetry("G");
+    Logger::toTelemetry("pid",String(asservissement.close));
+    Logger::toTelemetry("ghost",String(ghost.trajectoryIsFinished()));
+    sequence.toTelemetry();
 }
