@@ -9,6 +9,8 @@
 
 #include "Arduino.h"
 
+#include <Stream.h>
+
 //En-tete d'un message
 enum MessageID : uint16_t
 {
@@ -48,9 +50,10 @@ public:
     Message peekOldestMessage();
     uint8_t inWaiting();
     void update();
-    Communication();
+    Communication(Stream* port=&Serial);
 
 private:
+    Stream* port;
     uint32_t millisLastSend;
     MessageBox sendingBox;
     MessageBox receiveBox;

@@ -57,13 +57,18 @@ float Vector::distanceWith(Vector &other)
     //return operator-(other).norm()
 }
 
-void Vector::print()
+void Vector::print(const String& prefix,bool info)
 {
-    Serial.print("x= ");
-    Serial.print(_x);
-    Serial.print(" |y= ");
-    Serial.print(_y);
-    Serial.print(" |");
+    if (info)
+        Logger::infoln(prefix+":: x= "+String(_x)+" |y= "+String(_y));
+    else
+        Logger::debugln(prefix+":: x= "+String(_x)+" |y= "+String(_y));
+}
+
+void Vector::toTelemetry(const String& prefix)
+{
+    Logger::toTelemetry(prefix+"x",String(_x));
+    Logger::toTelemetry(prefix+"y",String(_y));
 }
 
 bool Vector::operator==(Vector const &other)
@@ -91,14 +96,19 @@ void VectorE::normalizeTheta()
     _theta = normalizeAngle(_theta);
 }
 
-void VectorE::print()
+void VectorE::print(const String& prefix,bool info)
 {
-    Vector::print();
-    Serial.print("theta= ");
-    if(_theta>=0)
-        Serial.print("+");
-    Serial.print(_theta);
-    Serial.print(" |");
+    if (info)
+        Logger::infoln(prefix+":: x= "+String(_x)+" |y= "+String(_y)+" |Th= "+String(_theta));
+    else
+        Logger::debugln(prefix+":: x= "+String(_x)+" |y= "+String(_y)+" |Th= "+String(_theta));
+}
+
+void VectorE::toTelemetry(const String& prefix)
+{
+    Logger::toTelemetry(prefix+"x",String(_x));
+    Logger::toTelemetry(prefix+"y",String(_y));
+    Logger::toTelemetry(prefix+"Th",String(_theta));
 }
 
 bool VectorE::operator==(VectorE const &other)
@@ -113,18 +123,21 @@ Cinetique::Cinetique(float x, float y, float theta, float v, float w) : VectorE(
     _w = w;
 }
 
-void Cinetique::print()
+void Cinetique::print(const String& prefix,bool info)
 {
-    VectorE::print();
-    Serial.print("v= ");
-    if (_v>=0)
-        Serial.print("+");
-    Serial.print(_v);
-    Serial.print(" |w= ");
-    if (_w>=0)
-        Serial.print("+");
-    Serial.print(_w);
-    Serial.print(" |");
+    if (info)
+        Logger::infoln(prefix+":: x= "+String(_x)+" |y= "+String(_y)+" |Th= "+String(_theta)+" |v= "+String(_v)+" |w= "+String(_w));
+    else
+        Logger::debugln(prefix+":: x= "+String(_x)+" |y= "+String(_y)+" |Th= "+String(_theta)+" |v= "+String(_v)+" |w= "+String(_w));
+}
+
+void Cinetique::toTelemetry(const String& prefix)
+{
+    Logger::toTelemetry(prefix+"x",String(_x));
+    Logger::toTelemetry(prefix+"y",String(_y));
+    Logger::toTelemetry(prefix+"Th",String(_theta));
+    Logger::toTelemetry(prefix+"v",String(_v));
+    Logger::toTelemetry(prefix+"w",String(_w));
 }
 
 bool Cinetique::operator==(Cinetique const &other)

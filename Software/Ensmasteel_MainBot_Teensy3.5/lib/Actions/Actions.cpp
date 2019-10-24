@@ -66,25 +66,15 @@ void Move_Action::start()
     int err;
     err = ghost->Compute_Trajectory(posFinal, deltaCurve, speedRamps, cruisingSpeed, pureRotation, backward);
     if (err == 0)
-        Serial.println("Computation succeeded");
+        Logger::infoln("Computation succeeded");
     else
-        Serial.println("Computation failed");
+        Logger::infoln("Computation failed");
     Action::start();
 }
 
 bool Move_Action::isFinished()
 {
     return ghost->trajectoryIsFinished() && asser->close;
-}
-
-void Move_Action::debug()
-{
-    Action::debug();
-    Serial.print("Ghost ");
-    Serial.print((ghost->trajectoryIsFinished()) ? ("idle") : ("work"));
-    Serial.print(" |PID ");
-    Serial.print((asser->close) ? ("idle") : ("work"));
-    Serial.print(" |");
 }
 
 bool Move_Action::hasFailed()

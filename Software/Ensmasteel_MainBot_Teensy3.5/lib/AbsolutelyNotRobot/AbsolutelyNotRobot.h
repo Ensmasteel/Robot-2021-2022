@@ -28,8 +28,8 @@ private:
 public:
     void update(float dt);
     void printCinetique();
-    void debug(bool robotCin = false, bool ghostCin = false, bool actionState = false, bool currentIndex = false, bool sequence = false);
-    AbsolutelyNotRobot(float x, float y, float theta, bool useSimulator);
+    void telemetry();
+    AbsolutelyNotRobot(float x, float y, float theta, bool useSimulator, Stream* commPort=&Serial);
     AbsolutelyNotRobot() {}
 };
 

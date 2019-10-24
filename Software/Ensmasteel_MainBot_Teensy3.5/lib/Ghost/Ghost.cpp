@@ -144,7 +144,6 @@ void Ghost::Lock(bool state)
 int Ghost::failSafe_position()
 {
     uint8_t errorState = 0;
-    Serial.println(t_e_delayed);
     if (speedLinearCurrent > MAX_SPEED)
     {
         locked = true;
@@ -240,7 +239,6 @@ int Ghost::ActuatePosition(float dt)
     {
 
         errorStatus = 1;
-        //Serial.println("Fail");
     }
 
     Update_Speeds(posCurrent, posPrevious, dt);

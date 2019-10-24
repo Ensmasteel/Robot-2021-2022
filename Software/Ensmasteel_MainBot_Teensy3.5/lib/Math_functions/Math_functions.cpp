@@ -1,4 +1,5 @@
 #include "Math_functions.h"
+#include "Logger.h"
 
 Polynome::Polynome(float a0, float a1, float a2, float a3, float a4, float a5, float a6)
 {
@@ -46,17 +47,17 @@ void Polynome::set(float a0, float a1, float a2, float a3, float a4, float a5, f
     K[6] = a6;
 }
 
-void Polynome::SerialPrint()
+void Polynome::toDebug()
 {
     for (int i = 0; i < DEGRE_MAX; i += 1)
     {
-        Serial.print(K[i]);
-        Serial.print(" x^");
-        Serial.print(i);
+        Logger::debug(String(K[i]));
+        Logger::debug(" x^");
+        Logger::debug(String(i));
         if (i < DEGRE_MAX - 1)
-            Serial.print(" + ");
+            Logger::debug(" + ");
     }
-    Serial.print("\n");
+    Logger::debug("\n");
 }
 
 Polynome init_polynome(float a0, float a1, float a2, float a3, float a4, float a5, float a6)
@@ -167,7 +168,7 @@ float Trapezoidal_Function::f(float x)
     {
         if (((_max / _upRamp) + (_max / _downRamp)) > _duration) // If _max nerver achieved
         {
-            Serial.println("Trapezoidal_Function._max never achieved");
+            Logger::infoln("Trapezoidal_Function._max never achieved");
             if (x < (_duration * _downRamp) / (_upRamp + _downRamp))
             {
                 out = x * _upRamp;
@@ -204,7 +205,7 @@ float Trapezoidal_Function::df(float x)
     {
         if (((_max / _upRamp) + (_max / _downRamp)) > _duration) // If _max nerver achieved
         {
-            Serial.println("Trapezoidal_Function._max never achieved");
+            Logger::infoln("Trapezoidal_Function._max never achieved");
             if (x < (_duration * _downRamp) / (_upRamp + _downRamp))
             {
                 out = _upRamp;

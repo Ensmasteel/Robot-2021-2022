@@ -34,7 +34,7 @@ public:
     uint8_t getGlobal(uint8_t number);
     Sequence();
     void add(Action* action);
-    void debug(bool showCurrentActionState, bool showCurrentIndex, bool showSequence);
+    void toTelemetry();
 };
 
 #endif // !SEQUENCE_H_
