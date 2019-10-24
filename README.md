@@ -33,7 +33,7 @@ __Méthodes utiles :__
 
     Méthodes d'accées aux variables homonymes.
 
-    _locked = true_ : le Ghost est bloqué en position, l'actualisation de la position est bloqué.
+    _locked = true_ : le Ghost est bloqué en position, l'actualisation de la position est bloqué. Variable initialisé à True.
 
     _rotating = true_ : le Ghost effectue une simple rotation, seule l'orientation varie.
 
