@@ -217,7 +217,7 @@ bool Wait_Message_Action::isFinished()
 
 //========================================ACTION MISC========================================
 
-End_Action::End_Action() : Move_Action(-1, VectorE(0, 0, 0), 0.01, accurate, false, false, "End", NO_REQUIREMENT) // x, y, theta initialize in End_Action::start to current position
+End_Action::End_Action() : Move_Action(-1, VectorE(0, 0, 0), 0.01, accurate, false, false, "End", INT16_MAX) // x, y, theta initialize in End_Action::start to current position
 {                                                                                                 /*Rien a faire d'autre*/
 }
 
