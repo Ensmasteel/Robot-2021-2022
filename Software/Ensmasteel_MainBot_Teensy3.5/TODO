@@ -1,4 +1,5 @@
 Fiabiliser le ghost (se débarasser de certaines variables superflue ?)
+    - Failsafe modifier, non testé !
 Regler les PID
 Creer une enum generale pour les profils PID et les pace de ghost
 Organiser les print de debug (utilisation de logger ?)
