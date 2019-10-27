@@ -28,6 +28,8 @@ void Ghost::Set_NewTrajectory(Polynome newTrajectoryX, Polynome newTrajectoryY, 
 
 int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, float cruisingSpeed, bool pureRotation, bool goBackward)
 {
+    uint8_t errorStatus = 0;
+
     // Set variables state
     posAim = posFinal;
     t = 0.0;
@@ -41,15 +43,16 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
     posAim.normalizeTheta();
     posCurrent.normalizeTheta();
 
-    float normRawMove = (posAim - posCurrent).norm();
+    float normRawMove = posCurrent.distanceWith(posAim);
 
     if (pureRotation) // Only update orientation
     {
         lengthTrajectory = normalizeAngle(posAim._theta - posCurrent._theta);
-        // If the orientation is unchanged or a move is needed
-        if ((abs(lengthTrajectory) < epsilonOrientation)) //or (normRawMove > epsilonPosition))---------!!!!!!!------------
+        
+        // If the orientation is unchanged
+        if (abs(lengthTrajectory) < MIN_ROTATION)
         {
-            return 1;
+            errorStatus = 1;
         }
 
         posAim._theta += lengthTrajectory;
@@ -57,14 +60,13 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
 
         durationTrajectory = ((abs(lengthTrajectory)) / cruisingSpeed) + (cruisingSpeed / speedRamps);
         speedProfileRotation.set(speedRamps, speedRamps, cruisingSpeed, durationTrajectory);
-        return 0;
     }
     else
     {
-        // If there is no move to do
-        if (normRawMove < epsilonPosition)
+
+        if (abs(normRawMove) < MIN_MOVEMENT)
         {
-            return 1;
+            errorStatus = 1;
         }
 
         // Define Trajectory
@@ -113,7 +115,7 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
         speedProfileLinear.set(speedRamps, speedRamps, cruisingSpeed, durationTrajectory);
     }
 
-    return 0;
+    return errorStatus;
 }
 
 bool Ghost::IsLocked()
@@ -141,7 +143,7 @@ void Ghost::Lock(bool state)
     locked = state;
 }
 
-int Ghost::failSafe_position()
+int Ghost::StateManager()
 {
     uint8_t errorState = 0;
         
@@ -173,7 +175,7 @@ int Ghost::ActuatePosition(float dt)
 {
     int errorStatus = 0;
     t += dt;
-    t_delayed = ((t > delayPosition / 1e3) ? t - delayPosition / 1e3 : 0.0);
+    t_delayed = ((t > DELAY_POSITION / 1e3) ? t - DELAY_POSITION / 1e3 : 0.0);
     if ((!locked) and (t_e_delayed <= 1.0))
     {
         if (rotating)
@@ -250,7 +252,7 @@ int Ghost::ActuatePosition(float dt)
 
     cinetiqueController = Get_Controller_Cinetique();
 
-    float errorFailSafe = failSafe_position(); //Avoid multiple call
+    float errorFailSafe = StateManager(); //Avoid multiple call
     errorStatus = max(errorFailSafe, errorStatus);
     return errorStatus;
 }
