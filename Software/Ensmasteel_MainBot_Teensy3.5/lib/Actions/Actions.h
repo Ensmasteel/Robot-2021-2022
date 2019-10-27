@@ -6,6 +6,7 @@
 #include "Arduino.h"
 #include "Pace.h"
 #include <vector>
+#include <cstdint> //for macro INT16_MAX
 
 class Ghost;
 class Sequence;
@@ -14,8 +15,7 @@ typedef void(*Fct)(Cinetique * robotCinetique,Ghost * ghost, Sequence * sequence
 
 
 //========================================ACTION GENERIQUES========================================
-
-#define NO_REQUIREMENT 32767
+#define NO_REQUIREMENT INT16_MAX
 
 class Action //Classe abstraite
 {

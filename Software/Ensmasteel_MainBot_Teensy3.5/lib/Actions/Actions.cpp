@@ -248,7 +248,7 @@ bool Switch_Message_Action::isFinished()
 
 //========================================ACTION MISC========================================
 
-End_Action::End_Action(bool loop) : Action("End_", -1, NO_REQUIREMENT)
+End_Action::End_Action(bool loop) : Action("End_", -1, INT16_MAX)
 {
     this->loop=loop;
 }
