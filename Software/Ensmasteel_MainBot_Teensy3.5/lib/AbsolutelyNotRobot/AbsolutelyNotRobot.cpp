@@ -66,7 +66,7 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta, bool useSi
     sequence.add(new StraightTo_Action(2,1,1,standard));
     sequence.add(new Spin_Action(-1, 3.14, standard,-1)); //Necessite l'action precedante pour s'executer
     sequence.add(new Goto_Action(-1, 0.0, 0.0, -1.57, 0.2, standard));
-    sequence.add(new End_Action());
+    sequence.add(new End_Action(true));
     if (useSimulator)
     {
         simu = Simulator(0.30, 10.0, 6.5, 1.5, &cin, &motorLeft.order, &motorRight.order);

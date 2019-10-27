@@ -1,4 +1,5 @@
 #include "Sequence.h"
+#include "Actions.h"
 
 void Sequence::startFollowing()
 {

@@ -1,6 +1,7 @@
 #include "Actions.h"
 #include "Ghost.h"
 #include "PID.h"
+//#include "Sequence.h"
 
 Cinetique *Action::robotCinetique;
 Ghost *Action::ghost;
@@ -215,16 +216,56 @@ bool Wait_Message_Action::isFinished()
     return communication->inWaiting() > 0 && communication->peekOldestMessage().ID == messageId;
 }
 
+Switch_Message_Action::Switch_Message_Action(float timeout,uint8_t require) : Action("swch",timeout,require)
+{
+    this->doFct.clear();
+    this->onMessage.clear();
+    size=0;
+}
+
+void Switch_Message_Action::addPair(MessageID messageId,Fct fct)
+{
+    this->onMessage.push_back(messageId);
+    this->doFct.push_back(fct);
+    size++;
+}
+
+bool Switch_Message_Action::isFinished()
+{
+    if (communication->inWaiting() > 0)
+    {
+        for (int i=0;i<size;i++)
+        {
+            if (communication->peekOldestMessage().ID == onMessage[i])
+            {
+                doFct[i](robotCinetique,ghost,sequence,communication,asser);
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 //========================================ACTION MISC========================================
 
-End_Action::End_Action() : Move_Action(-1, VectorE(0, 0, 0), 0.01, accurate, false, false, "End", NO_REQUIREMENT) // x, y, theta initialize in End_Action::start to current position
-{                                                                                                 /*Rien a faire d'autre*/
+End_Action::End_Action(bool loop) : Action("End_", -1, NO_REQUIREMENT)
+{
+    this->loop=loop;
 }
 
 void End_Action::start()
 {
-    posFinal._x = robotCinetique->_x;
-    posFinal._y = robotCinetique->_y;
-    posFinal._theta = robotCinetique->_theta;
-    Move_Action::start();
+    if (loop)
+    {
+        sequence->nextIndex=0;
+        done=true;
+    }
+    Action::start();
+}
+
+void Do_Action::start()
+{
+    functionToCall(robotCinetique,ghost,sequence,communication,asser);
+    done=true;
+    Action::start();
 }

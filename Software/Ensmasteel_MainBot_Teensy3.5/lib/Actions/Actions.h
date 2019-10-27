@@ -1,13 +1,16 @@
-#ifndef CARDS_H_
-#define CARDS_H
+#ifndef ACTIONS_H_
+#define ACTIONS_H_
+
 #include "Vector.h"
 #include "Communication.h"
 #include "Arduino.h"
 #include "Pace.h"
+#include <vector>
 
 class Ghost;
 class Sequence;
 class Asservissement;
+typedef void(*Fct)(Cinetique * robotCinetique,Ghost * ghost, Sequence * sequence, Communication * communication, Asservissement * asser);
 
 
 //========================================ACTION GENERIQUES========================================
@@ -146,6 +149,20 @@ public:
     //hasFailed(Action)
 };
 
+class Switch_Message_Action : public Action
+{
+private:
+    std::vector<MessageID>   onMessage;
+    std::vector<Fct>         doFct;
+    uint8_t size;
+public:
+    Switch_Message_Action(float timeout,uint8_t require);
+    void addPair(MessageID messageId,Fct fct);
+    //start : inherited from Action
+    bool isFinished();
+    //has failed : inherited from Action
+};
+
 //========================================ACTION MISC========================================
 
 class Sleep_Action : public Action
@@ -159,14 +176,27 @@ public:
     bool hasFailed(){return false;} //(Sleep) on en peut pas fail d'attendre
 };
 
-class End_Action : public Move_Action //Une End_Action ne passe jamais a la suite
+class End_Action : public Action //Une End_Action ne passe jamais a la suite
 {
+private:
+    bool loop;
 public:
-    End_Action();
+    End_Action(bool loop=false);
     void start();
-    bool isFinished(){return false;}
+    bool isFinished(){return done;}
     bool hasFailed(){return false;}
 };
+
+
+class Do_Action : public Action
+{
+private:
+    Fct functionToCall;
+public:
+    void start();
+    Do_Action(Fct functionToCall,int16_t require=NO_REQUIREMENT) :  Action("DoAc", 0.1, require) {this->functionToCall=functionToCall;}
+};
+
 
 
 #endif // !CARDS_H_

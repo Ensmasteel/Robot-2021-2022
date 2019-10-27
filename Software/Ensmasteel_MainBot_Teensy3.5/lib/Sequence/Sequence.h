@@ -12,9 +12,9 @@ Chose qu'il est possible de faire:
 #ifndef SEQUENCE_H_
 #define SEQUENCE_H_
 #define TAILLESEQUENCE 50
-#define TAILLEGLOBALS 50
 #include "Arduino.h"
-#include "Actions.h"
+
+class Action;
 
 class Sequence
 {
@@ -22,9 +22,9 @@ private:
     Action* queue[TAILLESEQUENCE];
     bool fails[TAILLESEQUENCE];
     uint8_t currentIndex;
-    uint8_t nextIndex;
-    int lastIndex;
+    int16_t lastIndex;
 public:
+    uint8_t nextIndex;
     void startSelected();
     void startFollowing();
     void update();
@@ -32,6 +32,7 @@ public:
     Sequence();
     void add(Action* action);
     void toTelemetry();
+
 };
 
 #endif // !SEQUENCE_H_
