@@ -144,6 +144,7 @@ void Ghost::Lock(bool state)
 int Ghost::failSafe_position()
 {
     uint8_t errorState = 0;
+        
     if (speedLinearCurrent > MAX_SPEED)
     {
         locked = true;
@@ -151,14 +152,18 @@ int Ghost::failSafe_position()
         errorState = 1;
     }
 
-    if (t_e_delayed >= 0.98)
+    if (t_delayed >= durationTrajectory)
     {
-        if (t_e_delayed>=0.999 || (posCurrent == posPrevious))
+        if (posDelayed.distanceWith(posAim) < MAX_DISTANCE) //If we're not to far from the goal
+        {
+            posCurrent = posAim;
+            posDelayed = posAim;
             trajectoryFinished = true;
-        
-
-//        else
-//            errorState = 1;
+        }
+        else
+        {
+            errorState = 1;
+        }
     }
 
     return errorState;
