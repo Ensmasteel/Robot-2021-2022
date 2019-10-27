@@ -14,8 +14,9 @@
 class Ghost
 {
 public:
-    Ghost(VectorE posEini);
-    Ghost() {}
+    Ghost(VectorE posEini = VectorE(0.0, 0.0, 0.0));
+    //Ghost() {}
+
     Cinetique cinetiqueController; // updated at each call of ActuatePosition, stores delayed position and current speed
 
     // ===    METHODES    ===
