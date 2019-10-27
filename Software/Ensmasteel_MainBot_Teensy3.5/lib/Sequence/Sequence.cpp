@@ -1,16 +1,33 @@
 #include "Sequence.h"
 
-void Sequence::startNext()
+void Sequence::startFollowing()
 {
     currentIndex = nextIndex;
     nextIndex = currentIndex + 1;
-    queue[currentIndex]->start();
+    startSelected();
+    
 }
 
-void Sequence::reStart()
+void Sequence::startSelected()
 {
     nextIndex = currentIndex + 1;
-    queue[currentIndex]->start();
+    if (queue[currentIndex]->require!=NO_REQUIREMENT)
+    {
+        //Si l'indice est négatif, on check en relatif. Sinon en absolu
+        uint8_t indiceToCheck=(queue[currentIndex]->require>=0)?(queue[currentIndex]->require):(currentIndex + queue[currentIndex]->require);
+        if (!fails[indiceToCheck])
+        {
+            queue[currentIndex]->start();
+        }
+        else
+        {
+            fails[currentIndex]=true;
+            Logger::infoln("Action "+String(currentIndex)+" failed !");
+            startFollowing();
+        }
+    }
+    else
+        queue[currentIndex]->start();
 }
 
 void Sequence::update()
@@ -18,14 +35,14 @@ void Sequence::update()
     if (queue[currentIndex]->isFinished())
     {
         fails[currentIndex] = false;
-        Logger::debugln("Action "+String(currentIndex)+"succeded !");
-        startNext();
+        Logger::debugln("Action "+String(currentIndex)+" succeded !");
+        startFollowing();
     }
     else if (queue[currentIndex]->hasFailed())
     {
         fails[currentIndex] = true;
-        Logger::infoln("Action "+String(currentIndex)+"failed !");
-        startNext();
+        Logger::infoln("Action "+String(currentIndex)+" failed !");
+        startFollowing();
     }
 }
 
@@ -35,25 +52,6 @@ void Sequence::setNextIndex(uint8_t index)
         Logger::infoln("Tried to reach an index out of range");
     else
         nextIndex = index;
-}
-
-void Sequence::setGlobal(uint8_t number, uint8_t value)
-{
-    if (number >= TAILLEGLOBALS)
-        Logger::infoln("Tried to reach a global out of range");
-    else
-        globals[number] = value;
-}
-
-uint8_t Sequence::getGlobal(uint8_t number)
-{
-    if (number >= TAILLEGLOBALS)
-    {
-        Logger::infoln("Tried to reach a global out of range");
-        return 0;
-    }
-    else
-        return globals[number];
 }
 
 Sequence::Sequence()
@@ -75,5 +73,6 @@ void Sequence::toTelemetry()
     for (int i = 0; i <= lastIndex; i++)
     {
         Logger::toTelemetry("A"+String(i),queue[i]->name);
+        Logger::toTelemetry("F"+String(i),String(fails[i]));
     }
 }

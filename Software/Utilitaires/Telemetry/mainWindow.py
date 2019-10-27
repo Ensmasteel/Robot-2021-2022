@@ -1,4 +1,6 @@
 from PyQt5 import QtWidgets as Qtw
+from PyQt5.QtGui import QColor
+from PyQt5 import QtCore as Qt
 from littleWidgets import LabeledValue
 from parseSerial import Parser
 
@@ -55,6 +57,16 @@ class Sequence(Qtw.QFrame):
                 self.actions[k].setFrameShadow(Qtw.QFrame.Plain)
                 self.actions[k].setFrameShape(Qtw.QFrame.NoFrame)
                 self.actions[k].setLineWidth(5)
+
+            if k[0]=="F":
+                k_="A"+k[1]
+                p = self.actions[k_].palette()
+                if v=="1": #fail
+                    p.setColor(self.foregroundRole(), QColor(255,0,0))
+                else:
+                    p.setColor(self.foregroundRole(), QColor(0,0,0))
+                self.actions[k_].setPalette(p)
+
         if self.actions["A"+self.i].isVisible():
             self.actions["A"+self.i].setFrameShadow(Qtw.QFrame.Raised)
             self.actions["A"+self.i].setFrameShape(Qtw.QFrame.Panel)
