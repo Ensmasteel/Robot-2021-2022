@@ -12,7 +12,7 @@ void Sequence::startFollowing()
 void Sequence::startSelected()
 {
     nextIndex = currentIndex + 1;
-    if (queue[currentIndex]->require!=INT16_MAX)
+    if (queue[currentIndex]->require!=NO_REQUIREMENT)
     {
         //Si l'indice est négatif, on check en relatif. Sinon en absolu
         uint8_t indiceToCheck=(queue[currentIndex]->require>=0)?(queue[currentIndex]->require):(currentIndex + queue[currentIndex]->require);

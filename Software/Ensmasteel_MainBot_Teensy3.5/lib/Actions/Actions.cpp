@@ -1,7 +1,8 @@
 #include "Actions.h"
+#include "Sequence.h"
 #include "Ghost.h"
 #include "PID.h"
-//#include "Sequence.h"
+
 
 Cinetique *Action::robotCinetique;
 Ghost *Action::ghost;
@@ -248,7 +249,7 @@ bool Switch_Message_Action::isFinished()
 
 //========================================ACTION MISC========================================
 
-End_Action::End_Action(bool loop) : Action("End_", -1, INT16_MAX)
+End_Action::End_Action(bool loop) : Action("End_", -1, NO_REQUIREMENT)
 {
     this->loop=loop;
 }

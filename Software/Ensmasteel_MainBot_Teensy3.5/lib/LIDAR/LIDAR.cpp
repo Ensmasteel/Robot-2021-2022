@@ -1,3 +1,4 @@
+#include "LIDAR.h"
 #include "Ghost.h"
 #include "Arduino.h"
 

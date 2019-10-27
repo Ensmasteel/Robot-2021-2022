@@ -40,6 +40,6 @@ public:
 
 private:
     bool SECONDARY_BOT_ALLY = false;
-}
+};
 
 #endif

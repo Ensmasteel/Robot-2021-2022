@@ -1,3 +1,5 @@
+#ifndef SEQUENCE_H_
+#define SEQUENCE_H_
 /*
 Chose qu'il est possible de faire:
 
@@ -9,8 +11,7 @@ Chose qu'il est possible de faire:
 5: Spin_Action 3.14 fast        //L'action 5 tourne le robot vers pi
 */
 
-#ifndef SEQUENCE_H_
-#define SEQUENCE_H_
+
 #define TAILLESEQUENCE 50
 #include "Arduino.h"
 
