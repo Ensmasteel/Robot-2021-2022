@@ -62,9 +62,9 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta, bool useSi
     sequence = Sequence();
     Action::setPointers(&cin, &ghost, &sequence, &communication, &asservissement);
     //sequence.add(new Wait_Message_Action(Tirette,-1));
-    sequence.add(new Goto_Action(20, 2.0, 0.0, 0, 0.2, standard));
-    sequence.add(new StraightTo_Action(-1,1,1,standard));
-    sequence.add(new Spin_Action(-1, 3.14, standard));
+    sequence.add(new Goto_Action(-1, 2.0, 0.0, 0, 0.2, standard));
+    sequence.add(new StraightTo_Action(2,1,1,standard));
+    sequence.add(new Spin_Action(-1, 3.14, standard,-1)); //Necessite l'action precedante pour s'executer
     sequence.add(new Goto_Action(-1, 0.0, 0.0, -1.57, 0.2, standard));
     sequence.add(new End_Action());
     if (useSimulator)
@@ -72,7 +72,7 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta, bool useSi
         simu = Simulator(0.30, 10.0, 6.5, 1.5, &cin, &motorLeft.order, &motorRight.order);
         Logger::infoln("SIMULATOR MODE");
     }
-    sequence.reStart();
+    sequence.startSelected();
     ghost.Lock(false);
 }
 

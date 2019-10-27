@@ -21,7 +21,7 @@ uint16_t currentMillis=0,lastMillis=0;
 void setup()
 {
   Serial.begin(115200);
-  Logger::setup();
+  Logger::setup(&Serial,&Serial,&Serial,true,true,false);
   delay(2000);
   Logger::infoln("Bender's booting up");
   bender=new AbsolutelyNotRobot(0,0,0,true);

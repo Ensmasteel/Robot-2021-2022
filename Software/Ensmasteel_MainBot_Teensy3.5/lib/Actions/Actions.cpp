@@ -9,6 +9,10 @@ Communication *Action::communication;
 Asservissement *Action::asser;
 
 //========================================ACTION GENERIQUES========================================
+void Action::start()
+{
+    timeStarted=millis()/1e3; started=true;
+}
 
 bool Action::hasFailed()
 {
@@ -52,7 +56,7 @@ bool Double_Action::hasFailed()
         return action1->hasFailed();
 }
 
-Double_Action::Double_Action(float timeout, String name) : Action(name, timeout)
+Double_Action::Double_Action(float timeout, String name,int16_t require) : Action(name, timeout, require)
 {
     this->action1 = nullptr;
     this->action2 = nullptr;
@@ -82,7 +86,7 @@ bool Move_Action::hasFailed()
     return /*asser->tooFar ||*/ Action::hasFailed();
 }
 
-Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace pace, bool pureRotation, bool backward, String name) : Action(name, timeout)
+Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace pace, bool pureRotation, bool backward, String name, int16_t require) : Action(name, timeout, require)
 {
     this->posFinal = posFinal;
     this->deltaCurve = deltaCurve;
@@ -123,13 +127,13 @@ Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace
     }
 }
 
-Goto_Action::Goto_Action(float timeout, float x, float y, float theta, float deltaCurve, Pace pace, bool backward)
-    : Move_Action(timeout, VectorE(x, y, theta), deltaCurve, pace, false, backward, "Goto")
+Goto_Action::Goto_Action(float timeout, float x, float y, float theta, float deltaCurve, Pace pace, bool backward, int16_t require)
+    : Move_Action(timeout, VectorE(x, y, theta), deltaCurve, pace, false, backward, "Goto", require)
 { /*Rien a faire d'autre*/
 }
 
-Spin_Action::Spin_Action(float timeout, float theta, Pace pace)
-    : Move_Action(timeout, VectorE(0.0, 0.0, theta), 0.0, pace, true, false, "Spin") //x et y seront modifié par start
+Spin_Action::Spin_Action(float timeout, float theta, Pace pace, int16_t require)
+    : Move_Action(timeout, VectorE(0.0, 0.0, theta), 0.0, pace, true, false, "Spin", require) //x et y seront modifié par start
 {                                                                                    /*Rien a faire d'autre*/
 }
 
@@ -140,8 +144,8 @@ void Spin_Action::start()
     Move_Action::start();
 }
 
-Forward_Action::Forward_Action(float timeout, float dist, Pace pace)
-    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, pace, false, false, "Forward")
+Forward_Action::Forward_Action(float timeout, float dist, Pace pace, int16_t require)
+    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, pace, false, false, "Forward", require)
 {
     this->dist = dist;
 }
@@ -154,8 +158,8 @@ void Forward_Action::start()
     Move_Action::start();
 }
 
-Backward_Action::Backward_Action(float timeout, float dist, Pace pace)
-    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, pace, false, true, "Backward")
+Backward_Action::Backward_Action(float timeout, float dist, Pace pace, int16_t require)
+    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, pace, false, true, "Backward", require)
 {
     this->dist = dist;
 }
@@ -179,7 +183,7 @@ void StraightTo_Action::start()
     Double_Action::start();
 }
 
-StraightTo_Action::StraightTo_Action(float timeout, float x, float y, Pace pace) : Double_Action(timeout, "stTo")
+StraightTo_Action::StraightTo_Action(float timeout, float x, float y, Pace pace, int16_t require) : Double_Action(timeout, "stTo", require)
 {
     this->x = x;
     this->y = y;
@@ -189,7 +193,7 @@ StraightTo_Action::StraightTo_Action(float timeout, float x, float y, Pace pace)
 
 //========================================ACTION COMM========================================
 
-Send_Action::Send_Action(Message message) : Action("Send", 0.1)
+Send_Action::Send_Action(Message message, int16_t require) : Action("Send", 0.1, require)
 {
     this->message = message;
 }
@@ -201,7 +205,7 @@ void Send_Action::start()
     Action::start();
 }
 
-Wait_Message_Action::Wait_Message_Action(MessageID messageId, float timeout) : Action("WaitMess", timeout)
+Wait_Message_Action::Wait_Message_Action(MessageID messageId, float timeout, int16_t require) : Action("WaitMess", timeout, require)
 {
     this->messageId = messageId;
 }
@@ -213,7 +217,7 @@ bool Wait_Message_Action::isFinished()
 
 //========================================ACTION MISC========================================
 
-End_Action::End_Action() : Move_Action(-1, VectorE(0, 0, 0), 0.01, accurate, false, false, "End") // x, y, theta initialize in End_Action::start to current position
+End_Action::End_Action() : Move_Action(-1, VectorE(0, 0, 0), 0.01, accurate, false, false, "End", NO_REQUIREMENT) // x, y, theta initialize in End_Action::start to current position
 {                                                                                                 /*Rien a faire d'autre*/
 }
 
