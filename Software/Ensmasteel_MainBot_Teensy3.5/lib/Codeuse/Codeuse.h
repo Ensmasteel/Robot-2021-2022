@@ -4,9 +4,9 @@
 #include "Vector.h"
 #include "Arduino.h"
 
-#ifndef STM32L152xE
+#ifndef STM32BOTH
 #include <Encoder.h>
-#else // !STM32L152xE
+#else // !STM32BOTH
 class Encoder
 {
 public:

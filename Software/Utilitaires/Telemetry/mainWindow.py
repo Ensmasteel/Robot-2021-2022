@@ -89,6 +89,69 @@ class Comm(Qtw.QFrame):
             if k=="mess":
                 self.mess.setText(v)
 
+class PidUnit(Qtw.QFrame):
+    def __init__(self,translation,which,mainWindowMessageSignal):
+        super().__init__()
+        self.translation=translation
+        self.which=which
+        self.setFrameShadow(Qtw.QFrame.Plain)
+        self.setFrameShape(Qtw.QFrame.StyledPanel)
+
+        self.myLayout=Qtw.QVBoxLayout(self)
+        self.setLayout(self.myLayout)
+        self.btnUp=Qtw.QPushButton("++")
+        self.lab=Qtw.QLabel("P")
+        if which==1:
+            self.lab=Qtw.QLabel("I")
+        elif which==2:
+            self.lab=Qtw.QLabel("D")
+
+        self.btnDown=Qtw.QPushButton("--")
+        self.myLayout.addWidget(self.btnUp)
+        self.myLayout.addWidget(self.lab)
+        self.myLayout.addWidget(self.btnDown)
+        self.btnUp.clicked.connect(lambda : mainWindowMessageSignal.emit(MessageID.PID_tweak_M,1,translation,which,0))
+        self.btnDown.clicked.connect(lambda : mainWindowMessageSignal.emit(MessageID.PID_tweak_M,0,translation,which,0))
+
+class PidGroup(Qtw.QFrame):
+    def __init__(self,translation,mainWindowMessageSignal):
+        super().__init__()
+        self.translation=translation
+        self.setFrameShadow(Qtw.QFrame.Plain)
+        self.setFrameShape(Qtw.QFrame.StyledPanel)
+        self.myLayout=Qtw.QVBoxLayout(self)
+        self.setLayout(self.myLayout)
+        if translation:
+            self.label=Qtw.QLabel("TRANSLATION")
+        else:
+            self.label=Qtw.QLabel("ROTATION")
+        self.myLayout.addWidget(self.label)
+
+        self.group=Qtw.QWidget(self)
+        self.layoutGroup=Qtw.QHBoxLayout(self.group)
+        self.group.setLayout(self.layoutGroup)
+        self.pWidget=PidUnit(translation,0,mainWindowMessageSignal)
+        self.layoutGroup.addWidget(self.pWidget)
+        self.iWidget=PidUnit(translation,1,mainWindowMessageSignal)
+        self.layoutGroup.addWidget(self.iWidget)
+        self.dWidget=PidUnit(translation,2,mainWindowMessageSignal)
+        self.layoutGroup.addWidget(self.dWidget)
+        self.myLayout.addWidget(self.group)
+
+class PidPanel(Qtw.QFrame):
+    def __init__(self,mainWindowMessageSignal):
+        super().__init__()
+        self.setFrameShadow(Qtw.QFrame.Plain)
+        self.setFrameShape(Qtw.QFrame.StyledPanel)
+        self.myLayout=Qtw.QHBoxLayout(self)
+        self.setLayout(self.myLayout)
+        self.translationGroup=PidGroup(True,mainWindowMessageSignal)
+        self.myLayout.addWidget(self.translationGroup)
+        self.rotationGroup=PidGroup(False,mainWindowMessageSignal)
+        self.myLayout.addWidget(self.rotationGroup)
+
+
+
 class MainWindow(Qtw.QWidget):
     sendMessage=Qt.pyqtSignal(MessageID,int,int,int,int)
     def __init__(self):
@@ -99,13 +162,12 @@ class MainWindow(Qtw.QWidget):
         self.cinetiqueG=CinetiqueW("G")
         self.sequenceWidget=Sequence()
         self.commWidget=Comm()
-        self.btn=Qtw.QPushButton("click")
-        self.btn.clicked.connect(lambda : self.sendMessage.emit(MessageID.PID_tweak_M,1,1,1,0))
+        self.pidPanel=PidPanel(self.sendMessage)
         self.mainLayout.addWidget(self.cinetiqueR)
         self.mainLayout.addWidget(self.cinetiqueG)
         self.mainLayout.addWidget(self.sequenceWidget)
         self.mainLayout.addWidget(self.commWidget)
-        self.mainLayout.addWidget(self.btn)
+        self.mainLayout.addWidget(self.pidPanel)
         self.parserThread=Parser(self)
         self.parserThread.newTelem.connect(self.cinetiqueR.update)
         self.parserThread.newTelem.connect(self.cinetiqueG.update)

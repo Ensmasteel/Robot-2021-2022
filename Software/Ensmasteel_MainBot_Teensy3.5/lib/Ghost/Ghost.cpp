@@ -1,7 +1,7 @@
 #include "Ghost.h"
 #include "Arduino.h"
 
-#ifdef STM32L152xE
+#ifdef STM32BOTH
 #define max(a,b) (((a)>(b))?(a):(b))
 #endif
 

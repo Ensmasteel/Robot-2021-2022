@@ -1,5 +1,5 @@
 
-#ifndef STM32L152xE
+#ifndef STM32BOTH
 #include "Encoder.h"
 
 // Yes, all the code is in the header file, to provide the user

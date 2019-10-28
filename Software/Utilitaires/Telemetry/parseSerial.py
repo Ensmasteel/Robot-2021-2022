@@ -92,6 +92,7 @@ class Parser(QThread):
 
     def connectPort(self):
         try:
+            pass
             self.ser.open()
         except:
             print("Wrong COM")
