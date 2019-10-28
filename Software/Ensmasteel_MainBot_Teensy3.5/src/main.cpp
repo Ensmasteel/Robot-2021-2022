@@ -21,7 +21,7 @@ uint16_t currentMillis=0,lastMillis=0;
 void setup()
 {
   Serial.begin(115200);
-  Logger::setup(&Serial,&Serial,&Serial,true,true,false);
+  Logger::setup(&Serial,&Serial,&Serial,true,true,true);
   delay(2000);
   Logger::infoln("Bender's booting up");
   bender=new AbsolutelyNotRobot(0,0,0,true);
@@ -34,7 +34,6 @@ void loop()
   if ((currentMillis-lastMillis)/1e3 > 1.0/FREQUENCY)
   {
     bender->update(1.0/FREQUENCY);
-    bender->telemetry();
     lastMillis=currentMillis;
   }
 }

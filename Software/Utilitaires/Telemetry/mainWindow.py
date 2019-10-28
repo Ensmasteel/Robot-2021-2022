@@ -3,6 +3,7 @@ from PyQt5.QtGui import QColor
 from PyQt5 import QtCore as Qt
 from littleWidgets import LabeledValue
 from parseSerial import Parser
+from parseSerial import MessageId
 
 class CinetiqueW(Qtw.QFrame):
     def __init__(self,prefix):
@@ -72,11 +73,27 @@ class Sequence(Qtw.QFrame):
             self.actions["A"+self.i].setFrameShape(Qtw.QFrame.Panel)
             self.actions["A"+self.i].setLineWidth(5)
 
-            
-        
+class Comm(Qtw.QFrame):
+    def __init__(self):
+        super().__init__()
+        self.setFrameShadow(Qtw.QFrame.Plain)
+        self.setFrameShape(Qtw.QFrame.StyledPanel)
+        self.myLayout=Qtw.QHBoxLayout(self)
+        self.lab=Qtw.QLabel("Last Message ID : ")
+        self.myLayout.addWidget(self.lab)
+        self.mess=Qtw.QLabel("")
+        self.myLayout.addWidget(self.mess)
 
+    def update(self,dick : dict):
+        for k,v in dick.items():
+            if k=="mess":
+                self.mess.setText(v)
+
+
+            
 
 class MainWindow(Qtw.QWidget):
+    sendMessage=Qt.pyqtSignal(MessageId)
     def __init__(self):
         super().__init__()
         self.mainLayout=Qtw.QVBoxLayout(self)
@@ -84,11 +101,19 @@ class MainWindow(Qtw.QWidget):
         self.cinetiqueR=CinetiqueW("R")
         self.cinetiqueG=CinetiqueW("G")
         self.sequenceWidget=Sequence()
+        self.sendIncrPR_Btn=Qtw.QPushButton("Translation: P++")
+        self.sendIncrPR_Btn.clicked.connect(lambda : self.sendMessage.emit(MessageId.PID_T_P_incr_M))
+        self.commWidget=Comm()
         self.mainLayout.addWidget(self.cinetiqueR)
         self.mainLayout.addWidget(self.cinetiqueG)
         self.mainLayout.addWidget(self.sequenceWidget)
-        self.parserThread=Parser()
+        self.mainLayout.addWidget(self.sendIncrPR_Btn)
+        self.mainLayout.addWidget(self.commWidget)
+        self.parserThread=Parser(self)
         self.parserThread.newTelem.connect(self.cinetiqueR.update)
         self.parserThread.newTelem.connect(self.cinetiqueG.update)
         self.parserThread.newTelem.connect(self.sequenceWidget.update)
+        self.parserThread.newTelem.connect(self.commWidget.update)
+        self.parserThread.newInfo.connect(print)
+        #self.parserThread.newDebug.connect(print)
         self.parserThread.start()

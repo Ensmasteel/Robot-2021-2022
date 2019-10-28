@@ -23,7 +23,7 @@ public:
     virtual void start();
     virtual bool isFinished() {return done;}
     virtual bool hasFailed();   //Par convention, un timeout négatif indique qu'il n'y a pas de timeout
-    static void setPointers(Cinetique * robotCinetique,Ghost * ghost, Sequence * sequence, Communication * communication, Asservissement * asser);
+    static void setPointers(Cinetique * robotCinetique,Ghost * ghost,Sequence* mainSequence, Communication * communication, Asservissement * asser);
     Action(String name="Action", float timeout=0.1, int16_t require=NO_REQUIREMENT){this->name=name;this->timeout=timeout;this->require=require;done=false;started=false;}
     bool hasStarted() {return started;}
     int16_t require;        //I require Action n°"require" to have succeeded to do this action
@@ -35,9 +35,11 @@ protected:
     float timeStarted;
     static Cinetique * robotCinetique;
     static Ghost * ghost;
-    static Sequence * sequence;
+    static Sequence * mainSequence;
+    Sequence * mySequence;  //Les actions n'appartiennent pas tous à la meme séquence
     static Communication * communication;
     static Asservissement * asser;
+friend class Sequence;
 };
 
 class Double_Action : public Action
@@ -84,6 +86,17 @@ class Spin_Action : public Move_Action //Spin
 {
 public:
     Spin_Action(float timeout, float theta, Pace pace,int16_t require=NO_REQUIREMENT);
+    void start(); //(Action + Spin) Le start doit etre redéfini car on ne connait pas posFinal a l'avance
+    //isFinished(Move)
+    //hasFailed(Action+Move)
+};
+
+class Rotate_Action : public Move_Action //Tourne en relatif
+{
+private:
+    float deltaTheta;
+public:
+    Rotate_Action(float timeout, float deltaTheta, Pace pace,int16_t require=NO_REQUIREMENT);
     void start(); //(Action + Spin) Le start doit etre redéfini car on ne connait pas posFinal a l'avance
     //isFinished(Move)
     //hasFailed(Action+Move)

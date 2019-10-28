@@ -20,7 +20,8 @@ private:
     Ghost ghost;
     Asservissement asservissement;
     Communication communication;
-    Sequence sequence;
+    Sequence mainSequence;
+    Sequence telecommandeSequence;
 
     float outTranslation, outRotation;
     Cinetique target;

@@ -98,15 +98,15 @@ void Communication::update()
 
 #ifdef DEBUGCOMM
     Logger::debug("In hardware buffer ");
-    Logger::debugln(SERIALCOMM.available());
+    Logger::debugln(String(port->available()));
     Logger::debug("In my buffer ");
-    Logger::debugln(receiveBox.size());
+    Logger::debugln(String(receiveBox.size()));
     if (receiveBox.size() == 1)
     {
         Logger::debug("Id = ");
-        Logger::debugln(receiveBox.peek().ID);
+        Logger::debugln(String(receiveBox.peek().ID));
         Logger::debug("Value = ");
-        Logger::debugln(receiveBox.peek().data);
+        Logger::debugln(String(receiveBox.peek().data));
     }
 #endif
 }
@@ -140,4 +140,10 @@ Communication::Communication(Stream* port)
         port->read();
     }
     millisLastSend = millis();
+}
+
+void Communication::toTelemetry()
+{
+    if (inWaiting()>0)
+        Logger::toTelemetry("mess",String(peekOldestMessage().ID));
 }

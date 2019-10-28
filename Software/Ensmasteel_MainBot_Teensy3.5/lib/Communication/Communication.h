@@ -8,16 +8,10 @@
 #define ANTISPAM_MS 300
 
 #include "Arduino.h"
-
+#include "MessageID.h"
 #include <Stream.h>
 
-//En-tete d'un message
-enum MessageID : uint16_t
-{
-    Empty,
-    Stop,
-    Tirette
-};
+
 
 struct Message
 {
@@ -51,6 +45,7 @@ public:
     uint8_t inWaiting();
     void update();
     Communication(Stream* port=&Serial);
+    void toTelemetry();
 
 private:
     Stream* port;

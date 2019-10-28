@@ -3,6 +3,26 @@ from PyQt5.QtCore import QObject,pyqtSignal,QThread
 from enum import Enum
 import time
 
+class MessageId(Enum):
+    Empty=0
+    Stop=1
+    Tirette=2
+    PID_T_P_incr_M=3
+    PID_T_P_decr_M=4
+    PID_T_I_incr_M=5
+    PID_T_I_decr_M=6
+    PID_T_D_incr_M=7
+    PID_T_D_decr_M=8
+    PID_R_P_incr_M=9
+    PID_R_P_decr_M=10
+    PID_R_I_incr_M=11
+    PID_R_I_decr_M=12
+    PID_R_D_incr_M=13
+    PID_R_D_decr_M=14
+    add_forward_M=15
+    add_backward_M=16
+    add_spin_M=17
+
 class State(Enum):
     DEBUG=1
     NAME=2
@@ -14,7 +34,7 @@ class Parser(QThread):
     newInfo=pyqtSignal(str)
     newDebug=pyqtSignal(str)
 
-    def __init__(self):
+    def __init__(self,mainWindow):
         super().__init__()
         file = open("setup.txt","r")
         port = file.readline()[:-1]
@@ -30,6 +50,12 @@ class Parser(QThread):
         self.ser.baudrate=baudrate
         self.state=State.DEBUG
         self.stop=False
+        mainWindow.sendMessage.connect(self.sendMessage)
+
+    def sendMessage(self,messageID : MessageId):
+        self.ser.write(bytes([0,0,0,0,messageID.value,0]))
+        #self.ser.write(bytes.fromhex("000000000200"))
+        print("send")
     
     def run(self):
         self.connectPort()
@@ -40,11 +66,13 @@ class Parser(QThread):
                 if self.state==State.DEBUG:
                     if x=="@":
                         self.state=State.NAME
-                        self.newDebug.emit(self.debug)
+                        if self.debug!="":
+                            self.newDebug.emit(self.debug)
                         self.debug=""
                     elif x=="#":
                         self.state=State.INFO
-                        self.newDebug.emit(self.debug)
+                        if self.debug!="":
+                            self.newDebug.emit(self.debug)
                         self.debug=""
                     else:
                         self.debug+=x

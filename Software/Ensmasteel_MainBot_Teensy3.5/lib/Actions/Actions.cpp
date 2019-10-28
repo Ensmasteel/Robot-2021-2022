@@ -6,7 +6,7 @@
 
 Cinetique *Action::robotCinetique;
 Ghost *Action::ghost;
-Sequence *Action::sequence;
+Sequence* Action::mainSequence;
 Communication *Action::communication;
 Asservissement *Action::asser;
 
@@ -23,11 +23,11 @@ bool Action::hasFailed()
     return millis() / 1e3 > timeStarted + timeout;
 }
 
-void Action::setPointers(Cinetique *robotCinetique_, Ghost *ghost_, Sequence *sequence_, Communication *communication_, Asservissement *asser_)
+void Action::setPointers(Cinetique *robotCinetique_, Ghost *ghost_, Sequence* mainSequence_, Communication *communication_, Asservissement *asser_)
 {
     robotCinetique = robotCinetique_;
     ghost = ghost_;
-    sequence = sequence_;
+    mainSequence=mainSequence_;
     communication = communication_;
     asser = asser_;
 }
@@ -146,6 +146,21 @@ void Spin_Action::start()
     Move_Action::start();
 }
 
+Rotate_Action::Rotate_Action(float timeout, float deltaTheta, Pace pace, int16_t require)
+    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, pace, true, false, "Rota", require) //x et y et theta seront modifié par start
+{
+    this->deltaTheta=deltaTheta;
+}
+
+void Rotate_Action::start()
+{
+    posFinal._x = robotCinetique->_x;
+    posFinal._y = robotCinetique->_y;
+    posFinal._theta = robotCinetique->_theta + deltaTheta;
+    Move_Action::start();
+}
+
+
 Forward_Action::Forward_Action(float timeout, float dist, Pace pace, int16_t require)
     : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, pace, false, false, "Forward", require)
 {
@@ -239,7 +254,7 @@ bool Switch_Message_Action::isFinished()
         {
             if (communication->peekOldestMessage().ID == onMessage[i])
             {
-                doFct[i](robotCinetique,ghost,sequence,communication,asser);
+                doFct[i](robotCinetique,ghost,mainSequence,communication,asser); //Les functions agissent sur la mainSequence uniquement
                 return true;
             }
         }
@@ -258,7 +273,7 @@ void End_Action::start()
 {
     if (loop)
     {
-        sequence->nextIndex=0;
+        mySequence->nextIndex=0; //Une end action boucle sa propre sequence
         done=true;
     }
     Action::start();
@@ -266,7 +281,17 @@ void End_Action::start()
 
 void Do_Action::start()
 {
-    functionToCall(robotCinetique,ghost,sequence,communication,asser);
+    functionToCall(robotCinetique,ghost,mainSequence,communication,asser); //Les functions agissent sur la mainSequence uniquement
     done=true;
     Action::start();
+}
+
+Sleep_Action::Sleep_Action(float timeToWait,int16_t require) : Action("ZZzz",-1,require)
+{
+    this->timeToWait=timeToWait;
+}
+
+bool Sleep_Action::isFinished()
+{
+    return millis()/1e3 - timeStarted>timeToWait;
 }

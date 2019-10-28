@@ -65,6 +65,7 @@ Sequence::Sequence()
 void Sequence::add(Action *action)
 {
     queue[lastIndex + 1] = action;
+    queue[lastIndex + 1]->mySequence=this;
     lastIndex++;
 }
 
