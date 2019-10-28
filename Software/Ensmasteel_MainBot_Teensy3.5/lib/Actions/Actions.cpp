@@ -232,7 +232,7 @@ bool Wait_Message_Action::isFinished()
     return communication->inWaiting() > 0 && communication->peekOldestMessage().ID == messageId;
 }
 
-Switch_Message_Action::Switch_Message_Action(float timeout,uint8_t require) : Action("swch",timeout,require)
+Switch_Message_Action::Switch_Message_Action(float timeout,int16_t require) : Action("swch",timeout,require)
 {
     this->doFct.clear();
     this->onMessage.clear();
@@ -273,7 +273,7 @@ void End_Action::start()
 {
     if (loop)
     {
-        mySequence->nextIndex=0; //Une end action boucle sa propre sequence
+        mySequence->nextIndex=0; //Une end action, boucle sa propre sequence
         done=true;
     }
     Action::start();

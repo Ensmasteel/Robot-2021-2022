@@ -3,7 +3,7 @@ from PyQt5.QtGui import QColor
 from PyQt5 import QtCore as Qt
 from littleWidgets import LabeledValue
 from parseSerial import Parser
-from parseSerial import MessageId
+from parseSerial import MessageID
 
 class CinetiqueW(Qtw.QFrame):
     def __init__(self,prefix):
@@ -89,11 +89,8 @@ class Comm(Qtw.QFrame):
             if k=="mess":
                 self.mess.setText(v)
 
-
-            
-
 class MainWindow(Qtw.QWidget):
-    sendMessage=Qt.pyqtSignal(MessageId)
+    sendMessage=Qt.pyqtSignal(MessageID,int,int,int,int)
     def __init__(self):
         super().__init__()
         self.mainLayout=Qtw.QVBoxLayout(self)
@@ -101,19 +98,20 @@ class MainWindow(Qtw.QWidget):
         self.cinetiqueR=CinetiqueW("R")
         self.cinetiqueG=CinetiqueW("G")
         self.sequenceWidget=Sequence()
-        self.sendIncrPR_Btn=Qtw.QPushButton("Translation: P++")
-        self.sendIncrPR_Btn.clicked.connect(lambda : self.sendMessage.emit(MessageId.PID_T_P_incr_M))
         self.commWidget=Comm()
+        self.btn=Qtw.QPushButton("click")
+        self.btn.clicked.connect(lambda : self.sendMessage.emit(MessageID.PID_tweak_M,1,1,1,0))
         self.mainLayout.addWidget(self.cinetiqueR)
         self.mainLayout.addWidget(self.cinetiqueG)
         self.mainLayout.addWidget(self.sequenceWidget)
-        self.mainLayout.addWidget(self.sendIncrPR_Btn)
         self.mainLayout.addWidget(self.commWidget)
+        self.mainLayout.addWidget(self.btn)
         self.parserThread=Parser(self)
         self.parserThread.newTelem.connect(self.cinetiqueR.update)
         self.parserThread.newTelem.connect(self.cinetiqueG.update)
         self.parserThread.newTelem.connect(self.sequenceWidget.update)
         self.parserThread.newTelem.connect(self.commWidget.update)
         self.parserThread.newInfo.connect(print)
-        #self.parserThread.newDebug.connect(print)
+        self.parserThread.newDebug.connect(print)
+        
         self.parserThread.start()

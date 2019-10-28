@@ -74,11 +74,8 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta, bool useSi
     mainSequence.add(new Goto_Action(20, 0.0, 0.0, -1.57, 0.2, standard));
 
     telecommandeSequence = Sequence();
-    Switch_Message_Action* switchMessage = new Switch_Message_Action(-1,NO_REQUIREMENT);
-    switchMessage->addPair(PID_T_P_incr_M, PID_T_P_incr);
-    switchMessage->addPair(PID_T_P_decr_M, PID_T_P_decr);
-    switchMessage->addPair(add_forward_M,add_forward);
-    telecommandeSequence.add(switchMessage);
+    telecommandeSequence.add(new Wait_Message_Action(PID_tweak_M,-1,NO_REQUIREMENT));
+    telecommandeSequence.add(new Do_Action(PID_tweak,-1));
     telecommandeSequence.add(new End_Action(true));
     
     if (useSimulator)

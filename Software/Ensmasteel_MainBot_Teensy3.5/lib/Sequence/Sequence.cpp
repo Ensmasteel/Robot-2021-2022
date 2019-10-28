@@ -37,13 +37,15 @@ void Sequence::update()
     {
         fails[currentIndex] = false;
         Logger::debugln("Action "+String(currentIndex)+" succeded !");
-        startFollowing();
+        if (nextIndex<=lastIndex)
+            startFollowing();
     }
     else if (queue[currentIndex]->hasFailed())
     {
         fails[currentIndex] = true;
         Logger::infoln("Action "+String(currentIndex)+" failed !");
-        startFollowing();
+        if (nextIndex<=lastIndex)
+            startFollowing();
     }
 }
 

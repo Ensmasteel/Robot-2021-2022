@@ -11,7 +11,16 @@
 #include "MessageID.h"
 #include <Stream.h>
 
+typedef struct 
+{
+    uint8_t byte1,byte2,byte3,byte4;
+}RawValue;
 
+union Decoder
+{
+    RawValue raw;
+    int32_t data;
+};
 
 struct Message
 {

@@ -3,25 +3,14 @@ from PyQt5.QtCore import QObject,pyqtSignal,QThread
 from enum import Enum
 import time
 
-class MessageId(Enum):
+class MessageID(Enum):
     Empty=0
     Stop=1
     Tirette=2
-    PID_T_P_incr_M=3
-    PID_T_P_decr_M=4
-    PID_T_I_incr_M=5
-    PID_T_I_decr_M=6
-    PID_T_D_incr_M=7
-    PID_T_D_decr_M=8
-    PID_R_P_incr_M=9
-    PID_R_P_decr_M=10
-    PID_R_I_incr_M=11
-    PID_R_I_decr_M=12
-    PID_R_D_incr_M=13
-    PID_R_D_decr_M=14
-    add_forward_M=15
-    add_backward_M=16
-    add_spin_M=17
+    PID_tweak_M=3
+    add_forward_M=4
+    add_backward_M=5
+    add_spin_M=6
 
 class State(Enum):
     DEBUG=1
@@ -52,9 +41,9 @@ class Parser(QThread):
         self.stop=False
         mainWindow.sendMessage.connect(self.sendMessage)
 
-    def sendMessage(self,messageID : MessageId):
-        self.ser.write(bytes([0,0,0,0,messageID.value,0]))
-        #self.ser.write(bytes.fromhex("000000000200"))
+    def sendMessage(self,messageID : MessageID,byte1,byte2,byte3,byte4):
+        self.ser.write(bytes([byte1,byte2,byte3,byte4,messageID.value,0]))
+        #self.ser.write(bytes.fromhex("010203040200"))
         print("send")
     
     def run(self):

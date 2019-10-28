@@ -8,7 +8,7 @@
 #include <string.h>
 #endif
 
-//#define DEBUGCOMM
+#define DEBUGCOMM
 
 Message newMessage(MessageID id, int32_t data)
 {
@@ -107,6 +107,13 @@ void Communication::update()
         Logger::debugln(String(receiveBox.peek().ID));
         Logger::debug("Value = ");
         Logger::debugln(String(receiveBox.peek().data));
+        Logger::debugln("Decoded");
+        Decoder decoder;
+        decoder.data=receiveBox.peek().data;
+        Logger::debugln("Byte1 "+String(decoder.raw.byte1));
+        Logger::debugln("Byte2 "+String(decoder.raw.byte2));
+        Logger::debugln("Byte3 "+String(decoder.raw.byte3));
+        Logger::debugln("Byte4 "+String(decoder.raw.byte4));
     }
 #endif
 }

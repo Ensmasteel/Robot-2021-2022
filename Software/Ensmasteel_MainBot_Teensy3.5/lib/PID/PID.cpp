@@ -141,16 +141,16 @@ void Asservissement::setCurrentProfile(Pace pace)
     pidRotation.setCurrentProfile(pace);
 }
 
-float Asservissement::tweak(bool incr, bool translation, bool P, bool I, bool D)
+float Asservissement::tweak(bool incr, bool translation, uint8_t whichOne)
 {
     float coeff=(incr)?(1.01):(0.99);
     PID* toTweak=(translation)?(&pidTranslation):(&pidRotation);
-    if (P)
+    if (whichOne==0)
     {
         toTweak->PIDProfiles[toTweak->currentProfile].KP*=coeff;
         return toTweak->PIDProfiles[toTweak->currentProfile].KP;
     }
-    else if (I)
+    else if (whichOne==1)
     {
         toTweak->PIDProfiles[toTweak->currentProfile].KI*=coeff;
         return toTweak->PIDProfiles[toTweak->currentProfile].KI;

@@ -6,67 +6,17 @@
 #include "Actions.h"
 #include "PID.h"
 
-void PID_T_P_incr(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    Logger::infoln(String(asser->tweak(true,true,true,false,false)));
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter" //Retire le warning "unused parameter"
+
+//Lorsque cette fonction est appellé, il y a un PID_tweak dans la mailbox
+void PID_tweak(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
+    Decoder decoder;
+    decoder.data=communication->peekOldestMessage().data;
+    bool incr=decoder.raw.byte1==1;
+    bool translation=decoder.raw.byte2==1;
+    uint8_t whichOne=decoder.raw.byte3; //0 = P, 1 = I, 2 = D
+    Logger::infoln(String(asser->tweak(incr,translation,whichOne)*4095.0));
 }
 
-void PID_T_P_decr(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    Logger::infoln(String(asser->tweak(false,true,true,false,false)));
-}
-
-void PID_T_I_incr(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    Logger::infoln(String(asser->tweak(true,true,false,true,false)));
-}
-
-void PID_T_I_decr(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    Logger::infoln(String(asser->tweak(false,true,false,true,false)));
-}
-
-void PID_T_D_incr(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    Logger::infoln(String(asser->tweak(true,true,false,false,true)));
-}
-
-void PID_T_D_decr(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    Logger::infoln(String(asser->tweak(false,true,false,false,true)));
-}
-
-
-
-void PID_R_P_incr(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    Logger::infoln(String(asser->tweak(true,false,true,false,false)));
-}
-
-void PID_R_P_decr(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    Logger::infoln(String(asser->tweak(false,false,true,false,false)));
-}
-
-void PID_R_I_incr(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    Logger::infoln(String(asser->tweak(true,false,false,true,false)));
-}
-
-void PID_R_I_decr(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    Logger::infoln(String(asser->tweak(false,false,false,true,false)));
-}
-
-void PID_R_D_incr(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    Logger::infoln(String(asser->tweak(true,false,false,false,true)));
-}
-
-void PID_R_D_decr(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    Logger::infoln(String(asser->tweak(false,false,false,false,true)));
-}
-
-
-#define PACE standard
-
-void add_forward(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    mainSequence->add(new Forward_Action(10,0.30,PACE,NO_REQUIREMENT));
-}
-
-void add_backward(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    mainSequence->add(new Backward_Action(10,0.30,PACE,NO_REQUIREMENT));
-}
-
-void add_spin(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    mainSequence->add(new Rotate_Action(10,PI/2.0,PACE,NO_REQUIREMENT));
-}
+#pragma GCC diagnostic pop

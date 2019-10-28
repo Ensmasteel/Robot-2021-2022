@@ -168,7 +168,7 @@ private:
     std::vector<Fct>         doFct;
     uint8_t size;
 public:
-    Switch_Message_Action(float timeout,uint8_t require);
+    Switch_Message_Action(float timeout,int16_t require);
     void addPair(MessageID messageId,Fct fct);
     //start : inherited from Action
     bool isFinished();

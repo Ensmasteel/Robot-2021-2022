@@ -60,7 +60,7 @@ public:
     void setCurrentProfile(Pace pace);
     Asservissement(float *outTranslation, float *outRotation, Cinetique *cRobot, Cinetique *cGhost, float frequency);
     Asservissement() {}
-    float tweak(bool incr, bool translation, bool P, bool I, bool D);
+    float tweak(bool incr, bool translation, uint8_t whichOne);
 };
 
 #endif
