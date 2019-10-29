@@ -55,7 +55,7 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
             errorStatus = 1;
         }
 
-        posAim._theta += lengthTrajectory;
+        //posAim._theta += lengthTrajectory;
         posAim.normalizeTheta();
 
         durationTrajectory = ((abs(lengthTrajectory)) / cruisingSpeed) + (cruisingSpeed / speedRamps);
@@ -160,6 +160,7 @@ int Ghost::StateManager()
         {
             posCurrent = posAim;
             posDelayed = posAim;
+            posPrevious = posAim;
             trajectoryFinished = true;
         }
         else
@@ -167,7 +168,6 @@ int Ghost::StateManager()
             errorState = 1;
         }
     }
-
     return errorState;
 }
 
