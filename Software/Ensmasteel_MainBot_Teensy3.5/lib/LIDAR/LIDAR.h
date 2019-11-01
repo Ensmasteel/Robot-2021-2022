@@ -4,6 +4,10 @@
  * date : November 2019
 */
 
+//points to check :
+//use
+
+
 #ifndef LIDAR_H
 #define LIDAR_H
 
@@ -20,17 +24,18 @@
 #define max_points_per_object 50
 #define max_objects_detected 20
 
-//first phase:
-//when robot are static --> detect them
-//second phase:
-//when robot are moving --> track them
 
+
+//basics:
+//1 detect objects
+//2 identify objects
 
 struct point
 {
     float angle;
     float distance;
 }
+float distance(point p1,point p2);
 
 enum BotIdentificater
 {
@@ -44,20 +49,16 @@ enum BotIdentificater
 
 };
 
-//Lidar continously update object_data ==> will become a class soon
-struct object_data
+class object_data
 {
     //data about the objects
     BotIdentificater Bot_name = unknown;
     Cinetique Bot_cinetique;
-
-    point old[max_objects_detected];//previous points associated to this object
-    int old_length = 0;
-    point now[max_objects_detected];//points being associated with this object
-    int now_length = 0;
-
-    float age; // age of the last detection of the object
+    point points[max_objects_detected];//previous points associated to this object
+    int length = 0;
+    uint32_t age; // age of the last detection of the object
     bool state; //if true the object is tracked
+    void calculateCG();
 };
 
 
@@ -88,9 +89,11 @@ public:
     //               Free to move => false
     bool trajectoryBlocked(bool forward = true);
 
-    void detect(); //detect all non mooving objects
+    void detect(); //detect all objects (cluster of points being in range of each others)
 
-    void track(); //identify all points too all previously known objects
+    void identify();//identify detected object initially
+
+    void track(); //identify detected object concidering previous objects
 
 private:
 
@@ -100,7 +103,15 @@ private:
 
     //liste of all detected object
     object_data object_list [max_objects_detected];
+    uint16_t nb_object = 0;//number of objects detected
+
+    bool detectinging_an_object = false;//used to know if the lidar is curently detecting an object
 };
+
+
+
+
+
 
 
 
