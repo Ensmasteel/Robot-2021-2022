@@ -1,12 +1,15 @@
 from PyQt5 import QtWidgets as Qtw
 from PyQt5.QtGui import QColor
+import matplotlib
+matplotlib.use('Qt5Agg')
 from PyQt5 import QtCore as Qt
+
 from littleWidgets import LabeledValue
 from parseSerial import Parser
 from parseSerial import MessageID
 
 class CinetiqueW(Qtw.QFrame):
-    def __init__(self,prefix):
+    def __init__(self, prefix):
         super().__init__()
         self.setFrameShadow(Qtw.QFrame.Plain)
         self.setFrameShape(Qtw.QFrame.StyledPanel)
@@ -20,7 +23,7 @@ class CinetiqueW(Qtw.QFrame):
         for w in self.widgets.values():
             self.myLayout.addWidget(w)
     
-    def update(self,dick : dict):
+    def update(self, dick : dict):
         for k,v in dick.items():
             if k in self.widgets.keys():
                 self.widgets[k].setValue(v)
@@ -150,6 +153,23 @@ class PidPanel(Qtw.QFrame):
         self.rotationGroup=PidGroup(False,mainWindowMessageSignal)
         self.myLayout.addWidget(self.rotationGroup)
 
+class TrajectoryViewer(Qtw.QFrame):
+    def __init__(self):
+        super().__init__()
+        self.setFrameShadow(Qtw.QFrame.Plain)
+        self.setFrameShape(Qtw.QFrame.StyledPanel)
+        self.myLayout=Qtw.QHBoxLayout(self)
+        self.lab=Qtw.QLabel("Trajectory live ")
+        self.myLayout.addWidget(self.lab)
+        self.widgets = {"Rx": 0.0, "Ry" : 0.0, "RTh": 0.0}
+        self.mess=Qtw.QLabel("")
+        self.myLayout.addWidget(self.mess)
+
+    def update(self, dick : dict):
+        for k,v in dick.items():
+            if k in self.widgets.keys():
+                self.widgets[k] = v
+                self.mess.setText(str(self.widgets["Rx"]))
 
 
 class MainWindow(Qtw.QWidget):
@@ -162,17 +182,20 @@ class MainWindow(Qtw.QWidget):
         self.cinetiqueG=CinetiqueW("G")
         self.sequenceWidget=Sequence()
         self.commWidget=Comm()
+        self.trajectoryViewer = TrajectoryViewer()
         self.pidPanel=PidPanel(self.sendMessage)
         self.mainLayout.addWidget(self.cinetiqueR)
         self.mainLayout.addWidget(self.cinetiqueG)
         self.mainLayout.addWidget(self.sequenceWidget)
         self.mainLayout.addWidget(self.commWidget)
         self.mainLayout.addWidget(self.pidPanel)
+        self.mainLayout.addWidget(self.trajectoryViewer)
         self.parserThread=Parser(self)
         self.parserThread.newTelem.connect(self.cinetiqueR.update)
         self.parserThread.newTelem.connect(self.cinetiqueG.update)
         self.parserThread.newTelem.connect(self.sequenceWidget.update)
         self.parserThread.newTelem.connect(self.commWidget.update)
+        self.parserThread.newTelem.connect(self.trajectoryViewer.update)
         self.parserThread.newInfo.connect(print)
         self.parserThread.newDebug.connect(print)
         
