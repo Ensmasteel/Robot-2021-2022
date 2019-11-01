@@ -17,40 +17,36 @@
 #define angle_enemyBot = 0;
 
 
-float distance(point p1,point p2)
+float dist(point p1,point p2)
 {
-    return sqrt(pow((p1.distance+p2.distance)/2*abs(p1.angle-p2.angle),2) + pow(p1.distance-p2.distance,2))  //big aproximation 
+    return sqrt(pow((p1.distance+p2.distance)/2*abs(p1.angle-p2.angle),2) + pow(p1.distance-p2.distance,2)); //big aproximation 
     //work for small angles
-}
+};
 
 
 void object_data::calculateCG()
 {
     float x = 0.0,y = 0.0;
-    for(int i=0,i<length,i++){
+    for(int i=0;i < length;i++){
         x+= points[i].distance*cos(points[i].angle);
         y+= points[i].distance*sin(points[i].angle);
     }
     Bot_cinetique._x = x/length;
     Bot_cinetique._y = y/length;
-}
+};
 
 
 
 LIDAR::LIDAR(bool secondaryBot) // Constructor
 {
     SECONDARY_BOT_ALLY = secondaryBot;
-}
+};
 
 
-void Begin(HardwareSerial &serialobj = Serial)
+void LIDAR::Begin(HardwareSerial &serialobj = Serial)
 {
-    return lidar.begin(&serialobj);
-
-    object_list[0] = enemyBot1;
-    object_list[0] = enemyBot2;
-    object_list[0] = allyBot2; 
-}
+    lidar.begin(serialobj);
+};
 
 Vector get_Vector(BotIdentificater id);
 
@@ -59,17 +55,17 @@ Cinetique LIDAR::get_Cinetique(BotIdentificater id)
     Cinetique out;
 
     return out;
-}
+};
 
 bool LIDAR::trajectoryBlocked(bool forward)
 {
     bool out;
 
     return out;
-}
+};
 
 
-void detect()
+void LIDAR::detect()
 {
     if (IS_OK(lidar.waitPoint())) { //take the data from the lidar
         float distance = lidar.getCurrentPoint().distance;
@@ -77,9 +73,9 @@ void detect()
         point p = {angle,distance};
 
         if(detectinging_an_object){
-            point previous_p = object_list[nb_object-1].points[object_list[nb_object].length-1]
+            point previous_p = object_list[nb_object-1].points[object_list[nb_object].length-1];
 
-            if (distance(p,previous_p0)<max_sep){
+            if (dist(p,previous_p)<max_sep){
                 //if an object is being detected and the curent point is close enougth to the last point
                 object_list[nb_object-1].points[object_list[nb_object-1].length] = p;
                 object_list[nb_object-1].length++;
@@ -108,14 +104,11 @@ void detect()
 
     }
 
-}
-
-
-
+};
 
 void track()
 {
 
 
 
-}
+};
