@@ -70,14 +70,15 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta, bool useSi
     mainSequence = Sequence();
     Action::setPointers(&cin, &ghost,&mainSequence, &communication, &asservissement);
 
-    //mainSequence.add(new StraightTo_Action(20,1,1,standard));
-
+    //Goto (timeout = 25s, x=2m, y=20cm, thetaFinal = -PI/2, courbure = 20%, allure = standard)
     mainSequence.add(new Goto_Action(25, 2.0, 0.2, -1.57, 0.2, standard));
+    //Spin (timeout = 20s, thetaFinal = PI/2, allure = standard)
     mainSequence.add(new Spin_Action(20,1.57,standard));
+    //AvancerToutDroit (timeout = 20s, avancerDe = 1.0m, allure = standard)
     mainSequence.add(new Forward_Action(20,1,standard));
-    mainSequence.add(new Goto_Action(20,1.5,1,1.57,0.3,standard));
+    //AllerDirectementVers (timeout = 30s, x=20cm, y=1m20, allure = standard)
     mainSequence.add(new StraightTo_Action(30,0.2,1.2,standard));
-
+    //ActionFinale
     mainSequence.add(new End_Action());
 
     telecommandeSequence = Sequence();

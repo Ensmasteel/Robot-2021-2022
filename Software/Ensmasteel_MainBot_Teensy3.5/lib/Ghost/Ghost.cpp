@@ -29,6 +29,7 @@ void Ghost::Set_NewTrajectory(Polynome newTrajectoryX, Polynome newTrajectoryY, 
 int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, float cruisingSpeed, bool pureRotation, bool goBackward)
 {
     uint8_t errorStatus = 0;
+    deltaCurve = max(0.1,deltaCurve);   // <-------------------------------- PROPOSITION ARTHUR CHECK PLS
 
     // Set variables state
     posAim = posFinal;
@@ -161,6 +162,7 @@ int Ghost::StateManager()
             posCurrent = posAim;
             posDelayed = posAim;
             posPrevious = posAim;
+            t_e_delayed = 1.01; //<-------------- Ca a fix le pb. ARTHUR CHECK PLS
             trajectoryFinished = true;
         }
         else
@@ -259,8 +261,7 @@ int Ghost::ActuatePosition(float dt)
 
 void Ghost::Update_Speeds(VectorE posNow, VectorE posLast, float dt)
 {
-    speedLinearCurrent = posNow.distanceWith(posLast) / dt; //equivalent a (posLast-posNow).norm()
-    //Pourquoi ne pas utiliser la fonction v(t) ?
+    speedLinearCurrent = posNow.distanceWith(posLast) / dt; 
 
     speedRotationalCurrent = normalizeAngle(posNow._theta - posLast._theta) / dt;
 }
