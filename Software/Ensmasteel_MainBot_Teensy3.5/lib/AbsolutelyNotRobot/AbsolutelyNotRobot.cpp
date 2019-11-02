@@ -74,6 +74,7 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta, bool useSi
 
     mainSequence.add(new Goto_Action(25, 2.0, 0.2, -1.57, 0.2, standard));
     mainSequence.add(new Spin_Action(20,1.57,standard));
+    mainSequence.add(new Forward_Action(20,1,standard));
     mainSequence.add(new Goto_Action(20,1.5,1,1.57,0.3,standard));
     mainSequence.add(new StraightTo_Action(30,0.2,1.2,standard));
 
