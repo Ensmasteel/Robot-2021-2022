@@ -72,7 +72,7 @@ void Move_Action::start()
     int err;
     err = ghost->Compute_Trajectory(posFinal, deltaCurve, speedRamps, cruisingSpeed, pureRotation, backward);
     if (err == 0)
-        Logger::infoln("Computation succeeded");
+        Logger::debugln("Computation succeeded");
     else
         Logger::infoln("Computation failed");
     Action::start();

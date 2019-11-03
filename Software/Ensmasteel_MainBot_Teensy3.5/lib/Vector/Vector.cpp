@@ -144,3 +144,108 @@ bool Cinetique::operator==(Cinetique const &other)
 {
     return VectorE::operator==(other) && _v==other._v && _w==other._w;
 }
+
+// =======     TARGETS    =======
+// ==============================
+TeamColor Target::teamColor = BLEU;
+
+void Target::setTeamColor(TeamColor color) {teamColor=color;}
+
+Target::Target() {type=RELATIVE;}
+
+// =======     TargetVector    =======
+// ===================================
+
+Vector TargetVector::getVector()
+{
+    switch (type)
+    {
+        case ABSOLUTE: return Vector(_xB,_yB); break;
+        case RELATIVE: return (teamColor==BLEU) ? (Vector(_xB,_yB)) : (Vector(LENGTH_TABLE - _xB,_yB)) ; break;
+        case SPECIFIC: return (teamColor==BLEU) ? (Vector(_xB,_yB)) : (Vector(_xJ,_yJ)) ; break;
+    }
+}
+
+TargetVector::TargetVector(float x, float y, bool absolute) : Target()
+{
+    type = (absolute)?(ABSOLUTE):(RELATIVE);
+    _xB=x;
+    _yB=y;
+}
+
+TargetVector::TargetVector(float xB, float yB, float xJ, float yJ) : Target()
+{
+    type = SPECIFIC;
+    _xB=xB;
+    _yB=yB;
+    _xJ=xJ;
+    _yJ=yJ;
+}
+
+// =======     TargetVectorE    =======
+// ====================================
+
+VectorE TargetVectorE::getVectorE()
+{
+    switch (type)
+    {
+        case ABSOLUTE: return VectorE(_xB,_yB,_thetaB); break;
+        case RELATIVE: return (teamColor==BLEU) ? (VectorE(_xB,_yB,_thetaB)) : (VectorE(LENGTH_TABLE - _xB,_yB,PI - _thetaB)) ; break;
+        case SPECIFIC: return (teamColor==BLEU) ? (VectorE(_xB,_yB,_thetaB)) : (VectorE(_xJ,_yJ,_thetaJ)) ; break;
+    }
+}
+
+TargetVectorE::TargetVectorE(float x, float y, float theta, bool absolute) : Target()
+{
+    type = (absolute)?(ABSOLUTE):(RELATIVE);
+    _xB=x;
+    _yB=y;
+    _thetaB=theta;
+}
+
+TargetVectorE::TargetVectorE(float xB, float yB, float thetaB, float xJ, float yJ, float thetaJ) : Target()
+{
+    type = SPECIFIC;
+    _xB=xB;
+    _yB=yB;
+    _thetaB=thetaB;
+    _xJ=xJ;
+    _yJ=yJ;
+    _thetaJ=thetaJ;
+}
+
+// =======     TargetCinetique    =======
+// ====================================
+
+Cinetique TargetCinetique::getCinetique()
+{
+    switch (type)
+    {
+        case ABSOLUTE: return Cinetique(_xB,_yB,_thetaB,_v,_w); break;
+        case RELATIVE: return (teamColor==BLEU) ? (Cinetique(_xB,_yB,_thetaB,_v,_w)) : (Cinetique(LENGTH_TABLE - _xB,_yB,PI - _thetaB,_v,_w)) ; break;
+        case SPECIFIC: return (teamColor==BLEU) ? (Cinetique(_xB,_yB,_thetaB,_v,_w)) : (Cinetique(_xJ,_yJ,_thetaJ,_v,_w)) ; break;
+    }
+}
+
+TargetCinetique::TargetCinetique(float x, float y, float theta, float v, float w, boolean absolute) : Target()
+{
+    type = (absolute)?(ABSOLUTE):(RELATIVE);
+    _xB=x;
+    _yB=y;
+    _thetaB=theta;
+    _v=v;
+    _w=w;
+}
+
+TargetCinetique::TargetCinetique(float xB, float yB, float thetaB, float xJ, float yJ, float thetaJ, float v, float w) : Target()
+{
+    type = SPECIFIC;
+    _xB=xB;
+    _yB=yB;
+    _thetaB=thetaB;
+    _xJ=xJ;
+    _yJ=yJ;
+    _thetaJ=thetaJ;
+    _v=v;
+    _w=w;
+}

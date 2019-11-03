@@ -24,6 +24,7 @@ private:
     bool fails[TAILLESEQUENCE];
     uint8_t currentIndex;
     int16_t lastIndex;
+    bool paused;
 public:
     uint8_t nextIndex;
     void startSelected();
@@ -33,6 +34,8 @@ public:
     Sequence();
     void add(Action* action);
     void toTelemetry();
+    void pause(bool lockGhost);
+    void resume();
 
 };
 

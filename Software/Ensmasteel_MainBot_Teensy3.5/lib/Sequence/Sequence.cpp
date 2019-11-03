@@ -33,6 +33,9 @@ void Sequence::startSelected()
 
 void Sequence::update()
 {
+    if (paused)
+        return;
+
     if (queue[currentIndex]->isFinished())
     {
         fails[currentIndex] = false;
@@ -62,6 +65,7 @@ Sequence::Sequence()
     currentIndex = 0;
     nextIndex = 1;
     lastIndex = -1;
+    paused=false;
 }
 
 void Sequence::add(Action *action)
@@ -80,4 +84,19 @@ void Sequence::toTelemetry()
         Logger::toTelemetry("A"+String(i),queue[i]->name);
         Logger::toTelemetry("F"+String(i),String(fails[i]));
     }
+}
+
+void Sequence::pause(bool lockGhost)
+{
+    paused=true;
+    if (lockGhost)
+        Action::ghost->Lock(true);
+}
+#include "Ghost.h"
+
+void Sequence::resume()
+{
+    paused=false;
+    startSelected(); //On relance l'action
+    Action::ghost->Lock(false);
 }
