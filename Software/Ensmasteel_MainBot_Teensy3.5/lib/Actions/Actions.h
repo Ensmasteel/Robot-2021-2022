@@ -76,7 +76,7 @@ protected:
 class Goto_Action : public Move_Action //Va a la position demandée (x,y,theta) avec une courbure deltaCurve et un rythme pace. (peut etre effectue en marche arriere)
 {
 public:
-    Goto_Action(float timeout, float x, float y, float theta, float deltaCurve,Pace pace,bool backward=false,int16_t require=NO_REQUIREMENT);
+    Goto_Action(float timeout, TargetVectorE target, float deltaCurve,Pace pace,bool backward=false,int16_t require=NO_REQUIREMENT);
     //start (Action+Move)
     //isFinished (Move)
     //hasFailed (Action+Move)
@@ -85,7 +85,7 @@ public:
 class Spin_Action : public Move_Action //Spin
 {
 public:
-    Spin_Action(float timeout, float theta, Pace pace,int16_t require=NO_REQUIREMENT);
+    Spin_Action(float timeout, TargetVectorE target, Pace pace,int16_t require=NO_REQUIREMENT);
     void start(); //(Action + Spin) Le start doit etre redéfini car on ne connait pas posFinal a l'avance
     //isFinished(Move)
     //hasFailed(Action+Move)
@@ -134,7 +134,7 @@ private:
     float timeout;
 public:
     void start();
-    StraightTo_Action(float timeout, float x, float y, Pace pace,int16_t require=NO_REQUIREMENT);
+    StraightTo_Action(float timeout, TargetVector target, Pace pace,int16_t require=NO_REQUIREMENT);
 };
 
 //========================================ACTION COMM========================================

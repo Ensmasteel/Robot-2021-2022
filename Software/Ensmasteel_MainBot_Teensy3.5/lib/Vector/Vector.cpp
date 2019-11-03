@@ -214,6 +214,25 @@ TargetVectorE::TargetVectorE(float xB, float yB, float thetaB, float xJ, float y
     _thetaJ=thetaJ;
 }
 
+TargetVectorE::TargetVectorE(float theta, bool absolute)
+{
+    _xB=0;
+    _yB=0;
+    type = (absolute)?(ABSOLUTE):(RELATIVE);
+    _thetaB=theta;
+}
+
+TargetVectorE::TargetVectorE(float thetaB, float thetaJ)
+{
+    type = SPECIFIC;
+    _xB=0;
+    _yB=0;
+    _xJ=0;
+    _yJ=0;
+    _thetaB=thetaB;
+    _thetaJ=thetaJ;
+}
+
 // =======     TargetCinetique    =======
 // ====================================
 
@@ -227,7 +246,7 @@ Cinetique TargetCinetique::getCinetique()
     }
 }
 
-TargetCinetique::TargetCinetique(float x, float y, float theta, float v, float w, boolean absolute) : Target()
+TargetCinetique::TargetCinetique(float x, float y, float theta, float v, float w, bool absolute) : Target()
 {
     type = (absolute)?(ABSOLUTE):(RELATIVE);
     _xB=x;

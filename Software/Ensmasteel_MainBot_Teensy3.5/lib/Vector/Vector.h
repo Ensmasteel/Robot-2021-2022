@@ -75,8 +75,8 @@ protected:
     };
     static TeamColor teamColor;
     Type type;
-    const static float LENGTH_TABLE = 3.0; // meters
-    const static float WIDTH_TABLE = 2.0; //meters
+    constexpr static float LENGTH_TABLE = 3.0; // meters
+    constexpr static float WIDTH_TABLE = 2.0; //meters
 public:
     static void setTeamColor(TeamColor color);
     Target();
@@ -103,6 +103,8 @@ public:
     VectorE getVectorE();
     TargetVectorE(float x, float y, float theta, bool absolute);
     TargetVectorE(float xB, float yB, float thetaB, float xJ, float yJ, float thetaJ);
+    TargetVectorE(float theta, bool absolute);
+    TargetVectorE(float thetaB, float thetaJ);
     TargetVectorE(){}
 };
 
@@ -114,7 +116,7 @@ private:
     float _v,_w;
 public:
     Cinetique getCinetique();
-    TargetCinetique(float x, float y, float theta, float v, float w, boolean absolute);
+    TargetCinetique(float x, float y, float theta, float v, float w, bool absolute);
     TargetCinetique(float xB, float yB, float thetaB, float xJ, float yJ, float thetaJ, float v, float w);
     TargetCinetique(){}
 };

@@ -1,5 +1,6 @@
 #include "Sequence.h"
 #include "Actions.h"
+#include "Ghost.h"
 
 void Sequence::startFollowing()
 {
@@ -92,7 +93,6 @@ void Sequence::pause(bool lockGhost)
     if (lockGhost)
         Action::ghost->Lock(true);
 }
-#include "Ghost.h"
 
 void Sequence::resume()
 {

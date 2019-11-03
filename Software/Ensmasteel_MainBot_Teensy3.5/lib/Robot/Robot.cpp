@@ -39,9 +39,9 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
     Action::setPointers(&cinetiqueCurrent, &ghost, &mainSequence, &communication, &controller);
 
     // Might be define in main.cpp->setup
-    mainSequence.add(new StraightTo_Action(20, 1, 1, standard));
-    mainSequence.add(new Goto_Action(20, 2.0, 0.0, 0, 0.2, standard));
-    mainSequence.add(new Goto_Action(20, 0.0, 0.0, -1.57, 0.2, standard));
+    mainSequence.add(new StraightTo_Action(20, TargetVector(1, 1,false), standard));
+    mainSequence.add(new Goto_Action(20, TargetVectorE(2.0, 0.0, 0, false), 0.2, standard));
+    mainSequence.add(new Goto_Action(20, TargetVectorE(0.0, 0.0, -1.57, false), 0.2, standard));
     mainSequence.add(new End_Action());
     mainSequence.startSelected();
 

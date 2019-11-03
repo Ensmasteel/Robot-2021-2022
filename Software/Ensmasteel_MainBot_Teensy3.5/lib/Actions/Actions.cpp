@@ -129,13 +129,13 @@ Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace
     }
 }
 
-Goto_Action::Goto_Action(float timeout, float x, float y, float theta, float deltaCurve, Pace pace, bool backward, int16_t require)
-    : Move_Action(timeout, VectorE(x, y, theta), deltaCurve, pace, false, backward, "Goto", require)
+Goto_Action::Goto_Action(float timeout, TargetVectorE target, float deltaCurve, Pace pace, bool backward, int16_t require)
+    : Move_Action(timeout, target.getVectorE(), deltaCurve, pace, false, backward, "Goto", require)
 { /*Rien a faire d'autre*/
 }
 
-Spin_Action::Spin_Action(float timeout, float theta, Pace pace, int16_t require)
-    : Move_Action(timeout, VectorE(0.0, 0.0, theta), 0.0, pace, true, false, "Spin", require) //x et y seront modifié par start
+Spin_Action::Spin_Action(float timeout, TargetVectorE target, Pace pace, int16_t require)
+    : Move_Action(timeout, target.getVectorE() , 0.0, pace, true, false, "Spin", require) //x et y seront modifié par start
 {                                                                                    /*Rien a faire d'autre*/
 }
 
@@ -191,19 +191,21 @@ void Backward_Action::start()
 
 void StraightTo_Action::start()
 {
+    //X et Y sont déja miroiré à ce moment. 
     Vector delta = Vector(x, y) - *robotCinetique;
     float cap = delta.angle();
-    spin = new Spin_Action(timeout, cap, pace);
-    goTo = new Goto_Action(timeout, x, y, cap, 0.1, pace);
+    spin = new Spin_Action(timeout, TargetVectorE(cap,true), pace);  //Donc il faut etre en absolu
+    goTo = new Goto_Action(timeout, TargetVectorE(x,y,cap,true), 0.1, pace);
     action1 = spin;
     action2 = goTo;
     Double_Action::start();
 }
 
-StraightTo_Action::StraightTo_Action(float timeout, float x, float y, Pace pace, int16_t require) : Double_Action(timeout, "stTo", require)
+StraightTo_Action::StraightTo_Action(float timeout, TargetVector target, Pace pace, int16_t require) : Double_Action(timeout, "stTo", require)
 {
-    this->x = x;
-    this->y = y;
+    Vector targetV = target.getVector();
+    this->x = targetV._x;
+    this->y = targetV._y;
     this->pace = pace;
     this->timeout = timeout;
 }
