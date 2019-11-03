@@ -16,9 +16,9 @@
 #include "RPLidar.h"
 
 
-#define min_radius 10 //the min radius of an objected necessary to be traced by lidar
+#define radius_tracking 10 //the radius in witch 2 objects are concidered the sames
 #define max_sep 5 //the maximum separation between 2 points of the same object
-#define max_dt //the maximum time between 2 detections of an object
+#define max_dt 500//the maximum time between 2 detections of an object
 #define max_dist 2000 //the maximum distance concidered for detecting an object
 
 #define max_points_per_object 50
@@ -34,8 +34,9 @@ struct point
 {
     float angle;
     float distance;
-}
-float distance(point p1,point p2);
+};
+
+float dist(point p1,point p2);
 
 enum BotIdentificater
 {
@@ -49,15 +50,18 @@ enum BotIdentificater
 
 };
 
+float dist(object_data obj1,object_data obj2);
+
 class object_data
 {
+public:
     //data about the objects
     BotIdentificater Bot_name = unknown;
     Cinetique Bot_cinetique;
     point points[max_objects_detected];//previous points associated to this object
     int length = 0;
     uint32_t age; // age of the last detection of the object
-    bool state; //if true the object is tracked
+    bool state; //if true the object is tracked, if false object inexistant
     void calculateCG();
 };
 
@@ -72,7 +76,7 @@ public:
 
 
     //Serial conection with Lidar
-    bool Begin(HardwareSerial &serialobj = Serial);
+    void Begin(HardwareSerial &serialobj = Serial);
 
     uint8_t botDetected = 0; //Number of enemy bot detected by the LIDAR
 
@@ -96,6 +100,8 @@ public:
     void track(); //identify detected object concidering previous objects
 
 private:
+
+    bool enemy1 = false ,enemy2 = false;
 
     bool SECONDARY_BOT_ALLY = false;
 
