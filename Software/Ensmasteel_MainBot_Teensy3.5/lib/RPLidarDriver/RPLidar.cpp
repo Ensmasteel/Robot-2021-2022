@@ -213,6 +213,7 @@ u_result RPLidar::waitPoint(_u32 timeout)
 
    while ((remainingtime=millis() - currentTs) <= timeout) {
         int currentbyte = _bined_serialdev->read();
+        
         if (currentbyte<0) continue;
 
         switch (recvPos) {
