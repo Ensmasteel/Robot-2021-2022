@@ -29,7 +29,8 @@ float dist(point p1,point p2)
 
 float dist(object_data obj1, object_data obj2)
 {
-    return sqrt(pow(obj1.Bot_cinetique._x-obj2.Bot_cinetique._x,2)+pow(obj1.Bot_cinetique._y-obj2.Bot_cinetique._y,2));
+    //return sqrt(pow(obj1.Bot_cinetique._x-obj2.Bot_cinetique._x,2)+pow(obj1.Bot_cinetique._y-obj2.Bot_cinetique._y,2));
+    return obj1.Bot_cinetique.distanceWith(obj2.Bot_cinetique);
 };
 
 void object_data::calculateCG()
