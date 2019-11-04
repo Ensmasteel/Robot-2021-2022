@@ -42,6 +42,7 @@ void AbsolutelyNotRobot::update(float dt)
     motorRight.actuate();
     mainSequence.update();
     telecommandeSequence.update();
+    stopSequence.update();
     telemetry();
     if (communication.inWaiting() > 0)
         communication.pullOldestMessage(); //Tout le monde a eu l'occasion de le peek, on le vire.
@@ -86,6 +87,12 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta, bool useSi
     telecommandeSequence.add(new Do_Action(PID_tweak,-1));
     telecommandeSequence.add(new End_Action(true));
 
+    stopSequence = Sequence();
+    stopSequence.add(new Sleep_Action(10));
+    stopSequence.add(new Do_Action(pauseNlockMainSequence));
+    stopSequence.add(new End_Action());
+
+
     
     
     if (useSimulator)
@@ -95,6 +102,7 @@ AbsolutelyNotRobot::AbsolutelyNotRobot(float x, float y, float theta, bool useSi
     }
     mainSequence.startSelected();
     telecommandeSequence.startSelected();
+    stopSequence.startSelected();
     ghost.Lock(false);
 }
 

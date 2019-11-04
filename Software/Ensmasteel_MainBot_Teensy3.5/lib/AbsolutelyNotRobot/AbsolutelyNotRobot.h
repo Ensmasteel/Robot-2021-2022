@@ -22,6 +22,7 @@ private:
     Communication communication;
     Sequence mainSequence;
     Sequence telecommandeSequence;
+    Sequence stopSequence;
 
     float outTranslation, outRotation;
     Cinetique target;

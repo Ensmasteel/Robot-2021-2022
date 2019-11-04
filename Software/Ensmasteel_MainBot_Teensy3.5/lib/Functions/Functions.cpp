@@ -19,4 +19,10 @@ void PID_tweak(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequenc
     Logger::infoln(String(asser->tweak(incr,translation,whichOne)*4095.0));
 }
 
+void pauseNlockMainSequence(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser)
+{
+    mainSequence->pause(true);
+    Logger::infoln("MAIN SEQUENCE PAUSED");
+}
+
 #pragma GCC diagnostic pop
