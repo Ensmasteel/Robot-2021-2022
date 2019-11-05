@@ -96,7 +96,7 @@ Message MessageBox::pull()
     {
         Logger::infoln("The mailbox is empty");
         //Dans ce cas on renvoie le message vide
-        return newMessage(MessageID::Empty, 0);
+        return newMessage(MessageID::Empty_M, 0);
     }
     else
     {
@@ -114,7 +114,7 @@ Message MessageBox::peek()
     {
         Logger::infoln("The mailbox is empty");
         //Dans ce cas on renvoie le message vide
-        return newMessage(MessageID::Empty, 0);
+        return newMessage(MessageID::Empty_M, 0);
     }
     else
         return box[iFirstEntry];
