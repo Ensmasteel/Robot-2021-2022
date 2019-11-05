@@ -39,7 +39,6 @@ void loop()
   if ((currentMillis - lastMillis) / 1e3 > 1.0 / FREQUENCY)
   {
     bender->Update(1.0 / FREQUENCY);
-    //bender->update(1.0 / FREQUENCY);
     lastMillis = currentMillis;
   }
 }

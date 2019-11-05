@@ -222,5 +222,5 @@ void Communication::operator=(const Communication &other)
 void Communication::toTelemetry()
 {
     if (inWaitingRx()>0)
-        Logger::toTelemetry("mess",String(extractID(peekOldestMessage())));
+        Logger::toTelemetry("messId",String(extractID(peekOldestMessage())));
 }
