@@ -6,13 +6,15 @@
 //En-tete d'un message
 enum MessageID : uint16_t
 {
-    Empty,
-    Stop,
-    Tirette,
-    PID_tweak_M,
-    add_forward_M,
-    add_backward_M,
-    add_spin_M
+    Empty_M,  //Message vide
+    Stop_M, //[Teensy -> Aux]: Arret des actionneurs 
+    Tirette_M, //[Mega -> Teensy]: Tirette actionnée
+    PID_tweak_M, //[Aux -> Teensy]: Changer PID | DATA: 4 bytes [bool incr, bool translation, wichOne (P=0,I=1,D=2)]
+    add_forward_M, //[Aux -> Teensy]: Rajoute un forward a la fin de la file principale
+    add_backward_M, //[Aux -> Teensy]: Rajoute un backward a la fin de la file principale
+    add_spin_M, //[Aux -> Teensy]: Rajoute un spin a la fin de la file principale
+    Em_Stop_M, //[Aux -> Teensy]: Arret d'urgence
+    Evitemment_M //[Mega/Aux -> Teensy]: Un Evitemment peut être a faire |  DATA: Un vecteur (position de l'obstacle)
 };
 
 #endif
