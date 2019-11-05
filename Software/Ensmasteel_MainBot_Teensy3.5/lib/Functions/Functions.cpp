@@ -24,4 +24,9 @@ void pauseNlockMainSequence(Cinetique * robotCinetique, Ghost * ghost, Sequence 
     Logger::infoln("MAIN SEQUENCE PAUSED");
 }
 
+void ping(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser)
+{
+    Logger::infoln("ping");
+}
+
 #pragma GCC diagnostic pop

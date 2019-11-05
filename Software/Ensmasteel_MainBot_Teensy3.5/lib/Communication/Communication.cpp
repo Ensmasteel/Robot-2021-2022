@@ -96,7 +96,7 @@ Message MessageBox::pull()
     {
         Logger::infoln("The mailbox is empty");
         //Dans ce cas on renvoie le message vide
-        return newMessage(MessageID::Empty, 0);
+        return newMessage(MessageID::Empty_M, 0);
     }
     else
     {
@@ -114,7 +114,7 @@ Message MessageBox::peek()
     {
         Logger::infoln("The mailbox is empty");
         //Dans ce cas on renvoie le message vide
-        return newMessage(MessageID::Empty, 0);
+        return newMessage(MessageID::Empty_M, 0);
     }
     else
         return box[iFirstEntry];
@@ -147,6 +147,8 @@ int MessageBox::size()
 void Communication::update()
 {
     //RECEPTION
+    if (port->available()>0)
+        Logger::debugln(String(port->available())+" bytes available");
     if (port->available() >= 6) //On attend de voir 6 octets dans le buffer pour lire le message entier d'un coup
     {
         uint8_t in[6];
@@ -156,6 +158,8 @@ void Communication::update()
         memcpy(&out, in, sizeof(out)); //On convertit les octets en message
         receiveBox->push(out);
     }
+    if (inWaitingRx()>0)
+        Logger::debugln("received ID " + String(extractID(peekOldestMessage())));
 
     //EMISSION
     if (!sendingBox->empty && ((millis() - millisLastSend) > ANTISPAM_MS))

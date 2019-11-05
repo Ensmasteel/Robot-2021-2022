@@ -55,8 +55,13 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
     mainSequence.startSelected();
 
     communicationSequence = Sequence();
-    communicationSequence.add(new Wait_Message_Action(PID_tweak_M, -1, NO_REQUIREMENT));
-    communicationSequence.add(new Do_Action(PID_tweak, -1));
+
+    //Switch_Message_Action* messageSwitch = new Switch_Message_Action(-1,NO_REQUIREMENT);
+    //messageSwitch->addPair(MessageID::Empty_M,ping);
+
+    //communicationSequence.add(messageSwitch);
+    communicationSequence.add(new Wait_Message_Action(MessageID::Empty_M,-1));
+    communicationSequence.add(new Do_Action(ping));
     communicationSequence.add(new End_Action(true));
     communicationSequence.startSelected();
 
