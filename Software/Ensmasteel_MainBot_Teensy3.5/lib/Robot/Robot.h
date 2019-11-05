@@ -47,6 +47,7 @@ protected:
     Communication communication;
     Sequence mainSequence, communicationSequence, stopSequence;
     float translationOrderPID = 0.0, rotationOrderPID = 0.0;
+    uint8_t compteur=0;
 
     virtual void Update_Cinetique(float dt);
 };

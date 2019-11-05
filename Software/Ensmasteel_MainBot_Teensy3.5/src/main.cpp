@@ -13,7 +13,7 @@
 #include "Sequence.h"
 #include "RobotSimu.h"
 
-#define FREQUENCY 100
+#define FREQUENCY 100.0
 
 Robot *bender;
 uint32_t currentMillis = 0, lastMillis = 0;

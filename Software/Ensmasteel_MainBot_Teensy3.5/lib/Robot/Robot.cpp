@@ -21,6 +21,8 @@
 #define DIAMETRE_ROUE_CODEUSE_GAUCHE 0.053570956
 #define TICKS_PER_ROUND 16384
 
+#define SKIP_TELEMETRY 5
+
 Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
 {
     cinetiqueCurrent = Cinetique(xIni, yIni, thetaIni);
@@ -91,9 +93,14 @@ void Robot::Update(float dt)
     mainSequence.update();
     stopSequence.update();
     communicationSequence.update();
-    telemetry();
+    if (compteur==SKIP_TELEMETRY)
+    {
+        telemetry();
+        compteur=0;
+    }
     if (communication.inWaitingRx() > 0)
         communication.popOldestMessage(); //Tout le monde a eu l'occasion de le peek, on le vire.
+    compteur++;
 }
 
 void Robot::telemetry()
