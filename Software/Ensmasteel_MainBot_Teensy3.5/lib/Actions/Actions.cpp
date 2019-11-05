@@ -231,7 +231,7 @@ Wait_Message_Action::Wait_Message_Action(MessageID messageId, float timeout, int
 
 bool Wait_Message_Action::isFinished()
 {
-    return communication->inWaiting() > 0 && communication->peekOldestMessage().ID == messageId;
+    return communication->inWaitingRx() > 0 && extractID(communication->peekOldestMessage()) == messageId;
 }
 
 Switch_Message_Action::Switch_Message_Action(float timeout,int16_t require) : Action("swch",timeout,require)
@@ -250,11 +250,11 @@ void Switch_Message_Action::addPair(MessageID messageId,Fct fct)
 
 bool Switch_Message_Action::isFinished()
 {
-    if (communication->inWaiting() > 0)
+    if (communication->inWaitingRx() > 0)
     {
         for (int i=0;i<size;i++)
         {
-            if (communication->peekOldestMessage().ID == onMessage[i])
+            if (extractID(communication->peekOldestMessage()) == onMessage[i])
             {
                 doFct[i](robotCinetique,ghost,mainSequence,communication,asser); //Les functions agissent sur la mainSequence uniquement
                 return true;

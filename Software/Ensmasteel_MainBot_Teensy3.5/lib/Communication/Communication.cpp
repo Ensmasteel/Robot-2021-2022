@@ -8,15 +8,87 @@
 #include <string.h>
 #endif
 
-#define DEBUGCOMM
+#define MESSAGE_BOX_SIZE 10 //Taille des boites d'envoie et reception
+
+typedef struct
+{
+    uint8_t x;
+    uint8_t y;
+    int16_t theta;
+}UIntVectorE;
+
+union Decoder
+{
+    FourBytes fBytes;
+    int32_t data;
+    UIntVectorE uIntVectorE;
+};
+
+Decoder decoder;
 
 Message newMessage(MessageID id, int32_t data)
 {
     Message out;
-    out.ID = id;
-    out.data = data;
+    out._ID = id;
+    out._data = data;
     return out;
 }
+
+Message newMessage(MessageID id, uint8_t byte0,uint8_t byte1,uint8_t byte2,uint8_t byte3)
+{
+    FourBytes fBytes;
+    fBytes.byte0=byte0;
+    fBytes.byte1=byte1;
+    fBytes.byte2=byte2;
+    fBytes.byte3=byte3;
+    decoder.fBytes=fBytes;
+    return newMessage(id,decoder.data);
+}
+
+Message newMessage(MessageID id, VectorE vectorE)
+{
+    decoder.uIntVectorE.x=(uint8_t)round(vectorE._x*__UINT8_MAX__/3.0);
+    decoder.uIntVectorE.y=(uint8_t)round(vectorE._x*__UINT8_MAX__/2.0);
+    decoder.uIntVectorE.theta=(int16_t)round(vectorE._theta*__INT16_MAX__/PI);
+    return newMessage(id,decoder.data);
+}
+
+MessageID extractID(Message message){
+    return (MessageID)message._ID;
+}
+
+FourBytes extract4Bytes(Message message){
+    decoder.data=message._data;
+    return decoder.fBytes;
+}
+
+int32_t extractInt32(Message message){
+    return message._data;
+}
+
+Vector extractVectorE(Message message){
+    decoder.data=message._data;
+    VectorE out;
+    out._x=decoder.uIntVectorE.x*3.0/__UINT8_MAX__;
+    out._y=decoder.uIntVectorE.y*2.0/__UINT8_MAX__;
+    out._theta=decoder.uIntVectorE.theta*PI/__INT16_MAX__;
+    return out;
+}
+
+class MessageBox
+{
+public:
+    Message pull();
+    Message peek();
+    void push(Message message);
+    int size();
+    bool empty = true;
+
+private:
+    Message box[MESSAGE_BOX_SIZE];
+    uint8_t iFirstEntry = 0;
+    uint8_t iNextEntry = 0;
+};
 
 Message MessageBox::pull()
 {
@@ -82,75 +154,69 @@ void Communication::update()
             in[i] = port->read();
         Message out;
         memcpy(&out, in, sizeof(out)); //On convertit les octets en message
-        receiveBox.push(out);
+        receiveBox->push(out);
     }
 
     //EMISSION
-    if (!sendingBox.empty && ((millis() - millisLastSend) > ANTISPAM_MS))
+    if (!sendingBox->empty && ((millis() - millisLastSend) > ANTISPAM_MS))
     {
-        Message toSend = sendingBox.pull();
+        Message toSend = sendingBox->pull();
         uint8_t out[6];
         memcpy(out, &toSend, sizeof(out)); //On convertit le message en octet
         for (int i = 0; i < 6; i++)
             port->write(out[i]);
         millisLastSend = millis();
     }
-
-#ifdef DEBUGCOMM
-    Logger::debug("In hardware buffer ");
-    Logger::debugln(String(port->available()));
-    Logger::debug("In my buffer ");
-    Logger::debugln(String(receiveBox.size()));
-    if (receiveBox.size() == 1)
-    {
-        Logger::debug("Id = ");
-        Logger::debugln(String(receiveBox.peek().ID));
-        Logger::debug("Value = ");
-        Logger::debugln(String(receiveBox.peek().data));
-        Logger::debugln("Decoded");
-        Decoder decoder;
-        decoder.data=receiveBox.peek().data;
-        Logger::debugln("Byte1 "+String(decoder.raw.byte1));
-        Logger::debugln("Byte2 "+String(decoder.raw.byte2));
-        Logger::debugln("Byte3 "+String(decoder.raw.byte3));
-        Logger::debugln("Byte4 "+String(decoder.raw.byte4));
-    }
-#endif
 }
 
 void Communication::send(Message message)
 {
-    sendingBox.push(message);
+    sendingBox->push(message);
 }
 
-Message Communication::pullOldestMessage()
+void Communication::popOldestMessage()
 {
-    return receiveBox.pull();
+    receiveBox->pull();
 }
 
 Message Communication::peekOldestMessage()
 {
-    return receiveBox.peek();
+    return receiveBox->peek();
 }
 
-uint8_t Communication::inWaiting()
+uint8_t Communication::inWaitingRx()
 {
-    return receiveBox.size();
+    return receiveBox->size();
+}
+
+uint8_t Communication::inWaitingTx()
+{
+    return sendingBox->size();
 }
 
 Communication::Communication(Stream* port)
 {
     this->port=port;
+    this->receiveBox = new MessageBox();
+    this->sendingBox = new MessageBox();
     //On vide les caractères qui pourrait trainer
-    while (port->available() > 0)
-    {
+    while (port->available() > 0){
         port->read();
     }
     millisLastSend = millis();
 }
 
+void Communication::operator=(const Communication &other)
+{
+    this->port=other.port;
+    this->receiveBox=new MessageBox();
+    this->sendingBox=new MessageBox();
+}
+
+
+
 void Communication::toTelemetry()
 {
-    if (inWaiting()>0)
-        Logger::toTelemetry("mess",String(peekOldestMessage().ID));
+    if (inWaitingRx()>0)
+        Logger::toTelemetry("mess",String(extractID(peekOldestMessage())));
 }

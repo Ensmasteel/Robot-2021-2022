@@ -89,8 +89,8 @@ void Robot::Update(float dt)
     stopSequence.update();
     communicationSequence.update();
     telemetry();
-    if (communication.inWaiting() > 0)
-        communication.pullOldestMessage(); //Tout le monde a eu l'occasion de le peek, on le vire.
+    if (communication.inWaitingRx() > 0)
+        communication.popOldestMessage(); //Tout le monde a eu l'occasion de le peek, on le vire.
 }
 
 void Robot::telemetry()

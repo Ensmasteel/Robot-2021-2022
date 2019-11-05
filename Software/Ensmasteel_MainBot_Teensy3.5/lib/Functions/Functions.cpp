@@ -11,11 +11,10 @@
 
 //Lorsque cette fonction est appellé, il y a un PID_tweak dans la mailbox
 void PID_tweak(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    Decoder decoder;
-    decoder.data=communication->peekOldestMessage().data;
-    bool incr=decoder.raw.byte1==1;
-    bool translation=decoder.raw.byte2==1;
-    uint8_t whichOne=decoder.raw.byte3; //0 = P, 1 = I, 2 = D
+    FourBytes fBytes = extract4Bytes(communication->peekOldestMessage());
+    bool incr=fBytes.byte0==1;
+    bool translation=fBytes.byte1==1;
+    uint8_t whichOne=fBytes.byte2; //0 = P, 1 = I, 2 = D
     Logger::infoln(String(asser->tweak(incr,translation,whichOne)*4095.0));
 }
 
