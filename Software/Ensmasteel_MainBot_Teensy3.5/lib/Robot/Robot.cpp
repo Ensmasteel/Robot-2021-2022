@@ -1,5 +1,7 @@
 #include "Robot.h"
 #include "Arduino.h"
+#include "Actions.h"
+#include "Functions.h"
 
 #define PIN_CODEUSE_GAUCHE_A 29
 #define PIN_CODEUSE_GAUCHE_B 28
@@ -38,10 +40,17 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
     mainSequence = Sequence();
     Action::setPointers(&cinetiqueCurrent, &ghost, &mainSequence, &communication, &controller);
 
+    //ATTENTION, LES ACTIONS DOIVENT ETRE DEFINIE EN TANT QUE ROBOT BLEU !
     // Might be define in main.cpp->setup
-    mainSequence.add(new StraightTo_Action(20, TargetVector(1, 1,false), standard));
-    mainSequence.add(new Goto_Action(20, TargetVectorE(2.0, 0.0, 0, false), 0.2, standard));
-    mainSequence.add(new Goto_Action(20, TargetVectorE(0.0, 0.0, -1.57, false), 0.2, standard));
+    //Goto (timeout = 25s, x=2m, y=20cm, thetaFinal = -PI/2, courbure = 20%, allure = standard)
+    mainSequence.add(new Goto_Action(25, TargetVectorE(2.0, 0.2, -1.57,false), 0.2, standard));
+    //Spin (timeout = 20s, thetaFinal = 2*PI/3, allure = standard)
+    mainSequence.add(new Spin_Action(20, TargetVectorE(2*PI/3.0,false),standard));
+    //AvancerToutDroit (timeout = 20s, avancerDe = 1.0m, allure = standard)
+    mainSequence.add(new Forward_Action(20,1,standard));
+    //AllerDirectementVers (timeout = 30s, x=20cm, y=1m20, allure = standard)
+    mainSequence.add(new StraightTo_Action(30,TargetVector(0.2,1.2,false),standard));
+    //ActionFinale
     mainSequence.add(new End_Action());
     mainSequence.startSelected();
 
@@ -51,13 +60,24 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
     communicationSequence.add(new End_Action(true));
     communicationSequence.startSelected();
 
+    stopSequence = Sequence();
+    stopSequence.add(new Sleep_Action(100));
+    stopSequence.add(new Do_Action(pauseNlockMainSequence));
+    stopSequence.add(new End_Action());
+    stopSequence.startSelected();
+
     ghost.Lock(false);
+}
+
+void Robot::Update_Cinetique(float dt)
+{
+    odometrie.updateCinetique(dt);
 }
 
 void Robot::Update(float dt)
 {
     communication.update();
-    odometrie.updateCinetique(dt);
+    Update_Cinetique(dt);
     ghost.ActuatePosition(dt);
     cinetiqueNext = ghost.Get_Controller_Cinetique();
     controller.compute(dt);
@@ -66,6 +86,7 @@ void Robot::Update(float dt)
     motorLeft.actuate();
     motorRight.actuate();
     mainSequence.update();
+    stopSequence.update();
     communicationSequence.update();
     telemetry();
     if (communication.inWaiting() > 0)

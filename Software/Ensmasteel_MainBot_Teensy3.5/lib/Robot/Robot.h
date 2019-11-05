@@ -1,5 +1,5 @@
-#ifndef ROBOT_
-#define ROBOT_
+#ifndef ROBOT_H_
+#define ROBOT_H_
 
 #include "Arduino.h"
 #include "Vector.h"
@@ -9,8 +9,6 @@
 #include "Communication.h"
 #include "Sequence.h"
 #include "Ghost.h"
-#include "Actions.h"
-#include "Functions.h"
 
 class Robot
 {
@@ -39,7 +37,7 @@ public:
     //        controller
     void telemetry();
 
-private:
+protected:
     uint8_t controllerFrequency = 30;
     Odometrie odometrie;
     Cinetique cinetiqueCurrent, cinetiqueNext;
@@ -47,9 +45,10 @@ private:
     Ghost ghost;
     Asservissement controller;
     Communication communication;
-    Sequence mainSequence, communicationSequence;
-
+    Sequence mainSequence, communicationSequence, stopSequence;
     float translationOrderPID = 0.0, rotationOrderPID = 0.0;
+
+    virtual void Update_Cinetique(float dt);
 };
 
 #endif
