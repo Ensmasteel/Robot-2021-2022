@@ -11,6 +11,7 @@ void add_backward(Cinetique * robotCinetique,Ghost * ghost, Sequence * mainSeque
 void add_spin(Cinetique * robotCinetique,Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser);
 void pauseNlockMainSequence(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser);
 void ping(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser);
+void shutdown(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser);
 
 
 #endif // !FUNCTIONS_H_

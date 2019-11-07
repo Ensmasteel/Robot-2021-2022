@@ -48,7 +48,7 @@ Message newMessage(MessageID id, uint8_t byte0,uint8_t byte1,uint8_t byte2,uint8
 Message newMessage(MessageID id, VectorE vectorE)
 {
     decoder.uIntVectorE.x=(uint8_t)round(vectorE._x*__UINT8_MAX__/3.0);
-    decoder.uIntVectorE.y=(uint8_t)round(vectorE._x*__UINT8_MAX__/2.0);
+    decoder.uIntVectorE.y=(uint8_t)round(vectorE._y*__UINT8_MAX__/2.0);
     decoder.uIntVectorE.theta=(int16_t)round(vectorE._theta*__INT16_MAX__/PI);
     return newMessage(id,decoder.data);
 }

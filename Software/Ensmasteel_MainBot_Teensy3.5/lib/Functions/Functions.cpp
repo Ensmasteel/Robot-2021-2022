@@ -29,4 +29,11 @@ void ping(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Co
     Logger::infoln("ping");
 }
 
+void shutdown(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser)
+{
+    pauseNlockMainSequence(robotCinetique, ghost, mainSequence, communication, asser);
+    asser->setCurrentProfile(Pace::off);
+    Logger::infoln("SHUTDOWN");
+}
+
 #pragma GCC diagnostic pop
