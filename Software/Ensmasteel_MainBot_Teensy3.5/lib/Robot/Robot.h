@@ -2,13 +2,12 @@
 #define ROBOT_H_
 
 #include "Arduino.h"
-#include "Vector.h"
 #include "Codeuse.h"
 #include "Moteur.h"
 #include "PID.h"
+#include "Ghost.h"
 #include "Communication.h"
 #include "Sequence.h"
-#include "Ghost.h"
 
 class Robot
 {
@@ -40,16 +39,18 @@ public:
 protected:
     uint8_t controllerFrequency = 30;
     Odometrie odometrie;
-    Cinetique cinetiqueCurrent, cinetiqueNext;
+    Cinetique cinetiqueNext;
     Motor motorLeft, motorRight;
+    float translationOrderPID = 0.0, rotationOrderPID = 0.0;
+    uint8_t compteur=0;
+    virtual void Update_Cinetique(float dt);
+
+public :
+    Cinetique cinetiqueCurrent;
     Ghost ghost;
     Asservissement controller;
     Communication communication;
     Sequence mainSequence, communicationSequence, stopSequence;
-    float translationOrderPID = 0.0, rotationOrderPID = 0.0;
-    uint8_t compteur=0;
-
-    virtual void Update_Cinetique(float dt);
 };
 
 #endif

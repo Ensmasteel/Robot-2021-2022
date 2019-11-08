@@ -14,9 +14,29 @@ PIDProfile newPIDProfile(float KP, float KI, float KD, float epsilon, float dEps
     return out;
 }
 
+void Score::reset()
+{
+    this->cumulError=0;
+    this->maxOvershoot=0;
+    this->nbInversion=0;
+}
+
+void Score::toTelemetry(String prefix)
+{
+    Logger::toTelemetry(prefix+"cum",String(cumulError));
+    Logger::toTelemetry(prefix+"ovs",String(maxOvershoot));
+    Logger::toTelemetry(prefix+"inv",String(nbInversion));
+}
+
 void PID::reset()
 {
     this->iTerm = 0;
+    score.reset();
+}
+
+Score PID::getScore()
+{
+    return score;
 }
 
 void PID::setPIDProfile(Pace pace, PIDProfile pidProfile)
@@ -46,16 +66,29 @@ float PID::compute(float xTarget, float dxTarget, float x, float dx, float dt)
 
     dxF.in(dx, dt);
     dError = dxTarget - dxF.out();
+
     iTerm += error * dt;
+
     close = (abs(error) <= PIDProfiles[currentProfile].epsilon) && (abs(dError) <= PIDProfiles[currentProfile].dEpsilon);
+
     if (abs(error) > PIDProfiles[currentProfile].maxErr)
         timeTooFar += dt;
     else
         timeTooFar = 0;
-
     tooFar = timeTooFar > TIMETOOFAR;
-    return constrain(
+
+    score.cumulError+=abs(error);
+    if ((dxTarget>=0 && error<0) || (dxTarget>0 && error>0)) //Condition d'overshoot
+        score.maxOvershoot = max(score.maxOvershoot, abs(error));
+
+    float out = constrain(
         PIDProfiles[currentProfile].KP * error + PIDProfiles[currentProfile].KI * iTerm + PIDProfiles[currentProfile].KD * dError, -1.0, 1.0);
+    if (lastOut*out<-0.0001) //Changement de signe (1% a -1% de signe)
+        score.nbInversion++;
+
+    lastOut=out;
+
+    return out;
 }
 
 PID::PID(bool modulo360, float frequency)
@@ -66,6 +99,7 @@ PID::PID(bool modulo360, float frequency)
     this->close = true;
     this->modulo360 = modulo360;
     this->timeTooFar = 0;
+    this->lastOut=0;
 }
 
 PID::PID() {}
@@ -86,6 +120,18 @@ void Asservissement::compute(float dt)
                     , -(1 - abs(*outRotation)), 1 - abs(*outRotation)); //La rotation est prioritaire
     close = pidTranslation.close && pidRotation.close;
     tooFar = pidTranslation.tooFar || pidRotation.tooFar || (*cGhost - *cRobot).norm() > pidTranslation.getCurrentProfile().epsilon;
+}
+
+void Asservissement::reset()
+{
+    pidRotation.reset();
+    pidTranslation.reset();
+}
+
+void Asservissement::sendScoreToTelemetry()
+{
+    pidRotation.getScore().toTelemetry("R");
+    pidTranslation.getScore().toTelemetry("T");
 }
 
 Asservissement::Asservissement(float *outTranslation, float *outRotation, Cinetique *cRobot, Cinetique *cGhost, float frequency)

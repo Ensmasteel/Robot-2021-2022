@@ -1,16 +1,13 @@
 #ifndef ACTIONS_H_
 #define ACTIONS_H_
-#include "Communication.h"
 #include "Vector.h"
 #include "Arduino.h"
 #include "Pace.h"
 #include <vector>
 #include <cstdint> //for macro INT16_MAX
 
-class Ghost;
-class Sequence;
-class Asservissement;
-typedef void(*Fct)(Cinetique * robotCinetique,Ghost * ghost, Sequence * sequence, Communication * communication, Asservissement * asser);
+class Robot;
+typedef void(*Fct)(Robot * robot);
 
 
 //========================================ACTION GENERIQUES========================================
@@ -19,13 +16,32 @@ typedef void(*Fct)(Cinetique * robotCinetique,Ghost * ghost, Sequence * sequence
 class Action //Classe abstraite
 {
 public:    
+    /*
+    * Le nom de l'action
+    */
     String name;
+
+    /*
+    * La fonction start est appellé une fois au début de l'action.
+    * Si l'action est interrompu par Sequence::pause, le start sera rappellé lors du resume
+    */
     virtual void start();
+
+    /*
+    * IsFinished est appelé en boucle. Il renvoie si l'action est terminé
+    * Peut aussi servir de fonction d'update...
+    */
     virtual bool isFinished() {return done;}
-    virtual bool hasFailed();   //Par convention, un timeout négatif indique qu'il n'y a pas de timeout
-    static void setPointers(Cinetique * robotCinetique,Ghost * ghost,Sequence* mainSequence, Communication * communication, Asservissement * asser);
+
+    /*
+    * HasFailed est appelé en boucle. Il renvoie si l'action a foiré et devrait etre laissé de coté
+    * La Sequence retiendra cepenant que cette fonction a foiré (utile pour les requirements)
+    */
+    virtual bool hasFailed();
+    static void setPointer(Robot * robot);
     Action(String name="Action", float timeout=0.1, int16_t require=NO_REQUIREMENT){this->name=name;this->timeout=timeout;this->require=require;done=false;started=false;}
     bool hasStarted() {return started;}
+    virtual void doAtEnd(){/*Ne fait rien par défaut. Il faudra override plus tard*/}  //S'execute en cas de réussite
     int16_t require;        //I require Action n°"require" to have succeeded to do this action
 
 protected:
@@ -33,12 +49,9 @@ protected:
     bool started;
     float timeout;
     float timeStarted;
-    static Cinetique * robotCinetique;
-    static Ghost * ghost;
-    static Sequence * mainSequence;
+    static Robot* robot;
     Sequence * mySequence;  //Les actions n'appartiennent pas tous à la meme séquence
-    static Communication * communication;
-    static Asservissement * asser;
+    
 friend class Sequence;
 };
 
@@ -52,6 +65,7 @@ public:
     virtual void start();
     virtual bool isFinished();
     virtual bool hasFailed();
+    void doAtEnd() override;
     Double_Action(float timeout,String name="Twin",int16_t require=NO_REQUIREMENT);
 };
 
@@ -63,6 +77,7 @@ public:
     virtual void start(); //(Action+Move)Dump les parametres dans le ghost et appelle Action::start()
     virtual bool isFinished(); //(Move) Verifie que le ghost est arrive et que le robot est sur le ghost
     virtual bool hasFailed(); //(Action+Move) Verifie que le pid n'a pas retourné d'erreur ou que Action::hasFailed n'est pas true
+    void doAtEnd() override;
     Move_Action(float timeout,VectorE posFinal, float deltaCurve, 
                 Pace pace, bool pureRotation, bool backward,String name="Move",int16_t require=NO_REQUIREMENT);
 

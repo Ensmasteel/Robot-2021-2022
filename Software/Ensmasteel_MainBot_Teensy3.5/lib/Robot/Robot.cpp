@@ -40,7 +40,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
     communication = Communication(commPort);
 
     mainSequence = Sequence();
-    Action::setPointers(&cinetiqueCurrent, &ghost, &mainSequence, &communication, &controller);
+    Action::setPointer(this);
 
     //ATTENTION, LES ACTIONS DOIVENT ETRE DEFINIE EN TANT QUE ROBOT BLEU !
     // Might be define in main.cpp->setup

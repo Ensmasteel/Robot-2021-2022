@@ -1,16 +1,13 @@
 #include "Actions.h"
-#include "Sequence.h"
-#include "Ghost.h"
-#include "PID.h"
-
-
-Cinetique *Action::robotCinetique;
-Ghost *Action::ghost;
-Sequence* Action::mainSequence;
-Communication *Action::communication;
-Asservissement *Action::asser;
+#include "Robot.h"
 
 //========================================ACTION GENERIQUES========================================
+Robot *Action::robot;
+
+void Action::setPointer(Robot *robot_){
+    robot=robot_;
+}
+
 void Action::start()
 {
     timeStarted=millis()/1e3; started=true;
@@ -23,13 +20,8 @@ bool Action::hasFailed()
     return millis() / 1e3 > timeStarted + timeout;
 }
 
-void Action::setPointers(Cinetique *robotCinetique_, Ghost *ghost_, Sequence* mainSequence_, Communication *communication_, Asservissement *asser_)
-{
-    robotCinetique = robotCinetique_;
-    ghost = ghost_;
-    mainSequence=mainSequence_;
-    communication = communication_;
-    asser = asser_;
+void Double_Action::doAtEnd(){
+    action2->doAtEnd();
 }
 
 void Double_Action::start()
@@ -45,7 +37,10 @@ bool Double_Action::isFinished()
     else //On s'occupe de action1
     {
         if (action1->isFinished()) //Il faut passer à 2
+        {
+            action1->doAtEnd();
             action2->start();
+        }
         return false;
     }
 }
@@ -68,9 +63,9 @@ Double_Action::Double_Action(float timeout, String name,int16_t require) : Actio
 
 void Move_Action::start()
 {
-    asser->setCurrentProfile(pace);
+    robot->controller.setCurrentProfile(pace);
     int err;
-    err = ghost->Compute_Trajectory(posFinal, deltaCurve, speedRamps, cruisingSpeed, pureRotation, backward);
+    err = robot->ghost.Compute_Trajectory(posFinal, deltaCurve, speedRamps, cruisingSpeed, pureRotation, backward);
     if (err == 0)
         Logger::debugln("Computation succeeded");
     else
@@ -78,9 +73,15 @@ void Move_Action::start()
     Action::start();
 }
 
+void Move_Action::doAtEnd()
+{
+    robot->controller.sendScoreToTelemetry();
+    robot->controller.reset();
+}
+
 bool Move_Action::isFinished()
 {
-    return ghost->trajectoryIsFinished() && asser->close;
+    return robot->ghost.trajectoryIsFinished() && robot->controller.close;
 }
 
 bool Move_Action::hasFailed()
@@ -141,8 +142,8 @@ Spin_Action::Spin_Action(float timeout, TargetVectorE target, Pace pace, int16_t
 
 void Spin_Action::start()
 {
-    posFinal._x = robotCinetique->_x;
-    posFinal._y = robotCinetique->_y;
+    posFinal._x = robot->cinetiqueCurrent._x;
+    posFinal._y = robot->cinetiqueCurrent._y;
     Move_Action::start();
 }
 
@@ -154,9 +155,9 @@ Rotate_Action::Rotate_Action(float timeout, float deltaTheta, Pace pace, int16_t
 
 void Rotate_Action::start()
 {
-    posFinal._x = robotCinetique->_x;
-    posFinal._y = robotCinetique->_y;
-    posFinal._theta = robotCinetique->_theta + deltaTheta;
+    posFinal._x = robot->cinetiqueCurrent._x;
+    posFinal._y = robot->cinetiqueCurrent._y;
+    posFinal._theta = robot->cinetiqueCurrent._theta + deltaTheta;
     Move_Action::start();
 }
 
@@ -169,9 +170,9 @@ Forward_Action::Forward_Action(float timeout, float dist, Pace pace, int16_t req
 
 void Forward_Action::start()
 {
-    posFinal._theta = robotCinetique->_theta;
-    posFinal._x = (robotCinetique->_x) + dist * cos(normalizeAngle(posFinal._theta));
-    posFinal._y = (robotCinetique->_y) + dist * sin(normalizeAngle(posFinal._theta));
+    posFinal._theta = robot->cinetiqueCurrent._theta;
+    posFinal._x = (robot->cinetiqueCurrent._x) + dist * cos(normalizeAngle(posFinal._theta));
+    posFinal._y = (robot->cinetiqueCurrent._y) + dist * sin(normalizeAngle(posFinal._theta));
     Move_Action::start();
 }
 
@@ -183,16 +184,16 @@ Backward_Action::Backward_Action(float timeout, float dist, Pace pace, int16_t r
 
 void Backward_Action::start()
 {
-    posFinal._theta = robotCinetique->_theta;
-    posFinal._x = (robotCinetique->_x) + dist * cos(-normalizeAngle(posFinal._theta));
-    posFinal._y = (robotCinetique->_y) + dist * sin(-normalizeAngle(posFinal._theta));
+    posFinal._theta = robot->cinetiqueCurrent._theta;
+    posFinal._x = (robot->cinetiqueCurrent._x) + dist * cos(-normalizeAngle(posFinal._theta));
+    posFinal._y = (robot->cinetiqueCurrent._y) + dist * sin(-normalizeAngle(posFinal._theta));
     Move_Action::start();
 }
 
 void StraightTo_Action::start()
 {
     //X et Y sont déja miroiré à ce moment. 
-    Vector delta = Vector(x, y) - *robotCinetique;
+    Vector delta = Vector(x, y) - robot->cinetiqueCurrent;
     float cap = delta.angle();
     spin = new Spin_Action(timeout, TargetVectorE(cap,true), pace);  //Donc il faut etre en absolu
     goTo = new Goto_Action(timeout, TargetVectorE(x,y,cap,true), 0.1, pace);
@@ -219,7 +220,7 @@ Send_Action::Send_Action(Message message, int16_t require) : Action("Send", 0.1,
 
 void Send_Action::start()
 {
-    communication->send(message);
+    robot->communication.send(message);
     done = true;
     Action::start();
 }
@@ -231,7 +232,7 @@ Wait_Message_Action::Wait_Message_Action(MessageID messageId, float timeout, int
 
 bool Wait_Message_Action::isFinished()
 {
-    return communication->inWaitingRx() > 0 && extractID(communication->peekOldestMessage()) == messageId;
+    return robot->communication.inWaitingRx() > 0 && extractID(robot->communication.peekOldestMessage()) == messageId;
 }
 
 Switch_Message_Action::Switch_Message_Action(float timeout,int16_t require) : Action("swch",timeout,require)
@@ -250,13 +251,13 @@ void Switch_Message_Action::addPair(MessageID messageId,Fct fct)
 
 bool Switch_Message_Action::isFinished()
 {
-    if (communication->inWaitingRx() > 0)
+    if (robot->communication.inWaitingRx() > 0)
     {
         for (int i=0;i<size;i++)
         {
-            if (extractID(communication->peekOldestMessage()) == onMessage[i])
+            if (extractID(robot->communication.peekOldestMessage()) == onMessage[i])
             {
-                doFct[i](robotCinetique,ghost,mainSequence,communication,asser); //Les functions agissent sur la mainSequence uniquement
+                doFct[i](robot); //Les functions agissent sur la mainSequence uniquement
                 return true;
             }
         }
@@ -283,7 +284,7 @@ void End_Action::start()
 
 void Do_Action::start()
 {
-    functionToCall(robotCinetique,ghost,mainSequence,communication,asser); //Les functions agissent sur la mainSequence uniquement
+    functionToCall(robot); //Les functions agissent sur la mainSequence uniquement
     done=true;
     Action::start();
 }

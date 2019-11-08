@@ -17,6 +17,17 @@ PIDProfile newPIDProfile(float KP, float KI, float KD, float epsilon, float dEps
 
 // La variable x définit une grandeur quelconque. dx est sa derivee.
 
+
+class Score
+{
+public:
+    float cumulError=0;
+    float maxOvershoot=0;
+    uint16_t nbInversion=0;
+    void reset();
+    void toTelemetry(String prefix);
+};
+
 class PID
 {
 private:
@@ -28,8 +39,11 @@ private:
     float timeTooFar; //Temps depuis lequel on est trop loin
     bool close;  //Est ce qu'on est proche de la target (cf epsilon et depsilon)
     bool tooFar; //Est ce qu'on est trop loin (cf errMax)
+    float lastOut;
+    Score score;
 
 public:
+    Score getScore();
     void reset();
     void setPIDProfile(Pace pace, PIDProfile pidProfile);
     void setCurrentProfile(Pace pace);
@@ -58,6 +72,9 @@ public:
     void compute(float dt);
     void compute_dev(float dt);
     void setCurrentProfile(Pace pace);
+    void reset();
+    void sendScoreToTelemetry();
+
     Asservissement(float *outTranslation, float *outRotation, Cinetique *cRobot, Cinetique *cGhost, float frequency);
     Asservissement() {}
     float tweak(bool incr, bool translation, uint8_t whichOne);

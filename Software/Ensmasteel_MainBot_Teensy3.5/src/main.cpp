@@ -41,7 +41,7 @@ void loop()
 {
   currentMillis = millis();
 
-  if (currentMillis-topWarn>5000) //Affichage toute les 5 seconde de la freq moyenne
+  if (currentMillis-topWarn>25000) //Affichage toute les 25 seconde de la freq moyenne
   {
     Logger::infoln("Actual Frequency: "+String(1000.0/moy*compteur)+" Hz");
     topWarn=millis();

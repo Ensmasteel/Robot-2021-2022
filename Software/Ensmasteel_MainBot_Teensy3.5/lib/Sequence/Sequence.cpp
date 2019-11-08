@@ -1,6 +1,5 @@
-#include "Sequence.h"
+#include "Robot.h"
 #include "Actions.h"
-#include "Ghost.h"
 
 void Sequence::startFollowing()
 {
@@ -42,7 +41,10 @@ void Sequence::update()
         fails[currentIndex] = false;
         Logger::debugln("Action "+String(currentIndex)+" succeded !");
         if (nextIndex<=lastIndex)
+        {
+            queue[currentIndex]->doAtEnd();
             startFollowing();
+        }
     }
     else if (queue[currentIndex]->hasFailed())
     {
@@ -91,12 +93,12 @@ void Sequence::pause(bool lockGhost)
 {
     paused=true;
     if (lockGhost)
-        Action::ghost->Lock(true);
+        Action::robot->ghost.Lock(true);
 }
 
 void Sequence::resume()
 {
     paused=false;
     startSelected(); //On relance l'action
-    Action::ghost->Lock(false);
+    Action::robot->ghost.Lock(false);
 }

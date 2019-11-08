@@ -1,38 +1,34 @@
 #include "Functions.h"
-#include "Vector.h"
-#include "Ghost.h"
-#include "Sequence.h"
-#include "Communication.h"
 #include "Actions.h"
-#include "PID.h"
+#include "Robot.h"
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter" //Retire le warning "unused parameter"
 
 //Lorsque cette fonction est appellé, il y a un PID_tweak dans la mailbox
-void PID_tweak(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser) {
-    FourBytes fBytes = extract4Bytes(communication->peekOldestMessage());
+void PID_tweak(Robot* robot) {
+    FourBytes fBytes = extract4Bytes(robot->communication.peekOldestMessage());
     bool incr=fBytes.byte0==1;
     bool translation=fBytes.byte1==1;
     uint8_t whichOne=fBytes.byte2; //0 = P, 1 = I, 2 = D
-    Logger::infoln(String(asser->tweak(incr,translation,whichOne)*4095.0));
+    Logger::infoln(String(robot->controller.tweak(incr,translation,whichOne)*4095.0));
 }
 
-void pauseNlockMainSequence(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser)
+void pauseNlockMainSequence(Robot* robot)
 {
-    mainSequence->pause(true);
+    robot->mainSequence.pause(true);
     Logger::infoln("MAIN SEQUENCE PAUSED");
 }
 
-void ping(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser)
+void ping(Robot* robot)
 {
     Logger::infoln("ping");
 }
 
-void shutdown(Cinetique * robotCinetique, Ghost * ghost, Sequence * mainSequence, Communication * communication, Asservissement * asser)
+void shutdown(Robot* robot)
 {
-    pauseNlockMainSequence(robotCinetique, ghost, mainSequence, communication, asser);
-    asser->setCurrentProfile(Pace::off);
+    pauseNlockMainSequence(robot);
+    robot->controller.setCurrentProfile(Pace::off);
     Logger::infoln("SHUTDOWN");
 }
 

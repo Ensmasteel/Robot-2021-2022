@@ -4,6 +4,7 @@
 
 
 //En-tete d'un message
+//-----------------------Merci de rajouter des elements par la FIN-----------------------
 enum MessageID : uint16_t
 {
     Empty_M,  //Message vide
