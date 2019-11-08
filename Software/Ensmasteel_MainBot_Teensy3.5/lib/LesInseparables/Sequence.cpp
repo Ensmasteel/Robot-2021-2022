@@ -1,3 +1,4 @@
+#include "Sequence.h"
 #include "Robot.h"
 #include "Actions.h"
 

@@ -7,6 +7,7 @@
 #ifndef STM32BOTH
 #include <Encoder.h>
 #else // !STM32BOTH
+
 class Encoder
 {
 public:

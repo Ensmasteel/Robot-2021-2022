@@ -1,5 +1,6 @@
 #include "Actions.h"
 #include "Robot.h"
+#include "Sequence.h"
 
 //========================================ACTION GENERIQUES========================================
 Robot *Action::robot;

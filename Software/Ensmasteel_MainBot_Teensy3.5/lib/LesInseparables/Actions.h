@@ -3,10 +3,12 @@
 #include "Vector.h"
 #include "Arduino.h"
 #include "Pace.h"
+#include "Communication.h"
 #include <vector>
 #include <cstdint> //for macro INT16_MAX
 
 class Robot;
+class Sequence;
 typedef void(*Fct)(Robot * robot);
 
 
