@@ -77,14 +77,14 @@ float PID::compute(float xTarget, float dxTarget, float x, float dx, float dt)
         timeTooFar = 0;
     tooFar = timeTooFar > TIMETOOFAR;
 
-    score.cumulError+=abs(error);
-    if ((dxTarget>=0 && error<0) || (dxTarget>0 && error>0)) //Condition d'overshoot
+    score.cumulError+=abs(error)*dt;
+    if ((dxTarget>=0 && error<0) || (dxTarget<0 && error>0)) //Condition d'overshoot
         score.maxOvershoot = max(score.maxOvershoot, abs(error));
 
     float out = constrain(
         PIDProfiles[currentProfile].KP * error + PIDProfiles[currentProfile].KI * iTerm + PIDProfiles[currentProfile].KD * dError, -1.0, 1.0);
-    if (lastOut*out<-0.0001) //Changement de signe (1% a -1% de signe)
-        score.nbInversion++;
+    if (lastOut*out<0 && (abs(lastOut)-abs(out))/dt > 0.01 ) //Changement de signe (1% a -1% d'output en une seconde)
+        score.nbInversion = score.nbInversion + 1;
 
     lastOut=out;
 
