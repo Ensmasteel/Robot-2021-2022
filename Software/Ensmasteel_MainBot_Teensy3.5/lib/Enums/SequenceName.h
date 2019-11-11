@@ -8,6 +8,7 @@ enum SequenceName
     timeSequenceName,
     goNorthName,
     goSouthName,
+    errorCheckerName,
     __NBSEQUENCES__
 };
 

@@ -1,4 +1,5 @@
 #include "PID.h"
+#include "ErrorManager.h"
 #define RECONVERGENCE 0.05
 //SI le robot est eloigné de plus de RECONVERGENCE metres, le PID angulaire s'occupe a 100% de rejoindre le ghost, pas de mimer le theta
 
@@ -76,6 +77,8 @@ float PID::compute(float xTarget, float dxTarget, float x, float dx, float dt)
     else
         timeTooFar = 0;
     tooFar = timeTooFar > TIMETOOFAR;
+    if (tooFar)
+        ErrorManager::raise(PID_FAIL_ERROR);
 
     score.cumulError+=abs(error)*dt;
     if ((dxTarget>=0 && error<0) || (dxTarget<0 && error>0)) //Condition d'overshoot

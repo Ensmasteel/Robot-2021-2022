@@ -5,6 +5,7 @@
 #include "Pace.h"
 #include "Communication.h"
 #include "SequenceName.h"
+#include "ErrorManager.h"
 #include <vector>
 #include <cstdint> //for macro INT16_MAX
 
@@ -329,6 +330,19 @@ public:
     ResumeSeq_Action(SequenceName nameSeq, int16_t require=NO_REQUIREMENT);
 };
 
+/*
+* Attend une erreur
+*/
+class Wait_Error_Action : public Action
+{
+private:
+    Error error;
+public:
+    Wait_Error_Action(Error error, float timeout,int16_t require=NO_REQUIREMENT);
+    //start(Action)
+    bool isFinished(); //(Wait_Error) verifie que l'erreur s'est produite
+    //hasFailed(Action)
+};
 
 
 #endif // !ACTION_H_

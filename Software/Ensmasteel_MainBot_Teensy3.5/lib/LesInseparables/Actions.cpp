@@ -320,3 +320,11 @@ void ResumeSeq_Action::start(){
     done=true;
     Action::start();
 }
+
+Wait_Error_Action::Wait_Error_Action(Error error, float timeout, int16_t require) : Action("WaitErr", timeout, require){
+    this->error = error;
+}
+
+bool Wait_Error_Action::isFinished(){
+    return ErrorManager::inWaiting() > 0 && ErrorManager::peekOldestError() == error;
+}

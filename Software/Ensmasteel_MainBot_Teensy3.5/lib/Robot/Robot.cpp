@@ -95,15 +95,19 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
 
     Sequence* timeSequence = getSequenceByName(timeSequenceName);
         timeSequence->add(new Do_Action(setTimeStart));
-        timeSequence->add(new Sleep_Action(30));
-        timeSequence->add(new Do_Action(ping));
+        timeSequence->add(new Sleep_Action(300));
         timeSequence->add(new Do_Action(startBackHomeSeq));
         timeSequence->add(new Sleep_Action(10));
         timeSequence->add(new Do_Action(shutdown));
         timeSequence->add(new End_Action());
         timeSequence->pause(); //La time sequence ne doit s'écouler qu'a partir du tiré de la tirette !!
 
-    
+    Sequence* errorChecker = getSequenceByName(errorCheckerName);
+        errorChecker->add(new Wait_Error_Action(PID_FAIL_ERROR,-1));
+        errorChecker->add(new Do_Action(ping));
+        errorChecker->add(new Sleep_Action(1.5));
+        errorChecker->add(new End_Action(true));
+        errorChecker->startSelected();
 
     ghost.Lock(false);
 }
@@ -126,13 +130,14 @@ void Robot::Update(float dt)
     motorRight.actuate();
     for (int i=0;i<__NBSEQUENCES__;i++)
         sequences[i]->update();
-    if (compteur==SKIP_TELEMETRY)
-    {
+    if (compteur==SKIP_TELEMETRY){
         telemetry();
         compteur=0;
     }
     if (communication.inWaitingRx() > 0)
         communication.popOldestMessage(); //Tout le monde a eu l'occasion de le peek, on le vire.
+    if (ErrorManager::inWaiting()>0)
+        ErrorManager::popOldestError(); //Les séquences ont eu l'occasion de le lire, on le vire
     compteur++;
 }
 

@@ -81,6 +81,14 @@ float Vector::angle()
     return atan2(_y,_x);
 }
 
+Vector Vector::rotate(float theta)
+{
+    Vector out;
+    out._x = _x * cos(theta) - _y * sin(theta);
+    out._y = _y * cos(theta) + _x * sin(theta);
+    return out;
+}
+
 Vector directeur(float theta)
 {
     return Vector(cos(theta),sin(theta));

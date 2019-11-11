@@ -14,6 +14,8 @@ class Simulator
     float * orderMotorLeft;
     float * orderMotorRight;
 
+    void computeCollision();
+
 public:
     Simulator(float size, float mass, float maxAcc, float maxSpeed
             , Cinetique * cinetique, float * orderMotorLeft, float * orderMotorRight, float health=1);
