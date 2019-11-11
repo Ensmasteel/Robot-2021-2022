@@ -71,6 +71,7 @@ void Move_Action::start()
         Logger::debugln("Computation succeeded");
     else
         Logger::infoln("Computation failed");
+    robot->ghost.Lock(false);
     Action::start();
 }
 
@@ -129,7 +130,6 @@ Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace
         this->speedRamps *= 3.14;
         this->cruisingSpeed *= 3.14; //Un robot qui avance a 1m/s est aussi impressionnant qu'un robot qui fait un demi tour par seconde
     }
-    robot->ghost.Lock(false);
 }
 
 Goto_Action::Goto_Action(float timeout, TargetVectorE target, float deltaCurve, Pace pace, bool backward, int16_t require)
@@ -269,13 +269,19 @@ bool Switch_Message_Action::isFinished()
 
 //========================================ACTION MISC========================================
 
-End_Action::End_Action(bool loop) : Action("End_", -1, NO_REQUIREMENT)
+End_Action::End_Action(bool loop, bool pause) : Action("End_", -1, NO_REQUIREMENT)
 {
     this->loop=loop;
+    this->pause=pause;
 }
 
 void End_Action::start()
 {
+    //Au premier appel de start, done == false et on met la sequence en pause
+    //Sinon, done == true et alors on va looper.
+    if (pause && !done)
+        mySequence->pause();
+
     if (loop)
     {
         mySequence->nextIndex=0; //Une end action, boucle sa propre sequence
@@ -301,6 +307,14 @@ bool Sleep_Action::isFinished()
     return millis()/1e3 - timeStarted>timeToWait;
 }
 
+Wait_Error_Action::Wait_Error_Action(Error error, float timeout, int16_t require) : Action("WaitErr", timeout, require){
+    this->error = error;
+}
+
+bool Wait_Error_Action::isFinished(){
+    return ErrorManager::inWaiting() > 0 && ErrorManager::peekOldestError() == error;
+}
+
 PauseSeq_Action::PauseSeq_Action(SequenceName nameSeq, int16_t require) : Action("paus",0.1,require){
     this->nameSeq=nameSeq;
 }
@@ -319,12 +333,4 @@ void ResumeSeq_Action::start(){
     robot->getSequenceByName(nameSeq)->resume();
     done=true;
     Action::start();
-}
-
-Wait_Error_Action::Wait_Error_Action(Error error, float timeout, int16_t require) : Action("WaitErr", timeout, require){
-    this->error = error;
-}
-
-bool Wait_Error_Action::isFinished(){
-    return ErrorManager::inWaiting() > 0 && ErrorManager::peekOldestError() == error;
 }

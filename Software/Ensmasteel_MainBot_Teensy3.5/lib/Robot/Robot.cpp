@@ -51,7 +51,18 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
     TargetVector northBase = TargetVector(0.22,1.65,false);
     TargetVector southBase = TargetVector(0.22,0.70,false);
 
+//TODO BACKWARD MARCHE PAS
+//TODO SPASME GHOST LORS DUN SPIN NUL
+
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
+        //Attend le message Tirette
+        mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
+        mainSequence->add(new Spin_Action(-1,TargetVectorE(PI,false),standard));
+        mainSequence->add(new Sleep_Action(1));
+        //On active la detection de l'erreur PID
+        mainSequence->add(new ResumeSeq_Action(recallageListerName));
+        //On avance comme un debile
+        mainSequence->add(new Forward_Action(5,1.0,accurate));
         //Attend le message Tirette
         mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
         //Delock le thread temporel
@@ -73,7 +84,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
     Sequence* goNorth = getSequenceByName(goNorthName);
         goNorth->add(new StraightTo_Action(-1,northBase,standard));
         goNorth->add(new End_Action());
-        goNorth->pause(); //Cette action ne doit pas se lancer dès le début
+        goNorth->pause();//Cette action ne doit pas se lancer dès le début
 
     Sequence* goSouth = getSequenceByName(goSouthName);
         goSouth->add(new StraightTo_Action(-1,southBase,standard));
@@ -102,12 +113,12 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         timeSequence->add(new End_Action());
         timeSequence->pause(); //La time sequence ne doit s'écouler qu'a partir du tiré de la tirette !!
 
-    Sequence* errorChecker = getSequenceByName(errorCheckerName);
-        errorChecker->add(new Wait_Error_Action(PID_FAIL_ERROR,-1));
-        errorChecker->add(new Do_Action(ping));
-        errorChecker->add(new Sleep_Action(1.5));
-        errorChecker->add(new End_Action(true));
-        errorChecker->startSelected();
+    Sequence* recallageListener = getSequenceByName(recallageListerName);
+        recallageListener->add(new Wait_Error_Action(PID_FAIL_ERROR,5.0));
+        recallageListener->add(new Do_Action(recallageBordure,-1));
+        recallageListener->add(new Do_Action(forceMainSeqNext,-1));
+        recallageListener->add(new End_Action(true,true));
+        recallageListener->pause();
 
     ghost.Lock(false);
 }

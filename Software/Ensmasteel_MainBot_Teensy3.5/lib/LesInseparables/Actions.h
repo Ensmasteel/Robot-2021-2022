@@ -114,7 +114,7 @@ public:
 class Move_Action : public Action //Classe abstraite
 {
 public:
-    virtual void start(); //(Action+Move)Dump les parametres dans le ghost et appelle Action::start()
+    virtual void start(); //(Action+Move)Dump les parametres dans le ghost et appelle Action::start() et debloque le ghost
     virtual bool isFinished(); //(Move) Verifie que le ghost est arrive et que le robot est sur le ghost
     virtual bool hasFailed(); //(Action+Move) Verifie que le pid n'a pas retourné d'erreur ou que Action::hasFailed n'est pas true
     void doAtEnd() override;
@@ -286,8 +286,9 @@ class End_Action : public Action //Une End_Action ne passe jamais a la suite
 {
 private:
     bool loop;
+    bool pause;
 public:
-    End_Action(bool loop=false);
+    End_Action(bool loop=false, bool pause = false);
     void start();
     bool isFinished(){return done;}
     bool hasFailed(){return false;}

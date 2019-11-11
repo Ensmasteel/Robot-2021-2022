@@ -153,11 +153,11 @@ Asservissement::Asservissement(float *outTranslation, float *outRotation, Cineti
     pidRotation.setPIDProfile(Pace::off, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
     pidRotation.setPIDProfile(Pace::off, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
 
-    pidRotation.setPIDProfile(Pace::accurate, newPIDProfile(3500, 500, 500, 0.05, 0.01, 0.01));    //Accurate
-    pidTranslation.setPIDProfile(Pace::accurate, newPIDProfile(5000, 500, 1000, 0.15, 0.05, 0.1)); //Accurate
+    pidRotation.setPIDProfile(Pace::accurate, newPIDProfile(3500, 500, 500, 0.05, 0.01, 0.05));    //Accurate
+    pidTranslation.setPIDProfile(Pace::accurate, newPIDProfile(5000, 500, 1000, 0.20, 0.05, 0.20)); //Accurate
 
-    pidRotation.setPIDProfile(Pace::standard, newPIDProfile(3500, 300, 500, 0.05, 0.01, 0.01));    //Standard
-    pidTranslation.setPIDProfile(Pace::standard, newPIDProfile(3500, 300, 1000, 0.15, 0.05, 0.1)); //Standard
+    pidRotation.setPIDProfile(Pace::standard, newPIDProfile(3500, 300, 500, 0.05, 0.01, 0.05));    //Standard
+    pidTranslation.setPIDProfile(Pace::standard, newPIDProfile(3500, 300, 1000, 0.10, 0.05, 0.20)); //Standard
 
     pidRotation.setPIDProfile(Pace::fast, newPIDProfile(1920, 300, 100, 0.05, 0.01, 0.01));    //Fast
     pidTranslation.setPIDProfile(Pace::fast, newPIDProfile(1200, 100, 2500, 0.15, 0.05, 0.1)); //Fast

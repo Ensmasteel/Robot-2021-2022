@@ -32,6 +32,12 @@ void Sequence::startSelected()
         queue[currentIndex]->start();
 }
 
+void Sequence::forceFollowing()
+{
+    fails[currentIndex] = true;
+    startFollowing();
+}
+
 void Sequence::update()
 {
     if (paused)
@@ -100,5 +106,12 @@ void Sequence::resume()
 {
     paused=false;
     startSelected(); //On (re)lance l'action
-    Action::robot->ghost.Lock(false);
+}
+
+void Sequence::reset(){
+    currentIndex = 0;
+    nextIndex = 1;
+    for (int i=0;i<lastIndex;i++)
+        fails[i]=false;
+    pause();
 }

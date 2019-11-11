@@ -12,6 +12,8 @@ void setTimeStart(Robot* robot);
 void startBackHomeSeq(Robot* robot);
 void setNorth(Robot* robot);
 void setSouth(Robot* robot);
+void recallageBordure(Robot* robot);
+void forceMainSeqNext(Robot* robot);
 
 
 #endif // !FUNCTIONS_H_

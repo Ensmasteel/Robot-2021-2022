@@ -27,14 +27,62 @@ private:
     bool paused;
 public:
     uint8_t nextIndex;
+
+    /*
+    * Demarre l'action désigné par currentIndex (débloque la séquence si nécessaire)
+    */
     void startSelected();
+
+    /*
+    * Demarre l'action désigné par nextIndex
+    */
     void startFollowing();
+
+    /*
+    * Demarre l'action désigné par nextIndex et indique que l'action a terminé anormalement
+    */
+    void forceFollowing();
+
+    /*
+    * Verifie l'etat de l'action en cours et agit si l'action réussi/foire
+    */
     void update();
+
+    /*
+    * Change la valeur du nextIndex
+    */
     void setNextIndex(uint8_t index);
+
+    /*
+    * Cree une sequence vide
+    * Par défaut, la séquence est en pause
+    */
     Sequence();
+
+    /*
+    * Ajoute une action au bout de la séquence
+    */
     void add(Action* action);
+
+    /*
+    * Upload les informations liée a cette séquence
+    * (A n'utiliser que sur une des séquences...)
+    */
     void toTelemetry();
+
+    /*
+    * Bloque le ghost et empèche l'actualisation de la séquence
+    */
     void pause();
+
+    /*
+    * Met le currentIndex sur la première action.
+    */
+    void reset();
+
+    /*
+    * Debloque la sequence et redémarre l'action qui était en cours
+    */
     void resume();
 
 };

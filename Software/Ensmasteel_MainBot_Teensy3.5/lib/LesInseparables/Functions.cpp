@@ -50,4 +50,13 @@ void setSouth(Robot* robot){
     Logger::infoln("I will go South");
 }
 
+void recallageBordure(Robot* robot){
+    //TODO
+    Logger::infoln("reccallage bordure");
+}
+
+void forceMainSeqNext(Robot* robot){
+    robot->getSequenceByName(mainSequenceName)->forceFollowing();
+}
+
 #pragma GCC diagnostic pop
