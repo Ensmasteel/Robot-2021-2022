@@ -90,16 +90,15 @@ void Sequence::toTelemetry()
     }
 }
 
-void Sequence::pause(bool lockGhost)
+void Sequence::pause()
 {
     paused=true;
-    if (lockGhost)
-        Action::robot->ghost.Lock(true);
+    Action::robot->ghost.Lock(true);
 }
 
 void Sequence::resume()
 {
     paused=false;
-    startSelected(); //On relance l'action
+    startSelected(); //On (re)lance l'action
     Action::robot->ghost.Lock(false);
 }

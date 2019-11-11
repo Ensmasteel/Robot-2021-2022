@@ -15,7 +15,9 @@ enum MessageID : uint16_t
     add_backward_M, //[Aux -> Teensy]: Rajoute un backward a la fin de la file principale
     add_spin_M, //[Aux -> Teensy]: Rajoute un spin a la fin de la file principale
     Em_Stop_M, //[Aux -> Teensy]: Arret d'urgence
-    Evitemment_M //[Mega/Aux -> Teensy]: Un Evitemment peut être a faire |  DATA: Un vecteur (position de l'obstacle)
+    Evitemment_M, //[Mega/Aux -> Teensy]: Un Evitemment peut être a faire |  DATA: Un vecteur (position de l'obstacle)
+    North_M, //[Camera -> Teensy]: Il faudra finir au nord
+    South_M  //[Camera -> Teensy]: Il faudra finir au sud
 };
 
 #endif

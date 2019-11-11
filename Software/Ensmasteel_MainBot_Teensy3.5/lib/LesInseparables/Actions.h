@@ -4,6 +4,7 @@
 #include "Arduino.h"
 #include "Pace.h"
 #include "Communication.h"
+#include "SequenceName.h"
 #include <vector>
 #include <cstdint> //for macro INT16_MAX
 
@@ -43,6 +44,8 @@ public:
     /*
     * HasFailed est appelé en boucle. Il renvoie si l'action a foiré et devrait etre laissé de coté
     * La Sequence retiendra cepenant que cette fonction a foiré (utile pour les requirements)
+    * Par défaut, une action foire si elle dépasse le temps qui lui a été imparti par le timeout.
+    * (Un timeout de -indique que l'Action dispose d'un temps illimité)
     */
     virtual bool hasFailed();
 
@@ -67,7 +70,6 @@ public:
     */
     virtual void doAtEnd(){/*Ne fait rien par défaut. Il faudra override plus tard*/}
 
-
 protected:
     bool done;
     bool started;
@@ -76,6 +78,7 @@ protected:
     static Robot* robot;
     Sequence * mySequence;
     int16_t require;
+
     
 friend class Sequence;
 };
@@ -104,7 +107,7 @@ public:
 
 /*
 * Une Move Action est une action qui va donner un nouvel ordre au ghost
-* Lors de l'appel de "start", la position cible est donnée au ghost qui va ensuite s'y rendre
+* Lors de l'appel de "start", la position cible est donnée au ghost qui va ensuite s'y rendre (le ghoost est alors delock si necessaire)
 * Par défaut, les PID sont reset (Iterm) à la fin de l'action
 */
 class Move_Action : public Action //Classe abstraite
@@ -300,6 +303,30 @@ private:
 public:
     void start();
     Do_Action(Fct functionToCall,int16_t require=NO_REQUIREMENT) :  Action("DoAc", 0.1, require) {this->functionToCall=functionToCall;}
+};
+
+/*
+* Met en pause une sequence lors de start
+*/
+class PauseSeq_Action : public Action
+{
+private:
+    SequenceName nameSeq;
+public:
+    void start();
+    PauseSeq_Action(SequenceName nameSeq, int16_t require=NO_REQUIREMENT);
+};
+
+/*
+* Relance une sequence lors de start
+*/
+class ResumeSeq_Action : public Action
+{
+private:
+    SequenceName nameSeq;
+public:
+    void start();
+    ResumeSeq_Action(SequenceName nameSeq, int16_t require=NO_REQUIREMENT);
 };
 
 

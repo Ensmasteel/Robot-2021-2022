@@ -129,6 +129,7 @@ Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace
         this->speedRamps *= 3.14;
         this->cruisingSpeed *= 3.14; //Un robot qui avance a 1m/s est aussi impressionnant qu'un robot qui fait un demi tour par seconde
     }
+    robot->ghost.Lock(false);
 }
 
 Goto_Action::Goto_Action(float timeout, TargetVectorE target, float deltaCurve, Pace pace, bool backward, int16_t require)
@@ -298,4 +299,24 @@ Sleep_Action::Sleep_Action(float timeToWait,int16_t require) : Action("ZZzz",-1,
 bool Sleep_Action::isFinished()
 {
     return millis()/1e3 - timeStarted>timeToWait;
+}
+
+PauseSeq_Action::PauseSeq_Action(SequenceName nameSeq, int16_t require) : Action("paus",0.1,require){
+    this->nameSeq=nameSeq;
+}
+
+void PauseSeq_Action::start(){
+    robot->getSequenceByName(nameSeq)->pause();
+    done=true;
+    Action::start();
+}
+
+ResumeSeq_Action::ResumeSeq_Action(SequenceName nameSeq, int16_t require) : Action("resu",0.1,require){
+    this->nameSeq=nameSeq;
+}
+
+void ResumeSeq_Action::start(){
+    robot->getSequenceByName(nameSeq)->resume();
+    done=true;
+    Action::start();
 }

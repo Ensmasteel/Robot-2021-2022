@@ -14,22 +14,40 @@ void PID_tweak(Robot* robot) {
     Logger::infoln(String(robot->controller.tweak(incr,translation,whichOne)*4095.0));
 }
 
-void pauseNlockMainSequence(Robot* robot)
-{
-    robot->mainSequence.pause(true);
-    Logger::infoln("MAIN SEQUENCE PAUSED");
-}
-
-void ping(Robot* robot)
-{
+void ping(Robot* robot){
     Logger::infoln("ping");
 }
 
 void shutdown(Robot* robot)
 {
-    pauseNlockMainSequence(robot);
+    for (int i=0;i<__NBSEQUENCES__;i++)
+        robot->getSequenceByName((SequenceName)i)->pause();
     robot->controller.setCurrentProfile(Pace::off);
     Logger::infoln("SHUTDOWN");
+}
+
+void setTimeStart(Robot* robot){
+    robot->timeStarted = millis()/1e3;
+}
+
+void startBackHomeSeq(Robot* robot){
+    //On arrete la sequence actuelle
+    robot->getSequenceByName(mainSequenceName)->pause();
+    //On lance la bonne sequence de retour
+    if (robot->endNorth)
+        robot->getSequenceByName(goNorthName)->resume();
+    else
+        robot->getSequenceByName(goSouthName)->resume();
+}
+
+void setNorth(Robot* robot){
+    robot->endNorth=true;
+    Logger::infoln("I will go North");
+}
+
+void setSouth(Robot* robot){
+    robot->endNorth=false;
+    Logger::infoln("I will go South");
 }
 
 #pragma GCC diagnostic pop

@@ -8,10 +8,35 @@
 #include "Ghost.h"
 #include "Communication.h"
 #include "Sequence.h"
+#include "SequenceName.h"
+#include <vector>
 
 class Robot
 {
-public:
+protected:
+    uint8_t controllerFrequency = 30;
+    Odometrie odometrie;
+    Cinetique cinetiqueNext;
+    Motor motorLeft, motorRight;
+    float translationOrderPID = 0.0, rotationOrderPID = 0.0;
+    uint8_t compteur=0;
+    virtual void Update_Cinetique(float dt);
+    Sequence** sequences;
+    TeamColor teamColor = BLEU;
+
+public :
+    //=== Globals ===
+    bool endNorth = true;
+    float timeStarted;
+    //===============
+
+    //=== Composants ===
+    Cinetique cinetiqueCurrent;
+    Ghost ghost;
+    Asservissement controller;
+    Communication communication;
+    //==================
+    
     // GOAL / Constructor : Setup all reference to variables of other classes
     //        Definition of the sequence of actions
     // IN   / float xIni, yIni, thetaIni : Initial position of the bot
@@ -36,21 +61,14 @@ public:
     //        controller
     void telemetry();
 
-protected:
-    uint8_t controllerFrequency = 30;
-    Odometrie odometrie;
-    Cinetique cinetiqueNext;
-    Motor motorLeft, motorRight;
-    float translationOrderPID = 0.0, rotationOrderPID = 0.0;
-    uint8_t compteur=0;
-    virtual void Update_Cinetique(float dt);
+    Sequence* getSequenceByName(SequenceName name);
 
-public :
-    Cinetique cinetiqueCurrent;
-    Ghost ghost;
-    Asservissement controller;
-    Communication communication;
-    Sequence mainSequence, communicationSequence, stopSequence;
+    float getTime();
+
+    void setTeamColor(TeamColor teamColor);
+
+    TeamColor getTeamColor();
+
 };
 
 #endif

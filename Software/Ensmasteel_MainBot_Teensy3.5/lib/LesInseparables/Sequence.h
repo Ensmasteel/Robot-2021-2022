@@ -34,7 +34,7 @@ public:
     Sequence();
     void add(Action* action);
     void toTelemetry();
-    void pause(bool lockGhost);
+    void pause();
     void resume();
 
 };

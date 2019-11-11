@@ -27,7 +27,7 @@ void setup()
   Serial.begin(115200);
   Serial1.begin(115200);
   Logger::setup(&Serial1, &Serial1, &Serial, true, true, true);
-  Target::setTeamColor(BLEU);
+  bender->setTeamColor(TeamColor::JAUNE);
   delay(2000);
   Logger::infoln("REBOOT%"); //Le caractère % permet de faire sauter le parsing en cours sur la station sol
   Logger::infoln("Bender's booting up");
