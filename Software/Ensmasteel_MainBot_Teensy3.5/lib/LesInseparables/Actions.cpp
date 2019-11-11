@@ -64,6 +64,7 @@ Double_Action::Double_Action(float timeout, String name,int16_t require) : Actio
 
 void Move_Action::start()
 {
+    robot->recalibrateGhost();
     robot->controller.setCurrentProfile(pace);
     int err;
     err = robot->ghost.Compute_Trajectory(posFinal, deltaCurve, speedRamps, cruisingSpeed, pureRotation, backward);

@@ -72,6 +72,8 @@ public :
     void move(VectorE where);
     void move(TargetVectorE whereTarget);
 
+    // GOAL / Teleport Ghost on Robot's position
+    void recalibrateGhost();
 };
 
 #endif

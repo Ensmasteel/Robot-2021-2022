@@ -2,7 +2,7 @@
 #include "Arduino.h"
 
 #ifdef STM32BOTH
-#define max(a,b) (((a)>(b))?(a):(b))
+#define max(a, b) (((a) > (b)) ? (a) : (b))
 #endif
 
 Ghost::Ghost(VectorE posEIni)
@@ -29,17 +29,17 @@ void Ghost::Set_NewTrajectory(Polynome newTrajectoryX, Polynome newTrajectoryY, 
 int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, float cruisingSpeed, bool pureRotation, bool goBackward)
 {
     uint8_t errorStatus = 0;
-    deltaCurve = max(0.1,deltaCurve);   // <-------------------------------- PROPOSITION ARTHUR CHECK PLS
+    deltaCurve = max(0.1, deltaCurve); // <-------------------------------- PROPOSITION ARTHUR CHECK PLS -> Why not, quoique 0.1 ca me parait leger.
 
     // Set variables state
     posAim = posFinal;
     t = 0.0;
     t_e = 0.0;
-    t_e_delayed=0.0;
-    t_delayed=0.0;
+    t_e_delayed = 0.0;
+    t_delayed = 0.0;
     rotating = pureRotation;
     backward = goBackward;
-    trajectoryFinished=false;
+    trajectoryFinished = false;
 
     posAim.normalizeTheta();
     posCurrent.normalizeTheta();
@@ -49,7 +49,7 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
     if (pureRotation) // Only update orientation
     {
         lengthTrajectory = normalizeAngle(posAim._theta - posCurrent._theta);
-        
+
         // If the orientation is unchanged
         if (abs(lengthTrajectory) < MIN_ROTATION)
         {
@@ -147,7 +147,7 @@ void Ghost::Lock(bool state)
 int Ghost::StateManager()
 {
     uint8_t errorState = 0;
-        
+
     if (speedLinearCurrent > MAX_SPEED)
     {
         locked = true;
@@ -159,10 +159,20 @@ int Ghost::StateManager()
     {
         if (posDelayed.distanceWith(posAim) < MAX_DISTANCE) //If we're not to far from the goal
         {
-            posCurrent = posAim;
-            posDelayed = posAim;
-            posPrevious = posAim;
-            t_e_delayed = 1.01; //<-------------- Ca a fix le pb. ARTHUR CHECK PLS
+            if (rotating)
+            {
+                posCurrent._theta = posAim._theta;
+                posDelayed._theta = posAim._theta;
+                posPrevious._theta = posAim._theta;
+            }
+            else
+            {
+                posCurrent = posAim;
+                posDelayed = posAim;
+                posPrevious = posAim;
+            }
+
+            t_e_delayed = 1.01; //<-------------- Ca a fix le pb. ARTHUR CHECK PLS -> C'est degeu mais, if it works, it works
             trajectoryFinished = true;
         }
         else
@@ -183,7 +193,7 @@ int Ghost::ActuatePosition(float dt)
         if (rotating)
         {
             posPrevious = posCurrent;
-            
+
             posCurrent._theta += speedProfileRotation.f(t) * dt * ((lengthTrajectory > 0) ? 1 : -1);
             posCurrent.normalizeTheta();
             posDelayed._theta += speedProfileRotation.f(t_delayed) * dt * ((lengthTrajectory > 0) ? 1 : -1);
@@ -220,7 +230,7 @@ int Ghost::ActuatePosition(float dt)
             {
                 errorStatus = 1;
             }
-            
+
             // t_e_delayed = ((t_e_delayed > 1.0) ? 1.0 : t_e_delayed);
 
             // Compute positions
@@ -261,7 +271,7 @@ int Ghost::ActuatePosition(float dt)
 
 void Ghost::Update_Speeds(VectorE posNow, VectorE posLast, float dt)
 {
-    speedLinearCurrent = posNow.distanceWith(posLast) / dt; 
+    speedLinearCurrent = posNow.distanceWith(posLast) / dt;
 
     speedRotationalCurrent = normalizeAngle(posNow._theta - posLast._theta) / dt;
 }
@@ -277,4 +287,18 @@ Cinetique Ghost::Get_Controller_Cinetique()
     out._w = speedRotationalCurrent;
 
     return out;
+}
+
+void Ghost::moveGhost(VectorE newPos)
+{
+    posCurrent = newPos;
+    posDelayed = newPos;
+    posPrevious = newPos;
+}
+
+void Ghost::moveGhost(Cinetique newPos)
+{
+    posCurrent = VectorE(newPos._x, newPos._y, newPos._theta);
+    posDelayed = posCurrent;
+    posPrevious = posCurrent;
 }
