@@ -69,6 +69,9 @@ public :
 
     TeamColor getTeamColor();
 
+    void move(VectorE where);
+    void move(TargetVectorE whereTarget);
+
 };
 
 #endif

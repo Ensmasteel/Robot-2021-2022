@@ -62,16 +62,10 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         mainSequence->add(new Spin_Action(20, TargetVectorE(0,false),standard));
         //AvancerToutDroit (timeout = 20s, avancerDe = 50cm, allure = standard)
         mainSequence->add(new Forward_Action(20,0.5,standard));
-        
+
         //Des aller retours débiles a fin de voir que l'action "back home south/north" interrompt bien tout ce bordel
         mainSequence->add(new StraightTo_Action(30,TargetVector(1.5,1.5,false),standard));
-        mainSequence->add(new StraightTo_Action(30,TargetVector(1.5,0.5,false),standard));
-        mainSequence->add(new StraightTo_Action(30,TargetVector(1.5,1.5,false),standard));
-        mainSequence->add(new StraightTo_Action(30,TargetVector(1.5,0.5,false),standard));
-        mainSequence->add(new StraightTo_Action(30,TargetVector(1.5,1.5,false),standard));
-        mainSequence->add(new StraightTo_Action(30,TargetVector(1.5,0.5,false),standard));
-        mainSequence->add(new StraightTo_Action(30,TargetVector(1.5,1.5,false),standard));
-        mainSequence->add(new StraightTo_Action(30,TargetVector(1.5,0.5,false),standard));
+
         //ActionFinale
         mainSequence->add(new End_Action());
         mainSequence->startSelected();
@@ -168,3 +162,15 @@ void Robot::setTeamColor(TeamColor teamColor){
 TeamColor Robot::getTeamColor(){
     return teamColor;
 }
+
+void Robot::move(VectorE where)
+{
+    cinetiqueCurrent = Cinetique(where._x,where._y,where._theta,0,0);
+    cinetiqueNext = cinetiqueCurrent;
+    //TODO ghost.move....
+}
+
+void Robot::move(TargetVectorE whereTarget){
+    move(whereTarget.getVectorE());
+}
+
