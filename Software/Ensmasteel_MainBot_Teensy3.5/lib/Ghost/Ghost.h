@@ -51,6 +51,12 @@ public:
     //      / Polynome trajectory_X, trajectory_Y, speedSquare_e
     int Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, float cruisingSpeed, bool pureRotation = false, bool backward = false);
 
+    // GOAL / Teleport the ghost to _newPos_
+    // IN   / VectorE newPos OR Cinetique newPos : only consider position
+    // OUT  / The position of the ghost is set to VectorE. Speed are not affected by this action
+    void moveGhost(VectorE newPos);
+    void moveGhost(Cinetique newPos);
+
     Cinetique Get_Controller_Cinetique();
 
 private:

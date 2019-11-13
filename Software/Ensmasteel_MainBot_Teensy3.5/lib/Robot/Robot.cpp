@@ -190,3 +190,8 @@ void Robot::move(TargetVectorE whereTarget){
     move(whereTarget.getVectorE());
 }
 
+void Robot::recalibrateGhost()
+{
+    ghost.moveGhost(cinetiqueCurrent);
+}
+
