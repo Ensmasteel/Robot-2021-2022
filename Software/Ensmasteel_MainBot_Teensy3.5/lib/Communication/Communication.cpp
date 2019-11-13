@@ -26,6 +26,15 @@ union Decoder
 
 Decoder decoder;
 
+Message newMessage(MessageID id)
+{
+    Message out;
+    out._ID = id;
+    out._data = 0;
+    return out;
+}
+
+
 Message newMessage(MessageID id, int32_t data)
 {
     Message out;
