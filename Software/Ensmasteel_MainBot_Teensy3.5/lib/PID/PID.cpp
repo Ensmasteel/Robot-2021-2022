@@ -153,8 +153,8 @@ Asservissement::Asservissement(float *outTranslation, float *outRotation, Cineti
     pidRotation.setPIDProfile(Pace::off, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
     pidRotation.setPIDProfile(Pace::off, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
 
-    pidRotation.setPIDProfile(Pace::accurate, newPIDProfile(3500, 500, 500, 0.05, 0.01, 0.05));    //Accurate
-    pidTranslation.setPIDProfile(Pace::accurate, newPIDProfile(5000, 500, 1000, 0.20, 0.05, 0.20)); //Accurate
+    pidRotation.setPIDProfile(Pace::accurate, newPIDProfile(3500, 500, 500, 0.008, 0.001, 0.05));    //Accurate
+    pidTranslation.setPIDProfile(Pace::accurate, newPIDProfile(5000, 500, 1000, 0.001, 0.0005, 0.20)); //Accurate
 
     pidRotation.setPIDProfile(Pace::standard, newPIDProfile(3500, 300, 500, 0.05, 0.01, 0.05));    //Standard
     pidTranslation.setPIDProfile(Pace::standard, newPIDProfile(3500, 300, 1000, 0.10, 0.05, 0.20)); //Standard

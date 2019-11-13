@@ -102,8 +102,8 @@ Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace
     switch (pace)
     {
     case accurate:
-        this->speedRamps = 0.2;
-        this->cruisingSpeed = 0.1;
+        this->speedRamps = 0.5;
+        this->cruisingSpeed = 0.3;
         break;
     case standard:
         this->speedRamps = 1.0;

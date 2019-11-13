@@ -70,7 +70,9 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         //Goto (timeout = 25s, x=2m, y=20cm, thetaFinal = -PI/2, courbure = 20%, allure = standard)
         //mainSequence->add(new Goto_Action(25, TargetVectorE(2.0, 0.2, -1.57,false), 0.2, standard));
         //Spin (timeout = 20s, thetaFinal = 0, allure = standard)
-        mainSequence->add(new Spin_Action(20, TargetVectorE(PI,false),accurate));
+        mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),accurate));
+        mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
+        mainSequence->add(new Spin_Action(7.0, TargetVectorE(0,false),accurate));
         //AvancerToutDroit (timeout = 20s, avancerDe = 50cm, allure = standard)
         //mainSequence->add(new Forward_Action(20,0.5,standard));
 

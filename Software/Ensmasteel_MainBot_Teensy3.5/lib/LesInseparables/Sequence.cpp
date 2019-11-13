@@ -58,7 +58,10 @@ void Sequence::update()
         fails[currentIndex] = true;
         Logger::infoln("Action "+String(currentIndex)+" failed !");
         if (nextIndex<=lastIndex)
+        {
+            queue[currentIndex]->doAtEnd();   //<---------------------- DEBUUUUUUUG
             startFollowing();
+        }
     }
 }
 
