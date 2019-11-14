@@ -11,7 +11,7 @@ void PID_tweak(Robot* robot) {
     bool incr=fBytes.byte0==1;
     bool translation=fBytes.byte1==1;
     uint8_t whichOne=fBytes.byte2; //0 = P, 1 = I, 2 = D
-    Logger::infoln(String(robot->controller.tweak(incr,translation,whichOne)*4095.0));
+    Logger::infoln(String(robot->controller.tweak(incr,translation,whichOne)*400.0));
 }
 
 void ping(Robot* robot){

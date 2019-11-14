@@ -27,7 +27,6 @@ uint32_t compteur=0;
 
 void setup()
 {
-  delay(10000);
   Serial.begin(115200);
   Serial1.begin(115200);
   Logger::setup(&Serial1, &Serial1, &Serial1, true, true, true);

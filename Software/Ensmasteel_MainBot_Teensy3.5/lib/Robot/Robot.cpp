@@ -57,7 +57,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
 
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         //Attend le message Tirette
-        mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
+        //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
         //mainSequence->add(new Spin_Action(-1,TargetVectorE(PI,false),standard));
         //mainSequence->add(new Sleep_Action(1));
         //On active la detection de l'erreur PID
@@ -71,9 +71,18 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         //Goto (timeout = 25s, x=2m, y=20cm, thetaFinal = -PI/2, courbure = 20%, allure = standard)
         //mainSequence->add(new Goto_Action(25, TargetVectorE(2.0, 0.2, -1.57,false), 0.2, standard));
         //Spin (timeout = 20s, thetaFinal = 0, allure = standard)
-        mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),accurate));
+        mainSequence->add(new Goto_Action(12,TargetVectorE(1.25,1.2,0,false),0.3,standard,false));
+        //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
+        mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),fast));
+        mainSequence->add(new Goto_Action(12,TargetVectorE(0.25,1.2,PI,false),0.3,fast,false));
         mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
-        mainSequence->add(new Spin_Action(7.0, TargetVectorE(0,false),accurate));
+        mainSequence->add(new Spin_Action(7.0, TargetVectorE(0,false),standard));
+
+
+
+        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),accurate));
+        
+        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(0,false),accurate));
         //AvancerToutDroit (timeout = 20s, avancerDe = 50cm, allure = standard)
         //mainSequence->add(new Forward_Action(20,0.5,standard));
 
