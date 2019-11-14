@@ -2,7 +2,7 @@
 #define ACTIONS_H_
 #include "Vector.h"
 #include "Arduino.h"
-#include "Pace.h"
+#include "MoveProfile.h"
 #include "Communication.h"
 #include "SequenceName.h"
 #include "ErrorManager.h"
@@ -119,12 +119,12 @@ public:
     virtual bool hasFailed(); //(Action+Move) Verifie que le pid n'a pas retourné d'erreur ou que Action::hasFailed n'est pas true
     void doAtEnd() override;
     Move_Action(float timeout,VectorE posFinal, float deltaCurve, 
-                Pace pace, bool pureRotation, bool backward,String name="Move",int16_t require=NO_REQUIREMENT);
+                MoveProfileName profileName, bool pureRotation, bool backward,String name="Move",int16_t require=NO_REQUIREMENT);
 
 protected:
     VectorE posFinal; 
     float deltaCurve,speedRamps,cruisingSpeed;
-    Pace pace;
+    MoveProfileName profileName;
     bool pureRotation, backward;
 };
 
@@ -135,7 +135,7 @@ protected:
 class Goto_Action : public Move_Action
 {
 public:
-    Goto_Action(float timeout, TargetVectorE target, float deltaCurve,Pace pace,bool backward=false,int16_t require=NO_REQUIREMENT);
+    Goto_Action(float timeout, TargetVectorE target, float deltaCurve,MoveProfileName profileName,bool backward=false,int16_t require=NO_REQUIREMENT);
     //start (Action+Move)
     //isFinished (Move)
     //hasFailed (Action+Move)
@@ -149,7 +149,7 @@ public:
 class Spin_Action : public Move_Action
 {
 public:
-    Spin_Action(float timeout, TargetVectorE target, Pace pace,int16_t require=NO_REQUIREMENT);
+    Spin_Action(float timeout, TargetVectorE target, MoveProfileName profileName,int16_t require=NO_REQUIREMENT);
     void start(); //(Action + Spin) Le start doit etre redéfini car on ne connait pas posFinal a l'avance
     //isFinished(Move)
     //hasFailed(Action+Move)
@@ -163,7 +163,7 @@ class Rotate_Action : public Move_Action //Tourne en relatif
 private:
     float deltaTheta;
 public:
-    Rotate_Action(float timeout, float deltaTheta, Pace pace,int16_t require=NO_REQUIREMENT);
+    Rotate_Action(float timeout, float deltaTheta, MoveProfileName profileName,int16_t require=NO_REQUIREMENT);
     void start(); //(Action + Spin) Le start doit etre redéfini car on ne connait pas posFinal a l'avance
     //isFinished(Move)
     //hasFailed(Action+Move)
@@ -177,7 +177,7 @@ class Forward_Action : public Move_Action
 private:
     float dist;
 public:
-    Forward_Action(float timeout, float dist, Pace pace,int16_t require=NO_REQUIREMENT);
+    Forward_Action(float timeout, float dist, MoveProfileName profileName,int16_t require=NO_REQUIREMENT);
     void start(); //(Action + Forward)Le start doit etre redéfini car on ne connait pas posFinal a l'avance
     //isFinished(Move)
     //hasFailed(Action+Move)
@@ -191,7 +191,7 @@ class Backward_Action : public Move_Action
 private:
     float dist;
 public:
-    Backward_Action(float timeout, float dist, Pace pace,int16_t require=NO_REQUIREMENT);
+    Backward_Action(float timeout, float dist, MoveProfileName profileName,int16_t require=NO_REQUIREMENT);
     void start(); //(Action + Backward)Le start doit etre redéfini car on ne connait pas posFinal a l'avance
     //isFinished(Move)
     //hasFailed(Action+Move)
@@ -207,11 +207,23 @@ private:
     Spin_Action* spin;
     Goto_Action* goTo;
     float x,y;
-    Pace pace;
+    MoveProfileName profileName;
     float timeout;
 public:
     void start();
-    StraightTo_Action(float timeout, TargetVector target, Pace pace,int16_t require=NO_REQUIREMENT);
+    StraightTo_Action(float timeout, TargetVector target, MoveProfileName profileName,int16_t require=NO_REQUIREMENT);
+};
+
+
+/*
+* Freine le robot jusqu'a ce que ça vitesse (angulaire) passe sous le dEpsilon donné dans le brake profile
+* cf MoveProfile.cpp -> setup
+*/
+class Brake_Action : public Move_Action
+{
+public:
+    Brake_Action(float timeout,int16_t require= NO_REQUIREMENT);
+    //start & co sont hérités de Move_Action
 };
 
 //========================================ACTION COMM========================================

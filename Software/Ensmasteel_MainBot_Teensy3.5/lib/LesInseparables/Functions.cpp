@@ -22,7 +22,7 @@ void shutdown(Robot* robot)
 {
     for (int i=0;i<__NBSEQUENCES__;i++)
         robot->getSequenceByName((SequenceName)i)->pause();
-    robot->controller.setCurrentProfile(Pace::off);
+    robot->controller.setCurrentProfile(off);
     Logger::infoln("SHUTDOWN");
 }
 

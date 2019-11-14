@@ -3,17 +3,6 @@
 #define RECONVERGENCE 0.05
 //SI le robot est eloigné de plus de RECONVERGENCE metres, le PID angulaire s'occupe a 100% de rejoindre le ghost, pas de mimer le theta
 
-PIDProfile newPIDProfile(float KP, float KI, float KD, float epsilon, float dEpsilon, float maxErr)
-{
-    PIDProfile out;
-    out.KP = KP / 4095.0; //Pour coller a l'ancien robot
-    out.KI = KI / 4095.0; //Pour coller a l'ancien robot
-    out.KD = KD / 4095.0; //Pour coller a l'ancien robot
-    out.epsilon = epsilon;
-    out.dEpsilon = dEpsilon;
-    out.maxErr = maxErr;
-    return out;
-}
 
 void Score::reset()
 {
@@ -35,24 +24,17 @@ void PID::reset()
     score.reset();
 }
 
-Score PID::getScore()
-{
+Score PID::getScore(){
     return score;
 }
 
-void PID::setPIDProfile(Pace pace, PIDProfile pidProfile)
+void PID::setCurrentProfile(MoveProfileName name)
 {
-    this->PIDProfiles[(int)pace] = pidProfile;
+    this->currentProfile = MoveProfiles::get(name,!modulo360);
 }
 
-void PID::setCurrentProfile(Pace pace)
-{
-    this->currentProfile = pace;
-}
-
-PIDProfile PID::getCurrentProfile()
-{
-    return PIDProfiles[currentProfile];
+MoveProfile* PID::getCurrentProfile(){
+    return currentProfile;
 }
 
 float PID::compute(float xTarget, float dxTarget, float x, float dx, float dt)
@@ -70,9 +52,9 @@ float PID::compute(float xTarget, float dxTarget, float x, float dx, float dt)
 
     iTerm += error * dt;
 
-    close = (abs(error) <= PIDProfiles[currentProfile].epsilon) && (abs(dError) <= PIDProfiles[currentProfile].dEpsilon);
+    close = (abs(error) <= currentProfile->epsilon) && (abs(dError) <=currentProfile->dEpsilon);
 
-    if (abs(error) > PIDProfiles[currentProfile].maxErr)
+    if (abs(error) > currentProfile->maxErr)
         timeTooFar += dt;
     else
         timeTooFar = 0;
@@ -85,7 +67,7 @@ float PID::compute(float xTarget, float dxTarget, float x, float dx, float dt)
         score.maxOvershoot = max(score.maxOvershoot, abs(error));
 
     float out = constrain(
-        PIDProfiles[currentProfile].KP * error + PIDProfiles[currentProfile].KI * iTerm + PIDProfiles[currentProfile].KD * dError, -1.0, 1.0);
+        currentProfile->KP * error + currentProfile->KI * iTerm + currentProfile->KD * (currentProfile->KA*dxTarget - dxF.out()), -1.0, 1.0);
     if (lastOut*out<0 && (abs(lastOut)-abs(out))/dt > 0.01 ) //Changement de signe (1% a -1% d'output en une seconde)
         score.nbInversion = score.nbInversion + 1;
 
@@ -122,7 +104,7 @@ void Asservissement::compute(float dt)
     *outTranslation = constrain(pidTranslation.compute(lagBehind, cGhost->_v, 0, cRobot->_v, dt)
                     , -(1 - abs(*outRotation)), 1 - abs(*outRotation)); //La rotation est prioritaire
     close = pidTranslation.close && pidRotation.close;
-    tooFar = pidTranslation.tooFar || pidRotation.tooFar || (*cGhost - *cRobot).norm() > pidTranslation.getCurrentProfile().epsilon;
+    tooFar = pidTranslation.tooFar || pidRotation.tooFar || (*cGhost - *cRobot).norm() > pidTranslation.getCurrentProfile()->epsilon;
 }
 
 void Asservissement::reset()
@@ -148,47 +130,18 @@ Asservissement::Asservissement(float *outTranslation, float *outRotation, Cineti
     this->tooFar = false;
     this->close = true;
     this->needToGoForward = false;
-
-//Définition des différents profils
-    pidRotation.setPIDProfile(Pace::off, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
-    pidRotation.setPIDProfile(Pace::off, newPIDProfile(0, 0, 0, 0, 0, 100)); //OFF
-
-    pidRotation.setPIDProfile(Pace::accurate, newPIDProfile(3500, 500, 500, 0.008, 0.001, 0.05));    //Accurate
-    pidTranslation.setPIDProfile(Pace::accurate, newPIDProfile(5000, 500, 1000, 0.001, 0.0005, 0.20)); //Accurate
-
-    pidRotation.setPIDProfile(Pace::standard, newPIDProfile(3500, 300, 500, 0.05, 0.01, 0.05));    //Standard
-    pidTranslation.setPIDProfile(Pace::standard, newPIDProfile(3500, 300, 1000, 0.10, 0.05, 0.20)); //Standard
-
-    pidRotation.setPIDProfile(Pace::fast, newPIDProfile(1920, 300, 100, 0.05, 0.01, 0.01));    //Fast
-    pidTranslation.setPIDProfile(Pace::fast, newPIDProfile(1200, 100, 2500, 0.15, 0.05, 0.1)); //Fast
-
-    pidRotation.setPIDProfile(Pace::recallage, newPIDProfile(1920, 300, 100, 0.05, 0.01, 0.01));    //Recallage
-    pidTranslation.setPIDProfile(Pace::recallage, newPIDProfile(1200, 100, 2500, 0.15, 0.05, 0.1)); //Recalage
 }
 
-void Asservissement::setCurrentProfile(Pace pace)
+void Asservissement::setCurrentProfile(MoveProfileName name)
 {
-    pidTranslation.setCurrentProfile(pace);
-    pidRotation.setCurrentProfile(pace);
+    pidTranslation.setCurrentProfile(name);
+    pidRotation.setCurrentProfile(name);
 }
 
 float Asservissement::tweak(bool incr, bool translation, uint8_t whichOne)
 {
-    float coeff=(incr)?(1.01):(0.99);
-    PID* toTweak=(translation)?(&pidTranslation):(&pidRotation);
-    if (whichOne==0)
-    {
-        toTweak->PIDProfiles[toTweak->currentProfile].KP*=coeff;
-        return toTweak->PIDProfiles[toTweak->currentProfile].KP;
-    }
-    else if (whichOne==1)
-    {
-        toTweak->PIDProfiles[toTweak->currentProfile].KI*=coeff;
-        return toTweak->PIDProfiles[toTweak->currentProfile].KI;
-    }
+    if (translation)
+        return MoveProfiles::tweak(pidTranslation.currentProfile,incr,whichOne);
     else
-    {
-        toTweak->PIDProfiles[toTweak->currentProfile].KD*=coeff;
-        return toTweak->PIDProfiles[toTweak->currentProfile].KD;
-    }
+        return MoveProfiles::tweak(pidRotation.currentProfile,incr,whichOne);
 }

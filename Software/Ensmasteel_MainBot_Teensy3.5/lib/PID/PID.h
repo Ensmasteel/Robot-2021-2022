@@ -1,19 +1,11 @@
 #ifndef PID_H_
 #define PID_H_
-#include "Pace.h"
+#include "MoveProfile.h"
 #define NBPROFILES ((int)Pace::NB_PACE)
 #define TIMETOOFAR 0.2 //Temps qu'il faut rester trop loin pour etre considere tooFar
 #include "Filtre.h"
 #include "Vector.h"
 
-struct PIDProfile
-{
-    float KP, KI, KD;        //Proportionel, Intégrateur, Dérivateur
-    float epsilon, dEpsilon; //delta et delta de derivee en dessous de laquelle on considère qu'on est bon.
-    float maxErr;            //Erreur maximal avant de considérer qu'on est trop loin.
-};
-
-PIDProfile newPIDProfile(float KP, float KI, float KD, float epsilon, float dEpsilon, float maxErr);
 
 // La variable x définit une grandeur quelconque. dx est sa derivee.
 
@@ -31,8 +23,7 @@ public:
 class PID
 {
 private:
-    PIDProfile PIDProfiles[NBPROFILES];
-    uint8_t currentProfile;
+    MoveProfile* currentProfile; //C'est u pointeur car on veut etre sur qu'il n'y a qu'une seule version d'un profile (pas de copies !)
     float iTerm;
     bool modulo360;   //Permet de dire si les valeurs sont a interprété modulo 360
     Filtre dxF;       //Filtre de la derivee
@@ -45,10 +36,9 @@ private:
 public:
     Score getScore();
     void reset();
-    void setPIDProfile(Pace pace, PIDProfile pidProfile);
-    void setCurrentProfile(Pace pace);
+    void setCurrentProfile(MoveProfileName pace);
     float compute(float xTarget, float dxTarget, float x, float dx, float dt); //Renvoie un ordre entre -1 et 1
-    PIDProfile getCurrentProfile();
+    MoveProfile* getCurrentProfile();
     PID(bool modulo360, float frequency);
     PID();
 
@@ -70,8 +60,8 @@ public:
 
     //Place dans outTranslation et outRotation les deux ordres (entre -1 et 1)
     void compute(float dt);
-    void compute_dev(float dt);
-    void setCurrentProfile(Pace pace);
+    //void compute_dev(float dt);
+    void setCurrentProfile(MoveProfileName pace);
     void reset();
     void sendScoreToTelemetry();
 

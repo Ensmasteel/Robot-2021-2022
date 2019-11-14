@@ -65,7 +65,7 @@ Double_Action::Double_Action(float timeout, String name,int16_t require) : Actio
 void Move_Action::start()
 {
     robot->recalibrateGhost();
-    robot->controller.setCurrentProfile(pace);
+    robot->controller.setCurrentProfile(profileName);
     int err;
     err = robot->ghost.Compute_Trajectory(posFinal, deltaCurve, speedRamps, cruisingSpeed, pureRotation, backward);
     if (err == 0)
@@ -92,54 +92,31 @@ bool Move_Action::hasFailed()
     return /*asser->tooFar ||*/ Action::hasFailed();
 }
 
-Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Pace pace, bool pureRotation, bool backward, String name, int16_t require) : Action(name, timeout, require)
+Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, MoveProfileName profileName, bool pureRotation, bool backward, String name, int16_t require) : Action(name, timeout, require)
 {
     this->posFinal = posFinal;
     this->deltaCurve = deltaCurve;
-    this->pace = pace;
+    this->profileName = profileName;
     this->pureRotation = pureRotation;
     this->backward = backward;
-    switch (pace)
-    {
-    case accurate:
-        this->speedRamps = 0.5;
-        this->cruisingSpeed = 0.3;
-        break;
-    case standard:
-        this->speedRamps = 1.0;
-        this->cruisingSpeed = 0.5;
-        break;
-    case fast:
-        this->speedRamps = 2.0;
-        this->cruisingSpeed = 1;
-        break;
-    case recallage:
-        this->speedRamps = 0.2;
-        this->cruisingSpeed = 0.1;
-        break;
-    case off:
-        this->speedRamps = 0.01;
-        this->cruisingSpeed = 0.01;
-        break;
-    default:
-        this->speedRamps = 0.01;
-        this->cruisingSpeed = 0.01;
-        break;
-    }
+    this->speedRamps = MoveProfiles::get(profileName,true)->speedRamps;
+    this->cruisingSpeed = MoveProfiles::get(profileName,true)->cruisingSpeed;
     if (pureRotation)
     {
         this->speedRamps *= 3.14;
         this->cruisingSpeed *= 3.14; //Un robot qui avance a 1m/s est aussi impressionnant qu'un robot qui fait un demi tour par seconde
     }
+    //TODO stocker passer en argument d'un Move_Action uniquement un profile plutot que d'avoir un speedRamps et une cruising speed.
+    //Et alors il fautdra multiplier définitivement les vaeurs de speedRamps et cruising speed des profile de rotation par 3.14
 }
 
-Goto_Action::Goto_Action(float timeout, TargetVectorE target, float deltaCurve, Pace pace, bool backward, int16_t require)
-    : Move_Action(timeout, target.getVectorE(), deltaCurve, pace, false, backward, "Goto", require)
+Goto_Action::Goto_Action(float timeout, TargetVectorE target, float deltaCurve, MoveProfileName profileName, bool backward, int16_t require)
+    : Move_Action(timeout, target.getVectorE(), deltaCurve, profileName, false, backward, "Goto", require)
 { /*Rien a faire d'autre*/
 }
 
-Spin_Action::Spin_Action(float timeout, TargetVectorE target, Pace pace, int16_t require)
-    : Move_Action(timeout, target.getVectorE() , 0.0, pace, true, false, "Spin", require) //x et y seront modifié par start
+Spin_Action::Spin_Action(float timeout, TargetVectorE target, MoveProfileName profileName, int16_t require)
+    : Move_Action(timeout, target.getVectorE() , 0.0, profileName, true, false, "Spin", require) //x et y seront modifié par start
 {                                                                                    /*Rien a faire d'autre*/
 }
 
@@ -150,8 +127,8 @@ void Spin_Action::start()
     Move_Action::start();
 }
 
-Rotate_Action::Rotate_Action(float timeout, float deltaTheta, Pace pace, int16_t require)
-    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, pace, true, false, "Rota", require) //x et y et theta seront modifié par start
+Rotate_Action::Rotate_Action(float timeout, float deltaTheta, MoveProfileName profileName, int16_t require)
+    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, profileName, true, false, "Rota", require) //x et y et theta seront modifié par start
 {
     this->deltaTheta=deltaTheta;
 }
@@ -165,8 +142,8 @@ void Rotate_Action::start()
 }
 
 
-Forward_Action::Forward_Action(float timeout, float dist, Pace pace, int16_t require)
-    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, pace, false, false, "Forward", require)
+Forward_Action::Forward_Action(float timeout, float dist, MoveProfileName profileName, int16_t require)
+    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, profileName, false, false, "Forward", require)
 {
     this->dist = dist;
 }
@@ -179,8 +156,8 @@ void Forward_Action::start()
     Move_Action::start();
 }
 
-Backward_Action::Backward_Action(float timeout, float dist, Pace pace, int16_t require)
-    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, pace, false, true, "Backward", require)
+Backward_Action::Backward_Action(float timeout, float dist, MoveProfileName profileName, int16_t require)
+    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, profileName, false, true, "Backward", require)
 {
     this->dist = dist;
 }
@@ -198,22 +175,23 @@ void StraightTo_Action::start()
     //X et Y sont déja miroiré à ce moment. 
     Vector delta = Vector(x, y) - robot->cinetiqueCurrent;
     float cap = delta.angle();
-    spin = new Spin_Action(timeout, TargetVectorE(cap,true), pace);  //Donc il faut etre en absolu
-    goTo = new Goto_Action(timeout, TargetVectorE(x,y,cap,true), 0.1, pace);
+    spin = new Spin_Action(timeout, TargetVectorE(cap,true), profileName);  //Donc il faut etre en absolu
+    goTo = new Goto_Action(timeout, TargetVectorE(x,y,cap,true), 0.1, profileName);
     action1 = spin;
     action2 = goTo;
     Double_Action::start();
 }
 
-StraightTo_Action::StraightTo_Action(float timeout, TargetVector target, Pace pace, int16_t require) : Double_Action(timeout, "stTo", require)
+StraightTo_Action::StraightTo_Action(float timeout, TargetVector target, MoveProfileName profileName, int16_t require) : Double_Action(timeout, "stTo", require)
 {
     Vector targetV = target.getVector();
     this->x = targetV._x;
     this->y = targetV._y;
-    this->pace = pace;
+    this->profileName = profileName;
     this->timeout = timeout;
 }
 
+Brake_Action::Brake_Action(float timeout, int16_t require) : Move_Action(timeout,VectorE(0,0,0),0.1,brake,false,false,"brak",require){}
 //========================================ACTION COMM========================================
 
 Send_Action::Send_Action(Message message, int16_t require) : Action("Send", 0.1, require)
