@@ -67,7 +67,7 @@ void Move_Action::start()
     robot->recalibrateGhost();
     robot->controller.setCurrentProfile(profileName);
     int err;
-    err = robot->ghost.Compute_Trajectory(posFinal, deltaCurve, speedRamps, cruisingSpeed, pureRotation, backward);
+    err = robot->ghost.Compute_Trajectory(posFinal, deltaCurve,MoveProfiles::get(profileName,!pureRotation)->speedRamps , MoveProfiles::get(profileName,!pureRotation)->cruisingSpeed, pureRotation, backward);
     if (err == 0)
         Logger::debugln("Computation succeeded");
     else
@@ -99,15 +99,6 @@ Move_Action::Move_Action(float timeout, VectorE posFinal, float deltaCurve, Move
     this->profileName = profileName;
     this->pureRotation = pureRotation;
     this->backward = backward;
-    this->speedRamps = MoveProfiles::get(profileName,true)->speedRamps;
-    this->cruisingSpeed = MoveProfiles::get(profileName,true)->cruisingSpeed;
-    if (pureRotation)
-    {
-        this->speedRamps *= 3.14;
-        this->cruisingSpeed *= 3.14; //Un robot qui avance a 1m/s est aussi impressionnant qu'un robot qui fait un demi tour par seconde
-    }
-    //TODO stocker passer en argument d'un Move_Action uniquement un profile plutot que d'avoir un speedRamps et une cruising speed.
-    //Et alors il fautdra multiplier définitivement les vaeurs de speedRamps et cruising speed des profile de rotation par 3.14
 }
 
 Goto_Action::Goto_Action(float timeout, TargetVectorE target, float deltaCurve, MoveProfileName profileName, bool backward, int16_t require)

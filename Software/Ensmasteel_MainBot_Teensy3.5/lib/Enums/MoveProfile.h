@@ -19,8 +19,8 @@ public:
     float KP, KI, KD, KA;        //Proportionel, Intégrateur, Dérivateur, Anticipateur
     float epsilon, dEpsilon; //delta et delta de derivee en dessous de laquelle on considère qu'on est bon.
     float maxErr;            //Erreur maximal avant de considérer qu'on est trop loin.
-    float speedRamps;   //Accélération/Deceleration en m.s-2 ou demiTour.s-2
-    float cruisingSpeed; //Vitesse max en m/s ou demiTour/s
+    float speedRamps;   //Accélération/Deceleration en m.s-2 ou rad.s-2
+    float cruisingSpeed; //Vitesse max en m/s ou rad/s
 
 private:
     void set(float KP,float KI,float KD,float KA,float epsilon,float dEpsilon,float maxErr,float speedRamps,float cruisingSpeed);

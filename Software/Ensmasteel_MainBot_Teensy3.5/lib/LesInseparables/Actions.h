@@ -123,7 +123,7 @@ public:
 
 protected:
     VectorE posFinal; 
-    float deltaCurve,speedRamps,cruisingSpeed;
+    float deltaCurve;
     MoveProfileName profileName;
     bool pureRotation, backward;
 };

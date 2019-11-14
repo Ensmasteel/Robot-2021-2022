@@ -28,8 +28,7 @@ Score PID::getScore(){
     return score;
 }
 
-void PID::setCurrentProfile(MoveProfileName name)
-{
+void PID::setCurrentProfile(MoveProfileName name){
     this->currentProfile = MoveProfiles::get(name,!modulo360);
 }
 
