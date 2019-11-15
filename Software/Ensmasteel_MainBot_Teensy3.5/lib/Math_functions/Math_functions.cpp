@@ -244,7 +244,7 @@ Trapezoidal_Function::Trapezoidal_Function(float upRamp, float downRamp, float m
     computeDuration();
 }
 
-void Trapezoidal_Function::set(float upRamp, float downRamp, float max, float distance)
+float Trapezoidal_Function::set(float upRamp, float downRamp, float max, float distance)
 {
     _upRamp = upRamp;
     _downRamp = downRamp;
@@ -252,6 +252,8 @@ void Trapezoidal_Function::set(float upRamp, float downRamp, float max, float di
     _distance = distance;
 
     computeDuration();
+
+    return _duration;
 
 }
 
@@ -274,4 +276,14 @@ float Trapezoidal_Function::computeDuration()
         _duration = (_distance / _max) + ((_max / 2.0) * ((1.0/_downRamp) + (1.0/_upRamp)));
     }
     
+}
+
+float Trapezoidal_Function::getDuration()
+{
+    return _duration;
+}
+
+bool Trapezoidal_Function::isTriangle()
+{
+    return _triangleFunction;
 }
