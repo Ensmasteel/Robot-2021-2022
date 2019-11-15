@@ -168,7 +168,7 @@ float Trapezoidal_Function::f(float x)
     {
         if (((_max / _upRamp) + (_max / _downRamp)) > _duration) // If _max nerver achieved
         {
-            //Logger::infoln("Trapezoidal_Function._max never achieved");
+            Logger::infoln("max never reached");
             if (x < (_duration * _downRamp) / (_upRamp + _downRamp))
             {
                 out = x * _upRamp;

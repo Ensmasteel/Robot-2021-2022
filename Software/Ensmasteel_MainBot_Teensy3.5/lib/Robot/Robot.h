@@ -14,7 +14,7 @@
 class Robot
 {
 protected:
-    uint8_t controllerFrequency = 30;
+    uint8_t filterFrequency = 20;
     Odometrie odometrie;
     Cinetique cinetiqueNext;
     Motor motorLeft, motorRight;
