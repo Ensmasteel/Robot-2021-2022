@@ -36,13 +36,17 @@ Polynome Sum(Polynome P1, Polynome P2);
 class Trapezoidal_Function
 {
 public:
-    Trapezoidal_Function(float upRamp = 1.0, float downRamp = 1.0, float max = 0.0, float duration = 0.0);
+    Trapezoidal_Function(float upRamp = 1.0, float downRamp = 1.0, float max = 0.0, float distance = 0.0);
 
     void set(float upRamp, float downRamp, float max, float duration);
-    float _upRamp, _downRamp, _max, _duration; //upRamp : acceleration ; max : maximum value ; downRamp : deceleration ; duration : totale duration of the function (f(x)!=0 <=> 0<x<duration)
-    float f(float x);                          //value of the function in x
-    float df(float x);                         //value of the derivative function in x
-    //float ddf(float x);
+    float _upRamp, _downRamp, _max, _duration, _distance; //upRamp : acceleration ; max : maximum value ; downRamp : deceleration ; duration : totale duration of the function (f(x)!=0 <=> 0<x<duration)
+    float f(float x);                                    //value of the function in x
+    float df(float x);                                  //value of the derivative function in x
+
+private:
+    bool _triangleFunction = false;
+    float computeDuration();
+    float _tMax; //time when f reach _max
 };
 
 #endif

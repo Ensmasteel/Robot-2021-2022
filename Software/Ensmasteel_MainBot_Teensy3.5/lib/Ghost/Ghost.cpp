@@ -59,8 +59,7 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
         //posAim._theta += lengthTrajectory;
         posAim.normalizeTheta();
 
-        durationTrajectory = ((abs(lengthTrajectory)) / cruisingSpeed) + (cruisingSpeed / speedRamps);
-        speedProfileRotation.set(speedRamps, speedRamps, cruisingSpeed, durationTrajectory);
+        speedProfileRotation.set(speedRamps, speedRamps, cruisingSpeed, abs(lengthTrajectory));
     }
     else
     {
@@ -112,8 +111,7 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
         }
 
         // Determine duration of trajectory given speed profile and trajectory's length
-        durationTrajectory = (lengthTrajectory / cruisingSpeed) + (cruisingSpeed / speedRamps);
-        speedProfileLinear.set(speedRamps, speedRamps, cruisingSpeed, durationTrajectory);
+        speedProfileLinear.set(speedRamps, speedRamps, cruisingSpeed, lengthTrajectory);
     }
 
     return errorStatus;
