@@ -29,7 +29,7 @@ void Ghost::Set_NewTrajectory(Polynome newTrajectoryX, Polynome newTrajectoryY, 
 int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, float cruisingSpeed, bool pureRotation, bool goBackward)
 {
     uint8_t errorStatus = 0;
-    deltaCurve = max(0.1, deltaCurve); // <-------------------------------- PROPOSITION ARTHUR CHECK PLS -> Why not, quoique 0.1 ca me parait leger.
+    deltaCurve = max(0.3, deltaCurve); 
 
     // Set variables state
     posAim = posFinal;

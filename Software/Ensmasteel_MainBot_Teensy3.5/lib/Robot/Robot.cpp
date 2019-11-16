@@ -57,13 +57,11 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
 
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         //Attend le message Tirette
-        //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
-        //mainSequence->add(new Spin_Action(-1,TargetVectorE(PI,false),standard));
-        //mainSequence->add(new Sleep_Action(1));
+        mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
         //On active la detection de l'erreur PID
         //mainSequence->add(new ResumeSeq_Action(recallageListerName));
-        //On avance comme un debile
-        //mainSequence->add(new Forward_Action(5,1.0,accurate));
+        //On recule comme un debile
+        mainSequence->add(new Backward_Action(5,1.0,accurate));
         //Attend le message Tirette
         //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
         //Delock le thread temporel
@@ -73,10 +71,10 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         //Spin (timeout = 20s, thetaFinal = 0, allure = standard)
         mainSequence->add(new Goto_Action(12,TargetVectorE(1.25,1.2,0,false),0.3,fast,false));
         //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
-        mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),fast));
-        mainSequence->add(new Goto_Action(12,TargetVectorE(0.25,1.2,PI,false),0.3,fast,false));
-        mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
-        mainSequence->add(new Spin_Action(7.0, TargetVectorE(0,false),fast));
+        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),fast));
+        //mainSequence->add(new Goto_Action(12,TargetVectorE(0.25,1.2,PI,false),0.3,fast,false));
+        //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
+        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(0,false),fast));
 
 
 
@@ -90,7 +88,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         //mainSequence->add(new StraightTo_Action(30,TargetVector(1.5,1.5,false),standard));
 
         //ActionFinale
-        mainSequence->add(new End_Action(true));
+        mainSequence->add(new End_Action(false));
         mainSequence->startSelected();
 
     Sequence* goNorth = getSequenceByName(goNorthName);
