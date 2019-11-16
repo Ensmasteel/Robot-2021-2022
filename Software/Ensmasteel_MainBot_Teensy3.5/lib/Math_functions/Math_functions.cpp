@@ -166,10 +166,10 @@ float Trapezoidal_Function::f(float x)
     float out = 0.0;
     if (x >= 0.0)
     {
-        if (((_max / _upRamp) + (_max / _downRamp)) > _duration) // If _max nerver achieved
+        if (_triangleFunction)
         {
-            Logger::infoln("max never reached");
-            if (x < (_duration * _downRamp) / (_upRamp + _downRamp))
+            //Logger::infoln("triangle function");
+            if (x < _tMax)
             {
                 out = x * _upRamp;
             }
@@ -180,7 +180,7 @@ float Trapezoidal_Function::f(float x)
         }
         else 
         {
-            if (x < _max / _upRamp)
+            if (x < _tMax)
             {
                 out = x * _upRamp;
             }
@@ -203,10 +203,10 @@ float Trapezoidal_Function::df(float x)
 
     if (x >= 0.0)
     {
-        if (((_max / _upRamp) + (_max / _downRamp)) > _duration) // If _max nerver achieved
+        if (_triangleFunction)
         {
-            Logger::infoln("Trapezoidal_Function._max never achieved");
-            if (x < (_duration * _downRamp) / (_upRamp + _downRamp))
+            //Logger::infoln("triangle function");
+            if (x < _tMax)
             {
                 out = _upRamp;
             }
@@ -217,7 +217,7 @@ float Trapezoidal_Function::df(float x)
         }
         else
         {
-            if (x < _max / _upRamp)
+            if (x < _tMax)
             {
                 out = _upRamp;
             }
@@ -234,18 +234,56 @@ float Trapezoidal_Function::df(float x)
     return out;
 }
 
-Trapezoidal_Function::Trapezoidal_Function(float upRamp, float downRamp, float max, float duration)
+Trapezoidal_Function::Trapezoidal_Function(float upRamp, float downRamp, float max, float distance)
 {
     _upRamp = upRamp;
     _downRamp = downRamp;
     _max = max;
-    _duration = duration;
+    _distance = distance;
+
+    computeDuration();
 }
 
-void Trapezoidal_Function::set(float upRamp, float downRamp, float max, float duration)
+float Trapezoidal_Function::set(float upRamp, float downRamp, float max, float distance)
 {
     _upRamp = upRamp;
     _downRamp = downRamp;
     _max = max;
-    _duration = duration;
+    _distance = distance;
+
+    computeDuration();
+
+    return _duration;
+
+}
+
+float Trapezoidal_Function::computeDuration()
+{
+    float distanceMin_maxReached =  ((_max*_max)/2.0) * ((1.0/_upRamp) + (1.0/_downRamp));
+
+    if (distanceMin_maxReached > _distance) //triangle function
+    {
+        _triangleFunction = true;
+        _max = sqrt((2.0*_distance) / ((1.0/_downRamp) + 1.0/_upRamp));
+        _tMax = _max / _upRamp;
+        _duration = _max / _upRamp + _max / _downRamp;
+    }
+    else // True trapezoidale function
+    {
+        _triangleFunction = false;
+
+        _tMax = _max / _upRamp;
+        _duration = (_distance / _max) + ((_max / 2.0) * ((1.0/_downRamp) + (1.0/_upRamp)));
+    }
+    
+}
+
+float Trapezoidal_Function::getDuration()
+{
+    return _duration;
+}
+
+bool Trapezoidal_Function::isTriangle()
+{
+    return _triangleFunction;
 }

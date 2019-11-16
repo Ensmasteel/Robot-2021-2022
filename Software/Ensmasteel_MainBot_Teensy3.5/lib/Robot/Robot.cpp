@@ -69,12 +69,21 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         //Goto (timeout = 25s, x=2m, y=20cm, thetaFinal = -PI/2, courbure = 20%, allure = standard)
         //mainSequence->add(new Goto_Action(25, TargetVectorE(2.0, 0.2, -1.57,false), 0.2, standard));
         //Spin (timeout = 20s, thetaFinal = 0, allure = standard)
+
+        
+        mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
+        mainSequence->add(new Spin_Action(7.0, TargetVectorE(0.2,false),fast));
         mainSequence->add(new Goto_Action(12,TargetVectorE(1.25,1.2,0,false),0.3,fast,false));
-        //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
-        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),fast));
-        //mainSequence->add(new Goto_Action(12,TargetVectorE(0.25,1.2,PI,false),0.3,fast,false));
-        //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
-        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(0,false),fast));
+        
+        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),standard));
+        //mainSequence->add(new Goto_Action(12,TargetVectorE(0.25,1.2,PI,false),0.3,standard,false));
+
+        mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),fast));
+        mainSequence->add(new Goto_Action(5.0,TargetVectorE(2.2, 0.5, -PI/2.0, false), 0.4, standard, true));
+
+        mainSequence->add(new Goto_Action(25, TargetVectorE(0.2, 1.2, PI,false), 0.2, fast));
+        mainSequence->add(new Spin_Action(7.0, TargetVectorE(0.0,false),fast));
+        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(0,false),standard));
 
 
 
