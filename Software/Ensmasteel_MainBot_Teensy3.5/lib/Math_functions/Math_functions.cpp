@@ -168,7 +168,7 @@ float Trapezoidal_Function::f(float x)
     {
         if (_triangleFunction)
         {
-            Logger::infoln("triangle function");
+            //Logger::infoln("triangle function");
             if (x < _tMax)
             {
                 out = x * _upRamp;
@@ -205,7 +205,7 @@ float Trapezoidal_Function::df(float x)
     {
         if (_triangleFunction)
         {
-            Logger::infoln("triangle function");
+            //Logger::infoln("triangle function");
             if (x < _tMax)
             {
                 out = _upRamp;

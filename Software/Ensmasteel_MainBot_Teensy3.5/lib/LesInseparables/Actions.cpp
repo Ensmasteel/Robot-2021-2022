@@ -156,8 +156,8 @@ Backward_Action::Backward_Action(float timeout, float dist, MoveProfileName prof
 void Backward_Action::start()
 {
     posFinal._theta = robot->cinetiqueCurrent._theta;
-    posFinal._x = (robot->cinetiqueCurrent._x) + dist * cos(-normalizeAngle(posFinal._theta));
-    posFinal._y = (robot->cinetiqueCurrent._y) + dist * sin(-normalizeAngle(posFinal._theta));
+    posFinal._x = (robot->cinetiqueCurrent._x) - dist * cos(normalizeAngle(posFinal._theta));
+    posFinal._y = (robot->cinetiqueCurrent._y) - dist * sin(normalizeAngle(posFinal._theta));
     Move_Action::start();
 }
 

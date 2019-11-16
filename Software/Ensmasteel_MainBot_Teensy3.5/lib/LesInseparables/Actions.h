@@ -183,9 +183,7 @@ public:
     //hasFailed(Action+Move)
 };
 
-/*
-* Recule tout droit d'une certaine distance dist (peut importe la couleur)
-*/
+
 class Backward_Action : public Move_Action
 {
 private:
