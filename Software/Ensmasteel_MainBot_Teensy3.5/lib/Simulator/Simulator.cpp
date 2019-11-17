@@ -72,5 +72,5 @@ void Simulator::updateCinetique( float dt) {
 
     cinetique->_theta+=cinetique->_w*dt;
     (*cinetique)+=directeur(cinetique->_theta)*cinetique->_v*dt;
-    computeCollision();
+    //computeCollision();
 }
