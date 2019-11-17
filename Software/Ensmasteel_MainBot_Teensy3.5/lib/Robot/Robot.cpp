@@ -57,11 +57,11 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
 
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         //Attend le message Tirette
-        mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
+        //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
         //On active la detection de l'erreur PID
         //mainSequence->add(new ResumeSeq_Action(recallageListerName));
         //On recule comme un debile
-        mainSequence->add(new Backward_Action(5,1.0,accurate));
+        //mainSequence->add(new Backward_Action(5,1.0,accurate));
         //Attend le message Tirette
         //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
         //Delock le thread temporel
@@ -79,7 +79,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         //mainSequence->add(new Goto_Action(12,TargetVectorE(0.25,1.2,PI,false),0.3,standard,false));
 
         mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),fast));
-        mainSequence->add(new Goto_Action(5.0,TargetVectorE(2.2, 0.5, -PI/2.0, false), 0.4, standard, true));
+        mainSequence->add(new Goto_Action(25.0,TargetVectorE(2.2, 0.5, -PI/2.0, false), 0.4, accurate, true));
 
         mainSequence->add(new Goto_Action(25, TargetVectorE(0.2, 1.2, PI,false), 0.2, fast));
         mainSequence->add(new Spin_Action(7.0, TargetVectorE(0.0,false),fast));
