@@ -18,6 +18,7 @@ Ghost::Ghost(VectorE posEIni)
 
     trajectory_X.set(posEIni._x);
     trajectory_Y.set(posEIni._y);
+    speedSquare_e = Polynome();
     speedProfileRotation.setZero();
     speedProfileLinear.setZero();
 }
@@ -67,6 +68,7 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
         durationTrajectory = speedProfileRotation.set(speedRamps, speedRamps, cruisingSpeed, abs(lengthTrajectory));
         trajectory_X.set(posAim._x);
         trajectory_Y.set(posAim._y);
+        speedSquare_e=Polynome();
         speedProfileLinear.setZero();
     }
     else
@@ -306,6 +308,10 @@ void Ghost::moveGhost(VectorE newPos)
     posCurrent = newPos;
     posDelayed = newPos;
     posPrevious = newPos;
+    trajectory_X.set(posCurrent._x);
+    trajectory_Y.set(posCurrent._y);
+    speedProfileLinear.setZero();
+    speedSquare_e = Polynome();
 }
 
 void Ghost::moveGhost(Cinetique newPos)
@@ -313,4 +319,8 @@ void Ghost::moveGhost(Cinetique newPos)
     posCurrent = VectorE(newPos._x, newPos._y, newPos._theta);
     posDelayed = posCurrent;
     posPrevious = posCurrent;
+    trajectory_X.set(posCurrent._x);
+    trajectory_Y.set(posCurrent._y);
+    speedProfileLinear.setZero();
+    speedSquare_e = Polynome();
 }

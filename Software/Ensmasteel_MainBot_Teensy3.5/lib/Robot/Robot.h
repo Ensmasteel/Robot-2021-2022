@@ -28,6 +28,9 @@ public :
     //=== Globals ===
     bool endNorth = true;
     float timeStarted;
+    float backLength = 0.15; //Longueur entre le contact arrière du robot et son CG
+    float frontLength = 0.15; //Longueur entre le contact avant du robot et son CG
+    float length = backLength + frontLength; //Longueur du robot
     //===============
 
     //=== Composants ===

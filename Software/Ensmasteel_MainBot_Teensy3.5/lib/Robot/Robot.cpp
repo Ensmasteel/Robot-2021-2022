@@ -57,32 +57,31 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
 
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         //Attend le message Tirette
-        //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
+        mainSequence->add(new Wait_Message_Action(Tirette_M,10));
         //On active la detection de l'erreur PID
-        //mainSequence->add(new ResumeSeq_Action(recallageListerName));
+        mainSequence->add(new ResumeSeq_Action(recallageListerName));
         //On recule comme un debile
-        //mainSequence->add(new Backward_Action(5,1.0,accurate));
+        mainSequence->add(new Backward_Action(5,1.0,recallage));
         //Attend le message Tirette
-        //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
+        mainSequence->add(new Wait_Message_Action(Tirette_M,5));
         //Delock le thread temporel
         //mainSequence->add(new ResumeSeq_Action(timeSequenceName));
         //Goto (timeout = 25s, x=2m, y=20cm, thetaFinal = -PI/2, courbure = 20%, allure = standard)
-        //mainSequence->add(new Goto_Action(25, TargetVectorE(2.0, 0.2, -1.57,false), 0.2, standard));
-        //Spin (timeout = 20s, thetaFinal = 0, allure = standard)
-
+        mainSequence->add(new Goto_Action(25, TargetVectorE(2.0, 0.2, -1.57,false), 0.2, standard));
+        mainSequence->add(new StraightTo_Action(20,base,fast));
         
-        mainSequence->add(new Wait_Message_Action(Tirette_M,10));
-        mainSequence->add(new Spin_Action(7.0, TargetVectorE(0.2,false),fast));
-        mainSequence->add(new Goto_Action(12,TargetVectorE(1.25,1.2,0,false),0.3,fast,false));
+        //mainSequence->add(new Wait_Message_Action(Tirette_M,10));
+        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(0.2,false),fast));
+        //mainSequence->add(new Goto_Action(12,TargetVectorE(1.25,1.2,0,false),0.3,fast,false));
         
         //mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),standard));
         //mainSequence->add(new Goto_Action(12,TargetVectorE(0.25,1.2,PI,false),0.3,standard,false));
 
-        mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),fast));
-        mainSequence->add(new Goto_Action(25.0,TargetVectorE(2.2, 0.5, -PI/2.0, false), 0.4, accurate, true));
+        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),fast));
+        //mainSequence->add(new Goto_Action(25.0,TargetVectorE(2.2, 0.5, -PI/2.0, false), 0.4, accurate, true));
 
-        mainSequence->add(new Goto_Action(25, TargetVectorE(0.2, 1.2, PI,false), 0.2, fast));
-        mainSequence->add(new Spin_Action(7.0, TargetVectorE(0.0,false),fast));
+        //mainSequence->add(new Goto_Action(25, TargetVectorE(0.2, 1.2, PI,false), 0.2, fast));
+        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(0.0,false),fast));
         //mainSequence->add(new Spin_Action(7.0, TargetVectorE(0,false),standard));
 
 
@@ -133,9 +132,12 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         timeSequence->pause(); //La time sequence ne doit s'écouler qu'a partir du tiré de la tirette !!
 
     Sequence* recallageListener = getSequenceByName(recallageListerName);
-        recallageListener->add(new Wait_Error_Action(PID_FAIL_ERROR,5.0));
+        recallageListener->add(new Wait_Error_Action(PID_FAIL_ERROR,4.9));
         recallageListener->add(new Do_Action(recallageBordure,-1));
-        recallageListener->add(new Do_Action(forceMainSeqNext,-1));
+
+        //Si cette action s'active, elle s'active au plus tard 4.9s après le démarrage du backward.
+        //Sachant qu'on a un timeout de 5s sur le backward, on est sur que la seule action qu'on peut forcer c'est le backward
+        recallageListener->add(new Do_Action(forceMainSeqNext,-1)); 
         recallageListener->add(new End_Action(true,true));
         recallageListener->pause();
 
@@ -202,7 +204,7 @@ void Robot::move(VectorE where)
 {
     cinetiqueCurrent = Cinetique(where._x,where._y,where._theta,0,0);
     cinetiqueNext = cinetiqueCurrent;
-    //TODO ghost.move....
+    ghost.moveGhost(where);
 }
 
 void Robot::move(TargetVectorE whereTarget){
