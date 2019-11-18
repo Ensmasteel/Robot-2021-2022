@@ -248,16 +248,22 @@ int Ghost::ActuatePosition(float dt)
             posCurrent._x = trajectory_X.f(t_e);
             posCurrent._y = trajectory_Y.f(t_e);
 
-            if (backward)
+            if (abs(speed_e)>1e-9)
             {
-                posDelayed._theta = atan2(-trajectory_Y.df(t_e_delayed), -trajectory_X.df(t_e_delayed));
-                posCurrent._theta = atan2(-trajectory_Y.df(t_e), -trajectory_X.df(t_e));
+                if (backward)
+                {
+                    posDelayed._theta = atan2(-trajectory_Y.df(t_e_delayed), -trajectory_X.df(t_e_delayed));
+                    posCurrent._theta = atan2(-trajectory_Y.df(t_e), -trajectory_X.df(t_e));
+                }
+                else
+                {
+                    posDelayed._theta = atan2(trajectory_Y.df(t_e_delayed), trajectory_X.df(t_e_delayed));
+                    posCurrent._theta = atan2(trajectory_Y.df(t_e), trajectory_X.df(t_e));
+                }
             }
             else
-            {
-                posDelayed._theta = atan2(trajectory_Y.df(t_e_delayed), trajectory_X.df(t_e_delayed));
-                posCurrent._theta = atan2(trajectory_Y.df(t_e), trajectory_X.df(t_e));
-            }
+                posDelayed._theta = posCurrent._theta;
+            
         }
     }
     else // Bot is locked in position, don't move
