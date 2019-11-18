@@ -71,7 +71,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         //Spin (timeout = 20s, thetaFinal = 0, allure = standard)
 
         
-        mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
+        mainSequence->add(new Wait_Message_Action(Tirette_M,10));
         mainSequence->add(new Spin_Action(7.0, TargetVectorE(0.2,false),fast));
         mainSequence->add(new Goto_Action(12,TargetVectorE(1.25,1.2,0,false),0.3,fast,false));
         

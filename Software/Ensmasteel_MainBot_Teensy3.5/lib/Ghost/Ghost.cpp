@@ -15,6 +15,11 @@ Ghost::Ghost(VectorE posEIni)
     t = 0.0;
     t_e = 0.0;
     t_e_delayed = 0.0;
+
+    trajectory_X.set(posEIni._x);
+    trajectory_Y.set(posEIni._y);
+    speedProfileRotation.setZero();
+    speedProfileLinear.setZero();
 }
 
 void Ghost::Set_NewTrajectory(Polynome newTrajectoryX, Polynome newTrajectoryY, Trapezoidal_Function newSpeed)
@@ -60,6 +65,9 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
         posAim.normalizeTheta();
 
         durationTrajectory = speedProfileRotation.set(speedRamps, speedRamps, cruisingSpeed, abs(lengthTrajectory));
+        trajectory_X.set(posAim._x);
+        trajectory_Y.set(posAim._y);
+        speedProfileLinear.setZero();
     }
     else
     {

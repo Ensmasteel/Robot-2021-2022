@@ -29,7 +29,7 @@ void setup()
 {
   Serial.begin(115200);
   Serial1.begin(115200);
-  Logger::setup(&Serial1, &Serial1, &Serial1, true, true, true);
+  Logger::setup(&Serial, &Serial, &Serial, true, true, true);
   ErrorManager::setup();
   delay(2000);
   Logger::infoln("REBOOT%"); //Le caractère % permet de faire sauter le parsing en cours sur la station sol

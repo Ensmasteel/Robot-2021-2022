@@ -163,6 +163,9 @@ Polynome Sum(Polynome P1, Polynome P2)
 
 float Trapezoidal_Function::f(float x)
 {
+    if (zero)
+        return 0;
+
     float out = 0.0;
     if (x >= 0.0)
     {
@@ -199,6 +202,9 @@ float Trapezoidal_Function::f(float x)
 
 float Trapezoidal_Function::df(float x)
 {
+    if(zero)
+        return 0;
+
     float out = 0.0;
 
     if (x >= 0.0)
@@ -240,7 +246,7 @@ Trapezoidal_Function::Trapezoidal_Function(float upRamp, float downRamp, float m
     _downRamp = downRamp;
     _max = max;
     _distance = distance;
-
+    zero = false;
     computeDuration();
 }
 
@@ -250,7 +256,7 @@ float Trapezoidal_Function::set(float upRamp, float downRamp, float max, float d
     _downRamp = downRamp;
     _max = max;
     _distance = distance;
-
+    zero = false;
     computeDuration();
 
     return _duration;
@@ -286,4 +292,9 @@ float Trapezoidal_Function::getDuration()
 bool Trapezoidal_Function::isTriangle()
 {
     return _triangleFunction;
+}
+
+void Trapezoidal_Function::setZero()
+{
+    zero = true;
 }

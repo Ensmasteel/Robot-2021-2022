@@ -46,6 +46,9 @@ public:
     // OUT  / float duration : (homogeneous to the IN variables) The function is define in [0,duration]
     float set(float upRamp, float downRamp, float max, float distance);
 
+    // GOAL / Create a new constant function always returning 0
+    void setZero();
+
     // GOAL / Get value of the function in x (0 < x < duration).
     float f(float x);
 
@@ -56,6 +59,7 @@ public:
     bool isTriangle();
 
 private:
+    bool zero = true;
     bool _triangleFunction = false;
     float computeDuration();
     float _tMax; //time when f reach _max
