@@ -304,3 +304,15 @@ void ResumeSeq_Action::start(){
     done=true;
     Action::start();
 }
+
+/*
+* /!\ Le timeout specifié dans la sequence d'ecoute "recallageListner" doit etre plus petit que celui ci
+*/
+Recallage_Action::Recallage_Action(bool arriere, float dist, float timeout) : Double_Action(timeout)
+{
+    action1 = new ResumeSeq_Action(recallageListerName);
+    if (arriere)
+        action2 = new Backward_Action(timeout,dist,recallage);
+    else
+        action2 = new Forward_Action(timeout,dist,recallage);
+}

@@ -355,5 +355,11 @@ public:
     //hasFailed(Action)
 };
 
+class Recallage_Action : public Double_Action
+{
+public:
+    Recallage_Action(bool arriere, float dist, float timeout);
+};
+
 
 #endif // !ACTION_H_

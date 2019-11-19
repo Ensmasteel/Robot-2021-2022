@@ -59,9 +59,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         //Attend le message Tirette
         mainSequence->add(new Wait_Message_Action(Tirette_M,10));
         //On active la detection de l'erreur PID
-        mainSequence->add(new ResumeSeq_Action(recallageListerName));
-        //On recule comme un debile
-        mainSequence->add(new Backward_Action(5,1.0,recallage));
+        mainSequence->add(new Recallage_Action(true,1.0,4.5));
         //Attend le message Tirette
         mainSequence->add(new Wait_Message_Action(Tirette_M,5));
         //Delock le thread temporel
