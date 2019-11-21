@@ -58,10 +58,19 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         //Attend le message Tirette
         mainSequence->add(new Wait_Message_Action(Tirette_M,10));
-        //On active la detection de l'erreur PID
-        mainSequence->add(new Recallage_Action(true,1.0,4.5));
+        
+        /*
+        * Lors des "5.0" prochaines secondes, si une erreur PID est levée
+        *       le robot et le ghost sont recallés contre une bordure (et le ghost reste statique ensuite)
+        *       cette action saute (forceMainSeqNext est appelé)
+        * sinon
+        *       le timeout est appelé et on passe a l'action suivante (au prochain move start, le ghost sera recallé sur le robot)
+        */
+        mainSequence->add(new Recallage_Action(false,1.0,5.0));  
+        mainSequence->add(new Brake_Action(-1));
+
         //Attend le message Tirette
-        mainSequence->add(new Wait_Message_Action(Tirette_M,5));
+        mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
         //Delock le thread temporel
         //mainSequence->add(new ResumeSeq_Action(timeSequenceName));
         //Goto (timeout = 25s, x=2m, y=20cm, thetaFinal = -PI/2, courbure = 20%, allure = standard)
@@ -87,25 +96,23 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         //mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),accurate));
         
         //mainSequence->add(new Spin_Action(7.0, TargetVectorE(0,false),accurate));
-        //AvancerToutDroit (timeout = 20s, avancerDe = 50cm, allure = standard)
         //mainSequence->add(new Forward_Action(20,0.5,standard));
 
-        //Des aller retours débiles a fin de voir que l'action "back home south/north" interrompt bien tout ce bordel
         //mainSequence->add(new StraightTo_Action(30,TargetVector(1.5,1.5,false),standard));
 
         //ActionFinale
-        mainSequence->add(new End_Action(false));
+        mainSequence->add(new End_Action(false,true,true));
         mainSequence->startSelected();
 
     Sequence* goNorth = getSequenceByName(goNorthName);
         goNorth->add(new StraightTo_Action(-1,northBase,standard));
         goNorth->add(new End_Action());
-        goNorth->pause();//Cette action ne doit pas se lancer dès le début
+        goNorth->pause(false);//Cette action ne doit pas se lancer dès le début
 
     Sequence* goSouth = getSequenceByName(goSouthName);
         goSouth->add(new StraightTo_Action(-1,southBase,standard));
         goSouth->add(new End_Action());
-        goSouth->pause(); //Cette action ne doit pas se lancer dès le début
+        goSouth->pause(false); //Cette action ne doit pas se lancer dès le début
 
     Sequence* communicationSequence = getSequenceByName(communicationSequenceName);
 
@@ -127,7 +134,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         timeSequence->add(new Sleep_Action(10));
         timeSequence->add(new Do_Action(shutdown));
         timeSequence->add(new End_Action());
-        timeSequence->pause(); //La time sequence ne doit s'écouler qu'a partir du tiré de la tirette !!
+        timeSequence->pause(false); //La time sequence ne doit s'écouler qu'a partir du tiré de la tirette !!
 
     Sequence* recallageListener = getSequenceByName(recallageListerName);
         recallageListener->add(new Wait_Error_Action(PID_FAIL_ERROR,4.9));
@@ -136,8 +143,8 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         //Si cette action s'active, elle s'active au plus tard 4.9s après le démarrage du backward.
         //Sachant qu'on a un timeout de 5s sur le backward, on est sur que la seule action qu'on peut forcer c'est le backward
         recallageListener->add(new Do_Action(forceMainSeqNext,-1)); 
-        recallageListener->add(new End_Action(true,true));
-        recallageListener->pause();
+        recallageListener->add(new End_Action(true,true,false));
+        recallageListener->pause(false);
 
     ghost.Lock(false);
 }

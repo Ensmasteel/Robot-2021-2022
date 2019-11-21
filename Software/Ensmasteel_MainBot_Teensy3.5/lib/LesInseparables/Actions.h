@@ -11,19 +11,17 @@
 
 class Robot;
 class Sequence;
-typedef void(*Fct)(Robot * robot);
-
+typedef void (*Fct)(Robot *robot);
 
 //========================================ACTION GENERIQUES========================================
 #define NO_REQUIREMENT INT16_MAX
-
 
 /*
 * CLASSE ABSTRAITE. NE PAS INSTANCIER DIRECTEMENT
 */
 class Action
 {
-public:    
+public:
     /*
     * Le nom de l'action
     */
@@ -40,7 +38,7 @@ public:
     * IsFinished est appelé en boucle. Il renvoie si l'action est terminé
     * Peut aussi servir de fonction d'update...
     */
-    virtual bool isFinished() {return done;}
+    virtual bool isFinished() { return done; }
 
     /*
     * HasFailed est appelé en boucle. Il renvoie si l'action a foiré et devrait etre laissé de coté
@@ -53,35 +51,43 @@ public:
     /*
     * Passe à toutes les actions courantes et a venir un pointeur vers le robot
     */
-    static void setPointer(Robot * robot);
+    static void setPointer(Robot *robot);
 
     /*
     * Cree une action de base
     * Cette classe est abstraite et ne dois pas être instanciée directement
     */
-    Action(String name="Action", float timeout=0.1, int16_t require=NO_REQUIREMENT){this->name=name;this->timeout=timeout;this->require=require;done=false;started=false;}
-    
+    Action(String name = "Action", float timeout = 0.1, int16_t require = NO_REQUIREMENT)
+    {
+        this->name = name;
+        this->timeout = timeout;
+        this->require = require;
+        done = false;
+        started = false;
+    }
+
     /*
     * Renvoie si l'action en cours a été started ou non
     */
-    bool hasStarted() {return started;}
+    bool hasStarted() { return started; }
 
     /*
     * Cette fonction est appelée en cas de réussite de l'action. Ne fait rien par défaut
     */
-    virtual void doAtEnd(){/*Ne fait rien par défaut. Il faudra override plus tard*/}
+    virtual void doAtEnd()
+    { /*Ne fait rien par défaut. Il faudra override plus tard*/
+    }
 
 protected:
     bool done;
     bool started;
     float timeout;
     float timeStarted;
-    static Robot* robot;
-    Sequence * mySequence;
+    static Robot *robot;
+    Sequence *mySequence;
     int16_t require;
 
-    
-friend class Sequence;
+    friend class Sequence;
 };
 
 /*
@@ -93,15 +99,15 @@ friend class Sequence;
 class Double_Action : public Action
 {
 protected:
-    Action* action1;
-    Action* action2;
+    Action *action1;
+    Action *action2;
 
 public:
     virtual void start();
     virtual bool isFinished();
     virtual bool hasFailed();
     void doAtEnd() override;
-    Double_Action(float timeout,String name="Twin",int16_t require=NO_REQUIREMENT);
+    Double_Action(float timeout, String name = "Twin", int16_t require = NO_REQUIREMENT);
 };
 
 //========================================ACTION MOVES========================================
@@ -114,15 +120,15 @@ public:
 class Move_Action : public Action //Classe abstraite
 {
 public:
-    virtual void start(); //(Action+Move)Dump les parametres dans le ghost et appelle Action::start() et debloque le ghost
+    virtual void start();      //(Action+Move)Dump les parametres dans le ghost et appelle Action::start() et debloque le ghost
     virtual bool isFinished(); //(Move) Verifie que le ghost est arrive et que le robot est sur le ghost
-    virtual bool hasFailed(); //(Action+Move) Verifie que le pid n'a pas retourné d'erreur ou que Action::hasFailed n'est pas true
+    virtual bool hasFailed();  //(Action+Move) Verifie que le pid n'a pas retourné d'erreur ou que Action::hasFailed n'est pas true
     void doAtEnd() override;
-    Move_Action(float timeout,VectorE posFinal, float deltaCurve, 
-                MoveProfileName profileName, bool pureRotation, bool backward,String name="Move",int16_t require=NO_REQUIREMENT);
+    Move_Action(float timeout, VectorE posFinal, float deltaCurve,
+                MoveProfileName profileName, bool pureRotation, bool backward, String name = "Move", int16_t require = NO_REQUIREMENT);
 
 protected:
-    VectorE posFinal; 
+    VectorE posFinal;
     float deltaCurve;
     MoveProfileName profileName;
     bool pureRotation, backward;
@@ -135,12 +141,11 @@ protected:
 class Goto_Action : public Move_Action
 {
 public:
-    Goto_Action(float timeout, TargetVectorE target, float deltaCurve,MoveProfileName profileName,bool backward=false,int16_t require=NO_REQUIREMENT);
+    Goto_Action(float timeout, TargetVectorE target, float deltaCurve, MoveProfileName profileName, bool backward = false, int16_t require = NO_REQUIREMENT);
     //start (Action+Move)
     //isFinished (Move)
     //hasFailed (Action+Move)
 };
-
 
 /*
 * Tourne sur place pour rejoindre la position demandée
@@ -149,7 +154,7 @@ public:
 class Spin_Action : public Move_Action
 {
 public:
-    Spin_Action(float timeout, TargetVectorE target, MoveProfileName profileName,int16_t require=NO_REQUIREMENT);
+    Spin_Action(float timeout, TargetVectorE target, MoveProfileName profileName, int16_t require = NO_REQUIREMENT);
     void start(); //(Action + Spin) Le start doit etre redéfini car on ne connait pas posFinal a l'avance
     //isFinished(Move)
     //hasFailed(Action+Move)
@@ -162,8 +167,9 @@ class Rotate_Action : public Move_Action //Tourne en relatif
 {
 private:
     float deltaTheta;
+
 public:
-    Rotate_Action(float timeout, float deltaTheta, MoveProfileName profileName,int16_t require=NO_REQUIREMENT);
+    Rotate_Action(float timeout, float deltaTheta, MoveProfileName profileName, int16_t require = NO_REQUIREMENT);
     void start(); //(Action + Spin) Le start doit etre redéfini car on ne connait pas posFinal a l'avance
     //isFinished(Move)
     //hasFailed(Action+Move)
@@ -176,20 +182,21 @@ class Forward_Action : public Move_Action
 {
 private:
     float dist;
+
 public:
-    Forward_Action(float timeout, float dist, MoveProfileName profileName,int16_t require=NO_REQUIREMENT);
+    Forward_Action(float timeout, float dist, MoveProfileName profileName, int16_t require = NO_REQUIREMENT);
     void start(); //(Action + Forward)Le start doit etre redéfini car on ne connait pas posFinal a l'avance
     //isFinished(Move)
     //hasFailed(Action+Move)
 };
 
-
 class Backward_Action : public Move_Action
 {
 private:
     float dist;
+
 public:
-    Backward_Action(float timeout, float dist, MoveProfileName profileName,int16_t require=NO_REQUIREMENT);
+    Backward_Action(float timeout, float dist, MoveProfileName profileName, int16_t require = NO_REQUIREMENT);
     void start(); //(Action + Backward)Le start doit etre redéfini car on ne connait pas posFinal a l'avance
     //isFinished(Move)
     //hasFailed(Action+Move)
@@ -202,16 +209,16 @@ public:
 class StraightTo_Action : public Double_Action
 {
 private:
-    Spin_Action* spin;
-    Goto_Action* goTo;
-    float x,y;
+    Spin_Action *spin;
+    Goto_Action *goTo;
+    float x, y;
     MoveProfileName profileName;
     float timeout;
+
 public:
     void start();
-    StraightTo_Action(float timeout, TargetVector target, MoveProfileName profileName,int16_t require=NO_REQUIREMENT);
+    StraightTo_Action(float timeout, TargetVector target, MoveProfileName profileName, int16_t require = NO_REQUIREMENT);
 };
-
 
 /*
 * Freine le robot jusqu'a ce que ça vitesse (angulaire) passe sous le dEpsilon donné dans le brake profile
@@ -220,8 +227,8 @@ public:
 class Brake_Action : public Move_Action
 {
 public:
-    Brake_Action(float timeout,int16_t require= NO_REQUIREMENT);
-    //start & co sont hérités de Move_Action
+    Brake_Action(float timeout, int16_t require = NO_REQUIREMENT);
+    void start();
 };
 
 //========================================ACTION COMM========================================
@@ -233,8 +240,9 @@ class Send_Action : public Action
 {
 private:
     Message message;
+
 public:
-    Send_Action(Message message,int16_t require=NO_REQUIREMENT);
+    Send_Action(Message message, int16_t require = NO_REQUIREMENT);
     void start(); //(Action+Send)
     //isFinished(Action)
     //hasFailed(Action)
@@ -247,8 +255,9 @@ class Wait_Message_Action : public Action
 {
 private:
     MessageID messageId;
+
 public:
-    Wait_Message_Action(MessageID messageId, float timeout,int16_t require=NO_REQUIREMENT);
+    Wait_Message_Action(MessageID messageId, float timeout, int16_t require = NO_REQUIREMENT);
     //start(Action)
     bool isFinished(); //(Wait_Message) verifie que le message est recu
     //hasFailed(Action)
@@ -260,12 +269,13 @@ public:
 class Switch_Message_Action : public Action
 {
 private:
-    std::vector<MessageID>   onMessage;
-    std::vector<Fct>         doFct;
+    std::vector<MessageID> onMessage;
+    std::vector<Fct> doFct;
     uint8_t size;
+
 public:
-    Switch_Message_Action(float timeout,int16_t require);
-    void addPair(MessageID messageId,Fct fct);
+    Switch_Message_Action(float timeout, int16_t require);
+    void addPair(MessageID messageId, Fct fct);
     //start : inherited from Action
     bool isFinished();
     //has failed : inherited from Action
@@ -279,31 +289,36 @@ public:
 */
 class Sleep_Action : public Action
 {
-private:    
+private:
     float timeToWait;
+
 public:
-    Sleep_Action(float timeToWait,int16_t require=NO_REQUIREMENT);
+    Sleep_Action(float timeToWait, int16_t require = NO_REQUIREMENT);
     //start(Action)
-    bool isFinished(); //(Sleep) verifie que le temps prévu s'est ecoulé
-    bool hasFailed(){return false;} //(Sleep) on en peut pas fail d'attendre
+    bool isFinished();                 //(Sleep) verifie que le temps prévu s'est ecoulé
+    bool hasFailed() { return false; } //(Sleep) on en peut pas fail d'attendre
 };
 
 /*
 * Ne fait rien et est impossible a passer.
 * Si loop est activé, cette action permet de retourner a la première action de la file
+* Si pause est activé, la séquence ne s'actualise plus tant qu'elle n'est pas resume
+* Si lockGhost est activé, le ghost ne s'actualise plus
+* Par défaut, une endAction endort une sequence
 */
 class End_Action : public Action //Une End_Action ne passe jamais a la suite
 {
 private:
     bool loop;
     bool pause;
-public:
-    End_Action(bool loop=false, bool pause = false);
-    void start();
-    bool isFinished(){return done;}
-    bool hasFailed(){return false;}
-};
+    bool lockGhost;
 
+public:
+    End_Action(bool loop = false, bool pause = true, bool lockGhost = false);
+    void start();
+    bool isFinished() { return done; }
+    bool hasFailed() { return false; }
+};
 
 /*
 * Fait l'action "functionToCall" lors du start de l'action
@@ -312,9 +327,10 @@ class Do_Action : public Action
 {
 private:
     Fct functionToCall;
+
 public:
     void start();
-    Do_Action(Fct functionToCall,int16_t require=NO_REQUIREMENT) :  Action("DoAc", 0.1, require) {this->functionToCall=functionToCall;}
+    Do_Action(Fct functionToCall, int16_t require = NO_REQUIREMENT) : Action("DoAc", 0.1, require) { this->functionToCall = functionToCall; }
 };
 
 /*
@@ -324,9 +340,11 @@ class PauseSeq_Action : public Action
 {
 private:
     SequenceName nameSeq;
+    bool lockGhost;
+
 public:
     void start();
-    PauseSeq_Action(SequenceName nameSeq, int16_t require=NO_REQUIREMENT);
+    PauseSeq_Action(SequenceName nameSeq, bool lockGhost, int16_t require = NO_REQUIREMENT);
 };
 
 /*
@@ -336,9 +354,10 @@ class ResumeSeq_Action : public Action
 {
 private:
     SequenceName nameSeq;
+
 public:
     void start();
-    ResumeSeq_Action(SequenceName nameSeq, int16_t require=NO_REQUIREMENT);
+    ResumeSeq_Action(SequenceName nameSeq, int16_t require = NO_REQUIREMENT);
 };
 
 /*
@@ -348,8 +367,9 @@ class Wait_Error_Action : public Action
 {
 private:
     Error error;
+
 public:
-    Wait_Error_Action(Error error, float timeout,int16_t require=NO_REQUIREMENT);
+    Wait_Error_Action(Error error, float timeout, int16_t require = NO_REQUIREMENT);
     //start(Action)
     bool isFinished(); //(Wait_Error) verifie que l'erreur s'est produite
     //hasFailed(Action)
@@ -360,6 +380,5 @@ class Recallage_Action : public Double_Action
 public:
     Recallage_Action(bool arriere, float dist, float timeout);
 };
-
 
 #endif // !ACTION_H_

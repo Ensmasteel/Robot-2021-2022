@@ -99,10 +99,14 @@ void Sequence::toTelemetry()
     }
 }
 
-void Sequence::pause()
+void Sequence::pause(bool lockGhost)
 {
     paused=true;
-    Action::robot->ghost.Lock(true);
+    if (lockGhost)
+    {
+        Action::robot->controller.setCurrentProfile(brake);
+        Action::robot->ghost.Lock(true);
+    }
 }
 
 void Sequence::resume()
@@ -111,10 +115,10 @@ void Sequence::resume()
     startSelected(); //On (re)lance l'action
 }
 
-void Sequence::reset(){
+void Sequence::reset(bool lockGhost){
     currentIndex = 0;
     nextIndex = 1;
     for (int i=0;i<lastIndex;i++)
         fails[i]=false;
-    pause();
+    pause(lockGhost);
 }

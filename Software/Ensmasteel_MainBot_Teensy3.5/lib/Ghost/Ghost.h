@@ -31,6 +31,7 @@ public:
     
     // GOAL / Setter function of locked variable, true => robot won't move
     // IN   / bool state
+    // PREREQUIRE / Please brake the robot to avoid hicups
     void Lock(bool state);
 
     // GOAL / Calculate next position of the robot along the trajectory in memory
@@ -62,8 +63,8 @@ public:
 private:
     // ===    PARAMETERS    ===
     // ========================
-    float MIN_MOVEMENT = 0.01; // Minimal distance to allow trajectory computation
-    float MIN_ROTATION = 0.01; // Minimal angle to allow trajectory computation
+    float MIN_MOVEMENT = 0.005; // Minimal distance to allow trajectory computation
+    float MIN_ROTATION = 0.1*DEG_TO_RAD; // Minimal angle to allow trajectory computation
     float DELAY_POSITION = 40.0; // [...] = ms, Delay between posCurrent and posDelayed
     float MAX_SPEED = 50.0; // ... if linear speed above the limit, block movement
     float MAX_DISTANCE = 5.0; // ... if distance between to consecutive position, block movement 

@@ -77,6 +77,12 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
         if (abs(normRawMove) < MIN_MOVEMENT)
         {
             errorStatus = 1;
+            trajectory_X.set(posAim._x);
+            trajectory_Y.set(posAim._y);
+            speedSquare_e=Polynome();
+            speedProfileLinear.setZero();
+            speedProfileRotation.setZero();
+            trajectoryFinished = true;
         }
 
         // Define Trajectory

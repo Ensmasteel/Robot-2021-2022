@@ -141,11 +141,11 @@ void Cinetique::print(const String& prefix,bool info)
 
 void Cinetique::toTelemetry(const String& prefix)
 {
-    Logger::toTelemetry(prefix+"x",String(_x));
-    Logger::toTelemetry(prefix+"y",String(_y));
-    Logger::toTelemetry(prefix+"Th",String(_theta));
-    Logger::toTelemetry(prefix+"v",String(_v));
-    Logger::toTelemetry(prefix+"w",String(_w));
+    Logger::toTelemetry(prefix+"x",String(_x,3));
+    Logger::toTelemetry(prefix+"y",String(_y,3));
+    Logger::toTelemetry(prefix+"Th",String(_theta,3));
+    Logger::toTelemetry(prefix+"v",String(_v,3));
+    Logger::toTelemetry(prefix+"w",String(_w,3));
 }
 
 bool Cinetique::operator==(Cinetique const &other)

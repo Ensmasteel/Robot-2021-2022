@@ -23,7 +23,7 @@ void ping(Robot *robot)
 void shutdown(Robot *robot)
 {
     for (int i = 0; i < __NBSEQUENCES__; i++)
-        robot->getSequenceByName((SequenceName)i)->pause();
+        robot->getSequenceByName((SequenceName)i)->pause(true);
     robot->controller.setCurrentProfile(off);
     Logger::infoln("SHUTDOWN");
 }
@@ -36,7 +36,7 @@ void setTimeStart(Robot *robot)
 void startBackHomeSeq(Robot *robot)
 {
     //On arrete la sequence actuelle
-    robot->getSequenceByName(mainSequenceName)->pause();
+    robot->getSequenceByName(mainSequenceName)->pause(true);
     //On lance la bonne sequence de retour
     if (robot->endNorth)
         robot->getSequenceByName(goNorthName)->resume();

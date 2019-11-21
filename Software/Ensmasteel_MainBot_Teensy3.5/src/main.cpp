@@ -34,7 +34,7 @@ void setup()
   delay(2000);
   Logger::infoln("REBOOT%"); //Le caractère % permet de faire sauter le parsing en cours sur la station sol
   Logger::infoln("Bender's booting up");
-  bender = new RobotSimu(0.35,1.2,-0.2,&Serial1);
+  bender = new RobotSimu(0.35,1.2,PI,&Serial1);
   //bender=new RobotSimu(0.25,1.2,0,&Serial1);
   bender->setTeamColor(TeamColor::BLEU);
   Logger::infoln("Hello, I'm bender");

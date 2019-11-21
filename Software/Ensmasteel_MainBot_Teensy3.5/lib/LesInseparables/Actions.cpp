@@ -183,6 +183,12 @@ StraightTo_Action::StraightTo_Action(float timeout, TargetVector target, MovePro
 }
 
 Brake_Action::Brake_Action(float timeout, int16_t require) : Move_Action(timeout,VectorE(0,0,0),0.1,brake,false,false,"brak",require){}
+
+void Brake_Action::start()
+{
+    this->posFinal = (VectorE) robot->cinetiqueCurrent;
+    Move_Action::start();
+}
 //========================================ACTION COMM========================================
 
 Send_Action::Send_Action(Message message, int16_t require) : Action("Send", 0.1, require)
@@ -239,10 +245,11 @@ bool Switch_Message_Action::isFinished()
 
 //========================================ACTION MISC========================================
 
-End_Action::End_Action(bool loop, bool pause) : Action("End_", -1, NO_REQUIREMENT)
+End_Action::End_Action(bool loop, bool pause, bool lockGhost) : Action("End_", -1, NO_REQUIREMENT)
 {
     this->loop=loop;
     this->pause=pause;
+    this->lockGhost = lockGhost;
 }
 
 void End_Action::start()
@@ -250,7 +257,7 @@ void End_Action::start()
     //Au premier appel de start, done == false et on met la sequence en pause
     //Sinon, done == true et alors on va looper.
     if (pause && !done)
-        mySequence->pause();
+        mySequence->pause(lockGhost);
 
     if (loop)
     {
@@ -285,12 +292,14 @@ bool Wait_Error_Action::isFinished(){
     return ErrorManager::inWaiting() > 0 && ErrorManager::peekOldestError() == error;
 }
 
-PauseSeq_Action::PauseSeq_Action(SequenceName nameSeq, int16_t require) : Action("paus",0.1,require){
+PauseSeq_Action::PauseSeq_Action(SequenceName nameSeq, bool lockGhost, int16_t require) : Action("paus",0.1,require){
     this->nameSeq=nameSeq;
+    this->lockGhost = lockGhost;
+    
 }
 
 void PauseSeq_Action::start(){
-    robot->getSequenceByName(nameSeq)->pause();
+    robot->getSequenceByName(nameSeq)->pause(lockGhost);
     done=true;
     Action::start();
 }

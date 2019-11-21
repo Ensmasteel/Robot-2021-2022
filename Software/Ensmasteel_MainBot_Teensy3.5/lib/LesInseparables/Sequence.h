@@ -71,14 +71,14 @@ public:
     void toTelemetry();
 
     /*
-    * Bloque le ghost et empèche l'actualisation de la séquence
+    * Empèche l'actualisation de la séquence et lock le ghost (ou pas)
     */
-    void pause();
+    void pause(bool lockGhost);
 
     /*
     * Met le currentIndex sur la première action.
     */
-    void reset();
+    void reset(bool lockGhost);
 
     /*
     * Debloque la sequence et redémarre l'action qui était en cours
