@@ -57,8 +57,11 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
 
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         //Attend le message Tirette
-        mainSequence->add(new Wait_Message_Action(Tirette_M,10));
-        
+        mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
+        mainSequence->add(new Spin_Action(10,TargetVectorE(PI,false),fast));
+        mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
+        mainSequence->add(new Spin_Action(10,TargetVectorE(0,false),fast));
+
         /*
         * Lors des "5.0" prochaines secondes, si une erreur PID est levée
         *       le robot et le ghost sont recallés contre une bordure (et le ghost reste statique ensuite)
@@ -66,42 +69,14 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         * sinon
         *       le timeout est appelé et on passe a l'action suivante (au prochain move start, le ghost sera recallé sur le robot)
         */
-        mainSequence->add(new Recallage_Action(false,1.0,5.0));  
-        mainSequence->add(new Brake_Action(-1));
+        //mainSequence->add(new Recallage_Action(true,1.0,5.0));  
+        //mainSequence->add(new Brake_Action(-1));
 
-        //Attend le message Tirette
-        mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
-        //Delock le thread temporel
-        //mainSequence->add(new ResumeSeq_Action(timeSequenceName));
-        //Goto (timeout = 25s, x=2m, y=20cm, thetaFinal = -PI/2, courbure = 20%, allure = standard)
-        mainSequence->add(new Goto_Action(25, TargetVectorE(2.0, 0.2, -1.57,false), 0.2, standard));
-        mainSequence->add(new StraightTo_Action(20,base,fast));
-        
-        //mainSequence->add(new Wait_Message_Action(Tirette_M,10));
-        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(0.2,false),fast));
-        //mainSequence->add(new Goto_Action(12,TargetVectorE(1.25,1.2,0,false),0.3,fast,false));
-        
-        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),standard));
-        //mainSequence->add(new Goto_Action(12,TargetVectorE(0.25,1.2,PI,false),0.3,standard,false));
-
-        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),fast));
-        //mainSequence->add(new Goto_Action(25.0,TargetVectorE(2.2, 0.5, -PI/2.0, false), 0.4, accurate, true));
-
-        //mainSequence->add(new Goto_Action(25, TargetVectorE(0.2, 1.2, PI,false), 0.2, fast));
-        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(0.0,false),fast));
-        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(0,false),standard));
-
-
-
-        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(PI,false),accurate));
-        
-        //mainSequence->add(new Spin_Action(7.0, TargetVectorE(0,false),accurate));
-        //mainSequence->add(new Forward_Action(20,0.5,standard));
-
-        //mainSequence->add(new StraightTo_Action(30,TargetVector(1.5,1.5,false),standard));
+    
 
         //ActionFinale
-        mainSequence->add(new End_Action(false,true,true));
+        //mainSequence->add(new End_Action(false,true,true));
+        mainSequence->add(new End_Action(true,false));
         mainSequence->startSelected();
 
     Sequence* goNorth = getSequenceByName(goNorthName);
@@ -124,7 +99,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         messageSwitch->addPair(MessageID::South_M,setSouth);
 
         communicationSequence->add(messageSwitch);
-        communicationSequence->add(new End_Action(true));
+        communicationSequence->add(new End_Action(true,false));
         communicationSequence->startSelected();
 
     Sequence* timeSequence = getSequenceByName(timeSequenceName);
