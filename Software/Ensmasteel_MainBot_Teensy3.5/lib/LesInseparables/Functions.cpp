@@ -60,38 +60,43 @@ void recallageBordure(Robot *robot)
 {
     Logger::infoln("recallage bordure");
     if (abs(normalizeAngle(robot->cinetiqueCurrent._theta - 0.0)) < DEG_TO_RAD * 45) //On fait un recallage X en regardant vers theta==0
-        if (abs(robot->cinetiqueCurrent._x - robot->backLength) < 0.05)              // C'est un recallage arrière
+    {
+        if (abs(robot->cinetiqueCurrent._x - robot->backLength) < 0.40)              // C'est un recallage arrière
             robot->move(VectorE(robot->backLength, robot->cinetiqueCurrent._y, 0.0));
-        else if (abs(robot->cinetiqueCurrent._x - (3.0 - robot->frontLength)) < 0.05) //C'est un recallage avant
+        else if (abs(robot->cinetiqueCurrent._x - (3.0 - robot->frontLength)) < 0.40) //C'est un recallage avant
             robot->move(VectorE(3.0 - robot->frontLength, robot->cinetiqueCurrent._y, 0.0));
         else
-            Logger::infoln("ERREUR RECALLAGE");
-
+            Logger::infoln("ERREUR RECALLAGE x look east");
+    }
     else if (abs(normalizeAngle(robot->cinetiqueCurrent._theta - PI / 2.0)) < DEG_TO_RAD * 45) //On fait un recallage Y en regardant vers theta==PI/2
-        if (abs(robot->cinetiqueCurrent._y - robot->backLength) < 0.05)                        // C'est un recallage arrière
+    {
+        if (abs(robot->cinetiqueCurrent._y - robot->backLength) < 0.40)                        // C'est un recallage arrière
             robot->move(VectorE(robot->cinetiqueCurrent._x, robot->backLength, PI / 2.0));
-        else if (abs(robot->cinetiqueCurrent._y - (2.0 - robot->frontLength)) < 0.05) //C'est un recallage avant
+        else if (abs(robot->cinetiqueCurrent._y - (2.0 - robot->frontLength)) < 0.40) //C'est un recallage avant
             robot->move(VectorE(robot->cinetiqueCurrent._x, 2.0 - robot->frontLength, PI / 2.0));
         else
-            Logger::infoln("ERREUR RECALLAGE");
-
+            Logger::infoln("ERREUR RECALLAGE y look north");
+    }
     else if (abs(normalizeAngle(robot->cinetiqueCurrent._theta - PI)) < DEG_TO_RAD * 45) //On fait un recallage X en regardant vers theta==PI
-        if (abs(robot->cinetiqueCurrent._x - robot->frontLength) < 0.05)                 // C'est un recallage avant
+    {
+        if (abs(robot->cinetiqueCurrent._x - robot->frontLength) < 0.40)                 // C'est un recallage avant
             robot->move(VectorE(robot->frontLength, robot->cinetiqueCurrent._y, PI));
-        else if (abs(robot->cinetiqueCurrent._x - (3.0 - robot->backLength)) < 0.05) //C'est un recallage arriere
+        else if (abs(robot->cinetiqueCurrent._x - (3.0 - robot->backLength)) < 0.40) //C'est un recallage arriere
             robot->move(VectorE(3.0 - robot->backLength, robot->cinetiqueCurrent._y, PI));
         else
-            Logger::infoln("ERREUR RECALLAGE");
-
+            Logger::infoln("ERREUR RECALLAGE x look west");
+    }
     else if (abs(normalizeAngle(robot->cinetiqueCurrent._theta - (-PI / 2.0))) < DEG_TO_RAD * 45) //On fait un recallage Y en regardant vers theta== -PI/2
-        if (abs(robot->cinetiqueCurrent._y - robot->frontLength) < 0.05)                          // C'est un recallage avant
+    {
+        if (abs(robot->cinetiqueCurrent._y - robot->frontLength) < 0.40)                          // C'est un recallage avant
             robot->move(VectorE(robot->cinetiqueCurrent._x, robot->frontLength, -PI / 2.0));
-        else if (abs(robot->cinetiqueCurrent._y - (2.0 - robot->backLength)) < 0.05) //C'est un recallage arriere
+        else if (abs(robot->cinetiqueCurrent._y - (2.0 - robot->backLength)) < 0.40) //C'est un recallage arriere
             robot->move(VectorE(robot->cinetiqueCurrent._x, 2.0 - robot->backLength, -PI / 2.0));
         else
-            Logger::infoln("ERREUR RECALLAGE");
+            Logger::infoln("ERREUR RECALLAGE y look south");
+    }   
     else
-        Logger::infoln("ERREUR RECALLAGE");
+        Logger::infoln("ERREUR RECALLAGE bad angle");
 }
 
 void forceMainSeqNext(Robot *robot)

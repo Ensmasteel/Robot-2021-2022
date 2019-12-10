@@ -1,5 +1,7 @@
 #include "MoveProfile.h"
 #define RATIOPID 1000.0
+#define mm 0.001
+#define s 1.0
 
 MoveProfile MoveProfiles::profiles[2 * __NBPROFILES__];
 
@@ -22,20 +24,20 @@ void MoveProfiles::setup() {
     get(off,true)->set(0,0,0,1,100,100,100,0.001,0.001);
     get(off,false)->set(0,0,0,1,100,100,100,0.003,0.003);
     
-    get(brake,true)->set(0,0,1,0,10,0.0005,100,0.001,0.001); //On est pas regardant quant a la position (monnitored by epsilon) mais on regarde la vitesse (monitored by dEpsilon)
-    get(brake,false)->set(0,0,200,0,10,0.01,100,0.003,0.003); //On est pas regardant quant a la position (monnitored by epsilon) mais on regarde la vitesse (monitored by dEpsilon)
+    get(brake,true)->set(0,0,0.01,0,10,0.0005,100,0.001,0.001); //On est pas regardant quant a la position (monnitored by epsilon) mais on regarde la vitesse (monitored by dEpsilon)
+    get(brake,false)->set(0,0,0.01,0,10,0.01,100,0.003,0.003); //On est pas regardant quant a la position (monnitored by epsilon) mais on regarde la vitesse (monitored by dEpsilon)
 
-    get(accurate,true)->set(0.01,0.01,0.01,1,0.001,0.0005,0.01,0.5,0.2);
-    get(accurate,false)->set(4500,0.01,0.01,1, 0.008, 0.001, 0.05,1.5,1.0);
+    get(accurate,true)->set(34000,0.01,0.01,1,1*mm,0.5*mm/s,20*mm,0.3,200*mm/s);
+    get(accurate,false)->set(4500,0.01,0.01,1, 1*DEG_TO_RAD, 1*DEG_TO_RAD/s, 15*DEG_TO_RAD,1.5,90*DEG_TO_RAD/s);
     
-    get(standard,true)->set(0.01,0.01,0.01,1, 0.10, 0.05, 0.20,1.0,0.7); 
+    get(standard,true)->set(34000,0.01,0.01,1, 10*mm, 3*mm/s,50*mm,1.0,0.7); 
     get(standard,false)->set(4500,0.01,0.01,1, 0.05, 0.01, 0.05,3.2,2.5);
 
-    get(fast,true)->set(0.01,0.01,0.01,1, 0.15, 0.05, 0.1,2.5,1.2);
+    get(fast,true)->set(34000,0.01,1500,0.8, 0.15, 0.01, 0.10,2.1,1.5);
     get(fast,false)->set(4500,0.01,200,1, 0.05, 0.01, 0.05,30.0,999.0);
     
-    get(recallage,true)->set(0.01,0.01,0.01,1,0.005,0.05,0.01,0.2,0.1);
-    get(recallage,false)->set(4500,0.01,0.01,1, 0.008, 0.001, 100,0.1,0.1);
+    get(recallage,true)->set(34000,0.01,0.01,1,1*mm,0.5*mm/s,20*mm,0.3,50*mm/s);
+    get(recallage,false)->set(500,0.01,200,1,1*DEG_TO_RAD, 1*DEG_TO_RAD/s, 90*DEG_TO_RAD,1.5,90*DEG_TO_RAD/s);
 }
 
 MoveProfile* MoveProfiles::get(MoveProfileName name, bool translation) {

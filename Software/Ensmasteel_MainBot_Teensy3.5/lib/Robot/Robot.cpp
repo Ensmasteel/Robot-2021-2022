@@ -21,7 +21,8 @@
 #define DIAMETRE_ROUE_CODEUSE_GAUCHE 0.053570956
 #define TICKS_PER_ROUND 16384
 
-#define SKIP_TELEMETRY 5
+#define SKIP_TELEMETRY_LONG 100
+#define SKIP_TELEMETRY_FAST 4
 
 Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
 {
@@ -43,7 +44,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
     sequences = new Sequence*[__NBSEQUENCES__]; //On définit un array de la bonne taille
     Action::setPointer(this);
     for (int i=0;i<__NBSEQUENCES__;i++)
-        sequences[i] = new Sequence();
+        sequences[i] = new Sequence(i);
 
     //ATTENTION, LES ACTIONS DOIVENT ETRE DEFINIE EN TANT QUE ROBOT BLEU !
     // Might be define in main.cpp->setup
@@ -55,10 +56,20 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         //Attend le message Tirette
         mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
-        mainSequence->add(new Spin_Action(10,TargetVectorE(PI,false),fast));
-        mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
-        mainSequence->add(new Spin_Action(10,TargetVectorE(0,false),fast));
-        //mainSequence->add(new Goto_Action(20,TargetVectorE(2.0,0.4,-1.57,false),0.4,standard));
+        for (int _=0;_<5;_++)
+            mainSequence->add(new Forward_Action(5,0.2,standard));
+        //mainSequence->add(new Spin_Action(10,TargetVectorE(PI,false),fast));
+        //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
+        //mainSequence->add(new Spin_Action(10,TargetVectorE(0,false),fast));
+        //mainSequence->add(new Recallage_Action(true,1.0,15));
+        //mainSequence->add(new Forward_Action(5,0.1,accurate));
+        //mainSequence->add(new Forward_Action(15,1.0,fast));
+        //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
+        //mainSequence->add(new Spin_Action(10,TargetVectorE(PI,false),fast));
+        //mainSequence->add(new Forward_Action(15,1.0,fast));
+        //mainSequence->add(new Spin_Action(10,TargetVectorE(0,false),fast));
+        //mainSequence->add(new Goto_Action(20,TargetVectorE(0.5,1.35,-PI/2,false),0.9,standard));
+        //mainSequence->add(new StraightTo_Action(20,base,standard));
 
         /*
         * Lors des "5.0" prochaines secondes, si une erreur PID est levée
@@ -74,7 +85,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
 
         //ActionFinale
         //mainSequence->add(new End_Action(false,true,true));
-        mainSequence->add(new End_Action(true,false));
+        mainSequence->add(new End_Action(false,false));
         mainSequence->startSelected();
 
     Sequence* goNorth = getSequenceByName(goNorthName);
@@ -110,11 +121,11 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         timeSequence->pause(false); //La time sequence ne doit s'écouler qu'a partir du tiré de la tirette !!
 
     Sequence* recallageListener = getSequenceByName(recallageListerName);
-        recallageListener->add(new Wait_Error_Action(PID_FAIL_ERROR,4.9));
+        recallageListener->add(new Wait_Error_Action(PID_FAIL_ERROR,14.0));
         recallageListener->add(new Do_Action(recallageBordure,-1));
 
-        //Si cette action s'active, elle s'active au plus tard 4.9s après le démarrage du backward.
-        //Sachant qu'on a un timeout de 5s sur le backward, on est sur que la seule action qu'on peut forcer c'est le backward
+        //Si cette action s'active, elle s'active au plus tard 14s après le démarrage du backward.
+        //Sachant qu'on a un timeout de 15s sur le backward, on est sur que la seule action qu'on peut forcer c'est le backward
         recallageListener->add(new Do_Action(forceMainSeqNext,-1)); 
         recallageListener->add(new End_Action(true,true,false));
         recallageListener->pause(false);
@@ -130,35 +141,52 @@ void Robot::Update_Cinetique(float dt)
 void Robot::Update(float dt)
 {
     communication.update();
+
     Update_Cinetique(dt);
+    
     ghost.ActuatePosition(dt);
+    
     cinetiqueNext = ghost.Get_Controller_Cinetique();
+
     controller.compute(dt);
+
     motorLeft.setOrder(translationOrderPID - rotationOrderPID);
     motorRight.setOrder(translationOrderPID + rotationOrderPID);
     motorLeft.actuate();
     motorRight.actuate();
+
     for (int i=0;i<__NBSEQUENCES__;i++)
         sequences[i]->update();
-    if (compteur==SKIP_TELEMETRY){
-        telemetry();
+
+    
+    if (compteur==SKIP_TELEMETRY_LONG){
+        telemetry(false,true);
         compteur=0;
+    } else if (compteur%SKIP_TELEMETRY_FAST==0){
+        telemetry(true,false);
     }
+
     if (communication.inWaitingRx() > 0)
         communication.popOldestMessage(); //Tout le monde a eu l'occasion de le peek, on le vire.
-    if (ErrorManager::inWaiting()>0)
+    if (ErrorManager::inWaiting() > 0)
         ErrorManager::popOldestError(); //Les séquences ont eu l'occasion de le lire, on le vire
     compteur++;
 }
 
-void Robot::telemetry()
+void Robot::telemetry(bool odometrie, bool other)
 {
-    cinetiqueCurrent.toTelemetry("R");
-    ghost.Get_Controller_Cinetique().toTelemetry("G");
-    Logger::toTelemetry("pid", String(controller.close));
-    Logger::toTelemetry("ghost", String(ghost.trajectoryIsFinished()));
-    getSequenceByName(mainSequenceName)->toTelemetry();
-    communication.toTelemetry();
+    if (odometrie)
+    {
+        cinetiqueCurrent.toTelemetry("R");
+        ghost.Get_Controller_Cinetique().toTelemetry("G");
+    }
+    if (other)
+    {
+        Logger::toTelemetry("pid", String(controller.close));
+        Logger::toTelemetry("ghost", String(ghost.trajectoryIsFinished()));
+        getSequenceByName(mainSequenceName)->toTelemetry();
+        communication.toTelemetry();
+    }
 }
 
 Sequence* Robot::getSequenceByName(SequenceName name){

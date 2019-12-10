@@ -62,7 +62,7 @@ public :
     //        ghost
     //        mainSequence
     //        controller
-    void telemetry();
+    void telemetry(bool odometrie, bool other);
 
     Sequence* getSequenceByName(SequenceName name);
 

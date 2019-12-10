@@ -65,7 +65,6 @@ Double_Action::Double_Action(float timeout, String name,int16_t require) : Actio
 void Move_Action::start()
 {
     robot->recalibrateGhost();
-    robot->controller.setCurrentProfile(profileName);
     int err;
     err = robot->ghost.Compute_Trajectory(posFinal, deltaCurve,MoveProfiles::get(profileName,!pureRotation)->speedRamps , MoveProfiles::get(profileName,!pureRotation)->cruisingSpeed, pureRotation, backward);
     if (err == 0)
@@ -73,12 +72,13 @@ void Move_Action::start()
     else
         Logger::infoln("Computation failed");
     robot->ghost.Lock(false);
+    robot->controller.setCurrentProfile(profileName);
     Action::start();
 }
 
 void Move_Action::doAtEnd()
 {
-    robot->controller.sendScoreToTelemetry();
+    //robot->controller.sendScoreToTelemetry();
     robot->controller.reset();
 }
 
@@ -155,10 +155,27 @@ Backward_Action::Backward_Action(float timeout, float dist, MoveProfileName prof
 
 void Backward_Action::start()
 {
+    Logger::infoln("BACKWARD START");
     posFinal._theta = robot->cinetiqueCurrent._theta;
     posFinal._x = (robot->cinetiqueCurrent._x) - dist * cos(normalizeAngle(posFinal._theta));
     posFinal._y = (robot->cinetiqueCurrent._y) - dist * sin(normalizeAngle(posFinal._theta));
     Move_Action::start();
+}
+
+bool Backward_Action::isFinished()
+{
+    bool out = Move_Action::isFinished();
+    if (out)
+        Logger::infoln("BACK FINISHED !");
+    return out;
+}
+
+bool Backward_Action::hasFailed()
+{
+    bool out = Move_Action::hasFailed();
+    if (out)
+        Logger::infoln("BACK FAILED !");
+    return out;
 }
 
 void StraightTo_Action::start()
@@ -317,7 +334,7 @@ void ResumeSeq_Action::start(){
 /*
 * /!\ Le timeout specifié dans la sequence d'ecoute "recallageListner" doit etre plus petit que celui ci
 */
-Recallage_Action::Recallage_Action(bool arriere, float dist, float timeout) : Double_Action(timeout)
+Recallage_Action::Recallage_Action(bool arriere, float dist, float timeout) : Double_Action(timeout,"recal")
 {
     action1 = new ResumeSeq_Action(recallageListerName);
     if (arriere)

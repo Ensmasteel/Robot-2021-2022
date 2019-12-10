@@ -14,6 +14,7 @@ Chose qu'il est possible de faire:
 
 #define TAILLESEQUENCE 50
 #include "Arduino.h"
+#include "SequenceName.h"
 
 class Action;
 
@@ -25,8 +26,11 @@ private:
     uint8_t currentIndex;
     int16_t lastIndex;
     bool paused;
+    int mySeqIndex;
 public:
     uint8_t nextIndex;
+
+    SequenceName getName();
 
     /*
     * Demarre l'action désigné par currentIndex (débloque la séquence si nécessaire)
@@ -57,7 +61,7 @@ public:
     * Cree une sequence vide
     * Par défaut, la séquence est en pause
     */
-    Sequence();
+    Sequence(int mySeqIndex);
 
     /*
     * Ajoute une action au bout de la séquence

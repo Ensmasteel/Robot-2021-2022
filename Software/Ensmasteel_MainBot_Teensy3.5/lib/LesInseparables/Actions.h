@@ -198,7 +198,8 @@ private:
 public:
     Backward_Action(float timeout, float dist, MoveProfileName profileName, int16_t require = NO_REQUIREMENT);
     void start(); //(Action + Backward)Le start doit etre redéfini car on ne connait pas posFinal a l'avance
-    //isFinished(Move)
+    bool isFinished();
+    bool hasFailed();
     //hasFailed(Action+Move)
 };
 
@@ -370,7 +371,7 @@ private:
 
 public:
     Wait_Error_Action(Error error, float timeout, int16_t require = NO_REQUIREMENT);
-    //start(Action)
+    //void start();
     bool isFinished(); //(Wait_Error) verifie que l'erreur s'est produite
     //hasFailed(Action)
 };

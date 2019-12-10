@@ -15,6 +15,7 @@ public:
     void push(Error error);
     int size();
     bool empty = true;
+    void reset();
 
 private:
     Error box[ERROR_BOX_SIZE];
@@ -79,15 +80,26 @@ int ErrorBox::size()
         return (iNextEntry - iFirstEntry + ERROR_BOX_SIZE) % ERROR_BOX_SIZE; //Marche dans tous les cas
 }
 
+void ErrorBox::reset()
+{
+    iNextEntry = iFirstEntry;
+    empty = true;
+}
+
 
 
 void ErrorManager::raise(Error error)
 {
-    if ((millis()/1e3 - timeLastIn[(int)error])>0.1)  //Une meme erreur ne peut rentrer qu'a 100ms d'intervalle
+    if ((millis()/1e3 - timeLastIn[(int)error])>0.5)  //Une meme erreur ne peut rentrer qu'a 500ms d'intervalle
     {
         errorBox->push(error);
         timeLastIn[(int)error]=millis()/1e3;
     }
+}
+
+void ErrorManager::reset()
+{
+    errorBox->reset();
 }
 
 void ErrorManager::popOldestError()

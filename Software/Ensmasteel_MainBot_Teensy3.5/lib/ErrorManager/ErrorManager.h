@@ -20,6 +20,7 @@ public:
     static Error peekOldestError(); //Renvoie l'erreur la plus ancienne (sachant qu'a chaque tour, une Erreur est archivée)
     static uint8_t inWaiting(); //Renvoie le nombre de message en attente dans la boite de reception
     static void setup();
+    static void reset();
 //    void toTelemetry();
 
 private:

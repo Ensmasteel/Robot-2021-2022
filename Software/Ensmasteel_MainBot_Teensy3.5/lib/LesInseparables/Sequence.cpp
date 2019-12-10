@@ -24,7 +24,7 @@ void Sequence::startSelected()
         else
         {
             fails[currentIndex]=true;
-            Logger::infoln("Action "+String(currentIndex)+" failed !");
+            Logger::infoln("Action "+String(currentIndex)+" failed(requirementNotFilled)"+"("+String(getName())+")");
             startFollowing();
         }
     }
@@ -56,7 +56,7 @@ void Sequence::update()
     else if (queue[currentIndex]->hasFailed())
     {
         fails[currentIndex] = true;
-        Logger::infoln("Action "+String(currentIndex)+" failed !");
+        Logger::infoln("Action "+String(currentIndex)+" failed "+"("+String(getName())+")");
         if (nextIndex<=lastIndex)
         {
             queue[currentIndex]->doAtEnd();   //<---------------------- DEBUUUUUUUG
@@ -73,12 +73,18 @@ void Sequence::setNextIndex(uint8_t index)
         nextIndex = index;
 }
 
-Sequence::Sequence()
+Sequence::Sequence(int mySeqIndex)
 {
+    this->mySeqIndex = mySeqIndex;
     currentIndex = 0;
     nextIndex = 1;
     lastIndex = -1;
     paused=false;
+}
+
+SequenceName Sequence::getName()
+{
+    return (SequenceName)mySeqIndex;
 }
 
 void Sequence::add(Action *action)
