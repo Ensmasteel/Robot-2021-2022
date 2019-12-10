@@ -52,15 +52,13 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
     TargetVector northBase = TargetVector(0.22,1.65,false);
     TargetVector southBase = TargetVector(0.22,0.70,false);
 
-//TODO BACKWARD MARCHE PAS
-//TODO SPASME GHOST LORS DUN SPIN NUL
-
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         //Attend le message Tirette
         mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
         mainSequence->add(new Spin_Action(10,TargetVectorE(PI,false),fast));
         mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
         mainSequence->add(new Spin_Action(10,TargetVectorE(0,false),fast));
+        //mainSequence->add(new Goto_Action(20,TargetVectorE(2.0,0.4,-1.57,false),0.4,standard));
 
         /*
         * Lors des "5.0" prochaines secondes, si une erreur PID est levée
