@@ -1,5 +1,7 @@
 # Robot principal ENSMASTEEL
 
+<img src="./Doc/EnsmaSteel_Bot.png" width="50%">
+
 ## Trajectoire
 
 ### Principe
