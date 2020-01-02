@@ -1,6 +1,6 @@
 # Robot principal ENSMASTEEL
 
-<img src="./Doc/EnsmaSteel_Bot.png" width="50%">
+<img src="./Doc/EnsmaSteel_Bot.png" width="100%">
 
 ## Trajectoire
 
