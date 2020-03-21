@@ -141,6 +141,7 @@ Forward_Action::Forward_Action(float timeout, float dist, MoveProfileName profil
 
 void Forward_Action::start()
 {
+    Logger::infoln("FORWARD START");
     posFinal._theta = robot->cinetiqueCurrent._theta;
     posFinal._x = (robot->cinetiqueCurrent._x) + dist * cos(normalizeAngle(posFinal._theta));
     posFinal._y = (robot->cinetiqueCurrent._y) + dist * sin(normalizeAngle(posFinal._theta));
@@ -166,7 +167,7 @@ bool Backward_Action::isFinished()
 {
     bool out = Move_Action::isFinished();
     if (out)
-        Logger::infoln("BACK FINISHED !");
+        Logger::infoln("BACKWARD FINISHED !");
     return out;
 }
 

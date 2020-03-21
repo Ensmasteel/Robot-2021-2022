@@ -56,9 +56,10 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         //Attend le message Tirette
         mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
-        for (int _=0;_<5;_++)
-            mainSequence->add(new Forward_Action(5,0.2,standard));
+        mainSequence->add(new Forward_Action(5,0.2,standard));
+        mainSequence->add(new Goto_Action(20,TargetVectorE(1.5,1.35,0,false),0.5,standard));
         //mainSequence->add(new Spin_Action(10,TargetVectorE(PI,false),fast));
+        //mainSequence->add(new Backward_Action(5,0.2,standard));
         //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
         //mainSequence->add(new Spin_Action(10,TargetVectorE(0,false),fast));
         //mainSequence->add(new Recallage_Action(true,1.0,15));
@@ -68,7 +69,6 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         //mainSequence->add(new Spin_Action(10,TargetVectorE(PI,false),fast));
         //mainSequence->add(new Forward_Action(15,1.0,fast));
         //mainSequence->add(new Spin_Action(10,TargetVectorE(0,false),fast));
-        //mainSequence->add(new Goto_Action(20,TargetVectorE(0.5,1.35,-PI/2,false),0.9,standard));
         //mainSequence->add(new StraightTo_Action(20,base,standard));
 
         /*
@@ -85,7 +85,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
 
         //ActionFinale
         //mainSequence->add(new End_Action(false,true,true));
-        mainSequence->add(new End_Action(false,false));
+        mainSequence->add(new End_Action(true,false));
         mainSequence->startSelected();
 
     Sequence* goNorth = getSequenceByName(goNorthName);
