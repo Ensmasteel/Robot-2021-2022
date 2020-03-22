@@ -169,7 +169,7 @@ int Ghost::StateManager()
         errorState = 1;
     }
 
-    if (t_e_delayed > 1.0)
+    if (t_e_delayed > 0.99)
     {
         if (posDelayed.distanceWith(posAim) < MAX_DISTANCE) //If we're not to far from the goal
         {
@@ -186,7 +186,6 @@ int Ghost::StateManager()
                 posPrevious = posAim;
             }
 
-            //t_e_delayed = 1.01; //<-------------- Ca a fix le pb. ARTHUR CHECK PLS -> C'est degeu mais, if it works, it works
             trajectoryFinished = true;
         }
         else
@@ -258,8 +257,10 @@ int Ghost::ActuatePosition(float dt)
 
             if (abs(speed_e)>1e-9)
             {
+
                 if (backward)
-                {
+                {   
+
                     posDelayed._theta = atan2(-trajectory_Y.df(t_e_delayed), -trajectory_X.df(t_e_delayed));
                     posCurrent._theta = atan2(-trajectory_Y.df(t_e), -trajectory_X.df(t_e));
                 }

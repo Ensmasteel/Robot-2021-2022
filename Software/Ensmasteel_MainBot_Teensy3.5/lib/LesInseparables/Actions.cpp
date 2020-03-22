@@ -64,6 +64,7 @@ Double_Action::Double_Action(float timeout, String name,int16_t require) : Actio
 
 void Move_Action::start()
 {
+    Logger::infoln("MOVE START");
     robot->recalibrateGhost();
     int err;
     err = robot->ghost.Compute_Trajectory(posFinal, deltaCurve,MoveProfiles::get(profileName,!pureRotation)->speedRamps , MoveProfiles::get(profileName,!pureRotation)->cruisingSpeed, pureRotation, backward);
@@ -84,11 +85,20 @@ void Move_Action::doAtEnd()
 
 bool Move_Action::isFinished()
 {
-    return robot->ghost.trajectoryIsFinished() && robot->controller.close;
+    bool out = robot->ghost.trajectoryIsFinished() && robot->controller.close;
+    if (out)
+        Logger::infoln("MOVE FINISHED");
+    return out;
 }
 
 bool Move_Action::hasFailed()
 {
+    if (Action::hasFailed())
+        if (! robot->controller.close){
+            Logger::infoln("MOVE FAILED : robot too far");
+        } else {
+            Logger::infoln("MOVE FAILED : ghost not finished");
+        }
     return /*asser->tooFar ||*/ Action::hasFailed();
 }
 
@@ -141,22 +151,21 @@ Forward_Action::Forward_Action(float timeout, float dist, MoveProfileName profil
 
 void Forward_Action::start()
 {
-    Logger::infoln("FORWARD START");
     posFinal._theta = robot->cinetiqueCurrent._theta;
+    Logger::infoln(String(posFinal._theta));
     posFinal._x = (robot->cinetiqueCurrent._x) + dist * cos(normalizeAngle(posFinal._theta));
     posFinal._y = (robot->cinetiqueCurrent._y) + dist * sin(normalizeAngle(posFinal._theta));
     Move_Action::start();
 }
 
 Backward_Action::Backward_Action(float timeout, float dist, MoveProfileName profileName, int16_t require)
-    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, profileName, false, true, "Backward", require)
+    : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.3, profileName, false, true, "Backward", require)
 {
     this->dist = dist;
 }
 
 void Backward_Action::start()
 {
-    Logger::infoln("BACKWARD START");
     posFinal._theta = robot->cinetiqueCurrent._theta;
     posFinal._x = (robot->cinetiqueCurrent._x) - dist * cos(normalizeAngle(posFinal._theta));
     posFinal._y = (robot->cinetiqueCurrent._y) - dist * sin(normalizeAngle(posFinal._theta));
@@ -166,16 +175,12 @@ void Backward_Action::start()
 bool Backward_Action::isFinished()
 {
     bool out = Move_Action::isFinished();
-    if (out)
-        Logger::infoln("BACKWARD FINISHED !");
     return out;
 }
 
 bool Backward_Action::hasFailed()
 {
     bool out = Move_Action::hasFailed();
-    if (out)
-        Logger::infoln("BACK FAILED !");
     return out;
 }
 

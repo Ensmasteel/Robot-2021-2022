@@ -57,7 +57,10 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
         //Attend le message Tirette
         mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
         mainSequence->add(new Forward_Action(5,0.2,standard));
-        mainSequence->add(new Goto_Action(20,TargetVectorE(1.5,1.35,0,false),0.5,standard));
+        mainSequence->add(new Goto_Action(5,TargetVectorE(1.5,1.35,0,false),0.5,standard));
+        mainSequence->add(new Goto_Action(5,TargetVectorE(1.7,1.35,0,false),0.5,standard));
+        mainSequence->add(new Backward_Action(5,0.4,standard));
+        //mainSequence->add(new Backward_Action(5,1.0,standard));
         //mainSequence->add(new Spin_Action(10,TargetVectorE(PI,false),fast));
         //mainSequence->add(new Backward_Action(5,0.2,standard));
         //mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
