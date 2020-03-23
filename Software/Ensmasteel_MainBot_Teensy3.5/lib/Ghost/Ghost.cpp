@@ -35,7 +35,7 @@ void Ghost::Set_NewTrajectory(Polynome newTrajectoryX, Polynome newTrajectoryY, 
 int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, float cruisingSpeed, bool pureRotation, bool goBackward)
 {
     uint8_t errorStatus = 0;
-    deltaCurve = max(0.3, deltaCurve); 
+    deltaCurve = max(0.3, deltaCurve);
 
     // Set variables state
     posAim = posFinal;
@@ -68,7 +68,7 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
         durationTrajectory = speedProfileRotation.set(speedRamps, speedRamps, cruisingSpeed, abs(lengthTrajectory));
         trajectory_X.set(posAim._x);
         trajectory_Y.set(posAim._y);
-        speedSquare_e=Polynome();
+        speedSquare_e = Polynome();
         speedProfileLinear.setZero();
     }
     else
@@ -79,7 +79,7 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
             errorStatus = 1;
             trajectory_X.set(posAim._x);
             trajectory_Y.set(posAim._y);
-            speedSquare_e=Polynome();
+            speedSquare_e = Polynome();
             speedProfileLinear.setZero();
             speedProfileRotation.setZero();
             trajectoryFinished = true;
@@ -90,19 +90,23 @@ int Ghost::Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRam
         float y0 = posCurrent._y;
         float x3 = posAim._x;
         float y3 = posAim._y;
-        float x2 = x3 - deltaCurve * normRawMove * cos(posAim._theta);
-        float y2 = y3 - deltaCurve * normRawMove * sin(posAim._theta);
         float x1;
         float y1;
+        float x2;
+        float y2;
         if (backward)
         {
             x1 = x0 + deltaCurve * normRawMove * cos(normalizeAngle(posCurrent._theta + PI));
             y1 = y0 + deltaCurve * normRawMove * sin(normalizeAngle(posCurrent._theta + PI));
+            x2 = x3 - deltaCurve * normRawMove * cos(posAim._theta + PI);
+            y2 = y3 - deltaCurve * normRawMove * sin(posAim._theta + PI);
         }
         else
         {
             x1 = x0 + deltaCurve * normRawMove * cos(posCurrent._theta);
             y1 = y0 + deltaCurve * normRawMove * sin(posCurrent._theta);
+            x2 = x3 - deltaCurve * normRawMove * cos(posAim._theta);
+            y2 = y3 - deltaCurve * normRawMove * sin(posAim._theta);
         }
 
         trajectory_X.set(x0, 3.0 * (x1 - x0), 3.0 * (x0 - 2 * x1 + x2), 3.0 * x1 - x0 - 3.0 * x2 + x3);
@@ -201,84 +205,79 @@ int Ghost::ActuatePosition(float dt)
     int errorStatus = 0;
     t += dt;
     t_delayed = ((t > DELAY_POSITION / 1e3) ? t - DELAY_POSITION / 1e3 : 0.0);
-    if ((!locked) and (t_e_delayed <= 1.0))
+
+    if (!locked)
     {
-        if (rotating)
+        if ((t_e_delayed <= 1.0))
         {
-            posPrevious = posCurrent;
-
-            posCurrent._theta += speedProfileRotation.f(t) * dt * ((lengthTrajectory > 0) ? 1 : -1);
-            posCurrent.normalizeTheta();
-            posDelayed._theta += speedProfileRotation.f(t_delayed) * dt * ((lengthTrajectory > 0) ? 1 : -1);
-            posDelayed.normalizeTheta();
-
-            t_e = t / durationTrajectory;
-            t_e_delayed = t_delayed / durationTrajectory;
-        }
-        else
-        {
-            // Determine T_e
-            float speed_e = sqrt(speedSquare_e.f(t_e)); // Virtual speed - associated to Bezier curves
-            float speed = speedProfileLinear.f(t);      // Real (wanted) speed
-
-            if (speed_e != 0.0)
+            if (rotating)
             {
-                t_e += (speed / speed_e) * dt;
+                posPrevious = posCurrent;
+
+                posCurrent._theta += speedProfileRotation.f(t) * dt * ((lengthTrajectory > 0) ? 1 : -1);
+                posCurrent.normalizeTheta();
+                posDelayed._theta += speedProfileRotation.f(t_delayed) * dt * ((lengthTrajectory > 0) ? 1 : -1);
+                posDelayed.normalizeTheta();
+
+                t_e = t / durationTrajectory;
+                t_e_delayed = t_delayed / durationTrajectory;
             }
             else
             {
-                errorStatus = 1;
-            }
-            t_e = ((t_e > 1.0) ? 1.0 : t_e);
+                // Determine T_e
+                float speed_e = sqrt(speedSquare_e.f(t_e)); // Virtual speed - associated to Bezier curves
+                float speed = speedProfileLinear.f(t);      // Real (wanted) speed
 
-            // Determine t_e_delayed
-            float speed_e_delayed = sqrt(speedSquare_e.f(t_e_delayed)); // Virtual speed - associated to Bezier curves
-            float speed_delayed = speedProfileLinear.f(t_delayed);      // Real (wanted) speed
-
-            if (speed_e_delayed != 0.0)
-            {
-                t_e_delayed += (speed_delayed / speed_e_delayed) * dt;
-            }
-            else
-            {
-                errorStatus = 1;
-            }
-
-            // t_e_delayed = ((t_e_delayed > 1.0) ? 1.0 : t_e_delayed);
-
-            // Compute positions
-            posPrevious = posCurrent;
-
-            posDelayed._x = trajectory_X.f(t_e_delayed);
-            posDelayed._y = trajectory_Y.f(t_e_delayed);
-
-            posCurrent._x = trajectory_X.f(t_e);
-            posCurrent._y = trajectory_Y.f(t_e);
-
-            if (abs(speed_e)>1e-9)
-            {
-
-                if (backward)
-                {   
-
-                    posDelayed._theta = atan2(-trajectory_Y.df(t_e_delayed), -trajectory_X.df(t_e_delayed));
-                    posCurrent._theta = atan2(-trajectory_Y.df(t_e), -trajectory_X.df(t_e));
+                if (speed_e != 0.0)
+                {
+                    t_e += (speed / speed_e) * dt;
                 }
                 else
                 {
-                    posDelayed._theta = atan2(trajectory_Y.df(t_e_delayed), trajectory_X.df(t_e_delayed));
-                    posCurrent._theta = atan2(trajectory_Y.df(t_e), trajectory_X.df(t_e));
+                    errorStatus = 1;
                 }
+                t_e = ((t_e > 1.0) ? 1.0 : t_e);
+
+                // Determine t_e_delayed
+                float speed_e_delayed = sqrt(speedSquare_e.f(t_e_delayed)); // Virtual speed - associated to Bezier curves
+                float speed_delayed = speedProfileLinear.f(t_delayed);      // Real (wanted) speed
+
+                if (speed_e_delayed != 0.0)
+                {
+                    t_e_delayed += (speed_delayed / speed_e_delayed) * dt;
+                }
+
+                // Compute positions
+                posPrevious = posCurrent;
+
+                posDelayed._x = trajectory_X.f(t_e_delayed);
+                posDelayed._y = trajectory_Y.f(t_e_delayed);
+
+                posCurrent._x = trajectory_X.f(t_e);
+                posCurrent._y = trajectory_Y.f(t_e);
+
+                if (abs(speed_e) > 1e-9)
+                {
+                    if (backward)
+                    {
+                        posDelayed._theta = atan2(-trajectory_Y.df(t_e_delayed), -trajectory_X.df(t_e_delayed));
+                        posCurrent._theta = atan2(-trajectory_Y.df(t_e), -trajectory_X.df(t_e));
+                    }
+                    else // might need the same treatment as _backward_
+                    {
+                        posDelayed._theta = atan2(trajectory_Y.df(t_e_delayed), trajectory_X.df(t_e_delayed));
+                        posCurrent._theta = atan2(trajectory_Y.df(t_e), trajectory_X.df(t_e));
+                    }
+                }
+                else
+                    posDelayed._theta = posCurrent._theta;
             }
-            else
-                posDelayed._theta = posCurrent._theta;
-            
         }
     }
     else // Bot is locked in position, don't move
     {
 
-        errorStatus = 1;
+        errorStatus = 3;
     }
 
     Update_Speeds(posCurrent, posPrevious, dt);
@@ -287,12 +286,13 @@ int Ghost::ActuatePosition(float dt)
 
     float errorFailSafe = StateManager(); //Avoid multiple call
     errorStatus = max(errorFailSafe, errorStatus);
+
     return errorStatus;
 }
 
 void Ghost::Update_Speeds(VectorE posNow, VectorE posLast, float dt)
 {
-    speedLinearCurrent = (rotating ?  0.0 : 1.0) * (backward ? -1.0 : 1.0) * posNow.distanceWith(posLast) / dt;
+    speedLinearCurrent = (rotating ? 0.0 : 1.0) * (backward ? -1.0 : 1.0) * posNow.distanceWith(posLast) / dt;
 
     speedRotationalCurrent = normalizeAngle(posNow._theta - posLast._theta) / dt;
 }
