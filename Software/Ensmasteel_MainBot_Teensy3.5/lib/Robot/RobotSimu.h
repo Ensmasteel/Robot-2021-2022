@@ -10,7 +10,7 @@ private:
     void Update_Cinetique(float dt) override;
 
 public:
-    RobotSimu(float xIni=0.0,float yIni=0.0,float thetaIni=0.0,Stream* commPort=&Serial);
+    RobotSimu(float xIni=0.0,float yIni=0.0,float thetaIni=0.0, Stream* commPortStream = &Serial, Stream *actuPort = &Serial);
 };
 
 

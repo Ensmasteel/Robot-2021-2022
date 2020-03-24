@@ -214,32 +214,35 @@ void Brake_Action::start()
 }
 //========================================ACTION COMM========================================
 
-Send_Action::Send_Action(Message message, int16_t require) : Action("Send", 0.1, require)
+Send_Action::Send_Action(Message message, Communication* commPort, int16_t require) : Action("Send", 0.1, require)
 {
     this->message = message;
+    this->_commPortLocal = commPort;
 }
 
 void Send_Action::start()
 {
-    robot->communication.send(message);
+    this->_commPortLocal->send(message);
     done = true;
     Action::start();
 }
 
-Wait_Message_Action::Wait_Message_Action(MessageID messageId, float timeout, int16_t require) : Action("WaitMess", timeout, require)
+Wait_Message_Action::Wait_Message_Action(MessageID messageId, float timeout, Communication* commPort, int16_t require) : Action("WaitMess", timeout, require)
 {
     this->messageId = messageId;
+    this->_commPortLocal = commPort;
 }
 
 bool Wait_Message_Action::isFinished()
 {
-    return robot->communication.inWaitingRx() > 0 && extractID(robot->communication.peekOldestMessage()) == messageId;
+    return _commPortLocal->inWaitingRx() > 0 && extractID(_commPortLocal->peekOldestMessage()) == messageId;
 }
 
-Switch_Message_Action::Switch_Message_Action(float timeout,int16_t require) : Action("swch",timeout,require)
+Switch_Message_Action::Switch_Message_Action(float timeout, Communication* commPort, int16_t require) : Action("swch",timeout,require)
 {
     this->doFct.clear();
     this->onMessage.clear();
+    this->_commPortLocal = commPort;
     size=0;
 }
 
@@ -252,11 +255,11 @@ void Switch_Message_Action::addPair(MessageID messageId,Fct fct)
 
 bool Switch_Message_Action::isFinished()
 {
-    if (robot->communication.inWaitingRx() > 0)
+    if (_commPortLocal->inWaitingRx() > 0)
     {
         for (int i=0;i<size;i++)
         {
-            if (extractID(robot->communication.peekOldestMessage()) == onMessage[i])
+            if (extractID(_commPortLocal->peekOldestMessage()) == onMessage[i])
             {
                 doFct[i](robot); //Les functions agissent sur la mainSequence uniquement
                 return true;

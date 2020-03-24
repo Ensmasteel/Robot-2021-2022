@@ -24,7 +24,7 @@
 #define SKIP_TELEMETRY_LONG 100
 #define SKIP_TELEMETRY_FAST 4
 
-Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
+Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *actuPort)
 {
     MoveProfiles::setup();
     cinetiqueCurrent = Cinetique(xIni, yIni, thetaIni);
@@ -40,6 +40,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
     ghost = Ghost(cinetiqueCurrent);
     controller = Asservissement(&translationOrderPID, &rotationOrderPID, &cinetiqueCurrent, &cinetiqueNext, filterFrequency);
     communication = Communication(commPort);
+    commActionneurs = Communication(actuPort);
 
     sequences = new Sequence*[__NBSEQUENCES__]; //On définit un array de la bonne taille
     Action::setPointer(this);
@@ -55,13 +56,14 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
 
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         //Attend le message Tirette
-        mainSequence->add(new Wait_Message_Action(Tirette_M,-1));
+        mainSequence->add(new Wait_Message_Action(Tirette_M,-1,&communication));
         mainSequence->add(new Forward_Action(5,1.0,standard));
         mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));
         mainSequence->add(new Backward_Action(5,0.5,standard));
         mainSequence->add(new Spin_Action(10,TargetVectorE(PI/2,false),standard));
         mainSequence->add(new Goto_Action(5,TargetVectorE(1.2,1.7,0,false),0.5,standard));
         mainSequence->add(new Spin_Action(10,TargetVectorE(PI,false),standard));
+        mainSequence->add(new Send_Action(Message{42,24},&commActionneurs));
         mainSequence->add(new Goto_Action(5,TargetVectorE(2.5,0.3,PI,false),0.5,standard,true));
 
         /*
@@ -93,7 +95,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort)
 
     Sequence* communicationSequence = getSequenceByName(communicationSequenceName);
 
-        Switch_Message_Action* messageSwitch = new Switch_Message_Action(-1,NO_REQUIREMENT);
+        Switch_Message_Action* messageSwitch = new Switch_Message_Action(-1,&communication,NO_REQUIREMENT);
         messageSwitch->addPair(MessageID::Empty_M , ping);
         messageSwitch->addPair(MessageID::Em_Stop_M,shutdown);
         messageSwitch->addPair(MessageID::PID_tweak_M,PID_tweak);
@@ -134,6 +136,7 @@ void Robot::Update_Cinetique(float dt)
 void Robot::Update(float dt)
 {
     communication.update();
+    commActionneurs.update();
 
     Update_Cinetique(dt);
     
@@ -161,6 +164,8 @@ void Robot::Update(float dt)
 
     if (communication.inWaitingRx() > 0)
         communication.popOldestMessage(); //Tout le monde a eu l'occasion de le peek, on le vire.
+    if (commActionneurs.inWaitingRx() > 0)
+        commActionneurs.popOldestMessage(); //Tout le monde a eu l'occasion de le peek, on le vire.
     if (ErrorManager::inWaiting() > 0)
         ErrorManager::popOldestError(); //Les séquences ont eu l'occasion de le lire, on le vire
     compteur++;
