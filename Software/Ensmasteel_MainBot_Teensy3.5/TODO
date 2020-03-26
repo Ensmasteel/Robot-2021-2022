@@ -1,6 +1,0 @@
-Fiabiliser le ghost (se débarasser de certaines variables superflue ?)
-    - Failsafe modifier, non testé !
-Regler les PID
-DONE Creer une enum generale pour les profils PID et les pace de ghost
-DONE Organiser les print de debug (utilisation de logger ?)
-Regler le bug du ghost qui se TP en fin d'action meme s'il est lock
