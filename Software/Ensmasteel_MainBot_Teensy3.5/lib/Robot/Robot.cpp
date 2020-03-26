@@ -63,7 +63,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         mainSequence->add(new Spin_Action(10,TargetVectorE(PI/2,false),standard));
         mainSequence->add(new Goto_Action(5,TargetVectorE(1.2,1.7,0,false),0.5,standard));
         mainSequence->add(new Spin_Action(10,TargetVectorE(PI,false),standard));
-        mainSequence->add(new Send_Action(Message{42,24},&commActionneurs));
+        mainSequence->add(new Send_Action(newMessage(Pavillon_M,(int32_t) 257),&commActionneurs));
         mainSequence->add(new Goto_Action(5,TargetVectorE(2.5,0.3,PI,false),0.5,standard,true));
 
         /*
