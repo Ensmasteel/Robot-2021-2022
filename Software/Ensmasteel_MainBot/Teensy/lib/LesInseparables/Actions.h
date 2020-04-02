@@ -385,4 +385,23 @@ public:
     Recallage_Action(bool arriere, float dist, float timeout);
 };
 
+//========================================ACTION INPUT========================================
+
+/*
+* Attend que la tirette soit tiree
+* Le pin est Low lorsque la tirette est branche
+*/
+class Wait_Tirette_Action : public Action
+{
+private:
+    uint8_t pinIN;
+    bool initOK = false;
+
+public:
+    Wait_Tirette_Action(uint8_t pinIN, int16_t require = NO_REQUIREMENT);
+    void start();
+    bool isFinished();
+    bool hasFailed() { return false; } // On ne peut pas fail l'attente
+};
+
 #endif // !ACTION_H_

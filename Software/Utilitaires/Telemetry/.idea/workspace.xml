@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2789475-b00a-4615-bf92-8ba731af3caf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ensmasteel_MainBot/Arduino_Mega/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Ensmasteel_MainBot/Arduino_Mega/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ensmasteel_MainBot/Teensy/lib/Robot/Robot.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Ensmasteel_MainBot/Teensy/lib/Robot/Robot.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ensmasteel_MainBot/Teensy/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Ensmasteel_MainBot/Teensy/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.txt" beforeDir="false" afterPath="$PROJECT_DIR$/setup.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,13 +15,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mainWindow.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="188">
               <caret line="112" column="117" selection-start-line="112" selection-start-column="35" selection-end-line="112" selection-end-column="117" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/run.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -183,6 +197,15 @@
           <caret line="21" column="28" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="28" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>

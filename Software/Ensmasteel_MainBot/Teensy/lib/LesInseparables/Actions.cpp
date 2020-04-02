@@ -5,13 +5,15 @@
 //========================================ACTION GENERIQUES========================================
 Robot *Action::robot;
 
-void Action::setPointer(Robot *robot_){
-    robot=robot_;
+void Action::setPointer(Robot *robot_)
+{
+    robot = robot_;
 }
 
 void Action::start()
 {
-    timeStarted=millis()/1e3; started=true;
+    timeStarted = millis() / 1e3;
+    started = true;
 }
 
 bool Action::hasFailed()
@@ -21,7 +23,8 @@ bool Action::hasFailed()
     return millis() / 1e3 > timeStarted + timeout;
 }
 
-void Double_Action::doAtEnd(){
+void Double_Action::doAtEnd()
+{
     action2->doAtEnd();
 }
 
@@ -54,7 +57,7 @@ bool Double_Action::hasFailed()
         return action1->hasFailed();
 }
 
-Double_Action::Double_Action(float timeout, String name,int16_t require) : Action(name, timeout, require)
+Double_Action::Double_Action(float timeout, String name, int16_t require) : Action(name, timeout, require)
 {
     this->action1 = nullptr;
     this->action2 = nullptr;
@@ -67,7 +70,7 @@ void Move_Action::start()
     Logger::infoln("MOVE START");
     robot->recalibrateGhost();
     int err;
-    err = robot->ghost.Compute_Trajectory(posFinal, deltaCurve,MoveProfiles::get(profileName,!pureRotation)->speedRamps , MoveProfiles::get(profileName,!pureRotation)->cruisingSpeed, pureRotation, backward);
+    err = robot->ghost.Compute_Trajectory(posFinal, deltaCurve, MoveProfiles::get(profileName, !pureRotation)->speedRamps, MoveProfiles::get(profileName, !pureRotation)->cruisingSpeed, pureRotation, backward);
     if (err == 0)
         Logger::debugln("Computation succeeded");
     else
@@ -94,9 +97,12 @@ bool Move_Action::isFinished()
 bool Move_Action::hasFailed()
 {
     if (Action::hasFailed())
-        if (! robot->controller.close){
+        if (!robot->controller.close)
+        {
             Logger::infoln("MOVE FAILED : robot too far");
-        } else {
+        }
+        else
+        {
             Logger::infoln("MOVE FAILED : ghost not finished");
         }
     return /*asser->tooFar ||*/ Action::hasFailed();
@@ -117,8 +123,8 @@ Goto_Action::Goto_Action(float timeout, TargetVectorE target, float deltaCurve, 
 }
 
 Spin_Action::Spin_Action(float timeout, TargetVectorE target, MoveProfileName profileName, int16_t require)
-    : Move_Action(timeout, target.getVectorE() , 0.0, profileName, true, false, "Spin", require) //x et y seront modifié par start
-{                                                                                    /*Rien a faire d'autre*/
+    : Move_Action(timeout, target.getVectorE(), 0.0, profileName, true, false, "Spin", require) //x et y seront modifié par start
+{                                                                                               /*Rien a faire d'autre*/
 }
 
 void Spin_Action::start()
@@ -131,7 +137,7 @@ void Spin_Action::start()
 Rotate_Action::Rotate_Action(float timeout, float deltaTheta, MoveProfileName profileName, int16_t require)
     : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, profileName, true, false, "Rota", require) //x et y et theta seront modifié par start
 {
-    this->deltaTheta=deltaTheta;
+    this->deltaTheta = deltaTheta;
 }
 
 void Rotate_Action::start()
@@ -141,7 +147,6 @@ void Rotate_Action::start()
     posFinal._theta = robot->cinetiqueCurrent._theta + deltaTheta;
     Move_Action::start();
 }
-
 
 Forward_Action::Forward_Action(float timeout, float dist, MoveProfileName profileName, int16_t require)
     : Move_Action(timeout, VectorE(0.0, 0.0, 0.0), 0.0, profileName, false, false, "Forward", require)
@@ -186,11 +191,11 @@ bool Backward_Action::hasFailed()
 
 void StraightTo_Action::start()
 {
-    //X et Y sont déja miroiré à ce moment. 
+    //X et Y sont déja miroiré à ce moment.
     Vector delta = Vector(x, y) - robot->cinetiqueCurrent;
     float cap = delta.angle();
-    spin = new Spin_Action(timeout, TargetVectorE(cap,true), profileName);  //Donc il faut etre en absolu
-    goTo = new Goto_Action(timeout, TargetVectorE(x,y,cap,true), 0.1, profileName);
+    spin = new Spin_Action(timeout, TargetVectorE(cap, true), profileName); //Donc il faut etre en absolu
+    goTo = new Goto_Action(timeout, TargetVectorE(x, y, cap, true), 0.1, profileName);
     action1 = spin;
     action2 = goTo;
     Double_Action::start();
@@ -205,16 +210,16 @@ StraightTo_Action::StraightTo_Action(float timeout, TargetVector target, MovePro
     this->timeout = timeout;
 }
 
-Brake_Action::Brake_Action(float timeout, int16_t require) : Move_Action(timeout,VectorE(0,0,0),0.1,brake,false,false,"brak",require){}
+Brake_Action::Brake_Action(float timeout, int16_t require) : Move_Action(timeout, VectorE(0, 0, 0), 0.1, brake, false, false, "brak", require) {}
 
 void Brake_Action::start()
 {
-    this->posFinal = (VectorE) robot->cinetiqueCurrent;
+    this->posFinal = (VectorE)robot->cinetiqueCurrent;
     Move_Action::start();
 }
 //========================================ACTION COMM========================================
 
-Send_Action::Send_Action(Message message, Communication* commPort, int16_t require) : Action("Send", 0.1, require)
+Send_Action::Send_Action(Message message, Communication *commPort, int16_t require) : Action("Send", 0.1, require)
 {
     this->message = message;
     this->_commPortLocal = commPort;
@@ -227,7 +232,7 @@ void Send_Action::start()
     Action::start();
 }
 
-Wait_Message_Action::Wait_Message_Action(MessageID messageId, float timeout, Communication* commPort, int16_t require) : Action("WaitMess", timeout, require)
+Wait_Message_Action::Wait_Message_Action(MessageID messageId, float timeout, Communication *commPort, int16_t require) : Action("WaitMess", timeout, require)
 {
     this->messageId = messageId;
     this->_commPortLocal = commPort;
@@ -238,15 +243,15 @@ bool Wait_Message_Action::isFinished()
     return _commPortLocal->inWaitingRx() > 0 && extractID(_commPortLocal->peekOldestMessage()) == messageId;
 }
 
-Switch_Message_Action::Switch_Message_Action(float timeout, Communication* commPort, int16_t require) : Action("swch",timeout,require)
+Switch_Message_Action::Switch_Message_Action(float timeout, Communication *commPort, int16_t require) : Action("swch", timeout, require)
 {
     this->doFct.clear();
     this->onMessage.clear();
     this->_commPortLocal = commPort;
-    size=0;
+    size = 0;
 }
 
-void Switch_Message_Action::addPair(MessageID messageId,Fct fct)
+void Switch_Message_Action::addPair(MessageID messageId, Fct fct)
 {
     this->onMessage.push_back(messageId);
     this->doFct.push_back(fct);
@@ -257,7 +262,7 @@ bool Switch_Message_Action::isFinished()
 {
     if (_commPortLocal->inWaitingRx() > 0)
     {
-        for (int i=0;i<size;i++)
+        for (int i = 0; i < size; i++)
         {
             if (extractID(_commPortLocal->peekOldestMessage()) == onMessage[i])
             {
@@ -273,8 +278,8 @@ bool Switch_Message_Action::isFinished()
 
 End_Action::End_Action(bool loop, bool pause, bool lockGhost) : Action("End_", -1, NO_REQUIREMENT)
 {
-    this->loop=loop;
-    this->pause=pause;
+    this->loop = loop;
+    this->pause = pause;
     this->lockGhost = lockGhost;
 }
 
@@ -287,8 +292,8 @@ void End_Action::start()
 
     if (loop)
     {
-        mySequence->nextIndex=0; //Une end action, boucle sa propre sequence
-        done=true;
+        mySequence->nextIndex = 0; //Une end action, boucle sa propre sequence
+        done = true;
     }
     Action::start();
 }
@@ -296,58 +301,97 @@ void End_Action::start()
 void Do_Action::start()
 {
     functionToCall(robot); //Les functions agissent sur la mainSequence uniquement
-    done=true;
+    done = true;
     Action::start();
 }
 
-Sleep_Action::Sleep_Action(float timeToWait,int16_t require) : Action("ZZzz",-1,require)
+Sleep_Action::Sleep_Action(float timeToWait, int16_t require) : Action("ZZzz", -1, require)
 {
-    this->timeToWait=timeToWait;
+    this->timeToWait = timeToWait;
 }
 
 bool Sleep_Action::isFinished()
 {
-    return millis()/1e3 - timeStarted>timeToWait;
+    return millis() / 1e3 - timeStarted > timeToWait;
 }
 
-Wait_Error_Action::Wait_Error_Action(Error error, float timeout, int16_t require) : Action("WaitErr", timeout, require){
+Wait_Error_Action::Wait_Error_Action(Error error, float timeout, int16_t require) : Action("WaitErr", timeout, require)
+{
     this->error = error;
 }
 
-bool Wait_Error_Action::isFinished(){
+bool Wait_Error_Action::isFinished()
+{
     return ErrorManager::inWaiting() > 0 && ErrorManager::peekOldestError() == error;
 }
 
-PauseSeq_Action::PauseSeq_Action(SequenceName nameSeq, bool lockGhost, int16_t require) : Action("paus",0.1,require){
-    this->nameSeq=nameSeq;
+PauseSeq_Action::PauseSeq_Action(SequenceName nameSeq, bool lockGhost, int16_t require) : Action("paus", 0.1, require)
+{
+    this->nameSeq = nameSeq;
     this->lockGhost = lockGhost;
-    
 }
 
-void PauseSeq_Action::start(){
+void PauseSeq_Action::start()
+{
     robot->getSequenceByName(nameSeq)->pause(lockGhost);
-    done=true;
+    done = true;
     Action::start();
 }
 
-ResumeSeq_Action::ResumeSeq_Action(SequenceName nameSeq, int16_t require) : Action("resu",0.1,require){
-    this->nameSeq=nameSeq;
+ResumeSeq_Action::ResumeSeq_Action(SequenceName nameSeq, int16_t require) : Action("resu", 0.1, require)
+{
+    this->nameSeq = nameSeq;
 }
 
-void ResumeSeq_Action::start(){
+void ResumeSeq_Action::start()
+{
     robot->getSequenceByName(nameSeq)->resume();
-    done=true;
+    done = true;
     Action::start();
 }
 
 /*
 * /!\ Le timeout specifié dans la sequence d'ecoute "recallageListner" doit etre plus petit que celui ci
 */
-Recallage_Action::Recallage_Action(bool arriere, float dist, float timeout) : Double_Action(timeout,"recal")
+Recallage_Action::Recallage_Action(bool arriere, float dist, float timeout) : Double_Action(timeout, "recal")
 {
     action1 = new ResumeSeq_Action(recallageListerName);
     if (arriere)
-        action2 = new Backward_Action(timeout,dist,recallage);
+        action2 = new Backward_Action(timeout, dist, recallage);
     else
-        action2 = new Forward_Action(timeout,dist,recallage);
+        action2 = new Forward_Action(timeout, dist, recallage);
+}
+
+//========================================ACTION INPUT========================================
+
+Wait_Tirette_Action::Wait_Tirette_Action(uint8_t pinIN, int16_t require) : Action("Tirette", -1, require)
+{
+    this->pinIN = pinIN;
+    pinMode(pinIN, INPUT_PULLUP);
+}
+
+void Wait_Tirette_Action::start()
+{
+    initOK = !digitalRead(pinIN); // Verifie que la tirette est branchee au demarage
+    Action::start();
+}
+
+bool Wait_Tirette_Action::isFinished()
+{
+    if (initOK)
+    {
+        done = true;
+        if (digitalRead(pinIN))
+        {
+            Logger::toTelemetry("Tirette", 0);
+            return true;
+        }
+        else
+            return false;
+    }
+    else
+    {
+        initOK = !digitalRead(pinIN);
+        return false;
+    }
 }

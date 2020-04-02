@@ -5,8 +5,27 @@
 #include <Arduino.h>
 #include "Communication.h"
 
-#define DELAY 10
-uint32_t currentMillis = 0, lastMillis = 0;
+#define DELAY 500
+uint32_t currentMillis = 0;
+uint64_t counter = 0;
+
+void setup()
+{
+  Serial2.begin(115200);
+}
+
+void loop()
+{
+  if(millis()-currentMillis > DELAY)
+  {
+    currentMillis = millis();
+    counter++;
+    Serial2.print("Ping ");
+    Serial2.println((int)counter);
+  }
+}
+
+/*
 int incomingByte = 0; // for incoming serial data
 
 Communication communicationTeensy;
@@ -33,3 +52,4 @@ void loop()
     communicationTeensy.popOldestMessage();
   }
 }
+*/
