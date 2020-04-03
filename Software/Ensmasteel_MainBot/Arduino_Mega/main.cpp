@@ -4,43 +4,31 @@
 
 #include <Arduino.h>
 #include "Communication.h"
+#include "Actuators.h"
+#include "Actuators_Manager.h"
 
-#define DELAY 500
-uint32_t currentMillis = 0;
-uint64_t counter = 0;
+#define DELAY 10
+uint32_t lastMillis = 0;
 
-void setup()
-{
-  Serial2.begin(115200);
-}
-
-void loop()
-{
-  if(millis()-currentMillis > DELAY)
-  {
-    currentMillis = millis();
-    counter++;
-    Serial2.print("Ping ");
-    Serial2.println((int)counter);
-  }
-}
-
-/*
-int incomingByte = 0; // for incoming serial data
-
-Communication communicationTeensy;
-Message lastMessage;
+Manager* manager;
 
 void setup()
 {
   Serial.begin(115200);
   Serial2.begin(115200);
-  Serial.println("Begin logging");
-  communicationTeensy = Communication(&Serial2);
+  Serial.println("STARTED");
+  manager = new Manager(&Serial2, &Serial);
+  lastMillis = millis();
 }
 
 void loop()
 {
+  if (millis() - lastMillis > DELAY)
+  {
+    lastMillis = millis();
+    manager->Update();
+  }
+  /*
   communicationTeensy.update();
   if (communicationTeensy.inWaitingRx() > 0)
   {
@@ -51,5 +39,5 @@ void loop()
     Serial.println(extractInt32(lastMessage));
     communicationTeensy.popOldestMessage();
   }
+  */
 }
-*/

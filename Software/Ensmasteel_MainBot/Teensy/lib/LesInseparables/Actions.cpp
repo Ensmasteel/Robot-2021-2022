@@ -219,35 +219,35 @@ void Brake_Action::start()
 }
 //========================================ACTION COMM========================================
 
-Send_Action::Send_Action(Message message, Communication *commPort, int16_t require) : Action("Send", 0.1, require)
+Send_Action::Send_Action(Message message, Communication *comm, int16_t require) : Action("Send", 0.1, require)
 {
     this->message = message;
-    this->_commPortLocal = commPort;
+    this->_commLocal = comm;
 }
 
 void Send_Action::start()
 {
-    this->_commPortLocal->send(message);
+    this->_commLocal->send(message);
     done = true;
     Action::start();
 }
 
-Wait_Message_Action::Wait_Message_Action(MessageID messageId, float timeout, Communication *commPort, int16_t require) : Action("WaitMess", timeout, require)
+Wait_Message_Action::Wait_Message_Action(MessageID messageId, float timeout, Communication *comm, int16_t require) : Action("WaitMess", timeout, require)
 {
     this->messageId = messageId;
-    this->_commPortLocal = commPort;
+    this->_commLocal = comm;
 }
 
 bool Wait_Message_Action::isFinished()
 {
-    return _commPortLocal->inWaitingRx() > 0 && extractID(_commPortLocal->peekOldestMessage()) == messageId;
+    return _commLocal->inWaitingRx() > 0 && extractID(_commLocal->peekOldestMessage()) == messageId;
 }
 
-Switch_Message_Action::Switch_Message_Action(float timeout, Communication *commPort, int16_t require) : Action("swch", timeout, require)
+Switch_Message_Action::Switch_Message_Action(float timeout, Communication *comm, int16_t require) : Action("swch", timeout, require)
 {
     this->doFct.clear();
     this->onMessage.clear();
-    this->_commPortLocal = commPort;
+    this->_commLocal = comm;
     size = 0;
 }
 
@@ -260,11 +260,11 @@ void Switch_Message_Action::addPair(MessageID messageId, Fct fct)
 
 bool Switch_Message_Action::isFinished()
 {
-    if (_commPortLocal->inWaitingRx() > 0)
+    if (_commLocal->inWaitingRx() > 0)
     {
         for (int i = 0; i < size; i++)
         {
-            if (extractID(_commPortLocal->peekOldestMessage()) == onMessage[i])
+            if (extractID(_commLocal->peekOldestMessage()) == onMessage[i])
             {
                 doFct[i](robot); //Les functions agissent sur la mainSequence uniquement
                 return true;

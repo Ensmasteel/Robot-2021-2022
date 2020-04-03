@@ -241,10 +241,10 @@ class Send_Action : public Action
 {
 private:
     Message message;
-    Communication* _commPortLocal;
+    Communication* _commLocal;
 
 public:
-    Send_Action(Message message, Communication* commPort, int16_t require = NO_REQUIREMENT);
+    Send_Action(Message message, Communication* comm, int16_t require = NO_REQUIREMENT);
     void start(); //(Action+Send)
     //isFinished(Action)
     //hasFailed(Action)
@@ -257,10 +257,10 @@ class Wait_Message_Action : public Action
 {
 private:
     MessageID messageId;
-    Communication* _commPortLocal;
+    Communication* _commLocal;
 
 public:
-    Wait_Message_Action(MessageID messageId, float timeout, Communication* commPort, int16_t require = NO_REQUIREMENT);
+    Wait_Message_Action(MessageID messageId, float timeout, Communication* comm, int16_t require = NO_REQUIREMENT);
     //start(Action)
     bool isFinished(); //(Wait_Message) verifie que le message est recu
     //hasFailed(Action)
@@ -275,10 +275,10 @@ private:
     std::vector<MessageID> onMessage;
     std::vector<Fct> doFct;
     uint8_t size;
-    Communication* _commPortLocal;
+    Communication* _commLocal;
 
 public:
-    Switch_Message_Action(float timeout, Communication* commPort, int16_t require);
+    Switch_Message_Action(float timeout, Communication* comm, int16_t require);
     void addPair(MessageID messageId, Fct fct);
     //start : inherited from Action
     bool isFinished();
