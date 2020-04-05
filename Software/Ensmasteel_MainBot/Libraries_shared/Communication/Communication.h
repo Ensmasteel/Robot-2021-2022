@@ -24,7 +24,7 @@ struct Message
 //Je fais cette implémentation "non POO" car je veux etre certains qu'un mesasge fasse 6 octets....
 Message newMessage(MessageID id, int32_t data);
 Message newMessage(MessageID id);
-Message newMessage(MessageID id, uint8_t byte0,uint8_t byte1,uint8_t byte2,uint8_t byte3);
+Message newMessage(MessageID id, uint8_t byte0,uint8_t byte1, uint8_t byte2, uint8_t byte3);
 Message newMessage(MessageID id, VectorE vectorE);
 MessageID extractID(Message message);
 FourBytes extract4Bytes(Message message);
