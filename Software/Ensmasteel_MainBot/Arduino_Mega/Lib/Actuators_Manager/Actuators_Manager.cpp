@@ -26,7 +26,7 @@ void Manager::Update()
         {
         case MessageID::Pavillon_M:
             pavillon.NewOrder(currentOrder);
-            serialDebug->println(pavillon.GetName());
+            serialDebug->println(pavillon.GetOrder());
             break;
 
         case MessageID::Bras_M:
@@ -52,7 +52,13 @@ void Manager::Update()
             serialDebug->println("ID error");
             break;
         }
-
         comController.popOldestMessage();
     }
+
+    if (Actuator_State::MouvFinished == pavillon.Update())
+    {
+        serialDebug->println("Move pav");
+    }
+    brasDroit.Update();
+    brasGauche.Update();
 }

@@ -23,8 +23,8 @@ private:
     Communication comController;
 
     // PINS //
-    uint8_t servoPWM_BrasGauche = 1;
-    uint8_t servoPWM_BrasDroit = 1;
+    uint8_t servoPWM_BrasGauche = 3;
+    uint8_t servoPWM_BrasDroit = 4;
 
     // DATA MESSAGE //
     Message currentMessage;
