@@ -4,8 +4,13 @@ Manager::Manager(Stream *serController, HardwareSerial *serDebug)
 {
     comController = Communication(serController);
     serialDebug = serDebug;
-    brasGauche.Init(servoPWM_BrasGauche, "G");
-    brasDroit.Init(servoPWM_BrasDroit, "D");
+    brasGauche.Init(servoPWM_BrasGauche, MessageID::BrasG_M);
+    brasDroit.Init(servoPWM_BrasDroit, MessageID::BrasD_M);
+
+    listActuators[0] = &pavillon;
+    listActuators[1] = &brasGauche;
+    listActuators[2] = &brasDroit;
+    // Check NBR_ACTUATORS when actuators added
 }
 
 void Manager::Update()
@@ -17,47 +22,23 @@ void Manager::Update()
         currentMessage = comController.peekOldestMessage();
         currentID = extractID(currentMessage);
         currentBytes = extract4Bytes(currentMessage);
-        currentPosition = static_cast<Actuator_Position>(currentBytes.byte0);
-        currentOrder = static_cast<Actuator_Order>(currentBytes.byte1);
+        currentOrder = static_cast<Actuator_Order>(currentBytes.byte0);
 
         serialDebug->println(int(currentID));
 
-        switch (currentID)
-        {
-        case MessageID::Pavillon_M:
-            pavillon.NewOrder(currentOrder);
-            serialDebug->println(pavillon.GetOrder());
-            break;
-
-        case MessageID::Bras_M:
-            switch (currentPosition)
+        for (int i=0; i < NBR_ACTUATORS; i++) {
+            if (currentID == listActuators[i]->GetID())
             {
-            case Actuator_Position::Gauche:
-                brasGauche.NewOrder(currentOrder);
-                serialDebug->println(brasGauche.GetName());
-                break;
-
-            case Actuator_Position::Droit:
-                brasDroit.NewOrder(currentOrder);
-                serialDebug->println(brasDroit.GetName());
-                break;
-
-            default:
-                serialDebug->println("Position error");
-                break;
+                listActuators[i]->NewOrder(currentOrder);
+                serialDebug->println(listActuators[i]->GetOrder());
             }
-            break;
-
-        default:
-            serialDebug->println("ID error");
-            break;
         }
+        
         comController.popOldestMessage();
     }
 
     if (pavillon.Update() == Actuator_State::MouvFinished)
     {
-        serialDebug->println("Move pav");
         comController.send(newMessage(MessageID::Pavillon_M));
     }
     

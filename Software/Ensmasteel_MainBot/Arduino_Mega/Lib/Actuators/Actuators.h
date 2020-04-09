@@ -64,14 +64,13 @@ class Bras : public Actuator
 {
 public:
     Bras();
-    void Init(uint8_t pinServo, String ID, int posRentre = 0, int posSortie = 100);
+    void Init(uint8_t pinServo, MessageID ID, int posRentre = 0, int posSortie = 100);
     Actuator_State Update() override;
 private:
     int posRentre = 0;
     int posSortie = 100;
 
     uint8_t pinServo;
-    String ID;
     Servo servo;
 };
 

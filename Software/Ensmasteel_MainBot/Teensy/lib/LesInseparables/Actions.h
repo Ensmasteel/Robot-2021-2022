@@ -297,7 +297,7 @@ private:
 
     Message message;
 public:
-    Send_Order_Action(MessageID actuatorID, Actuator_Order actuatorOrder, Actuator_Position actuatorPos, float timeout, Communication *comm, boolean waitCompletion, int16_t require = NO_REQUIREMENT);
+    Send_Order_Action(MessageID actuatorID, Actuator_Order actuatorOrder, float timeout, Communication *comm, boolean waitCompletion, int16_t require = NO_REQUIREMENT);
 };
 
 //========================================ACTION MISC========================================

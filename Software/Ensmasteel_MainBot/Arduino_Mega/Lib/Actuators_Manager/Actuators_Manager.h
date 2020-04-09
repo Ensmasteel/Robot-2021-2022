@@ -6,21 +6,22 @@
 #include "MessageID.h"
 #include "Actuators.h"
 
+#define NBR_ACTUATORS 3
+
 class Manager
 {
 public:
     Manager(Stream* serControllerStream, HardwareSerial* serDebug = &Serial);
     void Update();
-
-    // ACTUATORS // a mettre en private quand debug fini
-    Pavillon pavillon;
-    Bras brasGauche;
-    Bras brasDroit;
-
-
 private:
     HardwareSerial* serialDebug;
     Communication comController;
+    
+    // ACTUATORS //
+    Actuator* listActuators[NBR_ACTUATORS];
+    Pavillon pavillon;
+    Bras brasGauche;
+    Bras brasDroit;
 
     // PINS //
     uint8_t servoPWM_BrasGauche = 3;
@@ -31,7 +32,6 @@ private:
     MessageID currentID = MessageID::Stop_M;
     FourBytes currentBytes;
     Actuator_Order currentOrder;
-    Actuator_Position currentPosition;
 };
 
 #endif

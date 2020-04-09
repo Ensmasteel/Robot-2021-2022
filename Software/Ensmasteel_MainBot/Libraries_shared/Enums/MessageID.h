@@ -24,23 +24,15 @@ enum MessageID : uint16_t
     Evitemment_M,   //[Mega/Aux -> Teensy]: Un Evitemment peut être a faire |  DATA: Un vecteur (position de l'obstacle)
     North_M,        //[Camera -> Teensy]:   Il faudra finir au nord
     South_M,        //[Camera -> Teensy]:   Il faudra finir au sud
-    Pavillon_M,     //[Teensy -> Mega]:     Il faut lever le pavillon | byte0 = 0 | byte1 = Actuator_Order |
-    Bras_M          //[Teensy -> Mega]:     Rentrer ou sortir bras    | byte0 = Actuator_Position | byte1 = Actuator_Order |
+    Pavillon_M,     //[Teensy -> Mega]:     Il faut lever le pavillon | byte0 = Actuator_Order |
+    BrasG_M,        //[Teensy -> Mega]:     Rentrer ou sortir bras    | byte0 = Actuator_Order |
+    BrasD_M,        //[Teensy -> Mega]:     Rentrer ou sortir bras    | byte0 = Actuator_Order |
 };
 
 // Complements d'ordres //
 /////////////////////////
 
 // Byte 0
-enum Actuator_Position : uint8_t
-{
-    Gauche,
-    Droit,
-    Arriere,
-    Null
-};
-
-// Byte 1
 enum Actuator_Order : uint8_t
 {
     Sortir,     // Bras

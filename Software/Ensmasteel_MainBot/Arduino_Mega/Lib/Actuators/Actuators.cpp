@@ -60,7 +60,7 @@ Actuator_State Pavillon::Update()
     }
 }
 
-Bras::Bras() : Actuator("Bras", MessageID::Bras_M)
+Bras::Bras() : Actuator("Bras")
 {
 }
 
@@ -96,13 +96,18 @@ Actuator_State Bras::Update()
     Actuator::Update();
 }
 
-void Bras::Init(uint8_t pinServo, String ID, int posRentre, int posSortie)
+void Bras::Init(uint8_t pinServo, MessageID ID, int posRentre, int posSortie)
 {
-    this->pinServo = pinServo;
-    this->ID = ID;
-    name += ID;
-    servo.attach(pinServo);
+    messID = ID;
+    if (messID == MessageID::BrasD_M)
+        name += "D";
+    if (messID == MessageID::BrasG_M)
+        name += "G";
+
+    this->pinServo = pinServo; 
     this->posRentre = posRentre;
     this->posSortie = posSortie;
+
+    servo.attach(pinServo);
     servo.write(posRentre);
 }
