@@ -274,6 +274,19 @@ bool Switch_Message_Action::isFinished()
     return false;
 }
 
+Send_Order_Action::Send_Order_Action(MessageID actuatorID, Actuator_Order actuatorOrder, Actuator_Position actuatorPos, float timeout, Communication *comm, boolean waitCompletion, int16_t require) : Double_Action(timeout, "Order",require)
+{
+    message = newMessage(actuatorID, actuatorPos, actuatorOrder, 0, 0);
+    sendAction = new Send_Action(message, comm);
+    waitAction = new Wait_Message_Action(actuatorID,-1, comm);
+    action1 = sendAction;
+    if(waitCompletion)
+        action2 = waitAction;
+    else
+        action2 = new Null_Action();
+}
+
+
 //========================================ACTION MISC========================================
 
 End_Action::End_Action(bool loop, bool pause, bool lockGhost) : Action("End_", -1, NO_REQUIREMENT)
@@ -313,6 +326,11 @@ Sleep_Action::Sleep_Action(float timeToWait, int16_t require) : Action("ZZzz", -
 bool Sleep_Action::isFinished()
 {
     return millis() / 1e3 - timeStarted > timeToWait;
+}
+
+Null_Action::Null_Action() : Action("Null",-1)
+{
+    done = true;
 }
 
 Wait_Error_Action::Wait_Error_Action(Error error, float timeout, int16_t require) : Action("WaitErr", timeout, require)

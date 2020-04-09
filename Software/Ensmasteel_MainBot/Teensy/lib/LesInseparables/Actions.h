@@ -285,6 +285,21 @@ public:
     //has failed : inherited from Action
 };
 
+/*
+* Envoie un ordre d'action vers la carte actionneur.
+* waitCompletion : Attente ou non de l'execution de l'action par la carte actionneur.
+*/
+class Send_Order_Action : public Double_Action
+{
+private:
+    Send_Action* sendAction;
+    Wait_Message_Action* waitAction;
+
+    Message message;
+public:
+    Send_Order_Action(MessageID actuatorID, Actuator_Order actuatorOrder, Actuator_Position actuatorPos, float timeout, Communication *comm, boolean waitCompletion, int16_t require = NO_REQUIREMENT);
+};
+
 //========================================ACTION MISC========================================
 
 /*
@@ -301,6 +316,18 @@ public:
     //start(Action)
     bool isFinished();                 //(Sleep) verifie que le temps prévu s'est ecoulé
     bool hasFailed() { return false; } //(Sleep) on en peut pas fail d'attendre
+};
+
+/*
+* Ne fais rien.
+* Permet d'annuler une action d'un Double_Action.
+*/
+class Null_Action : public Action
+{
+public:
+    Null_Action();
+    bool isFinished() {return true;}
+    bool hasFailed() {return false;}
 };
 
 /*

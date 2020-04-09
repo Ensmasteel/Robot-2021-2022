@@ -16,32 +16,28 @@ enum class Actuator_State
 };
 
 //// ACTION GENERIQUE ////
-//////////////////////////
+/////////////////////////
 
 class Actuator
 {
 public:
-    Actuator(String name = "Actuator");
+    Actuator(String name = "Actuator", MessageID messID = MessageID::Empty_M);
     virtual Actuator_State Update();
     void NewOrder(Actuator_Order order);
 
     String GetName(){return name;}
     Actuator_State GetEtat(){return etat;}
     Actuator_Order GetOrder(){return currentOrder;}
-
+    MessageID GetID(){return messID;}
 protected:
     String name;
     Actuator_State etat;
     Actuator_Order currentOrder;
+    MessageID messID = MessageID::Empty_M;
 };
 
-#define MOTOR_STEPS 200
-#define RPM 250
-#define DIR 35
-#define STEP 34
-#define SLEEP 22
-#define M0 37
-#define M1 36
+//// ACTUATORS ////
+//////////////////
 
 class Pavillon : public Actuator
 {
@@ -49,16 +45,20 @@ public:
     Pavillon();
     Actuator_State Update() override;
 private:
+
+    // STEPPER PARAMETERS //
     uint8_t motorSteps = 200;
-    uint8_t motorRPM = 200;
+    float motorRPM = 240;
     uint8_t pinDir = 35;
     uint8_t pinStep = 34;
     uint8_t pinSleep = 22;
     uint8_t pinM0 = 37;
     uint8_t pinM1 = 36;
-    uint16_t actionStep = 200;
+    long actionStep = 600;
     DRV8834* stepperMotor;
+
 };
+
 
 class Bras : public Actuator
 {

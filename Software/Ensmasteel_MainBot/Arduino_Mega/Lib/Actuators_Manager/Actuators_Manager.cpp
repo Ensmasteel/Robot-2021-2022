@@ -55,10 +55,12 @@ void Manager::Update()
         comController.popOldestMessage();
     }
 
-    if (Actuator_State::MouvFinished == pavillon.Update())
+    if (pavillon.Update() == Actuator_State::MouvFinished)
     {
         serialDebug->println("Move pav");
+        comController.send(newMessage(MessageID::Pavillon_M));
     }
+    
     brasDroit.Update();
     brasGauche.Update();
 }

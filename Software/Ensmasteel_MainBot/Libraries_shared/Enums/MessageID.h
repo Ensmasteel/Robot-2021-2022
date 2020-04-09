@@ -36,7 +36,8 @@ enum Actuator_Position : uint8_t
 {
     Gauche,
     Droit,
-    Arriere
+    Arriere,
+    Null
 };
 
 // Byte 1

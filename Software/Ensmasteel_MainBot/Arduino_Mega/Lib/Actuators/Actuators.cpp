@@ -1,7 +1,8 @@
 #include "Actuators.h"
 
-Actuator::Actuator(String name)
+Actuator::Actuator(String name, MessageID messID)
 {
+    this->messID = messID;
     this->name = name;
     etat = Actuator_State::Attente;
 }
@@ -17,14 +18,12 @@ void Actuator::NewOrder(Actuator_Order order)
     etat = Actuator_State::NewMess;
 }
 
-Pavillon::Pavillon() : Actuator("Pav")
+Pavillon::Pavillon() : Actuator("Pav", MessageID::Pavillon_M)
 {
     etat = Actuator_State::Attente;
-    //stepperMotor = new DRV8834(MOTOR_STEPS, DIR, STEP, SLEEP, M0, M1);
     stepperMotor = new DRV8834(motorSteps, pinDir, pinStep, pinSleep, pinM0, pinM1);
-    stepperMotor->begin(RPM);
+    stepperMotor->begin(motorRPM,(short)1);
     stepperMotor->disable();
-    stepperMotor->setMicrostep(1);
 }
 
 Actuator_State Pavillon::Update()
@@ -36,8 +35,7 @@ Actuator_State Pavillon::Update()
         {
         case Actuator_Order::Monter:
             stepperMotor->enable();
-            stepperMotor->rotate(2*360);
-            stepperMotor->rotate(-2*360);
+            stepperMotor->move(-actionStep);
             stepperMotor->disable();
             break;
 
@@ -62,7 +60,7 @@ Actuator_State Pavillon::Update()
     }
 }
 
-Bras::Bras() : Actuator("Bras")
+Bras::Bras() : Actuator("Bras", MessageID::Bras_M)
 {
 }
 
