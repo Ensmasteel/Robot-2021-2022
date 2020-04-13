@@ -27,6 +27,9 @@ enum MessageID : uint16_t
     Pavillon_M,     //[Teensy -> Mega]:     Il faut lever le pavillon | byte0 = Actuator_Order |
     BrasG_M,        //[Teensy -> Mega]:     Rentrer ou sortir bras    | byte0 = Actuator_Order |
     BrasD_M,        //[Teensy -> Mega]:     Rentrer ou sortir bras    | byte0 = Actuator_Order |
+    PinceAvG_M,     //[Teensy -> Mega]:     Monter, Descendre, ouvrir, fermer pince    | byte0 = Actuator_Order |
+    PinceAvD_M,     //[Teensy -> Mega]:     Monter, Descendre, ouvrir, fermer pince    | byte0 = Actuator_Order |
+    PinceArr_M      //[Teensy -> Mega]:     Monter, Descendre, ouvrir, fermer pince    | byte0 = Actuator_Order |
 };
 
 // Complements d'ordres //

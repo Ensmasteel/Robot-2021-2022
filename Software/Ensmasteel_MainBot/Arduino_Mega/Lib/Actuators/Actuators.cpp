@@ -20,10 +20,19 @@ void Actuator::NewOrder(Actuator_Order order)
 
 Pavillon::Pavillon() : Actuator("Pav", MessageID::Pavillon_M)
 {
-    etat = Actuator_State::Attente;
     stepperMotor = new DRV8834(motorSteps, pinDir, pinStep, pinSleep, pinM0, pinM1);
     stepperMotor->begin(motorRPM,(short)1);
     stepperMotor->disable();
+}
+
+void Pavillon::Init(uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1)
+{
+    this->pinDir = pinDir;
+    this->pinStep = pinStep;
+    this->pinSleep = pinSleep;
+    this->pinM0 = pinM0;
+    this->pinM1 = pinM1;
+    etat = Actuator_State::Attente;
 }
 
 Actuator_State Pavillon::Update()
@@ -99,10 +108,19 @@ Actuator_State Bras::Update()
 void Bras::Init(uint8_t pinServo, MessageID ID, int posRentre, int posSortie)
 {
     messID = ID;
-    if (messID == MessageID::BrasD_M)
+    switch (messID)
+    {
+    case MessageID::BrasD_M:
         name += "D";
-    if (messID == MessageID::BrasG_M)
+        break;
+
+    case MessageID::BrasG_M:
         name += "G";
+        break;
+    
+    default:
+        break;
+    }
 
     this->pinServo = pinServo; 
     this->posRentre = posRentre;
@@ -110,4 +128,49 @@ void Bras::Init(uint8_t pinServo, MessageID ID, int posRentre, int posSortie)
 
     servo.attach(pinServo);
     servo.write(posRentre);
+
+    etat = Actuator_State::Attente;
+}
+
+
+Pince::Pince() : Actuator("Pince")
+{
+}
+
+void Pince::Init(uint8_t pinServo, uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1, MessageID ID)
+{
+    messID = ID;
+    switch (messID)
+    {
+    case MessageID::PinceArr_M:
+        name += "Arr";
+        break;
+
+    case MessageID::PinceAvD_M:
+        name += "AvD";
+        break;
+
+    case MessageID::PinceAvG_M:
+        name += "AvG";
+        break;
+    
+    default:
+        break;
+    }
+
+    this->pinServo = pinServo; 
+    this->pinDir = pinDir;
+    this->pinStep = pinStep;
+    this->pinSleep = pinSleep;
+    this->pinM0 = pinM0;
+    this->pinM1 = pinM1;
+
+    servo.attach(pinServo);
+    servo.write(posFermee);
+
+    stepperMotor = new DRV8834(motorSteps, pinDir, pinStep, pinSleep, pinM0, pinM1);
+    stepperMotor->begin(motorRPM,(short)1);
+    stepperMotor->disable();
+
+    etat = Actuator_State::Attente;
 }

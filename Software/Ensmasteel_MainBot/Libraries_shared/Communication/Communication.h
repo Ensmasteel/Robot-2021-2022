@@ -30,6 +30,7 @@ MessageID extractID(Message message);
 FourBytes extract4Bytes(Message message);
 int32_t extractInt32(Message message);
 Vector extractVectorE(Message message);
+Actuator_Order extractOrder(Message message);
 
 class Communication
 {

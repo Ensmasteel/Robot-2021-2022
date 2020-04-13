@@ -84,6 +84,11 @@ Vector extractVectorE(Message message){
     return out;
 }
 
+Actuator_Order extractOrder(Message message){
+    decoder.data=message._data;
+    return static_cast<Actuator_Order>(decoder.fBytes.byte0);
+}
+
 class MessageBox
 {
 public:
