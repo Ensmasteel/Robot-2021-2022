@@ -174,3 +174,45 @@ void Pince::Init(uint8_t pinServo, uint8_t pinDir, uint8_t pinStep, uint8_t pinS
 
     etat = Actuator_State::Attente;
 }
+
+Actuator_State Pince::Update()
+{
+    switch (etat)
+    {
+    case Actuator_State::NewMess:
+        switch (currentOrder)
+        {
+        case Actuator_Order::Monter:
+            stepperMotor->enable();
+            stepperMotor->move(-actionStep);
+            stepperMotor->disable();
+            break;
+
+        case Actuator_Order::Descendre:
+            stepperMotor->enable();
+            stepperMotor->move(-actionStep);
+            stepperMotor->disable();
+            break;
+        
+        case Actuator_Order::Ouvrir:
+            servo.write(posOuverte);
+            break;
+        
+        case Actuator_Order::Fermer:
+            servo.write(posFermee);
+            break;
+
+        default:
+            break;
+        }
+        etat = Actuator_State::MouvFinished;
+        break;
+    
+    case Actuator_State::MouvFinished:
+        etat = Actuator_State::Attente;
+        break;
+
+    default:
+        break;
+    }  
+}
