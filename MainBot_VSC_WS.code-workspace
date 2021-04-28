@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "Teensy"
+		},
+		{
+			"name": "Arduino_Mega",
+			"path": "Arduino_Mega"
+		},
+		{
+			"path": "Libraries_shared"
+		}
+	],
+	"settings": {}
+}
