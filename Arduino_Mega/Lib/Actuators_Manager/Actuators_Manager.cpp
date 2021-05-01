@@ -48,7 +48,7 @@ void Manager::Update()
 
     // Update des actionneurs
     for (int i = 0; i < NBR_ACTUATORS; i++)
-    {
+    {   
         if (listActuators[i]->Update() == Actuator_State::MouvFinished)
         {
             comController.send(listActuators[i]->OrderCompleted());

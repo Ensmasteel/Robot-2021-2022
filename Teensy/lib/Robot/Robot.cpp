@@ -55,13 +55,14 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
     TargetVector southBase = TargetVector(0.22,0.70,false);
 
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
+        Serial.println("entree dans main");
         //Attend le message Tirette
         //mainSequence->add(new Wait_Tirette_Action(30));
-        mainSequence->add(new Do_Action(startTimeSeq));
+        //mainSequence->add(new Do_Action(startTimeSeq));
         //mainSequence->add(new Wait_Message_Action(Tirette_M,-1,&communication));
-        mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));
+        //mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));
         mainSequence->add(new Send_Action(newMessage(Pavillon_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
-
+        mainSequence->add(new Sleep_Action(3000000000));
         mainSequence->add(new Send_Action(newMessage(PinceAvD_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
         mainSequence->add(new Send_Action(newMessage(PinceAvD_M, Actuator_Order::Ouvrir, 0, 0, 0),&commActionneurs));
         mainSequence->add(new Send_Action(newMessage(PinceAvD_M, Actuator_Order::Fermer, 0, 0, 0),&commActionneurs));
@@ -98,8 +99,10 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         //ActionFinale
         //mainSequence->add(new End_Action(false,true,true));
         mainSequence->add(new End_Action(true,false));
+        Serial.println("avant StartSequence");
         mainSequence->startSelected();
-
+    
+    Serial.println("mainpass");
         //déclenchée par timeSequence
     Sequence* goNorth = getSequenceByName(goNorthName);
         goNorth->add(new StraightTo_Action(-1,northBase,standard));

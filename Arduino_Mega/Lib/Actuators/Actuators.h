@@ -6,6 +6,7 @@
 #include "MessageID.h"
 #include "Servo.h"
 #include "DRV8834.h"
+#include "StepperMotorJ.h"
 
 enum class Actuator_State
 {
@@ -64,6 +65,7 @@ private:
     uint8_t pinM1 = 36;
     long actionStep = 2000;
     DRV8834* stepperMotor;
+    StepperMotorJ* stepMot;
 };
 
 

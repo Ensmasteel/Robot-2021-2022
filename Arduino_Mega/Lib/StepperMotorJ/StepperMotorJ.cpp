@@ -1,4 +1,4 @@
-/*#include "StepperMotorJ.h"
+#include "StepperMotorJ.h"
 
 StepperMotorJ::StepperMotorJ(int stepPin, int dirPin) {
     this->stepPin = stepPin;
@@ -9,7 +9,7 @@ StepperMotorJ::StepperMotorJ(int stepPin, int dirPin) {
 
 void StepperMotorJ::move(int steps, int delay, bool up) {
     digitalWrite(dirPin, up ? HIGH : LOW);
-
+    Serial.println(steps);
     for(int x = 0; x < steps; x++) {
         digitalWrite(stepPin,HIGH);
         delayMicroseconds(delay);
@@ -17,4 +17,3 @@ void StepperMotorJ::move(int steps, int delay, bool up) {
         delayMicroseconds(delay);
   }
 }
-*/

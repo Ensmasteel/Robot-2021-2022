@@ -23,6 +23,7 @@ Pavillon::Pavillon() : Actuator("Pav", MessageID::Pavillon_M)
     stepperMotor = new DRV8834(motorSteps, pinDir, pinStep, pinSleep, pinM0, pinM1);
     stepperMotor->begin(motorRPM,(short)1);
     stepperMotor->disable();
+    stepMot = new StepperMotorJ(pinStep, pinDir);
 }
 
 void Pavillon::Init(uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1)
@@ -36,7 +37,10 @@ void Pavillon::Init(uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t p
 }
 
 Actuator_State Pavillon::Update()
-{
+{   
+    Serial.println("Pavillon");
+    Serial.println(int(etat));
+    Serial.println(String(currentOrder));
     switch (etat)
     {
     case Actuator_State::NewMess:
@@ -44,13 +48,15 @@ Actuator_State Pavillon::Update()
         {
         case Actuator_Order::Monter:
             stepperMotor->enable();
-            stepperMotor->move(actionStep);
+            stepperMotor->move(-actionStep);
             stepperMotor->disable();
+            Serial.println("Je dois monter");
+            //stepMot->move(actionStep,500,true);
             break;
 
         case Actuator_Order::Descendre:
             stepperMotor->enable();
-            stepperMotor->move(-actionStep);
+            stepperMotor->move(actionStep);
             stepperMotor->disable();
             break;
 
@@ -68,7 +74,7 @@ Actuator_State Pavillon::Update()
         break;
     }
 
-    Actuator::Update();
+   return Actuator::Update();
 }
 
 Bras::Bras() : Actuator("Bras")
@@ -104,7 +110,7 @@ Actuator_State Bras::Update()
         break;
     }
 
-    Actuator::Update();
+    return Actuator::Update();
 }
 
 void Bras::Init(uint8_t pinServo, MessageID ID, int posRentre, int posSortie)
@@ -248,5 +254,5 @@ Actuator_State Pince::Update()
         break;
     } 
 
-    Actuator::Update();
+    return Actuator::Update();
 }

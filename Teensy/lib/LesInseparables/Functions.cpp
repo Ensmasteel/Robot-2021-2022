@@ -105,6 +105,7 @@ void forceMainSeqNext(Robot *robot)
 }
 
 void startTimeSeq(Robot* robot) {
+    Serial.println("StartTimeSeq");
     robot->getSequenceByName(timeSequenceName)->resume();
 }
 

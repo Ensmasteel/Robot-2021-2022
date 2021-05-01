@@ -30,12 +30,13 @@ void setup()
   Serial.begin(115200);   // USB
   Serial3.begin(115200);  // HC05
   Serial2.begin(115200);  // Arduino Mega
-  Logger::setup(&Serial, &Serial3, &Serial, true, true, true);
+  delay(500);
+  Logger::setup(&Serial, &Serial, &Serial, true, true, true);
   ErrorManager::setup();
   delay(2000);
   Logger::infoln("REBOOT%"); //Le caractère % permet de faire sauter le parsing en cours sur la station sol
   Logger::infoln("Bender's booting up");
-  bender = new Robot(0.22,1.20,0,&Serial1,&Serial1);
+  bender = new Robot(0.22,1.20,0,&Serial,&Serial2);
   //bender=new RobotSimu(0.22,1.20,0,&Serial,&Serial2);
   bender->setTeamColor(TeamColor::BLEU);
   Logger::infoln("Hello, I'm bender");

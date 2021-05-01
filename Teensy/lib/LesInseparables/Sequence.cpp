@@ -13,6 +13,7 @@ void Sequence::startFollowing()
 void Sequence::startSelected()
 {
     nextIndex = currentIndex + 1;
+    Serial.println(NO_REQUIREMENT);
     if (queue[currentIndex]->require!=NO_REQUIREMENT)
     {
         //Si l'indice est négatif, on check en relatif. Sinon en absolu
@@ -24,11 +25,13 @@ void Sequence::startSelected()
         else
         {
             fails[currentIndex]=true;
-            Logger::infoln("Action "+String(currentIndex)+" failed(requirementNotFilled)"+"("+String(getName())+")");
+            Logger::infoln(queue[currentIndex]->require);
+            Logger::infoln("Action "+ queue[currentIndex]->name + String(currentIndex)+" failed(requirementNotFilled)"+"("+String(getName())+")" /*queue[currentIndex]->timeout + queue[currentIndex]->require*/);
             startFollowing();
         }
     }
     else
+
         queue[currentIndex]->start();
 }
 
