@@ -28,9 +28,9 @@ uint32_t compteur=0;
 void setup()
 {
   Serial.begin(115200);   // USB
-  Serial4.begin(115200);  // HC05
+  Serial3.begin(115200);  // HC05
   Serial2.begin(115200);  // Arduino Mega
-  Logger::setup(&Serial, &Serial4, &Serial, true, true, true);
+  Logger::setup(&Serial, &Serial3, &Serial, true, true, true);
   ErrorManager::setup();
   delay(2000);
   Logger::infoln("REBOOT%"); //Le caractère % permet de faire sauter le parsing en cours sur la station sol

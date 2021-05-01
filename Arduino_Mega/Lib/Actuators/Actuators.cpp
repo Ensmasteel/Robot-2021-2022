@@ -44,7 +44,7 @@ Actuator_State Pavillon::Update()
         {
         case Actuator_Order::Monter:
             stepperMotor->enable();
-            stepperMotor->move(-actionStep);
+            stepperMotor->move(actionStep);
             stepperMotor->disable();
             break;
 
@@ -188,7 +188,7 @@ Actuator_State Pince::Update()
         {
         case Actuator_Order::Monter:
             stepperMotor->enable();
-            stepperMotor->move(-actionStep);
+            stepperMotor->move(actionStep);
             stepperMotor->disable();
             break;
 
@@ -198,6 +198,34 @@ Actuator_State Pince::Update()
             stepperMotor->disable();
             break;
         
+        case Actuator_Order::Stock:
+            stepperMotor->enable();
+            servo.write(posOuverte);
+            stepperMotor->move(-miniStep);//rapide
+            servo.write(posFermee);
+            stepperMotor->move(miniStep+actionStep); //rapide
+            stepperMotor->setRPM(motorRPM/2);
+            stepperMotor->move(miniStep); //lent
+            servo.write(posTresOuverte);
+            stepperMotor->setRPM(motorRPM);
+            stepperMotor->move(-miniStep-actionStep);//rapide
+            stepperMotor->disable();
+            break;
+
+        case Actuator_Order::Destock:
+            stepperMotor->enable();
+            stepperMotor->move(actionStep);//rapide
+            stepperMotor->setRPM(motorRPM/2);
+            stepperMotor->move(miniStep);//lent
+            servo.write(posFermee);
+            stepperMotor->setRPM(motorRPM/3);
+            stepperMotor->move(-miniStep*2);//tres lent
+            stepperMotor->setRPM(motorRPM);
+            stepperMotor->move(-actionStep+miniStep);//rapide
+            servo.write(posTresOuverte);
+            stepperMotor->disable();
+            break;
+
         case Actuator_Order::Ouvrir:
             servo.write(posOuverte);
             break;

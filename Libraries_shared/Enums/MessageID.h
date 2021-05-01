@@ -42,6 +42,8 @@ enum Actuator_Order : uint8_t
     Rentrer,    // Bras
     Monter,     // Pavillon, Railles
     Descendre,  // Pavillon, Railles
+    Stock,      // Railles
+    Destock,    // Railles
     Fermer,     // Pinces
     Ouvrir      // Pinces
 };

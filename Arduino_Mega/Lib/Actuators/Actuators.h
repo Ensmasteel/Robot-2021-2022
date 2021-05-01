@@ -101,9 +101,11 @@ private:
 
     uint8_t motorSteps = 200;
     float motorRPM = 60;
-    long actionStep = 450;
+    long actionStep = 400;
+    long miniStep = 40;
     int posFermee = 60;
     int posOuverte = 90;
+    int posTresOuverte = 110;
 };
 
 
