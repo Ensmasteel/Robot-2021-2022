@@ -1,13 +1,13 @@
-#include "StepperMotorJ.h"
+/*#include "StepperMotorJ.h"
 
-StepperMotorJ(int stepPin, int dirPin) {
+StepperMotorJ::StepperMotorJ(int stepPin, int dirPin) {
     this->stepPin = stepPin;
     this->dirPin = dirPin;
     pinMode(stepPin, OUTPUT);
     pinMode(dirPin, OUTPUT);
 }
 
-void StepperMotorJ::move(int steps, int delay, Boolean up) {
+void StepperMotorJ::move(int steps, int delay, bool up) {
     digitalWrite(dirPin, up ? HIGH : LOW);
 
     for(int x = 0; x < steps; x++) {
@@ -17,3 +17,4 @@ void StepperMotorJ::move(int steps, int delay, Boolean up) {
         delayMicroseconds(delay);
   }
 }
+*/

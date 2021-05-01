@@ -20,6 +20,7 @@ void setup()
   Serial.println("STARTED");
   manager = new Manager(&Serial2, &Serial);
   lastMillis = millis();
+  
 }
 
 void loop()

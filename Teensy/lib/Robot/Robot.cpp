@@ -56,9 +56,10 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
 
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         //Attend le message Tirette
-        mainSequence->add(new Wait_Tirette_Action(30));
+        //mainSequence->add(new Wait_Tirette_Action(30));
         mainSequence->add(new Do_Action(startTimeSeq));
         //mainSequence->add(new Wait_Message_Action(Tirette_M,-1,&communication));
+        mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));
         mainSequence->add(new Send_Action(newMessage(Pavillon_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
 
         mainSequence->add(new Send_Action(newMessage(PinceAvD_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
@@ -75,7 +76,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         mainSequence->add(new Send_Order_Action(MessageID::Pavillon_M, Actuator_Order::Descendre, -1, &commActionneurs,true));
         mainSequence->add(new Forward_Action(5,1.0,standard));
         //mainSequence->add(new Send_Action(newMessage(BrasG_M, Actuator_Order::Sortir, 0, 0, 0), &commActionneurs));
-        mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));
+        //mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));
         mainSequence->add(new Backward_Action(5,0.5,standard));
         mainSequence->add(new Spin_Action(10,TargetVectorE(PI/2,false),standard));
         mainSequence->add(new Goto_Action(5,TargetVectorE(1.2,1.7,0,false),0.5,standard));
