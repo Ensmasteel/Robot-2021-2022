@@ -38,9 +38,9 @@ void Pavillon::Init(uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t p
 
 Actuator_State Pavillon::Update()
 {   
-    Serial.println("Pavillon");
+    /*Serial.println("Pavillon");
     Serial.println(int(etat));
-    Serial.println(String(currentOrder));
+    Serial.println(String(currentOrder));*/
     switch (etat)
     {
     case Actuator_State::NewMess:

@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <Servo.h>
+#include <DRV8834.h>
 
 Servo brasG;
 Servo brasD;
@@ -37,6 +38,8 @@ const int stepPerRevolution = 200;
 int stepDelayRail = 2000;
 int stepDelayRailArr = 4000;
 int stepDelayPav = 500;
+
+DRV8834* stepperMotor;
 
 void setup() {
   // put your setup code here, to run once:
@@ -107,7 +110,13 @@ void loop() {
   delay(2000);
   //////////Pavillon//////////
 
-  digitalWrite(sleepPav,HIGH);
+  stepperMotor = new DRV8834(stepPerRevolution, dirPav, stepPav, sleepPav, pavM0, pavM1);
+  stepperMotor->begin(300,(short)1);
+  stepperMotor->disable();
+  stepperMotor->enable();
+  stepperMotor->move(2000);
+  stepperMotor->disable();
+  /*digitalWrite(sleepPav,HIGH);
   digitalWrite(dirPav,HIGH);
 
   //montée pavillon
@@ -116,7 +125,7 @@ void loop() {
     delayMicroseconds(stepDelayPav);
     digitalWrite(stepPav,LOW);
     delayMicroseconds(stepDelayPav);
-  }
+  }*/
   
   delay(1000);
   //descente pavillon
