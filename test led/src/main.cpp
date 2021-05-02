@@ -43,7 +43,7 @@ DRV8834* stepperMotor;
 
 void setup() {
   // put your setup code here, to run once:
-  
+  Serial.begin(115200);
   pinMode(dirPinD,OUTPUT);
   pinMode(stepPinD,OUTPUT);
   pinMode(dirPinG,OUTPUT);
@@ -74,7 +74,7 @@ void setup() {
 }
 
 void loop() {
-
+ /*
   delay(5000);
   
   //////////Systeme arriere//////////
@@ -106,7 +106,8 @@ void loop() {
     digitalWrite(stepPinArr,LOW);
     delayMicroseconds(stepDelayRailArr);
   }
-
+ */
+  Serial.println("avant delay");
   delay(2000);
   //////////Pavillon//////////
 
@@ -116,6 +117,7 @@ void loop() {
   stepperMotor->enable();
   stepperMotor->move(2000);
   stepperMotor->disable();
+  Serial.println("Apres delay");
   /*digitalWrite(sleepPav,HIGH);
   digitalWrite(dirPav,HIGH);
 
@@ -125,7 +127,7 @@ void loop() {
     delayMicroseconds(stepDelayPav);
     digitalWrite(stepPav,LOW);
     delayMicroseconds(stepDelayPav);
-  }*/
+  }
   
   delay(1000);
   //descente pavillon
@@ -136,7 +138,7 @@ void loop() {
     delayMicroseconds(stepDelayPav);
     digitalWrite(stepPav,LOW);
     delayMicroseconds(stepDelayPav);
-  }
+  }*/
 
   digitalWrite(sleepPav,LOW);
 
