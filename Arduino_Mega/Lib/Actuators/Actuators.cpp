@@ -23,7 +23,7 @@ Pavillon::Pavillon() : Actuator("Pav", MessageID::Pavillon_M)
     stepperMotor = new DRV8834(motorSteps, pinDir, pinStep, pinSleep, pinM0, pinM1);
     stepperMotor->begin(motorRPM,(short)1);
     stepperMotor->disable();
-    stepMot = new StepperMotorJ(pinStep, pinDir);
+    stepMot = new StepperMotorJ(pinStep, pinDir, pinSleep);
 }
 
 void Pavillon::Init(uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1)
@@ -47,11 +47,11 @@ Actuator_State Pavillon::Update()
         switch (currentOrder)
         {
         case Actuator_Order::Monter:
-            stepperMotor->enable();
+            /*stepperMotor->enable();
             stepperMotor->move(-actionStep);
-            stepperMotor->disable();
+            stepperMotor->disable();*/
             Serial.println("Je dois monter");
-            //stepMot->move(actionStep,500,true);
+            stepMot->move(actionStep,500,true);
             break;
 
         case Actuator_Order::Descendre:

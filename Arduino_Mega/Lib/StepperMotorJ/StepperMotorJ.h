@@ -5,11 +5,12 @@
 
 class StepperMotorJ {
     public:
-        StepperMotorJ(int stepPin, int dirPin);
+        StepperMotorJ(int stepPin, int dirPin, int sleepPin);
         void move(int steps, int delay, bool up);
 
     private:
         int stepPin;
         int dirPin;
+        int sleepPin;
 };
 #endif 
