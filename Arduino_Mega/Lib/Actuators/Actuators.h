@@ -14,6 +14,7 @@ enum class Actuator_State
     NewMess,
     Mouvement,
     MouvFinished
+
 };
 
 //// ACTION GENERIQUE ////

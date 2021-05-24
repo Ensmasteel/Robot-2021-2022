@@ -41,6 +41,7 @@ Actuator_State Pavillon::Update()
     /*Serial.println("Pavillon");
     Serial.println(int(etat));
     Serial.println(String(currentOrder));*/
+    Serial.println("etat : " + (int)etat);
     switch (etat)
     {
     case Actuator_State::NewMess:

@@ -226,7 +226,8 @@ Send_Action::Send_Action(Message message, Communication *comm, int16_t require) 
 }
 
 void Send_Action::start()
-{
+{   
+    Serial.println("Start");
     this->_commLocal->send(message);
     done = true;
     Action::start();
@@ -324,7 +325,8 @@ Sleep_Action::Sleep_Action(float timeToWait, int16_t require) : Action("ZZzz", -
 }
 
 bool Sleep_Action::isFinished()
-{
+{   
+    Serial.println("Sleep");
     return millis() / 1e3 - timeStarted > timeToWait;
 }
 
