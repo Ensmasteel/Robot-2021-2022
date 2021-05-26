@@ -103,8 +103,8 @@ private:
     uint8_t pinM1;
 
     uint8_t motorSteps = 200;
-    float motorRPM = 60;
-    long actionStep = 400;
+    float motorRPM = 20;
+    long actionStep =  200; //400;
     long miniStep = 40;
     int posFermee = 60;
     int posOuverte = 90;

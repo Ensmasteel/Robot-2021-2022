@@ -8,12 +8,12 @@
 #define PIN_CODEUSE_DROITE_A 34
 #define PIN_CODEUSE_DROITE_B 35
 
-#define PIN_MOTEUR_GAUCHE_PWR 22
-#define PIN_MOTEUR_GAUCHE_SENS 36
+#define PIN_MOTEUR_GAUCHE_PWR 24
+#define PIN_MOTEUR_GAUCHE_SENS 2
 #define PIN_MOTEUR_GAUCHE_BRAKE 37
 
-#define PIN_MOTEUR_DROITE_PWR 23
-#define PIN_MOTEUR_DROITE_SENS 38
+#define PIN_MOTEUR_DROITE_PWR 25
+#define PIN_MOTEUR_DROITE_SENS 3
 #define PIN_MOTEUR_DROITE_BRAKE 39
 
 #define ELOIGNEMENT_CODEUSES 0.29430415
@@ -68,21 +68,23 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         mainSequence->add(new Send_Action(newMessage(Pavillon_M, Actuator_Order::Descendre, 0, 0, 0),&commActionneurs));
         mainSequence->add(new Wait_Message_Action(Pavillon_M, 5, &commActionneurs));
         mainSequence->add(new Send_Action(newMessage(PinceAvD_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
+        mainSequence->add(new Send_Action(newMessage(PinceAvG_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
         mainSequence->add(new Send_Action(newMessage(PinceAvD_M, Actuator_Order::Ouvrir, 0, 0, 0),&commActionneurs));
+        mainSequence->add(new Send_Action(newMessage(PinceAvG_M, Actuator_Order::Ouvrir, 0, 0, 0),&commActionneurs));
         mainSequence->add(new Send_Action(newMessage(PinceAvD_M, Actuator_Order::Fermer, 0, 0, 0),&commActionneurs));
+        mainSequence->add(new Send_Action(newMessage(PinceAvG_M, Actuator_Order::Fermer, 0, 0, 0),&commActionneurs));
 
         mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
         mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Ouvrir, 0, 0, 0),&commActionneurs));
-        mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Fermer, 0, 0, 0),&commActionneurs));
+        mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Descendre, 0, 0, 0),&commActionneurs));
         
         mainSequence->add(new Send_Action(newMessage(BrasD_M, Actuator_Order::Sortir, 0, 0, 0),&commActionneurs));
         mainSequence->add(new Send_Action(newMessage(BrasD_M, Actuator_Order::Rentrer, 0, 0, 0),&commActionneurs));
 
-        mainSequence->add(new Send_Order_Action(MessageID::Pavillon_M, Actuator_Order::Descendre, -1, &commActionneurs,true));
-        mainSequence->add(new Forward_Action(5,1.0,standard));
+        mainSequence->add(new Forward_Action(5,0.2,standard));
         //mainSequence->add(new Send_Action(newMessage(BrasG_M, Actuator_Order::Sortir, 0, 0, 0), &commActionneurs));
         //mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));
-        mainSequence->add(new Backward_Action(5,0.5,standard));
+        mainSequence->add(new Backward_Action(5,0.2,standard));
         mainSequence->add(new Spin_Action(10,TargetVectorE(PI/2,false),standard));
         mainSequence->add(new Goto_Action(5,TargetVectorE(1.2,1.7,0,false),0.5,standard));
         mainSequence->add(new Spin_Action(10,TargetVectorE(PI,false),standard));
