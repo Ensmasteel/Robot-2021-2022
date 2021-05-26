@@ -41,7 +41,8 @@ Actuator_State Pavillon::Update()
     /*Serial.println("Pavillon");
     Serial.println(int(etat));
     Serial.println(String(currentOrder));*/
-    Serial.println("etat : " + (int)etat);
+    Serial.print("etat :");
+    Serial.println(int(etat));
     switch (etat)
     {
     case Actuator_State::NewMess:
@@ -57,7 +58,8 @@ Actuator_State Pavillon::Update()
 
         case Actuator_Order::Descendre:
             stepperMotor->enable();
-            stepperMotor->move(actionStep);
+            stepperMotor->move(-actionStep);
+            //stepMot->move(actionStep,500,false);
             stepperMotor->disable();
             break;
 
