@@ -246,3 +246,51 @@ Actuator_State Pince::Update()
 
     return Actuator::Update();
 }
+
+
+
+Pince::PinceArriere() : Pince()
+{
+}
+
+
+Actuator_State PinceArriere::Update()
+{
+    switch (etat)
+    {
+    case Actuator_State::NewMess:
+        switch (currentOrder)
+        {
+        case Actuator_Order::Monter:
+            stepperMotor->enable();
+            stepperMotor->move(actionStep);
+            stepperMotor->disable();
+            break;
+
+        case Actuator_Order::Descendre:
+            stepperMotor->enable();
+            stepperMotor->move(-actionStep);
+            stepperMotor->disable();
+            break;
+        
+        case Actuator_Order::Ouvrir:
+            servo.write(posOuverte);
+            break;
+        
+        case Actuator_Order::Fermer:
+            servo.write(posFermee);
+            break;
+
+        default:
+            break;
+        }
+        etat = Actuator_State::MouvFinished;
+        break;
+    case Actuator_State::MouvFinished:
+        etat = Actuator_State::Attente;
+        break;
+    default:
+        break;
+    } 
+    return Actuator::Update();
+}
