@@ -184,17 +184,13 @@ Actuator_State Pince::Update()
         switch (currentOrder)
         {
         case Actuator_Order::Monter:
-            stepperMotor->enable();
-            stepperMotor->move(actionStep);
-            stepperMotor->disable();
+            stepperMotor->move(actionStep,standardDelay,true,true);
             break;
 
         case Actuator_Order::Descendre:
-            stepperMotor->enable();
-            stepperMotor->move(-actionStep);
-            stepperMotor->disable();
+            stepperMotor->move(actionStep,standardDelay,false,true);
             break;
-
+        
         case Actuator_Order::Ouvrir:
             servo.write(posOuverte);
             break;
@@ -218,10 +214,6 @@ Actuator_State Pince::Update()
     } 
 
     return Actuator::Update();
-}
-
-PinceAvant::PinceAvant() : Pince()
-{
 }
 
 Actuator_State PinceAvant::Update()
@@ -253,6 +245,42 @@ Actuator_State PinceAvant::Update()
             stepperMotor->move(miniStep*2, standardDelay*3, false, true);//tres lent
             stepperMotor->move(actionStep-miniStep, standardDelay, false, true);//rapide
             servo.write(posTresOuverte);
+            break;
+
+        default:
+            break;
+        }
+
+    default:
+        break;
+    } 
+
+    return Pince::Update();
+}
+
+Pince::PinceArriere() : Pince()
+{
+}
+
+Actuator_State PinceArriere::Update()
+{
+    switch (etat)
+    {
+    case Actuator_State::NewMess:
+        switch (currentOrder)
+        {
+            case Actuator_Order::Stock:
+            //depuis la position haute, ouvre les pince puis descend legerment, ferme les pinces et remonte
+            servo.write(posOuverte);
+            stepperMotor->move(actionStep, standardDelay, false, true);//rapide descente
+            servo.write(posFermee);
+            stepperMotor->move(actionStep, standardDelay*3, true, true); //tres lente montee
+            break;
+
+        case Actuator_Order::Destock:
+            stepperMotor->move(actionStep, standardDelay, false, true);//rapide descente
+            servo.write(posOuverte);
+            stepperMotor->move(actionStep, standardDelay*2, true, true); //lente montee
             break;
 
         default:

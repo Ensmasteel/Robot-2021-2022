@@ -88,7 +88,7 @@ public:
     Pince();
     void Init(uint8_t pinServo, uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1, MessageID ID, int ferme = 60, int ouvert = 90);
     Actuator_State Update() override;
-private:
+protected:
     Servo servo;
     StepperMotorJ* stepperMotor;
 
@@ -100,22 +100,29 @@ private:
     uint8_t pinM1;
 
     uint8_t motorSteps = 200;
+    long actionStep =  400; //200 pince arr
     int posFermee = 60;
     int posOuverte = 90;
+    int standardDelay = 2000;
 };
 
 class PinceAvant : public Pince
 {
 public:
-    PinceAvant();
     Actuator_State Update() override;
 private:
 
-    long actionStep =  400;
     long miniStep = 40;
     int posTresOuverte = 110;
-    int standardDelay = 2000;
 };
+
+class PinceArriere : public Pince
+{
+public:
+    PinceArriere();
+    Actuator_State Update() override;
+}
+
 
 
 #endif
