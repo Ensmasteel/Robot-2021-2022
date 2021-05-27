@@ -86,7 +86,7 @@ class Pince : public Actuator
 {
 public:
     Pince();
-    void Init(uint8_t pinServo, uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1, MessageID ID, int ferme = 60, int ouvert = 90);
+    void Init(uint8_t pinServo, uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1, MessageID ID, int ferme = 70, int ouvert = 100, int actionStep = 400);
     Actuator_State Update() override;
 protected:
     Servo servo;
@@ -101,8 +101,8 @@ protected:
 
     uint8_t motorSteps = 200;
     long actionStep =  400; //200 pince arr
-    int posFermee = 60;
-    int posOuverte = 90;
+    int posFermee = 70;
+    int posOuverte = 100;
     int standardDelay = 2000;
 };
 
@@ -119,7 +119,6 @@ private:
 class PinceArriere : public Pince
 {
 public:
-    PinceArriere();
     Actuator_State Update() override;
 }
 

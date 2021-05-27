@@ -258,10 +258,6 @@ Actuator_State PinceAvant::Update()
     return Pince::Update();
 }
 
-Pince::PinceArriere() : Pince()
-{
-}
-
 Actuator_State PinceArriere::Update()
 {
     switch (etat)

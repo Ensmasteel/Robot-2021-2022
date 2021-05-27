@@ -22,9 +22,9 @@ private:
     Pavillon pavillon;
     Bras brasGauche;
     Bras brasDroit;
-    Pince pinceAvantGauche;
-    Pince pinceAvantDroite;
-    Pince pinceArr;
+    PinceAvant pinceAvantGauche;
+    PinceAvant pinceAvantDroite;
+    PinceArriere pinceArr;
 
     // PINS //
     //////////

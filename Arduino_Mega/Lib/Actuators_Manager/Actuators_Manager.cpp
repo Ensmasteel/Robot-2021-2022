@@ -10,7 +10,7 @@ Manager::Manager(Stream *serController, HardwareSerial *serDebug)
     brasDroit.Init(brasDroit_servoPWM, MessageID::BrasD_M, 90, 0);
     pinceAvantGauche.Init(pinceAvG_servoPWM, pinceAvG_Dir, pinceAvG_Step, pinces_Sleep, pincesAv_M0, pincesAv_M1, MessageID::PinceAvG_M);
     pinceAvantDroite.Init(pinceAvD_servoPWM, pinceAvD_Dir, pinceAvD_Step, pinces_Sleep, pincesAv_M0, pincesAv_M1, MessageID::PinceAvD_M);
-    pinceArr.Init(pinceArr_servoPWM, pinceArr_Dir, pinceArr_Step, pinces_Sleep, pincesArr_M0, pincesArr_M1, MessageID::PinceArr_M, 175, 120);
+    pinceArr.Init(pinceArr_servoPWM, pinceArr_Dir, pinceArr_Step, pinces_Sleep, pincesArr_M0, pincesArr_M1, MessageID::PinceArr_M, 175, 120, 200);
 
     listActuators[0] = &pavillon;
     listActuators[1] = &brasGauche;
