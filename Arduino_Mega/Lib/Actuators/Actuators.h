@@ -5,7 +5,6 @@
 #include "Communication.h"
 #include "MessageID.h"
 #include "Servo.h"
-#include "DRV8834.h"
 #include "StepperMotorJ.h"
 
 enum class Actuator_State
@@ -65,8 +64,7 @@ private:
     uint8_t pinM0 = 37;
     uint8_t pinM1 = 36;
     long actionStep = 2000;
-    DRV8834* stepperMotor;
-    StepperMotorJ* stepMot;
+    StepperMotorJ* stepperMotor;
 };
 
 
@@ -93,7 +91,7 @@ public:
     Actuator_State Update() override;
 private:
     Servo servo;
-    DRV8834* stepperMotor;
+    StepperMotorJ* stepperMotor;
 
     uint8_t pinServo;
     uint8_t pinDir;

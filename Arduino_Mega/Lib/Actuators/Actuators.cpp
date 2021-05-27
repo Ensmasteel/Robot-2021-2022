@@ -20,10 +20,7 @@ void Actuator::NewOrder(Actuator_Order order)
 
 Pavillon::Pavillon() : Actuator("Pav", MessageID::Pavillon_M)
 {
-    stepperMotor = new DRV8834(motorSteps, pinDir, pinStep, pinSleep, pinM0, pinM1);
-    stepperMotor->begin(motorRPM,(short)1);
-    stepperMotor->disable();
-    stepMot = new StepperMotorJ(pinStep, pinDir, pinSleep);
+    stepperMotor = new StepperMotorJ(pinStep, pinDir, pinSleep, pinM0, pinM1);
 }
 
 void Pavillon::Init(uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1)
@@ -49,18 +46,11 @@ Actuator_State Pavillon::Update()
         switch (currentOrder)
         {
         case Actuator_Order::Monter:
-            /*stepperMotor->enable();
-            stepperMotor->move(-actionStep);
-            stepperMotor->disable();*/
-            Serial.println("Je dois monter");
-            stepMot->move(actionStep,500,true);
+            stepperMotor->move(actionStep,500,true,false);
             break;
 
         case Actuator_Order::Descendre:
-            stepperMotor->enable();
-            stepperMotor->move(-actionStep);
-            //stepMot->move(actionStep,500,false);
-            stepperMotor->disable();
+            stepperMotor->move(actionStep,500,false,false);
             break;
 
         default:
@@ -181,9 +171,7 @@ void Pince::Init(uint8_t pinServo, uint8_t pinDir, uint8_t pinStep, uint8_t pinS
     servo.attach(pinServo);
     servo.write(posFermee);
 
-    stepperMotor = new DRV8834(motorSteps, pinDir, pinStep, pinSleep, pinM0, pinM1);
-    stepperMotor->begin(motorRPM,(short)1);
-    stepperMotor->disable();
+    stepperMotor = new StepperMotorJ(pinStep, pinDir, pinSleep, pinM0, pinM1);
 
     etat = Actuator_State::Attente;
 }
@@ -208,9 +196,8 @@ Actuator_State Pince::Update()
             break;
         
         case Actuator_Order::Stock:
-            stepperMotor->enable();
             servo.write(posOuverte);
-            stepperMotor->move(-miniStep);//rapide
+            stepperMotor->move(-miniStep, false, true);//rapide
             servo.write(posFermee);
             stepperMotor->move(miniStep+actionStep); //rapide
             stepperMotor->setRPM(motorRPM/2);
