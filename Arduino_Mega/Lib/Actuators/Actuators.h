@@ -57,13 +57,12 @@ private:
 
     // STEPPER PARAMETERS //
     uint8_t motorSteps = 200;
-    float motorRPM = 240;
+    long actionStep = 2000;
     uint8_t pinDir = 35;
     uint8_t pinStep = 34;
     uint8_t pinSleep = 22;
     uint8_t pinM0 = 37;
     uint8_t pinM1 = 36;
-    long actionStep = 2000;
     StepperMotorJ* stepperMotor;
 };
 
@@ -101,12 +100,21 @@ private:
     uint8_t pinM1;
 
     uint8_t motorSteps = 200;
-    float motorRPM = 20;
-    long actionStep =  200; //400;
-    long miniStep = 40;
     int posFermee = 60;
     int posOuverte = 90;
+};
+
+class PinceAvant : public Pince
+{
+public:
+    PinceAvant();
+    Actuator_State Update() override;
+private:
+
+    long actionStep =  400;
+    long miniStep = 40;
     int posTresOuverte = 110;
+    int standardDelay = 2000;
 };
 
 

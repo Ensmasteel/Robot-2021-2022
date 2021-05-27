@@ -194,33 +194,6 @@ Actuator_State Pince::Update()
             stepperMotor->move(-actionStep);
             stepperMotor->disable();
             break;
-        
-        case Actuator_Order::Stock:
-            servo.write(posOuverte);
-            stepperMotor->move(-miniStep, false, true);//rapide
-            servo.write(posFermee);
-            stepperMotor->move(miniStep+actionStep); //rapide
-            stepperMotor->setRPM(motorRPM/2);
-            stepperMotor->move(miniStep); //lent
-            servo.write(posTresOuverte);
-            stepperMotor->setRPM(motorRPM);
-            stepperMotor->move(-miniStep-actionStep);//rapide
-            stepperMotor->disable();
-            break;
-
-        case Actuator_Order::Destock:
-            stepperMotor->enable();
-            stepperMotor->move(actionStep);//rapide
-            stepperMotor->setRPM(motorRPM/2);
-            stepperMotor->move(miniStep);//lent
-            servo.write(posFermee);
-            stepperMotor->setRPM(motorRPM/3);
-            stepperMotor->move(-miniStep*2);//tres lent
-            stepperMotor->setRPM(motorRPM);
-            stepperMotor->move(-actionStep+miniStep);//rapide
-            servo.write(posTresOuverte);
-            stepperMotor->disable();
-            break;
 
         case Actuator_Order::Ouvrir:
             servo.write(posOuverte);
@@ -245,4 +218,50 @@ Actuator_State Pince::Update()
     } 
 
     return Actuator::Update();
+}
+
+PinceAvant::PinceAvant() : Pince()
+{
+}
+
+Actuator_State PinceAvant::Update()
+{
+    switch (etat)
+    {
+    case Actuator_State::NewMess:
+        switch (currentOrder)
+        {
+        
+        case Actuator_Order::Stock:
+            servo.write(posOuverte);
+            stepperMotor->move(miniStep, standardDelay, false, true);//rapide
+            servo.write(posFermee);
+            delay(200);
+            stepperMotor->move(miniStep+actionStep, standardDelay, true, true); //rapide
+            stepperMotor->move(miniStep, standardDelay*2, true, true); //lent
+            delay(200);
+            servo.write(posTresOuverte);
+            stepperMotor->move(miniStep+actionStep, standardDelay, false, true);//rapide
+            break;
+
+        case Actuator_Order::Destock:
+            stepperMotor->move(actionStep, standardDelay, true, true);//rapide
+            stepperMotor->move(miniStep, standardDelay*2, true, true);//lent
+            delay(200);
+            servo.write(posFermee);
+            delay(200);
+            stepperMotor->move(miniStep*2, standardDelay*3, false, true);//tres lent
+            stepperMotor->move(actionStep-miniStep, standardDelay, false, true);//rapide
+            servo.write(posTresOuverte);
+            break;
+
+        default:
+            break;
+        }
+
+    default:
+        break;
+    } 
+
+    return Pince::Update();
 }
