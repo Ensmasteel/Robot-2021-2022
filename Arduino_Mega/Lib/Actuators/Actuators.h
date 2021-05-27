@@ -107,6 +107,7 @@ protected:
     int posFermee = 60;
     int posOuverte = 90;
     int posTresOuverte = 110;
+    int standardDelay = 2000;
 };
 
 class PinceArriere : public Pince
@@ -115,8 +116,14 @@ public:
     PinceArriere();
     Actuator_State Update() override;
 protected:
-    //redefinis les varriables à overide
-    long actionStep =  200; //400;
+    //redefinis les varriables a overide
+    //uint8_t motorSteps = 200;
+    //float motorRPM = 20;
+    long actionStep =  200; 
+    long miniStep = 40;
+    int posFermee = 60;
+    int posOuverte = 90;
+    int delay = 2000;
 }
 
 

@@ -184,44 +184,13 @@ Actuator_State Pince::Update()
         switch (currentOrder)
         {
         case Actuator_Order::Monter:
-            stepperMotor->enable();
-            stepperMotor->move(actionStep);
-            stepperMotor->disable();
+            stepperMotor->move(actionStep,standardDelay,true,true);
             break;
 
         case Actuator_Order::Descendre:
-            stepperMotor->enable();
-            stepperMotor->move(-actionStep);
-            stepperMotor->disable();
+            stepperMotor->move(actionStep,standardDelay,false,true);
             break;
         
-        case Actuator_Order::Stock:
-            servo.write(posOuverte);
-            stepperMotor->move(-miniStep, false, true);//rapide
-            servo.write(posFermee);
-            stepperMotor->move(miniStep+actionStep); //rapide
-            stepperMotor->setRPM(motorRPM/2);
-            stepperMotor->move(miniStep); //lent
-            servo.write(posTresOuverte);
-            stepperMotor->setRPM(motorRPM);
-            stepperMotor->move(-miniStep-actionStep);//rapide
-            stepperMotor->disable();
-            break;
-
-        case Actuator_Order::Destock:
-            stepperMotor->enable();
-            stepperMotor->move(actionStep);//rapide
-            stepperMotor->setRPM(motorRPM/2);
-            stepperMotor->move(miniStep);//lent
-            servo.write(posFermee);
-            stepperMotor->setRPM(motorRPM/3);
-            stepperMotor->move(-miniStep*2);//tres lent
-            stepperMotor->setRPM(motorRPM);
-            stepperMotor->move(-actionStep+miniStep);//rapide
-            servo.write(posTresOuverte);
-            stepperMotor->disable();
-            break;
-
         case Actuator_Order::Ouvrir:
             servo.write(posOuverte);
             break;
@@ -248,9 +217,11 @@ Actuator_State Pince::Update()
 }
 
 
-
 Pince::PinceArriere() : Pince()
 {
+    Pince::actionStep = this->actionStep;
+    Pince::posFermee = this->posFermee;
+    Pince::posOuverte = this->posOuverte;
 }
 
 
@@ -261,24 +232,19 @@ Actuator_State PinceArriere::Update()
     case Actuator_State::NewMess:
         switch (currentOrder)
         {
-        case Actuator_Order::Monter:
-            stepperMotor->enable();
-            stepperMotor->move(actionStep);
-            stepperMotor->disable();
+
+        case Actuator_Order::Stock:
+            //depuis la position haute, ouvre les pince puis descend legerment, ferme les pinces et remonte
+            servo.write(posOuverte);
+            stepperMotor->move(miniStep,delay,false,true);//rapide descente
+            servo.write(posFermee);
+            stepperMotor->move(miniStep,delay*3,true,true); //tres lente montee
             break;
 
-        case Actuator_Order::Descendre:
-            stepperMotor->enable();
-            stepperMotor->move(-actionStep);
-            stepperMotor->disable();
-            break;
-        
-        case Actuator_Order::Ouvrir:
+        case Actuator_Order::Destock:
+            stepperMotor->move(actionStep,delay,false,true);//rapide descente
             servo.write(posOuverte);
-            break;
-        
-        case Actuator_Order::Fermer:
-            servo.write(posFermee);
+            stepperMotor->move(miniStep,delay*2,true,true); //lente montee
             break;
 
         default:
@@ -292,5 +258,5 @@ Actuator_State PinceArriere::Update()
     default:
         break;
     } 
-    return Actuator::Update();
+    return Pince::Update();
 }
