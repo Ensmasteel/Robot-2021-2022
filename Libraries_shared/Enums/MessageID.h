@@ -40,10 +40,10 @@ enum Actuator_Order : uint8_t
 {
     Sortir,     // Bras
     Rentrer,    // Bras
-    Monter,     // Pavillon, Railles
-    Descendre,  // Pavillon, Railles
-    Stock,      // Railles
-    Destock,    // Railles
+    Monter,     // Pavillon, Rails
+    Descendre,  // Pavillon, Rails
+    Stock,      // Rails
+    Destock,    // Rails
     Fermer,     // Pinces
     Ouvrir      // Pinces
 };
