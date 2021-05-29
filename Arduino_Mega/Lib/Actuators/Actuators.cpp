@@ -138,7 +138,7 @@ Pince::Pince() : Actuator("Pince")
 {
 }
 
-void Pince::Init(uint8_t pinServo, uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1, MessageID ID, int ferme, int ouvert)
+void Pince::Init(uint8_t pinServo, uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1, MessageID ID, int ferme, int ouvert, int actionStep)
 {
     messID = ID;
     switch (messID)
@@ -167,6 +167,7 @@ void Pince::Init(uint8_t pinServo, uint8_t pinDir, uint8_t pinStep, uint8_t pinS
     this->pinM1 = pinM1;
     posFermee = ferme;
     posOuverte = ouvert;
+    this-> actionStep = actionStep;
 
     servo.attach(pinServo);
     servo.write(posFermee);
@@ -226,24 +227,24 @@ Actuator_State PinceAvant::Update()
         
         case Actuator_Order::Stock:
             servo.write(posOuverte);
-            stepperMotor->move(miniStep, standardDelay, false, true);//rapide
+            stepperMotor->move(miniStep, standardDelay, true, true);//rapide
             servo.write(posFermee);
             delay(200);
-            stepperMotor->move(miniStep+actionStep, standardDelay, true, true); //rapide
-            stepperMotor->move(miniStep, standardDelay*2, true, true); //lent
+            stepperMotor->move(miniStep+actionStep, standardDelay, false, true); //rapide
+            stepperMotor->move(miniStep, standardDelay*2, false, true); //lent
             delay(200);
             servo.write(posTresOuverte);
-            stepperMotor->move(miniStep+actionStep, standardDelay, false, true);//rapide
+            stepperMotor->move(miniStep+actionStep, standardDelay, true, true);//rapide
             break;
 
         case Actuator_Order::Destock:
-            stepperMotor->move(actionStep, standardDelay, true, true);//rapide
-            stepperMotor->move(miniStep, standardDelay*2, true, true);//lent
+            stepperMotor->move(actionStep, standardDelay, false, true);//rapide
+            stepperMotor->move(miniStep, standardDelay*2, false, true);//lent
             delay(200);
             servo.write(posFermee);
             delay(200);
-            stepperMotor->move(miniStep*2, standardDelay*3, false, true);//tres lent
-            stepperMotor->move(actionStep-miniStep, standardDelay, false, true);//rapide
+            stepperMotor->move(miniStep*2, standardDelay*3, true, true);//tres lent
+            stepperMotor->move(actionStep-miniStep, standardDelay, true, true);//rapide
             servo.write(posTresOuverte);
             break;
 

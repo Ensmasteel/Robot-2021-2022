@@ -74,6 +74,13 @@ void setup() {
 }
 
 void loop() {
+
+  pinceD.write(60);
+  delay(3000);
+  pinceD.write(80);
+  delay(1000);
+  pinceD.write(110);
+  delay(1000);
  /*
   delay(5000);
   
@@ -111,7 +118,7 @@ void loop() {
   delay(2000);
   //////////Pavillon//////////
 
-  stepperMotor = new DRV8834(stepPerRevolution, dirPav, stepPav, sleepPav, pavM0, pavM1);
+  /*stepperMotor = new DRV8834(stepPerRevolution, dirPav, stepPav, sleepPav, pavM0, pavM1);
   stepperMotor->begin(300,(short)1);
   stepperMotor->disable();
   stepperMotor->enable();
@@ -140,9 +147,9 @@ void loop() {
     delayMicroseconds(stepDelayPav);
   }*/
 
-  digitalWrite(sleepPav,LOW);
+  //digitalWrite(sleepPav,LOW);
 
-  delay(2000);
+  //delay(2000);
   //////////Pince avant gauche//////////
 
   /*digitalWrite(sleepPinces,HIGH);

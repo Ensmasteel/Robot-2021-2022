@@ -105,8 +105,11 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         //ActionFinale
         //mainSequence->add(new End_Action(false,true,true));
         mainSequence->add(new Send_Order_Action(PinceAvD_M, Actuator_Order::Stock, (float)5.0, &commActionneurs, true));
+        mainSequence->add(new Sleep_Action(1));
         mainSequence->add(new Send_Order_Action(PinceAvD_M, Actuator_Order::Destock, (float)5.0, &commActionneurs, true));
+        mainSequence->add(new Sleep_Action(1));
         mainSequence->add(new Send_Order_Action(PinceArr_M, Actuator_Order::Stock, (float)5.0, &commActionneurs, true));
+        mainSequence->add(new Sleep_Action(1));
         mainSequence->add(new Send_Order_Action(PinceArr_M, Actuator_Order::Destock, (float)5.0, &commActionneurs, true));
         mainSequence->add(new Sleep_Action(1000));
         mainSequence->add(new End_Action(true,false));

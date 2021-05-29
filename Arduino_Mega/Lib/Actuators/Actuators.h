@@ -120,7 +120,7 @@ class PinceArriere : public Pince
 {
 public:
     Actuator_State Update() override;
-}
+};
 
 
 
