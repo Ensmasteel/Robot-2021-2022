@@ -54,8 +54,31 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
     TargetVector northBase = TargetVector(0.22,1.65,false);
     TargetVector southBase = TargetVector(0.22,0.70,false);
 
+    TargetVector gobeletR1 = TargetVector(0.300,1.600,false);
+    TargetVector gobeletV1 = TargetVector(0.445,1.485,false);
+    TargetVector gobeletR2 = TargetVector(0.445,0.915,false);
+    TargetVector gobeletV2 = TargetVector(0.300,0.800,false);
+
+    TargetVector gobeletR3 = TargetVector(0.670,1.900,false);
+    TargetVector gobeletV3 = TargetVector(0.965,1.600,false);
+    TargetVector gobeletR4 = TargetVector(1.100,1.200,false);
+    TargetVector gobeletV4 = TargetVector(1.270,0.800,false);
+    
+    TargetVector gobeletR5 = TargetVector(1.605,0.045,false);
+    TargetVector gobeletV5 = TargetVector(1.665,0.345,false);
+    TargetVector gobeletR6 = TargetVector(1.935,0.345,false);
+    TargetVector gobeletV6 = TargetVector(1.995,0.045,false);
+    
+    TargetVector rack1 = TargetVector(0.000,1.600,false);
+    TargetVector rack2 = TargetVector(0.850,2.000,false);
+    
+    TargetVector manche1 = TargetVector(0.230,0.000,false);
+    TargetVector manche1 = TargetVector(0.635,0.000,false);
+
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         Serial.println("entree dans main");
+        //TODO config recalage etc
+
         //Attend le message Tirette
         //mainSequence->add(new Wait_Tirette_Action(30));
         //mainSequence->add(new Do_Action(startTimeSeq));
@@ -100,7 +123,13 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         //mainSequence->add(new Recallage_Action(true,1.0,5.0));  
         //mainSequence->add(new Brake_Action(-1));
 
-    
+        mainSequence->add(new Forward_Action(5,0.1,standard));
+        mainSequence->add(new Rotate_Action(5,PI/2,standard));
+        mainSequence->add(new Forward_Action(5,0.2,standard));
+
+        mainSequence->add(new Goto_Action(5,TargetVectorE(0.2,1.2,0,false),0.5,standard));
+        mainSequence->add(new Spin_Action(10,TargetVectorE(PI,false),standard));
+
 
         //ActionFinale
         //mainSequence->add(new End_Action(false,true,true));
