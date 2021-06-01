@@ -13,49 +13,49 @@
 
 
 
-const uint8_t pinBouton = 1;
-const uint8_t tempsEteint = 20;
+const uint8_t pinOutBouton = 0;
+const uint8_t pinInBouton = 1;
+const uint8_t delayStepper = 1500;
+const uint8_t delayLed = 100;
 
-const uint8_t stepPin = 10;
-const uint8_t dirPin = 8;
-const uint8_t sleepPin = 12;
-const uint8_t pinM0 = 15;
-const uint8_t pinM1 = 16;
+const uint8_t stepPin = 34;
+const uint8_t dirPin = 35;
+const uint8_t sleepPin = 22;
+const uint8_t pinM0 = 37;
+const uint8_t pinM1 = 36;
 
 const uint8_t steps = 200;
 
 
 void allumerPhare(){ //On allume successivement toutes les leds du phare
 
+  digitalWrite(LED_6, LOW);
   digitalWrite(LED_1, HIGH); 
-  delay(tempsEteint);
+  delay(delayLed);
 
-  digitalWrite(LED_1, LOW); 
+  digitalWrite(LED_7, LOW);
   digitalWrite(LED_2, HIGH);
-  delay(tempsEteint);
+  delay(delayLed);
+
+  digitalWrite(LED_1, LOW);
+  digitalWrite(LED_3, HIGH);
+  delay(delayLed);
 
   digitalWrite(LED_2, LOW);
-  digitalWrite(LED_3, HIGH);
-  delay(tempsEteint);
+  digitalWrite(LED_4, HIGH);
+  delay(delayLed);
 
   digitalWrite(LED_3, LOW);
-  digitalWrite(LED_4, HIGH);
-  delay(tempsEteint);
+  digitalWrite(LED_5, HIGH);
+  delay(delayLed);
 
   digitalWrite(LED_4, LOW);
-  digitalWrite(LED_5, HIGH);
-  delay(tempsEteint);
-
-  digitalWrite(LED_5, LOW);
   digitalWrite(LED_6, HIGH);
-  delay(tempsEteint);
+  delay(delayLed);
   
-  digitalWrite(LED_6, LOW);
+  digitalWrite(LED_5, LOW);
   digitalWrite(LED_7, HIGH);
-
-  delay(tempsEteint);
-  digitalWrite(LED_7, LOW);
-
+  delay(delayLed);
 }
 
 
@@ -65,9 +65,9 @@ void monterPhare(bool up, bool holdPosition){
   digitalWrite(dirPin, up ? HIGH : LOW);
   for(int x = 0; x < steps; x++) {
       digitalWrite(stepPin,HIGH);
-      delayMicroseconds(tempsEteint);
+      delayMicroseconds(delayStepper);
       digitalWrite(stepPin,LOW);
-      delayMicroseconds(tempsEteint);
+      delayMicroseconds(delayStepper);
     }
   digitalWrite(sleepPin, holdPosition ? HIGH : LOW);
 }
@@ -83,7 +83,8 @@ pinMode(LED_5, OUTPUT);
 pinMode(LED_6, OUTPUT);
 pinMode(LED_7, OUTPUT);
 
-pinMode(pinBouton, INPUT);
+pinMode(pinOutBouton, OUTPUT);
+pinMode(pinInBouton, INPUT);
 
 pinMode(stepPin, OUTPUT);
 pinMode(dirPin, OUTPUT);
@@ -94,6 +95,7 @@ pinMode(pinM1, OUTPUT);
 //On s'assure de l'état BAS des pins du moteur 
 digitalWrite(pinM0, LOW);
 digitalWrite(pinM1, LOW);
+digitalWrite(pinOutBouton, HIGH);
 
 
 Serial.begin(9600);
@@ -104,10 +106,10 @@ void loop()
 
 int tourBoucle = 0;
 
-if (digitalRead(pinBouton) == HIGH) { //Si on presse le bouton 
+if (digitalRead(pinInBouton) == HIGH) { //Si on presse le bouton 
 
-  monterPhare(true, true);
   Serial.println("Le Phare Monte!");
+  monterPhare(true, true);
 
   delay(tempsEteint);
   Serial.println("Le Phare s'allume!");
