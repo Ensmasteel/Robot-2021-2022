@@ -24,8 +24,10 @@
 #define SKIP_TELEMETRY_LONG 10000
 #define SKIP_TELEMETRY_FAST 400000
 
-Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *actuPort)
+Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *actuPort, Stream *espPort)
 {
+    this->espPort = espPort;//=====================================
+
     MoveProfiles::setup();
     cinetiqueCurrent = Cinetique(xIni, yIni, thetaIni);
     odometrie = Odometrie(TICKS_PER_ROUND, &cinetiqueCurrent, ELOIGNEMENT_CODEUSES, PIN_CODEUSE_GAUCHE_A, PIN_CODEUSE_GAUCHE_B, DIAMETRE_ROUE_CODEUSE_GAUCHE, PIN_CODEUSE_DROITE_A, PIN_CODEUSE_DROITE_B, DIAMETRE_ROUE_CODEUSE_DROITE);
@@ -201,25 +203,71 @@ void Robot::Update_Cinetique(float dt)
 
 void Robot::Update(float dt)
 {   
+    
+    //================= read the range sended by the esp
+    while(this->espPort->available){
+        char c= this->espPort->read();
+        if ( inByte != '\n')
+        {
+            readString += c
+        }
+        else
+        {
+            if(readString[0] == "f"){
+                readString.erase (str.begin()); 
+                rangeAdversaryFoward = readString.toInt();
+            }
+            else if (readString[0] == "b")
+            {
+                readString.erase (str.begin()); 
+                rangeAdversaryBackward = readString.toInt();
+            }
+            readString = ""
+        }
+    }
+
+
     communication.update();
     commActionneurs.update();
 
-    Update_Cinetique(dt);
-    
-    ghost.ActuatePosition(dt);
-    
-    cinetiqueNext = ghost.Get_Controller_Cinetique();
+    if(rangeAdversaryFoward<200 || rangeAdversaryBackward<150){//no mater if the robot move fowar/backard, stop if an obstacle
+        motorLeft.stop();
+        motorRight.stop();
+        stopped = true;
+    }
+    else{
+        if(stopped){
+            //if the engines where stopped by an obstacle, resume movement
+            motorLeft.resume();
+            motorRight.resume();
+            stopped = false;
+        }
+        Update_Cinetique(dt);
+        ghost.ActuatePosition(dt);
+        cinetiqueNext = ghost.Get_Controller_Cinetique();
+        controller.compute(dt);
+        motorLeft.setOrder(translationOrderPID - rotationOrderPID);
+        motorRight.setOrder(translationOrderPID + rotationOrderPID);
+        motorLeft.actuate();
+        motorRight.actuate();
 
-    controller.compute(dt);
+        for (int i=0;i<__NBSEQUENCES__;i++)
+            sequences[i]->update();
+    }
 
-    motorLeft.setOrder(translationOrderPID - rotationOrderPID);
-    motorRight.setOrder(translationOrderPID + rotationOrderPID);
-    motorLeft.actuate();
-    motorRight.actuate();
-
-    for (int i=0;i<__NBSEQUENCES__;i++)
-        sequences[i]->update();
-
+    /*
+    other variante
+    if((rangeAdversaryFoward<100 && translationOrderPID>0) || (rangeAdversaryBackward<100 && translationOrderPID>0))
+    {
+        motorLeft.stop();
+        motorRight.stop();
+        stopped = true;
+    }
+    else
+    {
+        the code
+    }
+    */
     
     if (compteur==SKIP_TELEMETRY_LONG){
         telemetry(false,true);
