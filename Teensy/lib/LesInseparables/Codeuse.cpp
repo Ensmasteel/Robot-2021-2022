@@ -32,14 +32,47 @@ void Odometrie::updateCinetique(float dt)
     cinetique->_theta += (codeuseDroite.deltaAvance - codeuseGauche.deltaAvance) / eloignementCodeuses;
     cinetique->normalizeTheta();
     (*cinetique) += directeur(cinetique->_theta) * ((codeuseDroite.deltaAvance + codeuseGauche.deltaAvance) / 2);
+
+    interGauche.updateContact();
+    interDroite.updateContact();
 }
 
 Odometrie::Odometrie(uint16_t ticksPerRound, Cinetique *cinetique, float eloignementCodeuses,
                      uint8_t pinACodeuseGauche, uint8_t pinBCodeuseGauche, float diametreRoueGauche,
-                     uint8_t pinACodeuseDroite, uint8_t pinBCodeuseDroite, float diametreRoueDroite)
+                     uint8_t pinACodeuseDroite, uint8_t pinBCodeuseDroite, float diametreRoueDroite,
+                     uint8_t pinInterDroite, uint8_t pinInterGauche)
 {
     codeuseGauche = Codeuse(pinACodeuseGauche, pinBCodeuseGauche, ticksPerRound, diametreRoueGauche);
     codeuseDroite = Codeuse(pinACodeuseDroite, pinBCodeuseDroite, ticksPerRound, diametreRoueDroite);
     this->cinetique = cinetique;
     this->eloignementCodeuses = eloignementCodeuses;
+    interGauche = Interrupteur(pinInterGauche);
+    interDroite = Interrupteur(pinInterDroite);
+}
+
+bool Odometrie::getInterDroiteContact()
+{
+    return interDroite.isContact();
+}
+
+bool Odometrie::getInterGaucheContact()
+{
+    return inGauche.isContact();
+}
+
+Interrupteur::Interrupteur(uint8_t pin)
+{
+    this->pin = pin;
+    pinMode(pin, INPUT_PULLUP);
+    contact = false;
+}
+
+void Interrupteur::updateContact()
+{
+    contact = (digitalRead(pin) == LOW);
+}
+
+bool Interrupteur::isContact()
+{
+    return contact;
 }
