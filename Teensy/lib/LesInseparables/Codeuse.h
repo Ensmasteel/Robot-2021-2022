@@ -16,6 +16,17 @@ public:
 };
 #endif
 
+class Interrupteur
+{
+    private:
+        uint8_t pin;
+        bool contact;
+    public:
+        Interrupteur(uint8_t pin);
+        void updateContact();
+        bool isContact();
+};
+
 class Codeuse
 {
     int32_t oldTicks; //Nombre de ticks compté, nombre de ticks compté au dernier appel
@@ -32,36 +43,26 @@ public:
     Codeuse(uint8_t pinA, uint8_t pinB, uint16_t ticksPerRound, float diametreRoue);
 };
 
+
 class Odometrie
 {
 private:
     //Codeuse codeuseGauche, codeuseDroite;
-    Interrupteur interGauche, interDroite;
+    Interrupteur *interGauche, *interDroite;
     Cinetique *cinetique;
     float eloignementCodeuses;
 
 public:
     Codeuse codeuseGauche, codeuseDroite;
     void updateCinetique(float dt);
+    Odometrie();
     Odometrie(uint16_t ticksPerRound, Cinetique *cinetique, float eloignementCodeuses,
               uint8_t pinACodeuseGauche, uint8_t pinBCodeuseGauche, float diametreRoueGauche,
               uint8_t pinACodeuseDroite, uint8_t pinBCodeuseDroite, float diametreRoueDroite,
               uint8_t pinInterDroite, uint8_t pinInterGauche);
-    Odometrie() {}
     bool getInterDroiteContact();
     bool getInterGaucheContact();
 };
 
-class Interrupteur
-{
-    private:
-        uint8_t pin
-        bool contact
-
-    public:
-    Interrupteur(uint8_t pin);
-    void updateContact();
-    bool isContact();
-}
 
 #endif

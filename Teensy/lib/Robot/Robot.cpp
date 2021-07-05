@@ -34,7 +34,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
 
     MoveProfiles::setup();
     cinetiqueCurrent = Cinetique(xIni, yIni, thetaIni);
-    odometrie = Odometrie(TICKS_PER_ROUND, &cinetiqueCurrent, ELOIGNEMENT_CODEUSES, PIN_CODEUSE_GAUCHE_A, PIN_CODEUSE_GAUCHE_B, DIAMETRE_ROUE_CODEUSE_GAUCHE, PIN_CODEUSE_DROITE_A, PIN_CODEUSE_DROITE_B, DIAMETRE_ROUE_CODEUSE_DROITE, PIN_INTERRUPTEUR_ARR_DROITE, PIN_INTERRUPTEUR_ARR_GAUCHE);
+    //odometrie = Odometrie(TICKS_PER_ROUND, &cinetiqueCurrent, ELOIGNEMENT_CODEUSES, PIN_CODEUSE_GAUCHE_A, PIN_CODEUSE_GAUCHE_B, DIAMETRE_ROUE_CODEUSE_GAUCHE, PIN_CODEUSE_DROITE_A, PIN_CODEUSE_DROITE_B, DIAMETRE_ROUE_CODEUSE_DROITE, PIN_INTERRUPTEUR_ARR_DROITE, PIN_INTERRUPTEUR_ARR_GAUCHE);
 
     motorLeft = Motor(PIN_MOTEUR_GAUCHE_PWR, PIN_MOTEUR_GAUCHE_SENS, 10);
     pinMode(PIN_MOTEUR_DROITE_BRAKE, OUTPUT);
@@ -214,24 +214,24 @@ void Robot::Update(float dt)
 {   
     
     //================= communication with esp ==========
-    while(this->espPort->available){
+    while(this->espPort->available()){
         char c= this->espPort->read();
-        if ( inByte != '\n')
+        if ( c != '\n')
         {
-            readString += c
+            readString += c;
         }
         else
         {
-            if(readString[0] == "f"){
-                readString.erase (str.begin()); 
+            if(readString[0] == 'f'){
+                readString.remove(0);
                 rangeAdversaryFoward = readString.toInt();
             }
-            else if (readString[0] == "b")
+            else if (readString[0] == 'b')
             {
-                readString.erase (str.begin()); 
+                readString.remove(0);
                 rangeAdversaryBackward = readString.toInt();
             }
-            readString = ""
+            readString = "";
         }
     }
     //================= communication with esp ==========

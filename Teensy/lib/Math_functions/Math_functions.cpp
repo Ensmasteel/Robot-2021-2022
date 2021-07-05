@@ -281,6 +281,7 @@ float Trapezoidal_Function::computeDuration()
         _tMax = _max / _upRamp;
         _duration = (_distance / _max) + ((_max / 2.0) * ((1.0/_downRamp) + (1.0/_upRamp)));
     }
+    return _duration;
     
 }
 

@@ -97,6 +97,7 @@ bool Move_Action::isFinished()
 bool Move_Action::hasFailed()
 {
     if (Action::hasFailed())
+    {
         if (!robot->controller.close)
         {
             Logger::infoln("MOVE FAILED : robot too far");
@@ -105,6 +106,7 @@ bool Move_Action::hasFailed()
         {
             Logger::infoln("MOVE FAILED : ghost not finished");
         }
+    }
     return /*asser->tooFar ||*/ Action::hasFailed();
 }
 
