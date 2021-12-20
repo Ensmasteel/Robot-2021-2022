@@ -16,13 +16,14 @@
 const uint8_t pinBouton = 1;
 const uint8_t tempsEteint = 20;
 
-const uint8_t stepPin = 10;
-const uint8_t dirPin = 8;
-const uint8_t sleepPin = 12;
-const uint8_t pinM0 = 15;
-const uint8_t pinM1 = 16;
+const uint8_t stepPin = 34;
+const uint8_t dirPin = 35;
+const uint8_t sleepPin = 22;
+const uint8_t pinM0 = 37;
+const uint8_t pinM1 = 36;
 
-const uint8_t steps = 200;
+
+const uint8_t steps = 2000;
 
 
 void allumerPhare(){ //On allume successivement toutes les leds du phare
@@ -65,9 +66,9 @@ void monterPhare(bool up, bool holdPosition){
   digitalWrite(dirPin, up ? HIGH : LOW);
   for(int x = 0; x < steps; x++) {
       digitalWrite(stepPin,HIGH);
-      delayMicroseconds(tempsEteint);
+      delayMicroseconds(20000);
       digitalWrite(stepPin,LOW);
-      delayMicroseconds(tempsEteint);
+      delayMicroseconds(20000);
     }
   digitalWrite(sleepPin, holdPosition ? HIGH : LOW);
 }
@@ -103,6 +104,12 @@ void loop()
 {
 
 int tourBoucle = 0;
+
+while(1){
+  monterPhare(true,true);
+  Serial.println("Le phare monte");
+  delay(1000);
+}
 
 if (digitalRead(pinBouton) == HIGH) { //Si on presse le bouton 
 

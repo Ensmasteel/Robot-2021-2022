@@ -22,7 +22,7 @@
 #define TICKS_PER_ROUND 16384
 
 #define SKIP_TELEMETRY_LONG 10000
-#define SKIP_TELEMETRY_FAST 400000
+#define SKIP_TELEMETRY_FAST 50
 
 Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *actuPort)
 {
@@ -73,7 +73,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
     TargetVector rack2 = TargetVector(0.850,2.000,false);
     
     TargetVector manche1 = TargetVector(0.230,0.000,false);
-    TargetVector manche1 = TargetVector(0.635,0.000,false);
+    TargetVector manche2 = TargetVector(0.635,0.000,false);
 
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         Serial.println("entree dans main");

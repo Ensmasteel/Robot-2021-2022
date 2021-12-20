@@ -1,3 +1,12 @@
+
+// Copyright (c) 2021.
+// This code has been written by student members of ISAE-ENSMA Ensmasteel association.
+/*
+ * This file provides a generic implementation of robotics actuators in place in the
+ * Ensmasteel robot. This module may be re-written if there is any changes in the
+ * general structure of the robot or in the general code architecture.
+ */
+
 #ifndef ACTUATORS_H_
 #define ACTUATORS_H_
 
@@ -19,24 +28,73 @@ enum class Actuator_State
 //// ACTION GENERIQUE ////
 /////////////////////////
 
+/**
+ * Basic abstract class to define an actuator
+ *
+ * This class defines a basic class to represent an actuator. It should be decorated with the target actuator
+ * class.
+ * The constructor is public and embeddes a name and an ID wich is 'Empty_M' as default.
+ *
+ */
 class Actuator
 {
 public:
+    /**
+     * Basic public constructor for Actuator class
+     * @param name : the actuator name
+     * @param messID : The Id of the message embedded. Default is 'Empty_M'
+     * @returns Actuator : An instance of Actuator.
+     *
+     */
     Actuator(String name = "Actuator", MessageID messID = MessageID::Empty_M);
     
     // A appeler a chaque boucle, commande les actionneurs et mise a jour de l'etat.
+    /**
+     * Virtual method, to call before each loop.
+     *
+     * Commands each actuator and updates the robot state.
+     *
+     */
     virtual Actuator_State Update();
 
     // Reception d'un nouvel ordre.
+    /**
+     * Getter of a new order.
+     * @param order
+     */
     void NewOrder(Actuator_Order order);
 
     // Genere le message de validation de l'action dedie au donneur d'ordre
+    /**
+     * Generates the validating message from the action dedicated to the order sender.
+     * @return the validation message
+     */
     Message OrderCompleted(){return newMessage(messID,currentOrder,0,0,0);}
 
+    /**
+     * Returns the actuator name
+     * @return name : the actuator name
+     */
     String GetName(){return name;}
+
+    /**
+     * Returns the actuator state
+     * @return state : the current state
+     */
     Actuator_State GetEtat(){return etat;}
+
+    /**
+     * Returns the current order the actuator has.
+     * @return current Order : the current order.
+     */
     Actuator_Order GetOrder(){return currentOrder;}
+
+    /**
+     * Returns the message ID of the current message actually in the actuator.
+     * @return messID
+     */
     MessageID GetID(){return messID;}
+
 protected:
     String name;
     Actuator_State etat;
@@ -47,7 +105,15 @@ protected:
 //// ACTUATORS ////
 //////////////////
 
-class Pavillon : public Actuator
+/**
+ * Public class extending the actuator abstract class.
+ *
+ * Used to define the 'Pavillon' actuator.
+ *
+ *
+ */
+class [[deprecated ("Deprecated because unused after 2021 cup. Will be removed soon")]]
+        Pavillon : public Actuator
 {
 public:
     Pavillon();
