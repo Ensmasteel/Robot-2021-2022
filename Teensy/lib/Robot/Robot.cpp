@@ -2,6 +2,7 @@
 #include "Arduino.h"
 #include "Actions.h"
 #include "Functions.h"
+#include "Codeuse.h"
 
 #define PIN_CODEUSE_GAUCHE_A 29
 #define PIN_CODEUSE_GAUCHE_B 28
@@ -16,6 +17,9 @@
 #define PIN_MOTEUR_DROITE_SENS 3
 #define PIN_MOTEUR_DROITE_BRAKE 39
 
+#define PIN_INTERRUPTEUR_ARR_DROITE 30
+#define PIN_INTERRUPTEUR_ARR_GAUCHE 33
+
 #define ELOIGNEMENT_CODEUSES 0.29430415
 #define DIAMETRE_ROUE_CODEUSE_DROITE 0.05325315
 #define DIAMETRE_ROUE_CODEUSE_GAUCHE 0.053570956
@@ -24,11 +28,13 @@
 #define SKIP_TELEMETRY_LONG 10000
 #define SKIP_TELEMETRY_FAST 50
 
-Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *actuPort)
+Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *actuPort, Stream *espPort)
 {
+    this->espPort = espPort;//=====================================
+
     MoveProfiles::setup();
     cinetiqueCurrent = Cinetique(xIni, yIni, thetaIni);
-    odometrie = Odometrie(TICKS_PER_ROUND, &cinetiqueCurrent, ELOIGNEMENT_CODEUSES, PIN_CODEUSE_GAUCHE_A, PIN_CODEUSE_GAUCHE_B, DIAMETRE_ROUE_CODEUSE_GAUCHE, PIN_CODEUSE_DROITE_A, PIN_CODEUSE_DROITE_B, DIAMETRE_ROUE_CODEUSE_DROITE);
+    //odometrie = Odometrie(TICKS_PER_ROUND, &cinetiqueCurrent, ELOIGNEMENT_CODEUSES, PIN_CODEUSE_GAUCHE_A, PIN_CODEUSE_GAUCHE_B, DIAMETRE_ROUE_CODEUSE_GAUCHE, PIN_CODEUSE_DROITE_A, PIN_CODEUSE_DROITE_B, DIAMETRE_ROUE_CODEUSE_DROITE, PIN_INTERRUPTEUR_ARR_DROITE, PIN_INTERRUPTEUR_ARR_GAUCHE);
 
     motorLeft = Motor(PIN_MOTEUR_GAUCHE_PWR, PIN_MOTEUR_GAUCHE_SENS, 10);
     pinMode(PIN_MOTEUR_DROITE_BRAKE, OUTPUT);
@@ -99,12 +105,14 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
 
         mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
         mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Ouvrir, 0, 0, 0),&commActionneurs));
-        mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Descendre, 0, 0, 0),&commActionneurs));
+        mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Descendre, 0, 0, 0),&commActionneurs));*/
         
         mainSequence->add(new Send_Action(newMessage(BrasD_M, Actuator_Order::Sortir, 0, 0, 0),&commActionneurs));
         mainSequence->add(new Send_Action(newMessage(BrasD_M, Actuator_Order::Rentrer, 0, 0, 0),&commActionneurs));
+        mainSequence->add(new Send_Action(newMessage(BrasG_M, Actuator_Order::Sortir, 0, 0, 0),&commActionneurs));
+        mainSequence->add(new Send_Action(newMessage(BrasG_M, Actuator_Order::Rentrer, 0, 0, 0),&commActionneurs));
 
-        mainSequence->add(new Forward_Action(5,0.2,standard));
+        /*mainSequence->add(new Forward_Action(5,0.2,standard));
         //mainSequence->add(new Send_Action(newMessage(BrasG_M, Actuator_Order::Sortir, 0, 0, 0), &commActionneurs));
         //mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));
         mainSequence->add(new Backward_Action(5,0.2,standard));
@@ -123,24 +131,24 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         //mainSequence->add(new Recallage_Action(true,1.0,5.0));  
         //mainSequence->add(new Brake_Action(-1));
 
-        mainSequence->add(new Forward_Action(5,0.1,standard));
-        mainSequence->add(new Rotate_Action(5,PI/2,standard));
-        mainSequence->add(new Forward_Action(5,0.2,standard));
+        // mainSequence->add(new Forward_Action(5,0.1,standard));
+        // mainSequence->add(new Rotate_Action(5,PI/2,standard));
+        // mainSequence->add(new Forward_Action(5,0.2,standard));
 
-        mainSequence->add(new Goto_Action(5,TargetVectorE(0.2,1.2,0,false),0.5,standard));
-        mainSequence->add(new Spin_Action(10,TargetVectorE(PI,false),standard));
+        // mainSequence->add(new Goto_Action(5,TargetVectorE(0.2,1.2,0,false),0.5,standard));
+        // mainSequence->add(new Spin_Action(10,TargetVectorE(PI,false),standard));
 
 
         //ActionFinale
         //mainSequence->add(new End_Action(false,true,true));
-        mainSequence->add(new Send_Order_Action(PinceAvD_M, Actuator_Order::Stock, (float)5.0, &commActionneurs, true));
+/*        mainSequence->add(new Send_Order_Action(PinceAvD_M, Actuator_Order::Stock, (float)5.0, &commActionneurs, true));
         mainSequence->add(new Sleep_Action(1));
         mainSequence->add(new Send_Order_Action(PinceAvD_M, Actuator_Order::Destock, (float)5.0, &commActionneurs, true));
         mainSequence->add(new Sleep_Action(1));
         mainSequence->add(new Send_Order_Action(PinceArr_M, Actuator_Order::Stock, (float)5.0, &commActionneurs, true));
         mainSequence->add(new Sleep_Action(1));
         mainSequence->add(new Send_Order_Action(PinceArr_M, Actuator_Order::Destock, (float)5.0, &commActionneurs, true));
-        mainSequence->add(new Sleep_Action(1000));
+        mainSequence->add(new Sleep_Action(1000));*/
         mainSequence->add(new End_Action(true,false));
         Serial.println("avant StartSequence");
         mainSequence->startSelected();
@@ -197,29 +205,85 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
 void Robot::Update_Cinetique(float dt)
 {
     odometrie.updateCinetique(dt);
+    Serial.println("odometrie : ");
+    Serial.println(odometrie.codeuseDroite.ticks);
+    Serial.println(odometrie.codeuseGauche.ticks);
 }
 
 void Robot::Update(float dt)
 {   
+    
+    //================= communication with esp ==========
+    while(this->espPort->available()){
+        char c= this->espPort->read();
+        if ( c != '\n')
+        {
+            readString += c;
+        }
+        else
+        {
+            if(readString[0] == 'f'){
+                readString.remove(0);
+                rangeAdversaryFoward = readString.toInt();
+            }
+            else if (readString[0] == 'b')
+            {
+                readString.remove(0);
+                rangeAdversaryBackward = readString.toInt();
+            }
+            readString = "";
+        }
+    }
+    //================= communication with esp ==========
+
     communication.update();
     commActionneurs.update();
 
-    Update_Cinetique(dt);
-    
-    ghost.ActuatePosition(dt);
-    
-    cinetiqueNext = ghost.Get_Controller_Cinetique();
+    if(rangeAdversaryFoward<200 || rangeAdversaryBackward<150){//no mater if the robot move fowar/backard, stop if an obstacle
+        motorLeft.stop();
+        motorRight.stop();
+        stopped = true;
+    }
+    else{
+        if(stopped){
+            //if the engines where stopped by an obstacle, resume movement
+            motorLeft.resume();
+            motorRight.resume();
+            stopped = false;
+        }
+        Update_Cinetique(dt);
+        ghost.ActuatePosition(dt);
+        cinetiqueNext = ghost.Get_Controller_Cinetique();
+        controller.compute(dt);
 
-    controller.compute(dt);
+        //================= recalage ==========
+        if (odometrie.getInterGaucheContact()) {
+            motorLeft.setOrder(translationOrderPID - rotationOrderPID);
+            motorLeft.actuate();
+        }
+        if (odometrie.getInterDroiteContact()) {
+            motorRight.setOrder(translationOrderPID + rotationOrderPID);
+            motorRight.actuate();
+        }
+        //================= recalage ==========
 
-    motorLeft.setOrder(translationOrderPID - rotationOrderPID);
-    motorRight.setOrder(translationOrderPID + rotationOrderPID);
-    motorLeft.actuate();
-    motorRight.actuate();
+        for (int i=0;i<__NBSEQUENCES__;i++)
+            sequences[i]->update();
+    }
 
-    for (int i=0;i<__NBSEQUENCES__;i++)
-        sequences[i]->update();
-
+    /*
+    other variante
+    if((rangeAdversaryFoward<100 && translationOrderPID>0) || (rangeAdversaryBackward<100 && translationOrderPID>0))
+    {
+        motorLeft.stop();
+        motorRight.stop();
+        stopped = true;
+    }
+    else
+    {
+        the code
+    }
+    */
     
     if (compteur==SKIP_TELEMETRY_LONG){
         telemetry(false,true);
@@ -285,4 +349,3 @@ void Robot::recalibrateGhost()
 {
     ghost.moveGhost(cinetiqueCurrent);
 }
-

@@ -25,6 +25,13 @@
 #define max_objects_detected 20
 
 
+/*
+Serial.write(val)
+Serial.write(str)
+Serial.write(buf, len)
+*/
+
+
 
 //basics:
 //1 detect objects

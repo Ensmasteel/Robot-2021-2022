@@ -31,6 +31,12 @@ public :
     float backLength = 0.15; //Longueur entre le contact arrière du robot et son CG
     float frontLength = 0.15; //Longueur entre le contact avant du robot et son CG
     float length = backLength + frontLength; //Longueur du robot
+
+    Stream *espPort;
+    int rangeAdversaryFoward = -1;
+    int rangeAdversaryBackward = -1;
+    String readString;
+    bool stopped = false;
     //===============
 
     //=== Composants ===
@@ -45,7 +51,7 @@ public :
     //        Definition of the sequence of actions
     // IN   / float xIni, yIni, thetaIni : Initial position of the bot
     //        Stream* commPort : pointer to current serial port (bluetooth or USB)
-    Robot(float xIni = 0.0, float yIni = 0.0, float thetaIni = 0.0, Stream *commPort = &Serial, Stream *actuPort = &Serial);
+    Robot(float xIni = 0.0, float yIni = 0.0, float thetaIni = 0.0, Stream *commPort = &Serial, Stream *actuPort = &Serial,Stream *espPort = &Serial4);
     
     // GOAL / Update informations about real position, Ghost's position, compute output and send order to motors
     // IN   / float dt : time since last call

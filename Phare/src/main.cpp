@@ -1,20 +1,24 @@
 #include <Arduino.h>
 
 
-#define LED_1 2
-#define LED_2 3
-#define LED_3 4
-#define LED_4 5
-#define LED_5 6
-#define LED_6 7
-#define LED_7 8
+#define LED_1 50
+#define LED_2 48
+#define LED_3 46
+#define LED_4 44
+#define LED_5 42
+#define LED_6 40
+#define LED_7 38
+#define LED_8 32
+#define LED_9 30
+#define LED_10 28
+#define LED_11 26
+#define LED_12 24
 
 
 
-
-
-const uint8_t pinBouton = 1;
-const uint8_t tempsEteint = 20;
+const uint8_t pinInBouton = 25;
+const int delayStepper = 3000;
+const uint8_t delayLed = 100;
 
 const uint8_t stepPin = 34;
 const uint8_t dirPin = 35;
@@ -22,41 +26,59 @@ const uint8_t sleepPin = 22;
 const uint8_t pinM0 = 37;
 const uint8_t pinM1 = 36;
 
+const int steps = 200;
+const float nombreTour = 23.12;
 
-const uint8_t steps = 2000;
-
-
+const uint8_t tempsEteint = 200;
 void allumerPhare(){ //On allume successivement toutes les leds du phare
 
+  digitalWrite(LED_11, LOW);
   digitalWrite(LED_1, HIGH); 
-  delay(tempsEteint);
+  delay(delayLed);
 
-  digitalWrite(LED_1, LOW); 
+  digitalWrite(LED_12, LOW);
   digitalWrite(LED_2, HIGH);
-  delay(tempsEteint);
+  delay(delayLed);
+
+  digitalWrite(LED_1, LOW);
+  digitalWrite(LED_3, HIGH);
+  delay(delayLed);
 
   digitalWrite(LED_2, LOW);
-  digitalWrite(LED_3, HIGH);
-  delay(tempsEteint);
+  digitalWrite(LED_4, HIGH);
+  delay(delayLed);
 
   digitalWrite(LED_3, LOW);
-  digitalWrite(LED_4, HIGH);
-  delay(tempsEteint);
+  digitalWrite(LED_5, HIGH);
+  delay(delayLed);
 
   digitalWrite(LED_4, LOW);
-  digitalWrite(LED_5, HIGH);
-  delay(tempsEteint);
-
-  digitalWrite(LED_5, LOW);
   digitalWrite(LED_6, HIGH);
-  delay(tempsEteint);
+  delay(delayLed);
   
-  digitalWrite(LED_6, LOW);
+  digitalWrite(LED_5, LOW);
   digitalWrite(LED_7, HIGH);
+  delay(delayLed);
 
-  delay(tempsEteint);
+  digitalWrite(LED_6, LOW);
+  digitalWrite(LED_8, HIGH);
+  delay(delayLed);
+  
   digitalWrite(LED_7, LOW);
-
+  digitalWrite(LED_9, HIGH);
+  delay(delayLed);
+  
+  digitalWrite(LED_8, LOW);
+  digitalWrite(LED_10, HIGH);
+  delay(delayLed);
+  
+  digitalWrite(LED_9, LOW);
+  digitalWrite(LED_11, HIGH);
+  delay(delayLed);
+  
+  digitalWrite(LED_10, LOW);
+  digitalWrite(LED_12, HIGH);
+  delay(delayLed);
 }
 
 
@@ -64,11 +86,11 @@ void monterPhare(bool up, bool holdPosition){
 //permet de monter le phare 
   digitalWrite(sleepPin, HIGH);
   digitalWrite(dirPin, up ? HIGH : LOW);
-  for(int x = 0; x < steps; x++) {
+  for(int x = 0; x < steps*nombreTour; x++) {
       digitalWrite(stepPin,HIGH);
-      delayMicroseconds(20000);
+      delayMicroseconds(delayStepper);
       digitalWrite(stepPin,LOW);
-      delayMicroseconds(20000);
+      delayMicroseconds(delayStepper);
     }
   digitalWrite(sleepPin, holdPosition ? HIGH : LOW);
 }
@@ -83,8 +105,14 @@ pinMode(LED_4, OUTPUT);
 pinMode(LED_5, OUTPUT);
 pinMode(LED_6, OUTPUT);
 pinMode(LED_7, OUTPUT);
+pinMode(LED_8, OUTPUT);
+pinMode(LED_9, OUTPUT);
+pinMode(LED_10, OUTPUT);
+pinMode(LED_11, OUTPUT);
+pinMode(LED_12, OUTPUT);
 
-pinMode(pinBouton, INPUT);
+
+pinMode(pinInBouton, INPUT);
 
 pinMode(stepPin, OUTPUT);
 pinMode(dirPin, OUTPUT);
@@ -97,6 +125,7 @@ digitalWrite(pinM0, LOW);
 digitalWrite(pinM1, LOW);
 
 
+
 Serial.begin(9600);
 Serial.println("Liaison initialise");
 }
@@ -105,16 +134,10 @@ void loop()
 
 int tourBoucle = 0;
 
-while(1){
-  monterPhare(true,true);
-  Serial.println("Le phare monte");
-  delay(1000);
-}
+if (digitalRead(pinInBouton) == HIGH) { //Si on presse le bouton 
 
-if (digitalRead(pinBouton) == HIGH) { //Si on presse le bouton 
-
-  monterPhare(true, true);
   Serial.println("Le Phare Monte!");
+  monterPhare(true, true);
 
   delay(tempsEteint);
   Serial.println("Le Phare s'allume!");
@@ -125,6 +148,7 @@ if (digitalRead(pinBouton) == HIGH) { //Si on presse le bouton
     if (tourBoucle == 100)
       break;
   }
+
   
   
   
