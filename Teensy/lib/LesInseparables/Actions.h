@@ -9,6 +9,10 @@
 #include <vector>
 #include <cstdint> //for macro INT16_MAX
 
+/**
+ * Defines the generic actions for the robot.
+ */
+
 class Robot;
 class Sequence;
 typedef void (*Fct)(Robot *robot);
@@ -16,47 +20,47 @@ typedef void (*Fct)(Robot *robot);
 //========================================ACTION GENERIQUES========================================
 #define NO_REQUIREMENT INT16_MAX
 
-/*
-* CLASSE ABSTRAITE. NE PAS INSTANCIER DIRECTEMENT
+/**
+ * ABSTRACT CLASS. DO NOT INSTANCE.
 */
 class Action
 {
 public:
-    /*
-    * Le nom de l'action
-    */
+    /**
+     *Action's name.
+     */
     String name;
 
-    /*
-    * La fonction start est appelé une fois au début de l'action si l'action désignée par le "requirement" a réussi
-    * Sinon c'est un fail immédiat.
-    * Si l'action est interrompu par Sequence::pause, le start sera rappelé lors du resume
-    */
+    /**
+     * The start function is called once at action's beginning, if the action requirement did not fail.
+     * Else the fail is immediate.
+     * Is the action is interrupted by Sequence::pause, start function will be re-called during resume.
+     */
     virtual void start();
 
-    /*
-    * IsFinished est appelé en boucle. Il renvoie si l'action est terminé
-    * Peut aussi servir de fonction d'update...
-    */
+    /**
+     * IsFinished is called endlessly. Returns if the action is done.
+     * Can also be an update function.
+     */
     virtual bool isFinished() { return done; }
 
-    /*
-    * HasFailed est appelé en boucle. Il renvoie si l'action a foiré et devrait etre laissé de coté
-    * La Sequence retiendra cepenant que cette fonction a foiré (utile pour les requirements)
-    * Par défaut, une action foire si elle dépasse le temps qui lui a été imparti par le timeout.
-    * (Un timeout de -indique que l'Action dispose d'un temps illimité)
-    */
+    /**
+     * HasFailed is called endlessly. Returns if the action failed and should be left aside.
+     * The sequence will remember the function failed (useful for requirement).
+     * By default, an action fails if it exceeds the time duration allowed by the timer.
+     * @note A timeout set to -1 indicates the action has an unlimited time.
+     */
     virtual bool hasFailed();
 
-    /*
-    * Passe à toutes les actions courantes et a venir un pointeur vers le robot
-    */
+    /**
+     *Gives to all current and future actions a pointer to the robot.
+     */
     static void setPointer(Robot *robot);
 
-    /*
-    * Cree une action de base
-    * Cette classe est abstraite et ne dois pas être instanciée directement
-    */
+    /**
+     * Creates a basic action.
+     * @warning This class is Abstract and cannot be instantiated.
+     */
     Action(String name = "Action", float timeout = 0.1, int16_t require = NO_REQUIREMENT)
     {
         this->name = name;
@@ -66,14 +70,14 @@ public:
         started = false;
     }
 
-    /*
-    * Renvoie si l'action en cours a été started ou non
-    */
+    /**
+     * Returns if the actions started or not.
+     */
     bool hasStarted() { return started; }
 
-    /*
-    * Cette fonction est appelée en cas de réussite de l'action. Ne fait rien par défaut
-    */
+    /**
+     * This function is called in case of success. Do not do anything by default.
+     */
     virtual void doAtEnd()
     { /*Ne fait rien par défaut. Il faudra override plus tard*/
     }
@@ -90,12 +94,12 @@ protected:
     friend class Sequence;
 };
 
-/*
-* Une doube action est une séquence de deux actions.
-* La gestion de ces deux actions est encapsulée. Il n'y a rien a faire de particulier
-* Une double action est terminée si les deux actions sont terminées
-* Une double actin foire si l'une des actions foire
-*/
+/**
+ * This class instantiates a double action. A double action is a sequence of two consecutive actions.
+ * The handle of those actions is encapsulated. There is nothing to do in particular.
+ * A double action is finished if both actions is finished.
+ * A double action fails if at least one of them fails.
+ */
 class Double_Action : public Action
 {
 protected:
@@ -112,11 +116,12 @@ public:
 
 //========================================ACTION MOVES========================================
 
-/*
-* Une Move Action est une action qui va donner un nouvel ordre au ghost
-* Lors de l'appel de "start", la position cible est donnée au ghost qui va ensuite s'y rendre (le ghoost est alors delock si necessaire)
-* Par défaut, les PID sont reset (Iterm) à la fin de l'action
-*/
+/**
+ * A MoveAction will give a new order to the ghost.
+ * When start is called, the target position is given to ghost which will then go to it. (so the ghost is unlocked if necessary)
+ * By default PIDs are reset at the end of action.
+ * @warning This class is abstract and cannot be instantiated.
+ */
 class Move_Action : public Action //Classe abstraite
 {
 public:
@@ -134,23 +139,31 @@ protected:
     bool pureRotation, backward;
 };
 
-/*
-* Va a la position demandée (x,y,theta) avec une courbure deltaCurve et un rythme pace. (peut etre effectue en marche arriere)
-* /!\ COLOR DEPENDANT
-*/
+/**
+ * Send the ghost to the target position (x,y,theta) with a curve deltaCurve and a rhythm pace.
+ * This action can be done backward.
+ * @warning this action is team dependant.
+ * @note deprecated for 2022 edition. Has to be updated with new actions.
+ */
 class Goto_Action : public Move_Action
 {
 public:
-    Goto_Action(float timeout, TargetVectorE target, float deltaCurve, MoveProfileName profileName, bool backward = false, int16_t require = NO_REQUIREMENT);
+    Goto_Action(float timeout,
+                TargetVectorE target,
+                float deltaCurve,
+                MoveProfileName profileName,
+                bool backward = false,
+                int16_t require = NO_REQUIREMENT);
     //start (Action+Move)
     //isFinished (Move)
     //hasFailed (Action+Move)
 };
 
-/*
-* Tourne sur place pour rejoindre la position demandée
-* /!\ COLOR DEPENDANT
-*/
+/**
+ * Rotates on place to get to target position.
+ * @warning this function is team dependant.
+ * @note Deprecated for 2022 edition. Has to be updated.
+ */
 class Spin_Action : public Move_Action
 {
 public:
@@ -160,9 +173,10 @@ public:
     //hasFailed(Action+Move)
 };
 
-/*
-* Tourne sur place d'un certain angle deltaTheta (peut importe la couleur)
-*/
+/**
+ * Rotates on place of a certain angle theta.
+ * @note Not team dependant.
+ */
 class Rotate_Action : public Move_Action //Tourne en relatif
 {
 private:
@@ -175,9 +189,10 @@ public:
     //hasFailed(Action+Move)
 };
 
-/*
-* Avance tout droit d'une certaine distance dist (peut importe la couleur)
-*/
+/**
+ * Goes straight ahead for a certain distance dist.
+ * @note Not team dependant.
+ */
 class Forward_Action : public Move_Action
 {
 private:
@@ -190,6 +205,10 @@ public:
     //hasFailed(Action+Move)
 };
 
+/**
+ * Same as forward_action but doing it backward.
+ * @see Forward_Action for further informations.
+ */
 class Backward_Action : public Move_Action
 {
 private:
@@ -203,9 +222,9 @@ public:
     //hasFailed(Action+Move)
 };
 
-/*
-* Rejoins la target en faisant d'abord un spin puis une ligne droite.
-* /!\ COLOR DEPENDANT
+/**
+ * Goes to target and does a spin and a straight line before.
+ * @warning team dependant!
 */
 class StraightTo_Action : public Double_Action
 {
@@ -221,10 +240,10 @@ public:
     StraightTo_Action(float timeout, TargetVector target, MoveProfileName profileName, int16_t require = NO_REQUIREMENT);
 };
 
-/*
-* Freine le robot jusqu'a ce que ça vitesse (angulaire) passe sous le dEpsilon donné dans le brake profile
-* cf MoveProfile.cpp -> setup
-*/
+/**
+ * Brakes robot until its rotation speed goes below dEpsilon given in brake profile.
+ * @see MoveProfile.cpp ->setup
+ */
 class Brake_Action : public Move_Action
 {
 public:
@@ -234,9 +253,9 @@ public:
 
 //========================================ACTION COMM========================================
 
-/*
-* Envoie un message sur le port de communication
-*/
+/**
+ * Send an action message on communication port.
+ */
 class Send_Action : public Action
 {
 private:
@@ -250,9 +269,9 @@ public:
     //hasFailed(Action)
 };
 
-/*
-* Instruction bloquante: Attend un message sur le port de communication
-*/
+/**
+ * Blocking instruction : waits for a message on communication port.
+ */
 class Wait_Message_Action : public Action
 {
 private:
@@ -266,9 +285,9 @@ public:
     //hasFailed(Action)
 };
 
-/*
-* Permet d'assigner une Function par message possible
-*/
+/**
+ * Enables to assign a function to each possible message.
+ */
 class Switch_Message_Action : public Action
 {
 private:
@@ -285,10 +304,10 @@ public:
     //has failed : inherited from Action
 };
 
-/*
-* Envoie un ordre d'action vers la carte actionneur.
-* waitCompletion : Attente ou non de l'execution de l'action par la carte actionneur.
-*/
+/**
+ * Send an order action to the actuator electronic card.
+ * waitCompletion : Waits for the execution of action by the actuator electronic card.
+ */
 class Send_Order_Action : public Double_Action
 {
 private:
@@ -297,15 +316,20 @@ private:
 
     Message message;
 public:
-    Send_Order_Action(MessageID actuatorID, Actuator_Order actuatorOrder, float timeout, Communication *comm, boolean waitCompletion, int16_t require = NO_REQUIREMENT);
+    Send_Order_Action(MessageID actuatorID,
+                      Actuator_Order actuatorOrder,
+                      float timeout,
+                      Communication *comm,
+                      boolean waitCompletion,
+                      int16_t require = NO_REQUIREMENT);
 };
 
 //========================================ACTION MISC========================================
 
-/*
-* Ne fais rien pendant un certain temps.
-* Le ghost continue sur sa dernière action
-*/
+/**
+ * Does nothing during the sleeping time.
+ * Ghost continues on last action.
+ */
 class Sleep_Action : public Action
 {
 private:
@@ -318,10 +342,10 @@ public:
     bool hasFailed() { return false; } //(Sleep) on en peut pas fail d'attendre
 };
 
-/*
-* Ne fais rien.
-* Permet d'annuler une action d'un Double_Action.
-*/
+/**
+ * Does nothing.
+ * Can disable an action of a double action.
+ */
 class Null_Action : public Action
 {
 public:
@@ -330,13 +354,13 @@ public:
     bool hasFailed() {return false;}
 };
 
-/*
-* Ne fait rien et est impossible a passer.
-* Si loop est activé, cette action permet de retourner a la première action de la file
-* Si pause est activé, la séquence ne s'actualise plus tant qu'elle n'est pas resume
-* Si lockGhost est activé, le ghost ne s'actualise plus
-* Par défaut, une endAction endort une sequence
-*/
+/**
+ * Does nothing and is impossible to skip.
+ * If loop is activated, this action enables to go back to the first action of the queue.
+ * If pause is activated, the sequence does not actualise until not resumed.
+ * If lockGhost is activated, ghost does not actualise anymore.
+ * By default, an endAction put to sleep a sequence.
+ */
 class End_Action : public Action //Une End_Action ne passe jamais a la suite
 {
 private:
@@ -351,9 +375,9 @@ public:
     bool hasFailed() { return false; }
 };
 
-/*
-* Fait l'action "functionToCall" lors du start de l'action
-*/
+/**
+ * Do the action stocked as 'functionToCall' when action starts.
+ */
 class Do_Action : public Action
 {
 private:
@@ -361,12 +385,13 @@ private:
 
 public:
     void start();
-    Do_Action(Fct functionToCall, int16_t require = NO_REQUIREMENT) : Action("DoAc", 0.1, require) { this->functionToCall = functionToCall; }
+    Do_Action(Fct functionToCall, int16_t require = NO_REQUIREMENT)
+    : Action("DoAc", 0.1, require) { this->functionToCall = functionToCall; }
 };
 
-/*
-* Met en pause une sequence lors de start
-*/
+/**
+ * Set a sequence to pause when action starts.
+ */
 class PauseSeq_Action : public Action
 {
 private:
@@ -378,9 +403,9 @@ public:
     PauseSeq_Action(SequenceName nameSeq, bool lockGhost, int16_t require = NO_REQUIREMENT);
 };
 
-/*
-* Relance une sequence lors de start
-*/
+/**
+ * Resume a sequence during start.
+ */
 class ResumeSeq_Action : public Action
 {
 private:
@@ -391,9 +416,9 @@ public:
     ResumeSeq_Action(SequenceName nameSeq, int16_t require = NO_REQUIREMENT);
 };
 
-/*
-* Attend une erreur
-*/
+/**
+ * Waiting for an error.
+ */
 class Wait_Error_Action : public Action
 {
 private:
@@ -406,6 +431,9 @@ public:
     //hasFailed(Action)
 };
 
+/**
+ * Recalibrate the PID and position.
+ */
 class Recallage_Action : public Double_Action
 {
 public:
@@ -414,10 +442,10 @@ public:
 
 //========================================ACTION INPUT========================================
 
-/*
-* Attend que la tirette soit tiree
-* Le pin est Low lorsque la tirette est branche
-*/
+/**
+ * Wait for the zipper to be pulled out.
+ * The pin is set to low when the zipper is in.
+ */
 class Wait_Tirette_Action : public Action
 {
 private:

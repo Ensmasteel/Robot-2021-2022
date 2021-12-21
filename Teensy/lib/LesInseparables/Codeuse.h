@@ -8,6 +8,10 @@
 #include <Encoder.h>
 #else // !STM32BOTH
 
+/**
+ *Defines a new class Encoder.
+ */
+
 class Encoder
 {
 public:
@@ -16,6 +20,9 @@ public:
 };
 #endif
 
+/**
+ * Defines a class for a switch.
+ */
 class Interrupteur
 {
     private:
@@ -27,6 +34,9 @@ class Interrupteur
         bool isContact();
 };
 
+/**
+ * Defines a class for coder containing all parameters.
+ */
 class Codeuse
 {
     int32_t oldTicks; //Nombre de ticks compté, nombre de ticks compté au dernier appel
@@ -43,7 +53,9 @@ public:
     Codeuse(uint8_t pinA, uint8_t pinB, uint16_t ticksPerRound, float diametreRoue);
 };
 
-
+/**
+ * Creates a class for odometry.
+ */
 class Odometrie
 {
 private:

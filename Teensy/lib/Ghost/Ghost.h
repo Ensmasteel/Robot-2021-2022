@@ -11,51 +11,97 @@
 #include "Vector.h"
 #include "Math_functions.h"
 
+/**
+ * Public class defining a ghost image of the robot, which will follow it and its movements.
+ */
 class Ghost
 {
 public:
+    /**
+     * Public constructor of the Ghost class.
+     * @param posEini : Initial position of the ghost image. Default is VectorE(0.0,0.0,0.0).
+     */
     Ghost(VectorE posEini = VectorE(0.0, 0.0, 0.0));
     //Ghost() {}
 
-    Cinetique cinetiqueController; // updated at each call of ActuatePosition, stores delayed position and current speed
+    Cinetique cinetiqueController; /// updated at each call of ActuatePosition, stores delayed position and current speed
 
     // ===    METHODES    ===
     // ======================
 
     // GOAL / IsVar() gives Var status
     // OUT  / bool Status
+    /**
+     * Returns if the ghost image is whether locked or not.
+     * @return : bool
+     */
     bool IsLocked();
+    /**
+     * Returns if the ghost image is rotating.
+     * @return : Bool.
+     */
     bool IsRotating();
+
+    /**
+     * Returns if the ghost is going backward.
+     * @return : Bool.
+     */
     bool IsBackward();
+
+    /**
+     * Returns if the trajectory is finished or not.
+     * @return : Bool.
+     */
     bool trajectoryIsFinished();
-    
-    // GOAL / Setter function of locked variable, true => robot won't move
-    // IN   / bool state
-    // PREREQUIRE / Please brake the robot to avoid hicups
+
+    /**
+     * Setter function of locked variable. Set it to true and robot won't move.
+     * @param state : Bool, new value to pass in locked variable.
+     * @note : Please brake the robot to avoid hicups.
+     */
     void Lock(bool state);
 
-    // GOAL / Calculate next position of the robot along the trajectory in memory
-    // IN   / float dt : Duration since last call of the function - Keep track if real time
-    // OUT  / int error : 0 if calculation completed
-    //                    1 if bot locked in position or posAim reached
-    //      / VectorE posCurrent
+
+    /**
+     * Calculate the next position considering the trajectory and actual one.
+     * @param dt : float, time-delta since when the function has been call last. Keep it tracked if real time.
+     * @return : int, error : 0 if no error, 1 if bot locked in position, or target pos reached.
+     */
     int ActuatePosition(float dt);
 
-    // GOAL / Compute the new trajectory of the bot to reach posFinal
-    //      / To execute a pure rotation set pureRotation to True and set posFinal to posCurrent except for _theta
-    // IN   / VectorE posFinal
-    //      / float deltaCurve, speedRamps, cruisingSpeed : speed parameters of the trajectory [speedRamps] = cm/s^2 ; [cruisingSpeed] = cm/s
-    //      / bool pureRotation : true if a simple rotation is wanted
-    //      / bool backward     : true if the robot is going backaward
-    // OUT  / int error : 0 if calculation completed
-    //                    1 if no movement needed i.e. distance and orientation to the aimed position less than epsilon
-    //      / Polynome trajectory_X, trajectory_Y, speedSquare_e
-    int Compute_Trajectory(VectorE posFinal, float deltaCurve, float speedRamps, float cruisingSpeed, bool pureRotation = false, bool backward = false);
+
+    /**
+     * Compute the new trajectory of the bot to reach the target position.
+     *
+     * to execute a pure rotation, set pureRotation to True, and set posFinal to posCurrent except for _theta.
+     * @param posFinal : VectorE, target position.
+     * @param deltaCurve : float, speed parameters of the trajectory.
+     * @param speedRamps : float, acceleration value to reach cruising speed. [cm.-2]
+     * @param cruisingSpeed : float, target speed for trajectory. [cm/s]
+     * @param pureRotation : bool, Whether if the robot only rotate or not.
+     * @param backward : bool, whether the robot is going backward or not.
+     * @return int, error. 0 if the function completed, 0 if there was any error during computing.
+     */
+    int Compute_Trajectory(VectorE posFinal,
+                           float deltaCurve,
+                           float speedRamps,
+                           float cruisingSpeed,
+                           bool pureRotation = false,
+                           bool backward = false);
 
     // GOAL / Teleport the ghost to _newPos_
     // IN   / VectorE newPos OR Cinetique newPos : only consider position
     // OUT  / The position of the ghost is set to VectorE. Speed are not affected by this action
+    /**
+     * Virtually teleport the ghost to _newPos_.
+     * @param newPos VectorE : the vector of the newPos.
+     */
     void moveGhost(VectorE newPos);
+
+    /**
+     * Same as precedent function, except this takes a kinetic vector in parameter.
+     * @param newPos : Cinetique, the kinetic vectot of the newPos.
+     */
     void moveGhost(Cinetique newPos);
 
     Cinetique Get_Controller_Cinetique();

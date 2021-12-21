@@ -16,12 +16,15 @@
 #include "Servo.h"
 #include "StepperMotorJ.h"
 
+/**
+ * Enum class to give the different states of an Actuator.
+ */
 enum class Actuator_State
 {
-    Attente,
-    NewMess,
-    Mouvement,
-    MouvFinished
+    Attente, ///< Waiting for an order
+    NewMess, ///< getting a new order
+    Mouvement, ///< During the movement
+    MouvFinished ///< Just ending the action asked
 
 };
 
@@ -109,13 +112,16 @@ protected:
  * Public class extending the actuator abstract class.
  *
  * Used to define the 'Pavillon' actuator.
- *
+ *Deprecated for the 2022 edition.
  *
  */
 class [[deprecated ("Deprecated because unused after 2021 cup. Will be removed soon")]]
         Pavillon : public Actuator
 {
 public:
+    /**
+     * Public constructor of the Pavillon class.
+     */
     Pavillon();
     void Init(uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1);
     Actuator_State Update() override;
@@ -132,13 +138,32 @@ private:
     StepperMotorJ* stepperMotor;
 };
 
-
+/**
+ * Public class that extends the abstract actuator class.
+ *
+ * Enables you to create a class containting the information to control a robot arm equipped with
+ * a servomotor and 2 positions : the initial pos and the deployed position. Both are given in degrees.
+ */
 class Bras : public Actuator
 {
 public:
+    /**
+     * Public basic constructor. Does not require any parameters.
+     */
     Bras();
+
+    /**
+     * Initialises the robot arm with some parameters.
+     *
+     * Enables you to give the initial parameters to the arm previously instantiated.
+     * @param pinServo : the pin number on wich the servomotor is connected.
+     * @param ID : The message ID of the default state of the arm
+     * @param posRentre The angle given in degree of the initial position.
+     * @param posSortie The angle given in degree of the final position.
+     */
     void Init(uint8_t pinServo, MessageID ID, int posRentre = 0, int posSortie = 100);
     Actuator_State Update() override;
+
 private:
     int posRentre = 0;
     int posSortie = 100;
@@ -147,12 +172,35 @@ private:
     Servo servo;
 };
 
-
-class Pince : public Actuator
+/**
+ * The public class to construct a robot gripper. Extends the abstract class Actuator.
+ *
+ * This class is deprecated in the 2022 edition.
+ */
+class [[deprecated ("Deprecated in the 2022 edition")]] Pince : public Actuator
 {
 public:
+    /**
+     * Basic public constructor with no params.
+     */
     Pince();
-    void Init(uint8_t pinServo, uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1, MessageID ID, int ferme = 70, int ouvert = 100, int actionStep = 400);
+
+    /**
+     * Initializing function. Enables you to give the primary parameters to the pince.
+     * @param pinServo : the pin number on wich the gripper is connected.
+     * @param pinDir : the pin number on wich the direction is given to the stepperMotor.
+     * @param pinStep : the pin number giving the step information to the stepperMotor
+     * @param pinSleep : the pin number giving the sleep information to the stepperMotor
+     * @param pinM0 : the pin number of the first motor of the stepperMotor.
+     * @param pinM1 : the second pin number of the stepperMotor.
+     * @param ID : Default message ID of the stepperMotor
+     * @param ferme : The initial position given in degrees.
+     * @param ouvert : The final position given in degrees.
+     * @param actionStep : The step of the stepperMotor.
+     */
+    void Init(uint8_t pinServo, uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1,
+              MessageID ID, int ferme = 70, int ouvert = 100, int actionStep = 400);
+
     Actuator_State Update() override;
 protected:
     Servo servo;

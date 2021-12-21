@@ -11,6 +11,9 @@
 #include "SequenceName.h"
 #include <vector>
 
+/**
+ * Defines a robot class, including all parameters to set it up.
+ */
 class Robot
 {
 protected:
@@ -51,16 +54,26 @@ public :
     //        Definition of the sequence of actions
     // IN   / float xIni, yIni, thetaIni : Initial position of the bot
     //        Stream* commPort : pointer to current serial port (bluetooth or USB)
-    Robot(float xIni = 0.0, float yIni = 0.0, float thetaIni = 0.0, Stream *commPort = &Serial, Stream *actuPort = &Serial,Stream *espPort = &Serial4);
+    /**
+     * Constructor of the robot class. Set up all references to variables of other classes.
+     * Definition of all the sequence of the actions.
+     * @param xIni : float, initial X-axis coordinates of the robot.
+     * @param yIni : float, initial Y-axis coordinates of the robot.
+     * @param thetaIni : float, initial angle of the robot.
+     * @param commPort : pointer to current communication port.
+     * @param actuPort : pointer to the actuator port.
+     */
+    Robot(float xIni = 0.0,
+          float yIni = 0.0,
+          float thetaIni = 0.0,
+          Stream *commPort = &Serial,
+          Stream *actuPort = &Serial,
+          Stream *espPort = &Serial4);
     
-    // GOAL / Update informations about real position, Ghost's position, compute output and send order to motors
-    // IN   / float dt : time since last call
-    //        odometrie
-    //        ghost
-    //        cinetiqueNext
-    //        cinetiqueCurrent
-    //        controller
-    // OUT  / Motor motorLeft, motorRight : orders send
+    /**
+     * Updates information about real position, ghost's position, compute output and send orders to motors.
+     * @param dt : time since last call.
+     */
     void Update(float dt);
 
     // GOAL / Send current robot state on telemtry serial
@@ -69,8 +82,18 @@ public :
     //        ghost
     //        mainSequence
     //        controller
+    /**
+     * Send current robot state on telemetry serial.
+     * @param odometrie : bool.
+     * @param other : bool.
+     */
     void telemetry(bool odometrie, bool other);
 
+    /**
+     * Return sequence named 'name'
+     * @param name : String, name of the wanted sequence.
+     * @return Sequence, the sequences searched.
+     */
     Sequence* getSequenceByName(SequenceName name);
 
     float getTime();
@@ -83,6 +106,9 @@ public :
     void move(TargetVectorE whereTarget);
 
     // GOAL / Teleport Ghost on Robot's position
+    /**
+     * Teleports Ghost on Robot's actual position.
+     */
     void recalibrateGhost();
 };
 

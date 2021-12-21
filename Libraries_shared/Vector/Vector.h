@@ -10,61 +10,104 @@
 #include "Arduino.h"
 #include "Logger.h"
 
+/**
+ * Normalize an angle, from degree to rad.
+ * @param angle : float, angle value in degree.
+ * @return : float, angle value in rad.
+ */
 float normalizeAngle(float angle);
 
+/**
+ * Class defining the vector model used in this code.
+ */
 class Vector
 {
 public:
-    float _x, _y;
+
+    float _x, _y; ///< Coordinates of the vector
+    /**
+     * Public constructor of the vector.
+     * @param x : float, X-axis coordinate.
+     * @param y : float, Y-axis coordinate.
+     *
+     */
     Vector(float x = 0.0, float y = 0.0);
-    Vector operator+(const Vector &other);
-    void operator+=(const Vector &other);
-    Vector operator-(const Vector &other);
-    float operator%(const Vector &other); //Produit scalaire
-    Vector operator*(const float scalaire); //Produit par un scalaire (homotetie)
-    bool operator==(Vector const &other);
-    float norm();
-    float angle();
-    float distanceWith(Vector &other);
-    void print(const String& prefix="",bool info=false);
-    void toTelemetry(const String& prefix="");
-    Vector rotate(float theta);
+
+    Vector operator+(const Vector &other); ///<Redefines the + operator to work with vectors.
+    void operator+=(const Vector &other); ///<Redefines the += operator to work with vectors.
+    Vector operator-(const Vector &other); ///<Redefines the - operator to work with vectors.
+    float operator%(const Vector &other); ///< Scalar product.
+    Vector operator*(const float scalaire); ///< Homothety.
+    bool operator==(Vector const &other); ///<Redefines the == operator to work with vectors.
+
+    float norm(); ///<Returns the vector's norm.
+    float angle(); ///<Returns the vector's angle with base.
+    float distanceWith(Vector &other); ///<Returns the distance between two vectors.
+    void print(const String& prefix="",bool info=false);///<Prints the values of vectors.
+    void toTelemetry(const String& prefix="");///<Send the vectors' info to telemetry.
+    Vector rotate(float theta);///<Adds an angle to Vector.
 };
 
-Vector directeur(float theta);
+Vector directeur(float theta);///<Defines the principal vector.
 
+/**
+ * Class extending the vector base class.
+ */
 class VectorE : public Vector
 {
 public:
-    float _theta;
+    float _theta; //<Angle of vector
+    /**
+     * Public constructor of the VectorE
+     * @param x : float, X-axis coordinate
+     * @param y : float, Y-axis coordinate
+     * @param theta : float, angle.
+     */
     VectorE(float x = 0.0, float y = 0.0, float theta = 0.0);
-    void normalizeTheta();
-    void print(const String& prefix="",bool info=false);
-    void toTelemetry(const String& prefix="");
-    bool operator==(VectorE const &other);
+
+    void normalizeTheta();///<Normalizes the vector's angle.
+    void print(const String& prefix="",bool info=false);///<Prints vector values
+    void toTelemetry(const String& prefix="");///<Send vector's values to telemetry.
+    bool operator==(VectorE const &other);///<Redefines the == operator to work with VectorE
 };
 
 
-
+/**
+ * Defines a kinetic vector class.
+ */
 class Cinetique : public VectorE
 {
 public:
-    float _v;
-    float _w;
+    float _v; ///<Speed value
+    float _w; ///<Rotation speed value
+    /**
+     * Public constructor of the kinetic vector class
+     * @param x : float, X-axis coordinate
+     * @param y : float, Y-axis coordinate
+     * @param theta : float, Vector's angle
+     * @param v : Speed value
+     * @param w : Rotation speed value
+     */
     Cinetique(float x = 0.0, float y = 0.0, float theta = 0.0, float v = 0.0, float w = 0.0);
-    void print(const String& prefix="",bool info=false);
-    void toTelemetry(const String& prefix="");
-    bool operator==(Cinetique const &other);
+    void print(const String& prefix="",bool info=false);///<Prints kinetic vector values
+    void toTelemetry(const String& prefix="");///<Send kinetic vector values to telemetry.
+    bool operator==(Cinetique const &other);///<Redefines the == operator to work with kinetic vectors.
 };
 
 // =======     TARGETS    =======
 // ==============================
+/**
+ * Enum defining the color team [[deprecated in 2022 edition]]
+ */
 enum TeamColor
 {
     BLEU,
     JAUNE,
 };
 
+/**
+ * Class defining target for robot. To be updated for 2022 edition because its relative to 2021 teams.
+ */
 class Target
 {
 protected:
@@ -80,9 +123,12 @@ protected:
     constexpr static float WIDTH_TABLE = 2.0; //meters
 public:
     static void setTeamColor(TeamColor color);
-    Target();
+    Target();//<Public constructor for target.
 };
 
+/**
+ * Class extending the target class, defining a vector to reach target, depending on team color. [[deprecated for 2022 edition]]
+ */
 class TargetVector : public Target
 {
 private:
@@ -95,6 +141,9 @@ public:
     TargetVector(){}
 };
 
+/**
+ * Class extending the target class, defining a vectorE for target, depending on team color. [[deprecated for 2022 edition]]
+ */
 class TargetVectorE: public Target
 {
 private:
@@ -109,6 +158,9 @@ public:
     TargetVectorE(){}
 };
 
+/**
+ * Extends the target class, defining a target kinetic vector for reaching target. To be updated for 2022 edition
+ */
 class TargetCinetique: public Target
 {
 private:

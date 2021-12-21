@@ -18,6 +18,9 @@ Chose qu'il est possible de faire:
 
 class Action;
 
+/**
+ * Creates a sequence class defining the action queue and all parameters.
+ */
 class Sequence
 {
 private:
@@ -32,61 +35,61 @@ public:
 
     SequenceName getName();
 
-    /*
-    * Demarre l'action désigné par currentIndex (débloque la séquence si nécessaire)
-    */
+    /**
+     * Start the action designated by currentIndex (unlock the sequence if necessary).
+     */
     void startSelected();
 
-    /*
-    * Demarre l'action désigné par nextIndex
-    */
+    /**
+     * Starts the action designated by nextIndex.
+     */
     void startFollowing();
 
-    /*
-    * Demarre l'action désigné par nextIndex et indique que l'action a terminé anormalement
-    */
+    /**
+     * Starts the action designated by nextIndex and indicates the previous action ended normally.
+     */
     void forceFollowing();
 
-    /*
-    * Verifie l'etat de l'action en cours et agit si l'action réussi/foire
-    */
+    /**
+     * Verify the state of current action and acts if the action succeeds or fails.
+     */
     void update();
 
-    /*
-    * Change la valeur du nextIndex
-    */
+    /**
+     * Changes the nextIndex value.
+     */
     void setNextIndex(uint8_t index);
 
-    /*
-    * Cree une sequence vide
-    * Par défaut, la séquence est en pause
-    */
+    /**
+     * Creates an empty sequence.
+     * By default, sequence is set on pause.
+     */
     Sequence(int mySeqIndex);
 
-    /*
-    * Ajoute une action au bout de la séquence
-    */
+    /**
+     * Add an action at the end of sequence queue.
+     */
     void add(Action* action);
 
-    /*
-    * Upload les informations liée a cette séquence
-    * (A n'utiliser que sur une des séquences...)
-    */
+    /**
+     * Uploads infos concerning this sequence.
+     * @warning To use on only one sequence.
+     */
     void toTelemetry();
 
-    /*
-    * Empèche l'actualisation de la séquence et lock le ghost (ou pas)
-    */
+    /**
+     * Prevent the actualisation of sequence and lock the ghost.
+     */
     void pause(bool lockGhost);
 
-    /*
-    * Met le currentIndex sur la première action.
-    */
+    /**
+     * Set the currentIndex to first action.
+     */
     void reset(bool lockGhost);
 
-    /*
-    * Debloque la sequence et redémarre l'action qui était en cours
-    */
+    /**
+     * Unlock the sequence and restarts the current action.
+     */
     void resume();
 
 };

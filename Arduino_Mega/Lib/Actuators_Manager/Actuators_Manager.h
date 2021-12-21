@@ -8,9 +8,17 @@
 
 #define NBR_ACTUATORS 6
 
+/**
+ * Basic class to declare an actuator manager wich will organize all the actions during the match.
+ */
 class Manager
 {
 public:
+    /**
+     * Public constructor of the manager. Get 2 parameters :
+     * @param serControllerStream : stream on which the information will transit in the robot itself.
+     * @param serDebug : Serial port to show information during debugging.
+     */
     Manager(Stream* serControllerStream, HardwareSerial* serDebug = &Serial);
     void Update();
 private:
