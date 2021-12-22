@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_error_manager" kind="class" language="C++" prot="public">
+    <compoundname>ErrorManager</compoundname>
+    <includes refid="_error_manager_8h" local="no">ErrorManager.h</includes>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_error_manager_1a9aa086d8824f15f21c13b008da4ea50a" prot="private" static="yes" mutable="no">
+        <type><ref refid="class_error_box" kindref="compound">ErrorBox</ref> *</type>
+        <definition>ErrorBox * ErrorManager::errorBox</definition>
+        <argsstring></argsstring>
+        <name>errorBox</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.h" line="43" column="21" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_error_manager_1a61c7dc2f64286db3d23aa5b503e8a317" prot="private" static="yes" mutable="no">
+        <type>float *</type>
+        <definition>float * ErrorManager::timeLastIn</definition>
+        <argsstring></argsstring>
+        <name>timeLastIn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.h" line="44" column="18" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_error_manager_1a7bed90237b637c43f383d4c3fd71baeb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ErrorManager::raise</definition>
+        <argsstring>(Error error)</argsstring>
+        <name>raise</name>
+        <param>
+          <type>Error</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Raise an error. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.h" line="27" column="17" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.cpp" bodystart="91" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="class_error_manager_1ad17fae74cf16c132478cd887d526065a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ErrorManager::popOldestError</definition>
+        <argsstring>()</argsstring>
+        <name>popOldestError</name>
+        <briefdescription>
+<para>Delete the oldest error raised. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.h" line="28" column="17" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.cpp" bodystart="105" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="class_error_manager_1abdaf3d2c9a56ceb4d9c75095466ca2fd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Error</type>
+        <definition>Error ErrorManager::peekOldestError</definition>
+        <argsstring>()</argsstring>
+        <name>peekOldestError</name>
+        <briefdescription>
+<para>Returns the oldest error raised( knowing that each iteration an error is archived). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.h" line="29" column="18" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.cpp" bodystart="110" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="class_error_manager_1a1d7ce8b7be01e27f98e2ee30bc972632" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t ErrorManager::inWaiting</definition>
+        <argsstring>()</argsstring>
+        <name>inWaiting</name>
+        <briefdescription>
+<para>Returns the number of error messages waiting in the sender box. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.h" line="30" column="20" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.cpp" bodystart="115" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="class_error_manager_1ab8d360ce5ae97dc3e08a4459d830ac27" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ErrorManager::setup</definition>
+        <argsstring>()</argsstring>
+        <name>setup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set every parameters up for usage. To be primary used before any other function in this module. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.h" line="34" column="17" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.cpp" bodystart="120" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="class_error_manager_1a89193f2b6a14442a194a62e7cf4dc472" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ErrorManager::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reset every parameter to ensure no one is forgotten. To be called at the end of usage to reset all parameters for next usage. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.h" line="39" column="17" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.cpp" bodystart="100" bodyend="103"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The errorManager class handles each error and log them. </para>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.h" line="24" column="1" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.h" bodystart="25" bodyend="46"/>
+    <listofallmembers>
+      <member refid="class_error_manager_1a9aa086d8824f15f21c13b008da4ea50a" prot="private" virt="non-virtual"><scope>ErrorManager</scope><name>errorBox</name></member>
+      <member refid="class_error_manager_1a1d7ce8b7be01e27f98e2ee30bc972632" prot="public" virt="non-virtual"><scope>ErrorManager</scope><name>inWaiting</name></member>
+      <member refid="class_error_manager_1abdaf3d2c9a56ceb4d9c75095466ca2fd" prot="public" virt="non-virtual"><scope>ErrorManager</scope><name>peekOldestError</name></member>
+      <member refid="class_error_manager_1ad17fae74cf16c132478cd887d526065a" prot="public" virt="non-virtual"><scope>ErrorManager</scope><name>popOldestError</name></member>
+      <member refid="class_error_manager_1a7bed90237b637c43f383d4c3fd71baeb" prot="public" virt="non-virtual"><scope>ErrorManager</scope><name>raise</name></member>
+      <member refid="class_error_manager_1a89193f2b6a14442a194a62e7cf4dc472" prot="public" virt="non-virtual"><scope>ErrorManager</scope><name>reset</name></member>
+      <member refid="class_error_manager_1ab8d360ce5ae97dc3e08a4459d830ac27" prot="public" virt="non-virtual"><scope>ErrorManager</scope><name>setup</name></member>
+      <member refid="class_error_manager_1a61c7dc2f64286db3d23aa5b503e8a317" prot="private" virt="non-virtual"><scope>ErrorManager</scope><name>timeLastIn</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

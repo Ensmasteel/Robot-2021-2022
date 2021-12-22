@@ -1,0 +1,31 @@
+\hypertarget{_moteur_8h_source}{}\doxysection{Moteur.\+h}
+\label{_moteur_8h_source}\index{Ensmasteel\_Bot\_2020/Teensy/lib/Moteur/Moteur.h@{Ensmasteel\_Bot\_2020/Teensy/lib/Moteur/Moteur.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef MOTEUR\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define MOTEUR\_H\_}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{class }\mbox{\hyperlink{class_motor}{Motor}}}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{7     uint8\_t pinPWR, pinSens;}
+\DoxyCodeLine{8     uint16\_t maxPwm;}
+\DoxyCodeLine{9     uint8\_t bitResolution;}
+\DoxyCodeLine{10     \textcolor{keywordtype}{float} orderByPass;}
+\DoxyCodeLine{11     \textcolor{keywordtype}{bool} bypass = \textcolor{keyword}{false}; \textcolor{comment}{//Lorsque le bypass est activé, le moteur prend l'odre orderByPass comme ordre et ignore l'order}}
+\DoxyCodeLine{12     \textcolor{comment}{//Cela permet notamment de faire des recallage: On impose une force sur les deux moteurs en boucle ouverte pendant un certain temps}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15     \textcolor{keywordtype}{float} order;    \textcolor{comment}{//Public pour le simulateur}}
+\DoxyCodeLine{16     \textcolor{keywordtype}{void} actuate(); \textcolor{comment}{//Actualisation de la puissance moteur}}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_motor}{Motor}}(uint8\_t pinPWR, uint8\_t pinSens, uint8\_t bitResolution = 8);}
+\DoxyCodeLine{18     \mbox{\hyperlink{class_motor}{Motor}}() \{\}}
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} setOrder(\textcolor{keywordtype}{float} order);    \textcolor{comment}{//Change la valeur de l'ordre courant}}
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} stop();                   \textcolor{comment}{//Arrete les moteurs et ignore l'ordre order jusqu'a l'appel de resume}}
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} bypassOrder(\textcolor{keywordtype}{float} order); \textcolor{comment}{//Impose cet ordre jusqu'a l'appel de resume}}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} resume();                 \textcolor{comment}{//Le moteur suit maintenant l'ordre standard "{}order"{}}}
+\DoxyCodeLine{23 \};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

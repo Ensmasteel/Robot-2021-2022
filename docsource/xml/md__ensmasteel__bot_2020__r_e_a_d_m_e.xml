@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="md__ensmasteel__bot_2020__r_e_a_d_m_e" kind="page">
+    <compoundname>md_Ensmasteel_Bot_2020_README</compoundname>
+    <title>&lt;h1 align = &quot;center&quot;&gt; EnsmaSteel bot 2021-2022 &lt;/h1&gt; &lt;!-- omit in toc --&gt;</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><image type="html" name="./.github/images/EnsmaSteel_Bot.png" alt="Robot during 2019 competition preparation" inline="yes"></image>
+</para>
+<para>🚧 MarkdDown file in progress �</para>
+<para>Presentation and source code of Ensmasteel&apos;s bot.</para>
+<para><itemizedlist>
+<listitem><para><ulink url="#robot-configuration">Robot configuration</ulink><itemizedlist>
+<listitem><para><ulink url="#sequences">Sequences</ulink></para>
+</listitem><listitem><para><ulink url="#actions">Actions</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><ulink url="#navigation">Navigation</ulink><itemizedlist>
+<listitem><para><ulink url="#trajectory-computation">Trajectory computation</ulink></para>
+</listitem><listitem><para><ulink url="#odometry">Odometry</ulink></para>
+</listitem><listitem><para><ulink url="#position-control">Position control</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><ulink url="#electronics">Electronics</ulink></para>
+</listitem><listitem><para><ulink url="#mecanics">Mecanics</ulink></para>
+</listitem></itemizedlist>
+</para>
+<sect1 id="md__ensmasteel__bot_2020__r_e_a_d_m_e_1autotoc_md13">
+<title>Robot configuration</title>
+<sect2 id="md__ensmasteel__bot_2020__r_e_a_d_m_e_1autotoc_md14">
+<title>Sequences</title>
+<para>Present <ref refid="class_sequence" kindref="compound">Sequence</ref> type</para>
+</sect2>
+<sect2 id="md__ensmasteel__bot_2020__r_e_a_d_m_e_1autotoc_md15">
+<title>Actions</title>
+<para>Present possible actions to stack in sequences</para>
+</sect2>
+</sect1>
+<sect1 id="md__ensmasteel__bot_2020__r_e_a_d_m_e_1autotoc_md16">
+<title>Navigation</title>
+<sect2 id="md__ensmasteel__bot_2020__r_e_a_d_m_e_1autotoc_md17">
+<title>Trajectory computation</title>
+<para>Commençons par déterminer la trajectoire du robot lorsqu&apos;il se déplace d&apos;un point A à un point B. Pour se faire nous calculons deux polynômes définissant l&apos;abscisse X et l&apos;ordonnée Y en fonction d&apos;une variable arbitraire notée t*. Ces fonctions sont des <ulink url="https://www.desmos.com/calculator/cahqdxeshd">courbes de Bézier d&apos;ordre 3</ulink>. On peut alors tracer la trajectoire en connaissant le point de départ __(X0,Y0)__, le point d&apos;arrivé __(X3,Y3)__ et les points intermédiaires __(X1,Y1)__ et __(X2,Y2)__. Ces points intermédiraires sont déterminés pour obtenir la courbure et plus particulièrement, l&apos;orientation initiale et finale du robot. L&apos;orientation du robot est essentielle pour effectuer les actions, nous devons donc pouvoir contrôler l&apos;orientation d&apos;arrivé en __(X3,Y3)__. On se contentera de partir dans le sens initial du robot en début de trajectoire, quitte à tourner avant.</para>
+<para>Nous stockons toutes les informations relatives à la trajectoire dans un objet <emphasis><ref refid="class_ghost" kindref="compound">Ghost</ref></emphasis>. Le robot physique se contentera de suivre cette trajectoire par un asservissement en position. Afin de permettre au robot de suivre la trajectoire, la position ne suffit pas, il faut aussi la vitesse de déplacement. La variable t* des courbes de Beziers n&apos;a aucun sens temporellement. On souhaite imposer la vitesse progressivement. On définit alors une fonction <emphasis>V(t)</emphasis> déterminant la vitesse d&apos;avancer le long de l&apos;abscisse curviligne décrivant la trajectoire. On a alors <emphasis>dt*=(V(t)/V*(t*))x(dt)</emphasis> avec <emphasis>dt</emphasis> le temps écoulé entre deux tour de boucle (de calcul), <emphasis>V*(t*)</emphasis> la vitesse réelles <emphasis>V*²(t*)=X’(t*)²+Y’(t*)²</emphasis> où <emphasis>X</emphasis> et <emphasis>Y</emphasis> sont les courbes de Beziers) et <emphasis>dt*</emphasis> le pas d&apos;incrémentation de <emphasis>t*</emphasis> pour le calcul de la position suivante. _(cf Passation-CODE.docx pour plus de détails)_</para>
+</sect2>
+<sect2 id="md__ensmasteel__bot_2020__r_e_a_d_m_e_1autotoc_md18">
+<title>Odometry</title>
+</sect2>
+<sect2 id="md__ensmasteel__bot_2020__r_e_a_d_m_e_1autotoc_md19">
+<title>Position control</title>
+<para>L&apos;ensembles des positions sont stocker sous forme de <emphasis><ref refid="class_vector_e" kindref="compound">VectorE(x, y, theta)</ref></emphasis> indiquant la position en coordonées x,y en mètres et l&apos;orientation du robot en radiants _(note : theta est toujours compris dans [-PI; PI])_. Le type <emphasis><ref refid="class_cinetique" kindref="compound">Cinetique</ref></emphasis> est attendu en entrée d&apos;asservissement. Il contient la position et l&apos;orientation du <ref refid="class_ghost" kindref="compound">Ghost</ref> en temps réelle et sa vitesse linéaire et en rotation dans le futur d&apos;un délai de <emphasis>delayPosition</emphasis> en milli-secondes. Ce délai permet à l&apos;asservissement de &quot;prédire&quot; les accélérations/décélérations afin d&apos;etre plus fluide.</para>
+</sect2>
+</sect1>
+<sect1 id="md__ensmasteel__bot_2020__r_e_a_d_m_e_1autotoc_md20">
+<title>Electronics</title>
+</sect1>
+<sect1 id="md__ensmasteel__bot_2020__r_e_a_d_m_e_1autotoc_md21">
+<title>Mecanics</title>
+</sect1>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/README.md"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,537 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_phare_2src_2main_8cpp" kind="file" language="C++">
+    <compoundname>main.cpp</compoundname>
+    <includes local="no">Arduino.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Phare/src/main.cpp</label>
+        <link refid="_phare_2src_2main_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_phare_2src_2main_8cpp_1aaf81f5fa7d1e779f83e9bf4ce631a7b6" prot="public" static="no">
+        <name>LED_1</name>
+        <initializer>50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="4" column="9" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_phare_2src_2main_8cpp_1ae60a8c1e03b38463f77d556a4a0a8a3b" prot="public" static="no">
+        <name>LED_2</name>
+        <initializer>48</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="5" column="9" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_phare_2src_2main_8cpp_1a07b3fb51ae7c3cc824dd714b46c1b2b6" prot="public" static="no">
+        <name>LED_3</name>
+        <initializer>46</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="6" column="9" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_phare_2src_2main_8cpp_1aec84038372d7a55c8b358398978e1dac" prot="public" static="no">
+        <name>LED_4</name>
+        <initializer>44</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="7" column="9" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_phare_2src_2main_8cpp_1ab0e84d3f877a513d7171cc3f702efb20" prot="public" static="no">
+        <name>LED_5</name>
+        <initializer>42</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="8" column="9" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_phare_2src_2main_8cpp_1a0bd7b910e8f1012cb068030c94529920" prot="public" static="no">
+        <name>LED_6</name>
+        <initializer>40</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="9" column="9" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_phare_2src_2main_8cpp_1a07b32196a3e1b6673d88d812833d4077" prot="public" static="no">
+        <name>LED_7</name>
+        <initializer>38</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="10" column="9" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_phare_2src_2main_8cpp_1a963240ad9010938fd985ae74b2d40d72" prot="public" static="no">
+        <name>LED_8</name>
+        <initializer>32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="11" column="9" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_phare_2src_2main_8cpp_1a1db4627cb22c101239d2af973b97ea81" prot="public" static="no">
+        <name>LED_9</name>
+        <initializer>30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="12" column="9" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_phare_2src_2main_8cpp_1ada036047a48238ac93642ff65c96379e" prot="public" static="no">
+        <name>LED_10</name>
+        <initializer>28</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="13" column="9" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_phare_2src_2main_8cpp_1a4ea6898da32241ea9d3bf042132da0b0" prot="public" static="no">
+        <name>LED_11</name>
+        <initializer>26</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="14" column="9" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_phare_2src_2main_8cpp_1aee4ad40f381f09abd654dd8e48065350" prot="public" static="no">
+        <name>LED_12</name>
+        <initializer>24</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="15" column="9" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_phare_2src_2main_8cpp_1a1d2981bed54d5916faa06861c13b64a3" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t pinInBouton</definition>
+        <argsstring></argsstring>
+        <name>pinInBouton</name>
+        <initializer>= 25</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="19" column="15" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_phare_2src_2main_8cpp_1a64f62097f5858a4e7ef420330ca0fa0f" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int delayStepper</definition>
+        <argsstring></argsstring>
+        <name>delayStepper</name>
+        <initializer>= 3000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="20" column="11" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_phare_2src_2main_8cpp_1a7ee85fa34b2f822872c8b40e2b1afb76" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t delayLed</definition>
+        <argsstring></argsstring>
+        <name>delayLed</name>
+        <initializer>= 100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="21" column="15" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_phare_2src_2main_8cpp_1a3fd94c7cf1734a0901f6dd8f3dfd3a15" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t stepPin</definition>
+        <argsstring></argsstring>
+        <name>stepPin</name>
+        <initializer>= 34</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="23" column="15" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_phare_2src_2main_8cpp_1add6290aff0847d41da32c1d5fe4cbf45" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t dirPin</definition>
+        <argsstring></argsstring>
+        <name>dirPin</name>
+        <initializer>= 35</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="24" column="15" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_phare_2src_2main_8cpp_1a8c094a70e53361cb713a144e2591f8d3" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t sleepPin</definition>
+        <argsstring></argsstring>
+        <name>sleepPin</name>
+        <initializer>= 22</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="25" column="15" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_phare_2src_2main_8cpp_1a66920bad8d43622916049319c677e51b" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t pinM0</definition>
+        <argsstring></argsstring>
+        <name>pinM0</name>
+        <initializer>= 37</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="26" column="15" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_phare_2src_2main_8cpp_1a6da4a0683da2d753ca16eb9e2f0863f0" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t pinM1</definition>
+        <argsstring></argsstring>
+        <name>pinM1</name>
+        <initializer>= 36</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="27" column="15" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_phare_2src_2main_8cpp_1ada5c987e854a34d90b0438379925ffad" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int steps</definition>
+        <argsstring></argsstring>
+        <name>steps</name>
+        <initializer>= 200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="29" column="11" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_phare_2src_2main_8cpp_1ac9dfdafa35fe629528170bdf759382f2" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float nombreTour</definition>
+        <argsstring></argsstring>
+        <name>nombreTour</name>
+        <initializer>= 23.12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="30" column="13" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_phare_2src_2main_8cpp_1a0c598514df22b2a1584f2536f3b92be1" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t tempsEteint</definition>
+        <argsstring></argsstring>
+        <name>tempsEteint</name>
+        <initializer>= 200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="32" column="15" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_phare_2src_2main_8cpp_1a86f7d42a107a70864b27f0b1bcafe5a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void allumerPhare</definition>
+        <argsstring>()</argsstring>
+        <name>allumerPhare</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="33" column="6" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="33" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="_phare_2src_2main_8cpp_1af9de61cfbd7f2c61e31b2aca87950657" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void monterPhare</definition>
+        <argsstring>(bool up, bool holdPosition)</argsstring>
+        <name>monterPhare</name>
+        <param>
+          <type>bool</type>
+          <declname>up</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>holdPosition</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="85" column="6" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="85" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="_phare_2src_2main_8cpp_1a4fc01d736fe50cf5b977f755b675f11d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setup</definition>
+        <argsstring>()</argsstring>
+        <name>setup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="98" column="6" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="98" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="_phare_2src_2main_8cpp_1afe461d27b9c48d5921c00d521181f12f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void loop</definition>
+        <argsstring>()</argsstring>
+        <name>loop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp" line="132" column="6" bodyfile="Ensmasteel_Bot_2020/Phare/src/main.cpp" bodystart="132" bodyend="157"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_1<sp/>50</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_2<sp/>48</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_3<sp/>46</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_4<sp/>44</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_5<sp/>42</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_6<sp/>40</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_7<sp/>38</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_8<sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_9<sp/>30</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_10<sp/>28</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_11<sp/>26</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LED_12<sp/>24</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>pinInBouton<sp/>=<sp/>25;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>delayStepper<sp/>=<sp/>3000;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>delayLed<sp/>=<sp/>100;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>stepPin<sp/>=<sp/>34;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>dirPin<sp/>=<sp/>35;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>sleepPin<sp/>=<sp/>22;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>pinM0<sp/>=<sp/>37;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>pinM1<sp/>=<sp/>36;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>steps<sp/>=<sp/>200;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>nombreTour<sp/>=<sp/>23.12;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>tempsEteint<sp/>=<sp/>200;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>allumerPhare(){<sp/></highlight><highlight class="comment">//On<sp/>allume<sp/>successivement<sp/>toutes<sp/>les<sp/>leds<sp/>du<sp/>phare</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>digitalWrite(LED_11,<sp/>LOW);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>digitalWrite(LED_1,<sp/>HIGH);<sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>delay(delayLed);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>digitalWrite(LED_12,<sp/>LOW);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>digitalWrite(LED_2,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>delay(delayLed);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>digitalWrite(LED_1,<sp/>LOW);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>digitalWrite(LED_3,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>delay(delayLed);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>digitalWrite(LED_2,<sp/>LOW);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>digitalWrite(LED_4,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>delay(delayLed);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>digitalWrite(LED_3,<sp/>LOW);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>digitalWrite(LED_5,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>delay(delayLed);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>digitalWrite(LED_4,<sp/>LOW);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>digitalWrite(LED_6,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>delay(delayLed);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>digitalWrite(LED_5,<sp/>LOW);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>digitalWrite(LED_7,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>delay(delayLed);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>digitalWrite(LED_6,<sp/>LOW);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>digitalWrite(LED_8,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>delay(delayLed);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>digitalWrite(LED_7,<sp/>LOW);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>digitalWrite(LED_9,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>delay(delayLed);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>digitalWrite(LED_8,<sp/>LOW);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>digitalWrite(LED_10,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>delay(delayLed);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>digitalWrite(LED_9,<sp/>LOW);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>digitalWrite(LED_11,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>delay(delayLed);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>digitalWrite(LED_10,<sp/>LOW);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>digitalWrite(LED_12,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>delay(delayLed);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>monterPhare(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>up,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>holdPosition){<sp/><sp/></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//permet<sp/>de<sp/>monter<sp/>le<sp/>phare<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>digitalWrite(sleepPin,<sp/>HIGH);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>digitalWrite(dirPin,<sp/>up<sp/>?<sp/>HIGH<sp/>:<sp/>LOW);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>steps*nombreTour;<sp/>x++)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(stepPin,HIGH);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>delayMicroseconds(delayStepper);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>digitalWrite(stepPin,LOW);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>delayMicroseconds(delayStepper);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>digitalWrite(sleepPin,<sp/>holdPosition<sp/>?<sp/>HIGH<sp/>:<sp/>LOW);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setup()<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">//Initialisation<sp/>des<sp/>pin<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal">pinMode(LED_1,<sp/>OUTPUT);<sp/></highlight></codeline>
+<codeline lineno="102"><highlight class="normal">pinMode(LED_2,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">pinMode(LED_3,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">pinMode(LED_4,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">pinMode(LED_5,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">pinMode(LED_6,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">pinMode(LED_7,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">pinMode(LED_8,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">pinMode(LED_9,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">pinMode(LED_10,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">pinMode(LED_11,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">pinMode(LED_12,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal">pinMode(pinInBouton,<sp/>INPUT);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal">pinMode(stepPin,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">pinMode(dirPin,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">pinMode(sleepPin,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">pinMode(pinM0,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">pinMode(pinM1,<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment">//On<sp/>s&apos;assure<sp/>de<sp/>l&apos;état<sp/>BAS<sp/>des<sp/>pins<sp/>du<sp/>moteur<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal">digitalWrite(pinM0,<sp/>LOW);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">digitalWrite(pinM1,<sp/>LOW);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal">Serial.begin(9600);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">Serial.println(</highlight><highlight class="stringliteral">&quot;Liaison<sp/>initialise&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>loop()<sp/></highlight></codeline>
+<codeline lineno="133"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tourBoucle<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(digitalRead(pinInBouton)<sp/>==<sp/>HIGH)<sp/>{<sp/></highlight><highlight class="comment">//Si<sp/>on<sp/>presse<sp/>le<sp/>bouton<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;Le<sp/>Phare<sp/>Monte!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/>monterPhare(</highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/>delay(tempsEteint);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;Le<sp/>Phare<sp/>s&apos;allume!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(1)</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>allumerPhare();</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>tourBoucle++;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tourBoucle<sp/>==<sp/>100)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Phare/src/main.cpp"/>
+  </compounddef>
+</doxygen>

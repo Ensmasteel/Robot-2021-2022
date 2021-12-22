@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_46dbdd8228edd27b2cc49d5506fc56c7" kind="dir">
+    <compoundname>D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src</compoundname>
+    <innerdir refid="dir_9b0abadb3095ca3afc173fc73ce39f39">D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/avr</innerdir>
+    <innerdir refid="dir_87c0ad4c0b6de2bb1899f0f5f1da0fbd">D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/megaavr</innerdir>
+    <innerdir refid="dir_29c2d7dbe7a4dabc73b7d811ad9b7ec1">D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/nrf52</innerdir>
+    <innerdir refid="dir_5e02ce1465c673258127f1f903e2e071">D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/sam</innerdir>
+    <innerdir refid="dir_e8082c46837a0b8be6d8cbe8f96348c7">D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/samd</innerdir>
+    <innerdir refid="dir_7417b7fa033d8eb1625c2f946234cdc8">D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/stm32f4</innerdir>
+    <innerfile refid="_servo_8h">Servo.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/"/>
+  </compounddef>
+</doxygen>

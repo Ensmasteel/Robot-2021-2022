@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_communication" kind="class" language="C++" prot="public">
+    <compoundname>Communication</compoundname>
+    <includes refid="_communication_8h" local="no">Communication.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_communication_1a30159b528c018b390a0f62be82804291" prot="private" static="no" mutable="no">
+        <type>Stream *</type>
+        <definition>Stream* Communication::port</definition>
+        <argsstring></argsstring>
+        <name>port</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="161" column="12" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_communication_1a47263481a5f5332b9b74f79c835ad2cb" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t Communication::millisLastSend</definition>
+        <argsstring></argsstring>
+        <name>millisLastSend</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="162" column="14" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_communication_1a7b1459e307e8eaefca0c546bfb922c13" prot="private" static="no" mutable="no">
+        <type><ref refid="class_message_box" kindref="compound">MessageBox</ref> *</type>
+        <definition>MessageBox* Communication::sendingBox</definition>
+        <argsstring></argsstring>
+        <name>sendingBox</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="163" column="16" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_communication_1a702df2d0901905079808dc450ac300bb" prot="private" static="no" mutable="no">
+        <type><ref refid="class_message_box" kindref="compound">MessageBox</ref> *</type>
+        <definition>MessageBox* Communication::receiveBox</definition>
+        <argsstring></argsstring>
+        <name>receiveBox</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="164" column="16" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_communication_1a431a221c086932c7b4225f6b4d006d17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Communication::send</definition>
+        <argsstring>(Message message)</argsstring>
+        <name>send</name>
+        <param>
+          <type><ref refid="struct_message" kindref="compound">Message</ref></type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Send a message on the communication port. <simplesect kind="warning"><para>this function is asynchronous. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: the message to send. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="113" column="10" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="202" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="class_communication_1a628a8d93d56c41f488c0e36fa8614ab4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Communication::popOldestMessage</definition>
+        <argsstring>()</argsstring>
+        <name>popOldestMessage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pop the oldest message in the reception box. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="118" column="10" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="207" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="class_communication_1a71204b613dd598bc5919d57942eef2f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_message" kindref="compound">Message</ref></type>
+        <definition>Message Communication::peekOldestMessage</definition>
+        <argsstring>()</argsstring>
+        <name>peekOldestMessage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pop the oldest message in the reception box and returns it. <simplesect kind="return"><para><ref refid="struct_message" kindref="compound">Message</ref>, the oldest message in the reception box. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="124" column="13" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="212" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="class_communication_1a56745608a76ca04c31e98f6b1e972b63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t Communication::inWaitingRx</definition>
+        <argsstring>()</argsstring>
+        <name>inWaitingRx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gives the number of messages contained in the reception box and waiting for treatment. <simplesect kind="return"><para>uint8_t, the number of messages. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="130" column="13" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="217" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="class_communication_1a9729e4f539ba60f67aa2273c0fe471e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t Communication::inWaitingTx</definition>
+        <argsstring>()</argsstring>
+        <name>inWaitingTx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Same as above but with the sender box. <simplesect kind="return"><para>uint8_t, the number of messages waiting. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="136" column="13" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="222" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="class_communication_1af87402699dbd147b8d24aec9792827b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Communication::update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>To be called regularly. Updates the reception and emission box. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="141" column="10" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="173" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="class_communication_1aa686ecae406d9e82ca6aab48e2634042" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Communication::Communication</definition>
+        <argsstring>(Stream *port=&amp;Serial)</argsstring>
+        <name>Communication</name>
+        <param>
+          <type>Stream *</type>
+          <declname>port</declname>
+          <defval>&amp;Serial</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor of the communication port. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the port to use for communication. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="147" column="5" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="227" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="class_communication_1ad2fcf1b78b7cb0869a1048c319a84bcf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Communication::operator=</definition>
+        <argsstring>(const Communication &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="class_communication" kindref="compound">Communication</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Redefinition of the operator &apos;=&apos;, to ensure there is no pointer on local variables. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Any other communication port. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="153" column="10" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="239" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="class_communication_1a556bfa49af73d5a2415bbbee6ea6fbed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Communication::toTelemetry</definition>
+        <argsstring>()</argsstring>
+        <name>toTelemetry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Method to send information to the telemetry. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="158" column="10" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="248" bodyend="252"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class defining the communications ways used in the robot. </para>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="105" column="1" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" bodystart="106" bodyend="165"/>
+    <listofallmembers>
+      <member refid="class_communication_1aa686ecae406d9e82ca6aab48e2634042" prot="public" virt="non-virtual"><scope>Communication</scope><name>Communication</name></member>
+      <member refid="class_communication_1a56745608a76ca04c31e98f6b1e972b63" prot="public" virt="non-virtual"><scope>Communication</scope><name>inWaitingRx</name></member>
+      <member refid="class_communication_1a9729e4f539ba60f67aa2273c0fe471e0" prot="public" virt="non-virtual"><scope>Communication</scope><name>inWaitingTx</name></member>
+      <member refid="class_communication_1a47263481a5f5332b9b74f79c835ad2cb" prot="private" virt="non-virtual"><scope>Communication</scope><name>millisLastSend</name></member>
+      <member refid="class_communication_1ad2fcf1b78b7cb0869a1048c319a84bcf" prot="public" virt="non-virtual"><scope>Communication</scope><name>operator=</name></member>
+      <member refid="class_communication_1a71204b613dd598bc5919d57942eef2f2" prot="public" virt="non-virtual"><scope>Communication</scope><name>peekOldestMessage</name></member>
+      <member refid="class_communication_1a628a8d93d56c41f488c0e36fa8614ab4" prot="public" virt="non-virtual"><scope>Communication</scope><name>popOldestMessage</name></member>
+      <member refid="class_communication_1a30159b528c018b390a0f62be82804291" prot="private" virt="non-virtual"><scope>Communication</scope><name>port</name></member>
+      <member refid="class_communication_1a702df2d0901905079808dc450ac300bb" prot="private" virt="non-virtual"><scope>Communication</scope><name>receiveBox</name></member>
+      <member refid="class_communication_1a431a221c086932c7b4225f6b4d006d17" prot="public" virt="non-virtual"><scope>Communication</scope><name>send</name></member>
+      <member refid="class_communication_1a7b1459e307e8eaefca0c546bfb922c13" prot="private" virt="non-virtual"><scope>Communication</scope><name>sendingBox</name></member>
+      <member refid="class_communication_1a556bfa49af73d5a2415bbbee6ea6fbed" prot="public" virt="non-virtual"><scope>Communication</scope><name>toTelemetry</name></member>
+      <member refid="class_communication_1af87402699dbd147b8d24aec9792827b8" prot="public" virt="non-virtual"><scope>Communication</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

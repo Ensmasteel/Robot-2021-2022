@@ -1,0 +1,147 @@
+\hypertarget{class_actuator}{}\doxysection{Actuator Class Reference}
+\label{class_actuator}\index{Actuator@{Actuator}}
+
+
+{\ttfamily \#include $<$Actuators.\+h$>$}
+
+Inheritance diagram for Actuator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_actuator}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_actuator_a813e211d860d125a45d713775c19d38b}{Actuator}} (String name=\char`\"{}Actuator\char`\"{}, Message\+ID mess\+ID=Message\+ID\+::\+Empty\+\_\+M)
+\item 
+virtual Actuator\+\_\+\+State \mbox{\hyperlink{class_actuator_abcd50fd00e60c114afde31648403e780}{Update}} ()
+\item 
+void \mbox{\hyperlink{class_actuator_a0834ccb419fcc7340391b9ef5a564343}{New\+Order}} (Actuator\+\_\+\+Order order)
+\item 
+\mbox{\hyperlink{struct_message}{Message}} \mbox{\hyperlink{class_actuator_a6f2502f7dfe2f59d7f58f6053c8574c6}{Order\+Completed}} ()
+\item 
+String \mbox{\hyperlink{class_actuator_a466fe2e29b99bf66f08116ff8ba46acb}{Get\+Name}} ()
+\item 
+Actuator\+\_\+\+State \mbox{\hyperlink{class_actuator_aff3a744eecf74c4b52a8a6b30ca0eb88}{Get\+Etat}} ()
+\item 
+Actuator\+\_\+\+Order \mbox{\hyperlink{class_actuator_a0819fc5a7749335bf3b5caa8f524ef87}{Get\+Order}} ()
+\item 
+Message\+ID \mbox{\hyperlink{class_actuator_ae5c55e58f214e70c0cf16e9e81111063}{Get\+ID}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_actuator_a20f429b3963d3402b4788774b434ba87}\label{class_actuator_a20f429b3963d3402b4788774b434ba87}} 
+String {\bfseries name}
+\item 
+\mbox{\Hypertarget{class_actuator_a40a6e3266cfb00a66b104317c4d68a31}\label{class_actuator_a40a6e3266cfb00a66b104317c4d68a31}} 
+Actuator\+\_\+\+State {\bfseries etat}
+\item 
+\mbox{\Hypertarget{class_actuator_a40d4d6ecd707964f3a9a30fc02384e29}\label{class_actuator_a40d4d6ecd707964f3a9a30fc02384e29}} 
+Actuator\+\_\+\+Order {\bfseries current\+Order}
+\item 
+\mbox{\Hypertarget{class_actuator_ab8ff5826f0a87b53d119c752d25af88a}\label{class_actuator_ab8ff5826f0a87b53d119c752d25af88a}} 
+Message\+ID {\bfseries mess\+ID} = Message\+ID\+::\+Empty\+\_\+M
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Basic abstract class to define an actuator
+
+This class defines a basic class to represent an actuator. It should be decorated with the target actuator class. The constructor is public and embeddes a name and an ID wich is \textquotesingle{}Empty\+\_\+M\textquotesingle{} as default. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_actuator_a813e211d860d125a45d713775c19d38b}\label{class_actuator_a813e211d860d125a45d713775c19d38b}} 
+\index{Actuator@{Actuator}!Actuator@{Actuator}}
+\index{Actuator@{Actuator}!Actuator@{Actuator}}
+\doxysubsubsection{\texorpdfstring{Actuator()}{Actuator()}}
+{\footnotesize\ttfamily Actuator\+::\+Actuator (\begin{DoxyParamCaption}\item[{String}]{name = {\ttfamily \char`\"{}Actuator\char`\"{}},  }\item[{Message\+ID}]{mess\+ID = {\ttfamily MessageID\+:\+:Empty\+\_\+M} }\end{DoxyParamCaption})}
+
+Basic public constructor for \mbox{\hyperlink{class_actuator}{Actuator}} class 
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: the actuator name \\
+\hline
+{\em mess\+ID} & \+: The Id of the message embedded. Default is \textquotesingle{}Empty\+\_\+M\textquotesingle{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_actuator}{Actuator}} \+: An instance of \mbox{\hyperlink{class_actuator}{Actuator}}. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_actuator_aff3a744eecf74c4b52a8a6b30ca0eb88}\label{class_actuator_aff3a744eecf74c4b52a8a6b30ca0eb88}} 
+\index{Actuator@{Actuator}!GetEtat@{GetEtat}}
+\index{GetEtat@{GetEtat}!Actuator@{Actuator}}
+\doxysubsubsection{\texorpdfstring{GetEtat()}{GetEtat()}}
+{\footnotesize\ttfamily Actuator\+\_\+\+State Actuator\+::\+Get\+Etat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the actuator state \begin{DoxyReturn}{Returns}
+state \+: the current state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actuator_ae5c55e58f214e70c0cf16e9e81111063}\label{class_actuator_ae5c55e58f214e70c0cf16e9e81111063}} 
+\index{Actuator@{Actuator}!GetID@{GetID}}
+\index{GetID@{GetID}!Actuator@{Actuator}}
+\doxysubsubsection{\texorpdfstring{GetID()}{GetID()}}
+{\footnotesize\ttfamily Message\+ID Actuator\+::\+Get\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the message ID of the current message actually in the actuator. \begin{DoxyReturn}{Returns}
+mess\+ID 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actuator_a466fe2e29b99bf66f08116ff8ba46acb}\label{class_actuator_a466fe2e29b99bf66f08116ff8ba46acb}} 
+\index{Actuator@{Actuator}!GetName@{GetName}}
+\index{GetName@{GetName}!Actuator@{Actuator}}
+\doxysubsubsection{\texorpdfstring{GetName()}{GetName()}}
+{\footnotesize\ttfamily String Actuator\+::\+Get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the actuator name \begin{DoxyReturn}{Returns}
+name \+: the actuator name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actuator_a0819fc5a7749335bf3b5caa8f524ef87}\label{class_actuator_a0819fc5a7749335bf3b5caa8f524ef87}} 
+\index{Actuator@{Actuator}!GetOrder@{GetOrder}}
+\index{GetOrder@{GetOrder}!Actuator@{Actuator}}
+\doxysubsubsection{\texorpdfstring{GetOrder()}{GetOrder()}}
+{\footnotesize\ttfamily Actuator\+\_\+\+Order Actuator\+::\+Get\+Order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the current order the actuator has. \begin{DoxyReturn}{Returns}
+current Order \+: the current order. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actuator_a0834ccb419fcc7340391b9ef5a564343}\label{class_actuator_a0834ccb419fcc7340391b9ef5a564343}} 
+\index{Actuator@{Actuator}!NewOrder@{NewOrder}}
+\index{NewOrder@{NewOrder}!Actuator@{Actuator}}
+\doxysubsubsection{\texorpdfstring{NewOrder()}{NewOrder()}}
+{\footnotesize\ttfamily void Actuator\+::\+New\+Order (\begin{DoxyParamCaption}\item[{Actuator\+\_\+\+Order}]{order }\end{DoxyParamCaption})}
+
+Getter of a new order. 
+\begin{DoxyParams}{Parameters}
+{\em order} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_actuator_a6f2502f7dfe2f59d7f58f6053c8574c6}\label{class_actuator_a6f2502f7dfe2f59d7f58f6053c8574c6}} 
+\index{Actuator@{Actuator}!OrderCompleted@{OrderCompleted}}
+\index{OrderCompleted@{OrderCompleted}!Actuator@{Actuator}}
+\doxysubsubsection{\texorpdfstring{OrderCompleted()}{OrderCompleted()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_message}{Message}} Actuator\+::\+Order\+Completed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Generates the validating message from the action dedicated to the order sender. \begin{DoxyReturn}{Returns}
+the validation message 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actuator_abcd50fd00e60c114afde31648403e780}\label{class_actuator_abcd50fd00e60c114afde31648403e780}} 
+\index{Actuator@{Actuator}!Update@{Update}}
+\index{Update@{Update}!Actuator@{Actuator}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily Actuator\+\_\+\+State Actuator\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Virtual method, to call before each loop.
+
+Commands each actuator and updates the robot state. 
+
+Reimplemented in \mbox{\hyperlink{class_pavillon_a34608a3ff17a2c9eb4d15ddcd58a9f55}{Pavillon}}, \mbox{\hyperlink{class_bras_a3e97c50a972a0e32bd8a807871c220fb}{Bras}}, \mbox{\hyperlink{class_pince_a276034390a36625be28299c0db1c3c54}{Pince}}, \mbox{\hyperlink{class_pince_avant_a29a479ea81391943af4a02f62fcdbbb2}{Pince\+Avant}}, and \mbox{\hyperlink{class_pince_arriere_ac7d442bef84237e9df70272365c593fa}{Pince\+Arriere}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Arduino\+\_\+\+Mega/\+Lib/\+Actuators/Actuators.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Arduino\+\_\+\+Mega/\+Lib/\+Actuators/Actuators.\+cpp\end{DoxyCompactItemize}

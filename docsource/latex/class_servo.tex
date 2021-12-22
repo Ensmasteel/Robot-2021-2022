@@ -1,0 +1,211 @@
+\hypertarget{class_servo}{}\doxysection{Servo Class Reference}
+\label{class_servo}\index{Servo@{Servo}}
+
+
+{\ttfamily \#include $<$Servo\+Timers.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_servo_aeccd2077f07ebc45250da14e72a0c461}\label{class_servo_aeccd2077f07ebc45250da14e72a0c461}} 
+uint8\+\_\+t {\bfseries attach} (int pin)
+\item 
+\mbox{\Hypertarget{class_servo_a70076d9a77de97241badd1f377817219}\label{class_servo_a70076d9a77de97241badd1f377817219}} 
+uint8\+\_\+t {\bfseries attach} (int pin, int min, int max)
+\item 
+\mbox{\Hypertarget{class_servo_a0b69ccc5c8b348ebaa84be91d973a362}\label{class_servo_a0b69ccc5c8b348ebaa84be91d973a362}} 
+void {\bfseries detach} ()
+\item 
+\mbox{\Hypertarget{class_servo_a72b4b546912eada96a6ef705168ceb8a}\label{class_servo_a72b4b546912eada96a6ef705168ceb8a}} 
+void {\bfseries write} (int value)
+\item 
+\mbox{\Hypertarget{class_servo_ac7fe3d6d2ea285ead98814bcfc417029}\label{class_servo_ac7fe3d6d2ea285ead98814bcfc417029}} 
+void {\bfseries write\+Microseconds} (int value)
+\item 
+\mbox{\Hypertarget{class_servo_aaca0af33ba7d7c87c8a785b8eabf95a7}\label{class_servo_aaca0af33ba7d7c87c8a785b8eabf95a7}} 
+int {\bfseries read} ()
+\item 
+\mbox{\Hypertarget{class_servo_a43950424d146c1414460066483d9561b}\label{class_servo_a43950424d146c1414460066483d9561b}} 
+int {\bfseries read\+Microseconds} ()
+\item 
+\mbox{\Hypertarget{class_servo_a48607d47aa5678780b1b927102bd3b1b}\label{class_servo_a48607d47aa5678780b1b927102bd3b1b}} 
+bool {\bfseries attached} ()
+\item 
+\mbox{\hyperlink{class_servo_a70b2b17657cf258cdcb57503bcf62cd2}{Servo}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_servo}{Servo}} instance. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_servo_ae610bc76e895bd05fdc3618e33b90012}{attach}} (uint8 pin, uint16 min\+Pulse\+Width=MIN\+\_\+\+PULSE\+\_\+\+WIDTH, uint16 max\+Pulse\+Width=MAX\+\_\+\+PULSE\+\_\+\+WIDTH, int16 min\+Angle=MIN\+\_\+\+ANGLE, int16 max\+Angle=MAX\+\_\+\+ANGLE)
+\begin{DoxyCompactList}\small\item\em Associate this instance with a servomotor whose input is connected to pin. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_servo_afa4042feca3c79ba934798961d202bea}{detach}} ()
+\begin{DoxyCompactList}\small\item\em Stop driving the servo pulse train. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_servo_af69aba052f5907ef7fc3b6159e3b7726}{write}} (int angle)
+\begin{DoxyCompactList}\small\item\em Set the servomotor target angle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_servo_a7d35c33a26697722dc0c7e6cdb66d299}{write\+Microseconds}} (uint16 pulse\+Width)
+\begin{DoxyCompactList}\small\item\em Set the pulse width, in microseconds. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_servo_a95217e315c3189adb6528a3b9b347336}{read}} () const
+\item 
+uint16 \mbox{\hyperlink{class_servo_a95404e96cc304eca9596d4c7d13fe339}{read\+Microseconds}} () const
+\item 
+bool \mbox{\hyperlink{class_servo_a243c190018cc807116ac4ca2c9b0f66e}{attached}} () const
+\begin{DoxyCompactList}\small\item\em Check if this instance is attached to a servo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_servo_a328ef929f144308a30476c587d71e9fc}{attached\+Pin}} () const
+\begin{DoxyCompactList}\small\item\em Get the pin this instance is attached to. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for interfacing with RC servomotors. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_servo_a70b2b17657cf258cdcb57503bcf62cd2}\label{class_servo_a70b2b17657cf258cdcb57503bcf62cd2}} 
+\index{Servo@{Servo}!Servo@{Servo}}
+\index{Servo@{Servo}!Servo@{Servo}}
+\doxysubsubsection{\texorpdfstring{Servo()}{Servo()}}
+{\footnotesize\ttfamily Servo\+::\+Servo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_servo}{Servo}} instance. 
+
+The new instance will not be attached to any pin. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_servo_ae610bc76e895bd05fdc3618e33b90012}\label{class_servo_ae610bc76e895bd05fdc3618e33b90012}} 
+\index{Servo@{Servo}!attach@{attach}}
+\index{attach@{attach}!Servo@{Servo}}
+\doxysubsubsection{\texorpdfstring{attach()}{attach()}}
+{\footnotesize\ttfamily bool Servo\+::attach (\begin{DoxyParamCaption}\item[{uint8}]{pin,  }\item[{uint16}]{min\+Pulse\+Width = {\ttfamily MIN\+\_\+PULSE\+\_\+WIDTH},  }\item[{uint16}]{max\+Pulse\+Width = {\ttfamily MAX\+\_\+PULSE\+\_\+WIDTH},  }\item[{int16}]{min\+Angle = {\ttfamily MIN\+\_\+ANGLE},  }\item[{int16}]{max\+Angle = {\ttfamily MAX\+\_\+ANGLE} }\end{DoxyParamCaption})}
+
+
+
+Associate this instance with a servomotor whose input is connected to pin. 
+
+If this instance is already attached to a pin, it will be detached before being attached to the new pin. This function doesn\textquotesingle{}t detach any interrupt attached with the pin\textquotesingle{}s timer channel.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & Pin connected to the servo pulse wave input. This pin must be capable of PWM output.\\
+\hline
+{\em min\+Pulse\+Width} & Minimum pulse width to write to pin, in microseconds. This will be associated with a min\+Angle degree angle. Defaults to SERVO\+\_\+\+DEFAULT\+\_\+\+MIN\+\_\+\+PW = 544.\\
+\hline
+{\em max\+Pulse\+Width} & Maximum pulse width to write to pin, in microseconds. This will be associated with a max\+Angle degree angle. Defaults to SERVO\+\_\+\+DEFAULT\+\_\+\+MAX\+\_\+\+PW = 2400.\\
+\hline
+{\em min\+Angle} & \mbox{\hyperlink{class_target}{Target}} angle (in degrees) associated with min\+Pulse\+Width. Defaults to SERVO\+\_\+\+DEFAULT\+\_\+\+MIN\+\_\+\+ANGLE = 0.\\
+\hline
+{\em max\+Angle} & \mbox{\hyperlink{class_target}{Target}} angle (in degrees) associated with max\+Pulse\+Width. Defaults to SERVO\+\_\+\+DEFAULT\+\_\+\+MAX\+\_\+\+ANGLE = 180.\\
+\hline
+\end{DoxyParams}
+@sideeffect May set pin\+Mode(pin, PWM).
+
+\begin{DoxyReturn}{Returns}
+true if successful, false when pin doesn\textquotesingle{}t support PWM. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_servo_a243c190018cc807116ac4ca2c9b0f66e}\label{class_servo_a243c190018cc807116ac4ca2c9b0f66e}} 
+\index{Servo@{Servo}!attached@{attached}}
+\index{attached@{attached}!Servo@{Servo}}
+\doxysubsubsection{\texorpdfstring{attached()}{attached()}}
+{\footnotesize\ttfamily bool Servo\+::attached (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if this instance is attached to a servo. 
+
+\begin{DoxyReturn}{Returns}
+true if this instance is attached to a servo, false otherwise. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_servo_a328ef929f144308a30476c587d71e9fc}{Servo\+::attached\+Pin()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_servo_a328ef929f144308a30476c587d71e9fc}\label{class_servo_a328ef929f144308a30476c587d71e9fc}} 
+\index{Servo@{Servo}!attachedPin@{attachedPin}}
+\index{attachedPin@{attachedPin}!Servo@{Servo}}
+\doxysubsubsection{\texorpdfstring{attachedPin()}{attachedPin()}}
+{\footnotesize\ttfamily int Servo\+::attached\+Pin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the pin this instance is attached to. 
+
+\begin{DoxyReturn}{Returns}
+Pin number if currently attached to a pin, NOT\+\_\+\+ATTACHED otherwise. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Servo\+::attach() 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_servo_afa4042feca3c79ba934798961d202bea}\label{class_servo_afa4042feca3c79ba934798961d202bea}} 
+\index{Servo@{Servo}!detach@{detach}}
+\index{detach@{detach}!Servo@{Servo}}
+\doxysubsubsection{\texorpdfstring{detach()}{detach()}}
+{\footnotesize\ttfamily bool Servo\+::detach (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Stop driving the servo pulse train. 
+
+If not currently attached to a motor, this function has no effect.
+
+\begin{DoxyReturn}{Returns}
+true if this call did anything, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_servo_a95217e315c3189adb6528a3b9b347336}\label{class_servo_a95217e315c3189adb6528a3b9b347336}} 
+\index{Servo@{Servo}!read@{read}}
+\index{read@{read}!Servo@{Servo}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily int Servo\+::read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Get the servomotor\textquotesingle{}s target angle, in degrees. This will lie inside the range specified at attach() time.
+
+\begin{DoxySeeAlso}{See also}
+Servo\+::attach() 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_servo_a95404e96cc304eca9596d4c7d13fe339}\label{class_servo_a95404e96cc304eca9596d4c7d13fe339}} 
+\index{Servo@{Servo}!readMicroseconds@{readMicroseconds}}
+\index{readMicroseconds@{readMicroseconds}!Servo@{Servo}}
+\doxysubsubsection{\texorpdfstring{readMicroseconds()}{readMicroseconds()}}
+{\footnotesize\ttfamily uint16 Servo\+::read\+Microseconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Get the current pulse width, in microseconds. This will lie within the range specified at attach() time.
+
+\begin{DoxySeeAlso}{See also}
+Servo\+::attach() 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_servo_af69aba052f5907ef7fc3b6159e3b7726}\label{class_servo_af69aba052f5907ef7fc3b6159e3b7726}} 
+\index{Servo@{Servo}!write@{write}}
+\index{write@{write}!Servo@{Servo}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void Servo\+::write (\begin{DoxyParamCaption}\item[{int}]{angle }\end{DoxyParamCaption})}
+
+
+
+Set the servomotor target angle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & \mbox{\hyperlink{class_target}{Target}} angle, in degrees. If the target angle is outside the range specified at attach() time, it will be clamped to lie in that range.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+Servo\+::attach() 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_servo_a7d35c33a26697722dc0c7e6cdb66d299}\label{class_servo_a7d35c33a26697722dc0c7e6cdb66d299}} 
+\index{Servo@{Servo}!writeMicroseconds@{writeMicroseconds}}
+\index{writeMicroseconds@{writeMicroseconds}!Servo@{Servo}}
+\doxysubsubsection{\texorpdfstring{writeMicroseconds()}{writeMicroseconds()}}
+{\footnotesize\ttfamily void Servo\+::write\+Microseconds (\begin{DoxyParamCaption}\item[{uint16}]{pulse\+Width }\end{DoxyParamCaption})}
+
+
+
+Set the pulse width, in microseconds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pulse\+Width} & Pulse width to send to the servomotor, in microseconds. If outside of the range specified at attach() time, it is clamped to lie in that range.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+Servo\+::attach() 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Arduino\+\_\+\+Mega/\+Lib/\+Servo/src/Servo.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Arduino\+\_\+\+Mega/\+Lib/\+Servo/src/stm32f4/Servo\+Timers.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,977 @@
+\hypertarget{_encoder_8h_source}{}\doxysection{Encoder.\+h}
+\label{_encoder_8h_source}\index{Ensmasteel\_Bot\_2020/Teensy/lib/LesInseparables/Encoder.h@{Ensmasteel\_Bot\_2020/Teensy/lib/LesInseparables/Encoder.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/* Encoder Library, for measuring quadrature encoded signals}}
+\DoxyCodeLine{2 \textcolor{comment}{ * http://www.pjrc.com/teensy/td\_libs\_Encoder.html}}
+\DoxyCodeLine{3 \textcolor{comment}{ * Copyright (c) 2011,2013 PJRC.COM, LLC -\/ Paul Stoffregen <paul@pjrc.com>}}
+\DoxyCodeLine{4 \textcolor{comment}{ *}}
+\DoxyCodeLine{5 \textcolor{comment}{ * Version 1.2 -\/ fix -\/2 bug in C-\/only code}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Version 1.1 -\/ expand to support boards with up to 60 interrupts}}
+\DoxyCodeLine{7 \textcolor{comment}{ * Version 1.0 -\/ initial release}}
+\DoxyCodeLine{8 \textcolor{comment}{ * }}
+\DoxyCodeLine{9 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{10 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{11 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{12 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{13 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{14 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{15 \textcolor{comment}{ * }}
+\DoxyCodeLine{16 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in}}
+\DoxyCodeLine{17 \textcolor{comment}{ * all copies or substantial portions of the Software.}}
+\DoxyCodeLine{18 \textcolor{comment}{ * }}
+\DoxyCodeLine{19 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{20 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{21 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{22 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{23 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{24 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN}}
+\DoxyCodeLine{25 \textcolor{comment}{ * THE SOFTWARE.}}
+\DoxyCodeLine{26 \textcolor{comment}{ */}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#ifdef STM32BOTH}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define Encoder\_h\_}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#ifndef Encoder\_h\_}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define Encoder\_h\_}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#if defined(ARDUINO) \&\& ARDUINO >= 100}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#elif defined(WIRING)}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#include "{}Wiring.h"{}}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}WProgram.h"{}}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#include "{}pins\_arduino.h"{}}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include "{}utility/direct\_pin\_read.h"{}}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#if defined(ENCODER\_USE\_INTERRUPTS) || !defined(ENCODER\_DO\_NOT\_USE\_INTERRUPTS)}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define ENCODER\_USE\_INTERRUPTS}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define ENCODER\_ARGLIST\_SIZE CORE\_NUM\_INTERRUPT}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#include "{}utility/interrupt\_pins.h"{}}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#ifdef ENCODER\_OPTIMIZE\_INTERRUPTS}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#include "{}utility/interrupt\_config.h"{}}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define ENCODER\_ARGLIST\_SIZE 0}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{comment}{// All the data needed by interrupts is consolidated into this ugly struct}}
+\DoxyCodeLine{59 \textcolor{comment}{// to facilitate assembly language optimizing of the speed critical update.}}
+\DoxyCodeLine{60 \textcolor{comment}{// The assembly code uses auto-\/incrementing addressing modes, so the struct}}
+\DoxyCodeLine{61 \textcolor{comment}{// must remain in exactly this order.}}
+\DoxyCodeLine{62 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{63     \textcolor{keyword}{volatile} IO\_REG\_TYPE * pin1\_register;}
+\DoxyCodeLine{64     \textcolor{keyword}{volatile} IO\_REG\_TYPE * pin2\_register;}
+\DoxyCodeLine{65     IO\_REG\_TYPE            pin1\_bitmask;}
+\DoxyCodeLine{66     IO\_REG\_TYPE            pin2\_bitmask;}
+\DoxyCodeLine{67     uint8\_t                state;}
+\DoxyCodeLine{68     int32\_t                position;}
+\DoxyCodeLine{69 \} \mbox{\hyperlink{struct_encoder__internal__state__t}{Encoder\_internal\_state\_t}};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{keyword}{class }\mbox{\hyperlink{class_encoder}{Encoder}}}
+\DoxyCodeLine{72 \{}
+\DoxyCodeLine{73 \textcolor{keyword}{public}:}
+\DoxyCodeLine{74     \mbox{\hyperlink{class_encoder}{Encoder}}(uint8\_t pin1, uint8\_t pin2) \{}
+\DoxyCodeLine{75 \textcolor{preprocessor}{        \#ifdef INPUT\_PULLUP}}
+\DoxyCodeLine{76         pinMode(pin1, INPUT\_PULLUP);}
+\DoxyCodeLine{77         pinMode(pin2, INPUT\_PULLUP);}
+\DoxyCodeLine{78 \textcolor{preprocessor}{        \#else}}
+\DoxyCodeLine{79         pinMode(pin1, INPUT);}
+\DoxyCodeLine{80         digitalWrite(pin1, HIGH);}
+\DoxyCodeLine{81         pinMode(pin2, INPUT);}
+\DoxyCodeLine{82         digitalWrite(pin2, HIGH);}
+\DoxyCodeLine{83 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{84         encoder.pin1\_register = PIN\_TO\_BASEREG(pin1);}
+\DoxyCodeLine{85         encoder.pin1\_bitmask = PIN\_TO\_BITMASK(pin1);}
+\DoxyCodeLine{86         encoder.pin2\_register = PIN\_TO\_BASEREG(pin2);}
+\DoxyCodeLine{87         encoder.pin2\_bitmask = PIN\_TO\_BITMASK(pin2);}
+\DoxyCodeLine{88         encoder.position = 0;}
+\DoxyCodeLine{89         \textcolor{comment}{// allow time for a passive R-\/C filter to charge}}
+\DoxyCodeLine{90         \textcolor{comment}{// through the pullup resistors, before reading}}
+\DoxyCodeLine{91         \textcolor{comment}{// the initial state}}
+\DoxyCodeLine{92         delayMicroseconds(2000);}
+\DoxyCodeLine{93         uint8\_t s = 0;}
+\DoxyCodeLine{94         \textcolor{keywordflow}{if} (DIRECT\_PIN\_READ(encoder.pin1\_register, encoder.pin1\_bitmask)) s |= 1;}
+\DoxyCodeLine{95         \textcolor{keywordflow}{if} (DIRECT\_PIN\_READ(encoder.pin2\_register, encoder.pin2\_bitmask)) s |= 2;}
+\DoxyCodeLine{96         encoder.state = s;}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#ifdef ENCODER\_USE\_INTERRUPTS}}
+\DoxyCodeLine{98         interrupts\_in\_use = attach\_interrupt(pin1, \&encoder);}
+\DoxyCodeLine{99         interrupts\_in\_use += attach\_interrupt(pin2, \&encoder);}
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{101         \textcolor{comment}{//update\_finishup();  // to force linker to include the code (does not work)}}
+\DoxyCodeLine{102     \}}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 \textcolor{preprocessor}{\#ifdef ENCODER\_USE\_INTERRUPTS}}
+\DoxyCodeLine{106     \textcolor{keyword}{inline} int32\_t read() \{}
+\DoxyCodeLine{107         \textcolor{keywordflow}{if} (interrupts\_in\_use < 2) \{}
+\DoxyCodeLine{108             noInterrupts();}
+\DoxyCodeLine{109             update(\&encoder);}
+\DoxyCodeLine{110         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{111             noInterrupts();}
+\DoxyCodeLine{112         \}}
+\DoxyCodeLine{113         int32\_t ret = encoder.position;}
+\DoxyCodeLine{114         interrupts();}
+\DoxyCodeLine{115         \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{116     \}}
+\DoxyCodeLine{117     \textcolor{keyword}{inline} int32\_t readAndReset() \{}
+\DoxyCodeLine{118         \textcolor{keywordflow}{if} (interrupts\_in\_use < 2) \{}
+\DoxyCodeLine{119             noInterrupts();}
+\DoxyCodeLine{120             update(\&encoder);}
+\DoxyCodeLine{121         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{122             noInterrupts();}
+\DoxyCodeLine{123         \}}
+\DoxyCodeLine{124         int32\_t ret = encoder.position;}
+\DoxyCodeLine{125         encoder.position = 0;}
+\DoxyCodeLine{126         interrupts();}
+\DoxyCodeLine{127         \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{128     \}}
+\DoxyCodeLine{129     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} write(int32\_t p) \{}
+\DoxyCodeLine{130         noInterrupts();}
+\DoxyCodeLine{131         encoder.position = p;}
+\DoxyCodeLine{132         interrupts();}
+\DoxyCodeLine{133     \}}
+\DoxyCodeLine{134 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{135     \textcolor{keyword}{inline} int32\_t read() \{}
+\DoxyCodeLine{136         update(\&encoder);}
+\DoxyCodeLine{137         \textcolor{keywordflow}{return} encoder.position;}
+\DoxyCodeLine{138     \}}
+\DoxyCodeLine{139     \textcolor{keyword}{inline} int32\_t readAndReset() \{}
+\DoxyCodeLine{140         update(\&encoder);}
+\DoxyCodeLine{141         int32\_t ret = encoder.position;}
+\DoxyCodeLine{142         encoder.position = 0;}
+\DoxyCodeLine{143         \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{144     \}}
+\DoxyCodeLine{145     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} write(int32\_t p) \{}
+\DoxyCodeLine{146         encoder.position = p;}
+\DoxyCodeLine{147     \}}
+\DoxyCodeLine{148 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{149 \textcolor{keyword}{private}:}
+\DoxyCodeLine{150     \mbox{\hyperlink{struct_encoder__internal__state__t}{Encoder\_internal\_state\_t}} encoder;}
+\DoxyCodeLine{151 \textcolor{preprocessor}{\#ifdef ENCODER\_USE\_INTERRUPTS}}
+\DoxyCodeLine{152     uint8\_t interrupts\_in\_use;}
+\DoxyCodeLine{153 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{154 \textcolor{keyword}{public}:}
+\DoxyCodeLine{155     \textcolor{keyword}{static} \mbox{\hyperlink{struct_encoder__internal__state__t}{Encoder\_internal\_state\_t}} * interruptArgs[ENCODER\_ARGLIST\_SIZE];}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157 \textcolor{comment}{//                           \_\_\_\_\_\_\_         \_\_\_\_\_\_\_       }}
+\DoxyCodeLine{158 \textcolor{comment}{//               Pin1 \_\_\_\_\_\_|       |\_\_\_\_\_\_\_|       |\_\_\_\_\_\_ Pin1}}
+\DoxyCodeLine{159 \textcolor{comment}{// negative <-\/-\/-\/         \_\_\_\_\_\_\_         \_\_\_\_\_\_\_         \_\_      -\/-\/> positive}}
+\DoxyCodeLine{160 \textcolor{comment}{//               Pin2 \_\_|       |\_\_\_\_\_\_\_|       |\_\_\_\_\_\_\_|   Pin2}}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162         \textcolor{comment}{//  new new old old}}
+\DoxyCodeLine{163         \textcolor{comment}{//  pin2    pin1    pin2    pin1    Result}}
+\DoxyCodeLine{164         \textcolor{comment}{//  -\/-\/-\/-\/    -\/-\/-\/-\/    -\/-\/-\/-\/    -\/-\/-\/-\/    -\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{165         \textcolor{comment}{//  0   0   0   0   no movement}}
+\DoxyCodeLine{166         \textcolor{comment}{//  0   0   0   1   +1}}
+\DoxyCodeLine{167         \textcolor{comment}{//  0   0   1   0   -\/1}}
+\DoxyCodeLine{168         \textcolor{comment}{//  0   0   1   1   +2  (assume pin1 edges only)}}
+\DoxyCodeLine{169         \textcolor{comment}{//  0   1   0   0   -\/1}}
+\DoxyCodeLine{170         \textcolor{comment}{//  0   1   0   1   no movement}}
+\DoxyCodeLine{171         \textcolor{comment}{//  0   1   1   0   -\/2  (assume pin1 edges only)}}
+\DoxyCodeLine{172         \textcolor{comment}{//  0   1   1   1   +1}}
+\DoxyCodeLine{173         \textcolor{comment}{//  1   0   0   0   +1}}
+\DoxyCodeLine{174         \textcolor{comment}{//  1   0   0   1   -\/2  (assume pin1 edges only)}}
+\DoxyCodeLine{175         \textcolor{comment}{//  1   0   1   0   no movement}}
+\DoxyCodeLine{176         \textcolor{comment}{//  1   0   1   1   -\/1}}
+\DoxyCodeLine{177         \textcolor{comment}{//  1   1   0   0   +2  (assume pin1 edges only)}}
+\DoxyCodeLine{178         \textcolor{comment}{//  1   1   0   1   -\/1}}
+\DoxyCodeLine{179         \textcolor{comment}{//  1   1   1   0   +1}}
+\DoxyCodeLine{180         \textcolor{comment}{//  1   1   1   1   no movement}}
+\DoxyCodeLine{181 \textcolor{comment}{/*}}
+\DoxyCodeLine{182 \textcolor{comment}{    // Simple, easy-\/to-\/read "{}documentation"{} version :-\/)}}
+\DoxyCodeLine{183 \textcolor{comment}{    //}}
+\DoxyCodeLine{184 \textcolor{comment}{    void update(void) \{}}
+\DoxyCodeLine{185 \textcolor{comment}{        uint8\_t s = state \& 3;}}
+\DoxyCodeLine{186 \textcolor{comment}{        if (digitalRead(pin1)) s |= 4;}}
+\DoxyCodeLine{187 \textcolor{comment}{        if (digitalRead(pin2)) s |= 8;}}
+\DoxyCodeLine{188 \textcolor{comment}{        switch (s) \{}}
+\DoxyCodeLine{189 \textcolor{comment}{            case 0: case 5: case 10: case 15:}}
+\DoxyCodeLine{190 \textcolor{comment}{                break;}}
+\DoxyCodeLine{191 \textcolor{comment}{            case 1: case 7: case 8: case 14:}}
+\DoxyCodeLine{192 \textcolor{comment}{                position++; break;}}
+\DoxyCodeLine{193 \textcolor{comment}{            case 2: case 4: case 11: case 13:}}
+\DoxyCodeLine{194 \textcolor{comment}{                position-\/-\/; break;}}
+\DoxyCodeLine{195 \textcolor{comment}{            case 3: case 12:}}
+\DoxyCodeLine{196 \textcolor{comment}{                position += 2; break;}}
+\DoxyCodeLine{197 \textcolor{comment}{            default:}}
+\DoxyCodeLine{198 \textcolor{comment}{                position -\/= 2; break;}}
+\DoxyCodeLine{199 \textcolor{comment}{        \}}}
+\DoxyCodeLine{200 \textcolor{comment}{        state = (s >> 2);}}
+\DoxyCodeLine{201 \textcolor{comment}{    \}}}
+\DoxyCodeLine{202 \textcolor{comment}{*/}}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204 \textcolor{keyword}{public}:}
+\DoxyCodeLine{205     \textcolor{comment}{// update() is not meant to be called from outside Encoder,}}
+\DoxyCodeLine{206     \textcolor{comment}{// but it is public to allow static interrupt routines.}}
+\DoxyCodeLine{207     \textcolor{comment}{// DO NOT call update() directly from sketches.}}
+\DoxyCodeLine{208     \textcolor{keyword}{static} \textcolor{keywordtype}{void} update(\mbox{\hyperlink{struct_encoder__internal__state__t}{Encoder\_internal\_state\_t}} *arg) \{}
+\DoxyCodeLine{209 \textcolor{preprocessor}{\#if defined(\_\_AVR\_\_)}}
+\DoxyCodeLine{210         \textcolor{comment}{// The compiler believes this is just 1 line of code, so}}
+\DoxyCodeLine{211         \textcolor{comment}{// it will inline this function into each interrupt}}
+\DoxyCodeLine{212         \textcolor{comment}{// handler.  That's a tiny bit faster, but grows the code.}}
+\DoxyCodeLine{213         \textcolor{comment}{// Especially when used with ENCODER\_OPTIMIZE\_INTERRUPTS,}}
+\DoxyCodeLine{214         \textcolor{comment}{// the inline nature allows the ISR prologue and epilogue}}
+\DoxyCodeLine{215         \textcolor{comment}{// to only save/restore necessary registers, for very nice}}
+\DoxyCodeLine{216         \textcolor{comment}{// speed increase.}}
+\DoxyCodeLine{217         \textcolor{keyword}{asm} \textcolor{keyword}{volatile} (}
+\DoxyCodeLine{218             \textcolor{stringliteral}{"{}ld r30, X+"{}}        \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{219             \textcolor{stringliteral}{"{}ld r31, X+"{}}        \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{220             \textcolor{stringliteral}{"{}ld r24, Z"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// r24 = pin1 input}}
+\DoxyCodeLine{221             \textcolor{stringliteral}{"{}ld r30, X+"{}}        \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{222             \textcolor{stringliteral}{"{}ld r31, X+"{}}        \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{223             \textcolor{stringliteral}{"{}ld r25, Z"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// r25 = pin2 input}}
+\DoxyCodeLine{224             \textcolor{stringliteral}{"{}ld r30, X+"{}}        \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// r30 = pin1 mask}}
+\DoxyCodeLine{225             \textcolor{stringliteral}{"{}ld r31, X+"{}}        \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// r31 = pin2 mask}}
+\DoxyCodeLine{226             \textcolor{stringliteral}{"{}ld r22, X"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// r22 = state}}
+\DoxyCodeLine{227             \textcolor{stringliteral}{"{}andi   r22, 3"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{228             \textcolor{stringliteral}{"{}and    r24, r30"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{229             \textcolor{stringliteral}{"{}breq   L\%=1"{}}           \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// if (pin1)}}
+\DoxyCodeLine{230             \textcolor{stringliteral}{"{}ori    r22, 4"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{//  state |= 4}}
+\DoxyCodeLine{231         \textcolor{stringliteral}{"{}L\%=1:"{}} \textcolor{stringliteral}{"{}and    r25, r31"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{232             \textcolor{stringliteral}{"{}breq   L\%=2"{}}           \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// if (pin2)}}
+\DoxyCodeLine{233             \textcolor{stringliteral}{"{}ori    r22, 8"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{//  state |= 8}}
+\DoxyCodeLine{234         \textcolor{stringliteral}{"{}L\%=2:"{}} \textcolor{stringliteral}{"{}ldi    r30, lo8(pm(L\%=table))"{}} \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{235             \textcolor{stringliteral}{"{}ldi    r31, hi8(pm(L\%=table))"{}} \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{236             \textcolor{stringliteral}{"{}add    r30, r22"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{237             \textcolor{stringliteral}{"{}adc    r31, \_\_zero\_reg\_\_"{}}  \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{238             \textcolor{stringliteral}{"{}asr    r22"{}}            \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{239             \textcolor{stringliteral}{"{}asr    r22"{}}            \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{240             \textcolor{stringliteral}{"{}st X+, r22"{}}        \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// store new state}}
+\DoxyCodeLine{241             \textcolor{stringliteral}{"{}ld r22, X+"{}}        \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{242             \textcolor{stringliteral}{"{}ld r23, X+"{}}        \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{243             \textcolor{stringliteral}{"{}ld r24, X+"{}}        \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{244             \textcolor{stringliteral}{"{}ld r25, X+"{}}        \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{245             \textcolor{stringliteral}{"{}ijmp"{}}              \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// jumps to update\_finishup()}}
+\DoxyCodeLine{246             \textcolor{comment}{// TODO move this table to another static function,}}
+\DoxyCodeLine{247             \textcolor{comment}{// so it doesn't get needlessly duplicated.  Easier}}
+\DoxyCodeLine{248             \textcolor{comment}{// said than done, due to linker issues and inlining}}
+\DoxyCodeLine{249         \textcolor{stringliteral}{"{}L\%=table:"{}}             \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{250             \textcolor{stringliteral}{"{}rjmp   L\%=end"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 0}}
+\DoxyCodeLine{251             \textcolor{stringliteral}{"{}rjmp   L\%=plus1"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 1}}
+\DoxyCodeLine{252             \textcolor{stringliteral}{"{}rjmp   L\%=minus1"{}}      \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 2}}
+\DoxyCodeLine{253             \textcolor{stringliteral}{"{}rjmp   L\%=plus2"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 3}}
+\DoxyCodeLine{254             \textcolor{stringliteral}{"{}rjmp   L\%=minus1"{}}      \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 4}}
+\DoxyCodeLine{255             \textcolor{stringliteral}{"{}rjmp   L\%=end"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 5}}
+\DoxyCodeLine{256             \textcolor{stringliteral}{"{}rjmp   L\%=minus2"{}}      \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 6}}
+\DoxyCodeLine{257             \textcolor{stringliteral}{"{}rjmp   L\%=plus1"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 7}}
+\DoxyCodeLine{258             \textcolor{stringliteral}{"{}rjmp   L\%=plus1"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 8}}
+\DoxyCodeLine{259             \textcolor{stringliteral}{"{}rjmp   L\%=minus2"{}}      \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 9}}
+\DoxyCodeLine{260             \textcolor{stringliteral}{"{}rjmp   L\%=end"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 10}}
+\DoxyCodeLine{261             \textcolor{stringliteral}{"{}rjmp   L\%=minus1"{}}      \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 11}}
+\DoxyCodeLine{262             \textcolor{stringliteral}{"{}rjmp   L\%=plus2"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 12}}
+\DoxyCodeLine{263             \textcolor{stringliteral}{"{}rjmp   L\%=minus1"{}}      \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 13}}
+\DoxyCodeLine{264             \textcolor{stringliteral}{"{}rjmp   L\%=plus1"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 14}}
+\DoxyCodeLine{265             \textcolor{stringliteral}{"{}rjmp   L\%=end"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}  \textcolor{comment}{// 15}}
+\DoxyCodeLine{266         \textcolor{stringliteral}{"{}L\%=minus2:"{}}                \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{267             \textcolor{stringliteral}{"{}subi   r22, 2"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{268             \textcolor{stringliteral}{"{}sbci   r23, 0"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{269             \textcolor{stringliteral}{"{}sbci   r24, 0"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{270             \textcolor{stringliteral}{"{}sbci   r25, 0"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{271             \textcolor{stringliteral}{"{}rjmp   L\%=store"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{272         \textcolor{stringliteral}{"{}L\%=minus1:"{}}                \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{273             \textcolor{stringliteral}{"{}subi   r22, 1"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{274             \textcolor{stringliteral}{"{}sbci   r23, 0"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{275             \textcolor{stringliteral}{"{}sbci   r24, 0"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{276             \textcolor{stringliteral}{"{}sbci   r25, 0"{}}         \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{277             \textcolor{stringliteral}{"{}rjmp   L\%=store"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{278         \textcolor{stringliteral}{"{}L\%=plus2:"{}}             \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{279             \textcolor{stringliteral}{"{}subi   r22, 254"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{280             \textcolor{stringliteral}{"{}rjmp   L\%=z"{}}           \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{281         \textcolor{stringliteral}{"{}L\%=plus1:"{}}             \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{282             \textcolor{stringliteral}{"{}subi   r22, 255"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{283         \textcolor{stringliteral}{"{}L\%=z:"{}} \textcolor{stringliteral}{"{}sbci   r23, 255"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{284             \textcolor{stringliteral}{"{}sbci   r24, 255"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{285             \textcolor{stringliteral}{"{}sbci   r25, 255"{}}       \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{286         \textcolor{stringliteral}{"{}L\%=store:"{}}             \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{287             \textcolor{stringliteral}{"{}st -\/X, r25"{}}        \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{288             \textcolor{stringliteral}{"{}st -\/X, r24"{}}        \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{289             \textcolor{stringliteral}{"{}st -\/X, r23"{}}        \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{290             \textcolor{stringliteral}{"{}st -\/X, r22"{}}        \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{291         \textcolor{stringliteral}{"{}L\%=end:"{}}               \textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{292         : : \textcolor{stringliteral}{"{}x"{}} (arg) : \textcolor{stringliteral}{"{}r22"{}}, \textcolor{stringliteral}{"{}r23"{}}, \textcolor{stringliteral}{"{}r24"{}}, \textcolor{stringliteral}{"{}r25"{}}, \textcolor{stringliteral}{"{}r30"{}}, \textcolor{stringliteral}{"{}r31"{}});}
+\DoxyCodeLine{293 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{294         uint8\_t p1val = DIRECT\_PIN\_READ(arg-\/>pin1\_register, arg-\/>pin1\_bitmask);}
+\DoxyCodeLine{295         uint8\_t p2val = DIRECT\_PIN\_READ(arg-\/>pin2\_register, arg-\/>pin2\_bitmask);}
+\DoxyCodeLine{296         uint8\_t state = arg-\/>state \& 3;}
+\DoxyCodeLine{297         \textcolor{keywordflow}{if} (p1val) state |= 4;}
+\DoxyCodeLine{298         \textcolor{keywordflow}{if} (p2val) state |= 8;}
+\DoxyCodeLine{299         arg-\/>state = (state >> 2);}
+\DoxyCodeLine{300         \textcolor{keywordflow}{switch} (state) \{}
+\DoxyCodeLine{301             \textcolor{keywordflow}{case} 1: \textcolor{keywordflow}{case} 7: \textcolor{keywordflow}{case} 8: \textcolor{keywordflow}{case} 14:}
+\DoxyCodeLine{302                 arg-\/>position++;}
+\DoxyCodeLine{303                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{304             \textcolor{keywordflow}{case} 2: \textcolor{keywordflow}{case} 4: \textcolor{keywordflow}{case} 11: \textcolor{keywordflow}{case} 13:}
+\DoxyCodeLine{305                 arg-\/>position-\/-\/;}
+\DoxyCodeLine{306                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{307             \textcolor{keywordflow}{case} 3: \textcolor{keywordflow}{case} 12:}
+\DoxyCodeLine{308                 arg-\/>position += 2;}
+\DoxyCodeLine{309                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{310             \textcolor{keywordflow}{case} 6: \textcolor{keywordflow}{case} 9:}
+\DoxyCodeLine{311                 arg-\/>position -\/= 2;}
+\DoxyCodeLine{312                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{313         \}}
+\DoxyCodeLine{314 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{315     \}}
+\DoxyCodeLine{316 \textcolor{keyword}{private}:}
+\DoxyCodeLine{317 \textcolor{comment}{/*}}
+\DoxyCodeLine{318 \textcolor{comment}{\#if defined(\_\_AVR\_\_)}}
+\DoxyCodeLine{319 \textcolor{comment}{    // TODO: this must be a no inline function}}
+\DoxyCodeLine{320 \textcolor{comment}{    // even noinline does not seem to solve difficult}}
+\DoxyCodeLine{321 \textcolor{comment}{    // problems with this.  Oh well, it was only meant}}
+\DoxyCodeLine{322 \textcolor{comment}{    // to shrink code size -\/ there's no performance}}
+\DoxyCodeLine{323 \textcolor{comment}{    // improvement in this, only code size reduction.}}
+\DoxyCodeLine{324 \textcolor{comment}{    \_\_attribute\_\_((noinline)) void update\_finishup(void) \{}}
+\DoxyCodeLine{325 \textcolor{comment}{        asm volatile (}}
+\DoxyCodeLine{326 \textcolor{comment}{            "{}ldi    r30, lo8(pm(Ltable))"{}   "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{327 \textcolor{comment}{            "{}ldi    r31, hi8(pm(Ltable))"{}   "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{328 \textcolor{comment}{        "{}Ltable:"{}               "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{329 \textcolor{comment}{            "{}rjmp   L\%=end"{}         "{}\(\backslash\)n\(\backslash\)t"{}  // 0}}
+\DoxyCodeLine{330 \textcolor{comment}{            "{}rjmp   L\%=plus1"{}       "{}\(\backslash\)n\(\backslash\)t"{}  // 1}}
+\DoxyCodeLine{331 \textcolor{comment}{            "{}rjmp   L\%=minus1"{}      "{}\(\backslash\)n\(\backslash\)t"{}  // 2}}
+\DoxyCodeLine{332 \textcolor{comment}{            "{}rjmp   L\%=plus2"{}       "{}\(\backslash\)n\(\backslash\)t"{}  // 3}}
+\DoxyCodeLine{333 \textcolor{comment}{            "{}rjmp   L\%=minus1"{}      "{}\(\backslash\)n\(\backslash\)t"{}  // 4}}
+\DoxyCodeLine{334 \textcolor{comment}{            "{}rjmp   L\%=end"{}         "{}\(\backslash\)n\(\backslash\)t"{}  // 5}}
+\DoxyCodeLine{335 \textcolor{comment}{            "{}rjmp   L\%=minus2"{}      "{}\(\backslash\)n\(\backslash\)t"{}  // 6}}
+\DoxyCodeLine{336 \textcolor{comment}{            "{}rjmp   L\%=plus1"{}       "{}\(\backslash\)n\(\backslash\)t"{}  // 7}}
+\DoxyCodeLine{337 \textcolor{comment}{            "{}rjmp   L\%=plus1"{}       "{}\(\backslash\)n\(\backslash\)t"{}  // 8}}
+\DoxyCodeLine{338 \textcolor{comment}{            "{}rjmp   L\%=minus2"{}      "{}\(\backslash\)n\(\backslash\)t"{}  // 9}}
+\DoxyCodeLine{339 \textcolor{comment}{            "{}rjmp   L\%=end"{}         "{}\(\backslash\)n\(\backslash\)t"{}  // 10}}
+\DoxyCodeLine{340 \textcolor{comment}{            "{}rjmp   L\%=minus1"{}      "{}\(\backslash\)n\(\backslash\)t"{}  // 11}}
+\DoxyCodeLine{341 \textcolor{comment}{            "{}rjmp   L\%=plus2"{}       "{}\(\backslash\)n\(\backslash\)t"{}  // 12}}
+\DoxyCodeLine{342 \textcolor{comment}{            "{}rjmp   L\%=minus1"{}      "{}\(\backslash\)n\(\backslash\)t"{}  // 13}}
+\DoxyCodeLine{343 \textcolor{comment}{            "{}rjmp   L\%=plus1"{}       "{}\(\backslash\)n\(\backslash\)t"{}  // 14}}
+\DoxyCodeLine{344 \textcolor{comment}{            "{}rjmp   L\%=end"{}         "{}\(\backslash\)n\(\backslash\)t"{}  // 15}}
+\DoxyCodeLine{345 \textcolor{comment}{        "{}L\%=minus2:"{}                "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{346 \textcolor{comment}{            "{}subi   r22, 2"{}         "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{347 \textcolor{comment}{            "{}sbci   r23, 0"{}         "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{348 \textcolor{comment}{            "{}sbci   r24, 0"{}         "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{349 \textcolor{comment}{            "{}sbci   r25, 0"{}         "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{350 \textcolor{comment}{            "{}rjmp   L\%=store"{}       "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{351 \textcolor{comment}{        "{}L\%=minus1:"{}                "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{352 \textcolor{comment}{            "{}subi   r22, 1"{}         "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{353 \textcolor{comment}{            "{}sbci   r23, 0"{}         "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{354 \textcolor{comment}{            "{}sbci   r24, 0"{}         "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{355 \textcolor{comment}{            "{}sbci   r25, 0"{}         "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{356 \textcolor{comment}{            "{}rjmp   L\%=store"{}       "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{357 \textcolor{comment}{        "{}L\%=plus2:"{}             "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{358 \textcolor{comment}{            "{}subi   r22, 254"{}       "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{359 \textcolor{comment}{            "{}rjmp   L\%=z"{}           "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{360 \textcolor{comment}{        "{}L\%=plus1:"{}             "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{361 \textcolor{comment}{            "{}subi   r22, 255"{}       "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{362 \textcolor{comment}{        "{}L\%=z:"{} "{}sbci   r23, 255"{}       "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{363 \textcolor{comment}{            "{}sbci   r24, 255"{}       "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{364 \textcolor{comment}{            "{}sbci   r25, 255"{}       "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{365 \textcolor{comment}{        "{}L\%=store:"{}             "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{366 \textcolor{comment}{            "{}st -\/X, r25"{}        "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{367 \textcolor{comment}{            "{}st -\/X, r24"{}        "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{368 \textcolor{comment}{            "{}st -\/X, r23"{}        "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{369 \textcolor{comment}{            "{}st -\/X, r22"{}        "{}\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{370 \textcolor{comment}{        "{}L\%=end:"{}               "{}\(\backslash\)n"{}}}
+\DoxyCodeLine{371 \textcolor{comment}{        : : : "{}r22"{}, "{}r23"{}, "{}r24"{}, "{}r25"{}, "{}r30"{}, "{}r31"{});}}
+\DoxyCodeLine{372 \textcolor{comment}{    \}}}
+\DoxyCodeLine{373 \textcolor{comment}{\#endif}}
+\DoxyCodeLine{374 \textcolor{comment}{*/}}
+\DoxyCodeLine{375 }
+\DoxyCodeLine{376 }
+\DoxyCodeLine{377 \textcolor{preprocessor}{\#ifdef ENCODER\_USE\_INTERRUPTS}}
+\DoxyCodeLine{378     \textcolor{comment}{// this giant function is an unfortunate consequence of Arduino's}}
+\DoxyCodeLine{379     \textcolor{comment}{// attachInterrupt function not supporting any way to pass a pointer}}
+\DoxyCodeLine{380     \textcolor{comment}{// or other context to the attached function.}}
+\DoxyCodeLine{381     \textcolor{keyword}{static} uint8\_t attach\_interrupt(uint8\_t pin, \mbox{\hyperlink{struct_encoder__internal__state__t}{Encoder\_internal\_state\_t}} *state) \{}
+\DoxyCodeLine{382         \textcolor{keywordflow}{switch} (pin) \{}
+\DoxyCodeLine{383 \textcolor{preprocessor}{        \#ifdef CORE\_INT0\_PIN}}
+\DoxyCodeLine{384             \textcolor{keywordflow}{case} CORE\_INT0\_PIN:}
+\DoxyCodeLine{385                 interruptArgs[0] = state;}
+\DoxyCodeLine{386                 attachInterrupt(0, isr0, CHANGE);}
+\DoxyCodeLine{387                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{388 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{389 \textcolor{preprocessor}{        \#ifdef CORE\_INT1\_PIN}}
+\DoxyCodeLine{390             \textcolor{keywordflow}{case} CORE\_INT1\_PIN:}
+\DoxyCodeLine{391                 interruptArgs[1] = state;}
+\DoxyCodeLine{392                 attachInterrupt(1, isr1, CHANGE);}
+\DoxyCodeLine{393                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{394 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{395 \textcolor{preprocessor}{        \#ifdef CORE\_INT2\_PIN}}
+\DoxyCodeLine{396             \textcolor{keywordflow}{case} CORE\_INT2\_PIN:}
+\DoxyCodeLine{397                 interruptArgs[2] = state;}
+\DoxyCodeLine{398                 attachInterrupt(2, isr2, CHANGE);}
+\DoxyCodeLine{399                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{400 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{401 \textcolor{preprocessor}{        \#ifdef CORE\_INT3\_PIN}}
+\DoxyCodeLine{402             \textcolor{keywordflow}{case} CORE\_INT3\_PIN:}
+\DoxyCodeLine{403                 interruptArgs[3] = state;}
+\DoxyCodeLine{404                 attachInterrupt(3, isr3, CHANGE);}
+\DoxyCodeLine{405                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{406 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{407 \textcolor{preprocessor}{        \#ifdef CORE\_INT4\_PIN}}
+\DoxyCodeLine{408             \textcolor{keywordflow}{case} CORE\_INT4\_PIN:}
+\DoxyCodeLine{409                 interruptArgs[4] = state;}
+\DoxyCodeLine{410                 attachInterrupt(4, isr4, CHANGE);}
+\DoxyCodeLine{411                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{412 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{413 \textcolor{preprocessor}{        \#ifdef CORE\_INT5\_PIN}}
+\DoxyCodeLine{414             \textcolor{keywordflow}{case} CORE\_INT5\_PIN:}
+\DoxyCodeLine{415                 interruptArgs[5] = state;}
+\DoxyCodeLine{416                 attachInterrupt(5, isr5, CHANGE);}
+\DoxyCodeLine{417                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{418 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{419 \textcolor{preprocessor}{        \#ifdef CORE\_INT6\_PIN}}
+\DoxyCodeLine{420             \textcolor{keywordflow}{case} CORE\_INT6\_PIN:}
+\DoxyCodeLine{421                 interruptArgs[6] = state;}
+\DoxyCodeLine{422                 attachInterrupt(6, isr6, CHANGE);}
+\DoxyCodeLine{423                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{424 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{425 \textcolor{preprocessor}{        \#ifdef CORE\_INT7\_PIN}}
+\DoxyCodeLine{426             \textcolor{keywordflow}{case} CORE\_INT7\_PIN:}
+\DoxyCodeLine{427                 interruptArgs[7] = state;}
+\DoxyCodeLine{428                 attachInterrupt(7, isr7, CHANGE);}
+\DoxyCodeLine{429                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{430 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{431 \textcolor{preprocessor}{        \#ifdef CORE\_INT8\_PIN}}
+\DoxyCodeLine{432             \textcolor{keywordflow}{case} CORE\_INT8\_PIN:}
+\DoxyCodeLine{433                 interruptArgs[8] = state;}
+\DoxyCodeLine{434                 attachInterrupt(8, isr8, CHANGE);}
+\DoxyCodeLine{435                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{436 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{437 \textcolor{preprocessor}{        \#ifdef CORE\_INT9\_PIN}}
+\DoxyCodeLine{438             \textcolor{keywordflow}{case} CORE\_INT9\_PIN:}
+\DoxyCodeLine{439                 interruptArgs[9] = state;}
+\DoxyCodeLine{440                 attachInterrupt(9, isr9, CHANGE);}
+\DoxyCodeLine{441                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{442 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{443 \textcolor{preprocessor}{        \#ifdef CORE\_INT10\_PIN}}
+\DoxyCodeLine{444             \textcolor{keywordflow}{case} CORE\_INT10\_PIN:}
+\DoxyCodeLine{445                 interruptArgs[10] = state;}
+\DoxyCodeLine{446                 attachInterrupt(10, isr10, CHANGE);}
+\DoxyCodeLine{447                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{448 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{449 \textcolor{preprocessor}{        \#ifdef CORE\_INT11\_PIN}}
+\DoxyCodeLine{450             \textcolor{keywordflow}{case} CORE\_INT11\_PIN:}
+\DoxyCodeLine{451                 interruptArgs[11] = state;}
+\DoxyCodeLine{452                 attachInterrupt(11, isr11, CHANGE);}
+\DoxyCodeLine{453                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{454 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{455 \textcolor{preprocessor}{        \#ifdef CORE\_INT12\_PIN}}
+\DoxyCodeLine{456             \textcolor{keywordflow}{case} CORE\_INT12\_PIN:}
+\DoxyCodeLine{457                 interruptArgs[12] = state;}
+\DoxyCodeLine{458                 attachInterrupt(12, isr12, CHANGE);}
+\DoxyCodeLine{459                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{460 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{461 \textcolor{preprocessor}{        \#ifdef CORE\_INT13\_PIN}}
+\DoxyCodeLine{462             \textcolor{keywordflow}{case} CORE\_INT13\_PIN:}
+\DoxyCodeLine{463                 interruptArgs[13] = state;}
+\DoxyCodeLine{464                 attachInterrupt(13, isr13, CHANGE);}
+\DoxyCodeLine{465                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{466 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{467 \textcolor{preprocessor}{        \#ifdef CORE\_INT14\_PIN}}
+\DoxyCodeLine{468             \textcolor{keywordflow}{case} CORE\_INT14\_PIN:}
+\DoxyCodeLine{469                 interruptArgs[14] = state;}
+\DoxyCodeLine{470                 attachInterrupt(14, isr14, CHANGE);}
+\DoxyCodeLine{471                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{472 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{473 \textcolor{preprocessor}{        \#ifdef CORE\_INT15\_PIN}}
+\DoxyCodeLine{474             \textcolor{keywordflow}{case} CORE\_INT15\_PIN:}
+\DoxyCodeLine{475                 interruptArgs[15] = state;}
+\DoxyCodeLine{476                 attachInterrupt(15, isr15, CHANGE);}
+\DoxyCodeLine{477                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{478 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{479 \textcolor{preprocessor}{        \#ifdef CORE\_INT16\_PIN}}
+\DoxyCodeLine{480             \textcolor{keywordflow}{case} CORE\_INT16\_PIN:}
+\DoxyCodeLine{481                 interruptArgs[16] = state;}
+\DoxyCodeLine{482                 attachInterrupt(16, isr16, CHANGE);}
+\DoxyCodeLine{483                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{484 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{485 \textcolor{preprocessor}{        \#ifdef CORE\_INT17\_PIN}}
+\DoxyCodeLine{486             \textcolor{keywordflow}{case} CORE\_INT17\_PIN:}
+\DoxyCodeLine{487                 interruptArgs[17] = state;}
+\DoxyCodeLine{488                 attachInterrupt(17, isr17, CHANGE);}
+\DoxyCodeLine{489                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{490 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{491 \textcolor{preprocessor}{        \#ifdef CORE\_INT18\_PIN}}
+\DoxyCodeLine{492             \textcolor{keywordflow}{case} CORE\_INT18\_PIN:}
+\DoxyCodeLine{493                 interruptArgs[18] = state;}
+\DoxyCodeLine{494                 attachInterrupt(18, isr18, CHANGE);}
+\DoxyCodeLine{495                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{496 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{497 \textcolor{preprocessor}{        \#ifdef CORE\_INT19\_PIN}}
+\DoxyCodeLine{498             \textcolor{keywordflow}{case} CORE\_INT19\_PIN:}
+\DoxyCodeLine{499                 interruptArgs[19] = state;}
+\DoxyCodeLine{500                 attachInterrupt(19, isr19, CHANGE);}
+\DoxyCodeLine{501                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{502 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{503 \textcolor{preprocessor}{        \#ifdef CORE\_INT20\_PIN}}
+\DoxyCodeLine{504             \textcolor{keywordflow}{case} CORE\_INT20\_PIN:}
+\DoxyCodeLine{505                 interruptArgs[20] = state;}
+\DoxyCodeLine{506                 attachInterrupt(20, isr20, CHANGE);}
+\DoxyCodeLine{507                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{508 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{509 \textcolor{preprocessor}{        \#ifdef CORE\_INT21\_PIN}}
+\DoxyCodeLine{510             \textcolor{keywordflow}{case} CORE\_INT21\_PIN:}
+\DoxyCodeLine{511                 interruptArgs[21] = state;}
+\DoxyCodeLine{512                 attachInterrupt(21, isr21, CHANGE);}
+\DoxyCodeLine{513                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{514 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{515 \textcolor{preprocessor}{        \#ifdef CORE\_INT22\_PIN}}
+\DoxyCodeLine{516             \textcolor{keywordflow}{case} CORE\_INT22\_PIN:}
+\DoxyCodeLine{517                 interruptArgs[22] = state;}
+\DoxyCodeLine{518                 attachInterrupt(22, isr22, CHANGE);}
+\DoxyCodeLine{519                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{520 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{521 \textcolor{preprocessor}{        \#ifdef CORE\_INT23\_PIN}}
+\DoxyCodeLine{522             \textcolor{keywordflow}{case} CORE\_INT23\_PIN:}
+\DoxyCodeLine{523                 interruptArgs[23] = state;}
+\DoxyCodeLine{524                 attachInterrupt(23, isr23, CHANGE);}
+\DoxyCodeLine{525                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{526 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{527 \textcolor{preprocessor}{        \#ifdef CORE\_INT24\_PIN}}
+\DoxyCodeLine{528             \textcolor{keywordflow}{case} CORE\_INT24\_PIN:}
+\DoxyCodeLine{529                 interruptArgs[24] = state;}
+\DoxyCodeLine{530                 attachInterrupt(24, isr24, CHANGE);}
+\DoxyCodeLine{531                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{532 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{533 \textcolor{preprocessor}{        \#ifdef CORE\_INT25\_PIN}}
+\DoxyCodeLine{534             \textcolor{keywordflow}{case} CORE\_INT25\_PIN:}
+\DoxyCodeLine{535                 interruptArgs[25] = state;}
+\DoxyCodeLine{536                 attachInterrupt(25, isr25, CHANGE);}
+\DoxyCodeLine{537                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{538 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{539 \textcolor{preprocessor}{        \#ifdef CORE\_INT26\_PIN}}
+\DoxyCodeLine{540             \textcolor{keywordflow}{case} CORE\_INT26\_PIN:}
+\DoxyCodeLine{541                 interruptArgs[26] = state;}
+\DoxyCodeLine{542                 attachInterrupt(26, isr26, CHANGE);}
+\DoxyCodeLine{543                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{544 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{545 \textcolor{preprocessor}{        \#ifdef CORE\_INT27\_PIN}}
+\DoxyCodeLine{546             \textcolor{keywordflow}{case} CORE\_INT27\_PIN:}
+\DoxyCodeLine{547                 interruptArgs[27] = state;}
+\DoxyCodeLine{548                 attachInterrupt(27, isr27, CHANGE);}
+\DoxyCodeLine{549                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{550 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{551 \textcolor{preprocessor}{        \#ifdef CORE\_INT28\_PIN}}
+\DoxyCodeLine{552             \textcolor{keywordflow}{case} CORE\_INT28\_PIN:}
+\DoxyCodeLine{553                 interruptArgs[28] = state;}
+\DoxyCodeLine{554                 attachInterrupt(28, isr28, CHANGE);}
+\DoxyCodeLine{555                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{556 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{557 \textcolor{preprocessor}{        \#ifdef CORE\_INT29\_PIN}}
+\DoxyCodeLine{558             \textcolor{keywordflow}{case} CORE\_INT29\_PIN:}
+\DoxyCodeLine{559                 interruptArgs[29] = state;}
+\DoxyCodeLine{560                 attachInterrupt(29, isr29, CHANGE);}
+\DoxyCodeLine{561                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{562 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{563 }
+\DoxyCodeLine{564 \textcolor{preprocessor}{        \#ifdef CORE\_INT30\_PIN}}
+\DoxyCodeLine{565             \textcolor{keywordflow}{case} CORE\_INT30\_PIN:}
+\DoxyCodeLine{566                 interruptArgs[30] = state;}
+\DoxyCodeLine{567                 attachInterrupt(30, isr30, CHANGE);}
+\DoxyCodeLine{568                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{569 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{570 \textcolor{preprocessor}{        \#ifdef CORE\_INT31\_PIN}}
+\DoxyCodeLine{571             \textcolor{keywordflow}{case} CORE\_INT31\_PIN:}
+\DoxyCodeLine{572                 interruptArgs[31] = state;}
+\DoxyCodeLine{573                 attachInterrupt(31, isr31, CHANGE);}
+\DoxyCodeLine{574                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{575 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{576 \textcolor{preprocessor}{        \#ifdef CORE\_INT32\_PIN}}
+\DoxyCodeLine{577             \textcolor{keywordflow}{case} CORE\_INT32\_PIN:}
+\DoxyCodeLine{578                 interruptArgs[32] = state;}
+\DoxyCodeLine{579                 attachInterrupt(32, isr32, CHANGE);}
+\DoxyCodeLine{580                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{581 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{582 \textcolor{preprocessor}{        \#ifdef CORE\_INT33\_PIN}}
+\DoxyCodeLine{583             \textcolor{keywordflow}{case} CORE\_INT33\_PIN:}
+\DoxyCodeLine{584                 interruptArgs[33] = state;}
+\DoxyCodeLine{585                 attachInterrupt(33, isr33, CHANGE);}
+\DoxyCodeLine{586                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{587 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{588 \textcolor{preprocessor}{        \#ifdef CORE\_INT34\_PIN}}
+\DoxyCodeLine{589             \textcolor{keywordflow}{case} CORE\_INT34\_PIN:}
+\DoxyCodeLine{590                 interruptArgs[34] = state;}
+\DoxyCodeLine{591                 attachInterrupt(34, isr34, CHANGE);}
+\DoxyCodeLine{592                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{593 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{594 \textcolor{preprocessor}{        \#ifdef CORE\_INT35\_PIN}}
+\DoxyCodeLine{595             \textcolor{keywordflow}{case} CORE\_INT35\_PIN:}
+\DoxyCodeLine{596                 interruptArgs[35] = state;}
+\DoxyCodeLine{597                 attachInterrupt(35, isr35, CHANGE);}
+\DoxyCodeLine{598                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{599 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{600 \textcolor{preprocessor}{        \#ifdef CORE\_INT36\_PIN}}
+\DoxyCodeLine{601             \textcolor{keywordflow}{case} CORE\_INT36\_PIN:}
+\DoxyCodeLine{602                 interruptArgs[36] = state;}
+\DoxyCodeLine{603                 attachInterrupt(36, isr36, CHANGE);}
+\DoxyCodeLine{604                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{605 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{606 \textcolor{preprocessor}{        \#ifdef CORE\_INT37\_PIN}}
+\DoxyCodeLine{607             \textcolor{keywordflow}{case} CORE\_INT37\_PIN:}
+\DoxyCodeLine{608                 interruptArgs[37] = state;}
+\DoxyCodeLine{609                 attachInterrupt(37, isr37, CHANGE);}
+\DoxyCodeLine{610                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{611 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{612 \textcolor{preprocessor}{        \#ifdef CORE\_INT38\_PIN}}
+\DoxyCodeLine{613             \textcolor{keywordflow}{case} CORE\_INT38\_PIN:}
+\DoxyCodeLine{614                 interruptArgs[38] = state;}
+\DoxyCodeLine{615                 attachInterrupt(38, isr38, CHANGE);}
+\DoxyCodeLine{616                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{617 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{618 \textcolor{preprocessor}{        \#ifdef CORE\_INT39\_PIN}}
+\DoxyCodeLine{619             \textcolor{keywordflow}{case} CORE\_INT39\_PIN:}
+\DoxyCodeLine{620                 interruptArgs[39] = state;}
+\DoxyCodeLine{621                 attachInterrupt(39, isr39, CHANGE);}
+\DoxyCodeLine{622                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{623 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{624 \textcolor{preprocessor}{        \#ifdef CORE\_INT40\_PIN}}
+\DoxyCodeLine{625             \textcolor{keywordflow}{case} CORE\_INT40\_PIN:}
+\DoxyCodeLine{626                 interruptArgs[40] = state;}
+\DoxyCodeLine{627                 attachInterrupt(40, isr40, CHANGE);}
+\DoxyCodeLine{628                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{629 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{630 \textcolor{preprocessor}{        \#ifdef CORE\_INT41\_PIN}}
+\DoxyCodeLine{631             \textcolor{keywordflow}{case} CORE\_INT41\_PIN:}
+\DoxyCodeLine{632                 interruptArgs[41] = state;}
+\DoxyCodeLine{633                 attachInterrupt(41, isr41, CHANGE);}
+\DoxyCodeLine{634                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{635 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{636 \textcolor{preprocessor}{        \#ifdef CORE\_INT42\_PIN}}
+\DoxyCodeLine{637             \textcolor{keywordflow}{case} CORE\_INT42\_PIN:}
+\DoxyCodeLine{638                 interruptArgs[42] = state;}
+\DoxyCodeLine{639                 attachInterrupt(42, isr42, CHANGE);}
+\DoxyCodeLine{640                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{641 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{642 \textcolor{preprocessor}{        \#ifdef CORE\_INT43\_PIN}}
+\DoxyCodeLine{643             \textcolor{keywordflow}{case} CORE\_INT43\_PIN:}
+\DoxyCodeLine{644                 interruptArgs[43] = state;}
+\DoxyCodeLine{645                 attachInterrupt(43, isr43, CHANGE);}
+\DoxyCodeLine{646                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{647 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{648 \textcolor{preprocessor}{        \#ifdef CORE\_INT44\_PIN}}
+\DoxyCodeLine{649             \textcolor{keywordflow}{case} CORE\_INT44\_PIN:}
+\DoxyCodeLine{650                 interruptArgs[44] = state;}
+\DoxyCodeLine{651                 attachInterrupt(44, isr44, CHANGE);}
+\DoxyCodeLine{652                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{653 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{654 \textcolor{preprocessor}{        \#ifdef CORE\_INT45\_PIN}}
+\DoxyCodeLine{655             \textcolor{keywordflow}{case} CORE\_INT45\_PIN:}
+\DoxyCodeLine{656                 interruptArgs[45] = state;}
+\DoxyCodeLine{657                 attachInterrupt(45, isr45, CHANGE);}
+\DoxyCodeLine{658                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{659 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{660 \textcolor{preprocessor}{        \#ifdef CORE\_INT46\_PIN}}
+\DoxyCodeLine{661             \textcolor{keywordflow}{case} CORE\_INT46\_PIN:}
+\DoxyCodeLine{662                 interruptArgs[46] = state;}
+\DoxyCodeLine{663                 attachInterrupt(46, isr46, CHANGE);}
+\DoxyCodeLine{664                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{665 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{666 \textcolor{preprocessor}{        \#ifdef CORE\_INT47\_PIN}}
+\DoxyCodeLine{667             \textcolor{keywordflow}{case} CORE\_INT47\_PIN:}
+\DoxyCodeLine{668                 interruptArgs[47] = state;}
+\DoxyCodeLine{669                 attachInterrupt(47, isr47, CHANGE);}
+\DoxyCodeLine{670                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{671 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{672 \textcolor{preprocessor}{        \#ifdef CORE\_INT48\_PIN}}
+\DoxyCodeLine{673             \textcolor{keywordflow}{case} CORE\_INT48\_PIN:}
+\DoxyCodeLine{674                 interruptArgs[48] = state;}
+\DoxyCodeLine{675                 attachInterrupt(48, isr48, CHANGE);}
+\DoxyCodeLine{676                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{677 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{678 \textcolor{preprocessor}{        \#ifdef CORE\_INT49\_PIN}}
+\DoxyCodeLine{679             \textcolor{keywordflow}{case} CORE\_INT49\_PIN:}
+\DoxyCodeLine{680                 interruptArgs[49] = state;}
+\DoxyCodeLine{681                 attachInterrupt(49, isr49, CHANGE);}
+\DoxyCodeLine{682                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{683 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{684 \textcolor{preprocessor}{        \#ifdef CORE\_INT50\_PIN}}
+\DoxyCodeLine{685             \textcolor{keywordflow}{case} CORE\_INT50\_PIN:}
+\DoxyCodeLine{686                 interruptArgs[50] = state;}
+\DoxyCodeLine{687                 attachInterrupt(50, isr50, CHANGE);}
+\DoxyCodeLine{688                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{689 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{690 \textcolor{preprocessor}{        \#ifdef CORE\_INT51\_PIN}}
+\DoxyCodeLine{691             \textcolor{keywordflow}{case} CORE\_INT51\_PIN:}
+\DoxyCodeLine{692                 interruptArgs[51] = state;}
+\DoxyCodeLine{693                 attachInterrupt(51, isr51, CHANGE);}
+\DoxyCodeLine{694                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{695 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{696 \textcolor{preprocessor}{        \#ifdef CORE\_INT52\_PIN}}
+\DoxyCodeLine{697             \textcolor{keywordflow}{case} CORE\_INT52\_PIN:}
+\DoxyCodeLine{698                 interruptArgs[52] = state;}
+\DoxyCodeLine{699                 attachInterrupt(52, isr52, CHANGE);}
+\DoxyCodeLine{700                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{701 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{702 \textcolor{preprocessor}{        \#ifdef CORE\_INT53\_PIN}}
+\DoxyCodeLine{703             \textcolor{keywordflow}{case} CORE\_INT53\_PIN:}
+\DoxyCodeLine{704                 interruptArgs[53] = state;}
+\DoxyCodeLine{705                 attachInterrupt(53, isr53, CHANGE);}
+\DoxyCodeLine{706                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{707 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{708 \textcolor{preprocessor}{        \#ifdef CORE\_INT54\_PIN}}
+\DoxyCodeLine{709             \textcolor{keywordflow}{case} CORE\_INT54\_PIN:}
+\DoxyCodeLine{710                 interruptArgs[54] = state;}
+\DoxyCodeLine{711                 attachInterrupt(54, isr54, CHANGE);}
+\DoxyCodeLine{712                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{713 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{714 \textcolor{preprocessor}{        \#ifdef CORE\_INT55\_PIN}}
+\DoxyCodeLine{715             \textcolor{keywordflow}{case} CORE\_INT55\_PIN:}
+\DoxyCodeLine{716                 interruptArgs[55] = state;}
+\DoxyCodeLine{717                 attachInterrupt(55, isr55, CHANGE);}
+\DoxyCodeLine{718                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{719 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{720 \textcolor{preprocessor}{        \#ifdef CORE\_INT56\_PIN}}
+\DoxyCodeLine{721             \textcolor{keywordflow}{case} CORE\_INT56\_PIN:}
+\DoxyCodeLine{722                 interruptArgs[56] = state;}
+\DoxyCodeLine{723                 attachInterrupt(56, isr56, CHANGE);}
+\DoxyCodeLine{724                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{725 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{726 \textcolor{preprocessor}{        \#ifdef CORE\_INT57\_PIN}}
+\DoxyCodeLine{727             \textcolor{keywordflow}{case} CORE\_INT57\_PIN:}
+\DoxyCodeLine{728                 interruptArgs[57] = state;}
+\DoxyCodeLine{729                 attachInterrupt(57, isr57, CHANGE);}
+\DoxyCodeLine{730                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{731 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{732 \textcolor{preprocessor}{        \#ifdef CORE\_INT58\_PIN}}
+\DoxyCodeLine{733             \textcolor{keywordflow}{case} CORE\_INT58\_PIN:}
+\DoxyCodeLine{734                 interruptArgs[58] = state;}
+\DoxyCodeLine{735                 attachInterrupt(58, isr58, CHANGE);}
+\DoxyCodeLine{736                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{737 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{738 \textcolor{preprocessor}{        \#ifdef CORE\_INT59\_PIN}}
+\DoxyCodeLine{739             \textcolor{keywordflow}{case} CORE\_INT59\_PIN:}
+\DoxyCodeLine{740                 interruptArgs[59] = state;}
+\DoxyCodeLine{741                 attachInterrupt(59, isr59, CHANGE);}
+\DoxyCodeLine{742                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{743 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{744             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{745                 \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{746         \}}
+\DoxyCodeLine{747         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{748     \}}
+\DoxyCodeLine{749 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ENCODER\_USE\_INTERRUPTS}}
+\DoxyCodeLine{750 }
+\DoxyCodeLine{751 }
+\DoxyCodeLine{752 \textcolor{preprocessor}{\#if defined(ENCODER\_USE\_INTERRUPTS) \&\& !defined(ENCODER\_OPTIMIZE\_INTERRUPTS)}}
+\DoxyCodeLine{753 \textcolor{preprocessor}{    \#ifdef CORE\_INT0\_PIN}}
+\DoxyCodeLine{754     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr0(\textcolor{keywordtype}{void}) \{ update(interruptArgs[0]); \}}
+\DoxyCodeLine{755 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{756 \textcolor{preprocessor}{    \#ifdef CORE\_INT1\_PIN}}
+\DoxyCodeLine{757     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr1(\textcolor{keywordtype}{void}) \{ update(interruptArgs[1]); \}}
+\DoxyCodeLine{758 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{759 \textcolor{preprocessor}{    \#ifdef CORE\_INT2\_PIN}}
+\DoxyCodeLine{760     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr2(\textcolor{keywordtype}{void}) \{ update(interruptArgs[2]); \}}
+\DoxyCodeLine{761 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{762 \textcolor{preprocessor}{    \#ifdef CORE\_INT3\_PIN}}
+\DoxyCodeLine{763     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr3(\textcolor{keywordtype}{void}) \{ update(interruptArgs[3]); \}}
+\DoxyCodeLine{764 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{765 \textcolor{preprocessor}{    \#ifdef CORE\_INT4\_PIN}}
+\DoxyCodeLine{766     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr4(\textcolor{keywordtype}{void}) \{ update(interruptArgs[4]); \}}
+\DoxyCodeLine{767 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{768 \textcolor{preprocessor}{    \#ifdef CORE\_INT5\_PIN}}
+\DoxyCodeLine{769     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr5(\textcolor{keywordtype}{void}) \{ update(interruptArgs[5]); \}}
+\DoxyCodeLine{770 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{771 \textcolor{preprocessor}{    \#ifdef CORE\_INT6\_PIN}}
+\DoxyCodeLine{772     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr6(\textcolor{keywordtype}{void}) \{ update(interruptArgs[6]); \}}
+\DoxyCodeLine{773 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{774 \textcolor{preprocessor}{    \#ifdef CORE\_INT7\_PIN}}
+\DoxyCodeLine{775     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr7(\textcolor{keywordtype}{void}) \{ update(interruptArgs[7]); \}}
+\DoxyCodeLine{776 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{777 \textcolor{preprocessor}{    \#ifdef CORE\_INT8\_PIN}}
+\DoxyCodeLine{778     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr8(\textcolor{keywordtype}{void}) \{ update(interruptArgs[8]); \}}
+\DoxyCodeLine{779 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{780 \textcolor{preprocessor}{    \#ifdef CORE\_INT9\_PIN}}
+\DoxyCodeLine{781     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr9(\textcolor{keywordtype}{void}) \{ update(interruptArgs[9]); \}}
+\DoxyCodeLine{782 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{783 \textcolor{preprocessor}{    \#ifdef CORE\_INT10\_PIN}}
+\DoxyCodeLine{784     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr10(\textcolor{keywordtype}{void}) \{ update(interruptArgs[10]); \}}
+\DoxyCodeLine{785 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{786 \textcolor{preprocessor}{    \#ifdef CORE\_INT11\_PIN}}
+\DoxyCodeLine{787     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr11(\textcolor{keywordtype}{void}) \{ update(interruptArgs[11]); \}}
+\DoxyCodeLine{788 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{789 \textcolor{preprocessor}{    \#ifdef CORE\_INT12\_PIN}}
+\DoxyCodeLine{790     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr12(\textcolor{keywordtype}{void}) \{ update(interruptArgs[12]); \}}
+\DoxyCodeLine{791 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{792 \textcolor{preprocessor}{    \#ifdef CORE\_INT13\_PIN}}
+\DoxyCodeLine{793     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr13(\textcolor{keywordtype}{void}) \{ update(interruptArgs[13]); \}}
+\DoxyCodeLine{794 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{795 \textcolor{preprocessor}{    \#ifdef CORE\_INT14\_PIN}}
+\DoxyCodeLine{796     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr14(\textcolor{keywordtype}{void}) \{ update(interruptArgs[14]); \}}
+\DoxyCodeLine{797 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{798 \textcolor{preprocessor}{    \#ifdef CORE\_INT15\_PIN}}
+\DoxyCodeLine{799     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr15(\textcolor{keywordtype}{void}) \{ update(interruptArgs[15]); \}}
+\DoxyCodeLine{800 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{801 \textcolor{preprocessor}{    \#ifdef CORE\_INT16\_PIN}}
+\DoxyCodeLine{802     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr16(\textcolor{keywordtype}{void}) \{ update(interruptArgs[16]); \}}
+\DoxyCodeLine{803 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{804 \textcolor{preprocessor}{    \#ifdef CORE\_INT17\_PIN}}
+\DoxyCodeLine{805     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr17(\textcolor{keywordtype}{void}) \{ update(interruptArgs[17]); \}}
+\DoxyCodeLine{806 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{807 \textcolor{preprocessor}{    \#ifdef CORE\_INT18\_PIN}}
+\DoxyCodeLine{808     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr18(\textcolor{keywordtype}{void}) \{ update(interruptArgs[18]); \}}
+\DoxyCodeLine{809 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{810 \textcolor{preprocessor}{    \#ifdef CORE\_INT19\_PIN}}
+\DoxyCodeLine{811     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr19(\textcolor{keywordtype}{void}) \{ update(interruptArgs[19]); \}}
+\DoxyCodeLine{812 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{813 \textcolor{preprocessor}{    \#ifdef CORE\_INT20\_PIN}}
+\DoxyCodeLine{814     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr20(\textcolor{keywordtype}{void}) \{ update(interruptArgs[20]); \}}
+\DoxyCodeLine{815 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{816 \textcolor{preprocessor}{    \#ifdef CORE\_INT21\_PIN}}
+\DoxyCodeLine{817     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr21(\textcolor{keywordtype}{void}) \{ update(interruptArgs[21]); \}}
+\DoxyCodeLine{818 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{819 \textcolor{preprocessor}{    \#ifdef CORE\_INT22\_PIN}}
+\DoxyCodeLine{820     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr22(\textcolor{keywordtype}{void}) \{ update(interruptArgs[22]); \}}
+\DoxyCodeLine{821 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{822 \textcolor{preprocessor}{    \#ifdef CORE\_INT23\_PIN}}
+\DoxyCodeLine{823     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr23(\textcolor{keywordtype}{void}) \{ update(interruptArgs[23]); \}}
+\DoxyCodeLine{824 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{825 \textcolor{preprocessor}{    \#ifdef CORE\_INT24\_PIN}}
+\DoxyCodeLine{826     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr24(\textcolor{keywordtype}{void}) \{ update(interruptArgs[24]); \}}
+\DoxyCodeLine{827 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{828 \textcolor{preprocessor}{    \#ifdef CORE\_INT25\_PIN}}
+\DoxyCodeLine{829     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr25(\textcolor{keywordtype}{void}) \{ update(interruptArgs[25]); \}}
+\DoxyCodeLine{830 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{831 \textcolor{preprocessor}{    \#ifdef CORE\_INT26\_PIN}}
+\DoxyCodeLine{832     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr26(\textcolor{keywordtype}{void}) \{ update(interruptArgs[26]); \}}
+\DoxyCodeLine{833 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{834 \textcolor{preprocessor}{    \#ifdef CORE\_INT27\_PIN}}
+\DoxyCodeLine{835     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr27(\textcolor{keywordtype}{void}) \{ update(interruptArgs[27]); \}}
+\DoxyCodeLine{836 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{837 \textcolor{preprocessor}{    \#ifdef CORE\_INT28\_PIN}}
+\DoxyCodeLine{838     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr28(\textcolor{keywordtype}{void}) \{ update(interruptArgs[28]); \}}
+\DoxyCodeLine{839 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{840 \textcolor{preprocessor}{    \#ifdef CORE\_INT29\_PIN}}
+\DoxyCodeLine{841     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr29(\textcolor{keywordtype}{void}) \{ update(interruptArgs[29]); \}}
+\DoxyCodeLine{842 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{843 \textcolor{preprocessor}{    \#ifdef CORE\_INT30\_PIN}}
+\DoxyCodeLine{844     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr30(\textcolor{keywordtype}{void}) \{ update(interruptArgs[30]); \}}
+\DoxyCodeLine{845 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{846 \textcolor{preprocessor}{    \#ifdef CORE\_INT31\_PIN}}
+\DoxyCodeLine{847     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr31(\textcolor{keywordtype}{void}) \{ update(interruptArgs[31]); \}}
+\DoxyCodeLine{848 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{849 \textcolor{preprocessor}{    \#ifdef CORE\_INT32\_PIN}}
+\DoxyCodeLine{850     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr32(\textcolor{keywordtype}{void}) \{ update(interruptArgs[32]); \}}
+\DoxyCodeLine{851 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{852 \textcolor{preprocessor}{    \#ifdef CORE\_INT33\_PIN}}
+\DoxyCodeLine{853     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr33(\textcolor{keywordtype}{void}) \{ update(interruptArgs[33]); \}}
+\DoxyCodeLine{854 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{855 \textcolor{preprocessor}{    \#ifdef CORE\_INT34\_PIN}}
+\DoxyCodeLine{856     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr34(\textcolor{keywordtype}{void}) \{ update(interruptArgs[34]); \}}
+\DoxyCodeLine{857 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{858 \textcolor{preprocessor}{    \#ifdef CORE\_INT35\_PIN}}
+\DoxyCodeLine{859     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr35(\textcolor{keywordtype}{void}) \{ update(interruptArgs[35]); \}}
+\DoxyCodeLine{860 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{861 \textcolor{preprocessor}{    \#ifdef CORE\_INT36\_PIN}}
+\DoxyCodeLine{862     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr36(\textcolor{keywordtype}{void}) \{ update(interruptArgs[36]); \}}
+\DoxyCodeLine{863 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{864 \textcolor{preprocessor}{    \#ifdef CORE\_INT37\_PIN}}
+\DoxyCodeLine{865     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr37(\textcolor{keywordtype}{void}) \{ update(interruptArgs[37]); \}}
+\DoxyCodeLine{866 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{867 \textcolor{preprocessor}{    \#ifdef CORE\_INT38\_PIN}}
+\DoxyCodeLine{868     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr38(\textcolor{keywordtype}{void}) \{ update(interruptArgs[38]); \}}
+\DoxyCodeLine{869 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{870 \textcolor{preprocessor}{    \#ifdef CORE\_INT39\_PIN}}
+\DoxyCodeLine{871     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr39(\textcolor{keywordtype}{void}) \{ update(interruptArgs[39]); \}}
+\DoxyCodeLine{872 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{873 \textcolor{preprocessor}{    \#ifdef CORE\_INT40\_PIN}}
+\DoxyCodeLine{874     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr40(\textcolor{keywordtype}{void}) \{ update(interruptArgs[40]); \}}
+\DoxyCodeLine{875 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{876 \textcolor{preprocessor}{    \#ifdef CORE\_INT41\_PIN}}
+\DoxyCodeLine{877     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr41(\textcolor{keywordtype}{void}) \{ update(interruptArgs[41]); \}}
+\DoxyCodeLine{878 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{879 \textcolor{preprocessor}{    \#ifdef CORE\_INT42\_PIN}}
+\DoxyCodeLine{880     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr42(\textcolor{keywordtype}{void}) \{ update(interruptArgs[42]); \}}
+\DoxyCodeLine{881 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{882 \textcolor{preprocessor}{    \#ifdef CORE\_INT43\_PIN}}
+\DoxyCodeLine{883     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr43(\textcolor{keywordtype}{void}) \{ update(interruptArgs[43]); \}}
+\DoxyCodeLine{884 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{885 \textcolor{preprocessor}{    \#ifdef CORE\_INT44\_PIN}}
+\DoxyCodeLine{886     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr44(\textcolor{keywordtype}{void}) \{ update(interruptArgs[44]); \}}
+\DoxyCodeLine{887 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{888 \textcolor{preprocessor}{    \#ifdef CORE\_INT45\_PIN}}
+\DoxyCodeLine{889     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr45(\textcolor{keywordtype}{void}) \{ update(interruptArgs[45]); \}}
+\DoxyCodeLine{890 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{891 \textcolor{preprocessor}{    \#ifdef CORE\_INT46\_PIN}}
+\DoxyCodeLine{892     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr46(\textcolor{keywordtype}{void}) \{ update(interruptArgs[46]); \}}
+\DoxyCodeLine{893 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{894 \textcolor{preprocessor}{    \#ifdef CORE\_INT47\_PIN}}
+\DoxyCodeLine{895     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr47(\textcolor{keywordtype}{void}) \{ update(interruptArgs[47]); \}}
+\DoxyCodeLine{896 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{897 \textcolor{preprocessor}{    \#ifdef CORE\_INT48\_PIN}}
+\DoxyCodeLine{898     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr48(\textcolor{keywordtype}{void}) \{ update(interruptArgs[48]); \}}
+\DoxyCodeLine{899 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{900 \textcolor{preprocessor}{    \#ifdef CORE\_INT49\_PIN}}
+\DoxyCodeLine{901     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr49(\textcolor{keywordtype}{void}) \{ update(interruptArgs[49]); \}}
+\DoxyCodeLine{902 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{903 \textcolor{preprocessor}{    \#ifdef CORE\_INT50\_PIN}}
+\DoxyCodeLine{904     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr50(\textcolor{keywordtype}{void}) \{ update(interruptArgs[50]); \}}
+\DoxyCodeLine{905 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{906 \textcolor{preprocessor}{    \#ifdef CORE\_INT51\_PIN}}
+\DoxyCodeLine{907     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr51(\textcolor{keywordtype}{void}) \{ update(interruptArgs[51]); \}}
+\DoxyCodeLine{908 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{909 \textcolor{preprocessor}{    \#ifdef CORE\_INT52\_PIN}}
+\DoxyCodeLine{910     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr52(\textcolor{keywordtype}{void}) \{ update(interruptArgs[52]); \}}
+\DoxyCodeLine{911 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{912 \textcolor{preprocessor}{    \#ifdef CORE\_INT53\_PIN}}
+\DoxyCodeLine{913     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr53(\textcolor{keywordtype}{void}) \{ update(interruptArgs[53]); \}}
+\DoxyCodeLine{914 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{915 \textcolor{preprocessor}{    \#ifdef CORE\_INT54\_PIN}}
+\DoxyCodeLine{916     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr54(\textcolor{keywordtype}{void}) \{ update(interruptArgs[54]); \}}
+\DoxyCodeLine{917 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{918 \textcolor{preprocessor}{    \#ifdef CORE\_INT55\_PIN}}
+\DoxyCodeLine{919     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr55(\textcolor{keywordtype}{void}) \{ update(interruptArgs[55]); \}}
+\DoxyCodeLine{920 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{921 \textcolor{preprocessor}{    \#ifdef CORE\_INT56\_PIN}}
+\DoxyCodeLine{922     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr56(\textcolor{keywordtype}{void}) \{ update(interruptArgs[56]); \}}
+\DoxyCodeLine{923 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{924 \textcolor{preprocessor}{    \#ifdef CORE\_INT57\_PIN}}
+\DoxyCodeLine{925     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr57(\textcolor{keywordtype}{void}) \{ update(interruptArgs[57]); \}}
+\DoxyCodeLine{926 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{927 \textcolor{preprocessor}{    \#ifdef CORE\_INT58\_PIN}}
+\DoxyCodeLine{928     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr58(\textcolor{keywordtype}{void}) \{ update(interruptArgs[58]); \}}
+\DoxyCodeLine{929 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{930 \textcolor{preprocessor}{    \#ifdef CORE\_INT59\_PIN}}
+\DoxyCodeLine{931     \textcolor{keyword}{static} \textcolor{keywordtype}{void} isr59(\textcolor{keywordtype}{void}) \{ update(interruptArgs[59]); \}}
+\DoxyCodeLine{932 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{933 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{934 \};}
+\DoxyCodeLine{935 }
+\DoxyCodeLine{936 \textcolor{preprocessor}{\#if defined(ENCODER\_USE\_INTERRUPTS) \&\& defined(ENCODER\_OPTIMIZE\_INTERRUPTS)}}
+\DoxyCodeLine{937 \textcolor{preprocessor}{\#if defined(\_\_AVR\_\_)}}
+\DoxyCodeLine{938 \textcolor{preprocessor}{\#if defined(INT0\_vect) \&\& CORE\_NUM\_INTERRUPT > 0}}
+\DoxyCodeLine{939 ISR(INT0\_vect) \{ Encoder::update(Encoder::interruptArgs[SCRAMBLE\_INT\_ORDER(0)]); \}}
+\DoxyCodeLine{940 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{941 \textcolor{preprocessor}{\#if defined(INT1\_vect) \&\& CORE\_NUM\_INTERRUPT > 1}}
+\DoxyCodeLine{942 ISR(INT1\_vect) \{ Encoder::update(Encoder::interruptArgs[SCRAMBLE\_INT\_ORDER(1)]); \}}
+\DoxyCodeLine{943 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{944 \textcolor{preprocessor}{\#if defined(INT2\_vect) \&\& CORE\_NUM\_INTERRUPT > 2}}
+\DoxyCodeLine{945 ISR(INT2\_vect) \{ Encoder::update(Encoder::interruptArgs[SCRAMBLE\_INT\_ORDER(2)]); \}}
+\DoxyCodeLine{946 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{947 \textcolor{preprocessor}{\#if defined(INT3\_vect) \&\& CORE\_NUM\_INTERRUPT > 3}}
+\DoxyCodeLine{948 ISR(INT3\_vect) \{ Encoder::update(Encoder::interruptArgs[SCRAMBLE\_INT\_ORDER(3)]); \}}
+\DoxyCodeLine{949 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{950 \textcolor{preprocessor}{\#if defined(INT4\_vect) \&\& CORE\_NUM\_INTERRUPT > 4}}
+\DoxyCodeLine{951 ISR(INT4\_vect) \{ Encoder::update(Encoder::interruptArgs[SCRAMBLE\_INT\_ORDER(4)]); \}}
+\DoxyCodeLine{952 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{953 \textcolor{preprocessor}{\#if defined(INT5\_vect) \&\& CORE\_NUM\_INTERRUPT > 5}}
+\DoxyCodeLine{954 ISR(INT5\_vect) \{ Encoder::update(Encoder::interruptArgs[SCRAMBLE\_INT\_ORDER(5)]); \}}
+\DoxyCodeLine{955 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{956 \textcolor{preprocessor}{\#if defined(INT6\_vect) \&\& CORE\_NUM\_INTERRUPT > 6}}
+\DoxyCodeLine{957 ISR(INT6\_vect) \{ Encoder::update(Encoder::interruptArgs[SCRAMBLE\_INT\_ORDER(6)]); \}}
+\DoxyCodeLine{958 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{959 \textcolor{preprocessor}{\#if defined(INT7\_vect) \&\& CORE\_NUM\_INTERRUPT > 7}}
+\DoxyCodeLine{960 ISR(INT7\_vect) \{ Encoder::update(Encoder::interruptArgs[SCRAMBLE\_INT\_ORDER(7)]); \}}
+\DoxyCodeLine{961 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{962 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// AVR}}
+\DoxyCodeLine{963 \textcolor{preprocessor}{\#if defined(attachInterrupt)}}
+\DoxyCodeLine{964 \textcolor{comment}{// Don't intefere with other libraries or sketch use of attachInterrupt()}}
+\DoxyCodeLine{965 \textcolor{comment}{// https://github.com/PaulStoffregen/Encoder/issues/8}}
+\DoxyCodeLine{966 \textcolor{preprocessor}{\#undef attachInterrupt}}
+\DoxyCodeLine{967 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{968 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ENCODER\_OPTIMIZE\_INTERRUPTS}}
+\DoxyCodeLine{969 }
+\DoxyCodeLine{970 }
+\DoxyCodeLine{971 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

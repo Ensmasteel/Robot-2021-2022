@@ -1,0 +1,46 @@
+\hypertarget{class_brake___action}{}\doxysection{Brake\+\_\+\+Action Class Reference}
+\label{class_brake___action}\index{Brake\_Action@{Brake\_Action}}
+
+
+{\ttfamily \#include $<$Actions.\+h$>$}
+
+Inheritance diagram for Brake\+\_\+\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_brake___action}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_brake___action_a13d270b4a8db1d9366ee53c353ba8e88}\label{class_brake___action_a13d270b4a8db1d9366ee53c353ba8e88}} 
+{\bfseries Brake\+\_\+\+Action} (float timeout, int16\+\_\+t require=NO\+\_\+\+REQUIREMENT)
+\item 
+void \mbox{\hyperlink{class_brake___action_ac12a69bd60cae53f1b21522325c9dae4}{start}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Brakes robot until its rotation speed goes below d\+Epsilon given in brake profile. \begin{DoxySeeAlso}{See also}
+Move\+Profile.\+cpp -\/\texorpdfstring{$>$}{>}setup 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_brake___action_ac12a69bd60cae53f1b21522325c9dae4}\label{class_brake___action_ac12a69bd60cae53f1b21522325c9dae4}} 
+\index{Brake\_Action@{Brake\_Action}!start@{start}}
+\index{start@{start}!Brake\_Action@{Brake\_Action}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Brake\+\_\+\+Action\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+The start function is called once at action\textquotesingle{}s beginning, if the action requirement did not fail. Else the fail is immediate. Is the action is interrupted by \mbox{\hyperlink{class_sequence_a77dcfee1093388c7b283c5ebcd0556fc}{Sequence\+::pause}}, start function will be re-\/called during resume. 
+
+Reimplemented from \mbox{\hyperlink{class_move___action_a67ba96921f67ba91f6d34f3245bc34c8}{Move\+\_\+\+Action}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,123 @@
+\hypertarget{stm32f4_2_servo_timers_8h_source}{}\doxysection{Servo\+Timers.\+h}
+\label{stm32f4_2_servo_timers_8h_source}\index{Ensmasteel\_Bot\_2020/Arduino\_Mega/Lib/Servo/src/stm32f4/ServoTimers.h@{Ensmasteel\_Bot\_2020/Arduino\_Mega/Lib/Servo/src/stm32f4/ServoTimers.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/******************************************************************************}}
+\DoxyCodeLine{2 \textcolor{comment}{ * The MIT License}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ * Copyright (c) 2010, LeafLabs, LLC.}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person}}
+\DoxyCodeLine{7 \textcolor{comment}{ * obtaining a copy of this software and associated documentation}}
+\DoxyCodeLine{8 \textcolor{comment}{ * files (the "{}Software"{}), to deal in the Software without}}
+\DoxyCodeLine{9 \textcolor{comment}{ * restriction, including without limitation the rights to use, copy,}}
+\DoxyCodeLine{10 \textcolor{comment}{ * modify, merge, publish, distribute, sublicense, and/or sell copies}}
+\DoxyCodeLine{11 \textcolor{comment}{ * of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{12 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{13 \textcolor{comment}{ *}}
+\DoxyCodeLine{14 \textcolor{comment}{ * The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{15 \textcolor{comment}{ * included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{16 \textcolor{comment}{ *}}
+\DoxyCodeLine{17 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{18 \textcolor{comment}{ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{19 \textcolor{comment}{ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND}}
+\DoxyCodeLine{20 \textcolor{comment}{ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS}}
+\DoxyCodeLine{21 \textcolor{comment}{ * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN}}
+\DoxyCodeLine{22 \textcolor{comment}{ * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN}}
+\DoxyCodeLine{23 \textcolor{comment}{ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{24 \textcolor{comment}{ * SOFTWARE.}}
+\DoxyCodeLine{25 \textcolor{comment}{ *****************************************************************************/}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27  \textcolor{comment}{/*}}
+\DoxyCodeLine{28 \textcolor{comment}{ * Arduino srl -\/ www.arduino.org}}
+\DoxyCodeLine{29 \textcolor{comment}{ * 2017 Feb 23: Edited by Francesco Alessi (alfran) -\/ francesco@arduino.org}}
+\DoxyCodeLine{30 \textcolor{comment}{ */}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#ifndef \_SERVO\_H\_}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define \_SERVO\_H\_}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}types.h"{}}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#include "{}timer.h"{}}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#include "{}wiring.h"{}}             \textcolor{comment}{/* hack for IDE compile */}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{comment}{/*}}
+\DoxyCodeLine{40 \textcolor{comment}{ * Note on Arduino compatibility:}}
+\DoxyCodeLine{41 \textcolor{comment}{ *}}
+\DoxyCodeLine{42 \textcolor{comment}{ * In the Arduino implementation, PWM is done "{}by hand"{} in the sense}}
+\DoxyCodeLine{43 \textcolor{comment}{ * that timer channels are hijacked in groups and an ISR is set which}}
+\DoxyCodeLine{44 \textcolor{comment}{ * toggles Servo::attach()ed pins using digitalWrite().}}
+\DoxyCodeLine{45 \textcolor{comment}{ *}}
+\DoxyCodeLine{46 \textcolor{comment}{ * While this scheme allows any pin to drive a servo, it chews up}}
+\DoxyCodeLine{47 \textcolor{comment}{ * cycles and complicates the programmer's notion of when a particular}}
+\DoxyCodeLine{48 \textcolor{comment}{ * timer channel will be in use.}}
+\DoxyCodeLine{49 \textcolor{comment}{ *}}
+\DoxyCodeLine{50 \textcolor{comment}{ * This implementation only allows Servo instances to attach() to pins}}
+\DoxyCodeLine{51 \textcolor{comment}{ * that already have a timer channel associated with them, and just}}
+\DoxyCodeLine{52 \textcolor{comment}{ * uses pwmWrite() to drive the wave.}}
+\DoxyCodeLine{53 \textcolor{comment}{ *}}
+\DoxyCodeLine{54 \textcolor{comment}{ * This introduces an incompatibility: while the Arduino}}
+\DoxyCodeLine{55 \textcolor{comment}{ * implementation of attach() returns the affected channel on success}}
+\DoxyCodeLine{56 \textcolor{comment}{ * and 0 on failure, this one returns true on success and false on}}
+\DoxyCodeLine{57 \textcolor{comment}{ * failure.}}
+\DoxyCodeLine{58 \textcolor{comment}{ *}}
+\DoxyCodeLine{59 \textcolor{comment}{ * RC Servos expect a pulse every 20ms.  Since periods are set for}}
+\DoxyCodeLine{60 \textcolor{comment}{ * entire timers, rather than individual channels, attach()ing a Servo}}
+\DoxyCodeLine{61 \textcolor{comment}{ * to a pin can interfere with other pins associated with the same}}
+\DoxyCodeLine{62 \textcolor{comment}{ * timer.  As always, your board's pin map is your friend.}}
+\DoxyCodeLine{63 \textcolor{comment}{ */}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{comment}{// Pin number of unattached pins}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#define NOT\_ATTACHED                    (-\/1)}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#define \_Nbr\_16timers 14 }\textcolor{comment}{// mumber of STM32F469 Timers}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define SERVOS\_PER\_TIMER 4 }\textcolor{comment}{// Number of timer channels}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{comment}{// Default min/max pulse widths (in microseconds) and angles (in}}
+\DoxyCodeLine{73 \textcolor{comment}{// degrees).  Values chosen for Arduino compatibility.  These values}}
+\DoxyCodeLine{74 \textcolor{comment}{// are part of the public API; DO NOT CHANGE THEM.}}
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#define MIN\_ANGLE               0}}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#define MAX\_ANGLE             180}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#define MIN\_PULSE\_WIDTH       544     }\textcolor{comment}{// the shortest pulse sent to a servo}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#define MAX\_PULSE\_WIDTH      2400     }\textcolor{comment}{// the longest pulse sent to a servo}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{82 \textcolor{keyword}{class }\mbox{\hyperlink{class_servo}{Servo}} \{}
+\DoxyCodeLine{83 \textcolor{keyword}{public}:}
+\DoxyCodeLine{89     \mbox{\hyperlink{class_servo_a70b2b17657cf258cdcb57503bcf62cd2}{Servo}}();}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{126     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_servo_ae610bc76e895bd05fdc3618e33b90012}{attach}}(uint8 pin,}
+\DoxyCodeLine{127                 uint16 minPulseWidth=MIN\_PULSE\_WIDTH,}
+\DoxyCodeLine{128                 uint16 maxPulseWidth=MAX\_PULSE\_WIDTH,}
+\DoxyCodeLine{129                 int16 minAngle=MIN\_ANGLE,}
+\DoxyCodeLine{130                 int16 maxAngle=MAX\_ANGLE);}
+\DoxyCodeLine{138     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_servo_afa4042feca3c79ba934798961d202bea}{detach}}();}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{149     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_servo_af69aba052f5907ef7fc3b6159e3b7726}{write}}(\textcolor{keywordtype}{int} angle);}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{161     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_servo_a7d35c33a26697722dc0c7e6cdb66d299}{writeMicroseconds}}(uint16 pulseWidth);}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{169     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_servo_a95217e315c3189adb6528a3b9b347336}{read}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{177     uint16 \mbox{\hyperlink{class_servo_a95404e96cc304eca9596d4c7d13fe339}{readMicroseconds}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179 }
+\DoxyCodeLine{185     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_servo_a243c190018cc807116ac4ca2c9b0f66e}{attached}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} this-\/>pin != NOT\_ATTACHED; \}}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{193     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_servo_a328ef929f144308a30476c587d71e9fc}{attachedPin}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} this-\/>pin; \}}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195 \textcolor{keyword}{private}:}
+\DoxyCodeLine{196     int16 pin;}
+\DoxyCodeLine{197     uint16 minPW;}
+\DoxyCodeLine{198     uint16 maxPW;}
+\DoxyCodeLine{199     int16 minAngle;}
+\DoxyCodeLine{200     int16 maxAngle;}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{202     \textcolor{keywordtype}{void} resetFields(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{203 \};}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205 }
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{/* \_SERVO\_H\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

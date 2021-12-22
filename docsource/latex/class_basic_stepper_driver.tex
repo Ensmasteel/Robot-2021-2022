@@ -1,0 +1,367 @@
+\hypertarget{class_basic_stepper_driver}{}\doxysection{Basic\+Stepper\+Driver Class Reference}
+\label{class_basic_stepper_driver}\index{BasicStepperDriver@{BasicStepperDriver}}
+Inheritance diagram for Basic\+Stepper\+Driver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_basic_stepper_driver}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_basic_stepper_driver_1_1_profile}{Profile}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_af1b4082102ecbef61fe24891716f1162}\label{class_basic_stepper_driver_af1b4082102ecbef61fe24891716f1162}} 
+enum {\bfseries Mode} \{ {\bfseries CONSTANT\+\_\+\+SPEED}
+, {\bfseries LINEAR\+\_\+\+SPEED}
+, {\bfseries CONSTANT\+\_\+\+SPEED}
+, {\bfseries LINEAR\+\_\+\+SPEED}
+ \}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_aedacc779e4f10ba6fb43fe8ed6c1e0d0}\label{class_basic_stepper_driver_aedacc779e4f10ba6fb43fe8ed6c1e0d0}} 
+enum {\bfseries State} \{ \newline
+{\bfseries STOPPED}
+, {\bfseries ACCELERATING}
+, {\bfseries CRUISING}
+, {\bfseries DECELERATING}
+, \newline
+{\bfseries STOPPED}
+, {\bfseries ACCELERATING}
+, {\bfseries CRUISING}
+, {\bfseries DECELERATING}
+ \}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_af1b4082102ecbef61fe24891716f1162}\label{class_basic_stepper_driver_af1b4082102ecbef61fe24891716f1162}} 
+enum {\bfseries Mode} \{ {\bfseries CONSTANT\+\_\+\+SPEED}
+, {\bfseries LINEAR\+\_\+\+SPEED}
+, {\bfseries CONSTANT\+\_\+\+SPEED}
+, {\bfseries LINEAR\+\_\+\+SPEED}
+ \}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_aedacc779e4f10ba6fb43fe8ed6c1e0d0}\label{class_basic_stepper_driver_aedacc779e4f10ba6fb43fe8ed6c1e0d0}} 
+enum {\bfseries State} \{ \newline
+{\bfseries STOPPED}
+, {\bfseries ACCELERATING}
+, {\bfseries CRUISING}
+, {\bfseries DECELERATING}
+, \newline
+{\bfseries STOPPED}
+, {\bfseries ACCELERATING}
+, {\bfseries CRUISING}
+, {\bfseries DECELERATING}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a51e279a5df4868176eb6ae833041a50d}\label{class_basic_stepper_driver_a51e279a5df4868176eb6ae833041a50d}} 
+{\bfseries Basic\+Stepper\+Driver} (short steps, short dir\+\_\+pin, short step\+\_\+pin)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a1b3a53e06690b60abee1d0d9127ec75e}\label{class_basic_stepper_driver_a1b3a53e06690b60abee1d0d9127ec75e}} 
+{\bfseries Basic\+Stepper\+Driver} (short steps, short dir\+\_\+pin, short step\+\_\+pin, short enable\+\_\+pin)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a3b195930a8e2792e8cf5dea6ab3df4c0}\label{class_basic_stepper_driver_a3b195930a8e2792e8cf5dea6ab3df4c0}} 
+void {\bfseries begin} (float rpm=60, short microsteps=1)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a3e29828a5ab24534fef8199acab4d2f7}\label{class_basic_stepper_driver_a3e29828a5ab24534fef8199acab4d2f7}} 
+virtual short {\bfseries set\+Microstep} (short microsteps)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_af2b2e205ae51a33bf3db0542d190cd2f}\label{class_basic_stepper_driver_af2b2e205ae51a33bf3db0542d190cd2f}} 
+short {\bfseries get\+Microstep} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a1c743c5764fa397b15cf1afe546f55b8}\label{class_basic_stepper_driver_a1c743c5764fa397b15cf1afe546f55b8}} 
+short {\bfseries get\+Steps} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a317ab852d4d95e2c8cad21ba6f003560}\label{class_basic_stepper_driver_a317ab852d4d95e2c8cad21ba6f003560}} 
+void {\bfseries set\+RPM} (float rpm)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_aed4be1409d0c78ece661a6e0602aef79}\label{class_basic_stepper_driver_aed4be1409d0c78ece661a6e0602aef79}} 
+float {\bfseries get\+RPM} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a0dbf0716e619cdd78874d474f6ea74e8}\label{class_basic_stepper_driver_a0dbf0716e619cdd78874d474f6ea74e8}} 
+float {\bfseries get\+Current\+RPM} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a588c213e9a54c71a118ec74213bb8c11}\label{class_basic_stepper_driver_a588c213e9a54c71a118ec74213bb8c11}} 
+void {\bfseries set\+Speed\+Profile} (Mode mode, short accel=1000, short decel=1000)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a8e8e8d230ef2cecda0fba796e537124f}\label{class_basic_stepper_driver_a8e8e8d230ef2cecda0fba796e537124f}} 
+void {\bfseries set\+Speed\+Profile} (struct \mbox{\hyperlink{struct_basic_stepper_driver_1_1_profile}{Profile}} profile)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a9b6046c612cac57a931a1fac13cd015a}\label{class_basic_stepper_driver_a9b6046c612cac57a931a1fac13cd015a}} 
+struct \mbox{\hyperlink{struct_basic_stepper_driver_1_1_profile}{Profile}} {\bfseries get\+Speed\+Profile} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_af6f97f7416a86f2d346e229f091d92ff}\label{class_basic_stepper_driver_af6f97f7416a86f2d346e229f091d92ff}} 
+short {\bfseries get\+Acceleration} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_adb99e19bf4c310126150a87153edfa52}\label{class_basic_stepper_driver_adb99e19bf4c310126150a87153edfa52}} 
+short {\bfseries get\+Deceleration} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a6be7d04095bd50a54ae28b6183d72ff7}\label{class_basic_stepper_driver_a6be7d04095bd50a54ae28b6183d72ff7}} 
+void {\bfseries move} (long steps)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a03847762fe040ca5c6707e0cc71767d4}\label{class_basic_stepper_driver_a03847762fe040ca5c6707e0cc71767d4}} 
+void {\bfseries rotate} (long deg)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a987b70d95bcaf52a390c9cbb8534c8ac}\label{class_basic_stepper_driver_a987b70d95bcaf52a390c9cbb8534c8ac}} 
+void {\bfseries rotate} (int deg)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a5c9f879156d317774fd7b39ed0ae8d99}\label{class_basic_stepper_driver_a5c9f879156d317774fd7b39ed0ae8d99}} 
+void {\bfseries rotate} (double deg)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a4f83c21fa80163c4b9db9c8177b715bd}\label{class_basic_stepper_driver_a4f83c21fa80163c4b9db9c8177b715bd}} 
+void {\bfseries set\+Enable\+Active\+State} (short state)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a1a4f459b0bddc1e3e0616fa96c0db064}\label{class_basic_stepper_driver_a1a4f459b0bddc1e3e0616fa96c0db064}} 
+virtual void {\bfseries enable} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a15ac3a56f2108808a957c816ddbc0c6d}\label{class_basic_stepper_driver_a15ac3a56f2108808a957c816ddbc0c6d}} 
+virtual void {\bfseries disable} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a15b747acf8f1499e6e01bd7a58bfd178}\label{class_basic_stepper_driver_a15b747acf8f1499e6e01bd7a58bfd178}} 
+void {\bfseries start\+Move} (long steps, long time=0)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a9993a2daa9cc68aaa673d41b0ac51003}\label{class_basic_stepper_driver_a9993a2daa9cc68aaa673d41b0ac51003}} 
+void {\bfseries start\+Rotate} (int deg)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_acc033aae0c5d845f4a3d00da1af3e706}\label{class_basic_stepper_driver_acc033aae0c5d845f4a3d00da1af3e706}} 
+void {\bfseries start\+Rotate} (long deg)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_aa4c0a684d10596312359b49cb3d02471}\label{class_basic_stepper_driver_aa4c0a684d10596312359b49cb3d02471}} 
+void {\bfseries start\+Rotate} (double deg)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a808df7c3413dc287299a7db7649c0b1d}\label{class_basic_stepper_driver_a808df7c3413dc287299a7db7649c0b1d}} 
+long {\bfseries next\+Action} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_aa3ab78db814ffb286718a0a051cd50ae}\label{class_basic_stepper_driver_aa3ab78db814ffb286718a0a051cd50ae}} 
+void {\bfseries start\+Brake} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a2ce5102250c5cf867748c13f55f126be}\label{class_basic_stepper_driver_a2ce5102250c5cf867748c13f55f126be}} 
+long {\bfseries stop} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_af0d6952ec9c2ba8849c15272b5659aae}\label{class_basic_stepper_driver_af0d6952ec9c2ba8849c15272b5659aae}} 
+enum State {\bfseries get\+Current\+State} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_ab9e2cb26ef02f2b16f701b68e1d38dd8}\label{class_basic_stepper_driver_ab9e2cb26ef02f2b16f701b68e1d38dd8}} 
+long {\bfseries get\+Steps\+Completed} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a575d0ce92e6a04585f3bd9559faaba3e}\label{class_basic_stepper_driver_a575d0ce92e6a04585f3bd9559faaba3e}} 
+long {\bfseries get\+Steps\+Remaining} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a0e9ef559ceeefc4daf321e0bb4389691}\label{class_basic_stepper_driver_a0e9ef559ceeefc4daf321e0bb4389691}} 
+int {\bfseries get\+Direction} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_af0ff14d9feff51b6a13c975a10371376}\label{class_basic_stepper_driver_af0ff14d9feff51b6a13c975a10371376}} 
+long {\bfseries get\+Time\+For\+Move} (long steps)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_afc7cd752e20207d4172ad042fc2d481b}\label{class_basic_stepper_driver_afc7cd752e20207d4172ad042fc2d481b}} 
+long {\bfseries calc\+Steps\+For\+Rotation} (long deg)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a5027ddc407f5e73d9f130230dc41711d}\label{class_basic_stepper_driver_a5027ddc407f5e73d9f130230dc41711d}} 
+long {\bfseries calc\+Steps\+For\+Rotation} (double deg)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a51e279a5df4868176eb6ae833041a50d}\label{class_basic_stepper_driver_a51e279a5df4868176eb6ae833041a50d}} 
+{\bfseries Basic\+Stepper\+Driver} (short steps, short dir\+\_\+pin, short step\+\_\+pin)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a1b3a53e06690b60abee1d0d9127ec75e}\label{class_basic_stepper_driver_a1b3a53e06690b60abee1d0d9127ec75e}} 
+{\bfseries Basic\+Stepper\+Driver} (short steps, short dir\+\_\+pin, short step\+\_\+pin, short enable\+\_\+pin)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a3b195930a8e2792e8cf5dea6ab3df4c0}\label{class_basic_stepper_driver_a3b195930a8e2792e8cf5dea6ab3df4c0}} 
+void {\bfseries begin} (float rpm=60, short microsteps=1)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_afd94c48dcbd6fa94fcbb382c25dd7033}\label{class_basic_stepper_driver_afd94c48dcbd6fa94fcbb382c25dd7033}} 
+virtual short {\bfseries set\+Microstep} (short microsteps)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_af2b2e205ae51a33bf3db0542d190cd2f}\label{class_basic_stepper_driver_af2b2e205ae51a33bf3db0542d190cd2f}} 
+short {\bfseries get\+Microstep} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a1c743c5764fa397b15cf1afe546f55b8}\label{class_basic_stepper_driver_a1c743c5764fa397b15cf1afe546f55b8}} 
+short {\bfseries get\+Steps} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a317ab852d4d95e2c8cad21ba6f003560}\label{class_basic_stepper_driver_a317ab852d4d95e2c8cad21ba6f003560}} 
+void {\bfseries set\+RPM} (float rpm)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_aed4be1409d0c78ece661a6e0602aef79}\label{class_basic_stepper_driver_aed4be1409d0c78ece661a6e0602aef79}} 
+float {\bfseries get\+RPM} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a0dbf0716e619cdd78874d474f6ea74e8}\label{class_basic_stepper_driver_a0dbf0716e619cdd78874d474f6ea74e8}} 
+float {\bfseries get\+Current\+RPM} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a588c213e9a54c71a118ec74213bb8c11}\label{class_basic_stepper_driver_a588c213e9a54c71a118ec74213bb8c11}} 
+void {\bfseries set\+Speed\+Profile} (Mode mode, short accel=1000, short decel=1000)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a8e8e8d230ef2cecda0fba796e537124f}\label{class_basic_stepper_driver_a8e8e8d230ef2cecda0fba796e537124f}} 
+void {\bfseries set\+Speed\+Profile} (struct \mbox{\hyperlink{struct_basic_stepper_driver_1_1_profile}{Profile}} profile)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a9b6046c612cac57a931a1fac13cd015a}\label{class_basic_stepper_driver_a9b6046c612cac57a931a1fac13cd015a}} 
+struct \mbox{\hyperlink{struct_basic_stepper_driver_1_1_profile}{Profile}} {\bfseries get\+Speed\+Profile} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_af6f97f7416a86f2d346e229f091d92ff}\label{class_basic_stepper_driver_af6f97f7416a86f2d346e229f091d92ff}} 
+short {\bfseries get\+Acceleration} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_adb99e19bf4c310126150a87153edfa52}\label{class_basic_stepper_driver_adb99e19bf4c310126150a87153edfa52}} 
+short {\bfseries get\+Deceleration} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a6be7d04095bd50a54ae28b6183d72ff7}\label{class_basic_stepper_driver_a6be7d04095bd50a54ae28b6183d72ff7}} 
+void {\bfseries move} (long steps)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a03847762fe040ca5c6707e0cc71767d4}\label{class_basic_stepper_driver_a03847762fe040ca5c6707e0cc71767d4}} 
+void {\bfseries rotate} (long deg)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a987b70d95bcaf52a390c9cbb8534c8ac}\label{class_basic_stepper_driver_a987b70d95bcaf52a390c9cbb8534c8ac}} 
+void {\bfseries rotate} (int deg)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a5c9f879156d317774fd7b39ed0ae8d99}\label{class_basic_stepper_driver_a5c9f879156d317774fd7b39ed0ae8d99}} 
+void {\bfseries rotate} (double deg)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a4f83c21fa80163c4b9db9c8177b715bd}\label{class_basic_stepper_driver_a4f83c21fa80163c4b9db9c8177b715bd}} 
+void {\bfseries set\+Enable\+Active\+State} (short state)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a98c259d26995c1c5d2ce3b0295772451}\label{class_basic_stepper_driver_a98c259d26995c1c5d2ce3b0295772451}} 
+virtual void {\bfseries enable} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_ae294cdfebadb11a72d0f4bed6813c471}\label{class_basic_stepper_driver_ae294cdfebadb11a72d0f4bed6813c471}} 
+virtual void {\bfseries disable} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a15b747acf8f1499e6e01bd7a58bfd178}\label{class_basic_stepper_driver_a15b747acf8f1499e6e01bd7a58bfd178}} 
+void {\bfseries start\+Move} (long steps, long time=0)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a9993a2daa9cc68aaa673d41b0ac51003}\label{class_basic_stepper_driver_a9993a2daa9cc68aaa673d41b0ac51003}} 
+void {\bfseries start\+Rotate} (int deg)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_acc033aae0c5d845f4a3d00da1af3e706}\label{class_basic_stepper_driver_acc033aae0c5d845f4a3d00da1af3e706}} 
+void {\bfseries start\+Rotate} (long deg)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_aa4c0a684d10596312359b49cb3d02471}\label{class_basic_stepper_driver_aa4c0a684d10596312359b49cb3d02471}} 
+void {\bfseries start\+Rotate} (double deg)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a808df7c3413dc287299a7db7649c0b1d}\label{class_basic_stepper_driver_a808df7c3413dc287299a7db7649c0b1d}} 
+long {\bfseries next\+Action} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_aa3ab78db814ffb286718a0a051cd50ae}\label{class_basic_stepper_driver_aa3ab78db814ffb286718a0a051cd50ae}} 
+void {\bfseries start\+Brake} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a2ce5102250c5cf867748c13f55f126be}\label{class_basic_stepper_driver_a2ce5102250c5cf867748c13f55f126be}} 
+long {\bfseries stop} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a809a36552b76b3a0d019b60e185ab3b1}\label{class_basic_stepper_driver_a809a36552b76b3a0d019b60e185ab3b1}} 
+enum State {\bfseries get\+Current\+State} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_ab9e2cb26ef02f2b16f701b68e1d38dd8}\label{class_basic_stepper_driver_ab9e2cb26ef02f2b16f701b68e1d38dd8}} 
+long {\bfseries get\+Steps\+Completed} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a575d0ce92e6a04585f3bd9559faaba3e}\label{class_basic_stepper_driver_a575d0ce92e6a04585f3bd9559faaba3e}} 
+long {\bfseries get\+Steps\+Remaining} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a0e9ef559ceeefc4daf321e0bb4389691}\label{class_basic_stepper_driver_a0e9ef559ceeefc4daf321e0bb4389691}} 
+int {\bfseries get\+Direction} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_af0ff14d9feff51b6a13c975a10371376}\label{class_basic_stepper_driver_af0ff14d9feff51b6a13c975a10371376}} 
+long {\bfseries get\+Time\+For\+Move} (long steps)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_afc7cd752e20207d4172ad042fc2d481b}\label{class_basic_stepper_driver_afc7cd752e20207d4172ad042fc2d481b}} 
+long {\bfseries calc\+Steps\+For\+Rotation} (long deg)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a5027ddc407f5e73d9f130230dc41711d}\label{class_basic_stepper_driver_a5027ddc407f5e73d9f130230dc41711d}} 
+long {\bfseries calc\+Steps\+For\+Rotation} (double deg)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a08143baf33993ba48953201c060f09c1}\label{class_basic_stepper_driver_a08143baf33993ba48953201c060f09c1}} 
+static void {\bfseries delay\+Micros} (unsigned long delay\+\_\+us, unsigned long start\+\_\+us=0)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a08143baf33993ba48953201c060f09c1}\label{class_basic_stepper_driver_a08143baf33993ba48953201c060f09c1}} 
+static void {\bfseries delay\+Micros} (unsigned long delay\+\_\+us, unsigned long start\+\_\+us=0)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a38c63513054e73b268783e2ee05ee50b}\label{class_basic_stepper_driver_a38c63513054e73b268783e2ee05ee50b}} 
+virtual short {\bfseries get\+Max\+Microstep} ()
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a74e1f72d8199829ff42afc2875c8d799}\label{class_basic_stepper_driver_a74e1f72d8199829ff42afc2875c8d799}} 
+void {\bfseries calc\+Step\+Pulse} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_ab944ccc390a7bb3b0113403e9bbb305c}\label{class_basic_stepper_driver_ab944ccc390a7bb3b0113403e9bbb305c}} 
+void {\bfseries alter\+Move} (long steps)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a322ab6c8f1d022ab97fe50cd6f5369bb}\label{class_basic_stepper_driver_a322ab6c8f1d022ab97fe50cd6f5369bb}} 
+virtual short {\bfseries get\+Max\+Microstep} ()
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a74e1f72d8199829ff42afc2875c8d799}\label{class_basic_stepper_driver_a74e1f72d8199829ff42afc2875c8d799}} 
+void {\bfseries calc\+Step\+Pulse} (void)
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_ab944ccc390a7bb3b0113403e9bbb305c}\label{class_basic_stepper_driver_ab944ccc390a7bb3b0113403e9bbb305c}} 
+void {\bfseries alter\+Move} (long steps)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a18f465de00856fc589bb4479b1276d02}\label{class_basic_stepper_driver_a18f465de00856fc589bb4479b1276d02}} 
+short {\bfseries motor\+\_\+steps}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_adc1086a4d1964a509b97e9d0e0988fb5}\label{class_basic_stepper_driver_adc1086a4d1964a509b97e9d0e0988fb5}} 
+short {\bfseries dir\+\_\+pin}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a8e03b42484a94ec3daad9a4f2d4583a7}\label{class_basic_stepper_driver_a8e03b42484a94ec3daad9a4f2d4583a7}} 
+short {\bfseries step\+\_\+pin}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_aa24e3b7ae20eed14ba8b24300e8e7c61}\label{class_basic_stepper_driver_aa24e3b7ae20eed14ba8b24300e8e7c61}} 
+short {\bfseries enable\+\_\+pin} = PIN\+\_\+\+UNCONNECTED
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_ad8d499549d46ad45fa8c5c2a2342c30b}\label{class_basic_stepper_driver_ad8d499549d46ad45fa8c5c2a2342c30b}} 
+short {\bfseries enable\+\_\+active\+\_\+state} = HIGH
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a1ecc60cbf4edacb8487bd0651f3d2b49}\label{class_basic_stepper_driver_a1ecc60cbf4edacb8487bd0651f3d2b49}} 
+short {\bfseries microsteps} = 1
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a6db6f9430a17954a94ac4c40fda62389}\label{class_basic_stepper_driver_a6db6f9430a17954a94ac4c40fda62389}} 
+float {\bfseries rpm} = 0
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a72218544e49175309a772ec3cec706d2}\label{class_basic_stepper_driver_a72218544e49175309a772ec3cec706d2}} 
+struct \mbox{\hyperlink{struct_basic_stepper_driver_1_1_profile}{Profile}} {\bfseries profile}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a1eebfbb380b3a0ce91937226d30c3a2c}\label{class_basic_stepper_driver_a1eebfbb380b3a0ce91937226d30c3a2c}} 
+long {\bfseries step\+\_\+count}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a1f1ae8a85101f01decf8ae3e39aa574b}\label{class_basic_stepper_driver_a1f1ae8a85101f01decf8ae3e39aa574b}} 
+long {\bfseries steps\+\_\+remaining}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a914ea715ce08cf4b50631a69ae9e9e3e}\label{class_basic_stepper_driver_a914ea715ce08cf4b50631a69ae9e9e3e}} 
+long {\bfseries steps\+\_\+to\+\_\+cruise}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_aaae54a86b961a9d418bdea86b413405d}\label{class_basic_stepper_driver_aaae54a86b961a9d418bdea86b413405d}} 
+long {\bfseries steps\+\_\+to\+\_\+brake}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_ad4707a140bfb77f38f532c6f07bc0a3f}\label{class_basic_stepper_driver_ad4707a140bfb77f38f532c6f07bc0a3f}} 
+long {\bfseries step\+\_\+pulse}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_ac7214e4a8f86aa486e2b4ada5dbc2d82}\label{class_basic_stepper_driver_ac7214e4a8f86aa486e2b4ada5dbc2d82}} 
+long {\bfseries cruise\+\_\+step\+\_\+pulse}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_ab6082e691d61ccbf49fca7bde3af919e}\label{class_basic_stepper_driver_ab6082e691d61ccbf49fca7bde3af919e}} 
+short {\bfseries dir\+\_\+state}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a933808ebf975c5ba81597f6e11452d96}\label{class_basic_stepper_driver_a933808ebf975c5ba81597f6e11452d96}} 
+static const int {\bfseries step\+\_\+high\+\_\+min} = 1
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a95398f9155524ea8d8dcc2da8223ee0c}\label{class_basic_stepper_driver_a95398f9155524ea8d8dcc2da8223ee0c}} 
+static const int {\bfseries step\+\_\+low\+\_\+min} = 1
+\item 
+\mbox{\Hypertarget{class_basic_stepper_driver_a24bb2b08d39238c2294bd94053804a2b}\label{class_basic_stepper_driver_a24bb2b08d39238c2294bd94053804a2b}} 
+static const int {\bfseries wakeup\+\_\+time} = 0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Arduino\+\_\+\+Mega/\+Lib/\+Stepper\+Driver/src/Basic\+Stepper\+Driver.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/test led/src/Basic\+Stepper\+Driver.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Arduino\+\_\+\+Mega/\+Lib/\+Stepper\+Driver/src/Basic\+Stepper\+Driver.\+cpp\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/test led/src/Basic\+Stepper\+Driver.\+cpp\end{DoxyCompactItemize}

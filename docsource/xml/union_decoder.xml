@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="union_decoder" kind="union" language="C++" prot="public">
+    <compoundname>Decoder</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="union_decoder_1a7c7dec74043044b9056ac805bac3fc32" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_four_bytes" kindref="compound">FourBytes</ref></type>
+        <definition>FourBytes Decoder::fBytes</definition>
+        <argsstring></argsstring>
+        <name>fBytes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="22" column="15" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union_decoder_1a300d399769a3223b0e09ac751fff7ea2" prot="public" static="no" mutable="no">
+        <type>int32_t</type>
+        <definition>int32_t Decoder::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="23" column="13" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union_decoder_1a21db192f115eff4207334a2c2a182fb5" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_u_int_vector_e" kindref="compound">UIntVectorE</ref></type>
+        <definition>UIntVectorE Decoder::uIntVectorE</definition>
+        <argsstring></argsstring>
+        <name>uIntVectorE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="24" column="17" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Decoder</label>
+        <link refid="union_decoder"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>fBytes</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>uIntVectorE</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>FourBytes</label>
+        <link refid="struct_four_bytes"/>
+      </node>
+      <node id="3">
+        <label>UIntVectorE</label>
+        <link refid="struct_u_int_vector_e"/>
+      </node>
+    </collaborationgraph>
+    <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="20" column="1" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="21" bodyend="25"/>
+    <listofallmembers>
+      <member refid="union_decoder_1a300d399769a3223b0e09ac751fff7ea2" prot="public" virt="non-virtual"><scope>Decoder</scope><name>data</name></member>
+      <member refid="union_decoder_1a7c7dec74043044b9056ac805bac3fc32" prot="public" virt="non-virtual"><scope>Decoder</scope><name>fBytes</name></member>
+      <member refid="union_decoder_1a21db192f115eff4207334a2c2a182fb5" prot="public" virt="non-virtual"><scope>Decoder</scope><name>uIntVectorE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

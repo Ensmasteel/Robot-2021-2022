@@ -1,0 +1,600 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_functions_8cpp" kind="file" language="C++">
+    <compoundname>Functions.cpp</compoundname>
+    <includes refid="_functions_8h" local="yes">Functions.h</includes>
+    <includes refid="_actions_8h" local="yes">Actions.h</includes>
+    <includes refid="_robot_8h" local="yes">Robot.h</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>Arduino.h</label>
+      </node>
+      <node id="9">
+        <label>Communication.h</label>
+        <link refid="_communication_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>MessageID.h</label>
+        <link refid="_message_i_d_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>MoveProfile.h</label>
+        <link refid="_move_profile_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>SequenceName.h</label>
+        <link refid="_sequence_name_8h_source"/>
+      </node>
+      <node id="6">
+        <label>Logger.h</label>
+        <link refid="_logger_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Vector.h</label>
+        <link refid="_vector_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>ErrorManager.h</label>
+        <link refid="_error_manager_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>Filtre.h</label>
+        <link refid="_filtre_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>Ghost.h</label>
+        <link refid="_ghost_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Actions.h</label>
+        <link refid="_actions_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>Codeuse.h</label>
+        <link refid="_codeuse_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>Encoder.h</label>
+        <link refid="_encoder_8h_source"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp</label>
+        <link refid="_functions_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Functions.h</label>
+        <link refid="_functions_8h_source"/>
+      </node>
+      <node id="29">
+        <label>Sequence.h</label>
+        <link refid="_sequence_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>utility/direct_pin_read.h</label>
+        <link refid="direct__pin__read_8h_source"/>
+      </node>
+      <node id="23">
+        <label>utility/interrupt_pins.h</label>
+        <link refid="interrupt__pins_8h_source"/>
+      </node>
+      <node id="28">
+        <label>Math_functions.h</label>
+        <link refid="_math__functions_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>Moteur.h</label>
+        <link refid="_moteur_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>PID.h</label>
+        <link refid="_p_i_d_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>Robot.h</label>
+        <link refid="_robot_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Print.h</label>
+      </node>
+      <node id="12">
+        <label>Stream.h</label>
+      </node>
+      <node id="20">
+        <label>WProgram.h</label>
+      </node>
+      <node id="16">
+        <label>cstdint</label>
+      </node>
+      <node id="21">
+        <label>pins_arduino.h</label>
+      </node>
+      <node id="11">
+        <label>stdint.h</label>
+      </node>
+      <node id="15">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_functions_8cpp_1aad4d89f12e7489987d81ce306848a176" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PID_tweak</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>PID_tweak</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Send a tweak to the <ref refid="class_p_i_d" kindref="compound">PID</ref> <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+<parametername>pointer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to the robot. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" line="9" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="9" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8cpp_1a677849c660fdfac1e34b096ebded5be3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ping</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>ping</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Send a ping to the robot, to verify the connection. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+<parametername>pointer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to the robot. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" line="18" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="18" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8cpp_1a508b2b06a873ae70b67ad93c07cc9bd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void shutdown</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>shutdown</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shutdown the robot. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" line="23" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="23" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8cpp_1addd0c38132a8c0a09f8a08bdf66f6de9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setTimeStart</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>setTimeStart</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" line="31" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8cpp_1ab36c4f0e40ddd497e9ff5e775cd9dfcc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void startBackHomeSeq</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>startBackHomeSeq</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a backHomme sequence to the sequence running. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" line="36" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="36" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8cpp_1af86618c886085e6ff28aa390fc8d8e43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setNorth</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>setNorth</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the nuorth to robot. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" line="47" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="47" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8cpp_1a9f804dcb0c9218ee302cae54b460a90e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setSouth</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>setSouth</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set South to robot. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" line="53" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="53" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8cpp_1a844d711a870ff9d0766293e798f62c3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void recallageBordure</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>recallageBordure</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Recalibrating with the edges of the table. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" line="59" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="59" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8cpp_1a343e950a028c6c26540afa9ab5def893" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void forceMainSeqNext</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>forceMainSeqNext</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Forces main sequence to start. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" line="102" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="102" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8cpp_1a905531278dabf6d2c78d097cdcff4fd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void startTimeSeq</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>startTimeSeq</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Starts time sequence. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" line="107" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="107" bodyend="110"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;Functions.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Actions.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Robot.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>push</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>ignored<sp/>&quot;-Wunused-parameter&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//Retire<sp/>le<sp/>warning<sp/>&quot;unused<sp/>parameter&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//Lorsque<sp/>cette<sp/>fonction<sp/>est<sp/>appellé,<sp/>il<sp/>y<sp/>a<sp/>un<sp/>PID_tweak<sp/>dans<sp/>la<sp/>mailbox</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PID_tweak(<ref refid="class_robot" kindref="compound">Robot</ref><sp/>*robot)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_four_bytes" kindref="compound">FourBytes</ref><sp/>fBytes<sp/>=<sp/>extract4Bytes(robot-&gt;communication.<ref refid="class_communication_1a71204b613dd598bc5919d57942eef2f2" kindref="member">peekOldestMessage</ref>());</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>incr<sp/>=<sp/>fBytes.byte0<sp/>==<sp/>1;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>translation<sp/>=<sp/>fBytes.byte1<sp/>==<sp/>1;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>whichOne<sp/>=<sp/>fBytes.byte2;<sp/></highlight><highlight class="comment">//0<sp/>=<sp/>P,<sp/>1<sp/>=<sp/>I,<sp/>2<sp/>=<sp/>D</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(String(robot-&gt;controller.tweak(incr,<sp/>translation,<sp/>whichOne)));</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ping(<ref refid="class_robot" kindref="compound">Robot</ref><sp/>*robot)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(</highlight><highlight class="stringliteral">&quot;ping&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>shutdown(<ref refid="class_robot" kindref="compound">Robot</ref><sp/>*robot)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>__NBSEQUENCES__;<sp/>i++)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robot-&gt;<ref refid="class_robot_1a92dfc164f4b5687a7ffc1dab1cf7bfbe" kindref="member">getSequenceByName</ref>((SequenceName)i)-&gt;<ref refid="class_sequence_1a77dcfee1093388c7b283c5ebcd0556fc" kindref="member">pause</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>robot-&gt;controller.setCurrentProfile(off);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(</highlight><highlight class="stringliteral">&quot;SHUTDOWN&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setTimeStart(<ref refid="class_robot" kindref="compound">Robot</ref><sp/>*robot)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>robot-&gt;timeStarted<sp/>=<sp/>millis()<sp/>/<sp/>1e3;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>startBackHomeSeq(<ref refid="class_robot" kindref="compound">Robot</ref><sp/>*robot)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//On<sp/>arrete<sp/>la<sp/>sequence<sp/>actuelle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>robot-&gt;<ref refid="class_robot_1a92dfc164f4b5687a7ffc1dab1cf7bfbe" kindref="member">getSequenceByName</ref>(mainSequenceName)-&gt;<ref refid="class_sequence_1a77dcfee1093388c7b283c5ebcd0556fc" kindref="member">pause</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//On<sp/>lance<sp/>la<sp/>bonne<sp/>sequence<sp/>de<sp/>retour</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(robot-&gt;endNorth)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robot-&gt;<ref refid="class_robot_1a92dfc164f4b5687a7ffc1dab1cf7bfbe" kindref="member">getSequenceByName</ref>(goNorthName)-&gt;<ref refid="class_sequence_1a3eb07e08e59b731d6d950fac7140697e" kindref="member">resume</ref>();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robot-&gt;<ref refid="class_robot_1a92dfc164f4b5687a7ffc1dab1cf7bfbe" kindref="member">getSequenceByName</ref>(goSouthName)-&gt;<ref refid="class_sequence_1a3eb07e08e59b731d6d950fac7140697e" kindref="member">resume</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setNorth(<ref refid="class_robot" kindref="compound">Robot</ref><sp/>*robot)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>robot-&gt;endNorth<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(</highlight><highlight class="stringliteral">&quot;I<sp/>will<sp/>go<sp/>North&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setSouth(<ref refid="class_robot" kindref="compound">Robot</ref><sp/>*robot)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>robot-&gt;endNorth<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(</highlight><highlight class="stringliteral">&quot;I<sp/>will<sp/>go<sp/>South&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recallageBordure(<ref refid="class_robot" kindref="compound">Robot</ref><sp/>*robot)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(</highlight><highlight class="stringliteral">&quot;recallage<sp/>bordure&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(abs(normalizeAngle(robot-&gt;cinetiqueCurrent._theta<sp/>-<sp/>0.0))<sp/>&lt;<sp/>DEG_TO_RAD<sp/>*<sp/>45)<sp/></highlight><highlight class="comment">//On<sp/>fait<sp/>un<sp/>recallage<sp/>X<sp/>en<sp/>regardant<sp/>vers<sp/>theta==0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(abs(robot-&gt;cinetiqueCurrent._x<sp/>-<sp/>robot-&gt;backLength)<sp/>&lt;<sp/>0.40)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>C&apos;est<sp/>un<sp/>recallage<sp/>arrière</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robot-&gt;move(<ref refid="class_vector_e" kindref="compound">VectorE</ref>(robot-&gt;backLength,<sp/>robot-&gt;cinetiqueCurrent.<ref refid="class_vector_1acfd6a472304b3832fd37b4dbf3c90c9b" kindref="member">_y</ref>,<sp/>0.0));</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(abs(robot-&gt;cinetiqueCurrent._x<sp/>-<sp/>(3.0<sp/>-<sp/>robot-&gt;frontLength))<sp/>&lt;<sp/>0.40)<sp/></highlight><highlight class="comment">//C&apos;est<sp/>un<sp/>recallage<sp/>avant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robot-&gt;move(<ref refid="class_vector_e" kindref="compound">VectorE</ref>(3.0<sp/>-<sp/>robot-&gt;frontLength,<sp/>robot-&gt;cinetiqueCurrent.<ref refid="class_vector_1acfd6a472304b3832fd37b4dbf3c90c9b" kindref="member">_y</ref>,<sp/>0.0));</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(</highlight><highlight class="stringliteral">&quot;ERREUR<sp/>RECALLAGE<sp/>x<sp/>look<sp/>east&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(abs(normalizeAngle(robot-&gt;cinetiqueCurrent._theta<sp/>-<sp/>PI<sp/>/<sp/>2.0))<sp/>&lt;<sp/>DEG_TO_RAD<sp/>*<sp/>45)<sp/></highlight><highlight class="comment">//On<sp/>fait<sp/>un<sp/>recallage<sp/>Y<sp/>en<sp/>regardant<sp/>vers<sp/>theta==PI/2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(abs(robot-&gt;cinetiqueCurrent.<ref refid="class_vector_1acfd6a472304b3832fd37b4dbf3c90c9b" kindref="member">_y</ref><sp/>-<sp/>robot-&gt;backLength)<sp/>&lt;<sp/>0.40)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>C&apos;est<sp/>un<sp/>recallage<sp/>arrière</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robot-&gt;move(<ref refid="class_vector_e" kindref="compound">VectorE</ref>(robot-&gt;cinetiqueCurrent._x,<sp/>robot-&gt;backLength,<sp/>PI<sp/>/<sp/>2.0));</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(abs(robot-&gt;cinetiqueCurrent.<ref refid="class_vector_1acfd6a472304b3832fd37b4dbf3c90c9b" kindref="member">_y</ref><sp/>-<sp/>(2.0<sp/>-<sp/>robot-&gt;frontLength))<sp/>&lt;<sp/>0.40)<sp/></highlight><highlight class="comment">//C&apos;est<sp/>un<sp/>recallage<sp/>avant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robot-&gt;move(<ref refid="class_vector_e" kindref="compound">VectorE</ref>(robot-&gt;cinetiqueCurrent._x,<sp/>2.0<sp/>-<sp/>robot-&gt;frontLength,<sp/>PI<sp/>/<sp/>2.0));</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(</highlight><highlight class="stringliteral">&quot;ERREUR<sp/>RECALLAGE<sp/>y<sp/>look<sp/>north&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(abs(normalizeAngle(robot-&gt;cinetiqueCurrent._theta<sp/>-<sp/>PI))<sp/>&lt;<sp/>DEG_TO_RAD<sp/>*<sp/>45)<sp/></highlight><highlight class="comment">//On<sp/>fait<sp/>un<sp/>recallage<sp/>X<sp/>en<sp/>regardant<sp/>vers<sp/>theta==PI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(abs(robot-&gt;cinetiqueCurrent._x<sp/>-<sp/>robot-&gt;frontLength)<sp/>&lt;<sp/>0.40)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>C&apos;est<sp/>un<sp/>recallage<sp/>avant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robot-&gt;move(<ref refid="class_vector_e" kindref="compound">VectorE</ref>(robot-&gt;frontLength,<sp/>robot-&gt;cinetiqueCurrent.<ref refid="class_vector_1acfd6a472304b3832fd37b4dbf3c90c9b" kindref="member">_y</ref>,<sp/>PI));</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(abs(robot-&gt;cinetiqueCurrent._x<sp/>-<sp/>(3.0<sp/>-<sp/>robot-&gt;backLength))<sp/>&lt;<sp/>0.40)<sp/></highlight><highlight class="comment">//C&apos;est<sp/>un<sp/>recallage<sp/>arriere</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robot-&gt;move(<ref refid="class_vector_e" kindref="compound">VectorE</ref>(3.0<sp/>-<sp/>robot-&gt;backLength,<sp/>robot-&gt;cinetiqueCurrent.<ref refid="class_vector_1acfd6a472304b3832fd37b4dbf3c90c9b" kindref="member">_y</ref>,<sp/>PI));</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(</highlight><highlight class="stringliteral">&quot;ERREUR<sp/>RECALLAGE<sp/>x<sp/>look<sp/>west&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(abs(normalizeAngle(robot-&gt;cinetiqueCurrent._theta<sp/>-<sp/>(-PI<sp/>/<sp/>2.0)))<sp/>&lt;<sp/>DEG_TO_RAD<sp/>*<sp/>45)<sp/></highlight><highlight class="comment">//On<sp/>fait<sp/>un<sp/>recallage<sp/>Y<sp/>en<sp/>regardant<sp/>vers<sp/>theta==<sp/>-PI/2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(abs(robot-&gt;cinetiqueCurrent.<ref refid="class_vector_1acfd6a472304b3832fd37b4dbf3c90c9b" kindref="member">_y</ref><sp/>-<sp/>robot-&gt;frontLength)<sp/>&lt;<sp/>0.40)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>C&apos;est<sp/>un<sp/>recallage<sp/>avant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robot-&gt;move(<ref refid="class_vector_e" kindref="compound">VectorE</ref>(robot-&gt;cinetiqueCurrent._x,<sp/>robot-&gt;frontLength,<sp/>-PI<sp/>/<sp/>2.0));</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(abs(robot-&gt;cinetiqueCurrent.<ref refid="class_vector_1acfd6a472304b3832fd37b4dbf3c90c9b" kindref="member">_y</ref><sp/>-<sp/>(2.0<sp/>-<sp/>robot-&gt;backLength))<sp/>&lt;<sp/>0.40)<sp/></highlight><highlight class="comment">//C&apos;est<sp/>un<sp/>recallage<sp/>arriere</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robot-&gt;move(<ref refid="class_vector_e" kindref="compound">VectorE</ref>(robot-&gt;cinetiqueCurrent._x,<sp/>2.0<sp/>-<sp/>robot-&gt;backLength,<sp/>-PI<sp/>/<sp/>2.0));</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(</highlight><highlight class="stringliteral">&quot;ERREUR<sp/>RECALLAGE<sp/>y<sp/>look<sp/>south&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(</highlight><highlight class="stringliteral">&quot;ERREUR<sp/>RECALLAGE<sp/>bad<sp/>angle&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>forceMainSeqNext(<ref refid="class_robot" kindref="compound">Robot</ref><sp/>*robot)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>robot-&gt;<ref refid="class_robot_1a92dfc164f4b5687a7ffc1dab1cf7bfbe" kindref="member">getSequenceByName</ref>(mainSequenceName)-&gt;<ref refid="class_sequence_1a62b11638d83715206d83220f42819960" kindref="member">forceFollowing</ref>();</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>startTimeSeq(<ref refid="class_robot" kindref="compound">Robot</ref>*<sp/>robot)<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;StartTimeSeq&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>robot-&gt;<ref refid="class_robot_1a92dfc164f4b5687a7ffc1dab1cf7bfbe" kindref="member">getSequenceByName</ref>(timeSequenceName)-&gt;<ref refid="class_sequence_1a3eb07e08e59b731d6d950fac7140697e" kindref="member">resume</ref>();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>GCC<sp/>diagnostic<sp/>pop</highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp"/>
+  </compounddef>
+</doxygen>

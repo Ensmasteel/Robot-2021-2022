@@ -1,0 +1,131 @@
+\hypertarget{_l_i_d_a_r_8h_source}{}\doxysection{LIDAR.\+h}
+\label{_l_i_d_a_r_8h_source}\index{Ensmasteel\_Bot\_2020/Teensy/lib/LIDAR/LIDAR.h@{Ensmasteel\_Bot\_2020/Teensy/lib/LIDAR/LIDAR.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{7 \textcolor{comment}{//points to check :}}
+\DoxyCodeLine{8 \textcolor{comment}{//use}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#ifndef LIDAR\_H}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define LIDAR\_H}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}Vector.h"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}RPLidar.h"{}}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define radius\_tracking 10 }\textcolor{comment}{//the radius in witch 2 objects are concidered the sames}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define max\_sep 5 }\textcolor{comment}{//the maximum separation between 2 points of the same object}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define max\_dt 500}\textcolor{comment}{//the maximum time between 2 detections of an object}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define max\_dist 2000 }\textcolor{comment}{//the maximum distance concidered for detecting an object}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define max\_points\_per\_object 50}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define max\_objects\_detected 20}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{comment}{/*}}
+\DoxyCodeLine{29 \textcolor{comment}{Serial.write(val)}}
+\DoxyCodeLine{30 \textcolor{comment}{Serial.write(str)}}
+\DoxyCodeLine{31 \textcolor{comment}{Serial.write(buf, len)}}
+\DoxyCodeLine{32 \textcolor{comment}{*/}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{comment}{//basics:}}
+\DoxyCodeLine{37 \textcolor{comment}{//1 detect objects}}
+\DoxyCodeLine{38 \textcolor{comment}{//2 identify objects}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{43 \textcolor{keyword}{struct }\mbox{\hyperlink{structpoint}{point}}}
+\DoxyCodeLine{44 \{}
+\DoxyCodeLine{45     \textcolor{keywordtype}{float} angle;}
+\DoxyCodeLine{46     \textcolor{keywordtype}{float} distance;}
+\DoxyCodeLine{47 \};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{55 \textcolor{keywordtype}{float} dist(\mbox{\hyperlink{structpoint}{point}} p1,\mbox{\hyperlink{structpoint}{point}} p2);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{keyword}{enum} BotIdentificater}
+\DoxyCodeLine{58 \{}
+\DoxyCodeLine{59     \textcolor{comment}{// How to diferenciate ?}}
+\DoxyCodeLine{60     \textcolor{comment}{// folow bot ==> blind spot}}
+\DoxyCodeLine{61     enemyBot1,}
+\DoxyCodeLine{62     enemyBot2,}
+\DoxyCodeLine{63     allyBot2,}
+\DoxyCodeLine{64     tower,}
+\DoxyCodeLine{65     unknown\textcolor{comment}{// if unknow object detected}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \};}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{72 \textcolor{keyword}{class }\mbox{\hyperlink{classobject__data}{object\_data}}}
+\DoxyCodeLine{73 \{}
+\DoxyCodeLine{74 \textcolor{keyword}{public}:}
+\DoxyCodeLine{75     \textcolor{comment}{//data about the objects}}
+\DoxyCodeLine{76     BotIdentificater Bot\_name = unknown;}
+\DoxyCodeLine{77     \mbox{\hyperlink{class_cinetique}{Cinetique}} Bot\_cinetique;}
+\DoxyCodeLine{78     \mbox{\hyperlink{structpoint}{point}} \mbox{\hyperlink{classobject__data_a1fae1d722d6bad70df251f8d0913b41c}{points}}[max\_objects\_detected];}
+\DoxyCodeLine{79     \textcolor{keywordtype}{int} length = 0;}
+\DoxyCodeLine{80     uint32\_t \mbox{\hyperlink{classobject__data_ad6345720c2f942373c4be384abc77670}{age}}; }
+\DoxyCodeLine{81     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classobject__data_adcd982f5413f7b0c1ee27b1bc97acade}{state}}; }
+\DoxyCodeLine{82     \textcolor{keywordtype}{void} calculateCG();}
+\DoxyCodeLine{83 \};}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{keywordtype}{float} dist(\mbox{\hyperlink{classobject__data}{object\_data}} obj1,\mbox{\hyperlink{classobject__data}{object\_data}} obj2);}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{keyword}{class }\mbox{\hyperlink{class_l_i_d_a_r}{LIDAR}}}
+\DoxyCodeLine{88 \{}
+\DoxyCodeLine{89 \textcolor{keyword}{public}:}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     \textcolor{comment}{// GOAL / Constructor}}
+\DoxyCodeLine{92     \textcolor{comment}{// IN   / bool secondaryBot : An ally is on the table => true}}
+\DoxyCodeLine{97 \textcolor{comment}{}    \mbox{\hyperlink{class_l_i_d_a_r_a1e05e0a0c8d2166f1403871fa55c38bb}{LIDAR}}(\textcolor{keywordtype}{bool} secondaryBot = \textcolor{keyword}{false});}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     \textcolor{comment}{//Serial conection with Lidar}}
+\DoxyCodeLine{105 \textcolor{comment}{}    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_a57f109512e7085e9ebc2a21829eef443}{Begin}}(HardwareSerial \&serialobj);}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107     uint8\_t \mbox{\hyperlink{class_l_i_d_a_r_aa4b1211035bf2ee506383d76cad19cde}{botDetected}} = 0; }
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     \textcolor{comment}{// GOAL / Give speed and position of a specific bot identify by its identificater}}
+\DoxyCodeLine{111     \textcolor{comment}{// IN   / BotIdentificater id}}
+\DoxyCodeLine{112     \textcolor{comment}{// OUT  / Cinetique : speed and position of \_id\_ bot}}
+\DoxyCodeLine{118 \textcolor{comment}{}    \mbox{\hyperlink{class_cinetique}{Cinetique}} \mbox{\hyperlink{class_l_i_d_a_r_a1d6d59cdd58e0b58003da1f854dc3a50}{get\_Cinetique}}(BotIdentificater \textcolor{keywordtype}{id});}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120     \textcolor{comment}{// GOAL / Warn against incoming collision}}
+\DoxyCodeLine{121     \textcolor{comment}{// IN   / bool forwar : true => watch in front of the bot}}
+\DoxyCodeLine{122     \textcolor{comment}{//                      false => watch behind}}
+\DoxyCodeLine{123     \textcolor{comment}{// OUT  / bool : Trajectory blocked => true}}
+\DoxyCodeLine{124     \textcolor{comment}{//               Free to move => false}}
+\DoxyCodeLine{130 \textcolor{comment}{}    \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_l_i_d_a_r_afedbfdbae3c9ff0ba73a47d49848cde8}{trajectoryBlocked}}(\textcolor{keywordtype}{bool} forward = \textcolor{keyword}{true});}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_a6c1d99db998cb640233fda6ae9d25e06}{detect}}(); }
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_ab5b45b403678d6635dc9a86efb47bbae}{identify}}();}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_af0f20ced1e241dba16ba796f260b19ec}{track}}(); }
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138 \textcolor{keyword}{private}:}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140     \textcolor{keywordtype}{bool} enemy1 = false ,enemy2 = \textcolor{keyword}{false};}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142     \textcolor{keywordtype}{bool} SECONDARY\_BOT\_ALLY = \textcolor{keyword}{false};}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144     \mbox{\hyperlink{class_r_p_lidar}{RPLidar}} lidar;}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146     \textcolor{comment}{//liste of all detected object}}
+\DoxyCodeLine{147     \mbox{\hyperlink{classobject__data}{object\_data}} object\_list [max\_objects\_detected];}
+\DoxyCodeLine{148     uint16\_t nb\_object = 0;\textcolor{comment}{//number of objects detected}}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150     \textcolor{keywordtype}{bool} detectinging\_an\_object = \textcolor{keyword}{false};\textcolor{comment}{//used to know if the lidar is curently detecting an object}}
+\DoxyCodeLine{151 \};}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157 }
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

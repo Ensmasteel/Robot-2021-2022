@@ -1,0 +1,64 @@
+\hypertarget{class_r_p_lidar}{}\doxysection{RPLidar Class Reference}
+\label{class_r_p_lidar}\index{RPLidar@{RPLidar}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_r_p_lidar_a258703761b3adeb6fe4613e362306699}\label{class_r_p_lidar_a258703761b3adeb6fe4613e362306699}} 
+enum \{ {\bfseries RPLIDAR\+\_\+\+SERIAL\+\_\+\+BAUDRATE} = 115200
+, {\bfseries RPLIDAR\+\_\+\+DEFAULT\+\_\+\+TIMEOUT} = 500
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_r_p_lidar_a25dad7a67315b27e1cb61ee473f060b4}\label{class_r_p_lidar_a25dad7a67315b27e1cb61ee473f060b4}} 
+bool {\bfseries begin} (Hardware\+Serial \&serialobj)
+\item 
+\mbox{\Hypertarget{class_r_p_lidar_a743962cd85a030d672ca3e0e7b0cccd7}\label{class_r_p_lidar_a743962cd85a030d672ca3e0e7b0cccd7}} 
+void {\bfseries end} ()
+\item 
+\mbox{\Hypertarget{class_r_p_lidar_a3a5589d530baacb0ac71a14f8481774e}\label{class_r_p_lidar_a3a5589d530baacb0ac71a14f8481774e}} 
+bool {\bfseries is\+Open} ()
+\item 
+\mbox{\Hypertarget{class_r_p_lidar_ab791e531d2db7cd688affc804197c717}\label{class_r_p_lidar_ab791e531d2db7cd688affc804197c717}} 
+u\+\_\+result {\bfseries get\+Health} (rplidar\+\_\+response\+\_\+device\+\_\+health\+\_\+t \&healthinfo, \+\_\+u32 timeout=RPLIDAR\+\_\+\+DEFAULT\+\_\+\+TIMEOUT)
+\item 
+\mbox{\Hypertarget{class_r_p_lidar_aa73674b5dace6e5fab7aba6c6eec662f}\label{class_r_p_lidar_aa73674b5dace6e5fab7aba6c6eec662f}} 
+u\+\_\+result {\bfseries get\+Device\+Info} (rplidar\+\_\+response\+\_\+device\+\_\+info\+\_\+t \&info, \+\_\+u32 timeout=RPLIDAR\+\_\+\+DEFAULT\+\_\+\+TIMEOUT)
+\item 
+\mbox{\Hypertarget{class_r_p_lidar_a7141f86405762e6231b33e78a5711691}\label{class_r_p_lidar_a7141f86405762e6231b33e78a5711691}} 
+u\+\_\+result {\bfseries stop} ()
+\item 
+\mbox{\Hypertarget{class_r_p_lidar_a5513e3d401bf84e39cd45357750915e7}\label{class_r_p_lidar_a5513e3d401bf84e39cd45357750915e7}} 
+u\+\_\+result {\bfseries start\+Scan} (bool force=false, \+\_\+u32 timeout=RPLIDAR\+\_\+\+DEFAULT\+\_\+\+TIMEOUT $\ast$2)
+\item 
+\mbox{\Hypertarget{class_r_p_lidar_a73354fa9101964a91a8ac0eeab7ca564}\label{class_r_p_lidar_a73354fa9101964a91a8ac0eeab7ca564}} 
+u\+\_\+result {\bfseries wait\+Point} (\+\_\+u32 timeout=RPLIDAR\+\_\+\+DEFAULT\+\_\+\+TIMEOUT)
+\item 
+\mbox{\Hypertarget{class_r_p_lidar_a37af7d0d8e69259d29c61510443c4ddc}\label{class_r_p_lidar_a37af7d0d8e69259d29c61510443c4ddc}} 
+const \mbox{\hyperlink{struct_r_p_lidar_measurement}{RPLidar\+Measurement}} \& {\bfseries get\+Current\+Point} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_r_p_lidar_ad341366612234872a7d67a99cadf5708}\label{class_r_p_lidar_ad341366612234872a7d67a99cadf5708}} 
+u\+\_\+result {\bfseries \+\_\+send\+Command} (\+\_\+u8 cmd, const void $\ast$payload, size\+\_\+t payloadsize)
+\item 
+\mbox{\Hypertarget{class_r_p_lidar_a523930ba15b6a04f27b5c0b023e0f899}\label{class_r_p_lidar_a523930ba15b6a04f27b5c0b023e0f899}} 
+u\+\_\+result {\bfseries \+\_\+wait\+Response\+Header} (rplidar\+\_\+ans\+\_\+header\+\_\+t $\ast$header, \+\_\+u32 timeout)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_r_p_lidar_ac954991638f76aeba3093294760ae77d}\label{class_r_p_lidar_ac954991638f76aeba3093294760ae77d}} 
+Hardware\+Serial $\ast$ {\bfseries \+\_\+bined\+\_\+serialdev}
+\item 
+\mbox{\Hypertarget{class_r_p_lidar_a329e4bcb5c68029cb1544c338549d2e4}\label{class_r_p_lidar_a329e4bcb5c68029cb1544c338549d2e4}} 
+\mbox{\hyperlink{struct_r_p_lidar_measurement}{RPLidar\+Measurement}} {\bfseries \+\_\+current\+Measurement}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+RPLidar\+Driver/RPLidar.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+RPLidar\+Driver/RPLidar.\+cpp\end{DoxyCompactItemize}

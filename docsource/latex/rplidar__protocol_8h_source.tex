@@ -1,0 +1,80 @@
+\hypertarget{rplidar__protocol_8h_source}{}\doxysection{rplidar\+\_\+protocol.\+h}
+\label{rplidar__protocol_8h_source}\index{Ensmasteel\_Bot\_2020/Teensy/lib/RPLidarDriver/inc/rplidar\_protocol.h@{Ensmasteel\_Bot\_2020/Teensy/lib/RPLidarDriver/inc/rplidar\_protocol.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * Copyright (c) 2014, RoboPeak}}
+\DoxyCodeLine{3 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{4 \textcolor{comment}{ *}}
+\DoxyCodeLine{5 \textcolor{comment}{ * Redistribution and use in source and binary forms, with or without }}
+\DoxyCodeLine{6 \textcolor{comment}{ * modification, are permitted provided that the following conditions are met:}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * 1. Redistributions of source code must retain the above copyright notice, }}
+\DoxyCodeLine{9 \textcolor{comment}{ *    this list of conditions and the following disclaimer.}}
+\DoxyCodeLine{10 \textcolor{comment}{ *}}
+\DoxyCodeLine{11 \textcolor{comment}{ * 2. Redistributions in binary form must reproduce the above copyright notice, }}
+\DoxyCodeLine{12 \textcolor{comment}{ *    this list of conditions and the following disclaimer in the documentation }}
+\DoxyCodeLine{13 \textcolor{comment}{ *    and/or other materials provided with the distribution.}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "{}AS IS"{} }}
+\DoxyCodeLine{16 \textcolor{comment}{ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, }}
+\DoxyCodeLine{17 \textcolor{comment}{ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR }}
+\DoxyCodeLine{18 \textcolor{comment}{ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR }}
+\DoxyCodeLine{19 \textcolor{comment}{ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, }}
+\DoxyCodeLine{20 \textcolor{comment}{ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, }}
+\DoxyCodeLine{21 \textcolor{comment}{ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; }}
+\DoxyCodeLine{22 \textcolor{comment}{ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, }}
+\DoxyCodeLine{23 \textcolor{comment}{ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR }}
+\DoxyCodeLine{24 \textcolor{comment}{ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, }}
+\DoxyCodeLine{25 \textcolor{comment}{ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}}
+\DoxyCodeLine{26 \textcolor{comment}{ *}}
+\DoxyCodeLine{27 \textcolor{comment}{ */}}
+\DoxyCodeLine{28 \textcolor{comment}{/*}}
+\DoxyCodeLine{29 \textcolor{comment}{ *  RoboPeak LIDAR System}}
+\DoxyCodeLine{30 \textcolor{comment}{ *  Data Packet IO protocol definition for RP-\/LIDAR}}
+\DoxyCodeLine{31 \textcolor{comment}{ *}}
+\DoxyCodeLine{32 \textcolor{comment}{ *  Copyright 2009 -\/ 2014 RoboPeak Team}}
+\DoxyCodeLine{33 \textcolor{comment}{ *  http://www.robopeak.com}}
+\DoxyCodeLine{34 \textcolor{comment}{ *  }}
+\DoxyCodeLine{35 \textcolor{comment}{ */}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{comment}{// RP-\/Lidar Input Packets}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define RPLIDAR\_CMD\_SYNC\_BYTE        0xA5}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define RPLIDAR\_CMDFLAG\_HAS\_PAYLOAD  0x80}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define RPLIDAR\_ANS\_SYNC\_BYTE1       0xA5}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define RPLIDAR\_ANS\_SYNC\_BYTE2       0x5A}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define RPLIDAR\_ANS\_PKTFLAG\_LOOP     0x1}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#if defined(\_WIN32)}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#pragma pack(1)}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct__rplidar__cmd__packet__t}{\_rplidar\_cmd\_packet\_t}} \{}
+\DoxyCodeLine{57     \_u8 syncByte; \textcolor{comment}{//must be RPLIDAR\_CMD\_SYNC\_BYTE}}
+\DoxyCodeLine{58     \_u8 cmd\_flag; }
+\DoxyCodeLine{59     \_u8 size;}
+\DoxyCodeLine{60     \_u8 data[0];}
+\DoxyCodeLine{61 \} \_\_attribute\_\_((packed)) rplidar\_cmd\_packet\_t;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct__rplidar__ans__header__t}{\_rplidar\_ans\_header\_t}} \{}
+\DoxyCodeLine{65     \_u8  syncByte1; \textcolor{comment}{// must be RPLIDAR\_ANS\_SYNC\_BYTE1}}
+\DoxyCodeLine{66     \_u8  syncByte2; \textcolor{comment}{// must be RPLIDAR\_ANS\_SYNC\_BYTE2}}
+\DoxyCodeLine{67     \_u32 size:30;}
+\DoxyCodeLine{68     \_u32 subType:2;}
+\DoxyCodeLine{69     \_u8  type;}
+\DoxyCodeLine{70 \} \_\_attribute\_\_((packed)) rplidar\_ans\_header\_t;}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#if defined(\_WIN32)}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#pragma pack()}}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

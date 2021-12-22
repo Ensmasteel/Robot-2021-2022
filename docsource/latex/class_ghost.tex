@@ -1,0 +1,182 @@
+\hypertarget{class_ghost}{}\doxysection{Ghost Class Reference}
+\label{class_ghost}\index{Ghost@{Ghost}}
+
+
+{\ttfamily \#include $<$Ghost.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ghost_add32788778aeaa7f0bb6da1077e715db}{Ghost}} (\mbox{\hyperlink{class_vector_e}{VectorE}} pos\+Eini=\mbox{\hyperlink{class_vector_e}{VectorE}}(0.\+0, 0.\+0, 0.\+0))
+\item 
+bool \mbox{\hyperlink{class_ghost_a9740f250aaee829a8445903b8a1eb4f3}{Is\+Locked}} ()
+\begin{DoxyCompactList}\small\item\em updated at each call of Actuate\+Position, stores delayed position and current speed \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ghost_aa88463d4a6de0a3292757e4bfdb144ff}{Is\+Rotating}} ()
+\item 
+bool \mbox{\hyperlink{class_ghost_aad4f81f6c7618bcfb7c3346662745922}{Is\+Backward}} ()
+\item 
+bool \mbox{\hyperlink{class_ghost_a5ec1fe41bceee34af769297400340b06}{trajectory\+Is\+Finished}} ()
+\item 
+void \mbox{\hyperlink{class_ghost_a698731ea2bd0f163ef7686a208569af7}{Lock}} (bool state)
+\item 
+int \mbox{\hyperlink{class_ghost_a3d1ecc6bd1cb8bc973781aa3e693d432}{Actuate\+Position}} (float dt)
+\item 
+int \mbox{\hyperlink{class_ghost_a2332189de8523d9c2c36433192da2689}{Compute\+\_\+\+Trajectory}} (\mbox{\hyperlink{class_vector_e}{VectorE}} pos\+Final, float delta\+Curve, float speed\+Ramps, float cruising\+Speed, bool pure\+Rotation=false, bool backward=false)
+\item 
+void \mbox{\hyperlink{class_ghost_add43b77dc94db3414adb4cb34249068f}{move\+Ghost}} (\mbox{\hyperlink{class_vector_e}{VectorE}} new\+Pos)
+\item 
+void \mbox{\hyperlink{class_ghost_a0369cdbf96ba80b29e954d5ddc6372b2}{move\+Ghost}} (\mbox{\hyperlink{class_cinetique}{Cinetique}} new\+Pos)
+\item 
+\mbox{\Hypertarget{class_ghost_a32693443fc7368acc3ce586b3b1eb334}\label{class_ghost_a32693443fc7368acc3ce586b3b1eb334}} 
+\mbox{\hyperlink{class_cinetique}{Cinetique}} {\bfseries Get\+\_\+\+Controller\+\_\+\+Cinetique} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ghost_a0ecd6af8682bd80efb1e653b36cd0e44}\label{class_ghost_a0ecd6af8682bd80efb1e653b36cd0e44}} 
+\mbox{\hyperlink{class_cinetique}{Cinetique}} {\bfseries cinetique\+Controller}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Ensmasteel Library -\/ movement management
+
+author \+: Arthur FINDELAIR -\/ Ensma\+Steel, github.\+com/\+Arthur\+FDLR date \+: October 2019 Public class defining a ghost image of the robot, which will follow it and its movements. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_ghost_add32788778aeaa7f0bb6da1077e715db}\label{class_ghost_add32788778aeaa7f0bb6da1077e715db}} 
+\index{Ghost@{Ghost}!Ghost@{Ghost}}
+\index{Ghost@{Ghost}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{Ghost()}{Ghost()}}
+{\footnotesize\ttfamily Ghost\+::\+Ghost (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector_e}{VectorE}}}]{pos\+Eini = {\ttfamily \mbox{\hyperlink{class_vector_e}{VectorE}}(0.0,~0.0,~0.0)} }\end{DoxyParamCaption})}
+
+Public constructor of the \mbox{\hyperlink{class_ghost}{Ghost}} class. 
+\begin{DoxyParams}{Parameters}
+{\em pos\+Eini} & \+: Initial position of the ghost image. Default is \mbox{\hyperlink{class_vector_e}{VectorE}}(0.\+0,0.\+0,0.\+0). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ghost_a3d1ecc6bd1cb8bc973781aa3e693d432}\label{class_ghost_a3d1ecc6bd1cb8bc973781aa3e693d432}} 
+\index{Ghost@{Ghost}!ActuatePosition@{ActuatePosition}}
+\index{ActuatePosition@{ActuatePosition}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{ActuatePosition()}{ActuatePosition()}}
+{\footnotesize\ttfamily int Ghost\+::\+Actuate\+Position (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})}
+
+Calculate the next position considering the trajectory and actual one. 
+\begin{DoxyParams}{Parameters}
+{\em dt} & \+: float, time-\/delta since when the function has been call last. Keep it tracked if real time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: int, error \+: 0 if no error, 1 if bot locked in position, or target pos reached. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ghost_a2332189de8523d9c2c36433192da2689}\label{class_ghost_a2332189de8523d9c2c36433192da2689}} 
+\index{Ghost@{Ghost}!Compute\_Trajectory@{Compute\_Trajectory}}
+\index{Compute\_Trajectory@{Compute\_Trajectory}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{Compute\_Trajectory()}{Compute\_Trajectory()}}
+{\footnotesize\ttfamily int Ghost\+::\+Compute\+\_\+\+Trajectory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector_e}{VectorE}}}]{pos\+Final,  }\item[{float}]{delta\+Curve,  }\item[{float}]{speed\+Ramps,  }\item[{float}]{cruising\+Speed,  }\item[{bool}]{pure\+Rotation = {\ttfamily false},  }\item[{bool}]{backward = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Compute the new trajectory of the bot to reach the target position.
+
+to execute a pure rotation, set pure\+Rotation to True, and set pos\+Final to pos\+Current except for \+\_\+theta. 
+\begin{DoxyParams}{Parameters}
+{\em pos\+Final} & \+: \mbox{\hyperlink{class_vector_e}{VectorE}}, target position. \\
+\hline
+{\em delta\+Curve} & \+: float, speed parameters of the trajectory. \\
+\hline
+{\em speed\+Ramps} & \+: float, acceleration value to reach cruising speed. \mbox{[}cm.-\/2\mbox{]} \\
+\hline
+{\em cruising\+Speed} & \+: float, target speed for trajectory. \mbox{[}cm/s\mbox{]} \\
+\hline
+{\em pure\+Rotation} & \+: bool, Whether if the robot only rotate or not. \\
+\hline
+{\em backward} & \+: bool, whether the robot is going backward or not. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int, error. 0 if the function completed, 0 if there was any error during computing. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ghost_aad4f81f6c7618bcfb7c3346662745922}\label{class_ghost_aad4f81f6c7618bcfb7c3346662745922}} 
+\index{Ghost@{Ghost}!IsBackward@{IsBackward}}
+\index{IsBackward@{IsBackward}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{IsBackward()}{IsBackward()}}
+{\footnotesize\ttfamily bool Ghost\+::\+Is\+Backward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns if the ghost is going backward. \begin{DoxyReturn}{Returns}
+\+: Bool. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ghost_a9740f250aaee829a8445903b8a1eb4f3}\label{class_ghost_a9740f250aaee829a8445903b8a1eb4f3}} 
+\index{Ghost@{Ghost}!IsLocked@{IsLocked}}
+\index{IsLocked@{IsLocked}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{IsLocked()}{IsLocked()}}
+{\footnotesize\ttfamily bool Ghost\+::\+Is\+Locked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+updated at each call of Actuate\+Position, stores delayed position and current speed 
+
+Returns if the ghost image is whether locked or not. \begin{DoxyReturn}{Returns}
+\+: bool 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ghost_aa88463d4a6de0a3292757e4bfdb144ff}\label{class_ghost_aa88463d4a6de0a3292757e4bfdb144ff}} 
+\index{Ghost@{Ghost}!IsRotating@{IsRotating}}
+\index{IsRotating@{IsRotating}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{IsRotating()}{IsRotating()}}
+{\footnotesize\ttfamily bool Ghost\+::\+Is\+Rotating (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns if the ghost image is rotating. \begin{DoxyReturn}{Returns}
+\+: Bool. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ghost_a698731ea2bd0f163ef7686a208569af7}\label{class_ghost_a698731ea2bd0f163ef7686a208569af7}} 
+\index{Ghost@{Ghost}!Lock@{Lock}}
+\index{Lock@{Lock}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{Lock()}{Lock()}}
+{\footnotesize\ttfamily void Ghost\+::\+Lock (\begin{DoxyParamCaption}\item[{bool}]{state }\end{DoxyParamCaption})}
+
+Setter function of locked variable. Set it to true and robot won\textquotesingle{}t move. 
+\begin{DoxyParams}{Parameters}
+{\em state} & \+: Bool, new value to pass in locked variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+\+: Please brake the robot to avoid hicups. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_ghost_a0369cdbf96ba80b29e954d5ddc6372b2}\label{class_ghost_a0369cdbf96ba80b29e954d5ddc6372b2}} 
+\index{Ghost@{Ghost}!moveGhost@{moveGhost}}
+\index{moveGhost@{moveGhost}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{moveGhost()}{moveGhost()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Ghost\+::move\+Ghost (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cinetique}{Cinetique}}}]{new\+Pos }\end{DoxyParamCaption})}
+
+Same as precedent function, except this takes a kinetic vector in parameter. 
+\begin{DoxyParams}{Parameters}
+{\em new\+Pos} & \+: \mbox{\hyperlink{class_cinetique}{Cinetique}}, the kinetic vectot of the new\+Pos. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ghost_add43b77dc94db3414adb4cb34249068f}\label{class_ghost_add43b77dc94db3414adb4cb34249068f}} 
+\index{Ghost@{Ghost}!moveGhost@{moveGhost}}
+\index{moveGhost@{moveGhost}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{moveGhost()}{moveGhost()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Ghost\+::move\+Ghost (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector_e}{VectorE}}}]{new\+Pos }\end{DoxyParamCaption})}
+
+Virtually teleport the ghost to {\itshape new\+Pos}. 
+\begin{DoxyParams}{Parameters}
+{\em new\+Pos} & \mbox{\hyperlink{class_vector_e}{VectorE}} \+: the vector of the new\+Pos. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ghost_a5ec1fe41bceee34af769297400340b06}\label{class_ghost_a5ec1fe41bceee34af769297400340b06}} 
+\index{Ghost@{Ghost}!trajectoryIsFinished@{trajectoryIsFinished}}
+\index{trajectoryIsFinished@{trajectoryIsFinished}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{trajectoryIsFinished()}{trajectoryIsFinished()}}
+{\footnotesize\ttfamily bool Ghost\+::trajectory\+Is\+Finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns if the trajectory is finished or not. \begin{DoxyReturn}{Returns}
+\+: Bool. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Ghost/Ghost.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Ghost/Ghost.\+cpp\end{DoxyCompactItemize}

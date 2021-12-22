@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_b8f93d0f03f72f8e63ac1006f8da17f9" kind="dir">
+    <compoundname>D:/ENSMASTEEL/Ensmasteel_Bot_2020/Teensy/lib/LesInseparables</compoundname>
+    <innerdir refid="dir_a497e4c26d594e527047cce58d67fa3f">D:/ENSMASTEEL/Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/utility</innerdir>
+    <innerfile refid="_actions_8cpp">Actions.cpp</innerfile>
+    <innerfile refid="_actions_8h">Actions.h</innerfile>
+    <innerfile refid="_codeuse_8cpp">Codeuse.cpp</innerfile>
+    <innerfile refid="_codeuse_8h">Codeuse.h</innerfile>
+    <innerfile refid="_encoder_8cpp">Encoder.cpp</innerfile>
+    <innerfile refid="_encoder_8h">Encoder.h</innerfile>
+    <innerfile refid="_functions_8cpp">Functions.cpp</innerfile>
+    <innerfile refid="_functions_8h">Functions.h</innerfile>
+    <innerfile refid="_sequence_8cpp">Sequence.cpp</innerfile>
+    <innerfile refid="_sequence_8h">Sequence.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/ENSMASTEEL/Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/"/>
+  </compounddef>
+</doxygen>

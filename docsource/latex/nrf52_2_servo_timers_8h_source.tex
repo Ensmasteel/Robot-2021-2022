@@ -1,0 +1,39 @@
+\hypertarget{nrf52_2_servo_timers_8h_source}{}\doxysection{Servo\+Timers.\+h}
+\label{nrf52_2_servo_timers_8h_source}\index{Ensmasteel\_Bot\_2020/Arduino\_Mega/Lib/Servo/src/nrf52/ServoTimers.h@{Ensmasteel\_Bot\_2020/Arduino\_Mega/Lib/Servo/src/nrf52/ServoTimers.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{  Copyright (c) 2016 Arduino. All right reserved.}}
+\DoxyCodeLine{3 \textcolor{comment}{}}
+\DoxyCodeLine{4 \textcolor{comment}{  This library is free software; you can redistribute it and/or}}
+\DoxyCodeLine{5 \textcolor{comment}{  modify it under the terms of the GNU Lesser General Public}}
+\DoxyCodeLine{6 \textcolor{comment}{  License as published by the Free Software Foundation; either}}
+\DoxyCodeLine{7 \textcolor{comment}{  version 2.1 of the License, or (at your option) any later version.}}
+\DoxyCodeLine{8 \textcolor{comment}{}}
+\DoxyCodeLine{9 \textcolor{comment}{  This library is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{10 \textcolor{comment}{  but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{11 \textcolor{comment}{  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU}}
+\DoxyCodeLine{12 \textcolor{comment}{  Lesser General Public License for more details.}}
+\DoxyCodeLine{13 \textcolor{comment}{}}
+\DoxyCodeLine{14 \textcolor{comment}{  You should have received a copy of the GNU Lesser General Public}}
+\DoxyCodeLine{15 \textcolor{comment}{  License along with this library; if not, write to the Free Software}}
+\DoxyCodeLine{16 \textcolor{comment}{  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-\/1301 USA}}
+\DoxyCodeLine{17 \textcolor{comment}{*/}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{/*}}
+\DoxyCodeLine{20 \textcolor{comment}{ * NRF52 doesn't use timer, but pwm. This file include definitions to keep}}
+\DoxyCodeLine{21 \textcolor{comment}{ * compatibility with the Servo library standards.}}
+\DoxyCodeLine{22 \textcolor{comment}{ */}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#ifndef \_\_SERVO\_TIMERS\_H\_\_}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define \_\_SERVO\_TIMERS\_H\_\_}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define MIN\_PULSE 55}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define MAX\_PULSE 284}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{// define one timer in order to have MAX\_SERVOS = 12}}
+\DoxyCodeLine{36 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{ \_timer1, \_Nbr\_16timers \} timer16\_Sequence\_t;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#endif   }\textcolor{comment}{// \_\_SERVO\_TIMERS\_H\_\_}}
+
+\end{DoxyCode}

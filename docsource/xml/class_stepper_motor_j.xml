@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_stepper_motor_j" kind="class" language="C++" prot="public">
+    <compoundname>StepperMotorJ</compoundname>
+    <includes refid="_stepper_motor_j_8h" local="no">StepperMotorJ.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_stepper_motor_j_1a3aa4b06dc2510a7c74a52e1497c5805a" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int StepperMotorJ::stepPin</definition>
+        <argsstring></argsstring>
+        <name>stepPin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h" line="33" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_stepper_motor_j_1ad60bb155685f504c65742a028be2627c" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int StepperMotorJ::dirPin</definition>
+        <argsstring></argsstring>
+        <name>dirPin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h" line="34" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_stepper_motor_j_1a3b87f3303ad305169169eff60bedff32" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int StepperMotorJ::sleepPin</definition>
+        <argsstring></argsstring>
+        <name>sleepPin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h" line="35" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_stepper_motor_j_1a2e45a07dd9edeeb0ac52dfe89f1b7e5f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int StepperMotorJ::pinM0</definition>
+        <argsstring></argsstring>
+        <name>pinM0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h" line="36" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_stepper_motor_j_1a730fba0ee14f3398150c4efdb7ede8e5" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int StepperMotorJ::pinM1</definition>
+        <argsstring></argsstring>
+        <name>pinM1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h" line="37" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_stepper_motor_j_1a09a9900155e29af1a89587604d2bee4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>StepperMotorJ::StepperMotorJ</definition>
+        <argsstring>(int stepPin, int dirPin, int sleepPin, int pinM0, int pinM1)</argsstring>
+        <name>StepperMotorJ</name>
+        <param>
+          <type>int</type>
+          <declname>stepPin</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dirPin</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>sleepPin</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pinM0</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pinM1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Public constructor of the StepperMotor. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stepPin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: pin number of the step pin. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dirPin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: pin number of the direction pin. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sleepPin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: pin number of the sleep pin. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinM0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: pin number of the first motor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinM1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: pin number of the second motor. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h" line="20" column="9" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.cpp" bodystart="3" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="class_stepper_motor_j_1a67cc9a64c2854cbfa003fa68e32e2c98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void StepperMotorJ::move</definition>
+        <argsstring>(int steps, int delay, bool up, bool holdPosition)</argsstring>
+        <name>move</name>
+        <param>
+          <type>int</type>
+          <declname>steps</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>up</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>holdPosition</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Method to make the motor move. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>steps</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: number of steps that the stepper has to do. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: duration while the stepper should wait for the next action. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>up</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>holdPosition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: Bool, represent whether the stepper should wait in final position or go back to the initial one. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h" line="30" column="14" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.cpp" bodystart="19" bodyend="29"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Custom class to control a stepperMotor. </para>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h" line="9" column="1" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h" bodystart="9" bodyend="38"/>
+    <listofallmembers>
+      <member refid="class_stepper_motor_j_1ad60bb155685f504c65742a028be2627c" prot="private" virt="non-virtual"><scope>StepperMotorJ</scope><name>dirPin</name></member>
+      <member refid="class_stepper_motor_j_1a67cc9a64c2854cbfa003fa68e32e2c98" prot="public" virt="non-virtual"><scope>StepperMotorJ</scope><name>move</name></member>
+      <member refid="class_stepper_motor_j_1a2e45a07dd9edeeb0ac52dfe89f1b7e5f" prot="private" virt="non-virtual"><scope>StepperMotorJ</scope><name>pinM0</name></member>
+      <member refid="class_stepper_motor_j_1a730fba0ee14f3398150c4efdb7ede8e5" prot="private" virt="non-virtual"><scope>StepperMotorJ</scope><name>pinM1</name></member>
+      <member refid="class_stepper_motor_j_1a3b87f3303ad305169169eff60bedff32" prot="private" virt="non-virtual"><scope>StepperMotorJ</scope><name>sleepPin</name></member>
+      <member refid="class_stepper_motor_j_1a09a9900155e29af1a89587604d2bee4f" prot="public" virt="non-virtual"><scope>StepperMotorJ</scope><name>StepperMotorJ</name></member>
+      <member refid="class_stepper_motor_j_1a3aa4b06dc2510a7c74a52e1497c5805a" prot="private" virt="non-virtual"><scope>StepperMotorJ</scope><name>stepPin</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

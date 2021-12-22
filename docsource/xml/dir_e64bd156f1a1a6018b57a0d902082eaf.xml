@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_e64bd156f1a1a6018b57a0d902082eaf" kind="dir">
+    <compoundname>D:/ENSMASTEEL/Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc</compoundname>
+    <innerfile refid="rplidar__cmd_8h">rplidar_cmd.h</innerfile>
+    <innerfile refid="rplidar__protocol_8h">rplidar_protocol.h</innerfile>
+    <innerfile refid="rptypes_8h">rptypes.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/ENSMASTEEL/Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_robot_simu" kind="class" language="C++" prot="public">
+    <compoundname>RobotSimu</compoundname>
+    <basecompoundref refid="class_robot" prot="public" virt="non-virtual">Robot</basecompoundref>
+    <includes refid="_robot_simu_8h" local="no">RobotSimu.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_robot_simu_1ac4dc96651ec855159aa070a0b7250061" prot="private" static="no" mutable="no">
+        <type><ref refid="class_simulator" kindref="compound">Simulator</ref></type>
+        <definition>Simulator RobotSimu::simu</definition>
+        <argsstring></argsstring>
+        <name>simu</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/RobotSimu.h" line="12" column="15" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/RobotSimu.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_robot_simu_1a04626b8b8ab78480c21b925a38d93de4" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void RobotSimu::Update_Cinetique</definition>
+        <argsstring>(float dt) override</argsstring>
+        <name>Update_Cinetique</name>
+        <reimplements refid="class_robot_1a8646551dca73b9db02fd5aa4c56bf0c3">Update_Cinetique</reimplements>
+        <param>
+          <type>float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/RobotSimu.h" line="13" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/RobotSimu.cpp" bodystart="8" bodyend="10"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_robot_simu_1a05dce7cb6ef826b80626da6aa130e762" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RobotSimu::RobotSimu</definition>
+        <argsstring>(float xIni=0.0, float yIni=0.0, float thetaIni=0.0, Stream *commPortStream=&amp;Serial, Stream *actuPort=&amp;Serial)</argsstring>
+        <name>RobotSimu</name>
+        <param>
+          <type>float</type>
+          <declname>xIni</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>yIni</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>thetaIni</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>Stream *</type>
+          <declname>commPortStream</declname>
+          <defval>&amp;Serial</defval>
+        </param>
+        <param>
+          <type>Stream *</type>
+          <declname>actuPort</declname>
+          <defval>&amp;Serial</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/RobotSimu.h" line="16" column="5" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/RobotSimu.cpp" bodystart="3" bodyend="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Creates a class that simulates the robot behavior to start the simulator. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Robot</label>
+        <link refid="class_robot"/>
+      </node>
+      <node id="1">
+        <label>RobotSimu</label>
+        <link refid="class_robot_simu"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="11">
+        <label>Asservissement</label>
+        <link refid="class_asservissement"/>
+      </node>
+      <node id="5">
+        <label>Cinetique</label>
+        <link refid="class_cinetique"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Codeuse</label>
+        <link refid="class_codeuse"/>
+      </node>
+      <node id="12">
+        <label>Communication</label>
+        <link refid="class_communication"/>
+      </node>
+      <node id="10">
+        <label>Ghost</label>
+        <link refid="class_ghost"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>cinetiqueController</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Motor</label>
+        <link refid="class_motor"/>
+      </node>
+      <node id="3">
+        <label>Odometrie</label>
+        <link refid="class_odometrie"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>codeuseDroite</edgelabel>
+          <edgelabel>codeuseGauche</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Robot</label>
+        <link refid="class_robot"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>odometrie</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>cinetiqueCurrent</edgelabel>
+          <edgelabel>cinetiqueNext</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>motorLeft</edgelabel>
+          <edgelabel>motorRight</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>sequences</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>ghost</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>controller</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>commActionneurs</edgelabel>
+          <edgelabel>communication</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>RobotSimu</label>
+        <link refid="class_robot_simu"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Sequence</label>
+        <link refid="class_sequence"/>
+      </node>
+      <node id="7">
+        <label>Vector</label>
+        <link refid="class_vector"/>
+      </node>
+      <node id="6">
+        <label>VectorE</label>
+        <link refid="class_vector_e"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/RobotSimu.h" line="9" column="1" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/RobotSimu.h" bodystart="10" bodyend="21"/>
+    <listofallmembers>
+      <member refid="class_robot_1aeb09313b522d104848b29098ff8cb024" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>backLength</name></member>
+      <member refid="class_robot_1afa169e4860b1d83fc50b66f441b4ed21" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>cinetiqueCurrent</name></member>
+      <member refid="class_robot_1a5c0764e23f8293713559ce71f107f424" prot="protected" virt="non-virtual"><scope>RobotSimu</scope><name>cinetiqueNext</name></member>
+      <member refid="class_robot_1a16902068d3ad57f3a7971cdef155a86e" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>commActionneurs</name></member>
+      <member refid="class_robot_1af6df1ada112187b5dc66c693c83d6c38" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>communication</name></member>
+      <member refid="class_robot_1ac357047ceae5a5740ecb9230ee584b4b" prot="protected" virt="non-virtual"><scope>RobotSimu</scope><name>compteur</name></member>
+      <member refid="class_robot_1ab65954b9435b949f274c525ef2b31a94" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>controller</name></member>
+      <member refid="class_robot_1a437d1cd6fffaaf92f7c532c283a5220b" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>endNorth</name></member>
+      <member refid="class_robot_1a19eea4b4224ed1e1acefa444f6233886" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>espPort</name></member>
+      <member refid="class_robot_1aaa0f7501e3230d2bf19a6d563c36ce03" prot="protected" virt="non-virtual"><scope>RobotSimu</scope><name>filterFrequency</name></member>
+      <member refid="class_robot_1a018a9e63a2e6a2b0746a8d7ed754f510" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>frontLength</name></member>
+      <member refid="class_robot_1a92dfc164f4b5687a7ffc1dab1cf7bfbe" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>getSequenceByName</name></member>
+      <member refid="class_robot_1af88b8ed8519f9e5b40829c0f18688871" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>getTeamColor</name></member>
+      <member refid="class_robot_1af639da058cf55f8fc03038d43c76a992" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>getTime</name></member>
+      <member refid="class_robot_1a10ea24c7d245cb0daade9f896e0ab5ab" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>ghost</name></member>
+      <member refid="class_robot_1aa0ceb40e2292e3634abbf28ea76b1040" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>length</name></member>
+      <member refid="class_robot_1a76f2b0c63263ffabf6579d1d3e133248" prot="protected" virt="non-virtual"><scope>RobotSimu</scope><name>motorLeft</name></member>
+      <member refid="class_robot_1afec293b443364a081199dcf45b7c2b71" prot="protected" virt="non-virtual"><scope>RobotSimu</scope><name>motorRight</name></member>
+      <member refid="class_robot_1afd23988945672e7b1fd11311820aac7e" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>move</name></member>
+      <member refid="class_robot_1aee05cc448dffd1c15fbfedc7c654270c" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>move</name></member>
+      <member refid="class_robot_1a4feb9dbee81f6b9518ed80357ac75e99" prot="protected" virt="non-virtual"><scope>RobotSimu</scope><name>odometrie</name></member>
+      <member refid="class_robot_1a120a1f51da1f30a44ce29c8835fdcf91" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>rangeAdversaryBackward</name></member>
+      <member refid="class_robot_1a6f7eb3bbd80031903c36f5b67ec1464b" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>rangeAdversaryFoward</name></member>
+      <member refid="class_robot_1a16b31bea9d53ab19288ac21952625d26" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>readString</name></member>
+      <member refid="class_robot_1a3a45a43ad7dace7c8817c144fad227fa" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>recalibrateGhost</name></member>
+      <member refid="class_robot_1a574586aaa849cb0affb7809ab843e250" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>Robot</name></member>
+      <member refid="class_robot_simu_1a05dce7cb6ef826b80626da6aa130e762" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>RobotSimu</name></member>
+      <member refid="class_robot_1ae65cbb4874ef57f13dddc9af2fc6704e" prot="protected" virt="non-virtual"><scope>RobotSimu</scope><name>rotationOrderPID</name></member>
+      <member refid="class_robot_1ad2e0c6c452f37bcfcb19c45fdb75a0a6" prot="protected" virt="non-virtual"><scope>RobotSimu</scope><name>sequences</name></member>
+      <member refid="class_robot_1abb5c7fe3cd18368412caf0a543af2f34" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>setTeamColor</name></member>
+      <member refid="class_robot_simu_1ac4dc96651ec855159aa070a0b7250061" prot="private" virt="non-virtual"><scope>RobotSimu</scope><name>simu</name></member>
+      <member refid="class_robot_1a398ba33d237078392c33c61ef93bef85" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>stopped</name></member>
+      <member refid="class_robot_1a08e7c0bb16d6e4438c1d4dd8e88ae527" prot="protected" virt="non-virtual"><scope>RobotSimu</scope><name>teamColor</name></member>
+      <member refid="class_robot_1a8ef961d074427230155b47a0be36684c" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>telemetry</name></member>
+      <member refid="class_robot_1acd05c56cacaa606c9e8f11a1346d3b1e" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>timeStarted</name></member>
+      <member refid="class_robot_1a49fd643c38bd74f0e8a30cbbfdcf2f5d" prot="protected" virt="non-virtual"><scope>RobotSimu</scope><name>translationOrderPID</name></member>
+      <member refid="class_robot_1ac5e473914be046e6f20bb5300298db73" prot="public" virt="non-virtual"><scope>RobotSimu</scope><name>Update</name></member>
+      <member refid="class_robot_simu_1a04626b8b8ab78480c21b925a38d93de4" prot="private" virt="virtual"><scope>RobotSimu</scope><name>Update_Cinetique</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

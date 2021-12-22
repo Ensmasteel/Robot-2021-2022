@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_c0c3a7ff0735039b1f76c3f1f83801da" kind="dir">
+    <compoundname>D:/ENSMASTEEL/Ensmasteel_Bot_2020/Libraries_shared/Logger</compoundname>
+    <innerfile refid="_logger_8cpp">Logger.cpp</innerfile>
+    <innerfile refid="_logger_8h">Logger.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/ENSMASTEEL/Ensmasteel_Bot_2020/Libraries_shared/Logger/"/>
+  </compounddef>
+</doxygen>

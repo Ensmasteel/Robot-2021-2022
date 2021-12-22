@@ -1,0 +1,99 @@
+\hypertarget{_r_p_lidar_8h_source}{}\doxysection{RPLidar.\+h}
+\label{_r_p_lidar_8h_source}\index{Ensmasteel\_Bot\_2020/Teensy/lib/RPLidarDriver/RPLidar.h@{Ensmasteel\_Bot\_2020/Teensy/lib/RPLidarDriver/RPLidar.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * RoboPeak RPLIDAR Driver for Arduino}}
+\DoxyCodeLine{3 \textcolor{comment}{ * RoboPeak.com}}
+\DoxyCodeLine{4 \textcolor{comment}{ * }}
+\DoxyCodeLine{5 \textcolor{comment}{ * Copyright (c) 2014, RoboPeak }}
+\DoxyCodeLine{6 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Redistribution and use in source and binary forms, with or without modification, }}
+\DoxyCodeLine{9 \textcolor{comment}{ * are permitted provided that the following conditions are met:}}
+\DoxyCodeLine{10 \textcolor{comment}{ *}}
+\DoxyCodeLine{11 \textcolor{comment}{ * 1. Redistributions of source code must retain the above copyright notice, }}
+\DoxyCodeLine{12 \textcolor{comment}{ *    this list of conditions and the following disclaimer.}}
+\DoxyCodeLine{13 \textcolor{comment}{ *}}
+\DoxyCodeLine{14 \textcolor{comment}{ * 2. Redistributions in binary form must reproduce the above copyright notice, }}
+\DoxyCodeLine{15 \textcolor{comment}{ *    this list of conditions and the following disclaimer in the documentation }}
+\DoxyCodeLine{16 \textcolor{comment}{ *    and/or other materials provided with the distribution.}}
+\DoxyCodeLine{17 \textcolor{comment}{ *}}
+\DoxyCodeLine{18 \textcolor{comment}{ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "{}AS IS"{} AND ANY }}
+\DoxyCodeLine{19 \textcolor{comment}{ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES }}
+\DoxyCodeLine{20 \textcolor{comment}{ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT }}
+\DoxyCodeLine{21 \textcolor{comment}{ * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, }}
+\DoxyCodeLine{22 \textcolor{comment}{ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT }}
+\DoxyCodeLine{23 \textcolor{comment}{ * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) }}
+\DoxyCodeLine{24 \textcolor{comment}{ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR }}
+\DoxyCodeLine{25 \textcolor{comment}{ * TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, }}
+\DoxyCodeLine{26 \textcolor{comment}{ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}}
+\DoxyCodeLine{27 \textcolor{comment}{ *}}
+\DoxyCodeLine{28 \textcolor{comment}{ */}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}inc/rptypes.h"{}}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}inc/rplidar\_cmd.h"{}}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_r_p_lidar_measurement}{RPLidarMeasurement}}}
+\DoxyCodeLine{37 \{}
+\DoxyCodeLine{38     \textcolor{keywordtype}{float} distance;}
+\DoxyCodeLine{39     \textcolor{keywordtype}{float} angle;}
+\DoxyCodeLine{40     uint8\_t quality;}
+\DoxyCodeLine{41     \textcolor{keywordtype}{bool}  startBit;}
+\DoxyCodeLine{42 \};}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{keyword}{class }\mbox{\hyperlink{class_r_p_lidar}{RPLidar}}}
+\DoxyCodeLine{45 \{}
+\DoxyCodeLine{46 \textcolor{keyword}{public}:}
+\DoxyCodeLine{47     \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{48         RPLIDAR\_SERIAL\_BAUDRATE = 115200,  }
+\DoxyCodeLine{49         RPLIDAR\_DEFAULT\_TIMEOUT = 500,}
+\DoxyCodeLine{50     \};}
+\DoxyCodeLine{51     }
+\DoxyCodeLine{52     \mbox{\hyperlink{class_r_p_lidar}{RPLidar}}();  }
+\DoxyCodeLine{53     \mbox{\hyperlink{class_r_p_lidar}{\string~RPLidar}}();}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     \textcolor{comment}{// open the given serial interface and try to connect to the RPLIDAR}}
+\DoxyCodeLine{56     \textcolor{keywordtype}{bool} begin(HardwareSerial \&serialobj);}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{comment}{// close the currently opened serial interface}}
+\DoxyCodeLine{59     \textcolor{keywordtype}{void} end();}
+\DoxyCodeLine{60   }
+\DoxyCodeLine{61     \textcolor{comment}{// check whether the serial interface is opened}}
+\DoxyCodeLine{62     \textcolor{keywordtype}{bool} isOpen(); }
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     \textcolor{comment}{// ask the RPLIDAR for its health info}}
+\DoxyCodeLine{65     u\_result getHealth(rplidar\_response\_device\_health\_t \& healthinfo, \_u32 timeout = RPLIDAR\_DEFAULT\_TIMEOUT);}
+\DoxyCodeLine{66     }
+\DoxyCodeLine{67     \textcolor{comment}{// ask the RPLIDAR for its device info like the serial number}}
+\DoxyCodeLine{68     u\_result getDeviceInfo(rplidar\_response\_device\_info\_t \& info, \_u32 timeout = RPLIDAR\_DEFAULT\_TIMEOUT);}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{comment}{// stop the measurement operation}}
+\DoxyCodeLine{71     u\_result stop();}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{comment}{// start the measurement operation}}
+\DoxyCodeLine{74     u\_result startScan(\textcolor{keywordtype}{bool} force = \textcolor{keyword}{false}, \_u32 timeout = RPLIDAR\_DEFAULT\_TIMEOUT*2);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76     \textcolor{comment}{// wait for one sample point to arrive}}
+\DoxyCodeLine{77     u\_result waitPoint(\_u32 timeout = RPLIDAR\_DEFAULT\_TIMEOUT);}
+\DoxyCodeLine{78     }
+\DoxyCodeLine{79     \textcolor{comment}{// retrieve currently received sample point}}
+\DoxyCodeLine{80     }
+\DoxyCodeLine{81     \textcolor{keyword}{const} \mbox{\hyperlink{struct_r_p_lidar_measurement}{RPLidarMeasurement}} \& getCurrentPoint()}
+\DoxyCodeLine{82     \{}
+\DoxyCodeLine{83         \textcolor{keywordflow}{return} \_currentMeasurement;}
+\DoxyCodeLine{84     \}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{87     u\_result \_sendCommand(\_u8 cmd, \textcolor{keyword}{const} \textcolor{keywordtype}{void} * payload, \textcolor{keywordtype}{size\_t} payloadsize);}
+\DoxyCodeLine{88     u\_result \_waitResponseHeader(rplidar\_ans\_header\_t * header, \_u32 timeout);}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{91     HardwareSerial * \_bined\_serialdev;  }
+\DoxyCodeLine{92     \mbox{\hyperlink{struct_r_p_lidar_measurement}{RPLidarMeasurement}} \_currentMeasurement;}
+\DoxyCodeLine{93 \};}
+
+\end{DoxyCode}

@@ -1,0 +1,78 @@
+\hypertarget{_p_i_d_8h_source}{}\doxysection{PID.\+h}
+\label{_p_i_d_8h_source}\index{Ensmasteel\_Bot\_2020/Teensy/lib/PID/PID.h@{Ensmasteel\_Bot\_2020/Teensy/lib/PID/PID.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PID\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PID\_H\_}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}MoveProfile.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define NBPROFILES ((int)Pace::NB\_PACE)}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define TIMETOOFAR 0.2 }\textcolor{comment}{//Temps qu'il faut rester trop loin pour etre considere tooFar}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Filtre.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Vector.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{// La variable x définit une grandeur quelconque. dx est sa derivee.}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{class_score}{Score}}}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21 \textcolor{keyword}{public}:}
+\DoxyCodeLine{22     \textcolor{keywordtype}{float} cumulError=0;}
+\DoxyCodeLine{23     \textcolor{keywordtype}{float} maxOvershoot=0;}
+\DoxyCodeLine{24     uint16\_t nbInversion=0;}
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} reset();}
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} toTelemetry(String prefix);}
+\DoxyCodeLine{27 \};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{32 \textcolor{keyword}{class }\mbox{\hyperlink{class_p_i_d}{PID}}}
+\DoxyCodeLine{33 \{}
+\DoxyCodeLine{34 \textcolor{keyword}{private}:}
+\DoxyCodeLine{35     \mbox{\hyperlink{class_move_profile}{MoveProfile}}* currentProfile; }
+\DoxyCodeLine{36     \textcolor{keywordtype}{float} iTerm;}
+\DoxyCodeLine{37     \textcolor{keywordtype}{bool} modulo360;   \textcolor{comment}{//Permet de dire si les valeurs sont a interprété modulo 360}}
+\DoxyCodeLine{38     \mbox{\hyperlink{class_filtre}{Filtre}} dxF;       \textcolor{comment}{//Filtre de la derivee}}
+\DoxyCodeLine{39     \textcolor{keywordtype}{float} timeTooFar; \textcolor{comment}{//Temps depuis lequel on est trop loin}}
+\DoxyCodeLine{40     \textcolor{keywordtype}{bool} close;  \textcolor{comment}{//Est ce qu'on est proche de la target (cf epsilon et depsilon)}}
+\DoxyCodeLine{41     \textcolor{keywordtype}{bool} tooFar; \textcolor{comment}{//Est ce qu'on est trop loin (cf errMax)}}
+\DoxyCodeLine{42     \textcolor{keywordtype}{float} lastOut;}
+\DoxyCodeLine{43     \mbox{\hyperlink{class_score}{Score}} score;}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{keyword}{public}:}
+\DoxyCodeLine{46     \mbox{\hyperlink{class_score}{Score}} getScore();}
+\DoxyCodeLine{47     \textcolor{keywordtype}{void} reset();}
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} setCurrentProfile(MoveProfileName pace);}
+\DoxyCodeLine{49     \textcolor{keywordtype}{float} compute(\textcolor{keywordtype}{float} xTarget, \textcolor{keywordtype}{float} dxTarget, \textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} dx, \textcolor{keywordtype}{float} dt); \textcolor{comment}{//Renvoie un ordre entre -\/1 et 1}}
+\DoxyCodeLine{50     \mbox{\hyperlink{class_move_profile}{MoveProfile}}* getCurrentProfile();}
+\DoxyCodeLine{51     \mbox{\hyperlink{class_p_i_d}{PID}}(\textcolor{keywordtype}{bool} modulo360, \textcolor{keywordtype}{float} frequency);}
+\DoxyCodeLine{52     \mbox{\hyperlink{class_p_i_d}{PID}}();}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_asservissement}{Asservissement}};   \textcolor{comment}{//Rien n'est privé pour l'asservissement}}
+\DoxyCodeLine{55 \};}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{60 \textcolor{keyword}{class }\mbox{\hyperlink{class_asservissement}{Asservissement}}}
+\DoxyCodeLine{61 \{}
+\DoxyCodeLine{62     \mbox{\hyperlink{class_p_i_d}{PID}} pidTranslation;}
+\DoxyCodeLine{63     \mbox{\hyperlink{class_p_i_d}{PID}} pidRotation;}
+\DoxyCodeLine{64     \mbox{\hyperlink{class_cinetique}{Cinetique}} *cGhost, *cRobot;}
+\DoxyCodeLine{65     \textcolor{keywordtype}{float} *outTranslation, *outRotation;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{keyword}{public}:}
+\DoxyCodeLine{68     \textcolor{keywordtype}{bool} close;           \textcolor{comment}{// Est ce qu'on est proche a la fois en position (projetée) ET en theta}}
+\DoxyCodeLine{69                           \textcolor{comment}{//Il faut regarder la position projetée car le PID ne pourra rien y faire si on est à coté}}
+\DoxyCodeLine{70     \textcolor{keywordtype}{bool} tooFar;          \textcolor{comment}{//Est ce qu'on est trop loin position (absolue) OU en theta}}
+\DoxyCodeLine{71     \textcolor{keywordtype}{bool} needToGoForward; \textcolor{comment}{//Est ce qu'on va devoir avancer ? Utile pour l'évitemment}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{comment}{//Place dans outTranslation et outRotation les deux ordres (entre -\/1 et 1)}}
+\DoxyCodeLine{74     \textcolor{keywordtype}{void} compute(\textcolor{keywordtype}{float} dt);}
+\DoxyCodeLine{75     \textcolor{comment}{//void compute\_dev(float dt);}}
+\DoxyCodeLine{76     \textcolor{keywordtype}{void} setCurrentProfile(MoveProfileName pace);}
+\DoxyCodeLine{77     \textcolor{keywordtype}{void} reset();}
+\DoxyCodeLine{78     \textcolor{keywordtype}{void} sendScoreToTelemetry();}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80     \mbox{\hyperlink{class_asservissement}{Asservissement}}(\textcolor{keywordtype}{float} *outTranslation, \textcolor{keywordtype}{float} *outRotation, \mbox{\hyperlink{class_cinetique}{Cinetique}} *cRobot, \mbox{\hyperlink{class_cinetique}{Cinetique}} *cGhost, \textcolor{keywordtype}{float} frequency);}
+\DoxyCodeLine{81     \mbox{\hyperlink{class_asservissement}{Asservissement}}() \{\}}
+\DoxyCodeLine{82     \textcolor{keywordtype}{float} tweak(\textcolor{keywordtype}{bool} incr, \textcolor{keywordtype}{bool} translation, uint8\_t whichOne);}
+\DoxyCodeLine{83 \};}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

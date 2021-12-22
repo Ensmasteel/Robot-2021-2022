@@ -1,0 +1,802 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="test_01led_2src_2main_8cpp" kind="file" language="C++">
+    <compoundname>main.cpp</compoundname>
+    <includes local="no">Arduino.h</includes>
+    <includes refid="_servo_8h" local="no">Servo.h</includes>
+    <includes refid="test_01led_2src_2_d_r_v8834_8h" local="no">DRV8834.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="3">
+        <label>Servo.h</label>
+        <link refid="_servo_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>BasicStepperDriver.h</label>
+        <link refid="test_01led_2src_2_basic_stepper_driver_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>DRV8834.h</label>
+        <link refid="test_01led_2src_2_d_r_v8834_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/test led/src/main.cpp</label>
+        <link refid="test_01led_2src_2main_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>inttypes.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a39f778d4d72f5e0929b5240c99262f81" prot="public" static="no" mutable="no">
+        <type><ref refid="class_servo" kindref="compound">Servo</ref></type>
+        <definition>Servo brasG</definition>
+        <argsstring></argsstring>
+        <name>brasG</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="5" column="7" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a25a38b8aa119669d6ed2b9b54e12f8c4" prot="public" static="no" mutable="no">
+        <type><ref refid="class_servo" kindref="compound">Servo</ref></type>
+        <definition>Servo brasD</definition>
+        <argsstring></argsstring>
+        <name>brasD</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="6" column="7" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1adc91c8ddffc778b49f7fec5254512215" prot="public" static="no" mutable="no">
+        <type><ref refid="class_servo" kindref="compound">Servo</ref></type>
+        <definition>Servo pinceD</definition>
+        <argsstring></argsstring>
+        <name>pinceD</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="7" column="7" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1af25925f8afa2d15dc4a62620bbaa06ed" prot="public" static="no" mutable="no">
+        <type><ref refid="class_servo" kindref="compound">Servo</ref></type>
+        <definition>Servo pinceG</definition>
+        <argsstring></argsstring>
+        <name>pinceG</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="8" column="7" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a635532bb64ae8f64b0894b5b92aa99e4" prot="public" static="no" mutable="no">
+        <type><ref refid="class_servo" kindref="compound">Servo</ref></type>
+        <definition>Servo pinceArr</definition>
+        <argsstring></argsstring>
+        <name>pinceArr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="9" column="7" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a1910d262855b71da353ed0d07a6c7823" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int pos</definition>
+        <argsstring></argsstring>
+        <name>pos</name>
+        <initializer>= 90</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="12" column="5" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a0ed31155fa6f5df6f35952e26925105b" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int dirPinD</definition>
+        <argsstring></argsstring>
+        <name>dirPinD</name>
+        <initializer>= 26</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="15" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1af23f956da70a7c04393140e27163e57d" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int stepPinD</definition>
+        <argsstring></argsstring>
+        <name>stepPinD</name>
+        <initializer>= 25</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="16" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1ab898929b1f03e891d51665d0c852c059" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int dirPinG</definition>
+        <argsstring></argsstring>
+        <name>dirPinG</name>
+        <initializer>= 24</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="17" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1af74264b74351735218841aa500c0727c" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int stepPinG</definition>
+        <argsstring></argsstring>
+        <name>stepPinG</name>
+        <initializer>= 23</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="18" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a273f6eab1ef7ce3212cc2a4bbbb762c5" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int dirPinArr</definition>
+        <argsstring></argsstring>
+        <name>dirPinArr</name>
+        <initializer>= 31</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="19" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a917c7a06d99a5e3917bc53c4103d3d1a" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int stepPinArr</definition>
+        <argsstring></argsstring>
+        <name>stepPinArr</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="20" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1aad366953cce332d85b1ebd046548a64c" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int sleepPinces</definition>
+        <argsstring></argsstring>
+        <name>sleepPinces</name>
+        <initializer>= 27</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="22" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a759a124ff5a8d4b0af43c9cf696c6b1e" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int pinArrM0</definition>
+        <argsstring></argsstring>
+        <name>pinArrM0</name>
+        <initializer>= 33</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="23" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1ae4f173d78bb554c70c2ddfacc9fa4d7d" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int pinArrM1</definition>
+        <argsstring></argsstring>
+        <name>pinArrM1</name>
+        <initializer>= 32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="24" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a50a9b6a558879e1da9715f87492a6900" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int pinAvM0</definition>
+        <argsstring></argsstring>
+        <name>pinAvM0</name>
+        <initializer>= 29</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="25" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1aa59c399576925c7694f01b85d31fa432" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int pinAvM1</definition>
+        <argsstring></argsstring>
+        <name>pinAvM1</name>
+        <initializer>= 28</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="26" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a2a86db2ac2ced9538c607578ca8ae298" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int dirPav</definition>
+        <argsstring></argsstring>
+        <name>dirPav</name>
+        <initializer>= 35</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="28" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a0c82e2ef16f300e25fbacd40a50aa350" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int stepPav</definition>
+        <argsstring></argsstring>
+        <name>stepPav</name>
+        <initializer>= 34</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="29" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a4fad0812210db105f3a5c81e9123d8ba" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int sleepPav</definition>
+        <argsstring></argsstring>
+        <name>sleepPav</name>
+        <initializer>= 22</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="30" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a738931d4520d06101ad037cceac1f6a4" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int pavM0</definition>
+        <argsstring></argsstring>
+        <name>pavM0</name>
+        <initializer>= 37</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="31" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a3b9ad92a477c3a62e82a688e75282078" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int pavM1</definition>
+        <argsstring></argsstring>
+        <name>pavM1</name>
+        <initializer>= 36</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="32" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1aade0d9627537f2da4fdfb492acb9f1ce" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float nb_toursRailStock</definition>
+        <argsstring></argsstring>
+        <name>nb_toursRailStock</name>
+        <initializer>= 2.1f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="34" column="13" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1ace55485d61fafa12e957e7372e75bbca" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float nb_toursRailDestock</definition>
+        <argsstring></argsstring>
+        <name>nb_toursRailDestock</name>
+        <initializer>= 2.02f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="35" column="13" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1acf68bd0d56358d8ca6fc60f23cc30c55" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float nb_toursPav</definition>
+        <argsstring></argsstring>
+        <name>nb_toursPav</name>
+        <initializer>= 10.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="36" column="13" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a1c604e3571a8b19c68221e6cec916a1d" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int stepPerRevolution</definition>
+        <argsstring></argsstring>
+        <name>stepPerRevolution</name>
+        <initializer>= 200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="37" column="11" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1af077febd7ba7b125e850b3738d30dfca" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int stepDelayRail</definition>
+        <argsstring></argsstring>
+        <name>stepDelayRail</name>
+        <initializer>= 2000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="38" column="5" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a3e7b9b95a329beb7f79bcea29d57b676" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int stepDelayRailArr</definition>
+        <argsstring></argsstring>
+        <name>stepDelayRailArr</name>
+        <initializer>= 4000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="39" column="5" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a18f3264b688eff845428458e30482864" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int stepDelayPav</definition>
+        <argsstring></argsstring>
+        <name>stepDelayPav</name>
+        <initializer>= 500</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="40" column="5" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test_01led_2src_2main_8cpp_1a7f406d24ead2fcd7725f085d9a10a5a0" prot="public" static="no" mutable="no">
+        <type><ref refid="class_d_r_v8834" kindref="compound">DRV8834</ref> *</type>
+        <definition>DRV8834* stepperMotor</definition>
+        <argsstring></argsstring>
+        <name>stepperMotor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="42" column="9" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="test_01led_2src_2main_8cpp_1a4fc01d736fe50cf5b977f755b675f11d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setup</definition>
+        <argsstring>()</argsstring>
+        <name>setup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="44" column="6" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="44" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="test_01led_2src_2main_8cpp_1afe461d27b9c48d5921c00d521181f12f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void loop</definition>
+        <argsstring>()</argsstring>
+        <name>loop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/main.cpp" line="76" column="6" bodyfile="Ensmasteel_Bot_2020/test led/src/main.cpp" bodystart="76" bodyend="310"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Servo.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;DRV8834.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><ref refid="class_servo" kindref="compound">Servo</ref><sp/>brasG;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><ref refid="class_servo" kindref="compound">Servo</ref><sp/>brasD;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><ref refid="class_servo" kindref="compound">Servo</ref><sp/>pinceD;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><ref refid="class_servo" kindref="compound">Servo</ref><sp/>pinceG;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><ref refid="class_servo" kindref="compound">Servo</ref><sp/>pinceArr;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pos<sp/>=<sp/>90;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dirPinD<sp/>=<sp/>26;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stepPinD<sp/>=<sp/>25;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dirPinG<sp/>=<sp/>24;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stepPinG<sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dirPinArr<sp/>=<sp/>31;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stepPinArr<sp/>=<sp/>30;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sleepPinces<sp/>=<sp/>27;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pinArrM0<sp/>=<sp/>33;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pinArrM1<sp/>=<sp/>32;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pinAvM0<sp/>=<sp/>29;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pinAvM1<sp/>=<sp/>28;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dirPav<sp/>=<sp/>35;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stepPav<sp/>=<sp/>34;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sleepPav<sp/>=<sp/>22;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pavM0<sp/>=<sp/>37;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pavM1<sp/>=<sp/>36;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>nb_toursRailStock<sp/>=<sp/>2.1f;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>nb_toursRailDestock<sp/>=<sp/>2.02f;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>nb_toursPav<sp/>=<sp/>10.0f;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stepPerRevolution<sp/>=<sp/>200;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stepDelayRail<sp/>=<sp/>2000;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stepDelayRailArr<sp/>=<sp/>4000;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stepDelayPav<sp/>=<sp/>500;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><ref refid="class_d_r_v8834" kindref="compound">DRV8834</ref>*<sp/>stepperMotor;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setup()<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>put<sp/>your<sp/>setup<sp/>code<sp/>here,<sp/>to<sp/>run<sp/>once:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>Serial.begin(115200);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>pinMode(dirPinD,OUTPUT);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>pinMode(stepPinD,OUTPUT);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>pinMode(dirPinG,OUTPUT);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>pinMode(stepPinG,OUTPUT);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>pinMode(dirPinArr,OUTPUT);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>pinMode(stepPinArr,OUTPUT);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>pinMode(sleepPinces,OUTPUT);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>pinMode(pinArrM0,OUTPUT);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>pinMode(pinArrM1,OUTPUT);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>pinMode(pinAvM0,OUTPUT);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>pinMode(pinAvM1,OUTPUT);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>pinMode(dirPav,OUTPUT);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>pinMode(stepPav,OUTPUT);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>pinMode(sleepPav,OUTPUT);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>pinMode(pavM0,OUTPUT);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>pinMode(pavM1,OUTPUT);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>brasD.attach(4);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>brasG.attach(3);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>pinceD.attach(7);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>pinceG.attach(6);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>pinceArr.attach(5);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>pinceArr.write(180);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>loop()<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>pinceD.write(60);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>delay(3000);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>pinceD.write(80);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>pinceD.write(110);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/>delay(5000);</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="comment"></highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/>digitalWrite(sleepPinces,HIGH);</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/>digitalWrite(dirPinArr,HIGH);</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"></highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/>//montée<sp/>rail<sp/>arriere</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/>for(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>stepPerRevolution<sp/>*<sp/>nb_toursRailDestock;<sp/>x++)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinArr,HIGH);</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRailArr);</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinArr,LOW);</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRailArr);</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"></highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/>//ouverture<sp/>puis<sp/>fermeture<sp/>pince<sp/>arriere</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/>pinceArr.write(120);</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/>pinceArr.write(175);</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"></highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/>//descente<sp/>rail<sp/>arrière</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/>digitalWrite(dirPinArr,LOW);</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/></highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/>for(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>stepPerRevolution<sp/>*<sp/>nb_toursRailDestock;<sp/>x++)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinArr,HIGH);</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRailArr);</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinArr,LOW);</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRailArr);</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;avant<sp/>delay&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/>delay(2000);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*stepperMotor<sp/>=<sp/>new<sp/>DRV8834(stepPerRevolution,<sp/>dirPav,<sp/>stepPav,<sp/>sleepPav,<sp/>pavM0,<sp/>pavM1);</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/>stepperMotor-&gt;begin(300,(short)1);</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/>stepperMotor-&gt;disable();</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/>stepperMotor-&gt;enable();</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/>stepperMotor-&gt;move(2000);</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/>stepperMotor-&gt;disable();</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/>Serial.println(&quot;Apres<sp/>delay&quot;);</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/>/*digitalWrite(sleepPav,HIGH);</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/>digitalWrite(dirPav,HIGH);</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"></highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/>//montée<sp/>pavillon</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/>for(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>stepPerRevolution<sp/>*<sp/>nb_toursPav;<sp/>x++)<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPav,HIGH);</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayPav);</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPav,LOW);</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayPav);</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/></highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/><sp/>//descente<sp/>pavillon</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/><sp/>digitalWrite(dirPav,LOW);</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/><sp/></highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/><sp/>for(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>stepPerRevolution<sp/>*<sp/>nb_toursPav;<sp/>x++)<sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPav,HIGH);</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayPav);</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPav,LOW);</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayPav);</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/><sp/>}*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//digitalWrite(sleepPav,LOW);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//delay(2000);</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*digitalWrite(sleepPinces,HIGH);</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/>digitalWrite(dirPinG,HIGH);</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/><sp/>pinceG.write(100);</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"></highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/>//montée<sp/>rail</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/>for(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>stepPerRevolution<sp/>*<sp/>(nb_toursRail);<sp/>x++)<sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinG,HIGH);</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinG,LOW);</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/><sp/>/*pinceG.write(110);</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/><sp/>for(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>stepPerRevolution<sp/>*<sp/>(2);<sp/>x++)<sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinG,HIGH);</highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinG,LOW);</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"></highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/><sp/>//fermeture<sp/>pince</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/><sp/>pinceG.write(100);</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/><sp/>pinceG.write(70);</highlight></codeline>
+<codeline lineno="179"><highlight class="comment"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="180"><highlight class="comment"></highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp/><sp/>//descente<sp/>rail</highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp/><sp/>digitalWrite(dirPinG,LOW);</highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/><sp/></highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/><sp/>for(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>stepPerRevolution<sp/>*<sp/>nb_toursRail;<sp/>x++)<sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinG,HIGH);</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinG,LOW);</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="comment"></highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/><sp/>//ouverture<sp/>pince</highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/><sp/>pinceG.write(100);</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"></highlight></codeline>
+<codeline lineno="195"><highlight class="comment"></highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/><sp/>delay(2000);*/</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/></highlight><highlight class="comment">/*<sp/>digitalWrite(sleepPinces,HIGH);</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"></highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/><sp/>for(int<sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>5;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"></highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/><sp/>pinceD.write(80);</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/><sp/>digitalWrite(dirPinD,HIGH);</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/><sp/>for(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>stepPerRevolution<sp/>*<sp/>(0.2);<sp/>x++)<sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinD,HIGH);</highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinD,LOW);</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"></highlight></codeline>
+<codeline lineno="212"><highlight class="comment"><sp/><sp/>digitalWrite(dirPinD,LOW);</highlight></codeline>
+<codeline lineno="213"><highlight class="comment"><sp/><sp/>delay(200);</highlight></codeline>
+<codeline lineno="214"><highlight class="comment"><sp/><sp/>pinceD.write(70);</highlight></codeline>
+<codeline lineno="215"><highlight class="comment"></highlight></codeline>
+<codeline lineno="216"><highlight class="comment"><sp/><sp/>//montée<sp/>rail</highlight></codeline>
+<codeline lineno="217"><highlight class="comment"><sp/><sp/>for(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>stepPerRevolution<sp/>*<sp/>(nb_toursRailStock+0.2);<sp/>x++)<sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinD,HIGH);</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="220"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinD,LOW);</highlight></codeline>
+<codeline lineno="221"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="222"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="223"><highlight class="comment"></highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/><sp/>/*for(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>stepPerRevolution<sp/>*<sp/>(0.2);<sp/>x++)<sp/>{</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinD,HIGH);</highlight></codeline>
+<codeline lineno="226"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail*2);</highlight></codeline>
+<codeline lineno="227"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinD,LOW);</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail*2);</highlight></codeline>
+<codeline lineno="229"><highlight class="comment"><sp/><sp/>}*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//fermeture<sp/>pince</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/></highlight><highlight class="comment">/*<sp/>delay(200);</highlight></codeline>
+<codeline lineno="233"><highlight class="comment"><sp/><sp/>pinceD.write(100);</highlight></codeline>
+<codeline lineno="234"><highlight class="comment"><sp/><sp/></highlight></codeline>
+<codeline lineno="235"><highlight class="comment"><sp/><sp/>//descente<sp/>rail</highlight></codeline>
+<codeline lineno="236"><highlight class="comment"><sp/><sp/>digitalWrite(dirPinD,HIGH);</highlight></codeline>
+<codeline lineno="237"><highlight class="comment"><sp/><sp/></highlight></codeline>
+<codeline lineno="238"><highlight class="comment"><sp/><sp/>for(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>stepPerRevolution<sp/>*<sp/>(nb_toursRailStock);<sp/>x++)<sp/>{</highlight></codeline>
+<codeline lineno="239"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinD,HIGH);</highlight></codeline>
+<codeline lineno="240"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="241"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinD,LOW);</highlight></codeline>
+<codeline lineno="242"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="243"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="244"><highlight class="comment"></highlight></codeline>
+<codeline lineno="245"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="246"><highlight class="comment"></highlight></codeline>
+<codeline lineno="247"><highlight class="comment"></highlight></codeline>
+<codeline lineno="248"><highlight class="comment"></highlight></codeline>
+<codeline lineno="249"><highlight class="comment"><sp/><sp/>for(int<sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>5;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="comment"></highlight></codeline>
+<codeline lineno="251"><highlight class="comment"><sp/><sp/>digitalWrite(dirPinD,LOW);</highlight></codeline>
+<codeline lineno="252"><highlight class="comment"></highlight></codeline>
+<codeline lineno="253"><highlight class="comment"><sp/><sp/>//montée<sp/>rail</highlight></codeline>
+<codeline lineno="254"><highlight class="comment"><sp/><sp/>for(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>stepPerRevolution<sp/>*<sp/>(nb_toursRailDestock);<sp/>x++)<sp/>{</highlight></codeline>
+<codeline lineno="255"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinD,HIGH);</highlight></codeline>
+<codeline lineno="256"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="257"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinD,LOW);</highlight></codeline>
+<codeline lineno="258"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="259"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="260"><highlight class="comment"></highlight></codeline>
+<codeline lineno="261"><highlight class="comment"><sp/><sp/>//fermeture<sp/>pince</highlight></codeline>
+<codeline lineno="262"><highlight class="comment"><sp/><sp/>delay(200);</highlight></codeline>
+<codeline lineno="263"><highlight class="comment"><sp/><sp/>pinceD.write(70);</highlight></codeline>
+<codeline lineno="264"><highlight class="comment"><sp/><sp/>delay(200);</highlight></codeline>
+<codeline lineno="265"><highlight class="comment"><sp/><sp/></highlight></codeline>
+<codeline lineno="266"><highlight class="comment"><sp/><sp/>//descente<sp/>rail</highlight></codeline>
+<codeline lineno="267"><highlight class="comment"><sp/><sp/>digitalWrite(dirPinD,HIGH);</highlight></codeline>
+<codeline lineno="268"><highlight class="comment"></highlight></codeline>
+<codeline lineno="269"><highlight class="comment"><sp/><sp/>for(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>stepPerRevolution<sp/>*<sp/>(0.5);<sp/>x++)<sp/>{</highlight></codeline>
+<codeline lineno="270"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinD,HIGH);</highlight></codeline>
+<codeline lineno="271"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail*3);</highlight></codeline>
+<codeline lineno="272"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinD,LOW);</highlight></codeline>
+<codeline lineno="273"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail*3);</highlight></codeline>
+<codeline lineno="274"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="275"><highlight class="comment"><sp/><sp/></highlight></codeline>
+<codeline lineno="276"><highlight class="comment"><sp/><sp/>for(int<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>stepPerRevolution<sp/>*<sp/>(nb_toursRailDestock-0.5);<sp/>x++)<sp/>{</highlight></codeline>
+<codeline lineno="277"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinD,HIGH);</highlight></codeline>
+<codeline lineno="278"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="279"><highlight class="comment"><sp/><sp/><sp/><sp/>digitalWrite(stepPinD,LOW);</highlight></codeline>
+<codeline lineno="280"><highlight class="comment"><sp/><sp/><sp/><sp/>delayMicroseconds(stepDelayRail);</highlight></codeline>
+<codeline lineno="281"><highlight class="comment"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="282"><highlight class="comment"><sp/><sp/>pinceD.write(100);</highlight></codeline>
+<codeline lineno="283"><highlight class="comment"><sp/><sp/>}*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*//ouverture<sp/>pince</highlight></codeline>
+<codeline lineno="286"><highlight class="comment"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="287"><highlight class="comment"><sp/><sp/>pinceD.write(100);</highlight></codeline>
+<codeline lineno="288"><highlight class="comment"></highlight></codeline>
+<codeline lineno="289"><highlight class="comment"><sp/><sp/>delay(2000);*/</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//deployement<sp/>puis<sp/>retour<sp/>bras</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/>brasG.write(0);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/>brasG.write(90);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/>delay(2000);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//deployement<sp/>puis<sp/>retour<sp/>bras</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/>brasD.write(0);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/>brasD.write(90);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/>delay(100000);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/test led/src/main.cpp"/>
+  </compounddef>
+</doxygen>

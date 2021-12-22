@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_301fdd5971c0643d964412ae0d9c61f2" kind="dir">
+    <compoundname>Ensmasteel_Bot_2020/Teensy/lib</compoundname>
+    <innerdir refid="dir_55bbd1c294f1c160e25f4515bea82940">Ensmasteel_Bot_2020/Teensy/lib/Encoder</innerdir>
+    <innerdir refid="dir_55a387168c8caedff86b848653020f20">Ensmasteel_Bot_2020/Teensy/lib/ErrorManager</innerdir>
+    <innerdir refid="dir_e9dc1e786813592c13617d126af03a71">Ensmasteel_Bot_2020/Teensy/lib/Filtre</innerdir>
+    <innerdir refid="dir_011ed229200d2462d81755e0f6873632">Ensmasteel_Bot_2020/Teensy/lib/Ghost</innerdir>
+    <innerdir refid="dir_5983d1d0609e8b895385350f524ae4af">Ensmasteel_Bot_2020/Teensy/lib/LesInseparables</innerdir>
+    <innerdir refid="dir_d4a568bc0ce9c13cf25ecf6c163a690b">Ensmasteel_Bot_2020/Teensy/lib/LIDAR</innerdir>
+    <innerdir refid="dir_f93a9891e8744ea30ed6f7dacdf432b9">Ensmasteel_Bot_2020/Teensy/lib/Math_functions</innerdir>
+    <innerdir refid="dir_0650113f4d1fbff982f5861608e7bc47">Ensmasteel_Bot_2020/Teensy/lib/Moteur</innerdir>
+    <innerdir refid="dir_3a247f6103118c3274037f4787c19a2c">Ensmasteel_Bot_2020/Teensy/lib/PID</innerdir>
+    <innerdir refid="dir_0e61542421ffc15a00a508fe403c016e">Ensmasteel_Bot_2020/Teensy/lib/Robot</innerdir>
+    <innerdir refid="dir_2f3088c2f2e283b04f778848dc135860">Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver</innerdir>
+    <innerdir refid="dir_328f8974ff34e494183a4bcc57957b05">Ensmasteel_Bot_2020/Teensy/lib/Simulator</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/"/>
+  </compounddef>
+</doxygen>

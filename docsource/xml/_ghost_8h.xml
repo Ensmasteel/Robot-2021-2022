@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_ghost_8h" kind="file" language="C++">
+    <compoundname>Ghost.h</compoundname>
+    <includes local="yes">Arduino.h</includes>
+    <includes refid="_vector_8h" local="yes">Vector.h</includes>
+    <includes refid="_math__functions_8h" local="yes">Math_functions.h</includes>
+    <includedby refid="_ghost_8cpp" local="yes">Ensmasteel_Bot_2020/Teensy/lib/Ghost/Ghost.cpp</includedby>
+    <includedby refid="_robot_8h" local="yes">Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h</includedby>
+    <includedby refid="_teensy_2main_8cpp" local="yes">Ensmasteel_Bot_2020/Teensy/main.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="4">
+        <label>Logger.h</label>
+        <link refid="_logger_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Vector.h</label>
+        <link refid="_vector_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Ghost/Ghost.h</label>
+        <link refid="_ghost_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Math_functions.h</label>
+        <link refid="_math__functions_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Print.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Ghost/Ghost.h</label>
+        <link refid="_ghost_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h</label>
+        <link refid="_robot_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Robot/RobotSimu.h</label>
+        <link refid="_robot_simu_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_ghost" prot="public">Ghost</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GHOST_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GHOST_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Vector.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Math_functions.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="class_ghost" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_ghost" kindref="compound">Ghost</ref></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_ghost_1add32788778aeaa7f0bb6da1077e715db" kindref="member">Ghost</ref>(<ref refid="class_vector_e" kindref="compound">VectorE</ref><sp/>posEini<sp/>=<sp/><ref refid="class_vector_e" kindref="compound">VectorE</ref>(0.0,<sp/>0.0,<sp/>0.0));</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Ghost()<sp/>{}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_cinetique" kindref="compound">Cinetique</ref><sp/>cinetiqueController;<sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>===<sp/><sp/><sp/><sp/>METHODES<sp/><sp/><sp/><sp/>===</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>======================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GOAL<sp/>/<sp/>IsVar()<sp/>gives<sp/>Var<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>OUT<sp/><sp/>/<sp/>bool<sp/>Status</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_ghost_1a9740f250aaee829a8445903b8a1eb4f3" kindref="member">IsLocked</ref>();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_ghost_1aa88463d4a6de0a3292757e4bfdb144ff" kindref="member">IsRotating</ref>();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_ghost_1aad4f81f6c7618bcfb7c3346662745922" kindref="member">IsBackward</ref>();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_ghost_1a5ec1fe41bceee34af769297400340b06" kindref="member">trajectoryIsFinished</ref>();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_ghost_1a698731ea2bd0f163ef7686a208569af7" kindref="member">Lock</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>state);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_ghost_1a3d1ecc6bd1cb8bc973781aa3e693d432" kindref="member">ActuatePosition</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_ghost_1a2332189de8523d9c2c36433192da2689" kindref="member">Compute_Trajectory</ref>(<ref refid="class_vector_e" kindref="compound">VectorE</ref><sp/>posFinal,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>deltaCurve,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>speedRamps,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>cruisingSpeed,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>pureRotation<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>backward<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GOAL<sp/>/<sp/>Teleport<sp/>the<sp/>ghost<sp/>to<sp/>_newPos_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IN<sp/><sp/><sp/>/<sp/>VectorE<sp/>newPos<sp/>OR<sp/>Cinetique<sp/>newPos<sp/>:<sp/>only<sp/>consider<sp/>position</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>OUT<sp/><sp/>/<sp/>The<sp/>position<sp/>of<sp/>the<sp/>ghost<sp/>is<sp/>set<sp/>to<sp/>VectorE.<sp/>Speed<sp/>are<sp/>not<sp/>affected<sp/>by<sp/>this<sp/>action</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_ghost_1add43b77dc94db3414adb4cb34249068f" kindref="member">moveGhost</ref>(<ref refid="class_vector_e" kindref="compound">VectorE</ref><sp/>newPos);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_ghost_1add43b77dc94db3414adb4cb34249068f" kindref="member">moveGhost</ref>(<ref refid="class_cinetique" kindref="compound">Cinetique</ref><sp/>newPos);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_cinetique" kindref="compound">Cinetique</ref><sp/>Get_Controller_Cinetique();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>===<sp/><sp/><sp/><sp/>PARAMETERS<sp/><sp/><sp/><sp/>===</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>========================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>MIN_MOVEMENT<sp/>=<sp/>0.005;<sp/></highlight><highlight class="comment">//<sp/>Minimal<sp/>distance<sp/>to<sp/>allow<sp/>trajectory<sp/>computation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>MIN_ROTATION<sp/>=<sp/>0.1*DEG_TO_RAD;<sp/></highlight><highlight class="comment">//<sp/>Minimal<sp/>angle<sp/>to<sp/>allow<sp/>trajectory<sp/>computation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>DELAY_POSITION<sp/>=<sp/>40.0;<sp/></highlight><highlight class="comment">//<sp/>[...]<sp/>=<sp/>ms,<sp/>Delay<sp/>between<sp/>posCurrent<sp/>and<sp/>posDelayed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>MAX_SPEED<sp/>=<sp/>50.0;<sp/></highlight><highlight class="comment">//<sp/>...<sp/>if<sp/>linear<sp/>speed<sp/>above<sp/>the<sp/>limit,<sp/>block<sp/>movement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>MAX_DISTANCE<sp/>=<sp/>5.0;<sp/></highlight><highlight class="comment">//<sp/>...<sp/>if<sp/>distance<sp/>between<sp/>to<sp/>consecutive<sp/>position,<sp/>block<sp/>movement<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>===<sp/><sp/><sp/><sp/>VARIABLES<sp/><sp/><sp/><sp/>===</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>=======================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_vector_e" kindref="compound">VectorE</ref><sp/>posCurrent,<sp/>posPrevious,<sp/>posAim;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>VectorE<sp/>:<sp/>struct<sp/>type<sp/>containing<sp/>X,Y,Orientation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_vector_e" kindref="compound">VectorE</ref><sp/>posDelayed;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Position<sp/>_delayPosition_<sp/>ms<sp/>ago.<sp/>Used<sp/>as<sp/>input<sp/>for<sp/>the<sp/>position<sp/>controller</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_polynome" kindref="compound">Polynome</ref><sp/>trajectory_X,<sp/>trajectory_Y;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bezier<sp/>curves,<sp/>function<sp/>of<sp/>t*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_polynome" kindref="compound">Polynome</ref><sp/>speedSquare_e;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(V*)^2<sp/>Evolution<sp/>speed<sp/>of<sp/>the<sp/>theorical<sp/>trajectory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_trapezoidal___function" kindref="compound">Trapezoidal_Function</ref><sp/>speedProfileLinear;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>wanted<sp/>speed<sp/>of<sp/>the<sp/>bot<sp/>along<sp/>the<sp/>trajectory<sp/>[...]<sp/>=<sp/>cm/s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_trapezoidal___function" kindref="compound">Trapezoidal_Function</ref><sp/>speedProfileRotation;<sp/></highlight><highlight class="comment">//<sp/>wanted<sp/>speed<sp/>in<sp/>rotation<sp/>[...]<sp/>=<sp/>rad/s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>t<sp/>=<sp/>0.0,<sp/>t_delayed<sp/>=<sp/>0.0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>t<sp/>:<sp/>time<sp/>since<sp/>new<sp/>trajectory<sp/>setup</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>t_e<sp/>=<sp/>0.0,<sp/>t_e_delayed<sp/>=<sp/>0.0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0&lt;t_e&lt;1<sp/>virtual<sp/>time<sp/>of<sp/>Bezier<sp/>curves</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>durationTrajectory<sp/>=<sp/>0.0,<sp/>lengthTrajectory<sp/>=<sp/>0.0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>[...]<sp/>=<sp/>s<sp/>;<sp/>[...]<sp/>=<sp/>(rotating<sp/>?<sp/>rad<sp/>:<sp/>cm)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>speedLinearCurrent<sp/>=<sp/>0.0,<sp/>speedRotationalCurrent<sp/>=<sp/>0.0;<sp/></highlight><highlight class="comment">//<sp/>Current<sp/>speeds</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>===<sp/><sp/><sp/><sp/>STATE<sp/><sp/><sp/><sp/>===</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>===================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>locked<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>locked=true<sp/>=&gt;<sp/>no<sp/>movement<sp/>allowed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rotating<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>rotating=true<sp/>=&gt;<sp/>the<sp/>robot<sp/>is<sp/>doing<sp/>a<sp/>pure<sp/>rotation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>backward<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>backward=true<sp/>=&gt;<sp/>the<sp/>robot<sp/>is<sp/>going<sp/>backward</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>trajectoryFinished<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>trajectoryFinished=true<sp/>=&gt;<sp/>the<sp/>robot<sp/>has<sp/>reached<sp/>posAim</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>===<sp/><sp/><sp/><sp/>PRIVATE<sp/>METHODES<sp/><sp/><sp/><sp/>===</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>==============================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GOAL<sp/>/<sp/>Determine<sp/>linear<sp/>and<sp/>rotational<sp/>speed<sp/>between<sp/>to<sp/>positions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IN<sp/><sp/><sp/>/<sp/>VectorE<sp/>posNow,<sp/>posLast</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>/<sp/>float<sp/>dt<sp/>:<sp/>delay<sp/>between<sp/>posNow<sp/>and<sp/>posLast</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>OUT<sp/><sp/>/<sp/>float<sp/>:<sp/>speedLinearCurrent,<sp/>speedRotationalCurrent</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Update_Speeds(<ref refid="class_vector_e" kindref="compound">VectorE</ref><sp/>posNow,<sp/><ref refid="class_vector_e" kindref="compound">VectorE</ref><sp/>posLast,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Set_NewTrajectory(<ref refid="class_polynome" kindref="compound">Polynome</ref><sp/>newTrajectoryX,<sp/><ref refid="class_polynome" kindref="compound">Polynome</ref><sp/>newTrajectoryY,<sp/><ref refid="class_trapezoidal___function" kindref="compound">Trapezoidal_Function</ref><sp/>newSpeed);<sp/></highlight><highlight class="comment">//<sp/>store<sp/>new<sp/>trajectories</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>StateManager();<sp/></highlight><highlight class="comment">//<sp/>Cancel<sp/>coming<sp/>movement<sp/>if<sp/>teleportation<sp/>(movement<sp/>&gt;<sp/>deltaPositionMax)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/Ghost/Ghost.h"/>
+  </compounddef>
+</doxygen>

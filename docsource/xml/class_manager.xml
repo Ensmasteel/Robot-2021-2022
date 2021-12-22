@@ -1,0 +1,572 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_manager" kind="class" language="C++" prot="public">
+    <compoundname>Manager</compoundname>
+    <includes refid="_actuators___manager_8h" local="no">Actuators_Manager.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_manager_1a5455d2168d3b39997f7b46f50f522afb" prot="private" static="no" mutable="no">
+        <type>HardwareSerial *</type>
+        <definition>HardwareSerial* Manager::serialDebug</definition>
+        <argsstring></argsstring>
+        <name>serialDebug</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="25" column="20" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a7e767940b547f7d4bfb0ab81be03a0de" prot="private" static="no" mutable="no">
+        <type><ref refid="class_communication" kindref="compound">Communication</ref></type>
+        <definition>Communication Manager::comController</definition>
+        <argsstring></argsstring>
+        <name>comController</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="26" column="19" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1afaea69135b2f24154502161005615cbc" prot="private" static="no" mutable="no">
+        <type><ref refid="class_actuator" kindref="compound">Actuator</ref> *</type>
+        <definition>Actuator* Manager::listActuators[NBR_ACTUATORS]</definition>
+        <argsstring>[NBR_ACTUATORS]</argsstring>
+        <name>listActuators</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="29" column="14" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a98a41ec4a7acbc63e85f6f2a8854b90c" prot="private" static="no" mutable="no">
+        <type><ref refid="class_pavillon" kindref="compound">Pavillon</ref></type>
+        <definition>Pavillon Manager::pavillon</definition>
+        <argsstring></argsstring>
+        <name>pavillon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="30" column="14" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a87571010f4933c65e5062b416200e111" prot="private" static="no" mutable="no">
+        <type><ref refid="class_bras" kindref="compound">Bras</ref></type>
+        <definition>Bras Manager::brasGauche</definition>
+        <argsstring></argsstring>
+        <name>brasGauche</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="31" column="10" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1ae99a134b0b20400113727b1a4c33288d" prot="private" static="no" mutable="no">
+        <type><ref refid="class_bras" kindref="compound">Bras</ref></type>
+        <definition>Bras Manager::brasDroit</definition>
+        <argsstring></argsstring>
+        <name>brasDroit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="32" column="10" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1ab75e0558ff2df3c129d91e6c6ad9eee8" prot="private" static="no" mutable="no">
+        <type><ref refid="class_pince_avant" kindref="compound">PinceAvant</ref></type>
+        <definition>PinceAvant Manager::pinceAvantGauche</definition>
+        <argsstring></argsstring>
+        <name>pinceAvantGauche</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="33" column="16" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1ab7c15e667c060fbb8a43ba036503220f" prot="private" static="no" mutable="no">
+        <type><ref refid="class_pince_avant" kindref="compound">PinceAvant</ref></type>
+        <definition>PinceAvant Manager::pinceAvantDroite</definition>
+        <argsstring></argsstring>
+        <name>pinceAvantDroite</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="34" column="16" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a9c3315a21e3621d27510ab8695a97c02" prot="private" static="no" mutable="no">
+        <type><ref refid="class_pince_arriere" kindref="compound">PinceArriere</ref></type>
+        <definition>PinceArriere Manager::pinceArr</definition>
+        <argsstring></argsstring>
+        <name>pinceArr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="35" column="18" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a5f3a08f1f143fc1603f8488be431d6f1" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::brasGauche_servoPWM</definition>
+        <argsstring></argsstring>
+        <name>brasGauche_servoPWM</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="41" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1ac840af1484adeb57b7ebdf0a48767428" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::brasDroit_servoPWM</definition>
+        <argsstring></argsstring>
+        <name>brasDroit_servoPWM</name>
+        <initializer>= 4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="42" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a5a38469afb0eaeafa9ef868d4b648807" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pav_Dir</definition>
+        <argsstring></argsstring>
+        <name>pav_Dir</name>
+        <initializer>= 35</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="45" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a7401571f8ff014f61382482c7ecde40c" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pav_Step</definition>
+        <argsstring></argsstring>
+        <name>pav_Step</name>
+        <initializer>= 34</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="46" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1ac96ea9d2e4e544d4a0f9bde4325efb82" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pav_Sleep</definition>
+        <argsstring></argsstring>
+        <name>pav_Sleep</name>
+        <initializer>= 22</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="47" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a169ad3374a80d107ee1e50741a526d63" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pav_M0</definition>
+        <argsstring></argsstring>
+        <name>pav_M0</name>
+        <initializer>= 37</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="48" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a23e58dde0e45ce181b71aeb09c8f9864" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pav_M1</definition>
+        <argsstring></argsstring>
+        <name>pav_M1</name>
+        <initializer>= 36</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="49" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1acc9f7ce50137f70ad2975bdde9676406" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pinceArr_servoPWM</definition>
+        <argsstring></argsstring>
+        <name>pinceArr_servoPWM</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="52" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a05b2dffc0eee2b7e016c531e270b189f" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pinceAvG_servoPWM</definition>
+        <argsstring></argsstring>
+        <name>pinceAvG_servoPWM</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="53" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1af7f8fc50755105f5a3a1c25e21ec3455" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pinceAvD_servoPWM</definition>
+        <argsstring></argsstring>
+        <name>pinceAvD_servoPWM</name>
+        <initializer>= 7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="54" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1abeacf4030f973f6fe956b85e85a0d6dd" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pinceAvG_Dir</definition>
+        <argsstring></argsstring>
+        <name>pinceAvG_Dir</name>
+        <initializer>= 24</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="56" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1ad4160f0c4397269d6cfed8feaa5d5fda" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pinceAvG_Step</definition>
+        <argsstring></argsstring>
+        <name>pinceAvG_Step</name>
+        <initializer>= 23</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="57" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a671f0aa5460ebaca15dd68d2543db8ad" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pinceAvD_Dir</definition>
+        <argsstring></argsstring>
+        <name>pinceAvD_Dir</name>
+        <initializer>= 26</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="58" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1ae8381fd3fd2934fe07e3e5d5c4b8b284" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pinceAvD_Step</definition>
+        <argsstring></argsstring>
+        <name>pinceAvD_Step</name>
+        <initializer>= 25</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="59" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1ae1693b96d9005cce2c64d5e923f064ba" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pinceArr_Dir</definition>
+        <argsstring></argsstring>
+        <name>pinceArr_Dir</name>
+        <initializer>= 31</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="60" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a78c847013a5870894dec29083f0600c4" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pinceArr_Step</definition>
+        <argsstring></argsstring>
+        <name>pinceArr_Step</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="61" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1ab9e44a0b498f38fd48dd7c89bd52251a" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pincesAv_M0</definition>
+        <argsstring></argsstring>
+        <name>pincesAv_M0</name>
+        <initializer>= 29</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="63" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a4a622d56f2c38aea310ef73d50571f28" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pincesAv_M1</definition>
+        <argsstring></argsstring>
+        <name>pincesAv_M1</name>
+        <initializer>= 28</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="64" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a8c53f546d9dba4f064e1c00aa9fd8879" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pincesArr_M0</definition>
+        <argsstring></argsstring>
+        <name>pincesArr_M0</name>
+        <initializer>= 33</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="65" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a574cd80cfcb82982215f6775c7731890" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pincesArr_M1</definition>
+        <argsstring></argsstring>
+        <name>pincesArr_M1</name>
+        <initializer>= 32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="66" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a557f88c3b13dd839d4c5506b96f8a391" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Manager::pinces_Sleep</definition>
+        <argsstring></argsstring>
+        <name>pinces_Sleep</name>
+        <initializer>= 27</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="68" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a0a0b9c2ab665a6a578ce80ee95b114ff" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_message" kindref="compound">Message</ref></type>
+        <definition>Message Manager::currentMessage</definition>
+        <argsstring></argsstring>
+        <name>currentMessage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="71" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a3508d5767119027c1b40e020c091498b" prot="private" static="no" mutable="no">
+        <type>MessageID</type>
+        <definition>MessageID Manager::currentID</definition>
+        <argsstring></argsstring>
+        <name>currentID</name>
+        <initializer>= MessageID::Stop_M</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="72" column="15" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a145c6a357d11093b3aa733c759bdfee4" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_four_bytes" kindref="compound">FourBytes</ref></type>
+        <definition>FourBytes Manager::currentBytes</definition>
+        <argsstring></argsstring>
+        <name>currentBytes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="73" column="15" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_manager_1a2c4c58b887d87eb62fcaab2a490a178c" prot="private" static="no" mutable="no">
+        <type>Actuator_Order</type>
+        <definition>Actuator_Order Manager::currentOrder</definition>
+        <argsstring></argsstring>
+        <name>currentOrder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="74" column="20" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_manager_1a063a10df590ee1f84bb7a6fc7d046998" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Manager::Manager</definition>
+        <argsstring>(Stream *serControllerStream, HardwareSerial *serDebug=&amp;Serial)</argsstring>
+        <name>Manager</name>
+        <param>
+          <type>Stream *</type>
+          <declname>serControllerStream</declname>
+        </param>
+        <param>
+          <type>HardwareSerial *</type>
+          <declname>serDebug</declname>
+          <defval>&amp;Serial</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Public constructor of the manager. Get 2 parameters : <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>serControllerStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: stream on which the information will transit in the robot itself. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>serDebug</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: Serial port to show information during debugging. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="22" column="5" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.cpp" bodystart="3" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_manager_1a151953c44ccb959ebd1b2889b925f1b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Manager::Update</definition>
+        <argsstring>()</argsstring>
+        <name>Update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="23" column="10" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.cpp" bodystart="24" bodyend="57"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Basic class to declare an actuator manager wich will organize all the actions during the match. </para>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" line="14" column="1" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h" bodystart="15" bodyend="75"/>
+    <listofallmembers>
+      <member refid="class_manager_1ae99a134b0b20400113727b1a4c33288d" prot="private" virt="non-virtual"><scope>Manager</scope><name>brasDroit</name></member>
+      <member refid="class_manager_1ac840af1484adeb57b7ebdf0a48767428" prot="private" virt="non-virtual"><scope>Manager</scope><name>brasDroit_servoPWM</name></member>
+      <member refid="class_manager_1a87571010f4933c65e5062b416200e111" prot="private" virt="non-virtual"><scope>Manager</scope><name>brasGauche</name></member>
+      <member refid="class_manager_1a5f3a08f1f143fc1603f8488be431d6f1" prot="private" virt="non-virtual"><scope>Manager</scope><name>brasGauche_servoPWM</name></member>
+      <member refid="class_manager_1a7e767940b547f7d4bfb0ab81be03a0de" prot="private" virt="non-virtual"><scope>Manager</scope><name>comController</name></member>
+      <member refid="class_manager_1a145c6a357d11093b3aa733c759bdfee4" prot="private" virt="non-virtual"><scope>Manager</scope><name>currentBytes</name></member>
+      <member refid="class_manager_1a3508d5767119027c1b40e020c091498b" prot="private" virt="non-virtual"><scope>Manager</scope><name>currentID</name></member>
+      <member refid="class_manager_1a0a0b9c2ab665a6a578ce80ee95b114ff" prot="private" virt="non-virtual"><scope>Manager</scope><name>currentMessage</name></member>
+      <member refid="class_manager_1a2c4c58b887d87eb62fcaab2a490a178c" prot="private" virt="non-virtual"><scope>Manager</scope><name>currentOrder</name></member>
+      <member refid="class_manager_1afaea69135b2f24154502161005615cbc" prot="private" virt="non-virtual"><scope>Manager</scope><name>listActuators</name></member>
+      <member refid="class_manager_1a063a10df590ee1f84bb7a6fc7d046998" prot="public" virt="non-virtual"><scope>Manager</scope><name>Manager</name></member>
+      <member refid="class_manager_1a5a38469afb0eaeafa9ef868d4b648807" prot="private" virt="non-virtual"><scope>Manager</scope><name>pav_Dir</name></member>
+      <member refid="class_manager_1a169ad3374a80d107ee1e50741a526d63" prot="private" virt="non-virtual"><scope>Manager</scope><name>pav_M0</name></member>
+      <member refid="class_manager_1a23e58dde0e45ce181b71aeb09c8f9864" prot="private" virt="non-virtual"><scope>Manager</scope><name>pav_M1</name></member>
+      <member refid="class_manager_1ac96ea9d2e4e544d4a0f9bde4325efb82" prot="private" virt="non-virtual"><scope>Manager</scope><name>pav_Sleep</name></member>
+      <member refid="class_manager_1a7401571f8ff014f61382482c7ecde40c" prot="private" virt="non-virtual"><scope>Manager</scope><name>pav_Step</name></member>
+      <member refid="class_manager_1a98a41ec4a7acbc63e85f6f2a8854b90c" prot="private" virt="non-virtual"><scope>Manager</scope><name>pavillon</name></member>
+      <member refid="class_manager_1a9c3315a21e3621d27510ab8695a97c02" prot="private" virt="non-virtual"><scope>Manager</scope><name>pinceArr</name></member>
+      <member refid="class_manager_1ae1693b96d9005cce2c64d5e923f064ba" prot="private" virt="non-virtual"><scope>Manager</scope><name>pinceArr_Dir</name></member>
+      <member refid="class_manager_1acc9f7ce50137f70ad2975bdde9676406" prot="private" virt="non-virtual"><scope>Manager</scope><name>pinceArr_servoPWM</name></member>
+      <member refid="class_manager_1a78c847013a5870894dec29083f0600c4" prot="private" virt="non-virtual"><scope>Manager</scope><name>pinceArr_Step</name></member>
+      <member refid="class_manager_1ab7c15e667c060fbb8a43ba036503220f" prot="private" virt="non-virtual"><scope>Manager</scope><name>pinceAvantDroite</name></member>
+      <member refid="class_manager_1ab75e0558ff2df3c129d91e6c6ad9eee8" prot="private" virt="non-virtual"><scope>Manager</scope><name>pinceAvantGauche</name></member>
+      <member refid="class_manager_1a671f0aa5460ebaca15dd68d2543db8ad" prot="private" virt="non-virtual"><scope>Manager</scope><name>pinceAvD_Dir</name></member>
+      <member refid="class_manager_1af7f8fc50755105f5a3a1c25e21ec3455" prot="private" virt="non-virtual"><scope>Manager</scope><name>pinceAvD_servoPWM</name></member>
+      <member refid="class_manager_1ae8381fd3fd2934fe07e3e5d5c4b8b284" prot="private" virt="non-virtual"><scope>Manager</scope><name>pinceAvD_Step</name></member>
+      <member refid="class_manager_1abeacf4030f973f6fe956b85e85a0d6dd" prot="private" virt="non-virtual"><scope>Manager</scope><name>pinceAvG_Dir</name></member>
+      <member refid="class_manager_1a05b2dffc0eee2b7e016c531e270b189f" prot="private" virt="non-virtual"><scope>Manager</scope><name>pinceAvG_servoPWM</name></member>
+      <member refid="class_manager_1ad4160f0c4397269d6cfed8feaa5d5fda" prot="private" virt="non-virtual"><scope>Manager</scope><name>pinceAvG_Step</name></member>
+      <member refid="class_manager_1a557f88c3b13dd839d4c5506b96f8a391" prot="private" virt="non-virtual"><scope>Manager</scope><name>pinces_Sleep</name></member>
+      <member refid="class_manager_1a8c53f546d9dba4f064e1c00aa9fd8879" prot="private" virt="non-virtual"><scope>Manager</scope><name>pincesArr_M0</name></member>
+      <member refid="class_manager_1a574cd80cfcb82982215f6775c7731890" prot="private" virt="non-virtual"><scope>Manager</scope><name>pincesArr_M1</name></member>
+      <member refid="class_manager_1ab9e44a0b498f38fd48dd7c89bd52251a" prot="private" virt="non-virtual"><scope>Manager</scope><name>pincesAv_M0</name></member>
+      <member refid="class_manager_1a4a622d56f2c38aea310ef73d50571f28" prot="private" virt="non-virtual"><scope>Manager</scope><name>pincesAv_M1</name></member>
+      <member refid="class_manager_1a5455d2168d3b39997f7b46f50f522afb" prot="private" virt="non-virtual"><scope>Manager</scope><name>serialDebug</name></member>
+      <member refid="class_manager_1a151953c44ccb959ebd1b2889b925f1b3" prot="public" virt="non-virtual"><scope>Manager</scope><name>Update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

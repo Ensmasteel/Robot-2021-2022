@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_7417b7fa033d8eb1625c2f946234cdc8" kind="dir">
+    <compoundname>D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/stm32f4</compoundname>
+    <innerfile refid="stm32f4_2_servo_8cpp">Servo.cpp</innerfile>
+    <innerfile refid="stm32f4_2_servo_timers_8h">ServoTimers.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/stm32f4/"/>
+  </compounddef>
+</doxygen>

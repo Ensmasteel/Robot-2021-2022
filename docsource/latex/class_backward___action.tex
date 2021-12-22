@@ -1,0 +1,73 @@
+\hypertarget{class_backward___action}{}\doxysection{Backward\+\_\+\+Action Class Reference}
+\label{class_backward___action}\index{Backward\_Action@{Backward\_Action}}
+
+
+{\ttfamily \#include $<$Actions.\+h$>$}
+
+Inheritance diagram for Backward\+\_\+\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_backward___action}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_backward___action_aaa9ba5bbbf676dfcbfe174c4dc827c3f}\label{class_backward___action_aaa9ba5bbbf676dfcbfe174c4dc827c3f}} 
+{\bfseries Backward\+\_\+\+Action} (float timeout, float dist, Move\+Profile\+Name profile\+Name, int16\+\_\+t require=NO\+\_\+\+REQUIREMENT)
+\item 
+void \mbox{\hyperlink{class_backward___action_a9592f176269cf3ad8877f349631ca1b4}{start}} ()
+\item 
+bool \mbox{\hyperlink{class_backward___action_a5d51dbcc69485283babaacbcefec1b21}{is\+Finished}} ()
+\item 
+bool \mbox{\hyperlink{class_backward___action_acd5d5be5f21f69a8b39af514145d95f8}{has\+Failed}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Same as forward\+\_\+action but doing it backward. \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_forward___action}{Forward\+\_\+\+Action}} for further informations. 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_backward___action_acd5d5be5f21f69a8b39af514145d95f8}\label{class_backward___action_acd5d5be5f21f69a8b39af514145d95f8}} 
+\index{Backward\_Action@{Backward\_Action}!hasFailed@{hasFailed}}
+\index{hasFailed@{hasFailed}!Backward\_Action@{Backward\_Action}}
+\doxysubsubsection{\texorpdfstring{hasFailed()}{hasFailed()}}
+{\footnotesize\ttfamily bool Backward\+\_\+\+Action\+::has\+Failed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Has\+Failed is called endlessly. Returns if the action failed and should be left aside. The sequence will remember the function failed (useful for requirement). By default, an action fails if it exceeds the time duration allowed by the timer. \begin{DoxyNote}{Note}
+A timeout set to -\/1 indicates the action has an unlimited time. 
+\end{DoxyNote}
+
+
+Reimplemented from \mbox{\hyperlink{class_move___action_ae52a50ebb8ef41c1436c4c209a430a09}{Move\+\_\+\+Action}}.
+
+\mbox{\Hypertarget{class_backward___action_a5d51dbcc69485283babaacbcefec1b21}\label{class_backward___action_a5d51dbcc69485283babaacbcefec1b21}} 
+\index{Backward\_Action@{Backward\_Action}!isFinished@{isFinished}}
+\index{isFinished@{isFinished}!Backward\_Action@{Backward\_Action}}
+\doxysubsubsection{\texorpdfstring{isFinished()}{isFinished()}}
+{\footnotesize\ttfamily bool Backward\+\_\+\+Action\+::is\+Finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Is\+Finished is called endlessly. Returns if the action is done. Can also be an update function. 
+
+Reimplemented from \mbox{\hyperlink{class_move___action_a6bdc7828e769bd5cd12fcb42b30807d0}{Move\+\_\+\+Action}}.
+
+\mbox{\Hypertarget{class_backward___action_a9592f176269cf3ad8877f349631ca1b4}\label{class_backward___action_a9592f176269cf3ad8877f349631ca1b4}} 
+\index{Backward\_Action@{Backward\_Action}!start@{start}}
+\index{start@{start}!Backward\_Action@{Backward\_Action}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Backward\+\_\+\+Action\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+The start function is called once at action\textquotesingle{}s beginning, if the action requirement did not fail. Else the fail is immediate. Is the action is interrupted by \mbox{\hyperlink{class_sequence_a77dcfee1093388c7b283c5ebcd0556fc}{Sequence\+::pause}}, start function will be re-\/called during resume. 
+
+Reimplemented from \mbox{\hyperlink{class_move___action_a67ba96921f67ba91f6d34f3245bc34c8}{Move\+\_\+\+Action}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+cpp\end{DoxyCompactItemize}

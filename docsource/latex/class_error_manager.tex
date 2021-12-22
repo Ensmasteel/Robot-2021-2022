@@ -1,0 +1,49 @@
+\hypertarget{class_error_manager}{}\doxysection{Error\+Manager Class Reference}
+\label{class_error_manager}\index{ErrorManager@{ErrorManager}}
+
+
+{\ttfamily \#include $<$Error\+Manager.\+h$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_error_manager_a7bed90237b637c43f383d4c3fd71baeb}\label{class_error_manager_a7bed90237b637c43f383d4c3fd71baeb}} 
+static void {\bfseries raise} (Error error)
+\begin{DoxyCompactList}\small\item\em Raise an error. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_error_manager_ad17fae74cf16c132478cd887d526065a}\label{class_error_manager_ad17fae74cf16c132478cd887d526065a}} 
+static void {\bfseries pop\+Oldest\+Error} ()
+\begin{DoxyCompactList}\small\item\em Delete the oldest error raised. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_error_manager_abdaf3d2c9a56ceb4d9c75095466ca2fd}\label{class_error_manager_abdaf3d2c9a56ceb4d9c75095466ca2fd}} 
+static Error {\bfseries peek\+Oldest\+Error} ()
+\begin{DoxyCompactList}\small\item\em Returns the oldest error raised( knowing that each iteration an error is archived). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_error_manager_a1d7ce8b7be01e27f98e2ee30bc972632}\label{class_error_manager_a1d7ce8b7be01e27f98e2ee30bc972632}} 
+static uint8\+\_\+t {\bfseries in\+Waiting} ()
+\begin{DoxyCompactList}\small\item\em Returns the number of error messages waiting in the sender box. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_error_manager_ab8d360ce5ae97dc3e08a4459d830ac27}{setup}} ()
+\item 
+static void \mbox{\hyperlink{class_error_manager_a89193f2b6a14442a194a62e7cf4dc472}{reset}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The error\+Manager class handles each error and log them. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_error_manager_a89193f2b6a14442a194a62e7cf4dc472}\label{class_error_manager_a89193f2b6a14442a194a62e7cf4dc472}} 
+\index{ErrorManager@{ErrorManager}!reset@{reset}}
+\index{reset@{reset}!ErrorManager@{ErrorManager}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Error\+Manager\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Reset every parameter to ensure no one is forgotten. To be called at the end of usage to reset all parameters for next usage. \mbox{\Hypertarget{class_error_manager_ab8d360ce5ae97dc3e08a4459d830ac27}\label{class_error_manager_ab8d360ce5ae97dc3e08a4459d830ac27}} 
+\index{ErrorManager@{ErrorManager}!setup@{setup}}
+\index{setup@{setup}!ErrorManager@{ErrorManager}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void Error\+Manager\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Set every parameters up for usage. To be primary used before any other function in this module. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Error\+Manager/Error\+Manager.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Error\+Manager/Error\+Manager.\+cpp\end{DoxyCompactItemize}

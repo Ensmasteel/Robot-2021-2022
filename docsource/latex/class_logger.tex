@@ -1,0 +1,98 @@
+\hypertarget{class_logger}{}\doxysection{Logger Class Reference}
+\label{class_logger}\index{Logger@{Logger}}
+
+
+{\ttfamily \#include $<$Logger.\+h$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_logger_afdad0b5c9123fb3a3e7c70b71a78216f}{debug}} (const String \&message)
+\item 
+static void \mbox{\hyperlink{class_logger_a2b76efaa0362d362a706bd511169e401}{debugln}} (const String \&message)
+\item 
+static void \mbox{\hyperlink{class_logger_a9a94fd1ce9c8008bfa9dcea344506c57}{infoln}} (const String \&message)
+\item 
+static void \mbox{\hyperlink{class_logger_ae363ca6abc4efcf0c8b89a4ea520a4a3}{to\+Telemetry}} (const String \&name, const String \&value)
+\item 
+static void \mbox{\hyperlink{class_logger_a28d9c8374090b32982cdab8ba3e032e9}{setup}} (Print $\ast$telemetry\+Port=\&Serial, Print $\ast$info\+Port=\&Serial, Print $\ast$debug\+Port=\&Serial, bool telemetry=true, bool info=true, bool \mbox{\hyperlink{class_logger_afdad0b5c9123fb3a3e7c70b71a78216f}{debug}}=false)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the \mbox{\hyperlink{class_logger}{Logger}} class that will enables you to write messages. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_logger_afdad0b5c9123fb3a3e7c70b71a78216f}\label{class_logger_afdad0b5c9123fb3a3e7c70b71a78216f}} 
+\index{Logger@{Logger}!debug@{debug}}
+\index{debug@{debug}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{debug()}{debug()}}
+{\footnotesize\ttfamily void Logger\+::debug (\begin{DoxyParamCaption}\item[{const String \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Print a message on debug\+Port. Works same as System.\+out.\+print in Java or std\+::cout\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}message in C++. 
+\begin{DoxyParams}{Parameters}
+{\em message} & \+: String containing the message you want to print. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_logger_a2b76efaa0362d362a706bd511169e401}\label{class_logger_a2b76efaa0362d362a706bd511169e401}} 
+\index{Logger@{Logger}!debugln@{debugln}}
+\index{debugln@{debugln}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{debugln()}{debugln()}}
+{\footnotesize\ttfamily void Logger\+::debugln (\begin{DoxyParamCaption}\item[{const String \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Same as debug, but add an End\+Line character. Works same as System.\+out.\+println in Java. 
+\begin{DoxyParams}{Parameters}
+{\em message} & \+: String, the message you want to print. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_logger_a9a94fd1ce9c8008bfa9dcea344506c57}\label{class_logger_a9a94fd1ce9c8008bfa9dcea344506c57}} 
+\index{Logger@{Logger}!infoln@{infoln}}
+\index{infoln@{infoln}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{infoln()}{infoln()}}
+{\footnotesize\ttfamily void Logger\+::infoln (\begin{DoxyParamCaption}\item[{const String \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Print an important message on info\+Port and End\+Line (mandatory). 
+\begin{DoxyParams}{Parameters}
+{\em message} & \+: String, The message you want to print on info\+Port. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_logger_a28d9c8374090b32982cdab8ba3e032e9}\label{class_logger_a28d9c8374090b32982cdab8ba3e032e9}} 
+\index{Logger@{Logger}!setup@{setup}}
+\index{setup@{setup}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void Logger\+::setup (\begin{DoxyParamCaption}\item[{Print $\ast$}]{telemetry\+Port = {\ttfamily \&Serial},  }\item[{Print $\ast$}]{info\+Port = {\ttfamily \&Serial},  }\item[{Print $\ast$}]{debug\+Port = {\ttfamily \&Serial},  }\item[{bool}]{telemetry = {\ttfamily true},  }\item[{bool}]{info = {\ttfamily true},  }\item[{bool}]{debug = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Set up all the necessary information to use the other functions. The port have to be initialized before being passed in argument of this function. Must be used before any other function in this module. 
+\begin{DoxyParams}{Parameters}
+{\em telemetry\+Port} & \+: The telemetry port. \\
+\hline
+{\em info\+Port} & \+: The info Port \\
+\hline
+{\em debug\+Port} & \+: The debug Port \\
+\hline
+{\em telemetry} & \+: bool, Telemetry enabled? Default is true. \\
+\hline
+{\em info} & \+: bool, info\+Port enabled? Default is true. \\
+\hline
+{\em debug} & \+: bool, debug\+Port enabled? Default is false. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_logger_ae363ca6abc4efcf0c8b89a4ea520a4a3}\label{class_logger_ae363ca6abc4efcf0c8b89a4ea520a4a3}} 
+\index{Logger@{Logger}!toTelemetry@{toTelemetry}}
+\index{toTelemetry@{toTelemetry}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{toTelemetry()}{toTelemetry()}}
+{\footnotesize\ttfamily void Logger\+::to\+Telemetry (\begin{DoxyParamCaption}\item[{const String \&}]{name,  }\item[{const String \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Send a named parameter to telemetry. 
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: String, the parameter\textquotesingle{}s name. \\
+\hline
+{\em value} & \+: String, the parameter\textquotesingle{}s value, converted as a String. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Libraries\+\_\+shared/\+Logger/Logger.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Libraries\+\_\+shared/\+Logger/Logger.\+cpp\end{DoxyCompactItemize}

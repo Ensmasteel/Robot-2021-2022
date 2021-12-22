@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_message_box" kind="class" language="C++" prot="public">
+    <compoundname>MessageBox</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_message_box_1af958b6aea35a962e5101476a3515a7c2" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool MessageBox::empty</definition>
+        <argsstring></argsstring>
+        <name>empty</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="106" column="10" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_message_box_1aa5b85763194fd353efd0a79134050411" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_message" kindref="compound">Message</ref></type>
+        <definition>Message MessageBox::box[MESSAGE_BOX_SIZE]</definition>
+        <argsstring>[MESSAGE_BOX_SIZE]</argsstring>
+        <name>box</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="109" column="13" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_message_box_1a2d9c5a2f7c3189429a50052f1e394dfa" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t MessageBox::iFirstEntry</definition>
+        <argsstring></argsstring>
+        <name>iFirstEntry</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="110" column="13" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_message_box_1a844c1325b54d4fb686143b4d05bbe12b" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t MessageBox::iNextEntry</definition>
+        <argsstring></argsstring>
+        <name>iNextEntry</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="111" column="13" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_message_box_1a3be3522e268e4a1d651e23484326ae87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_message" kindref="compound">Message</ref></type>
+        <definition>Message MessageBox::pull</definition>
+        <argsstring>()</argsstring>
+        <name>pull</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="102" column="13" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="114" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="class_message_box_1a6f37cafc321563c375a58e7d54fc7f3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_message" kindref="compound">Message</ref></type>
+        <definition>Message MessageBox::peek</definition>
+        <argsstring>()</argsstring>
+        <name>peek</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="103" column="13" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="132" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="class_message_box_1a136a61ebf384bb8e9e75f02c8cd9184c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MessageBox::push</definition>
+        <argsstring>(Message message)</argsstring>
+        <name>push</name>
+        <param>
+          <type><ref refid="struct_message" kindref="compound">Message</ref></type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="104" column="10" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="144" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="class_message_box_1af81422e2ef4a6ddad639612512df36b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int MessageBox::size</definition>
+        <argsstring>()</argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="105" column="9" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="158" bodyend="166"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="99" column="1" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="100" bodyend="112"/>
+    <listofallmembers>
+      <member refid="class_message_box_1aa5b85763194fd353efd0a79134050411" prot="private" virt="non-virtual"><scope>MessageBox</scope><name>box</name></member>
+      <member refid="class_message_box_1af958b6aea35a962e5101476a3515a7c2" prot="public" virt="non-virtual"><scope>MessageBox</scope><name>empty</name></member>
+      <member refid="class_message_box_1a2d9c5a2f7c3189429a50052f1e394dfa" prot="private" virt="non-virtual"><scope>MessageBox</scope><name>iFirstEntry</name></member>
+      <member refid="class_message_box_1a844c1325b54d4fb686143b4d05bbe12b" prot="private" virt="non-virtual"><scope>MessageBox</scope><name>iNextEntry</name></member>
+      <member refid="class_message_box_1a6f37cafc321563c375a58e7d54fc7f3c" prot="public" virt="non-virtual"><scope>MessageBox</scope><name>peek</name></member>
+      <member refid="class_message_box_1a3be3522e268e4a1d651e23484326ae87" prot="public" virt="non-virtual"><scope>MessageBox</scope><name>pull</name></member>
+      <member refid="class_message_box_1a136a61ebf384bb8e9e75f02c8cd9184c" prot="public" virt="non-virtual"><scope>MessageBox</scope><name>push</name></member>
+      <member refid="class_message_box_1af81422e2ef4a6ddad639612512df36b0" prot="public" virt="non-virtual"><scope>MessageBox</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

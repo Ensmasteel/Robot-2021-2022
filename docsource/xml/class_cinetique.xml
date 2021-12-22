@@ -1,0 +1,248 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_cinetique" kind="class" language="C++" prot="public">
+    <compoundname>Cinetique</compoundname>
+    <basecompoundref refid="class_vector_e" prot="public" virt="non-virtual">VectorE</basecompoundref>
+    <includes refid="_vector_8h" local="no">Vector.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_cinetique_1a7fbbeae0349326d9ba8c8677a775f0ab" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Cinetique::_v</definition>
+        <argsstring></argsstring>
+        <name>_v</name>
+        <briefdescription>
+<para>Speed value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" line="81" column="11" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cinetique_1a605427ec93a1ea4b2460d0f6307e1e31" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Cinetique::_w</definition>
+        <argsstring></argsstring>
+        <name>_w</name>
+        <briefdescription>
+<para>Rotation speed value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" line="82" column="11" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_cinetique_1adf5ef593311b41036cf0f81d24b6d0bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Cinetique::Cinetique</definition>
+        <argsstring>(float x=0.0, float y=0.0, float theta=0.0, float v=0.0, float w=0.0)</argsstring>
+        <name>Cinetique</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>theta</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>v</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>w</declname>
+          <defval>0.0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Public constructor of the kinetic vector class <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: float, X-axis coordinate </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: float, Y-axis coordinate </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>theta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: float, <ref refid="class_vector" kindref="compound">Vector</ref>&apos;s angle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: Speed value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>w</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: Rotation speed value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" line="91" column="5" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.cpp" bodystart="139" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cinetique_1a3d712c5f685be073b402cc33e1ab038c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Cinetique::print</definition>
+        <argsstring>(const String &amp;prefix=&quot;&quot;, bool info=false)</argsstring>
+        <name>print</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>prefix</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>info</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Prints kinetic vector values. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" line="92" column="10" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.cpp" bodystart="145" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cinetique_1a1aab1668c139a7040c4a0d83d85422c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Cinetique::toTelemetry</definition>
+        <argsstring>(const String &amp;prefix=&quot;&quot;)</argsstring>
+        <name>toTelemetry</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>prefix</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Send kinetic vector values to telemetry. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" line="93" column="10" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.cpp" bodystart="153" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cinetique_1a3aaa4453fad5ffc7b730db1c100a35b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Cinetique::operator==</definition>
+        <argsstring>(Cinetique const &amp;other)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type><ref refid="class_cinetique" kindref="compound">Cinetique</ref> const &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Redefines the == operator to work with kinetic vectors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" line="94" column="10" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.cpp" bodystart="162" bodyend="165"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Defines a kinetic vector class. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Cinetique</label>
+        <link refid="class_cinetique"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Vector</label>
+        <link refid="class_vector"/>
+      </node>
+      <node id="2">
+        <label>VectorE</label>
+        <link refid="class_vector_e"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Cinetique</label>
+        <link refid="class_cinetique"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Vector</label>
+        <link refid="class_vector"/>
+      </node>
+      <node id="2">
+        <label>VectorE</label>
+        <link refid="class_vector_e"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" line="78" column="1" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" bodystart="79" bodyend="95"/>
+    <listofallmembers>
+      <member refid="class_vector_e_1aa412679c17a54b3a1351b74dd15ff58d" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>_theta</name></member>
+      <member refid="class_cinetique_1a7fbbeae0349326d9ba8c8677a775f0ab" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>_v</name></member>
+      <member refid="class_cinetique_1a605427ec93a1ea4b2460d0f6307e1e31" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>_w</name></member>
+      <member refid="class_vector_1a57a10b08dd7ec25dbaceb6bc5e7ab16a" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>_x</name></member>
+      <member refid="class_vector_1acfd6a472304b3832fd37b4dbf3c90c9b" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>_y</name></member>
+      <member refid="class_vector_1ac83edd3ce21c2eea555a360f64cf0acc" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>angle</name></member>
+      <member refid="class_cinetique_1adf5ef593311b41036cf0f81d24b6d0bb" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>Cinetique</name></member>
+      <member refid="class_vector_1a44b5d0725bbfe4baa9e5485b50aede9a" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>distanceWith</name></member>
+      <member refid="class_vector_1a4d643a71ea7c87cb77ab7bdfb26b42ba" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>norm</name></member>
+      <member refid="class_vector_e_1add2733ccf3d8e7dc816ba952fa4120fb" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>normalizeTheta</name></member>
+      <member refid="class_vector_1a4bb01f8acdc32d677ddadf9d0896cc1c" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>operator%</name></member>
+      <member refid="class_vector_1a2cd6694ac4999ed6686d9d149de999ea" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>operator*</name></member>
+      <member refid="class_vector_1a8636c13924ae2a8f08a5c56c1bdee35d" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>operator+</name></member>
+      <member refid="class_vector_1aad6b7dcfd087005378aa64e506cf03d2" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>operator+=</name></member>
+      <member refid="class_vector_1a78273e8287626f263ca0cfb26a6f9770" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>operator-</name></member>
+      <member refid="class_cinetique_1a3aaa4453fad5ffc7b730db1c100a35b1" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>operator==</name></member>
+      <member refid="class_vector_e_1a52eeb7fe68286c810caef10e2b5467bc" prot="public" virt="non-virtual" ambiguityscope="VectorE::"><scope>Cinetique</scope><name>operator==</name></member>
+      <member refid="class_vector_1ae485d630cc9cbbfcec82f93ab4d5ee6c" prot="public" virt="non-virtual" ambiguityscope="Vector::"><scope>Cinetique</scope><name>operator==</name></member>
+      <member refid="class_cinetique_1a3d712c5f685be073b402cc33e1ab038c" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>print</name></member>
+      <member refid="class_vector_1a3879877fbfc3752e7ca1b64af6d557e6" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>rotate</name></member>
+      <member refid="class_cinetique_1a1aab1668c139a7040c4a0d83d85422c7" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>toTelemetry</name></member>
+      <member refid="class_vector_1a2bf51c822183b84dc44304cb1cf48fa3" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>Vector</name></member>
+      <member refid="class_vector_e_1a5b9897cfe6407e9504b9efdba349f51b" prot="public" virt="non-virtual"><scope>Cinetique</scope><name>VectorE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

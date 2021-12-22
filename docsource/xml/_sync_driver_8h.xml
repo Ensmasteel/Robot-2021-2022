@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_sync_driver_8h" kind="file" language="C++">
+    <compoundname>SyncDriver.h</compoundname>
+    <includes local="no">Arduino.h</includes>
+    <includes refid="_multi_driver_8h" local="yes">MultiDriver.h</includes>
+    <includedby refid="_sync_driver_8cpp" local="yes">Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/SyncDriver.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="4">
+        <label>BasicStepperDriver.h</label>
+        <link refid="_arduino___mega_2_lib_2_stepper_driver_2src_2_basic_stepper_driver_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MultiDriver.h</label>
+        <link refid="_multi_driver_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/SyncDriver.h</label>
+        <link refid="_sync_driver_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="class_sync_driver" prot="public">SyncDriver</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Synchronous<sp/>Multi-motor<sp/>group<sp/>driver</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>All<sp/>motors<sp/>reach<sp/>their<sp/>target<sp/>at<sp/>the<sp/>same<sp/>time.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)2017-2019<sp/>Laurentiu<sp/>Badea</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>This<sp/>file<sp/>may<sp/>be<sp/>redistributed<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>MIT<sp/>license.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>A<sp/>copy<sp/>of<sp/>this<sp/>license<sp/>has<sp/>been<sp/>included<sp/>with<sp/>this<sp/>distribution<sp/>in<sp/>the<sp/>file<sp/>LICENSE.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SYNC_DRIVER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SYNC_DRIVER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;MultiDriver.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>Synchronous<sp/>Multi-motor<sp/>group<sp/>driver<sp/>class.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>This<sp/>driver<sp/>sets<sp/>up<sp/>timing<sp/>so<sp/>all<sp/>motors<sp/>reach<sp/>their<sp/>target<sp/>at<sp/>the<sp/>same<sp/>time.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="class_sync_driver" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_sync_driver" kindref="compound">SyncDriver</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_multi_driver" kindref="compound">MultiDriver</ref><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>MultiDriver::MultiDriver;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>startMove(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>steps1,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>steps2,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>steps3=0)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>SYNC_DRIVER_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/SyncDriver.h"/>
+  </compounddef>
+</doxygen>

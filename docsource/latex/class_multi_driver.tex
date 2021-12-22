@@ -1,0 +1,98 @@
+\hypertarget{class_multi_driver}{}\doxysection{Multi\+Driver Class Reference}
+\label{class_multi_driver}\index{MultiDriver@{MultiDriver}}
+Inheritance diagram for Multi\+Driver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_multi_driver}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_multi_driver_a450e17b122453adc3954e700a5af3bbd}\label{class_multi_driver_a450e17b122453adc3954e700a5af3bbd}} 
+{\bfseries Multi\+Driver} (\mbox{\hyperlink{class_motor}{Motor}} \&motor1, \mbox{\hyperlink{class_motor}{Motor}} \&motor2)
+\item 
+\mbox{\Hypertarget{class_multi_driver_aac7a339a0d32dae6e871538c7f04bd42}\label{class_multi_driver_aac7a339a0d32dae6e871538c7f04bd42}} 
+{\bfseries Multi\+Driver} (\mbox{\hyperlink{class_motor}{Motor}} \&motor1, \mbox{\hyperlink{class_motor}{Motor}} \&motor2, \mbox{\hyperlink{class_motor}{Motor}} \&motor3)
+\item 
+\mbox{\Hypertarget{class_multi_driver_a83b802875f7ef58050fd29e8ef32711f}\label{class_multi_driver_a83b802875f7ef58050fd29e8ef32711f}} 
+unsigned short {\bfseries get\+Count} (void)
+\item 
+\mbox{\Hypertarget{class_multi_driver_aa1e10182ad14e6b6045f3114ba705e68}\label{class_multi_driver_aa1e10182ad14e6b6045f3114ba705e68}} 
+\mbox{\hyperlink{class_motor}{Motor}} \& {\bfseries get\+Motor} (short index)
+\item 
+\mbox{\Hypertarget{class_multi_driver_aaececae5a5428a35de94be11f4984360}\label{class_multi_driver_aaececae5a5428a35de94be11f4984360}} 
+void {\bfseries move} (long steps1, long steps2, long steps3=0)
+\item 
+\mbox{\Hypertarget{class_multi_driver_ad29a6356541fbfdb9148fb640a0ec124}\label{class_multi_driver_ad29a6356541fbfdb9148fb640a0ec124}} 
+void {\bfseries rotate} (int deg1, int deg2, int deg3=0)
+\item 
+\mbox{\Hypertarget{class_multi_driver_a3a1d7c2559789b41ff351684a6316d4e}\label{class_multi_driver_a3a1d7c2559789b41ff351684a6316d4e}} 
+void {\bfseries rotate} (long deg1, long deg2, long deg3=0)
+\item 
+\mbox{\Hypertarget{class_multi_driver_acc3bb0fdc7135b1781692376e442ae4b}\label{class_multi_driver_acc3bb0fdc7135b1781692376e442ae4b}} 
+void {\bfseries rotate} (double deg1, double deg2, double deg3=0)
+\item 
+\mbox{\Hypertarget{class_multi_driver_a20b791fe0f6c3ac2cfdef8230e01a839}\label{class_multi_driver_a20b791fe0f6c3ac2cfdef8230e01a839}} 
+virtual void {\bfseries start\+Move} (long steps1, long steps2, long steps3=0)
+\item 
+\mbox{\Hypertarget{class_multi_driver_ae8cbdd12640667e217e1cd7f343d8530}\label{class_multi_driver_ae8cbdd12640667e217e1cd7f343d8530}} 
+void {\bfseries start\+Rotate} (int deg1, int deg2, int deg3=0)
+\item 
+\mbox{\Hypertarget{class_multi_driver_abb88d42b9f75bb1e8149b74b3e3947f4}\label{class_multi_driver_abb88d42b9f75bb1e8149b74b3e3947f4}} 
+void {\bfseries start\+Rotate} (long deg1, long deg2, long deg3=0)
+\item 
+\mbox{\Hypertarget{class_multi_driver_a0c0c5fbba2b0f37904f9a7a5bd5af59d}\label{class_multi_driver_a0c0c5fbba2b0f37904f9a7a5bd5af59d}} 
+void {\bfseries start\+Rotate} (double deg1, double deg2, double deg3=0)
+\item 
+\mbox{\Hypertarget{class_multi_driver_ad0872f28c961357dedfa1c8f9f675481}\label{class_multi_driver_ad0872f28c961357dedfa1c8f9f675481}} 
+virtual long {\bfseries next\+Action} (void)
+\item 
+\mbox{\Hypertarget{class_multi_driver_a6b31172c181e5efbc9e06b218d714deb}\label{class_multi_driver_a6b31172c181e5efbc9e06b218d714deb}} 
+void {\bfseries start\+Brake} (void)
+\item 
+\mbox{\Hypertarget{class_multi_driver_af6da958f5c009e09d5f90106e6a78a37}\label{class_multi_driver_af6da958f5c009e09d5f90106e6a78a37}} 
+bool {\bfseries is\+Running} (void)
+\item 
+\mbox{\Hypertarget{class_multi_driver_a9088bcb65fedaccc39cc10b2e147ca72}\label{class_multi_driver_a9088bcb65fedaccc39cc10b2e147ca72}} 
+void {\bfseries set\+Microstep} (unsigned microsteps)
+\item 
+\mbox{\Hypertarget{class_multi_driver_a67bf825f49f6cdbe06c76df5633a7fe0}\label{class_multi_driver_a67bf825f49f6cdbe06c76df5633a7fe0}} 
+void {\bfseries enable} (void)
+\item 
+\mbox{\Hypertarget{class_multi_driver_aa8429ad6cae9022aadcc44004136d67f}\label{class_multi_driver_aa8429ad6cae9022aadcc44004136d67f}} 
+void {\bfseries disable} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_multi_driver_aef4bc265455f10d3a9c34be1aea9194c}\label{class_multi_driver_aef4bc265455f10d3a9c34be1aea9194c}} 
+{\bfseries Multi\+Driver} (const unsigned short count, \mbox{\hyperlink{class_motor}{Motor}} $\ast$const $\ast$motors)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_multi_driver_ae7904294d717bc90056ae94a4cb381a4}\label{class_multi_driver_ae7904294d717bc90056ae94a4cb381a4}} 
+unsigned short {\bfseries count}
+\item 
+\mbox{\Hypertarget{class_multi_driver_a4afde7f8d55ca042488dbc2fe0ffde6d}\label{class_multi_driver_a4afde7f8d55ca042488dbc2fe0ffde6d}} 
+\mbox{\hyperlink{class_motor}{Motor}} $\ast$const  $\ast$ {\bfseries motors}
+\item 
+\mbox{\Hypertarget{class_multi_driver_a58a1e551d51044de76830a9673713978}\label{class_multi_driver_a58a1e551d51044de76830a9673713978}} 
+bool {\bfseries ready} = true
+\item 
+\mbox{\Hypertarget{class_multi_driver_a211e394bc2521ae58283e33783f2a8bc}\label{class_multi_driver_a211e394bc2521ae58283e33783f2a8bc}} 
+unsigned long {\bfseries event\+\_\+timers} \mbox{[}MAX\+\_\+\+MOTORS\mbox{]}
+\item 
+\mbox{\Hypertarget{class_multi_driver_aebc584b700e7fee4f28a2dff88ce8fd8}\label{class_multi_driver_aebc584b700e7fee4f28a2dff88ce8fd8}} 
+unsigned long {\bfseries next\+\_\+action\+\_\+interval} = 0
+\item 
+\mbox{\Hypertarget{class_multi_driver_ae523c260e172204edd8f2b55c4f74042}\label{class_multi_driver_ae523c260e172204edd8f2b55c4f74042}} 
+unsigned long {\bfseries last\+\_\+action\+\_\+end} = 0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Arduino\+\_\+\+Mega/\+Lib/\+Stepper\+Driver/src/Multi\+Driver.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Arduino\+\_\+\+Mega/\+Lib/\+Stepper\+Driver/src/Multi\+Driver.\+cpp\end{DoxyCompactItemize}

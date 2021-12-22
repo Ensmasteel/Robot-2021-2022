@@ -1,0 +1,104 @@
+\hypertarget{class_trapezoidal___function}{}\doxysection{Trapezoidal\+\_\+\+Function Class Reference}
+\label{class_trapezoidal___function}\index{Trapezoidal\_Function@{Trapezoidal\_Function}}
+
+
+{\ttfamily \#include $<$Math\+\_\+functions.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_trapezoidal___function_af3762608d968e561ec93b24ff77f6491}\label{class_trapezoidal___function_af3762608d968e561ec93b24ff77f6491}} 
+{\bfseries Trapezoidal\+\_\+\+Function} (float up\+Ramp=1.\+0, float down\+Ramp=1.\+0, float max=0.\+0, float distance=0.\+0)
+\item 
+float \mbox{\hyperlink{class_trapezoidal___function_a1a31a3acb72a47d405b5491ba0c6105f}{set}} (float up\+Ramp, float down\+Ramp, float max, float distance)
+\item 
+void \mbox{\hyperlink{class_trapezoidal___function_a7d599b15e5658f914bdde13e68362c90}{set\+Zero}} ()
+\item 
+float \mbox{\hyperlink{class_trapezoidal___function_a9b07e3899a1f01dbbebafe58581cf9f8}{f}} (float x)
+\item 
+float \mbox{\hyperlink{class_trapezoidal___function_ad2990f1d19a20d3d5a37091193f0930d}{df}} (float x)
+\item 
+\mbox{\Hypertarget{class_trapezoidal___function_a30100bfe0148c636f9d995219313d26e}\label{class_trapezoidal___function_a30100bfe0148c636f9d995219313d26e}} 
+float {\bfseries get\+Duration} ()
+\item 
+\mbox{\Hypertarget{class_trapezoidal___function_afdf8768cbf8e4f5fbafd1ca9d495a463}\label{class_trapezoidal___function_afdf8768cbf8e4f5fbafd1ca9d495a463}} 
+bool {\bfseries is\+Triangle} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Creates a trapezoidal function to model speed ramps. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_trapezoidal___function_ad2990f1d19a20d3d5a37091193f0930d}\label{class_trapezoidal___function_ad2990f1d19a20d3d5a37091193f0930d}} 
+\index{Trapezoidal\_Function@{Trapezoidal\_Function}!df@{df}}
+\index{df@{df}!Trapezoidal\_Function@{Trapezoidal\_Function}}
+\doxysubsubsection{\texorpdfstring{df()}{df()}}
+{\footnotesize\ttfamily float Trapezoidal\+\_\+\+Function\+::df (\begin{DoxyParamCaption}\item[{float}]{x }\end{DoxyParamCaption})}
+
+Get the derivative value in x. \begin{DoxyWarning}{Warning}
+be aware of x € \mbox{[}0,duration\mbox{]} 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_trapezoidal___function_a9b07e3899a1f01dbbebafe58581cf9f8}\label{class_trapezoidal___function_a9b07e3899a1f01dbbebafe58581cf9f8}} 
+\index{Trapezoidal\_Function@{Trapezoidal\_Function}!f@{f}}
+\index{f@{f}!Trapezoidal\_Function@{Trapezoidal\_Function}}
+\doxysubsubsection{\texorpdfstring{f()}{f()}}
+{\footnotesize\ttfamily float Trapezoidal\+\_\+\+Function\+::f (\begin{DoxyParamCaption}\item[{float}]{x }\end{DoxyParamCaption})}
+
+Get value of the function in x \begin{DoxyWarning}{Warning}
+Be aware of x € \mbox{[}0, duration\mbox{]} 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_trapezoidal___function_a1a31a3acb72a47d405b5491ba0c6105f}\label{class_trapezoidal___function_a1a31a3acb72a47d405b5491ba0c6105f}} 
+\index{Trapezoidal\_Function@{Trapezoidal\_Function}!set@{set}}
+\index{set@{set}!Trapezoidal\_Function@{Trapezoidal\_Function}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily float Trapezoidal\+\_\+\+Function\+::set (\begin{DoxyParamCaption}\item[{float}]{up\+Ramp,  }\item[{float}]{down\+Ramp,  }\item[{float}]{max,  }\item[{float}]{distance }\end{DoxyParamCaption})}
+
+Creates a new function given acceleration, max speed and deceleration. If max speed is unreachable given ramps and distance, a triangle function is used instead. 
+\begin{DoxyParams}{Parameters}
+{\em up\+Ramp} & \+: derivative of the start function \\
+\hline
+{\em down\+Ramp} & \+: same as up\+Ramp but of the end function. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+always positive even if derivative is negative. 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em max} & \+: max speed. \\
+\hline
+{\em distance} & \+: integer of the function (name given in reference of speed function) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float, duration. This function is defined on \mbox{[}0,duration\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_trapezoidal___function_a7d599b15e5658f914bdde13e68362c90}\label{class_trapezoidal___function_a7d599b15e5658f914bdde13e68362c90}} 
+\index{Trapezoidal\_Function@{Trapezoidal\_Function}!setZero@{setZero}}
+\index{setZero@{setZero}!Trapezoidal\_Function@{Trapezoidal\_Function}}
+\doxysubsubsection{\texorpdfstring{setZero()}{setZero()}}
+{\footnotesize\ttfamily void Trapezoidal\+\_\+\+Function\+::set\+Zero (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Creates a new constant function always returning 0. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Math\+\_\+functions/Math\+\_\+functions.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Math\+\_\+functions/Math\+\_\+functions.\+cpp\end{DoxyCompactItemize}

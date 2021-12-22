@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Actuators documentation &mdash; Ensmasteel 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Useful coordinating library" href="coordinating_library.html" />
+    <link rel="prev" title="Welcome to Ensmasteel’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Ensmasteel
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Actuators documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#actuator">1.1. Actuator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#actuator-manager">1.2. Actuator_Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#steppermotorj">1.3. StepperMotorJ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coordinating_library.html">2. Useful coordinating library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Robot_computing_libraries.html">3. Robot computing and simulating libraries</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Ensmasteel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">1. </span>Actuators documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Actuator.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="actuators-documentation">
+<span id="actuators"></span><h1><span class="section-number">1. </span>Actuators documentation<a class="headerlink" href="#actuators-documentation" title="Permalink to this headline"></a></h1>
+<p>You may find below the informations about the Actuators library.
+All informations needed to handle Actuators, like classes and Actuator_Manager are presented.</p>
+<p>This library is specially uses for commanding actuators through the actuator electronic card.
+In the Ensmasteel bot, this card is usually an Arduino Mega.
+For further information, please see the “Electronics” section.</p>
+<p>The custom library “StepperMotorJ” is also presented. See <a class="reference internal" href="#steppermotorj"><span class="std std-ref">StepperMotorJ</span></a></p>
+<section id="actuator">
+<h2><span class="section-number">1.1. </span>Actuator<a class="headerlink" href="#actuator" title="Permalink to this headline"></a></h2>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv414Actuator_State">
+<span id="_CPPv314Actuator_State"></span><span id="_CPPv214Actuator_State"></span><span class="target" id="_actuators_8h_1acdf5c8a0885e2dc44b0016323f3f1bc9"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Actuator_State</span></span></span><a class="headerlink" href="#_CPPv414Actuator_State" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Enum class to give the different states of an <a class="reference internal" href="#class_actuator"><span class="std std-ref">Actuator</span></a>. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14Actuator_State7AttenteE">
+<span id="_CPPv3N14Actuator_State7AttenteE"></span><span id="_CPPv2N14Actuator_State7AttenteE"></span><span class="target" id="_actuators_8h_1acdf5c8a0885e2dc44b0016323f3f1bc9aa3bcfe6e2a4c647c0817d980f0bf1f1b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Attente</span></span></span><a class="headerlink" href="#_CPPv4N14Actuator_State7AttenteE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Waiting for an order. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14Actuator_State7NewMessE">
+<span id="_CPPv3N14Actuator_State7NewMessE"></span><span id="_CPPv2N14Actuator_State7NewMessE"></span><span class="target" id="_actuators_8h_1acdf5c8a0885e2dc44b0016323f3f1bc9acbd64bae61d20f913681ebdfdd8c842d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NewMess</span></span></span><a class="headerlink" href="#_CPPv4N14Actuator_State7NewMessE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>getting a new order </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14Actuator_State9MouvementE">
+<span id="_CPPv3N14Actuator_State9MouvementE"></span><span id="_CPPv2N14Actuator_State9MouvementE"></span><span class="target" id="_actuators_8h_1acdf5c8a0885e2dc44b0016323f3f1bc9a97e3e5896fa18483094ee59f03255972"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Mouvement</span></span></span><a class="headerlink" href="#_CPPv4N14Actuator_State9MouvementE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>During the movement. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14Actuator_State12MouvFinishedE">
+<span id="_CPPv3N14Actuator_State12MouvFinishedE"></span><span id="_CPPv2N14Actuator_State12MouvFinishedE"></span><span class="target" id="_actuators_8h_1acdf5c8a0885e2dc44b0016323f3f1bc9a9551112f579bc8d676fb19ee47924b2c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MouvFinished</span></span></span><a class="headerlink" href="#_CPPv4N14Actuator_State12MouvFinishedE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Just ending the action asked. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv48Actuator">
+<span id="_CPPv38Actuator"></span><span id="_CPPv28Actuator"></span><span id="Actuator"></span><span class="target" id="class_actuator"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Actuator</span></span></span><a class="headerlink" href="#_CPPv48Actuator" title="Permalink to this definition"></a><br /></dt>
+<dd><em>#include &lt;Actuators.h&gt;</em><p>Basic abstract class to define an actuator</p>
+<p>This class defines a basic class to represent an actuator. It should be decorated with the target actuator class. The constructor is public and embeddes a name and an ID wich is ‘Empty_M’ as default. </p>
+<p>Subclassed by <a class="reference internal" href="#class_bras"><span class="std std-ref">Bras</span></a>, <a class="reference internal" href="#class_pavillon"><span class="std std-ref">Pavillon</span></a>, <a class="reference internal" href="#class_pince"><span class="std std-ref">Pince</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8Actuator8ActuatorE6String9MessageID">
+<span id="_CPPv3N8Actuator8ActuatorE6String9MessageID"></span><span id="_CPPv2N8Actuator8ActuatorE6String9MessageID"></span><span id="Actuator::Actuator__String.MessageID"></span><span class="target" id="class_actuator_1a813e211d860d125a45d713775c19d38b"></span><span class="sig-name descname"><span class="n"><span class="pre">Actuator</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;Actuator&quot;</span></span>, <a class="reference internal" href="coordinating_library.html#_CPPv49MessageID" title="MessageID"><span class="n"><span class="pre">MessageID</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">messID</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="coordinating_library.html#_CPPv49MessageID" title="MessageID"><span class="n"><span class="pre">MessageID</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="coordinating_library.html#_CPPv4N9MessageID7Empty_ME" title="MessageID::Empty_M"><span class="n"><span class="pre">Empty_M</span></span></a><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8Actuator8ActuatorE6String9MessageID" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Basic public constructor for <a class="reference internal" href="#class_actuator"><span class="std std-ref">Actuator</span></a> class </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – : the actuator name </p></li>
+<li><p><strong>messID</strong> – : The Id of the message embedded. Default is ‘Empty_M’ </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#class_actuator"><span class="std std-ref">Actuator</span></a> : An instance of <a class="reference internal" href="#class_actuator"><span class="std std-ref">Actuator</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8Actuator6UpdateEv">
+<span id="_CPPv3N8Actuator6UpdateEv"></span><span id="_CPPv2N8Actuator6UpdateEv"></span><span id="Actuator::Update"></span><span class="target" id="class_actuator_1abcd50fd00e60c114afde31648403e780"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414Actuator_State" title="Actuator_State"><span class="n"><span class="pre">Actuator_State</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Update</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8Actuator6UpdateEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Virtual method, to call before each loop.</p>
+<p>Commands each actuator and updates the robot state. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8Actuator8NewOrderE14Actuator_Order">
+<span id="_CPPv3N8Actuator8NewOrderE14Actuator_Order"></span><span id="_CPPv2N8Actuator8NewOrderE14Actuator_Order"></span><span id="Actuator::NewOrder__Actuator_Order"></span><span class="target" id="class_actuator_1a0834ccb419fcc7340391b9ef5a564343"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NewOrder</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="coordinating_library.html#_CPPv414Actuator_Order" title="Actuator_Order"><span class="n"><span class="pre">Actuator_Order</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">order</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8Actuator8NewOrderE14Actuator_Order" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Getter of a new order. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>order</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8Actuator14OrderCompletedEv">
+<span id="_CPPv3N8Actuator14OrderCompletedEv"></span><span id="_CPPv2N8Actuator14OrderCompletedEv"></span><span id="Actuator::OrderCompleted"></span><span class="target" id="class_actuator_1a6f2502f7dfe2f59d7f58f6053c8574c6"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="coordinating_library.html#_CPPv47Message" title="Message"><span class="n"><span class="pre">Message</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OrderCompleted</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8Actuator14OrderCompletedEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Generates the validating message from the action dedicated to the order sender. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the validation message </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8Actuator7GetNameEv">
+<span id="_CPPv3N8Actuator7GetNameEv"></span><span id="_CPPv2N8Actuator7GetNameEv"></span><span id="Actuator::GetName"></span><span class="target" id="class_actuator_1a466fe2e29b99bf66f08116ff8ba46acb"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetName</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8Actuator7GetNameEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the actuator name </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>name : the actuator name </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8Actuator7GetEtatEv">
+<span id="_CPPv3N8Actuator7GetEtatEv"></span><span id="_CPPv2N8Actuator7GetEtatEv"></span><span id="Actuator::GetEtat"></span><span class="target" id="class_actuator_1aff3a744eecf74c4b52a8a6b30ca0eb88"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414Actuator_State" title="Actuator_State"><span class="n"><span class="pre">Actuator_State</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetEtat</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8Actuator7GetEtatEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the actuator state </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>state : the current state </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8Actuator8GetOrderEv">
+<span id="_CPPv3N8Actuator8GetOrderEv"></span><span id="_CPPv2N8Actuator8GetOrderEv"></span><span id="Actuator::GetOrder"></span><span class="target" id="class_actuator_1a0819fc5a7749335bf3b5caa8f524ef87"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="coordinating_library.html#_CPPv414Actuator_Order" title="Actuator_Order"><span class="n"><span class="pre">Actuator_Order</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetOrder</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8Actuator8GetOrderEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the current order the actuator has. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>current Order : the current order. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8Actuator5GetIDEv">
+<span id="_CPPv3N8Actuator5GetIDEv"></span><span id="_CPPv2N8Actuator5GetIDEv"></span><span id="Actuator::GetID"></span><span class="target" id="class_actuator_1ae5c55e58f214e70c0cf16e9e81111063"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="coordinating_library.html#_CPPv49MessageID" title="MessageID"><span class="n"><span class="pre">MessageID</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetID</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8Actuator5GetIDEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns the message ID of the current message actually in the actuator. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>messID </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-attributes">Protected Attributes</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8Actuator4nameE">
+<span id="_CPPv3N8Actuator4nameE"></span><span id="_CPPv2N8Actuator4nameE"></span><span id="Actuator::name__String"></span><span class="target" id="class_actuator_1a20f429b3963d3402b4788774b434ba87"></span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">name</span></span></span><a class="headerlink" href="#_CPPv4N8Actuator4nameE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8Actuator4etatE">
+<span id="_CPPv3N8Actuator4etatE"></span><span id="_CPPv2N8Actuator4etatE"></span><span id="Actuator::etat__Actuator_State"></span><span class="target" id="class_actuator_1a40a6e3266cfb00a66b104317c4d68a31"></span><a class="reference internal" href="#_CPPv414Actuator_State" title="Actuator_State"><span class="n"><span class="pre">Actuator_State</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">etat</span></span></span><a class="headerlink" href="#_CPPv4N8Actuator4etatE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8Actuator12currentOrderE">
+<span id="_CPPv3N8Actuator12currentOrderE"></span><span id="_CPPv2N8Actuator12currentOrderE"></span><span id="Actuator::currentOrder__Actuator_Order"></span><span class="target" id="class_actuator_1a40d4d6ecd707964f3a9a30fc02384e29"></span><a class="reference internal" href="coordinating_library.html#_CPPv414Actuator_Order" title="Actuator_Order"><span class="n"><span class="pre">Actuator_Order</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currentOrder</span></span></span><a class="headerlink" href="#_CPPv4N8Actuator12currentOrderE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8Actuator6messIDE">
+<span id="_CPPv3N8Actuator6messIDE"></span><span id="_CPPv2N8Actuator6messIDE"></span><span id="Actuator::messID__MessageID"></span><span class="target" id="class_actuator_1ab8ff5826f0a87b53d119c752d25af88a"></span><a class="reference internal" href="coordinating_library.html#_CPPv49MessageID" title="MessageID"><span class="n"><span class="pre">MessageID</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">messID</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="coordinating_library.html#_CPPv49MessageID" title="MessageID"><span class="n"><span class="pre">MessageID</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="coordinating_library.html#_CPPv4N9MessageID7Empty_ME" title="MessageID::Empty_M"><span class="n"><span class="pre">Empty_M</span></span></a><a class="headerlink" href="#_CPPv4N8Actuator6messIDE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv48Pavillon">
+<span id="_CPPv38Pavillon"></span><span id="_CPPv28Pavillon"></span><span id="Pavillon"></span><span class="target" id="class_pavillon"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pavillon</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv48Actuator" title="Actuator"><span class="n"><span class="pre">Actuator</span></span></a><a class="headerlink" href="#_CPPv48Pavillon" title="Permalink to this definition"></a><br /></dt>
+<dd><em>#include &lt;Actuators.h&gt;</em><p>Public class extending the actuator abstract class.</p>
+<p>Used to define the ‘<a class="reference internal" href="#class_pavillon"><span class="std std-ref">Pavillon</span></a>’ actuator. Deprecated for the 2022 edition. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8Pavillon8PavillonEv">
+<span id="_CPPv3N8Pavillon8PavillonEv"></span><span id="_CPPv2N8Pavillon8PavillonEv"></span><span id="Pavillon::Pavillon"></span><span class="target" id="class_pavillon_1a5c789899efc7b221ce6b90ebd0a1cff7"></span><span class="sig-name descname"><span class="n"><span class="pre">Pavillon</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8Pavillon8PavillonEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Public constructor of the <a class="reference internal" href="#class_pavillon"><span class="std std-ref">Pavillon</span></a> class. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8Pavillon4InitE7uint8_t7uint8_t7uint8_t7uint8_t7uint8_t">
+<span id="_CPPv3N8Pavillon4InitE7uint8_t7uint8_t7uint8_t7uint8_t7uint8_t"></span><span id="_CPPv2N8Pavillon4InitE7uint8_t7uint8_t7uint8_t7uint8_t7uint8_t"></span><span id="Pavillon::Init__uint8_t.uint8_t.uint8_t.uint8_t.uint8_t"></span><span class="target" id="class_pavillon_1a7eadaa8f4f4d05c98dad48f632d2138c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinDir</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinStep</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinSleep</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinM0</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinM1</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8Pavillon4InitE7uint8_t7uint8_t7uint8_t7uint8_t7uint8_t" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8Pavillon6UpdateEv">
+<span id="_CPPv3N8Pavillon6UpdateEv"></span><span id="_CPPv2N8Pavillon6UpdateEv"></span><span id="Pavillon::Update"></span><span class="target" id="class_pavillon_1a34608a3ff17a2c9eb4d15ddcd58a9f55"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414Actuator_State" title="Actuator_State"><span class="n"><span class="pre">Actuator_State</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Update</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N8Pavillon6UpdateEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Virtual method, to call before each loop.</p>
+<p>Commands each actuator and updates the robot state. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8Pavillon10motorStepsE">
+<span id="_CPPv3N8Pavillon10motorStepsE"></span><span id="_CPPv2N8Pavillon10motorStepsE"></span><span id="Pavillon::motorSteps__uint8_t"></span><span class="target" id="class_pavillon_1afc2eb7ba92996bcda8a9cada56482888"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">motorSteps</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">200</span></span><a class="headerlink" href="#_CPPv4N8Pavillon10motorStepsE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8Pavillon10actionStepE">
+<span id="_CPPv3N8Pavillon10actionStepE"></span><span id="_CPPv2N8Pavillon10actionStepE"></span><span id="Pavillon::actionStep__l"></span><span class="target" id="class_pavillon_1a35da96e2b90f860c02777ce1b74d7450"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">actionStep</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2000</span></span><a class="headerlink" href="#_CPPv4N8Pavillon10actionStepE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8Pavillon6pinDirE">
+<span id="_CPPv3N8Pavillon6pinDirE"></span><span id="_CPPv2N8Pavillon6pinDirE"></span><span id="Pavillon::pinDir__uint8_t"></span><span class="target" id="class_pavillon_1ae020ba541de8bb1c36461fa98789e05f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinDir</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">35</span></span><a class="headerlink" href="#_CPPv4N8Pavillon6pinDirE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8Pavillon7pinStepE">
+<span id="_CPPv3N8Pavillon7pinStepE"></span><span id="_CPPv2N8Pavillon7pinStepE"></span><span id="Pavillon::pinStep__uint8_t"></span><span class="target" id="class_pavillon_1acb4df777bb8e3433fc838ecbf8653054"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinStep</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">34</span></span><a class="headerlink" href="#_CPPv4N8Pavillon7pinStepE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8Pavillon8pinSleepE">
+<span id="_CPPv3N8Pavillon8pinSleepE"></span><span id="_CPPv2N8Pavillon8pinSleepE"></span><span id="Pavillon::pinSleep__uint8_t"></span><span class="target" id="class_pavillon_1a06bb69bc87a64953b858a0bd8d9fab23"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinSleep</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">22</span></span><a class="headerlink" href="#_CPPv4N8Pavillon8pinSleepE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8Pavillon5pinM0E">
+<span id="_CPPv3N8Pavillon5pinM0E"></span><span id="_CPPv2N8Pavillon5pinM0E"></span><span id="Pavillon::pinM0__uint8_t"></span><span class="target" id="class_pavillon_1ab3af7b78aa78c05fb1978d22524ce6e5"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinM0</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">37</span></span><a class="headerlink" href="#_CPPv4N8Pavillon5pinM0E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8Pavillon5pinM1E">
+<span id="_CPPv3N8Pavillon5pinM1E"></span><span id="_CPPv2N8Pavillon5pinM1E"></span><span id="Pavillon::pinM1__uint8_t"></span><span class="target" id="class_pavillon_1a9fc912ed7c6a21252d35883283604cf6"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinM1</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">36</span></span><a class="headerlink" href="#_CPPv4N8Pavillon5pinM1E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8Pavillon12stepperMotorE">
+<span id="_CPPv3N8Pavillon12stepperMotorE"></span><span id="_CPPv2N8Pavillon12stepperMotorE"></span><span id="Pavillon::stepperMotor__StepperMotorJP"></span><span class="target" id="class_pavillon_1a7763a36582b21c744cb914c00bd5e7db"></span><a class="reference internal" href="#_CPPv413StepperMotorJ" title="StepperMotorJ"><span class="n"><span class="pre">StepperMotorJ</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">stepperMotor</span></span></span><a class="headerlink" href="#_CPPv4N8Pavillon12stepperMotorE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv44Bras">
+<span id="_CPPv34Bras"></span><span id="_CPPv24Bras"></span><span id="Bras"></span><span class="target" id="class_bras"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Bras</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv48Actuator" title="Actuator"><span class="n"><span class="pre">Actuator</span></span></a><a class="headerlink" href="#_CPPv44Bras" title="Permalink to this definition"></a><br /></dt>
+<dd><em>#include &lt;Actuators.h&gt;</em><p>Public class that extends the abstract actuator class.</p>
+<p>Enables you to create a class containting the information to control a robot arm equipped with a servomotor and 2 positions : the initial pos and the deployed position. Both are given in degrees. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4Bras4BrasEv">
+<span id="_CPPv3N4Bras4BrasEv"></span><span id="_CPPv2N4Bras4BrasEv"></span><span id="Bras::Bras"></span><span class="target" id="class_bras_1a7fe274afc6082a4ac295b8fcaf7f5b45"></span><span class="sig-name descname"><span class="n"><span class="pre">Bras</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4Bras4BrasEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Public basic constructor. Does not require any parameters. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4Bras4InitE7uint8_t9MessageIDii">
+<span id="_CPPv3N4Bras4InitE7uint8_t9MessageIDii"></span><span id="_CPPv2N4Bras4InitE7uint8_t9MessageIDii"></span><span id="Bras::Init__uint8_t.MessageID.i.i"></span><span class="target" id="class_bras_1af984b9621fde5644bdee51ec3bcb3c38"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinServo</span></span>, <a class="reference internal" href="coordinating_library.html#_CPPv49MessageID" title="MessageID"><span class="n"><span class="pre">MessageID</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">ID</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">posRentre</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">posSortie</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">100</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4Bras4InitE7uint8_t9MessageIDii" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initialises the robot arm with some parameters.</p>
+<p>Enables you to give the initial parameters to the arm previously instantiated. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pinServo</strong> – : the pin number on wich the servomotor is connected. </p></li>
+<li><p><strong>ID</strong> – : The message ID of the default state of the arm </p></li>
+<li><p><strong>posRentre</strong> – The angle given in degree of the initial position. </p></li>
+<li><p><strong>posSortie</strong> – The angle given in degree of the final position. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4Bras6UpdateEv">
+<span id="_CPPv3N4Bras6UpdateEv"></span><span id="_CPPv2N4Bras6UpdateEv"></span><span id="Bras::Update"></span><span class="target" id="class_bras_1a3e97c50a972a0e32bd8a807871c220fb"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414Actuator_State" title="Actuator_State"><span class="n"><span class="pre">Actuator_State</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Update</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N4Bras6UpdateEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Virtual method, to call before each loop.</p>
+<p>Commands each actuator and updates the robot state. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N4Bras9posRentreE">
+<span id="_CPPv3N4Bras9posRentreE"></span><span id="_CPPv2N4Bras9posRentreE"></span><span id="Bras::posRentre__i"></span><span class="target" id="class_bras_1a4615079f90c123d0f25aa0cb071e8b2a"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">posRentre</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N4Bras9posRentreE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N4Bras9posSortieE">
+<span id="_CPPv3N4Bras9posSortieE"></span><span id="_CPPv2N4Bras9posSortieE"></span><span id="Bras::posSortie__i"></span><span class="target" id="class_bras_1a169cac057a2962a6f94d8f46e3236f37"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">posSortie</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">100</span></span><a class="headerlink" href="#_CPPv4N4Bras9posSortieE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N4Bras8pinServoE">
+<span id="_CPPv3N4Bras8pinServoE"></span><span id="_CPPv2N4Bras8pinServoE"></span><span id="Bras::pinServo__uint8_t"></span><span class="target" id="class_bras_1a8ba8ad4415e4a02966e5a455a37a4188"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinServo</span></span></span><a class="headerlink" href="#_CPPv4N4Bras8pinServoE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N4Bras5servoE">
+<span id="_CPPv3N4Bras5servoE"></span><span id="_CPPv2N4Bras5servoE"></span><span id="Bras::servo__Servo"></span><span class="target" id="class_bras_1afd236b243f542ec56d5fb274d190299e"></span><span class="n"><span class="pre">Servo</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">servo</span></span></span><a class="headerlink" href="#_CPPv4N4Bras5servoE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv45Pince">
+<span id="_CPPv35Pince"></span><span id="_CPPv25Pince"></span><span id="Pince"></span><span class="target" id="class_pince"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pince</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv48Actuator" title="Actuator"><span class="n"><span class="pre">Actuator</span></span></a><a class="headerlink" href="#_CPPv45Pince" title="Permalink to this definition"></a><br /></dt>
+<dd><em>#include &lt;Actuators.h&gt;</em><p>The public class to construct a robot gripper. Extends the abstract class <a class="reference internal" href="#class_actuator"><span class="std std-ref">Actuator</span></a>.</p>
+<p>This class is deprecated in the 2022 edition. </p>
+<p>Subclassed by <a class="reference internal" href="#class_pince_arriere"><span class="std std-ref">PinceArriere</span></a>, <a class="reference internal" href="#class_pince_avant"><span class="std std-ref">PinceAvant</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince5PinceEv">
+<span id="_CPPv3N5Pince5PinceEv"></span><span id="_CPPv2N5Pince5PinceEv"></span><span id="Pince::Pince"></span><span class="target" id="class_pince_1a631a01a2192fe014b2bcb54706e04b57"></span><span class="sig-name descname"><span class="n"><span class="pre">Pince</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Pince5PinceEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Basic public constructor with no params. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince4InitE7uint8_t7uint8_t7uint8_t7uint8_t7uint8_t7uint8_t9MessageIDiii">
+<span id="_CPPv3N5Pince4InitE7uint8_t7uint8_t7uint8_t7uint8_t7uint8_t7uint8_t9MessageIDiii"></span><span id="_CPPv2N5Pince4InitE7uint8_t7uint8_t7uint8_t7uint8_t7uint8_t7uint8_t9MessageIDiii"></span><span id="Pince::Init__uint8_t.uint8_t.uint8_t.uint8_t.uint8_t.uint8_t.MessageID.i.i.i"></span><span class="target" id="class_pince_1a1db2a77e3139df907791d02bb34566ab"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinServo</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinDir</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinStep</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinSleep</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinM0</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinM1</span></span>, <a class="reference internal" href="coordinating_library.html#_CPPv49MessageID" title="MessageID"><span class="n"><span class="pre">MessageID</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">ID</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ferme</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">70</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ouvert</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">100</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">actionStep</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">400</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5Pince4InitE7uint8_t7uint8_t7uint8_t7uint8_t7uint8_t7uint8_t9MessageIDiii" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializing function. Enables you to give the primary parameters to the pince. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pinServo</strong> – : the pin number on wich the gripper is connected. </p></li>
+<li><p><strong>pinDir</strong> – : the pin number on wich the direction is given to the stepperMotor. </p></li>
+<li><p><strong>pinStep</strong> – : the pin number giving the step information to the stepperMotor </p></li>
+<li><p><strong>pinSleep</strong> – : the pin number giving the sleep information to the stepperMotor </p></li>
+<li><p><strong>pinM0</strong> – : the pin number of the first motor of the stepperMotor. </p></li>
+<li><p><strong>pinM1</strong> – : the second pin number of the stepperMotor. </p></li>
+<li><p><strong>ID</strong> – : Default message ID of the stepperMotor </p></li>
+<li><p><strong>ferme</strong> – : The initial position given in degrees. </p></li>
+<li><p><strong>ouvert</strong> – : The final position given in degrees. </p></li>
+<li><p><strong>actionStep</strong> – : The step of the stepperMotor. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince6UpdateEv">
+<span id="_CPPv3N5Pince6UpdateEv"></span><span id="_CPPv2N5Pince6UpdateEv"></span><span id="Pince::Update"></span><span class="target" id="class_pince_1a276034390a36625be28299c0db1c3c54"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414Actuator_State" title="Actuator_State"><span class="n"><span class="pre">Actuator_State</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Update</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N5Pince6UpdateEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Virtual method, to call before each loop.</p>
+<p>Commands each actuator and updates the robot state. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-attributes">Protected Attributes</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince5servoE">
+<span id="_CPPv3N5Pince5servoE"></span><span id="_CPPv2N5Pince5servoE"></span><span id="Pince::servo__Servo"></span><span class="target" id="class_pince_1ade569d63ec4b82dd24cb12afb77197e2"></span><span class="n"><span class="pre">Servo</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">servo</span></span></span><a class="headerlink" href="#_CPPv4N5Pince5servoE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince12stepperMotorE">
+<span id="_CPPv3N5Pince12stepperMotorE"></span><span id="_CPPv2N5Pince12stepperMotorE"></span><span id="Pince::stepperMotor__StepperMotorJP"></span><span class="target" id="class_pince_1a2f028a8d492d579c8c2753203a6ce325"></span><a class="reference internal" href="#_CPPv413StepperMotorJ" title="StepperMotorJ"><span class="n"><span class="pre">StepperMotorJ</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">stepperMotor</span></span></span><a class="headerlink" href="#_CPPv4N5Pince12stepperMotorE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince8pinServoE">
+<span id="_CPPv3N5Pince8pinServoE"></span><span id="_CPPv2N5Pince8pinServoE"></span><span id="Pince::pinServo__uint8_t"></span><span class="target" id="class_pince_1a520a09e99aa93c6007a200a818fb15fa"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinServo</span></span></span><a class="headerlink" href="#_CPPv4N5Pince8pinServoE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince6pinDirE">
+<span id="_CPPv3N5Pince6pinDirE"></span><span id="_CPPv2N5Pince6pinDirE"></span><span id="Pince::pinDir__uint8_t"></span><span class="target" id="class_pince_1a03ae3ce45c584ee4babf6b84841bf518"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinDir</span></span></span><a class="headerlink" href="#_CPPv4N5Pince6pinDirE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince7pinStepE">
+<span id="_CPPv3N5Pince7pinStepE"></span><span id="_CPPv2N5Pince7pinStepE"></span><span id="Pince::pinStep__uint8_t"></span><span class="target" id="class_pince_1a0af82a7a90d6fdcb0839dfc654694ac1"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinStep</span></span></span><a class="headerlink" href="#_CPPv4N5Pince7pinStepE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince8pinSleepE">
+<span id="_CPPv3N5Pince8pinSleepE"></span><span id="_CPPv2N5Pince8pinSleepE"></span><span id="Pince::pinSleep__uint8_t"></span><span class="target" id="class_pince_1abd8aebec9b2f705c658a778183b90042"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinSleep</span></span></span><a class="headerlink" href="#_CPPv4N5Pince8pinSleepE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince5pinM0E">
+<span id="_CPPv3N5Pince5pinM0E"></span><span id="_CPPv2N5Pince5pinM0E"></span><span id="Pince::pinM0__uint8_t"></span><span class="target" id="class_pince_1ac449f0f6dff79be627d82644ac252a56"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinM0</span></span></span><a class="headerlink" href="#_CPPv4N5Pince5pinM0E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince5pinM1E">
+<span id="_CPPv3N5Pince5pinM1E"></span><span id="_CPPv2N5Pince5pinM1E"></span><span id="Pince::pinM1__uint8_t"></span><span class="target" id="class_pince_1ab49408bd0827582f15ce724666185101"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinM1</span></span></span><a class="headerlink" href="#_CPPv4N5Pince5pinM1E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince10motorStepsE">
+<span id="_CPPv3N5Pince10motorStepsE"></span><span id="_CPPv2N5Pince10motorStepsE"></span><span id="Pince::motorSteps__uint8_t"></span><span class="target" id="class_pince_1a8e0b222ff1a89e6b0335d21639018ccb"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">motorSteps</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">200</span></span><a class="headerlink" href="#_CPPv4N5Pince10motorStepsE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince10actionStepE">
+<span id="_CPPv3N5Pince10actionStepE"></span><span id="_CPPv2N5Pince10actionStepE"></span><span id="Pince::actionStep__l"></span><span class="target" id="class_pince_1a7725882b2fc328820cebabc00e7cd2b9"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">actionStep</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">400</span></span><a class="headerlink" href="#_CPPv4N5Pince10actionStepE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince9posFermeeE">
+<span id="_CPPv3N5Pince9posFermeeE"></span><span id="_CPPv2N5Pince9posFermeeE"></span><span id="Pince::posFermee__i"></span><span class="target" id="class_pince_1aef415b97e8489b599ba2ad61a87a1e11"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">posFermee</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">70</span></span><a class="headerlink" href="#_CPPv4N5Pince9posFermeeE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince10posOuverteE">
+<span id="_CPPv3N5Pince10posOuverteE"></span><span id="_CPPv2N5Pince10posOuverteE"></span><span id="Pince::posOuverte__i"></span><span class="target" id="class_pince_1a729fefaa34fbc0bccbaf39f93efbdb10"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">posOuverte</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">100</span></span><a class="headerlink" href="#_CPPv4N5Pince10posOuverteE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5Pince13standardDelayE">
+<span id="_CPPv3N5Pince13standardDelayE"></span><span id="_CPPv2N5Pince13standardDelayE"></span><span id="Pince::standardDelay__i"></span><span class="target" id="class_pince_1a5834c386f0296e73e39c75ea9af84414"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">standardDelay</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2000</span></span><a class="headerlink" href="#_CPPv4N5Pince13standardDelayE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv410PinceAvant">
+<span id="_CPPv310PinceAvant"></span><span id="_CPPv210PinceAvant"></span><span id="PinceAvant"></span><span class="target" id="class_pince_avant"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PinceAvant</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv45Pince" title="Pince"><span class="n"><span class="pre">Pince</span></span></a><a class="headerlink" href="#_CPPv410PinceAvant" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N10PinceAvant6UpdateEv">
+<span id="_CPPv3N10PinceAvant6UpdateEv"></span><span id="_CPPv2N10PinceAvant6UpdateEv"></span><span id="PinceAvant::Update"></span><span class="target" id="class_pince_avant_1a29a479ea81391943af4a02f62fcdbbb2"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414Actuator_State" title="Actuator_State"><span class="n"><span class="pre">Actuator_State</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Update</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N10PinceAvant6UpdateEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Virtual method, to call before each loop.</p>
+<p>Commands each actuator and updates the robot state. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N10PinceAvant8miniStepE">
+<span id="_CPPv3N10PinceAvant8miniStepE"></span><span id="_CPPv2N10PinceAvant8miniStepE"></span><span id="PinceAvant::miniStep__l"></span><span class="target" id="class_pince_avant_1a3b1ce2bbdb1f0ee4bd921322157f3559"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">miniStep</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">40</span></span><a class="headerlink" href="#_CPPv4N10PinceAvant8miniStepE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N10PinceAvant14posTresOuverteE">
+<span id="_CPPv3N10PinceAvant14posTresOuverteE"></span><span id="_CPPv2N10PinceAvant14posTresOuverteE"></span><span id="PinceAvant::posTresOuverte__i"></span><span class="target" id="class_pince_avant_1a8e9ca4449b9788e32e2fa913d6888f7c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">posTresOuverte</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">110</span></span><a class="headerlink" href="#_CPPv4N10PinceAvant14posTresOuverteE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv412PinceArriere">
+<span id="_CPPv312PinceArriere"></span><span id="_CPPv212PinceArriere"></span><span id="PinceArriere"></span><span class="target" id="class_pince_arriere"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PinceArriere</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv45Pince" title="Pince"><span class="n"><span class="pre">Pince</span></span></a><a class="headerlink" href="#_CPPv412PinceArriere" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12PinceArriere6UpdateEv">
+<span id="_CPPv3N12PinceArriere6UpdateEv"></span><span id="_CPPv2N12PinceArriere6UpdateEv"></span><span id="PinceArriere::Update"></span><span class="target" id="class_pince_arriere_1ac7d442bef84237e9df70272365c593fa"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414Actuator_State" title="Actuator_State"><span class="n"><span class="pre">Actuator_State</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Update</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N12PinceArriere6UpdateEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Virtual method, to call before each loop.</p>
+<p>Commands each actuator and updates the robot state. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="actuator-manager">
+<h2><span class="section-number">1.2. </span>Actuator_Manager<a class="headerlink" href="#actuator-manager" title="Permalink to this headline"></a></h2>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.NBR_ACTUATORS">
+<span class="target" id="_actuators___manager_8h_1a94846f4349bce37782deb34fa2f3604a"></span><span class="sig-name descname"><span class="n"><span class="pre">NBR_ACTUATORS</span></span></span><a class="headerlink" href="#c.NBR_ACTUATORS" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv47Manager">
+<span id="_CPPv37Manager"></span><span id="_CPPv27Manager"></span><span id="Manager"></span><span class="target" id="class_manager"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Manager</span></span></span><a class="headerlink" href="#_CPPv47Manager" title="Permalink to this definition"></a><br /></dt>
+<dd><em>#include &lt;Actuators_Manager.h&gt;</em><p>Basic class to declare an actuator manager wich will organize all the actions during the match. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager7ManagerEP6StreamP14HardwareSerial">
+<span id="_CPPv3N7Manager7ManagerEP6StreamP14HardwareSerial"></span><span id="_CPPv2N7Manager7ManagerEP6StreamP14HardwareSerial"></span><span id="Manager::Manager__StreamP.HardwareSerialP"></span><span class="target" id="class_manager_1a063a10df590ee1f84bb7a6fc7d046998"></span><span class="sig-name descname"><span class="n"><span class="pre">Manager</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">Stream</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">serControllerStream</span></span>, <span class="n"><span class="pre">HardwareSerial</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">serDebug</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">&amp;</span></span><span class="n"><span class="pre">Serial</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Manager7ManagerEP6StreamP14HardwareSerial" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Public constructor of the manager. Get 2 parameters : </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>serControllerStream</strong> – : stream on which the information will transit in the robot itself. </p></li>
+<li><p><strong>serDebug</strong> – : Serial port to show information during debugging. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager6UpdateEv">
+<span id="_CPPv3N7Manager6UpdateEv"></span><span id="_CPPv2N7Manager6UpdateEv"></span><span id="Manager::Update"></span><span class="target" id="class_manager_1a151953c44ccb959ebd1b2889b925f1b3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Update</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Manager6UpdateEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager11serialDebugE">
+<span id="_CPPv3N7Manager11serialDebugE"></span><span id="_CPPv2N7Manager11serialDebugE"></span><span id="Manager::serialDebug__HardwareSerialP"></span><span class="target" id="class_manager_1a5455d2168d3b39997f7b46f50f522afb"></span><span class="n"><span class="pre">HardwareSerial</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">serialDebug</span></span></span><a class="headerlink" href="#_CPPv4N7Manager11serialDebugE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager13comControllerE">
+<span id="_CPPv3N7Manager13comControllerE"></span><span id="_CPPv2N7Manager13comControllerE"></span><span id="Manager::comController__Communication"></span><span class="target" id="class_manager_1a7e767940b547f7d4bfb0ab81be03a0de"></span><a class="reference internal" href="coordinating_library.html#_CPPv413Communication" title="Communication"><span class="n"><span class="pre">Communication</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">comController</span></span></span><a class="headerlink" href="#_CPPv4N7Manager13comControllerE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager13listActuatorsE">
+<span id="_CPPv3N7Manager13listActuatorsE"></span><span id="_CPPv2N7Manager13listActuatorsE"></span><span id="Manager::listActuators__ActuatorPA"></span><span class="target" id="class_manager_1afaea69135b2f24154502161005615cbc"></span><a class="reference internal" href="#_CPPv48Actuator" title="Actuator"><span class="n"><span class="pre">Actuator</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">listActuators</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">NBR_ACTUATORS</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N7Manager13listActuatorsE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager8pavillonE">
+<span id="_CPPv3N7Manager8pavillonE"></span><span id="_CPPv2N7Manager8pavillonE"></span><span id="Manager::pavillon__Pavillon"></span><span class="target" id="class_manager_1a98a41ec4a7acbc63e85f6f2a8854b90c"></span><a class="reference internal" href="#_CPPv48Pavillon" title="Pavillon"><span class="n"><span class="pre">Pavillon</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pavillon</span></span></span><a class="headerlink" href="#_CPPv4N7Manager8pavillonE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager10brasGaucheE">
+<span id="_CPPv3N7Manager10brasGaucheE"></span><span id="_CPPv2N7Manager10brasGaucheE"></span><span id="Manager::brasGauche__Bras"></span><span class="target" id="class_manager_1a87571010f4933c65e5062b416200e111"></span><a class="reference internal" href="#_CPPv44Bras" title="Bras"><span class="n"><span class="pre">Bras</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">brasGauche</span></span></span><a class="headerlink" href="#_CPPv4N7Manager10brasGaucheE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager9brasDroitE">
+<span id="_CPPv3N7Manager9brasDroitE"></span><span id="_CPPv2N7Manager9brasDroitE"></span><span id="Manager::brasDroit__Bras"></span><span class="target" id="class_manager_1ae99a134b0b20400113727b1a4c33288d"></span><a class="reference internal" href="#_CPPv44Bras" title="Bras"><span class="n"><span class="pre">Bras</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">brasDroit</span></span></span><a class="headerlink" href="#_CPPv4N7Manager9brasDroitE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager16pinceAvantGaucheE">
+<span id="_CPPv3N7Manager16pinceAvantGaucheE"></span><span id="_CPPv2N7Manager16pinceAvantGaucheE"></span><span id="Manager::pinceAvantGauche__PinceAvant"></span><span class="target" id="class_manager_1ab75e0558ff2df3c129d91e6c6ad9eee8"></span><a class="reference internal" href="#_CPPv410PinceAvant" title="PinceAvant"><span class="n"><span class="pre">PinceAvant</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinceAvantGauche</span></span></span><a class="headerlink" href="#_CPPv4N7Manager16pinceAvantGaucheE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager16pinceAvantDroiteE">
+<span id="_CPPv3N7Manager16pinceAvantDroiteE"></span><span id="_CPPv2N7Manager16pinceAvantDroiteE"></span><span id="Manager::pinceAvantDroite__PinceAvant"></span><span class="target" id="class_manager_1ab7c15e667c060fbb8a43ba036503220f"></span><a class="reference internal" href="#_CPPv410PinceAvant" title="PinceAvant"><span class="n"><span class="pre">PinceAvant</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinceAvantDroite</span></span></span><a class="headerlink" href="#_CPPv4N7Manager16pinceAvantDroiteE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager8pinceArrE">
+<span id="_CPPv3N7Manager8pinceArrE"></span><span id="_CPPv2N7Manager8pinceArrE"></span><span id="Manager::pinceArr__PinceArriere"></span><span class="target" id="class_manager_1a9c3315a21e3621d27510ab8695a97c02"></span><a class="reference internal" href="#_CPPv412PinceArriere" title="PinceArriere"><span class="n"><span class="pre">PinceArriere</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinceArr</span></span></span><a class="headerlink" href="#_CPPv4N7Manager8pinceArrE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager19brasGauche_servoPWME">
+<span id="_CPPv3N7Manager19brasGauche_servoPWME"></span><span id="_CPPv2N7Manager19brasGauche_servoPWME"></span><span id="Manager::brasGauche_servoPWM__uint8_t"></span><span class="target" id="class_manager_1a5f3a08f1f143fc1603f8488be431d6f1"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">brasGauche_servoPWM</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#_CPPv4N7Manager19brasGauche_servoPWME" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager18brasDroit_servoPWME">
+<span id="_CPPv3N7Manager18brasDroit_servoPWME"></span><span id="_CPPv2N7Manager18brasDroit_servoPWME"></span><span id="Manager::brasDroit_servoPWM__uint8_t"></span><span class="target" id="class_manager_1ac840af1484adeb57b7ebdf0a48767428"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">brasDroit_servoPWM</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#_CPPv4N7Manager18brasDroit_servoPWME" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager7pav_DirE">
+<span id="_CPPv3N7Manager7pav_DirE"></span><span id="_CPPv2N7Manager7pav_DirE"></span><span id="Manager::pav_Dir__uint8_t"></span><span class="target" id="class_manager_1a5a38469afb0eaeafa9ef868d4b648807"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pav_Dir</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">35</span></span><a class="headerlink" href="#_CPPv4N7Manager7pav_DirE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager8pav_StepE">
+<span id="_CPPv3N7Manager8pav_StepE"></span><span id="_CPPv2N7Manager8pav_StepE"></span><span id="Manager::pav_Step__uint8_t"></span><span class="target" id="class_manager_1a7401571f8ff014f61382482c7ecde40c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pav_Step</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">34</span></span><a class="headerlink" href="#_CPPv4N7Manager8pav_StepE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager9pav_SleepE">
+<span id="_CPPv3N7Manager9pav_SleepE"></span><span id="_CPPv2N7Manager9pav_SleepE"></span><span id="Manager::pav_Sleep__uint8_t"></span><span class="target" id="class_manager_1ac96ea9d2e4e544d4a0f9bde4325efb82"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pav_Sleep</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">22</span></span><a class="headerlink" href="#_CPPv4N7Manager9pav_SleepE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager6pav_M0E">
+<span id="_CPPv3N7Manager6pav_M0E"></span><span id="_CPPv2N7Manager6pav_M0E"></span><span id="Manager::pav_M0__uint8_t"></span><span class="target" id="class_manager_1a169ad3374a80d107ee1e50741a526d63"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pav_M0</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">37</span></span><a class="headerlink" href="#_CPPv4N7Manager6pav_M0E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager6pav_M1E">
+<span id="_CPPv3N7Manager6pav_M1E"></span><span id="_CPPv2N7Manager6pav_M1E"></span><span id="Manager::pav_M1__uint8_t"></span><span class="target" id="class_manager_1a23e58dde0e45ce181b71aeb09c8f9864"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pav_M1</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">36</span></span><a class="headerlink" href="#_CPPv4N7Manager6pav_M1E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager17pinceArr_servoPWME">
+<span id="_CPPv3N7Manager17pinceArr_servoPWME"></span><span id="_CPPv2N7Manager17pinceArr_servoPWME"></span><span id="Manager::pinceArr_servoPWM__uint8_t"></span><span class="target" id="class_manager_1acc9f7ce50137f70ad2975bdde9676406"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinceArr_servoPWM</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#_CPPv4N7Manager17pinceArr_servoPWME" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager17pinceAvG_servoPWME">
+<span id="_CPPv3N7Manager17pinceAvG_servoPWME"></span><span id="_CPPv2N7Manager17pinceAvG_servoPWME"></span><span id="Manager::pinceAvG_servoPWM__uint8_t"></span><span class="target" id="class_manager_1a05b2dffc0eee2b7e016c531e270b189f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinceAvG_servoPWM</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6</span></span><a class="headerlink" href="#_CPPv4N7Manager17pinceAvG_servoPWME" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager17pinceAvD_servoPWME">
+<span id="_CPPv3N7Manager17pinceAvD_servoPWME"></span><span id="_CPPv2N7Manager17pinceAvD_servoPWME"></span><span id="Manager::pinceAvD_servoPWM__uint8_t"></span><span class="target" id="class_manager_1af7f8fc50755105f5a3a1c25e21ec3455"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinceAvD_servoPWM</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">7</span></span><a class="headerlink" href="#_CPPv4N7Manager17pinceAvD_servoPWME" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager12pinceAvG_DirE">
+<span id="_CPPv3N7Manager12pinceAvG_DirE"></span><span id="_CPPv2N7Manager12pinceAvG_DirE"></span><span id="Manager::pinceAvG_Dir__uint8_t"></span><span class="target" id="class_manager_1abeacf4030f973f6fe956b85e85a0d6dd"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinceAvG_Dir</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">24</span></span><a class="headerlink" href="#_CPPv4N7Manager12pinceAvG_DirE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager13pinceAvG_StepE">
+<span id="_CPPv3N7Manager13pinceAvG_StepE"></span><span id="_CPPv2N7Manager13pinceAvG_StepE"></span><span id="Manager::pinceAvG_Step__uint8_t"></span><span class="target" id="class_manager_1ad4160f0c4397269d6cfed8feaa5d5fda"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinceAvG_Step</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">23</span></span><a class="headerlink" href="#_CPPv4N7Manager13pinceAvG_StepE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager12pinceAvD_DirE">
+<span id="_CPPv3N7Manager12pinceAvD_DirE"></span><span id="_CPPv2N7Manager12pinceAvD_DirE"></span><span id="Manager::pinceAvD_Dir__uint8_t"></span><span class="target" id="class_manager_1a671f0aa5460ebaca15dd68d2543db8ad"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinceAvD_Dir</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">26</span></span><a class="headerlink" href="#_CPPv4N7Manager12pinceAvD_DirE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager13pinceAvD_StepE">
+<span id="_CPPv3N7Manager13pinceAvD_StepE"></span><span id="_CPPv2N7Manager13pinceAvD_StepE"></span><span id="Manager::pinceAvD_Step__uint8_t"></span><span class="target" id="class_manager_1ae8381fd3fd2934fe07e3e5d5c4b8b284"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinceAvD_Step</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">25</span></span><a class="headerlink" href="#_CPPv4N7Manager13pinceAvD_StepE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager12pinceArr_DirE">
+<span id="_CPPv3N7Manager12pinceArr_DirE"></span><span id="_CPPv2N7Manager12pinceArr_DirE"></span><span id="Manager::pinceArr_Dir__uint8_t"></span><span class="target" id="class_manager_1ae1693b96d9005cce2c64d5e923f064ba"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinceArr_Dir</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">31</span></span><a class="headerlink" href="#_CPPv4N7Manager12pinceArr_DirE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager13pinceArr_StepE">
+<span id="_CPPv3N7Manager13pinceArr_StepE"></span><span id="_CPPv2N7Manager13pinceArr_StepE"></span><span id="Manager::pinceArr_Step__uint8_t"></span><span class="target" id="class_manager_1a78c847013a5870894dec29083f0600c4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinceArr_Step</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">30</span></span><a class="headerlink" href="#_CPPv4N7Manager13pinceArr_StepE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager11pincesAv_M0E">
+<span id="_CPPv3N7Manager11pincesAv_M0E"></span><span id="_CPPv2N7Manager11pincesAv_M0E"></span><span id="Manager::pincesAv_M0__uint8_t"></span><span class="target" id="class_manager_1ab9e44a0b498f38fd48dd7c89bd52251a"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pincesAv_M0</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">29</span></span><a class="headerlink" href="#_CPPv4N7Manager11pincesAv_M0E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager11pincesAv_M1E">
+<span id="_CPPv3N7Manager11pincesAv_M1E"></span><span id="_CPPv2N7Manager11pincesAv_M1E"></span><span id="Manager::pincesAv_M1__uint8_t"></span><span class="target" id="class_manager_1a4a622d56f2c38aea310ef73d50571f28"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pincesAv_M1</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">28</span></span><a class="headerlink" href="#_CPPv4N7Manager11pincesAv_M1E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager12pincesArr_M0E">
+<span id="_CPPv3N7Manager12pincesArr_M0E"></span><span id="_CPPv2N7Manager12pincesArr_M0E"></span><span id="Manager::pincesArr_M0__uint8_t"></span><span class="target" id="class_manager_1a8c53f546d9dba4f064e1c00aa9fd8879"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pincesArr_M0</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">33</span></span><a class="headerlink" href="#_CPPv4N7Manager12pincesArr_M0E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager12pincesArr_M1E">
+<span id="_CPPv3N7Manager12pincesArr_M1E"></span><span id="_CPPv2N7Manager12pincesArr_M1E"></span><span id="Manager::pincesArr_M1__uint8_t"></span><span class="target" id="class_manager_1a574cd80cfcb82982215f6775c7731890"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pincesArr_M1</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">32</span></span><a class="headerlink" href="#_CPPv4N7Manager12pincesArr_M1E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager12pinces_SleepE">
+<span id="_CPPv3N7Manager12pinces_SleepE"></span><span id="_CPPv2N7Manager12pinces_SleepE"></span><span id="Manager::pinces_Sleep__uint8_t"></span><span class="target" id="class_manager_1a557f88c3b13dd839d4c5506b96f8a391"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinces_Sleep</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">27</span></span><a class="headerlink" href="#_CPPv4N7Manager12pinces_SleepE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager14currentMessageE">
+<span id="_CPPv3N7Manager14currentMessageE"></span><span id="_CPPv2N7Manager14currentMessageE"></span><span id="Manager::currentMessage__Message"></span><span class="target" id="class_manager_1a0a0b9c2ab665a6a578ce80ee95b114ff"></span><a class="reference internal" href="coordinating_library.html#_CPPv47Message" title="Message"><span class="n"><span class="pre">Message</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currentMessage</span></span></span><a class="headerlink" href="#_CPPv4N7Manager14currentMessageE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager9currentIDE">
+<span id="_CPPv3N7Manager9currentIDE"></span><span id="_CPPv2N7Manager9currentIDE"></span><span id="Manager::currentID__MessageID"></span><span class="target" id="class_manager_1a3508d5767119027c1b40e020c091498b"></span><a class="reference internal" href="coordinating_library.html#_CPPv49MessageID" title="MessageID"><span class="n"><span class="pre">MessageID</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currentID</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="coordinating_library.html#_CPPv49MessageID" title="MessageID"><span class="n"><span class="pre">MessageID</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="coordinating_library.html#_CPPv4N9MessageID6Stop_ME" title="MessageID::Stop_M"><span class="n"><span class="pre">Stop_M</span></span></a><a class="headerlink" href="#_CPPv4N7Manager9currentIDE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager12currentBytesE">
+<span id="_CPPv3N7Manager12currentBytesE"></span><span id="_CPPv2N7Manager12currentBytesE"></span><span id="Manager::currentBytes__FourBytes"></span><span class="target" id="class_manager_1a145c6a357d11093b3aa733c759bdfee4"></span><a class="reference internal" href="coordinating_library.html#_CPPv49FourBytes" title="FourBytes"><span class="n"><span class="pre">FourBytes</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currentBytes</span></span></span><a class="headerlink" href="#_CPPv4N7Manager12currentBytesE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Manager12currentOrderE">
+<span id="_CPPv3N7Manager12currentOrderE"></span><span id="_CPPv2N7Manager12currentOrderE"></span><span id="Manager::currentOrder__Actuator_Order"></span><span class="target" id="class_manager_1a2c4c58b887d87eb62fcaab2a490a178c"></span><a class="reference internal" href="coordinating_library.html#_CPPv414Actuator_Order" title="Actuator_Order"><span class="n"><span class="pre">Actuator_Order</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currentOrder</span></span></span><a class="headerlink" href="#_CPPv4N7Manager12currentOrderE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="steppermotorj">
+<span id="id1"></span><h2><span class="section-number">1.3. </span>StepperMotorJ<a class="headerlink" href="#steppermotorj" title="Permalink to this headline"></a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv413StepperMotorJ">
+<span id="_CPPv313StepperMotorJ"></span><span id="_CPPv213StepperMotorJ"></span><span id="StepperMotorJ"></span><span class="target" id="class_stepper_motor_j"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">StepperMotorJ</span></span></span><a class="headerlink" href="#_CPPv413StepperMotorJ" title="Permalink to this definition"></a><br /></dt>
+<dd><em>#include &lt;StepperMotorJ.h&gt;</em><p>Custom class to control a stepperMotor. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13StepperMotorJ13StepperMotorJEiiiii">
+<span id="_CPPv3N13StepperMotorJ13StepperMotorJEiiiii"></span><span id="_CPPv2N13StepperMotorJ13StepperMotorJEiiiii"></span><span id="StepperMotorJ::StepperMotorJ__i.i.i.i.i"></span><span class="target" id="class_stepper_motor_j_1a09a9900155e29af1a89587604d2bee4f"></span><span class="sig-name descname"><span class="n"><span class="pre">StepperMotorJ</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">stepPin</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dirPin</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sleepPin</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinM0</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pinM1</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13StepperMotorJ13StepperMotorJEiiiii" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Public constructor of the StepperMotor. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stepPin</strong> – : pin number of the step pin. </p></li>
+<li><p><strong>dirPin</strong> – : pin number of the direction pin. </p></li>
+<li><p><strong>sleepPin</strong> – : pin number of the sleep pin. </p></li>
+<li><p><strong>pinM0</strong> – : pin number of the first motor. </p></li>
+<li><p><strong>pinM1</strong> – : pin number of the second motor. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13StepperMotorJ4moveEiibb">
+<span id="_CPPv3N13StepperMotorJ4moveEiibb"></span><span id="_CPPv2N13StepperMotorJ4moveEiibb"></span><span id="StepperMotorJ::move__i.i.b.b"></span><span class="target" id="class_stepper_motor_j_1a67cc9a64c2854cbfa003fa68e32e2c98"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">move</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">steps</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">delay</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">up</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">holdPosition</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13StepperMotorJ4moveEiibb" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Method to make the motor move. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>steps</strong> – : number of steps that the stepper has to do. </p></li>
+<li><p><strong>delay</strong> – : duration while the stepper should wait for the next action. </p></li>
+<li><p><strong>up</strong> – </p></li>
+<li><p><strong>holdPosition</strong> – : Bool, represent whether the stepper should wait in final position or go back to the initial one. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13StepperMotorJ7stepPinE">
+<span id="_CPPv3N13StepperMotorJ7stepPinE"></span><span id="_CPPv2N13StepperMotorJ7stepPinE"></span><span id="StepperMotorJ::stepPin__i"></span><span class="target" id="class_stepper_motor_j_1a3aa4b06dc2510a7c74a52e1497c5805a"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stepPin</span></span></span><a class="headerlink" href="#_CPPv4N13StepperMotorJ7stepPinE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13StepperMotorJ6dirPinE">
+<span id="_CPPv3N13StepperMotorJ6dirPinE"></span><span id="_CPPv2N13StepperMotorJ6dirPinE"></span><span id="StepperMotorJ::dirPin__i"></span><span class="target" id="class_stepper_motor_j_1ad60bb155685f504c65742a028be2627c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dirPin</span></span></span><a class="headerlink" href="#_CPPv4N13StepperMotorJ6dirPinE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13StepperMotorJ8sleepPinE">
+<span id="_CPPv3N13StepperMotorJ8sleepPinE"></span><span id="_CPPv2N13StepperMotorJ8sleepPinE"></span><span id="StepperMotorJ::sleepPin__i"></span><span class="target" id="class_stepper_motor_j_1a3b87f3303ad305169169eff60bedff32"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sleepPin</span></span></span><a class="headerlink" href="#_CPPv4N13StepperMotorJ8sleepPinE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13StepperMotorJ5pinM0E">
+<span id="_CPPv3N13StepperMotorJ5pinM0E"></span><span id="_CPPv2N13StepperMotorJ5pinM0E"></span><span id="StepperMotorJ::pinM0__i"></span><span class="target" id="class_stepper_motor_j_1a2e45a07dd9edeeb0ac52dfe89f1b7e5f"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinM0</span></span></span><a class="headerlink" href="#_CPPv4N13StepperMotorJ5pinM0E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13StepperMotorJ5pinM1E">
+<span id="_CPPv3N13StepperMotorJ5pinM1E"></span><span id="_CPPv2N13StepperMotorJ5pinM1E"></span><span id="StepperMotorJ::pinM1__i"></span><span class="target" id="class_stepper_motor_j_1a730fba0ee14f3398150c4efdb7ede8e5"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pinM1</span></span></span><a class="headerlink" href="#_CPPv4N13StepperMotorJ5pinM1E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Ensmasteel’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="coordinating_library.html" class="btn btn-neutral float-right" title="2. Useful coordinating library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Ensmasteel members.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="md__ensmasteel__bot_2020__arduino__mega__lib__stepper_driver__r_e_a_d_m_e" kind="page">
+    <compoundname>md_Ensmasteel_Bot_2020_Arduino_Mega_Lib_StepperDriver_README</compoundname>
+    <title>README</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ulink url="https://www.ardu-badge.com/StepperDriver"><image type="html" name="https://www.ardu-badge.com/badge/StepperDriver.svg?" alt="arduino-library-badge" inline="yes"></image>
+</ulink> <ulink url="https://travis-ci.com/laurb9/StepperDriver"><image type="html" name="https://travis-ci.com/laurb9/StepperDriver.svg?branch=master" alt="Build Status" inline="yes"></image>
+</ulink></para>
+<sect1 id="md__ensmasteel__bot_2020__arduino__mega__lib__stepper_driver__r_e_a_d_m_e_1autotoc_md4">
+<title>StepperDriver</title>
+<para><ref refid="class_a4988" kindref="compound">A4988</ref>, <ref refid="class_d_r_v8825" kindref="compound">DRV8825</ref>, <ref refid="class_d_r_v8834" kindref="compound">DRV8834</ref>, <ref refid="class_d_r_v8880" kindref="compound">DRV8880</ref> and generic two-pin stepper motor driver library. Features:<itemizedlist>
+<listitem><para>Constant speed mode (low rpms)</para>
+</listitem><listitem><para>Linear (accelerated) speed mode, with separate acceleration and deceleration settings.</para>
+</listitem><listitem><para>Non-blocking mode (yields back to caller after each pulse)</para>
+</listitem><listitem><para>Early brake / increase runtime in non-blocking mode</para>
+</listitem></itemizedlist>
+</para>
+<para>Hardware currently supported:<itemizedlist>
+<listitem><para><ulink url="https://www.pololu.com/product/2134">DRV8834</ulink> Low-Voltage Stepper <ref refid="class_motor" kindref="compound">Motor</ref> Driver up to 1:32</para>
+</listitem><listitem><para><ulink url="https://www.pololu.com/product/1182">A4988</ulink> Stepper <ref refid="class_motor" kindref="compound">Motor</ref> Driver up to 1:16</para>
+</listitem><listitem><para><ulink url="https://www.pololu.com/product/2131">DRV8825</ulink> up to 1:32</para>
+</listitem><listitem><para><ulink url="https://www.pololu.com/product/2971">DRV8880</ulink> up to 1:16, with current/torque control</para>
+</listitem><listitem><para>any other 2-pin stepper via DIR and STEP pins, microstepping up to 1:128 externally set</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md__ensmasteel__bot_2020__arduino__mega__lib__stepper_driver__r_e_a_d_m_e_1autotoc_md5">
+<title>Microstepping</title>
+<para>The library can set microstepping and generate the signals for each of the support driver boards.</para>
+<para>High RPM plus high microstep combinations may not work correctly on slower MCUs, there is a maximum speed achieveable for each board, especially with acceleration on multiple motors at the same time.</para>
+</sect1>
+<sect1 id="md__ensmasteel__bot_2020__arduino__mega__lib__stepper_driver__r_e_a_d_m_e_1autotoc_md6">
+<title>Motors</title>
+<para><itemizedlist>
+<listitem><para>4-wire bipolar stepper motor or</para>
+</listitem><listitem><para>some 6-wire unipolar in 4-wire configuration (leaving centers out) or</para>
+</listitem><listitem><para>28BYJ-48 (commonly available) with a small modification (search for &quot;convert 28byj-48 to 4-wire&quot;).</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md__ensmasteel__bot_2020__arduino__mega__lib__stepper_driver__r_e_a_d_m_e_1autotoc_md7">
+<title>Connections</title>
+<para>Minimal configuration from <ulink url="https://www.pololu.com/product/2134">Pololu DRV8834 page</ulink>:</para>
+<para><image type="html" name="https://a.pololu-files.com/picture/0J4344.600.png" inline="yes"></image>
+</para>
+</sect1>
+<sect1 id="md__ensmasteel__bot_2020__arduino__mega__lib__stepper_driver__r_e_a_d_m_e_1autotoc_md8">
+<title>Wiring</title>
+<para>This is suggested wiring for running the examples unmodified. All the pins below can be changed.</para>
+<para><itemizedlist>
+<listitem><para>Arduino to driver board:<itemizedlist>
+<listitem><para>DIR - D8</para>
+</listitem><listitem><para>STEP - D9</para>
+</listitem><listitem><para>GND - Arduino GND</para>
+</listitem><listitem><para>GND - <ref refid="class_motor" kindref="compound">Motor</ref> power GND</para>
+</listitem><listitem><para>VMOT - <ref refid="class_motor" kindref="compound">Motor</ref> power (check driver-specific voltage range)</para>
+</listitem><listitem><para>A4988/DRV8825 microstep control<itemizedlist>
+<listitem><para>MS1/MODE0 - D10</para>
+</listitem><listitem><para>MS2/MODE1 - D11</para>
+</listitem><listitem><para>MS3/MODE2 - D12</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>DRV8834/DRV8880 microstep control<itemizedlist>
+<listitem><para>M0 - D10</para>
+</listitem><listitem><para>M1 - D11</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>~SLEEP (optional) D13</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>driver board to motor (this varies from motor to motor, check motor coils schematic).</para>
+</listitem><listitem><para>100uF capacitor between GND - VMOT</para>
+</listitem><listitem><para>Make sure to set the max current on the driver board to the motor limit (see below).</para>
+</listitem><listitem><para>Have a motor power supply that can deliver that current.</para>
+</listitem><listitem><para>Make sure the motor power supply voltage is within the range supported by the driver board.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md__ensmasteel__bot_2020__arduino__mega__lib__stepper_driver__r_e_a_d_m_e_1autotoc_md9">
+<title>Set Max Current</title>
+<para>The max current is set via the potentiometer on board. Turn it while measuring voltage at the passthrough next to it. The formula is V = I*5*R where I=max current, R=current sense resistor installed onboard</para>
+<para><itemizedlist>
+<listitem><para><ref refid="class_d_r_v8834" kindref="compound">DRV8834</ref> or <ref refid="class_d_r_v8825" kindref="compound">DRV8825</ref> Pololu boards, R=0.1 and V = 0.5 * max current(A). For example, for 1A you will set it to 0.5V.</para>
+</listitem></itemizedlist>
+</para>
+<para>For latest info, see the Pololu board information pages.</para>
+</sect1>
+<sect1 id="md__ensmasteel__bot_2020__arduino__mega__lib__stepper_driver__r_e_a_d_m_e_1autotoc_md10">
+<title>Code</title>
+<para>See the <ref refid="class_basic_stepper_driver" kindref="compound">BasicStepperDriver</ref> example for a generic driver that should work with any board supporting the DIR/STEP indexing mode.</para>
+<para>The Microstepping example works with a <ref refid="class_d_r_v8834" kindref="compound">DRV8834</ref> board.</para>
+<para>For example, to show what is possible, here is the ClockStepper example that moves a stepper motor like the seconds hand of a watch:</para>
+<para><programlisting><codeline><highlight class="normal"><sp/>{C++}</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;Arduino.h&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;A4988.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>using<sp/>a<sp/>200-step<sp/>motor<sp/>(most<sp/>common)</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>MOTOR_STEPS<sp/>200</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>configure<sp/>the<sp/>pins<sp/>connected</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIR<sp/>8</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>STEP<sp/>9</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>MS1<sp/>10</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>MS2<sp/>11</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>MS3<sp/>12</highlight></codeline>
+<codeline><highlight class="normal">A4988<sp/>stepper(MOTOR_STEPS,<sp/>DIR,<sp/>STEP,<sp/>MS1,<sp/>MS2,<sp/>MS3);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>target<sp/>motor<sp/>RPM<sp/>to<sp/>1RPM<sp/>and<sp/>microstepping<sp/>to<sp/>1<sp/>(full<sp/>step<sp/>mode)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stepper.begin(1,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Tell<sp/>motor<sp/>to<sp/>rotate<sp/>360<sp/>degrees.<sp/>That&apos;s<sp/>it.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stepper.rotate(360);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="md__ensmasteel__bot_2020__arduino__mega__lib__stepper_driver__r_e_a_d_m_e_1autotoc_md11">
+<title>Hardware</title>
+<para><itemizedlist>
+<listitem><para>Arduino-compatible board</para>
+</listitem><listitem><para>A <ulink url="https://www.pololu.com/category/120/stepper-motor-drivers">stepper motor driver</ulink>, for example <ref refid="class_d_r_v8834" kindref="compound">DRV8834</ref>, <ref refid="class_d_r_v8825" kindref="compound">DRV8825</ref>, DRV8824, <ref refid="class_a4988" kindref="compound">A4988</ref>.</para>
+</listitem><listitem><para>A <ulink url="http://www.circuitspecialists.com/stepper-motor">Stepper Motor</ulink>.</para>
+</listitem><listitem><para>1 x 100uF capacitor </para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/README.md"/>
+  </compounddef>
+</doxygen>

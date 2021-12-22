@@ -1,0 +1,1831 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.2" xml:lang="en-US">
+  <compound refid="struct__rplidar__ans__header__t" kind="struct"><name>_rplidar_ans_header_t</name>
+    <member refid="struct__rplidar__ans__header__t_1a68c0c63b64795aedc253a6781224223f" kind="variable"><name>syncByte1</name></member>
+    <member refid="struct__rplidar__ans__header__t_1ac8e6585170f2a662b6ebb29fe17abb36" kind="variable"><name>syncByte2</name></member>
+    <member refid="struct__rplidar__ans__header__t_1ae6c4d74f8c1b86e5bbd7f22e82f987af" kind="variable"><name>size</name></member>
+    <member refid="struct__rplidar__ans__header__t_1aec957ceeb0d97f24a35ba95966e16b91" kind="variable"><name>subType</name></member>
+    <member refid="struct__rplidar__ans__header__t_1a23c23323e7675cc5d3b1061acccb4e65" kind="variable"><name>type</name></member>
+  </compound>
+  <compound refid="struct__rplidar__cmd__packet__t" kind="struct"><name>_rplidar_cmd_packet_t</name>
+    <member refid="struct__rplidar__cmd__packet__t_1a3c1f028e45af3e52732af7e353407d29" kind="variable"><name>syncByte</name></member>
+    <member refid="struct__rplidar__cmd__packet__t_1a0c5e8733b3b0c5132e9ada5fa496ce21" kind="variable"><name>cmd_flag</name></member>
+    <member refid="struct__rplidar__cmd__packet__t_1a95252de064a17eaa084acb381ee9e61d" kind="variable"><name>size</name></member>
+    <member refid="struct__rplidar__cmd__packet__t_1a4d7986875465127a6b7fd13b5a639e0f" kind="variable"><name>data</name></member>
+  </compound>
+  <compound refid="struct__rplidar__response__device__health__t" kind="struct"><name>_rplidar_response_device_health_t</name>
+    <member refid="struct__rplidar__response__device__health__t_1ac9586ad0af6c65d91c1f5391e18889c0" kind="variable"><name>status</name></member>
+    <member refid="struct__rplidar__response__device__health__t_1a90922e078c295937706f144f43daf491" kind="variable"><name>error_code</name></member>
+  </compound>
+  <compound refid="struct__rplidar__response__device__info__t" kind="struct"><name>_rplidar_response_device_info_t</name>
+    <member refid="struct__rplidar__response__device__info__t_1afaaa8feaddc8c8b9b878b6ec1490f5c2" kind="variable"><name>model</name></member>
+    <member refid="struct__rplidar__response__device__info__t_1ab515d2f3fe2aaa5722814747c0b471c3" kind="variable"><name>firmware_version</name></member>
+    <member refid="struct__rplidar__response__device__info__t_1ae52338a4fe7f11183d10457e8ecc9d7a" kind="variable"><name>hardware_version</name></member>
+    <member refid="struct__rplidar__response__device__info__t_1a3a059e4f4e76b6c34d6482ce104954e0" kind="variable"><name>serialnum</name></member>
+  </compound>
+  <compound refid="struct__rplidar__response__measurement__node__t" kind="struct"><name>_rplidar_response_measurement_node_t</name>
+    <member refid="struct__rplidar__response__measurement__node__t_1a42e516bdeec1a257328026340465e024" kind="variable"><name>sync_quality</name></member>
+    <member refid="struct__rplidar__response__measurement__node__t_1ac38581b327c7778cb08bb1def0385d91" kind="variable"><name>angle_q6_checkbit</name></member>
+    <member refid="struct__rplidar__response__measurement__node__t_1a31a24c374369473523cb2bb8afc90cee" kind="variable"><name>distance_q2</name></member>
+  </compound>
+  <compound refid="class_a4988" kind="class"><name>A4988</name>
+    <member refid="class_a4988_1abab039ef9752f180fa5aae847ea309bc" kind="variable"><name>MS_TABLE</name></member>
+    <member refid="class_a4988_1ab74a4851ed757efb9918232f3c1bff35" kind="variable"><name>step_high_min</name></member>
+    <member refid="class_a4988_1ac555749df29f1fcb34d8786526ba9bc8" kind="variable"><name>step_low_min</name></member>
+    <member refid="class_a4988_1a4fd14dd23860d71b460cc18932bf3023" kind="variable"><name>wakeup_time</name></member>
+    <member refid="class_a4988_1a04c72dd2b6887894a2d6f08922a6443b" kind="variable"><name>ms1_pin</name></member>
+    <member refid="class_a4988_1aaf53ff6fa8c72aa5c71dc2b87dfde0ca" kind="variable"><name>ms2_pin</name></member>
+    <member refid="class_a4988_1a62b0bf3b00b67535fce72ff413fb65d4" kind="variable"><name>ms3_pin</name></member>
+    <member refid="class_a4988_1a975368bf1755d5588592b3273372a0f4" kind="variable"><name>MAX_MICROSTEP</name></member>
+    <member refid="class_a4988_1a942642a5ee96412816d1c1cca97cc579" kind="function"><name>getMicrostepTable</name></member>
+    <member refid="class_a4988_1ac0d87e7ef369d9d5b26bad044767a2cf" kind="function"><name>getMicrostepTableSize</name></member>
+    <member refid="class_a4988_1aa7a808437152c43576fc78f87db3b3be" kind="function"><name>getMaxMicrostep</name></member>
+    <member refid="class_a4988_1a79f1d004bd026704733c13a09e092762" kind="function"><name>A4988</name></member>
+    <member refid="class_a4988_1acee64d6d4eebc1e28719afec13d1f6f6" kind="function"><name>A4988</name></member>
+    <member refid="class_a4988_1a0b2eb988e5a37032a5f4f0ce1897988e" kind="function"><name>begin</name></member>
+    <member refid="class_a4988_1acc46d0a1e54ed53b601916772ed9e10b" kind="function"><name>A4988</name></member>
+    <member refid="class_a4988_1a33b10886ede8aa463853389f1f4a8f08" kind="function"><name>A4988</name></member>
+    <member refid="class_a4988_1af1a6065e0db07dbcaaf3577ecac911a9" kind="function"><name>setMicrostep</name></member>
+  </compound>
+  <compound refid="class_action" kind="class"><name>Action</name>
+    <member refid="class_action_1aa4672a5030b15430c86b33903609d172" kind="variable"><name>name</name></member>
+    <member refid="class_action_1a169d6ae96ebfe59864f7936d964f4604" kind="variable"><name>done</name></member>
+    <member refid="class_action_1a377ebdc2c58b64af1978a64e7ca0c399" kind="variable"><name>started</name></member>
+    <member refid="class_action_1a393f04c3c18e212220fd56cca4fcd4c9" kind="variable"><name>timeout</name></member>
+    <member refid="class_action_1af0308aeb6255207896180aec072f8b88" kind="variable"><name>timeStarted</name></member>
+    <member refid="class_action_1ab7d4c5ae380f7457d22a4b77575e7a70" kind="variable"><name>mySequence</name></member>
+    <member refid="class_action_1a722960e240576a3c6192f6783df7d1fe" kind="variable"><name>require</name></member>
+    <member refid="class_action_1ad6ddf3a19a26193c69a64a37dbffb27a" kind="variable"><name>robot</name></member>
+    <member refid="class_action_1a26271d5afaff6e6d3f00c055c63d0b24" kind="friend"><name>Sequence</name></member>
+    <member refid="class_action_1a3e06aaadebfc669ac6ff988e1de9abc7" kind="function"><name>start</name></member>
+    <member refid="class_action_1a3e524a7ba7014522e5111e06cc9b963b" kind="function"><name>isFinished</name></member>
+    <member refid="class_action_1a82a24a3b95fb310326e649402fbcef11" kind="function"><name>hasFailed</name></member>
+    <member refid="class_action_1a28dfd4b726854360b99c8bda70e7da6d" kind="function"><name>Action</name></member>
+    <member refid="class_action_1a09d6aee36ccd353f55f073b73dd64f9b" kind="function"><name>hasStarted</name></member>
+    <member refid="class_action_1a2d8cdbdc551331ea33f6661837e32904" kind="function"><name>doAtEnd</name></member>
+    <member refid="class_action_1a80945e7aeba19e727952b9dd3059c99f" kind="function"><name>setPointer</name></member>
+  </compound>
+  <compound refid="class_actuator" kind="class"><name>Actuator</name>
+    <member refid="class_actuator_1a20f429b3963d3402b4788774b434ba87" kind="variable"><name>name</name></member>
+    <member refid="class_actuator_1a40a6e3266cfb00a66b104317c4d68a31" kind="variable"><name>etat</name></member>
+    <member refid="class_actuator_1a40d4d6ecd707964f3a9a30fc02384e29" kind="variable"><name>currentOrder</name></member>
+    <member refid="class_actuator_1ab8ff5826f0a87b53d119c752d25af88a" kind="variable"><name>messID</name></member>
+    <member refid="class_actuator_1a813e211d860d125a45d713775c19d38b" kind="function"><name>Actuator</name></member>
+    <member refid="class_actuator_1abcd50fd00e60c114afde31648403e780" kind="function"><name>Update</name></member>
+    <member refid="class_actuator_1a0834ccb419fcc7340391b9ef5a564343" kind="function"><name>NewOrder</name></member>
+    <member refid="class_actuator_1a6f2502f7dfe2f59d7f58f6053c8574c6" kind="function"><name>OrderCompleted</name></member>
+    <member refid="class_actuator_1a466fe2e29b99bf66f08116ff8ba46acb" kind="function"><name>GetName</name></member>
+    <member refid="class_actuator_1aff3a744eecf74c4b52a8a6b30ca0eb88" kind="function"><name>GetEtat</name></member>
+    <member refid="class_actuator_1a0819fc5a7749335bf3b5caa8f524ef87" kind="function"><name>GetOrder</name></member>
+    <member refid="class_actuator_1ae5c55e58f214e70c0cf16e9e81111063" kind="function"><name>GetID</name></member>
+  </compound>
+  <compound refid="class_asservissement" kind="class"><name>Asservissement</name>
+    <member refid="class_asservissement_1a0d334e980f92cc27004786277bd83c0e" kind="variable"><name>pidTranslation</name></member>
+    <member refid="class_asservissement_1a56cd99a146766a4cecb2b508316ca712" kind="variable"><name>pidRotation</name></member>
+    <member refid="class_asservissement_1a98704f9911d44e7ffd2f3ebaeaa7a8ba" kind="variable"><name>cGhost</name></member>
+    <member refid="class_asservissement_1a88850d3385de905a3d4282f9b91c1755" kind="variable"><name>cRobot</name></member>
+    <member refid="class_asservissement_1ae3540f32f4b9c00e08ab2580af9d8b30" kind="variable"><name>outTranslation</name></member>
+    <member refid="class_asservissement_1a385bb47a7c06163e287a6107f38e31ff" kind="variable"><name>outRotation</name></member>
+    <member refid="class_asservissement_1ab66fde9363953fc09fcc159b4ecc1399" kind="variable"><name>close</name></member>
+    <member refid="class_asservissement_1af9cf0b78adfbc3d7cfc2af5d9812a9d4" kind="variable"><name>tooFar</name></member>
+    <member refid="class_asservissement_1a8bbee04382b12b52e80d640c5cae8321" kind="variable"><name>needToGoForward</name></member>
+    <member refid="class_asservissement_1ae1b7d36bb22d4d1241b10b655d56c8ad" kind="function"><name>compute</name></member>
+    <member refid="class_asservissement_1a05048c7a4b4280bca11b571f6f127fb9" kind="function"><name>setCurrentProfile</name></member>
+    <member refid="class_asservissement_1ac1a67ae5ab2d73882eb03b54ec8a1850" kind="function"><name>reset</name></member>
+    <member refid="class_asservissement_1a2629138da42b85bb77d094b25a07dabf" kind="function"><name>sendScoreToTelemetry</name></member>
+    <member refid="class_asservissement_1ad4140aad5f777e0999365d92123cff6f" kind="function"><name>Asservissement</name></member>
+    <member refid="class_asservissement_1afafc7eae371961c483258333e30dc4f6" kind="function"><name>Asservissement</name></member>
+    <member refid="class_asservissement_1aaba61b5472d51c2e7f5f5252a37c2ff5" kind="function"><name>tweak</name></member>
+  </compound>
+  <compound refid="class_backward___action" kind="class"><name>Backward_Action</name>
+    <member refid="class_backward___action_1aece2612b17509ecd277df20695ea103e" kind="variable"><name>dist</name></member>
+    <member refid="class_backward___action_1aaa9ba5bbbf676dfcbfe174c4dc827c3f" kind="function"><name>Backward_Action</name></member>
+    <member refid="class_backward___action_1a9592f176269cf3ad8877f349631ca1b4" kind="function"><name>start</name></member>
+    <member refid="class_backward___action_1a5d51dbcc69485283babaacbcefec1b21" kind="function"><name>isFinished</name></member>
+    <member refid="class_backward___action_1acd5d5be5f21f69a8b39af514145d95f8" kind="function"><name>hasFailed</name></member>
+  </compound>
+  <compound refid="class_basic_stepper_driver" kind="class"><name>BasicStepperDriver</name>
+    <member refid="class_basic_stepper_driver_1af1b4082102ecbef61fe24891716f1162" kind="enum"><name>Mode</name></member>
+    <member refid="class_basic_stepper_driver_1af1b4082102ecbef61fe24891716f1162a004423f13cf13ef8af38852156925801" kind="enumvalue"><name>CONSTANT_SPEED</name></member>
+    <member refid="class_basic_stepper_driver_1af1b4082102ecbef61fe24891716f1162a1f4fc322c6d5fbd7d74cf27c52781b7f" kind="enumvalue"><name>LINEAR_SPEED</name></member>
+    <member refid="class_basic_stepper_driver_1af1b4082102ecbef61fe24891716f1162a004423f13cf13ef8af38852156925801" kind="enumvalue"><name>CONSTANT_SPEED</name></member>
+    <member refid="class_basic_stepper_driver_1af1b4082102ecbef61fe24891716f1162a1f4fc322c6d5fbd7d74cf27c52781b7f" kind="enumvalue"><name>LINEAR_SPEED</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0" kind="enum"><name>State</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0acd1764adc7fff1517bbbabec98d179c4" kind="enumvalue"><name>STOPPED</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0a0db8eabc38c5e6c30e34c785f22a49d4" kind="enumvalue"><name>ACCELERATING</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0a8725782a851d4a1f62f18599bf42cd95" kind="enumvalue"><name>CRUISING</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0aa51ee63a6545c1ff17800bd43b9327a8" kind="enumvalue"><name>DECELERATING</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0acd1764adc7fff1517bbbabec98d179c4" kind="enumvalue"><name>STOPPED</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0a0db8eabc38c5e6c30e34c785f22a49d4" kind="enumvalue"><name>ACCELERATING</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0a8725782a851d4a1f62f18599bf42cd95" kind="enumvalue"><name>CRUISING</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0aa51ee63a6545c1ff17800bd43b9327a8" kind="enumvalue"><name>DECELERATING</name></member>
+    <member refid="class_basic_stepper_driver_1af1b4082102ecbef61fe24891716f1162" kind="enum"><name>Mode</name></member>
+    <member refid="class_basic_stepper_driver_1af1b4082102ecbef61fe24891716f1162a004423f13cf13ef8af38852156925801" kind="enumvalue"><name>CONSTANT_SPEED</name></member>
+    <member refid="class_basic_stepper_driver_1af1b4082102ecbef61fe24891716f1162a1f4fc322c6d5fbd7d74cf27c52781b7f" kind="enumvalue"><name>LINEAR_SPEED</name></member>
+    <member refid="class_basic_stepper_driver_1af1b4082102ecbef61fe24891716f1162a004423f13cf13ef8af38852156925801" kind="enumvalue"><name>CONSTANT_SPEED</name></member>
+    <member refid="class_basic_stepper_driver_1af1b4082102ecbef61fe24891716f1162a1f4fc322c6d5fbd7d74cf27c52781b7f" kind="enumvalue"><name>LINEAR_SPEED</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0" kind="enum"><name>State</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0acd1764adc7fff1517bbbabec98d179c4" kind="enumvalue"><name>STOPPED</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0a0db8eabc38c5e6c30e34c785f22a49d4" kind="enumvalue"><name>ACCELERATING</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0a8725782a851d4a1f62f18599bf42cd95" kind="enumvalue"><name>CRUISING</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0aa51ee63a6545c1ff17800bd43b9327a8" kind="enumvalue"><name>DECELERATING</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0acd1764adc7fff1517bbbabec98d179c4" kind="enumvalue"><name>STOPPED</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0a0db8eabc38c5e6c30e34c785f22a49d4" kind="enumvalue"><name>ACCELERATING</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0a8725782a851d4a1f62f18599bf42cd95" kind="enumvalue"><name>CRUISING</name></member>
+    <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0aa51ee63a6545c1ff17800bd43b9327a8" kind="enumvalue"><name>DECELERATING</name></member>
+    <member refid="class_basic_stepper_driver_1a0217cd177007f1c3c6698fba9f11aa15" kind="variable"><name>rest</name></member>
+    <member refid="class_basic_stepper_driver_1a0a23a3ea0a141f989d55e2aac6d66243" kind="variable"><name>last_action_end</name></member>
+    <member refid="class_basic_stepper_driver_1a85c4bbc08afa35495045b2e187996afb" kind="variable"><name>next_action_interval</name></member>
+    <member refid="class_basic_stepper_driver_1a18f465de00856fc589bb4479b1276d02" kind="variable"><name>motor_steps</name></member>
+    <member refid="class_basic_stepper_driver_1adc1086a4d1964a509b97e9d0e0988fb5" kind="variable"><name>dir_pin</name></member>
+    <member refid="class_basic_stepper_driver_1a8e03b42484a94ec3daad9a4f2d4583a7" kind="variable"><name>step_pin</name></member>
+    <member refid="class_basic_stepper_driver_1aa24e3b7ae20eed14ba8b24300e8e7c61" kind="variable"><name>enable_pin</name></member>
+    <member refid="class_basic_stepper_driver_1ad8d499549d46ad45fa8c5c2a2342c30b" kind="variable"><name>enable_active_state</name></member>
+    <member refid="class_basic_stepper_driver_1a1ecc60cbf4edacb8487bd0651f3d2b49" kind="variable"><name>microsteps</name></member>
+    <member refid="class_basic_stepper_driver_1a6db6f9430a17954a94ac4c40fda62389" kind="variable"><name>rpm</name></member>
+    <member refid="class_basic_stepper_driver_1a72218544e49175309a772ec3cec706d2" kind="variable"><name>profile</name></member>
+    <member refid="class_basic_stepper_driver_1a1eebfbb380b3a0ce91937226d30c3a2c" kind="variable"><name>step_count</name></member>
+    <member refid="class_basic_stepper_driver_1a1f1ae8a85101f01decf8ae3e39aa574b" kind="variable"><name>steps_remaining</name></member>
+    <member refid="class_basic_stepper_driver_1a914ea715ce08cf4b50631a69ae9e9e3e" kind="variable"><name>steps_to_cruise</name></member>
+    <member refid="class_basic_stepper_driver_1aaae54a86b961a9d418bdea86b413405d" kind="variable"><name>steps_to_brake</name></member>
+    <member refid="class_basic_stepper_driver_1ad4707a140bfb77f38f532c6f07bc0a3f" kind="variable"><name>step_pulse</name></member>
+    <member refid="class_basic_stepper_driver_1ac7214e4a8f86aa486e2b4ada5dbc2d82" kind="variable"><name>cruise_step_pulse</name></member>
+    <member refid="class_basic_stepper_driver_1ab6082e691d61ccbf49fca7bde3af919e" kind="variable"><name>dir_state</name></member>
+    <member refid="class_basic_stepper_driver_1a933808ebf975c5ba81597f6e11452d96" kind="variable"><name>step_high_min</name></member>
+    <member refid="class_basic_stepper_driver_1a95398f9155524ea8d8dcc2da8223ee0c" kind="variable"><name>step_low_min</name></member>
+    <member refid="class_basic_stepper_driver_1a24bb2b08d39238c2294bd94053804a2b" kind="variable"><name>wakeup_time</name></member>
+    <member refid="class_basic_stepper_driver_1a5f782fc54cea1347e70d35c4e235eeb3" kind="variable"><name>MAX_MICROSTEP</name></member>
+    <member refid="class_basic_stepper_driver_1a08143baf33993ba48953201c060f09c1" kind="function"><name>delayMicros</name></member>
+    <member refid="class_basic_stepper_driver_1a08143baf33993ba48953201c060f09c1" kind="function"><name>delayMicros</name></member>
+    <member refid="class_basic_stepper_driver_1a38c63513054e73b268783e2ee05ee50b" kind="function"><name>getMaxMicrostep</name></member>
+    <member refid="class_basic_stepper_driver_1a74e1f72d8199829ff42afc2875c8d799" kind="function"><name>calcStepPulse</name></member>
+    <member refid="class_basic_stepper_driver_1ab944ccc390a7bb3b0113403e9bbb305c" kind="function"><name>alterMove</name></member>
+    <member refid="class_basic_stepper_driver_1a322ab6c8f1d022ab97fe50cd6f5369bb" kind="function"><name>getMaxMicrostep</name></member>
+    <member refid="class_basic_stepper_driver_1a74e1f72d8199829ff42afc2875c8d799" kind="function"><name>calcStepPulse</name></member>
+    <member refid="class_basic_stepper_driver_1ab944ccc390a7bb3b0113403e9bbb305c" kind="function"><name>alterMove</name></member>
+    <member refid="class_basic_stepper_driver_1a51e279a5df4868176eb6ae833041a50d" kind="function"><name>BasicStepperDriver</name></member>
+    <member refid="class_basic_stepper_driver_1a1b3a53e06690b60abee1d0d9127ec75e" kind="function"><name>BasicStepperDriver</name></member>
+    <member refid="class_basic_stepper_driver_1a3b195930a8e2792e8cf5dea6ab3df4c0" kind="function"><name>begin</name></member>
+    <member refid="class_basic_stepper_driver_1a3e29828a5ab24534fef8199acab4d2f7" kind="function"><name>setMicrostep</name></member>
+    <member refid="class_basic_stepper_driver_1af2b2e205ae51a33bf3db0542d190cd2f" kind="function"><name>getMicrostep</name></member>
+    <member refid="class_basic_stepper_driver_1a1c743c5764fa397b15cf1afe546f55b8" kind="function"><name>getSteps</name></member>
+    <member refid="class_basic_stepper_driver_1a317ab852d4d95e2c8cad21ba6f003560" kind="function"><name>setRPM</name></member>
+    <member refid="class_basic_stepper_driver_1aed4be1409d0c78ece661a6e0602aef79" kind="function"><name>getRPM</name></member>
+    <member refid="class_basic_stepper_driver_1a0dbf0716e619cdd78874d474f6ea74e8" kind="function"><name>getCurrentRPM</name></member>
+    <member refid="class_basic_stepper_driver_1a588c213e9a54c71a118ec74213bb8c11" kind="function"><name>setSpeedProfile</name></member>
+    <member refid="class_basic_stepper_driver_1a8e8e8d230ef2cecda0fba796e537124f" kind="function"><name>setSpeedProfile</name></member>
+    <member refid="class_basic_stepper_driver_1a9b6046c612cac57a931a1fac13cd015a" kind="function"><name>getSpeedProfile</name></member>
+    <member refid="class_basic_stepper_driver_1af6f97f7416a86f2d346e229f091d92ff" kind="function"><name>getAcceleration</name></member>
+    <member refid="class_basic_stepper_driver_1adb99e19bf4c310126150a87153edfa52" kind="function"><name>getDeceleration</name></member>
+    <member refid="class_basic_stepper_driver_1a6be7d04095bd50a54ae28b6183d72ff7" kind="function"><name>move</name></member>
+    <member refid="class_basic_stepper_driver_1a03847762fe040ca5c6707e0cc71767d4" kind="function"><name>rotate</name></member>
+    <member refid="class_basic_stepper_driver_1a987b70d95bcaf52a390c9cbb8534c8ac" kind="function"><name>rotate</name></member>
+    <member refid="class_basic_stepper_driver_1a5c9f879156d317774fd7b39ed0ae8d99" kind="function"><name>rotate</name></member>
+    <member refid="class_basic_stepper_driver_1a4f83c21fa80163c4b9db9c8177b715bd" kind="function"><name>setEnableActiveState</name></member>
+    <member refid="class_basic_stepper_driver_1a1a4f459b0bddc1e3e0616fa96c0db064" kind="function"><name>enable</name></member>
+    <member refid="class_basic_stepper_driver_1a15ac3a56f2108808a957c816ddbc0c6d" kind="function"><name>disable</name></member>
+    <member refid="class_basic_stepper_driver_1a15b747acf8f1499e6e01bd7a58bfd178" kind="function"><name>startMove</name></member>
+    <member refid="class_basic_stepper_driver_1a9993a2daa9cc68aaa673d41b0ac51003" kind="function"><name>startRotate</name></member>
+    <member refid="class_basic_stepper_driver_1acc033aae0c5d845f4a3d00da1af3e706" kind="function"><name>startRotate</name></member>
+    <member refid="class_basic_stepper_driver_1aa4c0a684d10596312359b49cb3d02471" kind="function"><name>startRotate</name></member>
+    <member refid="class_basic_stepper_driver_1a808df7c3413dc287299a7db7649c0b1d" kind="function"><name>nextAction</name></member>
+    <member refid="class_basic_stepper_driver_1aa3ab78db814ffb286718a0a051cd50ae" kind="function"><name>startBrake</name></member>
+    <member refid="class_basic_stepper_driver_1a2ce5102250c5cf867748c13f55f126be" kind="function"><name>stop</name></member>
+    <member refid="class_basic_stepper_driver_1af0d6952ec9c2ba8849c15272b5659aae" kind="function"><name>getCurrentState</name></member>
+    <member refid="class_basic_stepper_driver_1ab9e2cb26ef02f2b16f701b68e1d38dd8" kind="function"><name>getStepsCompleted</name></member>
+    <member refid="class_basic_stepper_driver_1a575d0ce92e6a04585f3bd9559faaba3e" kind="function"><name>getStepsRemaining</name></member>
+    <member refid="class_basic_stepper_driver_1a0e9ef559ceeefc4daf321e0bb4389691" kind="function"><name>getDirection</name></member>
+    <member refid="class_basic_stepper_driver_1af0ff14d9feff51b6a13c975a10371376" kind="function"><name>getTimeForMove</name></member>
+    <member refid="class_basic_stepper_driver_1afc7cd752e20207d4172ad042fc2d481b" kind="function"><name>calcStepsForRotation</name></member>
+    <member refid="class_basic_stepper_driver_1a5027ddc407f5e73d9f130230dc41711d" kind="function"><name>calcStepsForRotation</name></member>
+    <member refid="class_basic_stepper_driver_1a51e279a5df4868176eb6ae833041a50d" kind="function"><name>BasicStepperDriver</name></member>
+    <member refid="class_basic_stepper_driver_1a1b3a53e06690b60abee1d0d9127ec75e" kind="function"><name>BasicStepperDriver</name></member>
+    <member refid="class_basic_stepper_driver_1a3b195930a8e2792e8cf5dea6ab3df4c0" kind="function"><name>begin</name></member>
+    <member refid="class_basic_stepper_driver_1afd94c48dcbd6fa94fcbb382c25dd7033" kind="function"><name>setMicrostep</name></member>
+    <member refid="class_basic_stepper_driver_1af2b2e205ae51a33bf3db0542d190cd2f" kind="function"><name>getMicrostep</name></member>
+    <member refid="class_basic_stepper_driver_1a1c743c5764fa397b15cf1afe546f55b8" kind="function"><name>getSteps</name></member>
+    <member refid="class_basic_stepper_driver_1a317ab852d4d95e2c8cad21ba6f003560" kind="function"><name>setRPM</name></member>
+    <member refid="class_basic_stepper_driver_1aed4be1409d0c78ece661a6e0602aef79" kind="function"><name>getRPM</name></member>
+    <member refid="class_basic_stepper_driver_1a0dbf0716e619cdd78874d474f6ea74e8" kind="function"><name>getCurrentRPM</name></member>
+    <member refid="class_basic_stepper_driver_1a588c213e9a54c71a118ec74213bb8c11" kind="function"><name>setSpeedProfile</name></member>
+    <member refid="class_basic_stepper_driver_1a8e8e8d230ef2cecda0fba796e537124f" kind="function"><name>setSpeedProfile</name></member>
+    <member refid="class_basic_stepper_driver_1a9b6046c612cac57a931a1fac13cd015a" kind="function"><name>getSpeedProfile</name></member>
+    <member refid="class_basic_stepper_driver_1af6f97f7416a86f2d346e229f091d92ff" kind="function"><name>getAcceleration</name></member>
+    <member refid="class_basic_stepper_driver_1adb99e19bf4c310126150a87153edfa52" kind="function"><name>getDeceleration</name></member>
+    <member refid="class_basic_stepper_driver_1a6be7d04095bd50a54ae28b6183d72ff7" kind="function"><name>move</name></member>
+    <member refid="class_basic_stepper_driver_1a03847762fe040ca5c6707e0cc71767d4" kind="function"><name>rotate</name></member>
+    <member refid="class_basic_stepper_driver_1a987b70d95bcaf52a390c9cbb8534c8ac" kind="function"><name>rotate</name></member>
+    <member refid="class_basic_stepper_driver_1a5c9f879156d317774fd7b39ed0ae8d99" kind="function"><name>rotate</name></member>
+    <member refid="class_basic_stepper_driver_1a4f83c21fa80163c4b9db9c8177b715bd" kind="function"><name>setEnableActiveState</name></member>
+    <member refid="class_basic_stepper_driver_1a98c259d26995c1c5d2ce3b0295772451" kind="function"><name>enable</name></member>
+    <member refid="class_basic_stepper_driver_1ae294cdfebadb11a72d0f4bed6813c471" kind="function"><name>disable</name></member>
+    <member refid="class_basic_stepper_driver_1a15b747acf8f1499e6e01bd7a58bfd178" kind="function"><name>startMove</name></member>
+    <member refid="class_basic_stepper_driver_1a9993a2daa9cc68aaa673d41b0ac51003" kind="function"><name>startRotate</name></member>
+    <member refid="class_basic_stepper_driver_1acc033aae0c5d845f4a3d00da1af3e706" kind="function"><name>startRotate</name></member>
+    <member refid="class_basic_stepper_driver_1aa4c0a684d10596312359b49cb3d02471" kind="function"><name>startRotate</name></member>
+    <member refid="class_basic_stepper_driver_1a808df7c3413dc287299a7db7649c0b1d" kind="function"><name>nextAction</name></member>
+    <member refid="class_basic_stepper_driver_1aa3ab78db814ffb286718a0a051cd50ae" kind="function"><name>startBrake</name></member>
+    <member refid="class_basic_stepper_driver_1a2ce5102250c5cf867748c13f55f126be" kind="function"><name>stop</name></member>
+    <member refid="class_basic_stepper_driver_1a809a36552b76b3a0d019b60e185ab3b1" kind="function"><name>getCurrentState</name></member>
+    <member refid="class_basic_stepper_driver_1ab9e2cb26ef02f2b16f701b68e1d38dd8" kind="function"><name>getStepsCompleted</name></member>
+    <member refid="class_basic_stepper_driver_1a575d0ce92e6a04585f3bd9559faaba3e" kind="function"><name>getStepsRemaining</name></member>
+    <member refid="class_basic_stepper_driver_1a0e9ef559ceeefc4daf321e0bb4389691" kind="function"><name>getDirection</name></member>
+    <member refid="class_basic_stepper_driver_1af0ff14d9feff51b6a13c975a10371376" kind="function"><name>getTimeForMove</name></member>
+    <member refid="class_basic_stepper_driver_1afc7cd752e20207d4172ad042fc2d481b" kind="function"><name>calcStepsForRotation</name></member>
+    <member refid="class_basic_stepper_driver_1a5027ddc407f5e73d9f130230dc41711d" kind="function"><name>calcStepsForRotation</name></member>
+  </compound>
+  <compound refid="class_brake___action" kind="class"><name>Brake_Action</name>
+    <member refid="class_brake___action_1a13d270b4a8db1d9366ee53c353ba8e88" kind="function"><name>Brake_Action</name></member>
+    <member refid="class_brake___action_1ac12a69bd60cae53f1b21522325c9dae4" kind="function"><name>start</name></member>
+  </compound>
+  <compound refid="class_bras" kind="class"><name>Bras</name>
+    <member refid="class_bras_1a4615079f90c123d0f25aa0cb071e8b2a" kind="variable"><name>posRentre</name></member>
+    <member refid="class_bras_1a169cac057a2962a6f94d8f46e3236f37" kind="variable"><name>posSortie</name></member>
+    <member refid="class_bras_1a8ba8ad4415e4a02966e5a455a37a4188" kind="variable"><name>pinServo</name></member>
+    <member refid="class_bras_1afd236b243f542ec56d5fb274d190299e" kind="variable"><name>servo</name></member>
+    <member refid="class_bras_1a7fe274afc6082a4ac295b8fcaf7f5b45" kind="function"><name>Bras</name></member>
+    <member refid="class_bras_1af984b9621fde5644bdee51ec3bcb3c38" kind="function"><name>Init</name></member>
+    <member refid="class_bras_1a3e97c50a972a0e32bd8a807871c220fb" kind="function"><name>Update</name></member>
+  </compound>
+  <compound refid="class_cinetique" kind="class"><name>Cinetique</name>
+    <member refid="class_cinetique_1a7fbbeae0349326d9ba8c8677a775f0ab" kind="variable"><name>_v</name></member>
+    <member refid="class_cinetique_1a605427ec93a1ea4b2460d0f6307e1e31" kind="variable"><name>_w</name></member>
+    <member refid="class_cinetique_1adf5ef593311b41036cf0f81d24b6d0bb" kind="function"><name>Cinetique</name></member>
+    <member refid="class_cinetique_1a3d712c5f685be073b402cc33e1ab038c" kind="function"><name>print</name></member>
+    <member refid="class_cinetique_1a1aab1668c139a7040c4a0d83d85422c7" kind="function"><name>toTelemetry</name></member>
+    <member refid="class_cinetique_1a3aaa4453fad5ffc7b730db1c100a35b1" kind="function"><name>operator==</name></member>
+  </compound>
+  <compound refid="class_codeuse" kind="class"><name>Codeuse</name>
+    <member refid="class_codeuse_1ac6aee96c4e8a1011358f10581b450db9" kind="variable"><name>oldTicks</name></member>
+    <member refid="class_codeuse_1a69cc58bf9672159d5e0f816e0cbe68ce" kind="variable"><name>debug</name></member>
+    <member refid="class_codeuse_1ad28871ecbe9adc215b2c1ccf0a227816" kind="variable"><name>diametreRoue</name></member>
+    <member refid="class_codeuse_1aeeccd9f29b05a3bf943d117035148e59" kind="variable"><name>ticksPerRound</name></member>
+    <member refid="class_codeuse_1a588571566195f6274d274512fd95b167" kind="variable"><name>enc</name></member>
+    <member refid="class_codeuse_1a3b77fe367116fb20581ae1d8787197a9" kind="variable"><name>v</name></member>
+    <member refid="class_codeuse_1abce10c31b097c94e38e99191700a2e12" kind="variable"><name>deltaAvance</name></member>
+    <member refid="class_codeuse_1aeb04a9fb16b5dbda5f2492ea87419ca8" kind="variable"><name>ticks</name></member>
+    <member refid="class_codeuse_1ab4916815d7ed58e069504b4a541ecaba" kind="function"><name>actuate</name></member>
+    <member refid="class_codeuse_1a71c03ab1d4b818e5b96ed540fa12f820" kind="function"><name>Codeuse</name></member>
+    <member refid="class_codeuse_1a430f0a3c201254e695b49af34105d349" kind="function"><name>Codeuse</name></member>
+  </compound>
+  <compound refid="class_communication" kind="class"><name>Communication</name>
+    <member refid="class_communication_1a30159b528c018b390a0f62be82804291" kind="variable"><name>port</name></member>
+    <member refid="class_communication_1a47263481a5f5332b9b74f79c835ad2cb" kind="variable"><name>millisLastSend</name></member>
+    <member refid="class_communication_1a7b1459e307e8eaefca0c546bfb922c13" kind="variable"><name>sendingBox</name></member>
+    <member refid="class_communication_1a702df2d0901905079808dc450ac300bb" kind="variable"><name>receiveBox</name></member>
+    <member refid="class_communication_1a431a221c086932c7b4225f6b4d006d17" kind="function"><name>send</name></member>
+    <member refid="class_communication_1a628a8d93d56c41f488c0e36fa8614ab4" kind="function"><name>popOldestMessage</name></member>
+    <member refid="class_communication_1a71204b613dd598bc5919d57942eef2f2" kind="function"><name>peekOldestMessage</name></member>
+    <member refid="class_communication_1a56745608a76ca04c31e98f6b1e972b63" kind="function"><name>inWaitingRx</name></member>
+    <member refid="class_communication_1a9729e4f539ba60f67aa2273c0fe471e0" kind="function"><name>inWaitingTx</name></member>
+    <member refid="class_communication_1af87402699dbd147b8d24aec9792827b8" kind="function"><name>update</name></member>
+    <member refid="class_communication_1aa686ecae406d9e82ca6aab48e2634042" kind="function"><name>Communication</name></member>
+    <member refid="class_communication_1ad2fcf1b78b7cb0869a1048c319a84bcf" kind="function"><name>operator=</name></member>
+    <member refid="class_communication_1a556bfa49af73d5a2415bbbee6ea6fbed" kind="function"><name>toTelemetry</name></member>
+  </compound>
+  <compound refid="union_decoder" kind="union"><name>Decoder</name>
+    <member refid="union_decoder_1a7c7dec74043044b9056ac805bac3fc32" kind="variable"><name>fBytes</name></member>
+    <member refid="union_decoder_1a300d399769a3223b0e09ac751fff7ea2" kind="variable"><name>data</name></member>
+    <member refid="union_decoder_1a21db192f115eff4207334a2c2a182fb5" kind="variable"><name>uIntVectorE</name></member>
+  </compound>
+  <compound refid="class_do___action" kind="class"><name>Do_Action</name>
+    <member refid="class_do___action_1aa881982cd7aec2025ac06a0172bf29ac" kind="variable"><name>functionToCall</name></member>
+    <member refid="class_do___action_1a28e1938a014380f0d4098fe0c11e71ce" kind="function"><name>start</name></member>
+    <member refid="class_do___action_1a5064f0538e7ce5197bb7de836692892b" kind="function"><name>Do_Action</name></member>
+  </compound>
+  <compound refid="class_double___action" kind="class"><name>Double_Action</name>
+    <member refid="class_double___action_1ab027da4d0e91a7b057a4915087908531" kind="variable"><name>action1</name></member>
+    <member refid="class_double___action_1ae3958355ab2906e09020975ec34a7181" kind="variable"><name>action2</name></member>
+    <member refid="class_double___action_1aac46b3f8dad147fde4f7934e6f86649d" kind="function"><name>start</name></member>
+    <member refid="class_double___action_1a5d7683eb93c3ec650695e84426d910ee" kind="function"><name>isFinished</name></member>
+    <member refid="class_double___action_1aa287df168e59626573cb6a20ef827f69" kind="function"><name>hasFailed</name></member>
+    <member refid="class_double___action_1a3443c27e08e7af8bd8b4380ecf67c8ce" kind="function"><name>doAtEnd</name></member>
+    <member refid="class_double___action_1a29adf8e0933045ce8fa1f0fb2701c73f" kind="function"><name>Double_Action</name></member>
+  </compound>
+  <compound refid="class_d_r_v8825" kind="class"><name>DRV8825</name>
+    <member refid="class_d_r_v8825_1a8cfd666d75f891930be0bc34f75bd3fc" kind="variable"><name>MS_TABLE</name></member>
+    <member refid="class_d_r_v8825_1a8e8911db46092516a96ac8cc086ee0bc" kind="variable"><name>step_high_min</name></member>
+    <member refid="class_d_r_v8825_1a423f12b4bfbf1b93966de659d156c4d1" kind="variable"><name>step_low_min</name></member>
+    <member refid="class_d_r_v8825_1ac0b740268ab0665e08e66cb8282acbc4" kind="variable"><name>wakeup_time</name></member>
+    <member refid="class_d_r_v8825_1a2e4944cb3e4dd392328b599621000750" kind="variable"><name>MAX_MICROSTEP</name></member>
+    <member refid="class_d_r_v8825_1a3650c70de245ed6f283ed975b77d03bc" kind="function"><name>getMicrostepTable</name></member>
+    <member refid="class_d_r_v8825_1a71f7f93d9a1a52af37ecccda42868206" kind="function"><name>getMicrostepTableSize</name></member>
+    <member refid="class_d_r_v8825_1a69a55bb439172740e5bb9a2f5e43e511" kind="function"><name>getMaxMicrostep</name></member>
+    <member refid="class_d_r_v8825_1aee4f48c92aba458613384a206c1baff2" kind="function"><name>DRV8825</name></member>
+    <member refid="class_d_r_v8825_1a058b6ca167afb2c6fbb5b7fa4f626dbe" kind="function"><name>DRV8825</name></member>
+    <member refid="class_d_r_v8825_1ad98fb3f5707bb90a9c10b01e10869f7c" kind="function"><name>DRV8825</name></member>
+    <member refid="class_d_r_v8825_1a08d5b966199b132c5063001140b6a8db" kind="function"><name>DRV8825</name></member>
+  </compound>
+  <compound refid="class_d_r_v8834" kind="class"><name>DRV8834</name>
+    <member refid="class_d_r_v8834_1a7b43b6943650c290e9d9f02b1f346ddb" kind="variable"><name>m0_pin</name></member>
+    <member refid="class_d_r_v8834_1ae3cf4330553ed6a107930fc697e57b3e" kind="variable"><name>m1_pin</name></member>
+    <member refid="class_d_r_v8834_1af4e38a8521a944ac70efc8525b35075a" kind="variable"><name>step_high_min</name></member>
+    <member refid="class_d_r_v8834_1a6db77fe9dbb77e73fe9658ce233fe710" kind="variable"><name>step_low_min</name></member>
+    <member refid="class_d_r_v8834_1ae76c7f7173c57815817c4b4b15da185c" kind="variable"><name>wakeup_time</name></member>
+    <member refid="class_d_r_v8834_1a2687a24102d2bc432d84f1c60d28c3d6" kind="variable"><name>MAX_MICROSTEP</name></member>
+    <member refid="class_d_r_v8834_1a49982ab8521966dd90e884afbbcd540c" kind="function"><name>getMaxMicrostep</name></member>
+    <member refid="class_d_r_v8834_1a49982ab8521966dd90e884afbbcd540c" kind="function"><name>getMaxMicrostep</name></member>
+    <member refid="class_d_r_v8834_1a0e20a9029f8ebd6f6cda8cc6fe9b1469" kind="function"><name>DRV8834</name></member>
+    <member refid="class_d_r_v8834_1a67146ab2c5a8e80685fcd87bfb773866" kind="function"><name>DRV8834</name></member>
+    <member refid="class_d_r_v8834_1a481734cf09f7e75b7030a915d8ab261c" kind="function"><name>DRV8834</name></member>
+    <member refid="class_d_r_v8834_1aafd53beb1053536baee481db090fd63c" kind="function"><name>DRV8834</name></member>
+    <member refid="class_d_r_v8834_1ac5e4994c722b5782690d5adaafc0d2f9" kind="function"><name>setMicrostep</name></member>
+    <member refid="class_d_r_v8834_1a0e20a9029f8ebd6f6cda8cc6fe9b1469" kind="function"><name>DRV8834</name></member>
+    <member refid="class_d_r_v8834_1a67146ab2c5a8e80685fcd87bfb773866" kind="function"><name>DRV8834</name></member>
+    <member refid="class_d_r_v8834_1a481734cf09f7e75b7030a915d8ab261c" kind="function"><name>DRV8834</name></member>
+    <member refid="class_d_r_v8834_1aafd53beb1053536baee481db090fd63c" kind="function"><name>DRV8834</name></member>
+    <member refid="class_d_r_v8834_1ac5e4994c722b5782690d5adaafc0d2f9" kind="function"><name>setMicrostep</name></member>
+  </compound>
+  <compound refid="class_d_r_v8880" kind="class"><name>DRV8880</name>
+    <member refid="class_d_r_v8880_1a6d05ba3b1d74b30f5249466b70e05fc0" kind="variable"><name>m0</name></member>
+    <member refid="class_d_r_v8880_1ad4642d9e4062ce936b554513a596e26d" kind="variable"><name>m1</name></member>
+    <member refid="class_d_r_v8880_1a9c54268592df1c770559f295203473f0" kind="variable"><name>trq0</name></member>
+    <member refid="class_d_r_v8880_1ae0d1d3daf4fb40a76c757e737c8bfdf1" kind="variable"><name>trq1</name></member>
+    <member refid="class_d_r_v8880_1aafb66b537159aacdfc90e1ba94d993d0" kind="variable"><name>step_high_min</name></member>
+    <member refid="class_d_r_v8880_1a6f2c53f12895f2053d1362c536ca322a" kind="variable"><name>step_low_min</name></member>
+    <member refid="class_d_r_v8880_1af5429463e983cc7122e2409ba71adac0" kind="variable"><name>wakeup_time</name></member>
+    <member refid="class_d_r_v8880_1a38450240ca9cce51b0502a1978cdbdc6" kind="variable"><name>MAX_MICROSTEP</name></member>
+    <member refid="class_d_r_v8880_1a2a13c320c7c7dd30a20ae1de853e30d6" kind="function"><name>getMaxMicrostep</name></member>
+    <member refid="class_d_r_v8880_1a313a5d2ecc50cc300110dc3c722cb78e" kind="function"><name>DRV8880</name></member>
+    <member refid="class_d_r_v8880_1ae533738cf0ed34327a81e528b4440357" kind="function"><name>DRV8880</name></member>
+    <member refid="class_d_r_v8880_1aca6dbef12b1910811ec223e0680e6aeb" kind="function"><name>DRV8880</name></member>
+    <member refid="class_d_r_v8880_1a0f7eb56eeb5810a0f3c41885c00bfaf0" kind="function"><name>DRV8880</name></member>
+    <member refid="class_d_r_v8880_1a7ce4cbf8874618597b5ca4cd35ce8bf6" kind="function"><name>DRV8880</name></member>
+    <member refid="class_d_r_v8880_1a9ca3ed94cca381ee44342bc94442f74e" kind="function"><name>DRV8880</name></member>
+    <member refid="class_d_r_v8880_1a24c4da0b05f8f4c22a99bd185bcef268" kind="function"><name>begin</name></member>
+    <member refid="class_d_r_v8880_1a2376c93ea64f56e6ff410f6510faca56" kind="function"><name>setMicrostep</name></member>
+    <member refid="class_d_r_v8880_1a3c9c70bd6c703624c3f0563661eee041" kind="function"><name>setCurrent</name></member>
+  </compound>
+  <compound refid="class_encoder" kind="class"><name>Encoder</name>
+    <member refid="class_encoder_1aac6b8166a441758ab94bcd6d94a02400" kind="variable"><name>encoder</name></member>
+    <member refid="class_encoder_1ac72087ea0e923a364321228fcff1e1f2" kind="variable"><name>interrupts_in_use</name></member>
+    <member refid="class_encoder_1a984ac1b75c0a2e26de808447b869f929" kind="variable"><name>interruptArgs</name></member>
+    <member refid="class_encoder_1a6093806e19b693a5a963bda7e7cf7ae3" kind="function"><name>Encoder</name></member>
+    <member refid="class_encoder_1a0069a5ff2a72a6b5c5afc337ce6be611" kind="function"><name>read</name></member>
+    <member refid="class_encoder_1ae4efd88ebe65477d33ae2bf09c7effb6" kind="function"><name>readAndReset</name></member>
+    <member refid="class_encoder_1a2c1b2e3959fb80ef1d89737c4d371792" kind="function"><name>write</name></member>
+    <member refid="class_encoder_1aff92363b795194d47c28640632854e08" kind="function"><name>update</name></member>
+    <member refid="class_encoder_1a933ce9a86ee3f0f617d65681e0fdbc5d" kind="function"><name>attach_interrupt</name></member>
+  </compound>
+  <compound refid="struct_encoder__internal__state__t" kind="struct"><name>Encoder_internal_state_t</name>
+    <member refid="struct_encoder__internal__state__t_1aedff23ab9d6ac7b0494867146bc50fd4" kind="variable"><name>pin1_register</name></member>
+    <member refid="struct_encoder__internal__state__t_1a8e709eb09261bbc0c642a64b60f1ab6f" kind="variable"><name>pin2_register</name></member>
+    <member refid="struct_encoder__internal__state__t_1a864890ac5e0de553d781ed8d88640b86" kind="variable"><name>pin1_bitmask</name></member>
+    <member refid="struct_encoder__internal__state__t_1a304b408a2439318182e5d711f0c4a4e1" kind="variable"><name>pin2_bitmask</name></member>
+    <member refid="struct_encoder__internal__state__t_1a67333451d1e12d90f469d716170ba629" kind="variable"><name>state</name></member>
+    <member refid="struct_encoder__internal__state__t_1a315e59c67255e5d7bee0e4733abda190" kind="variable"><name>position</name></member>
+  </compound>
+  <compound refid="class_end___action" kind="class"><name>End_Action</name>
+    <member refid="class_end___action_1a7637e75999e1875671c97f1a3028c099" kind="variable"><name>loop</name></member>
+    <member refid="class_end___action_1a6d7f2fb02272d49291f07ccbd89443a0" kind="variable"><name>pause</name></member>
+    <member refid="class_end___action_1aa501f51a5cd0bc806b680f0a26dbbe24" kind="variable"><name>lockGhost</name></member>
+    <member refid="class_end___action_1a5a1687ad1cf9f15f36ea4b5b44575a43" kind="function"><name>End_Action</name></member>
+    <member refid="class_end___action_1aad151db7bde008e76cfa5e22197112d0" kind="function"><name>start</name></member>
+    <member refid="class_end___action_1a32a9535c29bc2feaca200d57fd5c3835" kind="function"><name>isFinished</name></member>
+    <member refid="class_end___action_1a5df9ad29a4343e3e4603ed1667b94ed6" kind="function"><name>hasFailed</name></member>
+  </compound>
+  <compound refid="class_error_box" kind="class"><name>ErrorBox</name>
+    <member refid="class_error_box_1a70366795bbb7801677080c760075b387" kind="variable"><name>empty</name></member>
+    <member refid="class_error_box_1a4b54e3f4df04502e51e5050cada9b70d" kind="variable"><name>box</name></member>
+    <member refid="class_error_box_1a2e746c584406f533e3ee04f90c8ca893" kind="variable"><name>iFirstEntry</name></member>
+    <member refid="class_error_box_1adafbabf9e176c461d4bc74e168a3fed8" kind="variable"><name>iNextEntry</name></member>
+    <member refid="class_error_box_1aabc1694c012f61d63d659bde6b8bcca2" kind="function"><name>pull</name></member>
+    <member refid="class_error_box_1afcfca0e76230fd1aaac25cf27fab1447" kind="function"><name>peek</name></member>
+    <member refid="class_error_box_1a9dfe377bdc972b85f7bc981f44c7cf3c" kind="function"><name>push</name></member>
+    <member refid="class_error_box_1a92077f9f906e08cbd189eb52ada079bb" kind="function"><name>size</name></member>
+    <member refid="class_error_box_1aaff49490716c7408716448763d0da3f1" kind="function"><name>reset</name></member>
+  </compound>
+  <compound refid="class_error_manager" kind="class"><name>ErrorManager</name>
+    <member refid="class_error_manager_1a9aa086d8824f15f21c13b008da4ea50a" kind="variable"><name>errorBox</name></member>
+    <member refid="class_error_manager_1a61c7dc2f64286db3d23aa5b503e8a317" kind="variable"><name>timeLastIn</name></member>
+    <member refid="class_error_manager_1a7bed90237b637c43f383d4c3fd71baeb" kind="function"><name>raise</name></member>
+    <member refid="class_error_manager_1ad17fae74cf16c132478cd887d526065a" kind="function"><name>popOldestError</name></member>
+    <member refid="class_error_manager_1abdaf3d2c9a56ceb4d9c75095466ca2fd" kind="function"><name>peekOldestError</name></member>
+    <member refid="class_error_manager_1a1d7ce8b7be01e27f98e2ee30bc972632" kind="function"><name>inWaiting</name></member>
+    <member refid="class_error_manager_1ab8d360ce5ae97dc3e08a4459d830ac27" kind="function"><name>setup</name></member>
+    <member refid="class_error_manager_1a89193f2b6a14442a194a62e7cf4dc472" kind="function"><name>reset</name></member>
+  </compound>
+  <compound refid="class_filtre" kind="class"><name>Filtre</name>
+    <member refid="class_filtre_1af847b137b88857652340881fe66d2a0f" kind="variable"><name>lastValue</name></member>
+    <member refid="class_filtre_1a5bc50daa3c026add94780e07e2714c0d" kind="variable"><name>wc</name></member>
+    <member refid="class_filtre_1ab90cbd01411d8d374113d8acb1cb67d4" kind="function"><name>in</name></member>
+    <member refid="class_filtre_1a5cfb38935ccc7f8721b6706155d242be" kind="function"><name>out</name></member>
+    <member refid="class_filtre_1a6f77497f6723ec86d073ff7fd062f615" kind="function"><name>reset</name></member>
+    <member refid="class_filtre_1a190aaadf0aa844f0b36b0a27960c4d90" kind="function"><name>Filtre</name></member>
+    <member refid="class_filtre_1a9f32dd92c4ca599e0ddbed3135267387" kind="function"><name>Filtre</name></member>
+  </compound>
+  <compound refid="class_forward___action" kind="class"><name>Forward_Action</name>
+    <member refid="class_forward___action_1ad222bd96d9e08b6100d72f9b6caf0a3e" kind="variable"><name>dist</name></member>
+    <member refid="class_forward___action_1ae2f33e5bbbc11ff6903854ce54b24738" kind="function"><name>Forward_Action</name></member>
+    <member refid="class_forward___action_1a70fc0a87198c554f1b93940f3ed0051d" kind="function"><name>start</name></member>
+  </compound>
+  <compound refid="struct_four_bytes" kind="struct"><name>FourBytes</name>
+    <member refid="struct_four_bytes_1a44c109d10fa2c2b814218074b93da3ac" kind="variable"><name>byte0</name></member>
+    <member refid="struct_four_bytes_1a1f8afabbf508fd9358012c61c19f3af8" kind="variable"><name>byte1</name></member>
+    <member refid="struct_four_bytes_1a8f1cf47d65464697bfdd5f6a203dbd14" kind="variable"><name>byte2</name></member>
+    <member refid="struct_four_bytes_1a7fc1a7791742643515f6c6c508393432" kind="variable"><name>byte3</name></member>
+  </compound>
+  <compound refid="class_ghost" kind="class"><name>Ghost</name>
+    <member refid="class_ghost_1a0ecd6af8682bd80efb1e653b36cd0e44" kind="variable"><name>cinetiqueController</name></member>
+    <member refid="class_ghost_1a428dff88ca98b33f8ab9597603df1fb6" kind="variable"><name>MIN_MOVEMENT</name></member>
+    <member refid="class_ghost_1a40fee0f076a1c662aa76397840f28cbf" kind="variable"><name>MIN_ROTATION</name></member>
+    <member refid="class_ghost_1a956b50684e4c7075d50dcb8b7197256d" kind="variable"><name>DELAY_POSITION</name></member>
+    <member refid="class_ghost_1a52d1974b4a7e63e1fef1011cc881d497" kind="variable"><name>MAX_SPEED</name></member>
+    <member refid="class_ghost_1a8fba86d11cc60e6f00f04151eacbf610" kind="variable"><name>MAX_DISTANCE</name></member>
+    <member refid="class_ghost_1af2c197eb1e0fb9344bbbe315d1a33c9f" kind="variable"><name>posCurrent</name></member>
+    <member refid="class_ghost_1a1405ede237a4a82d31767101a0599c1c" kind="variable"><name>posPrevious</name></member>
+    <member refid="class_ghost_1ace923a9cd951808ae323c08372eeca31" kind="variable"><name>posAim</name></member>
+    <member refid="class_ghost_1afa3de1cbdaa38a10bfb85bf269471bdc" kind="variable"><name>posDelayed</name></member>
+    <member refid="class_ghost_1ad97471f6b598fcf433f688f34b042478" kind="variable"><name>trajectory_X</name></member>
+    <member refid="class_ghost_1ac2065221f8e9773b8ea3f7f45cc2b571" kind="variable"><name>trajectory_Y</name></member>
+    <member refid="class_ghost_1a7dc6d78c21ea37f44925b84dd5bd2bde" kind="variable"><name>speedSquare_e</name></member>
+    <member refid="class_ghost_1aeea5fcfbbb82e06db3e15d66e829d6e6" kind="variable"><name>speedProfileLinear</name></member>
+    <member refid="class_ghost_1ae190ffc5f91b661267ea9150518bdb08" kind="variable"><name>speedProfileRotation</name></member>
+    <member refid="class_ghost_1a23428f9f8dda4ef3377d555acbc86b83" kind="variable"><name>t</name></member>
+    <member refid="class_ghost_1a58140fd7b483dcde4d75ac79f13d5bb0" kind="variable"><name>t_delayed</name></member>
+    <member refid="class_ghost_1a819e3eed2df182964a52e758de9fa732" kind="variable"><name>t_e</name></member>
+    <member refid="class_ghost_1a9e0d3ce2c640b945c8350d02849b3fe4" kind="variable"><name>t_e_delayed</name></member>
+    <member refid="class_ghost_1ab57abbfecdc63a6e080bfcd51009c54a" kind="variable"><name>durationTrajectory</name></member>
+    <member refid="class_ghost_1aa3cd8642bbb7cee6270d692ec5715a4b" kind="variable"><name>lengthTrajectory</name></member>
+    <member refid="class_ghost_1a80c34196ce6801ef253aea02b66001dc" kind="variable"><name>speedLinearCurrent</name></member>
+    <member refid="class_ghost_1a997a3589c186e8dcade0990d4441db4a" kind="variable"><name>speedRotationalCurrent</name></member>
+    <member refid="class_ghost_1a3b35a902915aa70deaeaf02dcba4d655" kind="variable"><name>locked</name></member>
+    <member refid="class_ghost_1a79b0f3bbafde14ad8d9eac3b34d89dde" kind="variable"><name>rotating</name></member>
+    <member refid="class_ghost_1a7ea9a98d40b3d14c936c4c844d70c01d" kind="variable"><name>backward</name></member>
+    <member refid="class_ghost_1adc255b385f687afcce0900502d9a7bf7" kind="variable"><name>trajectoryFinished</name></member>
+    <member refid="class_ghost_1add32788778aeaa7f0bb6da1077e715db" kind="function"><name>Ghost</name></member>
+    <member refid="class_ghost_1a9740f250aaee829a8445903b8a1eb4f3" kind="function"><name>IsLocked</name></member>
+    <member refid="class_ghost_1aa88463d4a6de0a3292757e4bfdb144ff" kind="function"><name>IsRotating</name></member>
+    <member refid="class_ghost_1aad4f81f6c7618bcfb7c3346662745922" kind="function"><name>IsBackward</name></member>
+    <member refid="class_ghost_1a5ec1fe41bceee34af769297400340b06" kind="function"><name>trajectoryIsFinished</name></member>
+    <member refid="class_ghost_1a698731ea2bd0f163ef7686a208569af7" kind="function"><name>Lock</name></member>
+    <member refid="class_ghost_1a3d1ecc6bd1cb8bc973781aa3e693d432" kind="function"><name>ActuatePosition</name></member>
+    <member refid="class_ghost_1a2332189de8523d9c2c36433192da2689" kind="function"><name>Compute_Trajectory</name></member>
+    <member refid="class_ghost_1add43b77dc94db3414adb4cb34249068f" kind="function"><name>moveGhost</name></member>
+    <member refid="class_ghost_1a0369cdbf96ba80b29e954d5ddc6372b2" kind="function"><name>moveGhost</name></member>
+    <member refid="class_ghost_1a32693443fc7368acc3ce586b3b1eb334" kind="function"><name>Get_Controller_Cinetique</name></member>
+    <member refid="class_ghost_1a50c4e8741d1939fbe514baa31d63a002" kind="function"><name>Update_Speeds</name></member>
+    <member refid="class_ghost_1a41d20ae043b489a4fead1e30f1f03f9a" kind="function"><name>Set_NewTrajectory</name></member>
+    <member refid="class_ghost_1a2bb7de8481116a5e1c92b9cebcf75d1e" kind="function"><name>StateManager</name></member>
+  </compound>
+  <compound refid="class_goto___action" kind="class"><name>Goto_Action</name>
+    <member refid="class_goto___action_1a422f00aabfaa5e0e3e36d2810b8a563b" kind="function"><name>Goto_Action</name></member>
+  </compound>
+  <compound refid="class_interrupteur" kind="class"><name>Interrupteur</name>
+    <member refid="class_interrupteur_1a3d5fc65c01b1fbd0962a9c1e2b0079b8" kind="variable"><name>pin</name></member>
+    <member refid="class_interrupteur_1a0498c90ec2082315a6ebcfa060605152" kind="variable"><name>contact</name></member>
+    <member refid="class_interrupteur_1a7b65400794e220d41f4db6d9113d7982" kind="function"><name>Interrupteur</name></member>
+    <member refid="class_interrupteur_1a8d7fc179d126f0fb14eef7bbd5c2c458" kind="function"><name>updateContact</name></member>
+    <member refid="class_interrupteur_1a914ffa901a358372d3daa3671c9d5d0a" kind="function"><name>isContact</name></member>
+  </compound>
+  <compound refid="class_l_i_d_a_r" kind="class"><name>LIDAR</name>
+    <member refid="class_l_i_d_a_r_1aa4b1211035bf2ee506383d76cad19cde" kind="variable"><name>botDetected</name></member>
+    <member refid="class_l_i_d_a_r_1a70cfd4e0257b3e0e8b6919b698595099" kind="variable"><name>enemy1</name></member>
+    <member refid="class_l_i_d_a_r_1ab599562f964886f9db76cfb042545d7a" kind="variable"><name>enemy2</name></member>
+    <member refid="class_l_i_d_a_r_1a2b851a9835cbaa7515328c80f872265c" kind="variable"><name>SECONDARY_BOT_ALLY</name></member>
+    <member refid="class_l_i_d_a_r_1a61cce290f447746e0f2698aa79f158b6" kind="variable"><name>lidar</name></member>
+    <member refid="class_l_i_d_a_r_1ae5e6d2dcd5439cd13f3bd181a7645fe0" kind="variable"><name>object_list</name></member>
+    <member refid="class_l_i_d_a_r_1a1b9acab5151b414b54b76da72151dfd0" kind="variable"><name>nb_object</name></member>
+    <member refid="class_l_i_d_a_r_1a738c5415d1845752da59804f7d948c19" kind="variable"><name>detectinging_an_object</name></member>
+    <member refid="class_l_i_d_a_r_1a1e05e0a0c8d2166f1403871fa55c38bb" kind="function"><name>LIDAR</name></member>
+    <member refid="class_l_i_d_a_r_1a57f109512e7085e9ebc2a21829eef443" kind="function"><name>Begin</name></member>
+    <member refid="class_l_i_d_a_r_1a1d6d59cdd58e0b58003da1f854dc3a50" kind="function"><name>get_Cinetique</name></member>
+    <member refid="class_l_i_d_a_r_1afedbfdbae3c9ff0ba73a47d49848cde8" kind="function"><name>trajectoryBlocked</name></member>
+    <member refid="class_l_i_d_a_r_1a6c1d99db998cb640233fda6ae9d25e06" kind="function"><name>detect</name></member>
+    <member refid="class_l_i_d_a_r_1ab5b45b403678d6635dc9a86efb47bbae" kind="function"><name>identify</name></member>
+    <member refid="class_l_i_d_a_r_1af0f20ced1e241dba16ba796f260b19ec" kind="function"><name>track</name></member>
+  </compound>
+  <compound refid="class_logger" kind="class"><name>Logger</name>
+    <member refid="class_logger_1a9ae8f9be4090b8885265fbce1f794b8e" kind="variable"><name>telemetryPort</name></member>
+    <member refid="class_logger_1a43ba9db50f221c52502ea18cfc034148" kind="variable"><name>infoPort</name></member>
+    <member refid="class_logger_1ac9e33f811098d02e7035daf9a4b103c0" kind="variable"><name>debugPort</name></member>
+    <member refid="class_logger_1add8875614e0f7f9e0945fcbcd2d39c1f" kind="variable"><name>telemetryEnabled</name></member>
+    <member refid="class_logger_1ab0879658904b8d2328a37912a8a7fff3" kind="variable"><name>infoEnabled</name></member>
+    <member refid="class_logger_1a651107ec179fb76959e685d162274c5e" kind="variable"><name>debugEnabled</name></member>
+    <member refid="class_logger_1afdad0b5c9123fb3a3e7c70b71a78216f" kind="function"><name>debug</name></member>
+    <member refid="class_logger_1a2b76efaa0362d362a706bd511169e401" kind="function"><name>debugln</name></member>
+    <member refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kind="function"><name>infoln</name></member>
+    <member refid="class_logger_1ae363ca6abc4efcf0c8b89a4ea520a4a3" kind="function"><name>toTelemetry</name></member>
+    <member refid="class_logger_1a28d9c8374090b32982cdab8ba3e032e9" kind="function"><name>setup</name></member>
+  </compound>
+  <compound refid="class_manager" kind="class"><name>Manager</name>
+    <member refid="class_manager_1a5455d2168d3b39997f7b46f50f522afb" kind="variable"><name>serialDebug</name></member>
+    <member refid="class_manager_1a7e767940b547f7d4bfb0ab81be03a0de" kind="variable"><name>comController</name></member>
+    <member refid="class_manager_1afaea69135b2f24154502161005615cbc" kind="variable"><name>listActuators</name></member>
+    <member refid="class_manager_1a98a41ec4a7acbc63e85f6f2a8854b90c" kind="variable"><name>pavillon</name></member>
+    <member refid="class_manager_1a87571010f4933c65e5062b416200e111" kind="variable"><name>brasGauche</name></member>
+    <member refid="class_manager_1ae99a134b0b20400113727b1a4c33288d" kind="variable"><name>brasDroit</name></member>
+    <member refid="class_manager_1ab75e0558ff2df3c129d91e6c6ad9eee8" kind="variable"><name>pinceAvantGauche</name></member>
+    <member refid="class_manager_1ab7c15e667c060fbb8a43ba036503220f" kind="variable"><name>pinceAvantDroite</name></member>
+    <member refid="class_manager_1a9c3315a21e3621d27510ab8695a97c02" kind="variable"><name>pinceArr</name></member>
+    <member refid="class_manager_1a5f3a08f1f143fc1603f8488be431d6f1" kind="variable"><name>brasGauche_servoPWM</name></member>
+    <member refid="class_manager_1ac840af1484adeb57b7ebdf0a48767428" kind="variable"><name>brasDroit_servoPWM</name></member>
+    <member refid="class_manager_1a5a38469afb0eaeafa9ef868d4b648807" kind="variable"><name>pav_Dir</name></member>
+    <member refid="class_manager_1a7401571f8ff014f61382482c7ecde40c" kind="variable"><name>pav_Step</name></member>
+    <member refid="class_manager_1ac96ea9d2e4e544d4a0f9bde4325efb82" kind="variable"><name>pav_Sleep</name></member>
+    <member refid="class_manager_1a169ad3374a80d107ee1e50741a526d63" kind="variable"><name>pav_M0</name></member>
+    <member refid="class_manager_1a23e58dde0e45ce181b71aeb09c8f9864" kind="variable"><name>pav_M1</name></member>
+    <member refid="class_manager_1acc9f7ce50137f70ad2975bdde9676406" kind="variable"><name>pinceArr_servoPWM</name></member>
+    <member refid="class_manager_1a05b2dffc0eee2b7e016c531e270b189f" kind="variable"><name>pinceAvG_servoPWM</name></member>
+    <member refid="class_manager_1af7f8fc50755105f5a3a1c25e21ec3455" kind="variable"><name>pinceAvD_servoPWM</name></member>
+    <member refid="class_manager_1abeacf4030f973f6fe956b85e85a0d6dd" kind="variable"><name>pinceAvG_Dir</name></member>
+    <member refid="class_manager_1ad4160f0c4397269d6cfed8feaa5d5fda" kind="variable"><name>pinceAvG_Step</name></member>
+    <member refid="class_manager_1a671f0aa5460ebaca15dd68d2543db8ad" kind="variable"><name>pinceAvD_Dir</name></member>
+    <member refid="class_manager_1ae8381fd3fd2934fe07e3e5d5c4b8b284" kind="variable"><name>pinceAvD_Step</name></member>
+    <member refid="class_manager_1ae1693b96d9005cce2c64d5e923f064ba" kind="variable"><name>pinceArr_Dir</name></member>
+    <member refid="class_manager_1a78c847013a5870894dec29083f0600c4" kind="variable"><name>pinceArr_Step</name></member>
+    <member refid="class_manager_1ab9e44a0b498f38fd48dd7c89bd52251a" kind="variable"><name>pincesAv_M0</name></member>
+    <member refid="class_manager_1a4a622d56f2c38aea310ef73d50571f28" kind="variable"><name>pincesAv_M1</name></member>
+    <member refid="class_manager_1a8c53f546d9dba4f064e1c00aa9fd8879" kind="variable"><name>pincesArr_M0</name></member>
+    <member refid="class_manager_1a574cd80cfcb82982215f6775c7731890" kind="variable"><name>pincesArr_M1</name></member>
+    <member refid="class_manager_1a557f88c3b13dd839d4c5506b96f8a391" kind="variable"><name>pinces_Sleep</name></member>
+    <member refid="class_manager_1a0a0b9c2ab665a6a578ce80ee95b114ff" kind="variable"><name>currentMessage</name></member>
+    <member refid="class_manager_1a3508d5767119027c1b40e020c091498b" kind="variable"><name>currentID</name></member>
+    <member refid="class_manager_1a145c6a357d11093b3aa733c759bdfee4" kind="variable"><name>currentBytes</name></member>
+    <member refid="class_manager_1a2c4c58b887d87eb62fcaab2a490a178c" kind="variable"><name>currentOrder</name></member>
+    <member refid="class_manager_1a063a10df590ee1f84bb7a6fc7d046998" kind="function"><name>Manager</name></member>
+    <member refid="class_manager_1a151953c44ccb959ebd1b2889b925f1b3" kind="function"><name>Update</name></member>
+  </compound>
+  <compound refid="struct_message" kind="struct"><name>Message</name>
+    <member refid="struct_message_1acb8910eb659cd2cdef84a9597443fff0" kind="variable"><name>_data</name></member>
+    <member refid="struct_message_1a23722cc684bdba25bc03486ff31d8539" kind="variable"><name>_ID</name></member>
+  </compound>
+  <compound refid="class_message_box" kind="class"><name>MessageBox</name>
+    <member refid="class_message_box_1af958b6aea35a962e5101476a3515a7c2" kind="variable"><name>empty</name></member>
+    <member refid="class_message_box_1aa5b85763194fd353efd0a79134050411" kind="variable"><name>box</name></member>
+    <member refid="class_message_box_1a2d9c5a2f7c3189429a50052f1e394dfa" kind="variable"><name>iFirstEntry</name></member>
+    <member refid="class_message_box_1a844c1325b54d4fb686143b4d05bbe12b" kind="variable"><name>iNextEntry</name></member>
+    <member refid="class_message_box_1a3be3522e268e4a1d651e23484326ae87" kind="function"><name>pull</name></member>
+    <member refid="class_message_box_1a6f37cafc321563c375a58e7d54fc7f3c" kind="function"><name>peek</name></member>
+    <member refid="class_message_box_1a136a61ebf384bb8e9e75f02c8cd9184c" kind="function"><name>push</name></member>
+    <member refid="class_message_box_1af81422e2ef4a6ddad639612512df36b0" kind="function"><name>size</name></member>
+  </compound>
+  <compound refid="class_motor" kind="class"><name>Motor</name>
+    <member refid="class_motor_1a233424a8faab530f507fa3ae71fa6cfa" kind="variable"><name>pinPWR</name></member>
+    <member refid="class_motor_1ab91c36747d10789b04f612ca1e0fad6e" kind="variable"><name>pinSens</name></member>
+    <member refid="class_motor_1acb3c6afd7e4cc124bc249ee951791e4a" kind="variable"><name>maxPwm</name></member>
+    <member refid="class_motor_1af0a739bd313bee101af5c3937eacb970" kind="variable"><name>bitResolution</name></member>
+    <member refid="class_motor_1aab526d3bbeb185ab1272f271ed41ff93" kind="variable"><name>orderByPass</name></member>
+    <member refid="class_motor_1aa7d77874a2845b81ce6ec7a382566653" kind="variable"><name>bypass</name></member>
+    <member refid="class_motor_1a0088ce874b97f15678d88f19e1c720ea" kind="variable"><name>order</name></member>
+    <member refid="class_motor_1ace16fe0633a6a7621deaa5d8d4fb42a9" kind="function"><name>actuate</name></member>
+    <member refid="class_motor_1a35701a89046d5bda5bbcf48f28114cee" kind="function"><name>Motor</name></member>
+    <member refid="class_motor_1af6106b4c506411265c5face762b6c004" kind="function"><name>Motor</name></member>
+    <member refid="class_motor_1a3d63113c348f063dea632f98b7bc90e8" kind="function"><name>setOrder</name></member>
+    <member refid="class_motor_1a015fd5308d4d27e5dcf7f9ea3d5c03f6" kind="function"><name>stop</name></member>
+    <member refid="class_motor_1abdacded3a39437f00e4edbe328003794" kind="function"><name>bypassOrder</name></member>
+    <member refid="class_motor_1ad1c79f856b4b79f5f0628e1610587409" kind="function"><name>resume</name></member>
+  </compound>
+  <compound refid="class_move___action" kind="class"><name>Move_Action</name>
+    <member refid="class_move___action_1ae44dffe88584af9ea9adf3ca77c877fc" kind="variable"><name>posFinal</name></member>
+    <member refid="class_move___action_1a757e2b82bbf44e28df6716c75739417d" kind="variable"><name>deltaCurve</name></member>
+    <member refid="class_move___action_1aff4597d0d11765e58cc5f75a5e7729ea" kind="variable"><name>profileName</name></member>
+    <member refid="class_move___action_1ac6c160827d09b5270090d2758dbbf32f" kind="variable"><name>pureRotation</name></member>
+    <member refid="class_move___action_1a47be6dbb0b115d9307707fdc741c86ba" kind="variable"><name>backward</name></member>
+    <member refid="class_move___action_1a67ba96921f67ba91f6d34f3245bc34c8" kind="function"><name>start</name></member>
+    <member refid="class_move___action_1a6bdc7828e769bd5cd12fcb42b30807d0" kind="function"><name>isFinished</name></member>
+    <member refid="class_move___action_1ae52a50ebb8ef41c1436c4c209a430a09" kind="function"><name>hasFailed</name></member>
+    <member refid="class_move___action_1a04c6d71f3a87e4f201d8daf6af917dee" kind="function"><name>doAtEnd</name></member>
+    <member refid="class_move___action_1aa1bee9860097a7455d9b701bbf76a1fc" kind="function"><name>Move_Action</name></member>
+  </compound>
+  <compound refid="class_move_profile" kind="class"><name>MoveProfile</name>
+    <member refid="class_move_profile_1aa6c792ec2158a4f11fa080d0f0c8b7ed" kind="variable"><name>KP</name></member>
+    <member refid="class_move_profile_1ac5cadc9a8374ca23f98d01792cdfeb2f" kind="variable"><name>KI</name></member>
+    <member refid="class_move_profile_1af6d018dfce485aea8fb800e6d782e18f" kind="variable"><name>KD</name></member>
+    <member refid="class_move_profile_1a0f8213533fdb61cc47f510ffe1ad6495" kind="variable"><name>KA</name></member>
+    <member refid="class_move_profile_1a2a6c7043df3b16c5578d8d80c2f365f5" kind="variable"><name>epsilon</name></member>
+    <member refid="class_move_profile_1a740001da0357e7d9ef6541b05f610a96" kind="variable"><name>dEpsilon</name></member>
+    <member refid="class_move_profile_1a14c5ee5b9e30ae7f8e1bdb16888bd700" kind="variable"><name>maxErr</name></member>
+    <member refid="class_move_profile_1a8438671c5f6c03665e232c4f6e1472f2" kind="variable"><name>speedRamps</name></member>
+    <member refid="class_move_profile_1ac8a55f68c6a2232adbd88e6cdcef2dbd" kind="variable"><name>cruisingSpeed</name></member>
+    <member refid="class_move_profile_1a3ed83d3483206f05deb001536f527b11" kind="friend"><name>MoveProfiles</name></member>
+    <member refid="class_move_profile_1a357f556ff05d3e47e87b70e94548c2bb" kind="function"><name>set</name></member>
+  </compound>
+  <compound refid="class_move_profiles" kind="class"><name>MoveProfiles</name>
+    <member refid="class_move_profiles_1a91198260dedd5977a99bc334225aafd2" kind="variable"><name>profiles</name></member>
+    <member refid="class_move_profiles_1a7a00419abbecea999316f20928c67db7" kind="function"><name>setup</name></member>
+    <member refid="class_move_profiles_1ab77123cf90ad556314e4129fc7d775fb" kind="function"><name>get</name></member>
+    <member refid="class_move_profiles_1a8df56e4c608fbd3b9dd588d9fc78abd2" kind="function"><name>tweak</name></member>
+  </compound>
+  <compound refid="class_multi_driver" kind="class"><name>MultiDriver</name>
+    <member refid="class_multi_driver_1ae7904294d717bc90056ae94a4cb381a4" kind="variable"><name>count</name></member>
+    <member refid="class_multi_driver_1a4afde7f8d55ca042488dbc2fe0ffde6d" kind="variable"><name>motors</name></member>
+    <member refid="class_multi_driver_1a58a1e551d51044de76830a9673713978" kind="variable"><name>ready</name></member>
+    <member refid="class_multi_driver_1a211e394bc2521ae58283e33783f2a8bc" kind="variable"><name>event_timers</name></member>
+    <member refid="class_multi_driver_1aebc584b700e7fee4f28a2dff88ce8fd8" kind="variable"><name>next_action_interval</name></member>
+    <member refid="class_multi_driver_1ae523c260e172204edd8f2b55c4f74042" kind="variable"><name>last_action_end</name></member>
+    <member refid="class_multi_driver_1aef4bc265455f10d3a9c34be1aea9194c" kind="function"><name>MultiDriver</name></member>
+    <member refid="class_multi_driver_1a450e17b122453adc3954e700a5af3bbd" kind="function"><name>MultiDriver</name></member>
+    <member refid="class_multi_driver_1aac7a339a0d32dae6e871538c7f04bd42" kind="function"><name>MultiDriver</name></member>
+    <member refid="class_multi_driver_1a83b802875f7ef58050fd29e8ef32711f" kind="function"><name>getCount</name></member>
+    <member refid="class_multi_driver_1aa1e10182ad14e6b6045f3114ba705e68" kind="function"><name>getMotor</name></member>
+    <member refid="class_multi_driver_1aaececae5a5428a35de94be11f4984360" kind="function"><name>move</name></member>
+    <member refid="class_multi_driver_1ad29a6356541fbfdb9148fb640a0ec124" kind="function"><name>rotate</name></member>
+    <member refid="class_multi_driver_1a3a1d7c2559789b41ff351684a6316d4e" kind="function"><name>rotate</name></member>
+    <member refid="class_multi_driver_1acc3bb0fdc7135b1781692376e442ae4b" kind="function"><name>rotate</name></member>
+    <member refid="class_multi_driver_1a20b791fe0f6c3ac2cfdef8230e01a839" kind="function"><name>startMove</name></member>
+    <member refid="class_multi_driver_1ae8cbdd12640667e217e1cd7f343d8530" kind="function"><name>startRotate</name></member>
+    <member refid="class_multi_driver_1abb88d42b9f75bb1e8149b74b3e3947f4" kind="function"><name>startRotate</name></member>
+    <member refid="class_multi_driver_1a0c0c5fbba2b0f37904f9a7a5bd5af59d" kind="function"><name>startRotate</name></member>
+    <member refid="class_multi_driver_1ad0872f28c961357dedfa1c8f9f675481" kind="function"><name>nextAction</name></member>
+    <member refid="class_multi_driver_1a6b31172c181e5efbc9e06b218d714deb" kind="function"><name>startBrake</name></member>
+    <member refid="class_multi_driver_1af6da958f5c009e09d5f90106e6a78a37" kind="function"><name>isRunning</name></member>
+    <member refid="class_multi_driver_1a9088bcb65fedaccc39cc10b2e147ca72" kind="function"><name>setMicrostep</name></member>
+    <member refid="class_multi_driver_1a67bf825f49f6cdbe06c76df5633a7fe0" kind="function"><name>enable</name></member>
+    <member refid="class_multi_driver_1aa8429ad6cae9022aadcc44004136d67f" kind="function"><name>disable</name></member>
+  </compound>
+  <compound refid="class_null___action" kind="class"><name>Null_Action</name>
+    <member refid="class_null___action_1aeff6310c2f32ab95a391e14c98927b3e" kind="function"><name>Null_Action</name></member>
+    <member refid="class_null___action_1a5ef08097e316435552daf168bb95bc6b" kind="function"><name>isFinished</name></member>
+    <member refid="class_null___action_1a972d555c7cebec548229e28742ff8493" kind="function"><name>hasFailed</name></member>
+  </compound>
+  <compound refid="classobject__data" kind="class"><name>object_data</name>
+    <member refid="classobject__data_1ac78babdd82d35e4da911f984e9134ad0" kind="variable"><name>Bot_name</name></member>
+    <member refid="classobject__data_1a068200af8cecce3069ebeb4d38ff7d5f" kind="variable"><name>Bot_cinetique</name></member>
+    <member refid="classobject__data_1a1fae1d722d6bad70df251f8d0913b41c" kind="variable"><name>points</name></member>
+    <member refid="classobject__data_1aaa6f5c0cf55b7010acafaa454dd6b0fa" kind="variable"><name>length</name></member>
+    <member refid="classobject__data_1ad6345720c2f942373c4be384abc77670" kind="variable"><name>age</name></member>
+    <member refid="classobject__data_1adcd982f5413f7b0c1ee27b1bc97acade" kind="variable"><name>state</name></member>
+    <member refid="classobject__data_1a94d8b401d5791360937a5dc788fb7440" kind="function"><name>calculateCG</name></member>
+  </compound>
+  <compound refid="class_odometrie" kind="class"><name>Odometrie</name>
+    <member refid="class_odometrie_1af669e2c274c19a1a20c150e80bf4fa46" kind="variable"><name>interGauche</name></member>
+    <member refid="class_odometrie_1a3ef9e525a6b3a3c99cdffc72ebe691b4" kind="variable"><name>interDroite</name></member>
+    <member refid="class_odometrie_1a5c54de725abdcd07f54abb227f5e7510" kind="variable"><name>cinetique</name></member>
+    <member refid="class_odometrie_1a8404aca892ac2722cd3afbf3d27cfb03" kind="variable"><name>eloignementCodeuses</name></member>
+    <member refid="class_odometrie_1a4e9c2ff55987783485da2b187aa58fc1" kind="variable"><name>codeuseGauche</name></member>
+    <member refid="class_odometrie_1a9870210ccd779d4fbf29c54e5a26a2c2" kind="variable"><name>codeuseDroite</name></member>
+    <member refid="class_odometrie_1a4732108bcd1705847f316ff468668916" kind="function"><name>updateCinetique</name></member>
+    <member refid="class_odometrie_1a1a0cbea2f7eda59fa2ae96236056b024" kind="function"><name>Odometrie</name></member>
+    <member refid="class_odometrie_1adafed9f5ea5bf53e4b510671f79aed65" kind="function"><name>Odometrie</name></member>
+    <member refid="class_odometrie_1a11a3120dcb0a66f8a364c1d063c02763" kind="function"><name>getInterDroiteContact</name></member>
+    <member refid="class_odometrie_1afa4a98c7382655da3aad2bd79c0ac1d4" kind="function"><name>getInterGaucheContact</name></member>
+  </compound>
+  <compound refid="class_pause_seq___action" kind="class"><name>PauseSeq_Action</name>
+    <member refid="class_pause_seq___action_1acc176ff9323d3941edfbffdc6535c451" kind="variable"><name>nameSeq</name></member>
+    <member refid="class_pause_seq___action_1ac7fcd9970338ddaadcbecd0fd907d089" kind="variable"><name>lockGhost</name></member>
+    <member refid="class_pause_seq___action_1a7993501a1f5b396852844da7e1fa5e69" kind="function"><name>start</name></member>
+    <member refid="class_pause_seq___action_1aa770443136424eae0399e42c96d47ce8" kind="function"><name>PauseSeq_Action</name></member>
+  </compound>
+  <compound refid="class_pavillon" kind="class"><name>Pavillon</name>
+    <member refid="class_pavillon_1afc2eb7ba92996bcda8a9cada56482888" kind="variable"><name>motorSteps</name></member>
+    <member refid="class_pavillon_1a35da96e2b90f860c02777ce1b74d7450" kind="variable"><name>actionStep</name></member>
+    <member refid="class_pavillon_1ae020ba541de8bb1c36461fa98789e05f" kind="variable"><name>pinDir</name></member>
+    <member refid="class_pavillon_1acb4df777bb8e3433fc838ecbf8653054" kind="variable"><name>pinStep</name></member>
+    <member refid="class_pavillon_1a06bb69bc87a64953b858a0bd8d9fab23" kind="variable"><name>pinSleep</name></member>
+    <member refid="class_pavillon_1ab3af7b78aa78c05fb1978d22524ce6e5" kind="variable"><name>pinM0</name></member>
+    <member refid="class_pavillon_1a9fc912ed7c6a21252d35883283604cf6" kind="variable"><name>pinM1</name></member>
+    <member refid="class_pavillon_1a7763a36582b21c744cb914c00bd5e7db" kind="variable"><name>stepperMotor</name></member>
+    <member refid="class_pavillon_1a5c789899efc7b221ce6b90ebd0a1cff7" kind="function"><name>Pavillon</name></member>
+    <member refid="class_pavillon_1a7eadaa8f4f4d05c98dad48f632d2138c" kind="function"><name>Init</name></member>
+    <member refid="class_pavillon_1a34608a3ff17a2c9eb4d15ddcd58a9f55" kind="function"><name>Update</name></member>
+  </compound>
+  <compound refid="class_p_i_d" kind="class"><name>PID</name>
+    <member refid="class_p_i_d_1aa64e007c8f4728016527564cda7da8d7" kind="variable"><name>currentProfile</name></member>
+    <member refid="class_p_i_d_1a940a94095581f2d32d1ed3426a2cdf4b" kind="variable"><name>iTerm</name></member>
+    <member refid="class_p_i_d_1affe3eb15c93aed4cd7ff39f31ed932f7" kind="variable"><name>modulo360</name></member>
+    <member refid="class_p_i_d_1ad65d72b08de8e8ae71aa7236dd3bba19" kind="variable"><name>dxF</name></member>
+    <member refid="class_p_i_d_1ad3185efcf7c81f04c28150703b9ba2a5" kind="variable"><name>timeTooFar</name></member>
+    <member refid="class_p_i_d_1acfab9e5b576b290f0bcd62e29393988e" kind="variable"><name>close</name></member>
+    <member refid="class_p_i_d_1ae659f57f16efbea8756bc6dfb9ca7745" kind="variable"><name>tooFar</name></member>
+    <member refid="class_p_i_d_1a4f1ecc586a1b730380f7c5fb2fe4b82d" kind="variable"><name>lastOut</name></member>
+    <member refid="class_p_i_d_1a0f02fde1ab6315e18946540cc56538c0" kind="variable"><name>score</name></member>
+    <member refid="class_p_i_d_1a5ac6d3f35c5e847dab600e39a9390316" kind="friend"><name>Asservissement</name></member>
+    <member refid="class_p_i_d_1a837541cd6eb4f4bff142650ad7f74e34" kind="function"><name>getScore</name></member>
+    <member refid="class_p_i_d_1af9677e76cb1beffbcf3f54cbc627c530" kind="function"><name>reset</name></member>
+    <member refid="class_p_i_d_1a0c499b668d25de33ca8e09d020413132" kind="function"><name>setCurrentProfile</name></member>
+    <member refid="class_p_i_d_1ae1fd8dcbd62e86705aa859efd1c17d4a" kind="function"><name>compute</name></member>
+    <member refid="class_p_i_d_1a67fa92341d178bb94fca0f414a688df0" kind="function"><name>getCurrentProfile</name></member>
+    <member refid="class_p_i_d_1a0845e43f34d381e441596bdd7a80ceb5" kind="function"><name>PID</name></member>
+    <member refid="class_p_i_d_1a0311b6f7de348499ce24e53ba353514a" kind="function"><name>PID</name></member>
+  </compound>
+  <compound refid="class_pince" kind="class"><name>Pince</name>
+    <member refid="class_pince_1ade569d63ec4b82dd24cb12afb77197e2" kind="variable"><name>servo</name></member>
+    <member refid="class_pince_1a2f028a8d492d579c8c2753203a6ce325" kind="variable"><name>stepperMotor</name></member>
+    <member refid="class_pince_1a520a09e99aa93c6007a200a818fb15fa" kind="variable"><name>pinServo</name></member>
+    <member refid="class_pince_1a03ae3ce45c584ee4babf6b84841bf518" kind="variable"><name>pinDir</name></member>
+    <member refid="class_pince_1a0af82a7a90d6fdcb0839dfc654694ac1" kind="variable"><name>pinStep</name></member>
+    <member refid="class_pince_1abd8aebec9b2f705c658a778183b90042" kind="variable"><name>pinSleep</name></member>
+    <member refid="class_pince_1ac449f0f6dff79be627d82644ac252a56" kind="variable"><name>pinM0</name></member>
+    <member refid="class_pince_1ab49408bd0827582f15ce724666185101" kind="variable"><name>pinM1</name></member>
+    <member refid="class_pince_1a8e0b222ff1a89e6b0335d21639018ccb" kind="variable"><name>motorSteps</name></member>
+    <member refid="class_pince_1a7725882b2fc328820cebabc00e7cd2b9" kind="variable"><name>actionStep</name></member>
+    <member refid="class_pince_1aef415b97e8489b599ba2ad61a87a1e11" kind="variable"><name>posFermee</name></member>
+    <member refid="class_pince_1a729fefaa34fbc0bccbaf39f93efbdb10" kind="variable"><name>posOuverte</name></member>
+    <member refid="class_pince_1a5834c386f0296e73e39c75ea9af84414" kind="variable"><name>standardDelay</name></member>
+    <member refid="class_pince_1a631a01a2192fe014b2bcb54706e04b57" kind="function"><name>Pince</name></member>
+    <member refid="class_pince_1a1db2a77e3139df907791d02bb34566ab" kind="function"><name>Init</name></member>
+    <member refid="class_pince_1a276034390a36625be28299c0db1c3c54" kind="function"><name>Update</name></member>
+  </compound>
+  <compound refid="class_pince_arriere" kind="class"><name>PinceArriere</name>
+    <member refid="class_pince_arriere_1ac7d442bef84237e9df70272365c593fa" kind="function"><name>Update</name></member>
+  </compound>
+  <compound refid="class_pince_avant" kind="class"><name>PinceAvant</name>
+    <member refid="class_pince_avant_1a3b1ce2bbdb1f0ee4bd921322157f3559" kind="variable"><name>miniStep</name></member>
+    <member refid="class_pince_avant_1a8e9ca4449b9788e32e2fa913d6888f7c" kind="variable"><name>posTresOuverte</name></member>
+    <member refid="class_pince_avant_1a29a479ea81391943af4a02f62fcdbbb2" kind="function"><name>Update</name></member>
+  </compound>
+  <compound refid="structpoint" kind="struct"><name>point</name>
+    <member refid="structpoint_1aaa250148fcf3e2a6dd9bfd8e64803f14" kind="variable"><name>angle</name></member>
+    <member refid="structpoint_1aa477d8a8058c85f23a9b077d0a9b6a9d" kind="variable"><name>distance</name></member>
+  </compound>
+  <compound refid="class_polynome" kind="class"><name>Polynome</name>
+    <member refid="class_polynome_1a3a3c50178a8c0df41d5bcd0c44afd778" kind="variable"><name>DEGRE_MAX</name></member>
+    <member refid="class_polynome_1a2673e8bb2b601ce3243fc356797de8e3" kind="variable"><name>K</name></member>
+    <member refid="class_polynome_1aeea64292b22b736bc60675ea757d50ee" kind="function"><name>Polynome</name></member>
+    <member refid="class_polynome_1a5103725c5ea2d5ebb30b1dbab7c6b9cb" kind="function"><name>f</name></member>
+    <member refid="class_polynome_1a0182419d4f284852199e7eee0ab75a8e" kind="function"><name>df</name></member>
+    <member refid="class_polynome_1ac00f8dfa64f26db7f39d8fe2a621a534" kind="function"><name>ddf</name></member>
+    <member refid="class_polynome_1a3a882ec43f76d9f4ca089a5dc7583606" kind="function"><name>set</name></member>
+    <member refid="class_polynome_1a6caed698c4b3cb0fee80020c5e00b04b" kind="function"><name>toDebug</name></member>
+  </compound>
+  <compound refid="struct_basic_stepper_driver_1_1_profile" kind="struct"><name>BasicStepperDriver::Profile</name>
+    <member refid="struct_basic_stepper_driver_1_1_profile_1acb8c6b0551e293398b78b232608f759b" kind="variable"><name>mode</name></member>
+    <member refid="struct_basic_stepper_driver_1_1_profile_1a41a0a21ee1dda66841660649526f9dea" kind="variable"><name>accel</name></member>
+    <member refid="struct_basic_stepper_driver_1_1_profile_1a1387285befeb669e6bb50153b6e44438" kind="variable"><name>decel</name></member>
+  </compound>
+  <compound refid="class_recallage___action" kind="class"><name>Recallage_Action</name>
+    <member refid="class_recallage___action_1a07ce162d45f9f6f01f1feff212393c63" kind="function"><name>Recallage_Action</name></member>
+  </compound>
+  <compound refid="class_resume_seq___action" kind="class"><name>ResumeSeq_Action</name>
+    <member refid="class_resume_seq___action_1a39b96e478db254a74e3b3fa4eab27700" kind="variable"><name>nameSeq</name></member>
+    <member refid="class_resume_seq___action_1ad1c47e0c5aa21d38a16fdb2bb0f9407e" kind="function"><name>start</name></member>
+    <member refid="class_resume_seq___action_1a5b469cb47c6ac14c8a31981cfd6ea657" kind="function"><name>ResumeSeq_Action</name></member>
+  </compound>
+  <compound refid="class_robot" kind="class"><name>Robot</name>
+    <member refid="class_robot_1aaa0f7501e3230d2bf19a6d563c36ce03" kind="variable"><name>filterFrequency</name></member>
+    <member refid="class_robot_1a4feb9dbee81f6b9518ed80357ac75e99" kind="variable"><name>odometrie</name></member>
+    <member refid="class_robot_1a5c0764e23f8293713559ce71f107f424" kind="variable"><name>cinetiqueNext</name></member>
+    <member refid="class_robot_1a76f2b0c63263ffabf6579d1d3e133248" kind="variable"><name>motorLeft</name></member>
+    <member refid="class_robot_1afec293b443364a081199dcf45b7c2b71" kind="variable"><name>motorRight</name></member>
+    <member refid="class_robot_1a49fd643c38bd74f0e8a30cbbfdcf2f5d" kind="variable"><name>translationOrderPID</name></member>
+    <member refid="class_robot_1ae65cbb4874ef57f13dddc9af2fc6704e" kind="variable"><name>rotationOrderPID</name></member>
+    <member refid="class_robot_1ac357047ceae5a5740ecb9230ee584b4b" kind="variable"><name>compteur</name></member>
+    <member refid="class_robot_1ad2e0c6c452f37bcfcb19c45fdb75a0a6" kind="variable"><name>sequences</name></member>
+    <member refid="class_robot_1a08e7c0bb16d6e4438c1d4dd8e88ae527" kind="variable"><name>teamColor</name></member>
+    <member refid="class_robot_1a437d1cd6fffaaf92f7c532c283a5220b" kind="variable"><name>endNorth</name></member>
+    <member refid="class_robot_1acd05c56cacaa606c9e8f11a1346d3b1e" kind="variable"><name>timeStarted</name></member>
+    <member refid="class_robot_1aeb09313b522d104848b29098ff8cb024" kind="variable"><name>backLength</name></member>
+    <member refid="class_robot_1a018a9e63a2e6a2b0746a8d7ed754f510" kind="variable"><name>frontLength</name></member>
+    <member refid="class_robot_1aa0ceb40e2292e3634abbf28ea76b1040" kind="variable"><name>length</name></member>
+    <member refid="class_robot_1a19eea4b4224ed1e1acefa444f6233886" kind="variable"><name>espPort</name></member>
+    <member refid="class_robot_1a6f7eb3bbd80031903c36f5b67ec1464b" kind="variable"><name>rangeAdversaryFoward</name></member>
+    <member refid="class_robot_1a120a1f51da1f30a44ce29c8835fdcf91" kind="variable"><name>rangeAdversaryBackward</name></member>
+    <member refid="class_robot_1a16b31bea9d53ab19288ac21952625d26" kind="variable"><name>readString</name></member>
+    <member refid="class_robot_1a398ba33d237078392c33c61ef93bef85" kind="variable"><name>stopped</name></member>
+    <member refid="class_robot_1afa169e4860b1d83fc50b66f441b4ed21" kind="variable"><name>cinetiqueCurrent</name></member>
+    <member refid="class_robot_1a10ea24c7d245cb0daade9f896e0ab5ab" kind="variable"><name>ghost</name></member>
+    <member refid="class_robot_1ab65954b9435b949f274c525ef2b31a94" kind="variable"><name>controller</name></member>
+    <member refid="class_robot_1af6df1ada112187b5dc66c693c83d6c38" kind="variable"><name>communication</name></member>
+    <member refid="class_robot_1a16902068d3ad57f3a7971cdef155a86e" kind="variable"><name>commActionneurs</name></member>
+    <member refid="class_robot_1a8646551dca73b9db02fd5aa4c56bf0c3" kind="function"><name>Update_Cinetique</name></member>
+    <member refid="class_robot_1a574586aaa849cb0affb7809ab843e250" kind="function"><name>Robot</name></member>
+    <member refid="class_robot_1ac5e473914be046e6f20bb5300298db73" kind="function"><name>Update</name></member>
+    <member refid="class_robot_1a8ef961d074427230155b47a0be36684c" kind="function"><name>telemetry</name></member>
+    <member refid="class_robot_1a92dfc164f4b5687a7ffc1dab1cf7bfbe" kind="function"><name>getSequenceByName</name></member>
+    <member refid="class_robot_1af639da058cf55f8fc03038d43c76a992" kind="function"><name>getTime</name></member>
+    <member refid="class_robot_1abb5c7fe3cd18368412caf0a543af2f34" kind="function"><name>setTeamColor</name></member>
+    <member refid="class_robot_1af88b8ed8519f9e5b40829c0f18688871" kind="function"><name>getTeamColor</name></member>
+    <member refid="class_robot_1afd23988945672e7b1fd11311820aac7e" kind="function"><name>move</name></member>
+    <member refid="class_robot_1aee05cc448dffd1c15fbfedc7c654270c" kind="function"><name>move</name></member>
+    <member refid="class_robot_1a3a45a43ad7dace7c8817c144fad227fa" kind="function"><name>recalibrateGhost</name></member>
+  </compound>
+  <compound refid="class_robot_simu" kind="class"><name>RobotSimu</name>
+    <member refid="class_robot_simu_1ac4dc96651ec855159aa070a0b7250061" kind="variable"><name>simu</name></member>
+    <member refid="class_robot_simu_1a04626b8b8ab78480c21b925a38d93de4" kind="function"><name>Update_Cinetique</name></member>
+    <member refid="class_robot_simu_1a05dce7cb6ef826b80626da6aa130e762" kind="function"><name>RobotSimu</name></member>
+  </compound>
+  <compound refid="class_rotate___action" kind="class"><name>Rotate_Action</name>
+    <member refid="class_rotate___action_1a531eed54f1840bfbec92ef134b6edc97" kind="variable"><name>deltaTheta</name></member>
+    <member refid="class_rotate___action_1ad1db35cc4c27dcc55610eff1be8196fd" kind="function"><name>Rotate_Action</name></member>
+    <member refid="class_rotate___action_1a82ca14c8704f027ec4108c034514ed1e" kind="function"><name>start</name></member>
+  </compound>
+  <compound refid="class_r_p_lidar" kind="class"><name>RPLidar</name>
+    <member refid="class_r_p_lidar_1a258703761b3adeb6fe4613e362306699" kind="enum"><name>@0</name></member>
+    <member refid="class_r_p_lidar_1a258703761b3adeb6fe4613e362306699adcca24320f4a6147e447fc713ecfb148" kind="enumvalue"><name>RPLIDAR_SERIAL_BAUDRATE</name></member>
+    <member refid="class_r_p_lidar_1a258703761b3adeb6fe4613e362306699a8cae6afc8d740386acede3060b6bda69" kind="enumvalue"><name>RPLIDAR_DEFAULT_TIMEOUT</name></member>
+    <member refid="class_r_p_lidar_1ac954991638f76aeba3093294760ae77d" kind="variable"><name>_bined_serialdev</name></member>
+    <member refid="class_r_p_lidar_1a329e4bcb5c68029cb1544c338549d2e4" kind="variable"><name>_currentMeasurement</name></member>
+    <member refid="class_r_p_lidar_1aea27a735a32b4033cdb23f640dc813a9" kind="function"><name>RPLidar</name></member>
+    <member refid="class_r_p_lidar_1a3054c35edf64a9b409a37a2e662ef0e8" kind="function"><name>~RPLidar</name></member>
+    <member refid="class_r_p_lidar_1a25dad7a67315b27e1cb61ee473f060b4" kind="function"><name>begin</name></member>
+    <member refid="class_r_p_lidar_1a743962cd85a030d672ca3e0e7b0cccd7" kind="function"><name>end</name></member>
+    <member refid="class_r_p_lidar_1a3a5589d530baacb0ac71a14f8481774e" kind="function"><name>isOpen</name></member>
+    <member refid="class_r_p_lidar_1ab791e531d2db7cd688affc804197c717" kind="function"><name>getHealth</name></member>
+    <member refid="class_r_p_lidar_1aa73674b5dace6e5fab7aba6c6eec662f" kind="function"><name>getDeviceInfo</name></member>
+    <member refid="class_r_p_lidar_1a7141f86405762e6231b33e78a5711691" kind="function"><name>stop</name></member>
+    <member refid="class_r_p_lidar_1a5513e3d401bf84e39cd45357750915e7" kind="function"><name>startScan</name></member>
+    <member refid="class_r_p_lidar_1a73354fa9101964a91a8ac0eeab7ca564" kind="function"><name>waitPoint</name></member>
+    <member refid="class_r_p_lidar_1a37af7d0d8e69259d29c61510443c4ddc" kind="function"><name>getCurrentPoint</name></member>
+    <member refid="class_r_p_lidar_1ad341366612234872a7d67a99cadf5708" kind="function"><name>_sendCommand</name></member>
+    <member refid="class_r_p_lidar_1a523930ba15b6a04f27b5c0b023e0f899" kind="function"><name>_waitResponseHeader</name></member>
+  </compound>
+  <compound refid="struct_r_p_lidar_measurement" kind="struct"><name>RPLidarMeasurement</name>
+    <member refid="struct_r_p_lidar_measurement_1ab7cb75b97414de8732ba5e29304a828e" kind="variable"><name>distance</name></member>
+    <member refid="struct_r_p_lidar_measurement_1a5287423ca50db00491a2e901d5ecb6bd" kind="variable"><name>angle</name></member>
+    <member refid="struct_r_p_lidar_measurement_1a8b44ab90e435aff4ec3aea2f0ec2bf87" kind="variable"><name>quality</name></member>
+    <member refid="struct_r_p_lidar_measurement_1a08f1ebb4eaa718d4652d78e07ab2dcf6" kind="variable"><name>startBit</name></member>
+  </compound>
+  <compound refid="class_score" kind="class"><name>Score</name>
+    <member refid="class_score_1a639fe6dd5c99620572b859a206eb3435" kind="variable"><name>cumulError</name></member>
+    <member refid="class_score_1abbc4a7147b22c3bc107547e2d827969a" kind="variable"><name>maxOvershoot</name></member>
+    <member refid="class_score_1a4f5e6f953ab472ea1ce4ef033fab50ff" kind="variable"><name>nbInversion</name></member>
+    <member refid="class_score_1a32804ba9a847e58160e6e0cef46e1f25" kind="function"><name>reset</name></member>
+    <member refid="class_score_1a9945ccc710e393073f8df2418f661d7b" kind="function"><name>toTelemetry</name></member>
+  </compound>
+  <compound refid="class_send___action" kind="class"><name>Send_Action</name>
+    <member refid="class_send___action_1ad38f16f4f75b07fce905f24bf29a1e86" kind="variable"><name>message</name></member>
+    <member refid="class_send___action_1a21a0da22a91b6c5ec78df60bd68208d6" kind="variable"><name>_commLocal</name></member>
+    <member refid="class_send___action_1a0cc9fd3dad46064dc013640508abad3e" kind="function"><name>Send_Action</name></member>
+    <member refid="class_send___action_1a6f93337d56933a890c1189f20af824fa" kind="function"><name>start</name></member>
+  </compound>
+  <compound refid="class_send___order___action" kind="class"><name>Send_Order_Action</name>
+    <member refid="class_send___order___action_1a475d04144d46e030f70f1f68da5505c6" kind="variable"><name>sendAction</name></member>
+    <member refid="class_send___order___action_1a91ce8e7309f4e48d7bf194a848ac5c99" kind="variable"><name>waitAction</name></member>
+    <member refid="class_send___order___action_1a9b9c18235a0a642041834f90adfdef04" kind="variable"><name>message</name></member>
+    <member refid="class_send___order___action_1ad850cb6baf12f274301fe88f37c3d35e" kind="function"><name>Send_Order_Action</name></member>
+  </compound>
+  <compound refid="class_sequence" kind="class"><name>Sequence</name>
+    <member refid="class_sequence_1af6079ba966a22b80efee57ff1112e916" kind="variable"><name>queue</name></member>
+    <member refid="class_sequence_1a4e854ed845cfbc494880a25007a90c18" kind="variable"><name>fails</name></member>
+    <member refid="class_sequence_1a59294d9502e35c8a2e294eb0264285ce" kind="variable"><name>currentIndex</name></member>
+    <member refid="class_sequence_1a10cfe3a0f4041d91f8be4450e1d7091c" kind="variable"><name>lastIndex</name></member>
+    <member refid="class_sequence_1a06725b89f1eeae9da98923651a8da70b" kind="variable"><name>paused</name></member>
+    <member refid="class_sequence_1a91538da62cba6c040f20a0e573d7c8d3" kind="variable"><name>mySeqIndex</name></member>
+    <member refid="class_sequence_1af0b8170b92a963836d6fe1c41e55e31b" kind="variable"><name>nextIndex</name></member>
+    <member refid="class_sequence_1a2fb9f7c393bdaa32c4137b77fadc46d4" kind="function"><name>getName</name></member>
+    <member refid="class_sequence_1acebd3c2005a27c52d7f1adc19d33a4ad" kind="function"><name>startSelected</name></member>
+    <member refid="class_sequence_1a0cd6f19d2c11f877ce7a051bdb634ec9" kind="function"><name>startFollowing</name></member>
+    <member refid="class_sequence_1a62b11638d83715206d83220f42819960" kind="function"><name>forceFollowing</name></member>
+    <member refid="class_sequence_1a61025e7cf286a8650ac84c5fb4684964" kind="function"><name>update</name></member>
+    <member refid="class_sequence_1a273d3169e9fd50d9ad799330c02f6fa8" kind="function"><name>setNextIndex</name></member>
+    <member refid="class_sequence_1a47134cdefcffb1a183e5f99262f4aed7" kind="function"><name>Sequence</name></member>
+    <member refid="class_sequence_1a29a4d1973ee94ab5819fd06c2c6f24e4" kind="function"><name>add</name></member>
+    <member refid="class_sequence_1a3bd0fb86694929dab9483cc609d55742" kind="function"><name>toTelemetry</name></member>
+    <member refid="class_sequence_1a77dcfee1093388c7b283c5ebcd0556fc" kind="function"><name>pause</name></member>
+    <member refid="class_sequence_1a45a319c7314cedbc60be48cd879df7b5" kind="function"><name>reset</name></member>
+    <member refid="class_sequence_1a3eb07e08e59b731d6d950fac7140697e" kind="function"><name>resume</name></member>
+  </compound>
+  <compound refid="class_servo" kind="class"><name>Servo</name>
+    <member refid="class_servo_1a01fa8c02563163757164771304f9ab3a" kind="variable"><name>servoIndex</name></member>
+    <member refid="class_servo_1a11ac140aa7696dc424526f4f4562853d" kind="variable"><name>min</name></member>
+    <member refid="class_servo_1a71f71fd80677c88515444c3b88b51a21" kind="variable"><name>max</name></member>
+    <member refid="class_servo_1aabd904a1373b391aadb91129f57e6243" kind="variable"><name>pin</name></member>
+    <member refid="class_servo_1ad7f01394d6b748df39bb571f95e4b8fa" kind="variable"><name>minPW</name></member>
+    <member refid="class_servo_1a370524fd5161cbb0a90d639e976434d5" kind="variable"><name>maxPW</name></member>
+    <member refid="class_servo_1a8504056a79fed53f63ea22f32738947c" kind="variable"><name>minAngle</name></member>
+    <member refid="class_servo_1ada5cc58bbe42be8811d2823c08889810" kind="variable"><name>maxAngle</name></member>
+    <member refid="class_servo_1a70b2b17657cf258cdcb57503bcf62cd2" kind="function"><name>Servo</name></member>
+    <member refid="class_servo_1aeccd2077f07ebc45250da14e72a0c461" kind="function"><name>attach</name></member>
+    <member refid="class_servo_1a70076d9a77de97241badd1f377817219" kind="function"><name>attach</name></member>
+    <member refid="class_servo_1a0b69ccc5c8b348ebaa84be91d973a362" kind="function"><name>detach</name></member>
+    <member refid="class_servo_1a72b4b546912eada96a6ef705168ceb8a" kind="function"><name>write</name></member>
+    <member refid="class_servo_1ac7fe3d6d2ea285ead98814bcfc417029" kind="function"><name>writeMicroseconds</name></member>
+    <member refid="class_servo_1aaca0af33ba7d7c87c8a785b8eabf95a7" kind="function"><name>read</name></member>
+    <member refid="class_servo_1a43950424d146c1414460066483d9561b" kind="function"><name>readMicroseconds</name></member>
+    <member refid="class_servo_1a48607d47aa5678780b1b927102bd3b1b" kind="function"><name>attached</name></member>
+    <member refid="class_servo_1a70b2b17657cf258cdcb57503bcf62cd2" kind="function"><name>Servo</name></member>
+    <member refid="class_servo_1ae610bc76e895bd05fdc3618e33b90012" kind="function"><name>attach</name></member>
+    <member refid="class_servo_1afa4042feca3c79ba934798961d202bea" kind="function"><name>detach</name></member>
+    <member refid="class_servo_1af69aba052f5907ef7fc3b6159e3b7726" kind="function"><name>write</name></member>
+    <member refid="class_servo_1a7d35c33a26697722dc0c7e6cdb66d299" kind="function"><name>writeMicroseconds</name></member>
+    <member refid="class_servo_1a95217e315c3189adb6528a3b9b347336" kind="function"><name>read</name></member>
+    <member refid="class_servo_1a95404e96cc304eca9596d4c7d13fe339" kind="function"><name>readMicroseconds</name></member>
+    <member refid="class_servo_1a243c190018cc807116ac4ca2c9b0f66e" kind="function"><name>attached</name></member>
+    <member refid="class_servo_1a328ef929f144308a30476c587d71e9fc" kind="function"><name>attachedPin</name></member>
+    <member refid="class_servo_1afe93cf982b228ea3a5510147de951a94" kind="function"><name>resetFields</name></member>
+  </compound>
+  <compound refid="structservo__t" kind="struct"><name>servo_t</name>
+    <member refid="structservo__t_1a04bcc6cf13ea5cd2c4dabdc977e054cb" kind="variable"><name>Pin</name></member>
+    <member refid="structservo__t_1a9405b5e5266318f889ef6ff95a97943b" kind="variable"><name>ticks</name></member>
+  </compound>
+  <compound refid="struct_servo_pin__t" kind="struct"><name>ServoPin_t</name>
+    <member refid="struct_servo_pin__t_1ad2ff0e34820e04a276e38d359021b03c" kind="variable"><name>nbr</name></member>
+    <member refid="struct_servo_pin__t_1aaf3c1889bb99bc6f936a3cfb6eba532a" kind="variable"><name>isActive</name></member>
+  </compound>
+  <compound refid="class_simulator" kind="class"><name>Simulator</name>
+    <member refid="class_simulator_1a3deda07c4357cb0c562161b71ee4cb00" kind="variable"><name>mass</name></member>
+    <member refid="class_simulator_1a18e0dc2c8a0d5145c10841228cfc9088" kind="variable"><name>J</name></member>
+    <member refid="class_simulator_1a244df1e804d0c115610f22c99c31b081" kind="variable"><name>maxMotorForce</name></member>
+    <member refid="class_simulator_1a2d87c96362c94f7deb7dd9112611502a" kind="variable"><name>size</name></member>
+    <member refid="class_simulator_1afd9f829c5231b1ba2910ad39bd500e72" kind="variable"><name>friction</name></member>
+    <member refid="class_simulator_1ae1967ab9ca33c4a373b442970632ccf0" kind="variable"><name>health</name></member>
+    <member refid="class_simulator_1a230bc6b0fb2e5487e42c13e256c9245e" kind="variable"><name>cinetique</name></member>
+    <member refid="class_simulator_1afa65bb3656063caeec5bcdbef739ab96" kind="variable"><name>orderMotorLeft</name></member>
+    <member refid="class_simulator_1aa4b6e4ac9b082cf1135cd067f7e57d42" kind="variable"><name>orderMotorRight</name></member>
+    <member refid="class_simulator_1a353366a6bbfacab492131f74a89f5a38" kind="function"><name>computeCollision</name></member>
+    <member refid="class_simulator_1a495361aeb3e8466eb51a5ef63a8f2b85" kind="function"><name>Simulator</name></member>
+    <member refid="class_simulator_1a031573bfcfe2e0f5c9539bcc1c7fc5d9" kind="function"><name>Simulator</name></member>
+    <member refid="class_simulator_1ac0406499caa24c61e98fd14322e3f700" kind="function"><name>updateCinetique</name></member>
+  </compound>
+  <compound refid="class_sleep___action" kind="class"><name>Sleep_Action</name>
+    <member refid="class_sleep___action_1ae8d90efd12e473115007ea5004bea022" kind="variable"><name>timeToWait</name></member>
+    <member refid="class_sleep___action_1ad2ceea88da317caba69a307a351134f5" kind="function"><name>Sleep_Action</name></member>
+    <member refid="class_sleep___action_1a2dba37ac963b41b36ce043a6f32a91a7" kind="function"><name>isFinished</name></member>
+    <member refid="class_sleep___action_1a9b2c383ba14fb557753ee07cda8b831f" kind="function"><name>hasFailed</name></member>
+  </compound>
+  <compound refid="class_spin___action" kind="class"><name>Spin_Action</name>
+    <member refid="class_spin___action_1a7d4117e13534e7181daec9cae51a07dd" kind="function"><name>Spin_Action</name></member>
+    <member refid="class_spin___action_1a3882bdfcf8262e22c4e71b2d9ef4e5cc" kind="function"><name>start</name></member>
+  </compound>
+  <compound refid="class_stepper_motor_j" kind="class"><name>StepperMotorJ</name>
+    <member refid="class_stepper_motor_j_1a3aa4b06dc2510a7c74a52e1497c5805a" kind="variable"><name>stepPin</name></member>
+    <member refid="class_stepper_motor_j_1ad60bb155685f504c65742a028be2627c" kind="variable"><name>dirPin</name></member>
+    <member refid="class_stepper_motor_j_1a3b87f3303ad305169169eff60bedff32" kind="variable"><name>sleepPin</name></member>
+    <member refid="class_stepper_motor_j_1a2e45a07dd9edeeb0ac52dfe89f1b7e5f" kind="variable"><name>pinM0</name></member>
+    <member refid="class_stepper_motor_j_1a730fba0ee14f3398150c4efdb7ede8e5" kind="variable"><name>pinM1</name></member>
+    <member refid="class_stepper_motor_j_1a09a9900155e29af1a89587604d2bee4f" kind="function"><name>StepperMotorJ</name></member>
+    <member refid="class_stepper_motor_j_1a67cc9a64c2854cbfa003fa68e32e2c98" kind="function"><name>move</name></member>
+  </compound>
+  <compound refid="class_straight_to___action" kind="class"><name>StraightTo_Action</name>
+    <member refid="class_straight_to___action_1a9ea75e5d96285e75c97a3c87af6d169e" kind="variable"><name>spin</name></member>
+    <member refid="class_straight_to___action_1af4d4f3f844c71d8d08929dfad583d2af" kind="variable"><name>goTo</name></member>
+    <member refid="class_straight_to___action_1aeb196394b842c2b60fef5d231b0d87a3" kind="variable"><name>x</name></member>
+    <member refid="class_straight_to___action_1a190ea9e93da656952a923185953901d9" kind="variable"><name>y</name></member>
+    <member refid="class_straight_to___action_1ad896bf97818d24279fa8e3b739c07314" kind="variable"><name>profileName</name></member>
+    <member refid="class_straight_to___action_1af5528816aeed51f38074cb003aa0c999" kind="variable"><name>timeout</name></member>
+    <member refid="class_straight_to___action_1a0f46eb20b076167e4e659076e24080b5" kind="function"><name>start</name></member>
+    <member refid="class_straight_to___action_1a61ef7b90aa8ca4aa2a284477ab1d4f86" kind="function"><name>StraightTo_Action</name></member>
+  </compound>
+  <compound refid="class_switch___message___action" kind="class"><name>Switch_Message_Action</name>
+    <member refid="class_switch___message___action_1aa0e762c74494bd71ec54f1530a5b1d1d" kind="variable"><name>onMessage</name></member>
+    <member refid="class_switch___message___action_1a7033583dfe306b411224ee1a0efa7d1e" kind="variable"><name>doFct</name></member>
+    <member refid="class_switch___message___action_1abf952d129f49c8139a2c6b513adcced7" kind="variable"><name>size</name></member>
+    <member refid="class_switch___message___action_1a0bfbb674aba8acd4a7df83c8b560691c" kind="variable"><name>_commLocal</name></member>
+    <member refid="class_switch___message___action_1ae8712b2e86380f75904c94eeb756eb4c" kind="function"><name>Switch_Message_Action</name></member>
+    <member refid="class_switch___message___action_1a8507fc1281538e204e76be01f15d14b5" kind="function"><name>addPair</name></member>
+    <member refid="class_switch___message___action_1a94155ed47d3b75155c67caf5176104aa" kind="function"><name>isFinished</name></member>
+  </compound>
+  <compound refid="class_sync_driver" kind="class"><name>SyncDriver</name>
+    <member refid="class_sync_driver_1a0882cf92114f253b97a315f7ae017594" kind="function"><name>startMove</name></member>
+    <member refid="class_sync_driver_1aef4bc265455f10d3a9c34be1aea9194c" kind="function"><name>MultiDriver</name></member>
+    <member refid="class_sync_driver_1a450e17b122453adc3954e700a5af3bbd" kind="function"><name>MultiDriver</name></member>
+    <member refid="class_sync_driver_1aac7a339a0d32dae6e871538c7f04bd42" kind="function"><name>MultiDriver</name></member>
+  </compound>
+  <compound refid="class_target" kind="class"><name>Target</name>
+    <member refid="class_target_1a43eae052753e4ea6f6b42a21997f9f61" kind="enum"><name>Type</name></member>
+    <member refid="class_target_1a43eae052753e4ea6f6b42a21997f9f61a77a3086b9236259c3b678f41b877bd54" kind="enumvalue"><name>RELATIVE</name></member>
+    <member refid="class_target_1a43eae052753e4ea6f6b42a21997f9f61a41b59b989169c9726b3ef41b71251247" kind="enumvalue"><name>ABSOLUTE</name></member>
+    <member refid="class_target_1a43eae052753e4ea6f6b42a21997f9f61a6a02e5da2dad142e424668194768cec5" kind="enumvalue"><name>SPECIFIC</name></member>
+    <member refid="class_target_1a234283b6b6dbb2c229c5290de730462e" kind="variable"><name>teamColor</name></member>
+    <member refid="class_target_1a99038ad95fd8101449e253252451d7b6" kind="variable"><name>LENGTH_TABLE</name></member>
+    <member refid="class_target_1a1dc6e2ac10b9da81dbc3910349b35d8d" kind="variable"><name>WIDTH_TABLE</name></member>
+    <member refid="class_target_1a8f91dd0d9b6bae6b087b38b19e226823" kind="variable"><name>type</name></member>
+    <member refid="class_target_1a6c85342eb7e53ba3ea749a278c1a3ea6" kind="function"><name>setTeamColor</name></member>
+    <member refid="class_target_1a7008d6752ce64f82e56aae6ea6c2bb65" kind="function"><name>Target</name></member>
+  </compound>
+  <compound refid="class_target_cinetique" kind="class"><name>TargetCinetique</name>
+    <member refid="class_target_cinetique_1a164dbe0195f6e67cc57992c133af4ae6" kind="variable"><name>_xB</name></member>
+    <member refid="class_target_cinetique_1a6ee0a485703df6dd89ab5a80022f1e5d" kind="variable"><name>_yB</name></member>
+    <member refid="class_target_cinetique_1afbc5b8a9976128be4453a3eca624a917" kind="variable"><name>_thetaB</name></member>
+    <member refid="class_target_cinetique_1a8f14b678057f73165cf9a578f63f3c55" kind="variable"><name>_xJ</name></member>
+    <member refid="class_target_cinetique_1a2a740bb504ff6ebcdb4b7d2945d235ed" kind="variable"><name>_yJ</name></member>
+    <member refid="class_target_cinetique_1a4f3ef78594337c7994248e086e0aa369" kind="variable"><name>_thetaJ</name></member>
+    <member refid="class_target_cinetique_1a92f0cb74127f51276b3b54857f2c435f" kind="variable"><name>_v</name></member>
+    <member refid="class_target_cinetique_1a486d9ec3aa2085468c326afc945d84c0" kind="variable"><name>_w</name></member>
+    <member refid="class_target_cinetique_1abbbccea457e296f99ba89dc5ef8de01e" kind="function"><name>getCinetique</name></member>
+    <member refid="class_target_cinetique_1af99f2d042c4912d5785db2b06c79d97d" kind="function"><name>TargetCinetique</name></member>
+    <member refid="class_target_cinetique_1a40784b27c0a6c157d77402bcee48d4a6" kind="function"><name>TargetCinetique</name></member>
+    <member refid="class_target_cinetique_1a44c5915fe57299841508266f7fc82814" kind="function"><name>TargetCinetique</name></member>
+  </compound>
+  <compound refid="class_target_vector" kind="class"><name>TargetVector</name>
+    <member refid="class_target_vector_1a9adfca0d30890bc7cdc5780fa066c824" kind="variable"><name>_xB</name></member>
+    <member refid="class_target_vector_1a427f515a9c60250c0a4c33cdc056d18c" kind="variable"><name>_yB</name></member>
+    <member refid="class_target_vector_1af2f3d0043c85889064e7f2b74d2506f9" kind="variable"><name>_xJ</name></member>
+    <member refid="class_target_vector_1a52e3eec604d541eabae0151ff115e32e" kind="variable"><name>_yJ</name></member>
+    <member refid="class_target_vector_1a2ca4e225278b385cc4df128e4f3336e0" kind="function"><name>getVector</name></member>
+    <member refid="class_target_vector_1a8688436b1afe4e8cd334eadc84f1650c" kind="function"><name>TargetVector</name></member>
+    <member refid="class_target_vector_1a04e212ac1e024982c77f4847df4c4336" kind="function"><name>TargetVector</name></member>
+    <member refid="class_target_vector_1aa5cde4049a89651f2f572bce24297405" kind="function"><name>TargetVector</name></member>
+  </compound>
+  <compound refid="class_target_vector_e" kind="class"><name>TargetVectorE</name>
+    <member refid="class_target_vector_e_1a4337ca95aa2173aa4860f9832af8f1e7" kind="variable"><name>_xB</name></member>
+    <member refid="class_target_vector_e_1a1aa49bdad91426fc2324b9165532e9d6" kind="variable"><name>_yB</name></member>
+    <member refid="class_target_vector_e_1ae9ec9f0b27521bfa2b1d483cdb2dd43e" kind="variable"><name>_thetaB</name></member>
+    <member refid="class_target_vector_e_1a2bff0a72cbc742571134bc54101a982e" kind="variable"><name>_xJ</name></member>
+    <member refid="class_target_vector_e_1a584effb9d775f6d3d89125e11548f24d" kind="variable"><name>_yJ</name></member>
+    <member refid="class_target_vector_e_1a84d1153b6955a641cb8abe652a1bcdbd" kind="variable"><name>_thetaJ</name></member>
+    <member refid="class_target_vector_e_1a22d8c4e115caece472d87d663ffeabff" kind="function"><name>getVectorE</name></member>
+    <member refid="class_target_vector_e_1ab0d87605fe06cdb3c14cd1366428667a" kind="function"><name>TargetVectorE</name></member>
+    <member refid="class_target_vector_e_1a4d93d9d6fba7c762bebe85d31775f888" kind="function"><name>TargetVectorE</name></member>
+    <member refid="class_target_vector_e_1a364c5af6f45111a1ff5f5baef1cb9fb9" kind="function"><name>TargetVectorE</name></member>
+    <member refid="class_target_vector_e_1ac8af28da03ebc816e460903a6f1ffb0b" kind="function"><name>TargetVectorE</name></member>
+    <member refid="class_target_vector_e_1abf8860b9864caacc603199b4806030b9" kind="function"><name>TargetVectorE</name></member>
+  </compound>
+  <compound refid="class_trapezoidal___function" kind="class"><name>Trapezoidal_Function</name>
+    <member refid="class_trapezoidal___function_1ab6ee29db921079145164807d3eb971ab" kind="variable"><name>zero</name></member>
+    <member refid="class_trapezoidal___function_1a1eaa91d0bfcc8945fd63e2d3378f08f6" kind="variable"><name>_triangleFunction</name></member>
+    <member refid="class_trapezoidal___function_1aa8af46159da347029d42965b153f7a47" kind="variable"><name>_tMax</name></member>
+    <member refid="class_trapezoidal___function_1adeaab8e2a3578fa2848565ca299b47fd" kind="variable"><name>_upRamp</name></member>
+    <member refid="class_trapezoidal___function_1a48ffd2a2ed5ea85314217c89a6185bf0" kind="variable"><name>_downRamp</name></member>
+    <member refid="class_trapezoidal___function_1a92ccb06e1ce31eaf8eacb802a04a1b76" kind="variable"><name>_max</name></member>
+    <member refid="class_trapezoidal___function_1acef03f43d196bbe7444b7a3bc0d1c26a" kind="variable"><name>_duration</name></member>
+    <member refid="class_trapezoidal___function_1ada76031b300fecc4088fe58049dc4942" kind="variable"><name>_distance</name></member>
+    <member refid="class_trapezoidal___function_1af3762608d968e561ec93b24ff77f6491" kind="function"><name>Trapezoidal_Function</name></member>
+    <member refid="class_trapezoidal___function_1a1a31a3acb72a47d405b5491ba0c6105f" kind="function"><name>set</name></member>
+    <member refid="class_trapezoidal___function_1a7d599b15e5658f914bdde13e68362c90" kind="function"><name>setZero</name></member>
+    <member refid="class_trapezoidal___function_1a9b07e3899a1f01dbbebafe58581cf9f8" kind="function"><name>f</name></member>
+    <member refid="class_trapezoidal___function_1ad2990f1d19a20d3d5a37091193f0930d" kind="function"><name>df</name></member>
+    <member refid="class_trapezoidal___function_1a30100bfe0148c636f9d995219313d26e" kind="function"><name>getDuration</name></member>
+    <member refid="class_trapezoidal___function_1afdf8768cbf8e4f5fbafd1ca9d495a463" kind="function"><name>isTriangle</name></member>
+    <member refid="class_trapezoidal___function_1a713549c333484abc4f9c66c84ee21a1a" kind="function"><name>computeDuration</name></member>
+  </compound>
+  <compound refid="struct_u_int_vector_e" kind="struct"><name>UIntVectorE</name>
+    <member refid="struct_u_int_vector_e_1a7ca298f87d138719ef79fee2540e6244" kind="variable"><name>x</name></member>
+    <member refid="struct_u_int_vector_e_1a74b26ee561d5fccf8365d0ba5f15280d" kind="variable"><name>y</name></member>
+    <member refid="struct_u_int_vector_e_1abba4847c88b707367351538d75a9c5ae" kind="variable"><name>theta</name></member>
+  </compound>
+  <compound refid="class_vector" kind="class"><name>Vector</name>
+    <member refid="class_vector_1a57a10b08dd7ec25dbaceb6bc5e7ab16a" kind="variable"><name>_x</name></member>
+    <member refid="class_vector_1acfd6a472304b3832fd37b4dbf3c90c9b" kind="variable"><name>_y</name></member>
+    <member refid="class_vector_1a2bf51c822183b84dc44304cb1cf48fa3" kind="function"><name>Vector</name></member>
+    <member refid="class_vector_1a8636c13924ae2a8f08a5c56c1bdee35d" kind="function"><name>operator+</name></member>
+    <member refid="class_vector_1aad6b7dcfd087005378aa64e506cf03d2" kind="function"><name>operator+=</name></member>
+    <member refid="class_vector_1a78273e8287626f263ca0cfb26a6f9770" kind="function"><name>operator-</name></member>
+    <member refid="class_vector_1a4bb01f8acdc32d677ddadf9d0896cc1c" kind="function"><name>operator%</name></member>
+    <member refid="class_vector_1a2cd6694ac4999ed6686d9d149de999ea" kind="function"><name>operator*</name></member>
+    <member refid="class_vector_1ae485d630cc9cbbfcec82f93ab4d5ee6c" kind="function"><name>operator==</name></member>
+    <member refid="class_vector_1a4d643a71ea7c87cb77ab7bdfb26b42ba" kind="function"><name>norm</name></member>
+    <member refid="class_vector_1ac83edd3ce21c2eea555a360f64cf0acc" kind="function"><name>angle</name></member>
+    <member refid="class_vector_1a44b5d0725bbfe4baa9e5485b50aede9a" kind="function"><name>distanceWith</name></member>
+    <member refid="class_vector_1abd1526dde6917905a9331e0b16d9fe2a" kind="function"><name>print</name></member>
+    <member refid="class_vector_1ac12c872fc6337ea5992e2b91d35ca5b9" kind="function"><name>toTelemetry</name></member>
+    <member refid="class_vector_1a3879877fbfc3752e7ca1b64af6d557e6" kind="function"><name>rotate</name></member>
+  </compound>
+  <compound refid="class_vector_e" kind="class"><name>VectorE</name>
+    <member refid="class_vector_e_1aa412679c17a54b3a1351b74dd15ff58d" kind="variable"><name>_theta</name></member>
+    <member refid="class_vector_e_1a5b9897cfe6407e9504b9efdba349f51b" kind="function"><name>VectorE</name></member>
+    <member refid="class_vector_e_1add2733ccf3d8e7dc816ba952fa4120fb" kind="function"><name>normalizeTheta</name></member>
+    <member refid="class_vector_e_1a29db572cad2265dd57c32a0923221a8c" kind="function"><name>print</name></member>
+    <member refid="class_vector_e_1a62e9a0a3cde04daa20f322a6d852693c" kind="function"><name>toTelemetry</name></member>
+    <member refid="class_vector_e_1a52eeb7fe68286c810caef10e2b5467bc" kind="function"><name>operator==</name></member>
+  </compound>
+  <compound refid="class_wait___error___action" kind="class"><name>Wait_Error_Action</name>
+    <member refid="class_wait___error___action_1ad66c985416cf28195704500581b8f93d" kind="variable"><name>error</name></member>
+    <member refid="class_wait___error___action_1ab652853cf9b60c2e973d2c0936582ce9" kind="function"><name>Wait_Error_Action</name></member>
+    <member refid="class_wait___error___action_1a52d821062719ac34012f0d735292a46c" kind="function"><name>isFinished</name></member>
+  </compound>
+  <compound refid="class_wait___message___action" kind="class"><name>Wait_Message_Action</name>
+    <member refid="class_wait___message___action_1a7283e47538963e11b7fd7bf10c3b8f80" kind="variable"><name>messageId</name></member>
+    <member refid="class_wait___message___action_1a6feb3c289cdc8c1e21a5f57bf279878c" kind="variable"><name>_commLocal</name></member>
+    <member refid="class_wait___message___action_1a2962054653b4d85a9c16232c18d66e93" kind="function"><name>Wait_Message_Action</name></member>
+    <member refid="class_wait___message___action_1a3fa2293c84671cc0b98c04d512d45ecf" kind="function"><name>isFinished</name></member>
+  </compound>
+  <compound refid="class_wait___tirette___action" kind="class"><name>Wait_Tirette_Action</name>
+    <member refid="class_wait___tirette___action_1ae7840b37337a12fcd889d83edb7a4eb8" kind="variable"><name>pinIN</name></member>
+    <member refid="class_wait___tirette___action_1a0186e7a30a0a06f0530fa40d88e931b9" kind="variable"><name>initOK</name></member>
+    <member refid="class_wait___tirette___action_1a7c11efac2d53ae46c1774c24062400f9" kind="function"><name>Wait_Tirette_Action</name></member>
+    <member refid="class_wait___tirette___action_1a085ae6d8d59d25385c0e7b49f0e34616" kind="function"><name>start</name></member>
+    <member refid="class_wait___tirette___action_1afc60fc24eb07b790ef6386ca5cb40342" kind="function"><name>isFinished</name></member>
+    <member refid="class_wait___tirette___action_1a0a924abbdf802411df11a8d8410808b5" kind="function"><name>hasFailed</name></member>
+  </compound>
+  <compound refid="_actuators_8cpp" kind="file"><name>Actuators.cpp</name>
+  </compound>
+  <compound refid="_actuators_8h" kind="file"><name>Actuators.h</name>
+    <member refid="_actuators_8h_1acdf5c8a0885e2dc44b0016323f3f1bc9" kind="enum"><name>Actuator_State</name></member>
+    <member refid="_actuators_8h_1acdf5c8a0885e2dc44b0016323f3f1bc9aa3bcfe6e2a4c647c0817d980f0bf1f1b" kind="enumvalue"><name>Attente</name></member>
+    <member refid="_actuators_8h_1acdf5c8a0885e2dc44b0016323f3f1bc9acbd64bae61d20f913681ebdfdd8c842d" kind="enumvalue"><name>NewMess</name></member>
+    <member refid="_actuators_8h_1acdf5c8a0885e2dc44b0016323f3f1bc9a97e3e5896fa18483094ee59f03255972" kind="enumvalue"><name>Mouvement</name></member>
+    <member refid="_actuators_8h_1acdf5c8a0885e2dc44b0016323f3f1bc9a9551112f579bc8d676fb19ee47924b2c" kind="enumvalue"><name>MouvFinished</name></member>
+  </compound>
+  <compound refid="_actuators___manager_8cpp" kind="file"><name>Actuators_Manager.cpp</name>
+  </compound>
+  <compound refid="_actuators___manager_8h" kind="file"><name>Actuators_Manager.h</name>
+    <member refid="_actuators___manager_8h_1a94846f4349bce37782deb34fa2f3604a" kind="define"><name>NBR_ACTUATORS</name></member>
+  </compound>
+  <compound refid="avr_2_servo_8cpp" kind="file"><name>Servo.cpp</name>
+  </compound>
+  <compound refid="megaavr_2_servo_8cpp" kind="file"><name>Servo.cpp</name>
+  </compound>
+  <compound refid="nrf52_2_servo_8cpp" kind="file"><name>Servo.cpp</name>
+  </compound>
+  <compound refid="sam_2_servo_8cpp" kind="file"><name>Servo.cpp</name>
+  </compound>
+  <compound refid="samd_2_servo_8cpp" kind="file"><name>Servo.cpp</name>
+  </compound>
+  <compound refid="avr_2_servo_timers_8h" kind="file"><name>ServoTimers.h</name>
+    <member refid="avr_2_servo_timers_8h_1ab187febb2d332254f49068c80dbb22d7" kind="define"><name>_useTimer1</name></member>
+    <member refid="avr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887" kind="enum"><name>timer16_Sequence_t</name></member>
+    <member refid="avr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="avr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="avr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a35a7919e0974fe5e6274b0b6655521d1" kind="enumvalue"><name>timer0</name></member>
+    <member refid="avr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="avr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="avr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="avr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="avr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887ae27538b496624cbc9927c07e1b9833f0" kind="enumvalue"><name>_timer2</name></member>
+    <member refid="avr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a730aa3918dd64dc00ca419e8b495cc22" kind="enumvalue"><name>_timer3</name></member>
+    <member refid="avr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887aca50e1aa49a6cf3463e09dd4d624f5d1" kind="enumvalue"><name>_timer4</name></member>
+    <member refid="avr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a1d7c94891609ee44e3a29fef34f244ea" kind="enumvalue"><name>_timer5</name></member>
+    <member refid="avr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="avr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="avr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+  </compound>
+  <compound refid="megaavr_2_servo_timers_8h" kind="file"><name>ServoTimers.h</name>
+    <member refid="megaavr_2_servo_timers_8h_1a58848860ba815a0cd70ddebdbc84f9cb" kind="define"><name>USE_TIMERB1</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887" kind="enum"><name>timer16_Sequence_t</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a35a7919e0974fe5e6274b0b6655521d1" kind="enumvalue"><name>timer0</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887ae27538b496624cbc9927c07e1b9833f0" kind="enumvalue"><name>_timer2</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a730aa3918dd64dc00ca419e8b495cc22" kind="enumvalue"><name>_timer3</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887aca50e1aa49a6cf3463e09dd4d624f5d1" kind="enumvalue"><name>_timer4</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a1d7c94891609ee44e3a29fef34f244ea" kind="enumvalue"><name>_timer5</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="megaavr_2_servo_timers_8h_1a9ee0cd81f9a5651583e49c1e01422fb9" kind="variable"><name>_timer</name></member>
+  </compound>
+  <compound refid="nrf52_2_servo_timers_8h" kind="file"><name>ServoTimers.h</name>
+    <member refid="nrf52_2_servo_timers_8h_1acdc5fed3a6e40081ae0ac250ac11c81f" kind="define"><name>MIN_PULSE</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1a185b4dd6ffe8f2446d26cde1a059f740" kind="define"><name>MAX_PULSE</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887" kind="enum"><name>timer16_Sequence_t</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a35a7919e0974fe5e6274b0b6655521d1" kind="enumvalue"><name>timer0</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887ae27538b496624cbc9927c07e1b9833f0" kind="enumvalue"><name>_timer2</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a730aa3918dd64dc00ca419e8b495cc22" kind="enumvalue"><name>_timer3</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887aca50e1aa49a6cf3463e09dd4d624f5d1" kind="enumvalue"><name>_timer4</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a1d7c94891609ee44e3a29fef34f244ea" kind="enumvalue"><name>_timer5</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="nrf52_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+  </compound>
+  <compound refid="sam_2_servo_timers_8h" kind="file"><name>ServoTimers.h</name>
+    <member refid="sam_2_servo_timers_8h_1ab187febb2d332254f49068c80dbb22d7" kind="define"><name>_useTimer1</name></member>
+    <member refid="sam_2_servo_timers_8h_1a4bdee36206918d03bbedd1464ba895b1" kind="define"><name>_useTimer2</name></member>
+    <member refid="sam_2_servo_timers_8h_1a56eee433f14cb4ed90fdaaf91f819c3b" kind="define"><name>_useTimer3</name></member>
+    <member refid="sam_2_servo_timers_8h_1a8b57c8f29ea9acb9f4c7e3b31420ca06" kind="define"><name>_useTimer4</name></member>
+    <member refid="sam_2_servo_timers_8h_1ab6ddfd305debb32bc9634f110c6e6288" kind="define"><name>_useTimer5</name></member>
+    <member refid="sam_2_servo_timers_8h_1a089b75359cce3f658f94d5a4a260ae6b" kind="define"><name>TC_FOR_TIMER1</name></member>
+    <member refid="sam_2_servo_timers_8h_1ad70435263d2d442e805b169d60d455da" kind="define"><name>CHANNEL_FOR_TIMER1</name></member>
+    <member refid="sam_2_servo_timers_8h_1a8fe47517774e6a67f6ee6041efca0e31" kind="define"><name>ID_TC_FOR_TIMER1</name></member>
+    <member refid="sam_2_servo_timers_8h_1a74c4317acbd1772c16c9e298b95081a3" kind="define"><name>IRQn_FOR_TIMER1</name></member>
+    <member refid="sam_2_servo_timers_8h_1a036e360b42fb3044aa7d091bbec9161c" kind="define"><name>HANDLER_FOR_TIMER1</name></member>
+    <member refid="sam_2_servo_timers_8h_1a91b52c774dc10eeb5e28b37be1816414" kind="define"><name>TC_FOR_TIMER2</name></member>
+    <member refid="sam_2_servo_timers_8h_1ad36f0489f20bf217211ccb1e35ff989b" kind="define"><name>CHANNEL_FOR_TIMER2</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa230e2f7efeee9cbde374f87539faeea" kind="define"><name>ID_TC_FOR_TIMER2</name></member>
+    <member refid="sam_2_servo_timers_8h_1a4262f91b2f8ab7cd818ac6da606b2601" kind="define"><name>IRQn_FOR_TIMER2</name></member>
+    <member refid="sam_2_servo_timers_8h_1a08b5450b29c589962a718979c4ca6581" kind="define"><name>HANDLER_FOR_TIMER2</name></member>
+    <member refid="sam_2_servo_timers_8h_1a94582076b9ccac49c8f42f1da5833c46" kind="define"><name>TC_FOR_TIMER3</name></member>
+    <member refid="sam_2_servo_timers_8h_1aaeb7bcab676f9d9134afae8514812291" kind="define"><name>CHANNEL_FOR_TIMER3</name></member>
+    <member refid="sam_2_servo_timers_8h_1a8c8279af1721964dcd80a5b847d62296" kind="define"><name>ID_TC_FOR_TIMER3</name></member>
+    <member refid="sam_2_servo_timers_8h_1a2874d19df5a1fad7dcfdb52f0dda6a15" kind="define"><name>IRQn_FOR_TIMER3</name></member>
+    <member refid="sam_2_servo_timers_8h_1ac97cca98fe618343e588407a5b65719d" kind="define"><name>HANDLER_FOR_TIMER3</name></member>
+    <member refid="sam_2_servo_timers_8h_1ab8428e3742a12cb505523bff2bbfdcbb" kind="define"><name>TC_FOR_TIMER4</name></member>
+    <member refid="sam_2_servo_timers_8h_1ab2cdfcb6b02593902aff2c38a22362c3" kind="define"><name>CHANNEL_FOR_TIMER4</name></member>
+    <member refid="sam_2_servo_timers_8h_1a5706611dffeb95e2ac98d240e9484510" kind="define"><name>ID_TC_FOR_TIMER4</name></member>
+    <member refid="sam_2_servo_timers_8h_1a32b5c63a8810efea931f381c909d3ff0" kind="define"><name>IRQn_FOR_TIMER4</name></member>
+    <member refid="sam_2_servo_timers_8h_1a0f5813553c1161f2840e82ab76624944" kind="define"><name>HANDLER_FOR_TIMER4</name></member>
+    <member refid="sam_2_servo_timers_8h_1a523767bdba8b8bef5c3844f5640a44eb" kind="define"><name>TC_FOR_TIMER5</name></member>
+    <member refid="sam_2_servo_timers_8h_1a392481a75d062c4b86e50ad59c657baf" kind="define"><name>CHANNEL_FOR_TIMER5</name></member>
+    <member refid="sam_2_servo_timers_8h_1a344aec265b8070a98604eb2ae1f4b5ab" kind="define"><name>ID_TC_FOR_TIMER5</name></member>
+    <member refid="sam_2_servo_timers_8h_1a17fa4c393f73bc15a8f0a105444aa5e3" kind="define"><name>IRQn_FOR_TIMER5</name></member>
+    <member refid="sam_2_servo_timers_8h_1ae4995897ee04881f2610f9aa288f290c" kind="define"><name>HANDLER_FOR_TIMER5</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887" kind="enum"><name>timer16_Sequence_t</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a35a7919e0974fe5e6274b0b6655521d1" kind="enumvalue"><name>timer0</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887ae27538b496624cbc9927c07e1b9833f0" kind="enumvalue"><name>_timer2</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a730aa3918dd64dc00ca419e8b495cc22" kind="enumvalue"><name>_timer3</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887aca50e1aa49a6cf3463e09dd4d624f5d1" kind="enumvalue"><name>_timer4</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a1d7c94891609ee44e3a29fef34f244ea" kind="enumvalue"><name>_timer5</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="sam_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+  </compound>
+  <compound refid="samd_2_servo_timers_8h" kind="file"><name>ServoTimers.h</name>
+    <member refid="samd_2_servo_timers_8h_1ab187febb2d332254f49068c80dbb22d7" kind="define"><name>_useTimer1</name></member>
+    <member refid="samd_2_servo_timers_8h_1a089b75359cce3f658f94d5a4a260ae6b" kind="define"><name>TC_FOR_TIMER1</name></member>
+    <member refid="samd_2_servo_timers_8h_1ad70435263d2d442e805b169d60d455da" kind="define"><name>CHANNEL_FOR_TIMER1</name></member>
+    <member refid="samd_2_servo_timers_8h_1a09873d0bd04d6e47cfe2bb7c0e44fb1f" kind="define"><name>INTENSET_BIT_FOR_TIMER_1</name></member>
+    <member refid="samd_2_servo_timers_8h_1ab27f3cda6e19282a722b49c689295919" kind="define"><name>INTENCLR_BIT_FOR_TIMER_1</name></member>
+    <member refid="samd_2_servo_timers_8h_1a9e92c8222b3f0adfd903013326bfd074" kind="define"><name>INTFLAG_BIT_FOR_TIMER_1</name></member>
+    <member refid="samd_2_servo_timers_8h_1a8fe47517774e6a67f6ee6041efca0e31" kind="define"><name>ID_TC_FOR_TIMER1</name></member>
+    <member refid="samd_2_servo_timers_8h_1a74c4317acbd1772c16c9e298b95081a3" kind="define"><name>IRQn_FOR_TIMER1</name></member>
+    <member refid="samd_2_servo_timers_8h_1a036e360b42fb3044aa7d091bbec9161c" kind="define"><name>HANDLER_FOR_TIMER1</name></member>
+    <member refid="samd_2_servo_timers_8h_1abd6e0ed4b35061399c7eb6a07e3d34ef" kind="define"><name>GCM_FOR_TIMER_1</name></member>
+    <member refid="samd_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887" kind="enum"><name>timer16_Sequence_t</name></member>
+    <member refid="samd_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="samd_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="samd_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a35a7919e0974fe5e6274b0b6655521d1" kind="enumvalue"><name>timer0</name></member>
+    <member refid="samd_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="samd_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="samd_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="samd_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="samd_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887ae27538b496624cbc9927c07e1b9833f0" kind="enumvalue"><name>_timer2</name></member>
+    <member refid="samd_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a730aa3918dd64dc00ca419e8b495cc22" kind="enumvalue"><name>_timer3</name></member>
+    <member refid="samd_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887aca50e1aa49a6cf3463e09dd4d624f5d1" kind="enumvalue"><name>_timer4</name></member>
+    <member refid="samd_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a1d7c94891609ee44e3a29fef34f244ea" kind="enumvalue"><name>_timer5</name></member>
+    <member refid="samd_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+    <member refid="samd_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a79ea1c528ccb762bc8533c2b5849026d" kind="enumvalue"><name>_timer1</name></member>
+    <member refid="samd_2_servo_timers_8h_1aa57046a4eafc371d1ae9a7f82f666887a53f530c6e8ca85b1b3fbd5b21ef207a4" kind="enumvalue"><name>_Nbr_16timers</name></member>
+  </compound>
+  <compound refid="stm32f4_2_servo_timers_8h" kind="file"><name>ServoTimers.h</name>
+    <member refid="stm32f4_2_servo_timers_8h_1a46dcd9ca1d11a16616d7f8573206450d" kind="define"><name>NOT_ATTACHED</name></member>
+    <member refid="stm32f4_2_servo_timers_8h_1aa618e42db36eaa277af3ead6e9010dee" kind="define"><name>_Nbr_16timers</name></member>
+    <member refid="stm32f4_2_servo_timers_8h_1af16be8a4945638887eae35a30aa702c0" kind="define"><name>SERVOS_PER_TIMER</name></member>
+    <member refid="stm32f4_2_servo_timers_8h_1af5cc136dbc86df89de56c3aa421c12ee" kind="define"><name>MIN_ANGLE</name></member>
+    <member refid="stm32f4_2_servo_timers_8h_1af3c82099d63a2d91d68bd62d954059c7" kind="define"><name>MAX_ANGLE</name></member>
+    <member refid="stm32f4_2_servo_timers_8h_1ad95c8286fc30ece77d632ad00a94d80e" kind="define"><name>MIN_PULSE_WIDTH</name></member>
+    <member refid="stm32f4_2_servo_timers_8h_1a57a10261e6511f97317cee9076692315" kind="define"><name>MAX_PULSE_WIDTH</name></member>
+  </compound>
+  <compound refid="_servo_8h" kind="file"><name>Servo.h</name>
+    <member refid="_servo_8h_1af6fdee462ecaf434690dad810328b0dd" kind="define"><name>Servo_VERSION</name></member>
+    <member refid="_servo_8h_1ad95c8286fc30ece77d632ad00a94d80e" kind="define"><name>MIN_PULSE_WIDTH</name></member>
+    <member refid="_servo_8h_1a57a10261e6511f97317cee9076692315" kind="define"><name>MAX_PULSE_WIDTH</name></member>
+    <member refid="_servo_8h_1a7eada57cb49e7b1766a813e4635d79bd" kind="define"><name>DEFAULT_PULSE_WIDTH</name></member>
+    <member refid="_servo_8h_1adfe85923c58edb0cfa15a0d026d7ee74" kind="define"><name>REFRESH_INTERVAL</name></member>
+    <member refid="_servo_8h_1af16be8a4945638887eae35a30aa702c0" kind="define"><name>SERVOS_PER_TIMER</name></member>
+    <member refid="_servo_8h_1a4259c40a55e489ed25c9f3cbb3be05ab" kind="define"><name>MAX_SERVOS</name></member>
+    <member refid="_servo_8h_1ac4ebf3d89da7ee64b1f4726099b6d6ec" kind="define"><name>INVALID_SERVO</name></member>
+  </compound>
+  <compound refid="_arduino___mega_2_lib_2_stepper_driver_2_r_e_a_d_m_e_8md" kind="file"><name>README.md</name>
+  </compound>
+  <compound refid="_r_e_a_d_m_e_8md" kind="file"><name>README.md</name>
+  </compound>
+  <compound refid="_a4988_8cpp" kind="file"><name>A4988.cpp</name>
+  </compound>
+  <compound refid="_a4988_8h" kind="file"><name>A4988.h</name>
+  </compound>
+  <compound refid="_arduino___mega_2_lib_2_stepper_driver_2src_2_basic_stepper_driver_8cpp" kind="file"><name>BasicStepperDriver.cpp</name>
+  </compound>
+  <compound refid="test_01led_2src_2_basic_stepper_driver_8cpp" kind="file"><name>BasicStepperDriver.cpp</name>
+  </compound>
+  <compound refid="_arduino___mega_2_lib_2_stepper_driver_2src_2_basic_stepper_driver_8h" kind="file"><name>BasicStepperDriver.h</name>
+    <member refid="_arduino___mega_2_lib_2_stepper_driver_2src_2_basic_stepper_driver_8h_1ac78d1093f79746357514d9c636bf37bc" kind="define"><name>PIN_UNCONNECTED</name></member>
+    <member refid="_arduino___mega_2_lib_2_stepper_driver_2src_2_basic_stepper_driver_8h_1a4a8c45689a897aacf32ab2cc6a664b32" kind="define"><name>IS_CONNECTED</name></member>
+    <member refid="_arduino___mega_2_lib_2_stepper_driver_2src_2_basic_stepper_driver_8h_1a1103b8dc0bd3a9b6af302f2b84a8e213" kind="define"><name>STEP_PULSE</name></member>
+    <member refid="_arduino___mega_2_lib_2_stepper_driver_2src_2_basic_stepper_driver_8h_1acb7a35363d175ba5d4fd615fda075a93" kind="define"><name>MIN_YIELD_MICROS</name></member>
+  </compound>
+  <compound refid="test_01led_2src_2_basic_stepper_driver_8h" kind="file"><name>BasicStepperDriver.h</name>
+    <member refid="test_01led_2src_2_basic_stepper_driver_8h_1ac78d1093f79746357514d9c636bf37bc" kind="define"><name>PIN_UNCONNECTED</name></member>
+    <member refid="test_01led_2src_2_basic_stepper_driver_8h_1a4a8c45689a897aacf32ab2cc6a664b32" kind="define"><name>IS_CONNECTED</name></member>
+    <member refid="test_01led_2src_2_basic_stepper_driver_8h_1a1103b8dc0bd3a9b6af302f2b84a8e213" kind="define"><name>STEP_PULSE</name></member>
+    <member refid="test_01led_2src_2_basic_stepper_driver_8h_1acb7a35363d175ba5d4fd615fda075a93" kind="define"><name>MIN_YIELD_MICROS</name></member>
+  </compound>
+  <compound refid="_d_r_v8825_8cpp" kind="file"><name>DRV8825.cpp</name>
+  </compound>
+  <compound refid="_d_r_v8825_8h" kind="file"><name>DRV8825.h</name>
+  </compound>
+  <compound refid="_arduino___mega_2_lib_2_stepper_driver_2src_2_d_r_v8834_8cpp" kind="file"><name>DRV8834.cpp</name>
+  </compound>
+  <compound refid="test_01led_2src_2_d_r_v8834_8cpp" kind="file"><name>DRV8834.cpp</name>
+  </compound>
+  <compound refid="_arduino___mega_2_lib_2_stepper_driver_2src_2_d_r_v8834_8h" kind="file"><name>DRV8834.h</name>
+  </compound>
+  <compound refid="test_01led_2src_2_d_r_v8834_8h" kind="file"><name>DRV8834.h</name>
+  </compound>
+  <compound refid="_d_r_v8880_8cpp" kind="file"><name>DRV8880.cpp</name>
+  </compound>
+  <compound refid="_d_r_v8880_8h" kind="file"><name>DRV8880.h</name>
+  </compound>
+  <compound refid="_multi_driver_8cpp" kind="file"><name>MultiDriver.cpp</name>
+    <member refid="_multi_driver_8cpp_1af4f10bdead5dcc905e1a0dbf868e6a4f" kind="define"><name>FOREACH_MOTOR</name></member>
+    <member refid="_multi_driver_8cpp_1a221d3251ea1d4256ba882b4a7402f358" kind="define"><name>CALC_STEPS</name></member>
+  </compound>
+  <compound refid="_multi_driver_8h" kind="file"><name>MultiDriver.h</name>
+    <member refid="_multi_driver_8h_1a40dfd7fdfce455ce507bf3fed368c2ed" kind="define"><name>MAX_MOTORS</name></member>
+    <member refid="_multi_driver_8h_1ae6a7bff6d45f5fdc7f2ae0d6a8add5ec" kind="define"><name>Motor</name></member>
+  </compound>
+  <compound refid="_sync_driver_8cpp" kind="file"><name>SyncDriver.cpp</name>
+    <member refid="_sync_driver_8cpp_1af4f10bdead5dcc905e1a0dbf868e6a4f" kind="define"><name>FOREACH_MOTOR</name></member>
+  </compound>
+  <compound refid="_sync_driver_8h" kind="file"><name>SyncDriver.h</name>
+  </compound>
+  <compound refid="_stepper_motor_j_8cpp" kind="file"><name>StepperMotorJ.cpp</name>
+  </compound>
+  <compound refid="_stepper_motor_j_8h" kind="file"><name>StepperMotorJ.h</name>
+  </compound>
+  <compound refid="_arduino___mega_2main_8cpp" kind="file"><name>main.cpp</name>
+    <member refid="_arduino___mega_2main_8cpp_1a62249e384b997229a3e2ae74ade334e2" kind="define"><name>DELAY</name></member>
+    <member refid="_arduino___mega_2main_8cpp_1a98ea8ba32ed7f3c3253c2b92b9b34f85" kind="variable"><name>lastMillis</name></member>
+    <member refid="_arduino___mega_2main_8cpp_1a7c0cc5706ee1bdfa5d96996f9291d6fa" kind="variable"><name>manager</name></member>
+    <member refid="_arduino___mega_2main_8cpp_1a4fc01d736fe50cf5b977f755b675f11d" kind="function"><name>setup</name></member>
+    <member refid="_arduino___mega_2main_8cpp_1afe461d27b9c48d5921c00d521181f12f" kind="function"><name>loop</name></member>
+  </compound>
+  <compound refid="_phare_2src_2main_8cpp" kind="file"><name>main.cpp</name>
+    <member refid="_phare_2src_2main_8cpp_1aaf81f5fa7d1e779f83e9bf4ce631a7b6" kind="define"><name>LED_1</name></member>
+    <member refid="_phare_2src_2main_8cpp_1ae60a8c1e03b38463f77d556a4a0a8a3b" kind="define"><name>LED_2</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a07b3fb51ae7c3cc824dd714b46c1b2b6" kind="define"><name>LED_3</name></member>
+    <member refid="_phare_2src_2main_8cpp_1aec84038372d7a55c8b358398978e1dac" kind="define"><name>LED_4</name></member>
+    <member refid="_phare_2src_2main_8cpp_1ab0e84d3f877a513d7171cc3f702efb20" kind="define"><name>LED_5</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a0bd7b910e8f1012cb068030c94529920" kind="define"><name>LED_6</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a07b32196a3e1b6673d88d812833d4077" kind="define"><name>LED_7</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a963240ad9010938fd985ae74b2d40d72" kind="define"><name>LED_8</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a1db4627cb22c101239d2af973b97ea81" kind="define"><name>LED_9</name></member>
+    <member refid="_phare_2src_2main_8cpp_1ada036047a48238ac93642ff65c96379e" kind="define"><name>LED_10</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a4ea6898da32241ea9d3bf042132da0b0" kind="define"><name>LED_11</name></member>
+    <member refid="_phare_2src_2main_8cpp_1aee4ad40f381f09abd654dd8e48065350" kind="define"><name>LED_12</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a1d2981bed54d5916faa06861c13b64a3" kind="variable"><name>pinInBouton</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a64f62097f5858a4e7ef420330ca0fa0f" kind="variable"><name>delayStepper</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a7ee85fa34b2f822872c8b40e2b1afb76" kind="variable"><name>delayLed</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a3fd94c7cf1734a0901f6dd8f3dfd3a15" kind="variable"><name>stepPin</name></member>
+    <member refid="_phare_2src_2main_8cpp_1add6290aff0847d41da32c1d5fe4cbf45" kind="variable"><name>dirPin</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a8c094a70e53361cb713a144e2591f8d3" kind="variable"><name>sleepPin</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a66920bad8d43622916049319c677e51b" kind="variable"><name>pinM0</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a6da4a0683da2d753ca16eb9e2f0863f0" kind="variable"><name>pinM1</name></member>
+    <member refid="_phare_2src_2main_8cpp_1ada5c987e854a34d90b0438379925ffad" kind="variable"><name>steps</name></member>
+    <member refid="_phare_2src_2main_8cpp_1ac9dfdafa35fe629528170bdf759382f2" kind="variable"><name>nombreTour</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a0c598514df22b2a1584f2536f3b92be1" kind="variable"><name>tempsEteint</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a86f7d42a107a70864b27f0b1bcafe5a7" kind="function"><name>allumerPhare</name></member>
+    <member refid="_phare_2src_2main_8cpp_1af9de61cfbd7f2c61e31b2aca87950657" kind="function"><name>monterPhare</name></member>
+    <member refid="_phare_2src_2main_8cpp_1a4fc01d736fe50cf5b977f755b675f11d" kind="function"><name>setup</name></member>
+    <member refid="_phare_2src_2main_8cpp_1afe461d27b9c48d5921c00d521181f12f" kind="function"><name>loop</name></member>
+  </compound>
+  <compound refid="_teensy_2main_8cpp" kind="file"><name>main.cpp</name>
+    <member refid="_teensy_2main_8cpp_1a84142cd3e3bf14c4ecd4b6707a808c39" kind="define"><name>FREQUENCY</name></member>
+    <member refid="_teensy_2main_8cpp_1ac4832b6f5177da0a16f6704443c13217" kind="variable"><name>bender</name></member>
+    <member refid="_teensy_2main_8cpp_1a925fe9258b8f192060c4a955a8e23b0d" kind="variable"><name>currentMillis</name></member>
+    <member refid="_teensy_2main_8cpp_1a98ea8ba32ed7f3c3253c2b92b9b34f85" kind="variable"><name>lastMillis</name></member>
+    <member refid="_teensy_2main_8cpp_1ab21c0fe9c1c95719c659863233dc8de8" kind="variable"><name>topWarn</name></member>
+    <member refid="_teensy_2main_8cpp_1af4ee819f73e669cacfea5ecf67331820" kind="variable"><name>moy</name></member>
+    <member refid="_teensy_2main_8cpp_1a1bc83f7345700067c3962ee5283c2439" kind="variable"><name>compteur</name></member>
+    <member refid="_teensy_2main_8cpp_1a4fc01d736fe50cf5b977f755b675f11d" kind="function"><name>setup</name></member>
+    <member refid="_teensy_2main_8cpp_1afe461d27b9c48d5921c00d521181f12f" kind="function"><name>loop</name></member>
+  </compound>
+  <compound refid="test_01led_2src_2main_8cpp" kind="file"><name>main.cpp</name>
+    <member refid="test_01led_2src_2main_8cpp_1a39f778d4d72f5e0929b5240c99262f81" kind="variable"><name>brasG</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a25a38b8aa119669d6ed2b9b54e12f8c4" kind="variable"><name>brasD</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1adc91c8ddffc778b49f7fec5254512215" kind="variable"><name>pinceD</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1af25925f8afa2d15dc4a62620bbaa06ed" kind="variable"><name>pinceG</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a635532bb64ae8f64b0894b5b92aa99e4" kind="variable"><name>pinceArr</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a1910d262855b71da353ed0d07a6c7823" kind="variable"><name>pos</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a0ed31155fa6f5df6f35952e26925105b" kind="variable"><name>dirPinD</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1af23f956da70a7c04393140e27163e57d" kind="variable"><name>stepPinD</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1ab898929b1f03e891d51665d0c852c059" kind="variable"><name>dirPinG</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1af74264b74351735218841aa500c0727c" kind="variable"><name>stepPinG</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a273f6eab1ef7ce3212cc2a4bbbb762c5" kind="variable"><name>dirPinArr</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a917c7a06d99a5e3917bc53c4103d3d1a" kind="variable"><name>stepPinArr</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1aad366953cce332d85b1ebd046548a64c" kind="variable"><name>sleepPinces</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a759a124ff5a8d4b0af43c9cf696c6b1e" kind="variable"><name>pinArrM0</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1ae4f173d78bb554c70c2ddfacc9fa4d7d" kind="variable"><name>pinArrM1</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a50a9b6a558879e1da9715f87492a6900" kind="variable"><name>pinAvM0</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1aa59c399576925c7694f01b85d31fa432" kind="variable"><name>pinAvM1</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a2a86db2ac2ced9538c607578ca8ae298" kind="variable"><name>dirPav</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a0c82e2ef16f300e25fbacd40a50aa350" kind="variable"><name>stepPav</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a4fad0812210db105f3a5c81e9123d8ba" kind="variable"><name>sleepPav</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a738931d4520d06101ad037cceac1f6a4" kind="variable"><name>pavM0</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a3b9ad92a477c3a62e82a688e75282078" kind="variable"><name>pavM1</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1aade0d9627537f2da4fdfb492acb9f1ce" kind="variable"><name>nb_toursRailStock</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1ace55485d61fafa12e957e7372e75bbca" kind="variable"><name>nb_toursRailDestock</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1acf68bd0d56358d8ca6fc60f23cc30c55" kind="variable"><name>nb_toursPav</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a1c604e3571a8b19c68221e6cec916a1d" kind="variable"><name>stepPerRevolution</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1af077febd7ba7b125e850b3738d30dfca" kind="variable"><name>stepDelayRail</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a3e7b9b95a329beb7f79bcea29d57b676" kind="variable"><name>stepDelayRailArr</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a18f3264b688eff845428458e30482864" kind="variable"><name>stepDelayPav</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a7f406d24ead2fcd7725f085d9a10a5a0" kind="variable"><name>stepperMotor</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1a4fc01d736fe50cf5b977f755b675f11d" kind="function"><name>setup</name></member>
+    <member refid="test_01led_2src_2main_8cpp_1afe461d27b9c48d5921c00d521181f12f" kind="function"><name>loop</name></member>
+  </compound>
+  <compound refid="_communication_8cpp" kind="file"><name>Communication.cpp</name>
+    <member refid="_communication_8cpp_1abe463b084037a641628ba3142a4a238d" kind="define"><name>MESSAGE_BOX_SIZE</name></member>
+    <member refid="_communication_8cpp_1af29ea71617ae0e01ae890fdd3f46f27e" kind="variable"><name>decoder</name></member>
+    <member refid="_communication_8cpp_1a1f885298f7539920e1f84a6cd5efeca5" kind="function"><name>newMessage</name></member>
+    <member refid="_communication_8cpp_1a3bbcfa4ca69cd4137b0ebda009b816fd" kind="function"><name>newMessage</name></member>
+    <member refid="_communication_8cpp_1a359bf41218cad097f59d152e9f70846d" kind="function"><name>newMessage</name></member>
+    <member refid="_communication_8cpp_1a73040c3e7a24ae8e7041b97c20d785d0" kind="function"><name>newMessage</name></member>
+    <member refid="_communication_8cpp_1af707f633c4215ccc41b6d09a5ee73207" kind="function"><name>extractID</name></member>
+    <member refid="_communication_8cpp_1a80d047f818e72c93bbe8510c6c1dfa51" kind="function"><name>extract4Bytes</name></member>
+    <member refid="_communication_8cpp_1aa8ea2e55f2fac35de163b8d985a9f816" kind="function"><name>extractInt32</name></member>
+    <member refid="_communication_8cpp_1a780be03ebda5bf00dc5611c402116985" kind="function"><name>extractVectorE</name></member>
+    <member refid="_communication_8cpp_1a5a6f748cdcffabda7e73f27a99ea3283" kind="function"><name>extractOrder</name></member>
+  </compound>
+  <compound refid="_communication_8h" kind="file"><name>Communication.h</name>
+    <member refid="_communication_8h_1abe7a535f44ae411965038ed97e9ecba3" kind="define"><name>ANTISPAM_MS</name></member>
+    <member refid="_communication_8h_1a3bbcfa4ca69cd4137b0ebda009b816fd" kind="function"><name>newMessage</name></member>
+    <member refid="_communication_8h_1a1f885298f7539920e1f84a6cd5efeca5" kind="function"><name>newMessage</name></member>
+    <member refid="_communication_8h_1a359bf41218cad097f59d152e9f70846d" kind="function"><name>newMessage</name></member>
+    <member refid="_communication_8h_1a73040c3e7a24ae8e7041b97c20d785d0" kind="function"><name>newMessage</name></member>
+    <member refid="_communication_8h_1af707f633c4215ccc41b6d09a5ee73207" kind="function"><name>extractID</name></member>
+    <member refid="_communication_8h_1a80d047f818e72c93bbe8510c6c1dfa51" kind="function"><name>extract4Bytes</name></member>
+    <member refid="_communication_8h_1aa8ea2e55f2fac35de163b8d985a9f816" kind="function"><name>extractInt32</name></member>
+    <member refid="_communication_8h_1a780be03ebda5bf00dc5611c402116985" kind="function"><name>extractVectorE</name></member>
+    <member refid="_communication_8h_1a5a6f748cdcffabda7e73f27a99ea3283" kind="function"><name>extractOrder</name></member>
+  </compound>
+  <compound refid="_message_i_d_8h" kind="file"><name>MessageID.h</name>
+    <member refid="_message_i_d_8h_1af7edb76797a59d49c4cd66a9a8c6b949" kind="define"><name>DROIT_byteM</name></member>
+    <member refid="_message_i_d_8h_1ae05a678ab0518bf45c560d585dbd8cd0" kind="define"><name>GAUCHE_byteM</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042" kind="enum"><name>MessageID</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042a534db6900bae237a205f9d3cf4c99a5d" kind="enumvalue"><name>Empty_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042ad0e1dd4418b7850b7e2cd027bef36404" kind="enumvalue"><name>Stop_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042aee37cea7a2576f9bb028ad41002778ca" kind="enumvalue"><name>Tirette_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042a1ea1b00308ab67c33fcc206d7ce12b1f" kind="enumvalue"><name>PID_tweak_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042a39510e02a61bc8b76aaf9471ba6a035a" kind="enumvalue"><name>add_forward_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042a2d97a4433085a02efb54eaca19e0b4c9" kind="enumvalue"><name>add_backward_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042a1d8e493c2229a7b983093520533b92c9" kind="enumvalue"><name>add_spin_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042ac7770adc4531fab473df091c00627400" kind="enumvalue"><name>Em_Stop_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042ade6192914af5ebeb463ec6b17759251e" kind="enumvalue"><name>Evitemment_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042af8769304182f3c8ecf773702f6308b05" kind="enumvalue"><name>North_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042a7142c25a59652fc7d138549e1cb92a5c" kind="enumvalue"><name>South_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042a3ed92a0a400557a7bfabcd0252a86d96" kind="enumvalue"><name>Pavillon_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042a6155933f8fc9ded83e9f87f3a5958177" kind="enumvalue"><name>BrasG_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042a2e5e5422df3e7232beab7501c6f568bc" kind="enumvalue"><name>BrasD_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042af55c46842dc5693aa7372bd350ed55dd" kind="enumvalue"><name>PinceAvG_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042a9cd1b571039c52bdefe1e7f3a66d2130" kind="enumvalue"><name>PinceAvD_M</name></member>
+    <member refid="_message_i_d_8h_1a3acf0d5b50c6cffe52d8a1455d6ce042ab4d7dd95d251dcfabe0577d7eacf4269" kind="enumvalue"><name>PinceArr_M</name></member>
+    <member refid="_message_i_d_8h_1aa8eb6604cf85aa20a422ff0761d560b4" kind="enum"><name>Actuator_Order</name></member>
+    <member refid="_message_i_d_8h_1aa8eb6604cf85aa20a422ff0761d560b4acc006f446e2bd82f37cf66379731d58a" kind="enumvalue"><name>Sortir</name></member>
+    <member refid="_message_i_d_8h_1aa8eb6604cf85aa20a422ff0761d560b4a7aa9f8314122ae0d8cfa854914d20d4f" kind="enumvalue"><name>Rentrer</name></member>
+    <member refid="_message_i_d_8h_1aa8eb6604cf85aa20a422ff0761d560b4a585903964ac7d7016c680ecf7a895519" kind="enumvalue"><name>Monter</name></member>
+    <member refid="_message_i_d_8h_1aa8eb6604cf85aa20a422ff0761d560b4ab529cbef969af1239d81c4e3a61c5943" kind="enumvalue"><name>Descendre</name></member>
+    <member refid="_message_i_d_8h_1aa8eb6604cf85aa20a422ff0761d560b4a7e833d922824c0873a389a9554b24bee" kind="enumvalue"><name>Stock</name></member>
+    <member refid="_message_i_d_8h_1aa8eb6604cf85aa20a422ff0761d560b4a13470df756c0cbbe8eb3d39c044f0581" kind="enumvalue"><name>Destock</name></member>
+    <member refid="_message_i_d_8h_1aa8eb6604cf85aa20a422ff0761d560b4a615768153b8c17fb09328997c378a4e8" kind="enumvalue"><name>Fermer</name></member>
+    <member refid="_message_i_d_8h_1aa8eb6604cf85aa20a422ff0761d560b4ae0e9d00ab5978ceee5fe1b4fa198eb27" kind="enumvalue"><name>Ouvrir</name></member>
+  </compound>
+  <compound refid="_move_profile_8cpp" kind="file"><name>MoveProfile.cpp</name>
+    <member refid="_move_profile_8cpp_1a275f53f45e7d82a8bbd646ca7dd4d6d1" kind="define"><name>RATIOPID</name></member>
+    <member refid="_move_profile_8cpp_1af9d5cb2cb2baa77a1467616b3675bd1f" kind="define"><name>mm</name></member>
+    <member refid="_move_profile_8cpp_1ac9562ee4ecb3b8aeebeb04656e7e57a9" kind="define"><name>s</name></member>
+  </compound>
+  <compound refid="_move_profile_8h" kind="file"><name>MoveProfile.h</name>
+    <member refid="_move_profile_8h_1a11b614787cc2b1af2f795da9f750f943" kind="enum"><name>MoveProfileName</name></member>
+    <member refid="_move_profile_8h_1a11b614787cc2b1af2f795da9f750f943a53ace14c115e45153a1c9105accceb4c" kind="enumvalue"><name>off</name></member>
+    <member refid="_move_profile_8h_1a11b614787cc2b1af2f795da9f750f943a464d39f4a3b3858219c68547eebe4f52" kind="enumvalue"><name>brake</name></member>
+    <member refid="_move_profile_8h_1a11b614787cc2b1af2f795da9f750f943a284e9dfcb38ecde3f3a1f6705ed29a1f" kind="enumvalue"><name>accurate</name></member>
+    <member refid="_move_profile_8h_1a11b614787cc2b1af2f795da9f750f943a808b264f03e484117f02619f721d132c" kind="enumvalue"><name>standard</name></member>
+    <member refid="_move_profile_8h_1a11b614787cc2b1af2f795da9f750f943a22fb46d189280a28302378df796832c8" kind="enumvalue"><name>fast</name></member>
+    <member refid="_move_profile_8h_1a11b614787cc2b1af2f795da9f750f943aba86ce945fd08428062d4efc442c6e6a" kind="enumvalue"><name>recalibrating</name></member>
+    <member refid="_move_profile_8h_1a11b614787cc2b1af2f795da9f750f943a47d244165645e2dde1160cfa120cda85" kind="enumvalue"><name>__NBPROFILES__</name></member>
+  </compound>
+  <compound refid="_sequence_name_8h" kind="file"><name>SequenceName.h</name>
+    <member refid="_sequence_name_8h_1abecd1b225a36491ee01b645643e2afec" kind="enum"><name>SequenceName</name></member>
+    <member refid="_sequence_name_8h_1abecd1b225a36491ee01b645643e2afecaba8733615d2a153d2d4d9122339a1e8e" kind="enumvalue"><name>mainSequenceName</name></member>
+    <member refid="_sequence_name_8h_1abecd1b225a36491ee01b645643e2afeca79e7b018f9e70b62ce565a9c975a3605" kind="enumvalue"><name>communicationSequenceName</name></member>
+    <member refid="_sequence_name_8h_1abecd1b225a36491ee01b645643e2afecadeb5d34d4e74adc0da1dbf2781a365ba" kind="enumvalue"><name>timeSequenceName</name></member>
+    <member refid="_sequence_name_8h_1abecd1b225a36491ee01b645643e2afecad7e7a9c241c3bae6d56676ec7aa2e47c" kind="enumvalue"><name>goNorthName</name></member>
+    <member refid="_sequence_name_8h_1abecd1b225a36491ee01b645643e2afecaa4158e2bcff4754c6fbc7c1320c5de38" kind="enumvalue"><name>goSouthName</name></member>
+    <member refid="_sequence_name_8h_1abecd1b225a36491ee01b645643e2afecaefea859ab959c6f03f090db0ea5823b9" kind="enumvalue"><name>recallageListerName</name></member>
+    <member refid="_sequence_name_8h_1abecd1b225a36491ee01b645643e2afeca350f6ed6587aad273efdef14f1f10e25" kind="enumvalue"><name>__NBSEQUENCES__</name></member>
+  </compound>
+  <compound refid="_logger_8cpp" kind="file"><name>Logger.cpp</name>
+  </compound>
+  <compound refid="_logger_8h" kind="file"><name>Logger.h</name>
+    <member refid="_logger_8h_1a05e904c1e2c50934da8bf0ba1ad909f2" kind="define"><name>nameValue</name></member>
+  </compound>
+  <compound refid="_vector_8cpp" kind="file"><name>Vector.cpp</name>
+    <member refid="_vector_8cpp_1a1de8b424552bdcaeb85fb794107081d8" kind="function"><name>normalizeAngle</name></member>
+    <member refid="_vector_8cpp_1a57bf3435d9cb0c28955ddf459723fb34" kind="function"><name>directeur</name></member>
+  </compound>
+  <compound refid="_vector_8h" kind="file"><name>Vector.h</name>
+    <member refid="_vector_8h_1adedc1c7a6f9eae4d7b207f3e33cbff8d" kind="enum"><name>TeamColor</name></member>
+    <member refid="_vector_8h_1adedc1c7a6f9eae4d7b207f3e33cbff8da1b592b20aeb91b073f8f249231622230" kind="enumvalue"><name>BLEU</name></member>
+    <member refid="_vector_8h_1adedc1c7a6f9eae4d7b207f3e33cbff8daeb840a0760d5c5122e980d507891c1a1" kind="enumvalue"><name>JAUNE</name></member>
+    <member refid="_vector_8h_1a1de8b424552bdcaeb85fb794107081d8" kind="function"><name>normalizeAngle</name></member>
+    <member refid="_vector_8h_1a57bf3435d9cb0c28955ddf459723fb34" kind="function"><name>directeur</name></member>
+  </compound>
+  <compound refid="issue__template_8md" kind="file"><name>issue_template.md</name>
+  </compound>
+  <compound refid="_error_manager_8cpp" kind="file"><name>ErrorManager.cpp</name>
+    <member refid="_error_manager_8cpp_1a354ee5f07c214ce3ab943b56418994df" kind="define"><name>ERROR_BOX_SIZE</name></member>
+  </compound>
+  <compound refid="_error_manager_8h" kind="file"><name>ErrorManager.h</name>
+    <member refid="_error_manager_8h_1a2c3e4bb40f36b262a5214e2da2bca9c5" kind="enum"><name>Error</name></member>
+    <member refid="_error_manager_8h_1a2c3e4bb40f36b262a5214e2da2bca9c5abf350750d0d4fabd8954c0f1e9bbae94" kind="enumvalue"><name>NO_ERROR</name></member>
+    <member refid="_error_manager_8h_1a2c3e4bb40f36b262a5214e2da2bca9c5aba979a3930c9b25a8f66eab43d2d7695" kind="enumvalue"><name>PID_FAIL_ERROR</name></member>
+    <member refid="_error_manager_8h_1a2c3e4bb40f36b262a5214e2da2bca9c5a51406b594a826628f394bb0ec804b6db" kind="enumvalue"><name>__NBERROR__</name></member>
+  </compound>
+  <compound refid="_filtre_8cpp" kind="file"><name>Filtre.cpp</name>
+  </compound>
+  <compound refid="_filtre_8h" kind="file"><name>Filtre.h</name>
+  </compound>
+  <compound refid="_ghost_8cpp" kind="file"><name>Ghost.cpp</name>
+  </compound>
+  <compound refid="_ghost_8h" kind="file"><name>Ghost.h</name>
+  </compound>
+  <compound refid="_actions_8cpp" kind="file"><name>Actions.cpp</name>
+  </compound>
+  <compound refid="_actions_8h" kind="file"><name>Actions.h</name>
+    <member refid="_actions_8h_1a5c1f3d2ee4e0c9ff42a087afdfa25433" kind="define"><name>NO_REQUIREMENT</name></member>
+    <member refid="_actions_8h_1a3f67c07e446c9e797349f4b7f639ac28" kind="typedef"><name>Fct</name></member>
+  </compound>
+  <compound refid="_codeuse_8cpp" kind="file"><name>Codeuse.cpp</name>
+  </compound>
+  <compound refid="_codeuse_8h" kind="file"><name>Codeuse.h</name>
+  </compound>
+  <compound refid="_encoder_8cpp" kind="file"><name>Encoder.cpp</name>
+  </compound>
+  <compound refid="_encoder_8h" kind="file"><name>Encoder.h</name>
+    <member refid="_encoder_8h_1a62b7da7b4b491fc07fde816f373d91aa" kind="define"><name>Encoder_h_</name></member>
+    <member refid="_encoder_8h_1a83d04d44bcbe6dcdb70b62e784008bde" kind="define"><name>ENCODER_USE_INTERRUPTS</name></member>
+    <member refid="_encoder_8h_1a020d5198e28bc71276b2d55676117e6e" kind="define"><name>ENCODER_ARGLIST_SIZE</name></member>
+  </compound>
+  <compound refid="_functions_8cpp" kind="file"><name>Functions.cpp</name>
+    <member refid="_functions_8cpp_1aad4d89f12e7489987d81ce306848a176" kind="function"><name>PID_tweak</name></member>
+    <member refid="_functions_8cpp_1a677849c660fdfac1e34b096ebded5be3" kind="function"><name>ping</name></member>
+    <member refid="_functions_8cpp_1a508b2b06a873ae70b67ad93c07cc9bd5" kind="function"><name>shutdown</name></member>
+    <member refid="_functions_8cpp_1addd0c38132a8c0a09f8a08bdf66f6de9" kind="function"><name>setTimeStart</name></member>
+    <member refid="_functions_8cpp_1ab36c4f0e40ddd497e9ff5e775cd9dfcc" kind="function"><name>startBackHomeSeq</name></member>
+    <member refid="_functions_8cpp_1af86618c886085e6ff28aa390fc8d8e43" kind="function"><name>setNorth</name></member>
+    <member refid="_functions_8cpp_1a9f804dcb0c9218ee302cae54b460a90e" kind="function"><name>setSouth</name></member>
+    <member refid="_functions_8cpp_1a844d711a870ff9d0766293e798f62c3e" kind="function"><name>recallageBordure</name></member>
+    <member refid="_functions_8cpp_1a343e950a028c6c26540afa9ab5def893" kind="function"><name>forceMainSeqNext</name></member>
+    <member refid="_functions_8cpp_1a905531278dabf6d2c78d097cdcff4fd2" kind="function"><name>startTimeSeq</name></member>
+  </compound>
+  <compound refid="_functions_8h" kind="file"><name>Functions.h</name>
+    <member refid="_functions_8h_1aad4d89f12e7489987d81ce306848a176" kind="function"><name>PID_tweak</name></member>
+    <member refid="_functions_8h_1a9dbb6dbb28cf28648fcbdfe3dff95da7" kind="function"><name>add_backward</name></member>
+    <member refid="_functions_8h_1a331f1178d15168f1b4483da6cf06c679" kind="function"><name>add_spin</name></member>
+    <member refid="_functions_8h_1ac0365b40cba3567e81c253171651edb2" kind="function"><name>pauseNlockMainSequence</name></member>
+    <member refid="_functions_8h_1a677849c660fdfac1e34b096ebded5be3" kind="function"><name>ping</name></member>
+    <member refid="_functions_8h_1a508b2b06a873ae70b67ad93c07cc9bd5" kind="function"><name>shutdown</name></member>
+    <member refid="_functions_8h_1addd0c38132a8c0a09f8a08bdf66f6de9" kind="function"><name>setTimeStart</name></member>
+    <member refid="_functions_8h_1ab36c4f0e40ddd497e9ff5e775cd9dfcc" kind="function"><name>startBackHomeSeq</name></member>
+    <member refid="_functions_8h_1af86618c886085e6ff28aa390fc8d8e43" kind="function"><name>setNorth</name></member>
+    <member refid="_functions_8h_1a9f804dcb0c9218ee302cae54b460a90e" kind="function"><name>setSouth</name></member>
+    <member refid="_functions_8h_1a844d711a870ff9d0766293e798f62c3e" kind="function"><name>recallageBordure</name></member>
+    <member refid="_functions_8h_1a343e950a028c6c26540afa9ab5def893" kind="function"><name>forceMainSeqNext</name></member>
+    <member refid="_functions_8h_1a905531278dabf6d2c78d097cdcff4fd2" kind="function"><name>startTimeSeq</name></member>
+  </compound>
+  <compound refid="_sequence_8cpp" kind="file"><name>Sequence.cpp</name>
+  </compound>
+  <compound refid="_sequence_8h" kind="file"><name>Sequence.h</name>
+    <member refid="_sequence_8h_1a728ecd802fdf86886c7f66efe8c07a97" kind="define"><name>TAILLESEQUENCE</name></member>
+  </compound>
+  <compound refid="direct__pin__read_8h" kind="file"><name>direct_pin_read.h</name>
+  </compound>
+  <compound refid="interrupt__config_8h" kind="file"><name>interrupt_config.h</name>
+  </compound>
+  <compound refid="interrupt__pins_8h" kind="file"><name>interrupt_pins.h</name>
+  </compound>
+  <compound refid="_l_i_d_a_r_8cpp" kind="file"><name>LIDAR.cpp</name>
+    <member refid="_l_i_d_a_r_8cpp_1aed4475a14afb93a475f37bb5e56aa784" kind="define"><name>delta_distance</name></member>
+    <member refid="_l_i_d_a_r_8cpp_1a9c1d8420258113b7ca285d1d965e0d05" kind="define"><name>delta_angle</name></member>
+    <member refid="_l_i_d_a_r_8cpp_1a381257df478cc6e818653673750be474" kind="define"><name>dist_secondaryBot</name></member>
+    <member refid="_l_i_d_a_r_8cpp_1a0af757b91ca70086fd616dca8cc5727a" kind="define"><name>angle_secondaryBot</name></member>
+    <member refid="_l_i_d_a_r_8cpp_1a5a36b65d1e941ea6b8d466841ba4de0c" kind="define"><name>dist_enemyBot</name></member>
+    <member refid="_l_i_d_a_r_8cpp_1ac8d0895adcf3d1a859e4b9664afb22f4" kind="define"><name>angle_enemyBot</name></member>
+    <member refid="_l_i_d_a_r_8cpp_1ac7fa71283d2311fdb7f1292ec7d3676f" kind="define"><name>dist_error</name></member>
+    <member refid="_l_i_d_a_r_8cpp_1a9a374577e1c92f36120bdcf956dede26" kind="variable"><name>enemyBot</name></member>
+    <member refid="_l_i_d_a_r_8cpp_1a2eb77469ee151bbd28f8964533476d46" kind="variable"><name>allyBot</name></member>
+    <member refid="_l_i_d_a_r_8cpp_1ad380265b9f08d53e067d0a71f5a42440" kind="variable"><name>TOWER1</name></member>
+    <member refid="_l_i_d_a_r_8cpp_1aa6426e10a6ad2d35ddf5ccfef6a4f484" kind="function"><name>dist</name></member>
+    <member refid="_l_i_d_a_r_8cpp_1a39074459d724ddc5810f7dbb283b1aab" kind="function"><name>dist</name></member>
+    <member refid="_l_i_d_a_r_8cpp_1aeb940445c6e1ee35bb1f9ad907447779" kind="function"><name>get_Vector</name></member>
+  </compound>
+  <compound refid="_l_i_d_a_r_8h" kind="file"><name>LIDAR.h</name>
+    <member refid="_l_i_d_a_r_8h_1a36b785ddf6b897d45ee4959ceb64a45e" kind="define"><name>radius_tracking</name></member>
+    <member refid="_l_i_d_a_r_8h_1a18c7efe5b53be7ffbcfe7c50429c6d52" kind="define"><name>max_sep</name></member>
+    <member refid="_l_i_d_a_r_8h_1ab4627f039dce3ccec0022b4df0b9df4c" kind="define"><name>max_dt</name></member>
+    <member refid="_l_i_d_a_r_8h_1a4b351ba80baf2957993a6564d490bc4d" kind="define"><name>max_dist</name></member>
+    <member refid="_l_i_d_a_r_8h_1a663c9e8a0314c18a8a9ca8c6e9efd468" kind="define"><name>max_points_per_object</name></member>
+    <member refid="_l_i_d_a_r_8h_1ab765909ec40c16a2bd6f7c42ec505945" kind="define"><name>max_objects_detected</name></member>
+    <member refid="_l_i_d_a_r_8h_1a0cc741c209c937cb43bc4cfdbe55f438" kind="enum"><name>BotIdentificater</name></member>
+    <member refid="_l_i_d_a_r_8h_1a0cc741c209c937cb43bc4cfdbe55f438a51e9d0d6eccd8fb2adf19efacb025b56" kind="enumvalue"><name>enemyBot1</name></member>
+    <member refid="_l_i_d_a_r_8h_1a0cc741c209c937cb43bc4cfdbe55f438a588744a30708b7b0e9f5c995a5ad5f25" kind="enumvalue"><name>enemyBot2</name></member>
+    <member refid="_l_i_d_a_r_8h_1a0cc741c209c937cb43bc4cfdbe55f438a56500e98f83a2128669bb094dd4a4975" kind="enumvalue"><name>allyBot2</name></member>
+    <member refid="_l_i_d_a_r_8h_1a0cc741c209c937cb43bc4cfdbe55f438ad69db809d7906a75952d48a98d545300" kind="enumvalue"><name>tower</name></member>
+    <member refid="_l_i_d_a_r_8h_1a0cc741c209c937cb43bc4cfdbe55f438a5b9f6d065e6e98483b3d3ed01f4f6cbe" kind="enumvalue"><name>unknown</name></member>
+    <member refid="_l_i_d_a_r_8h_1aa6426e10a6ad2d35ddf5ccfef6a4f484" kind="function"><name>dist</name></member>
+    <member refid="_l_i_d_a_r_8h_1a39074459d724ddc5810f7dbb283b1aab" kind="function"><name>dist</name></member>
+  </compound>
+  <compound refid="_math__functions_8cpp" kind="file"><name>Math_functions.cpp</name>
+    <member refid="_math__functions_8cpp_1a7805c222c7f477f29393a265e05b65de" kind="function"><name>init_polynome</name></member>
+    <member refid="_math__functions_8cpp_1ae2af88862ce81fe9c3a7b05fb7206359" kind="function"><name>Derivative_ptr</name></member>
+    <member refid="_math__functions_8cpp_1a71a619c3d456114604a527b82a0f2f40" kind="function"><name>Derivative</name></member>
+    <member refid="_math__functions_8cpp_1a27f86b34743c7ae57e0c2a6cf4b1cc52" kind="function"><name>Multiplication_ptr</name></member>
+    <member refid="_math__functions_8cpp_1ad56e5f80070e290dfae5ec74f4a3901b" kind="function"><name>Multiplication</name></member>
+    <member refid="_math__functions_8cpp_1a43fe8fa5827ec9f267595b2b57160e3f" kind="function"><name>Square_ptr</name></member>
+    <member refid="_math__functions_8cpp_1a6b4b4c052515984986f59d5701a17b7b" kind="function"><name>Square</name></member>
+    <member refid="_math__functions_8cpp_1ad72f36e3db56353097aa6c3e86dc9f5c" kind="function"><name>Sum_ptr</name></member>
+    <member refid="_math__functions_8cpp_1a60b06fb4d8b9f9bae01e137f5520f645" kind="function"><name>Sum</name></member>
+  </compound>
+  <compound refid="_math__functions_8h" kind="file"><name>Math_functions.h</name>
+    <member refid="_math__functions_8h_1adea63f5775066ec20de11022dcb05d1b" kind="function"><name>init_polynome</name></member>
+    <member refid="_math__functions_8h_1ae2af88862ce81fe9c3a7b05fb7206359" kind="function"><name>Derivative_ptr</name></member>
+    <member refid="_math__functions_8h_1a71a619c3d456114604a527b82a0f2f40" kind="function"><name>Derivative</name></member>
+    <member refid="_math__functions_8h_1a27f86b34743c7ae57e0c2a6cf4b1cc52" kind="function"><name>Multiplication_ptr</name></member>
+    <member refid="_math__functions_8h_1ad56e5f80070e290dfae5ec74f4a3901b" kind="function"><name>Multiplication</name></member>
+    <member refid="_math__functions_8h_1a43fe8fa5827ec9f267595b2b57160e3f" kind="function"><name>Square_ptr</name></member>
+    <member refid="_math__functions_8h_1a6b4b4c052515984986f59d5701a17b7b" kind="function"><name>Square</name></member>
+    <member refid="_math__functions_8h_1ad72f36e3db56353097aa6c3e86dc9f5c" kind="function"><name>Sum_ptr</name></member>
+    <member refid="_math__functions_8h_1a60b06fb4d8b9f9bae01e137f5520f645" kind="function"><name>Sum</name></member>
+  </compound>
+  <compound refid="_moteur_8cpp" kind="file"><name>Moteur.cpp</name>
+    <member refid="_moteur_8cpp_1a27ffccaee01853029c68b7cc49b7cd02" kind="function"><name>idealFrequency</name></member>
+  </compound>
+  <compound refid="_moteur_8h" kind="file"><name>Moteur.h</name>
+  </compound>
+  <compound refid="_p_i_d_8cpp" kind="file"><name>PID.cpp</name>
+    <member refid="_p_i_d_8cpp_1af023ef1016a4cc0377bd8d9fb9eef01c" kind="define"><name>RECONVERGENCE</name></member>
+  </compound>
+  <compound refid="_p_i_d_8h" kind="file"><name>PID.h</name>
+    <member refid="_p_i_d_8h_1ae20f005d2ba9b44753f24e421249f4f0" kind="define"><name>NBPROFILES</name></member>
+    <member refid="_p_i_d_8h_1ad21a62148d32f81ad29dcfdf91c55e92" kind="define"><name>TIMETOOFAR</name></member>
+  </compound>
+  <compound refid="_robot_8cpp" kind="file"><name>Robot.cpp</name>
+    <member refid="_robot_8cpp_1a5452483ece658dd15b1b22a30c2c53a7" kind="define"><name>PIN_CODEUSE_GAUCHE_A</name></member>
+    <member refid="_robot_8cpp_1a47e09a2a3109651b7f762876d657472b" kind="define"><name>PIN_CODEUSE_GAUCHE_B</name></member>
+    <member refid="_robot_8cpp_1a8fa02a2abec269b51be0827a123d9105" kind="define"><name>PIN_CODEUSE_DROITE_A</name></member>
+    <member refid="_robot_8cpp_1a3fbdc8534895d1eef738353a64b90d62" kind="define"><name>PIN_CODEUSE_DROITE_B</name></member>
+    <member refid="_robot_8cpp_1a4662f6e6e0aff49284b70a0e61d343aa" kind="define"><name>PIN_MOTEUR_GAUCHE_PWR</name></member>
+    <member refid="_robot_8cpp_1a6a3766ce4ae00a5568a2f78e1b879add" kind="define"><name>PIN_MOTEUR_GAUCHE_SENS</name></member>
+    <member refid="_robot_8cpp_1ae3233b73dcdbdeece1a85fb0a5c72e69" kind="define"><name>PIN_MOTEUR_GAUCHE_BRAKE</name></member>
+    <member refid="_robot_8cpp_1af924cd29a3c4b264fadebc9cf898735a" kind="define"><name>PIN_MOTEUR_DROITE_PWR</name></member>
+    <member refid="_robot_8cpp_1afdc833a994f2def59ae3af131aab0d3d" kind="define"><name>PIN_MOTEUR_DROITE_SENS</name></member>
+    <member refid="_robot_8cpp_1a0b8a8b1677cb222b78bfdeabf3ca78f7" kind="define"><name>PIN_MOTEUR_DROITE_BRAKE</name></member>
+    <member refid="_robot_8cpp_1aae4210299ea0aefbde5e6a6660e27015" kind="define"><name>PIN_INTERRUPTEUR_ARR_DROITE</name></member>
+    <member refid="_robot_8cpp_1aca41e3fc825bc301c4c08c43bd5e771a" kind="define"><name>PIN_INTERRUPTEUR_ARR_GAUCHE</name></member>
+    <member refid="_robot_8cpp_1af7823a7a38a2041e4833a3c9219e219c" kind="define"><name>ELOIGNEMENT_CODEUSES</name></member>
+    <member refid="_robot_8cpp_1aa1016fe8565d97e5153136a21bcee38c" kind="define"><name>DIAMETRE_ROUE_CODEUSE_DROITE</name></member>
+    <member refid="_robot_8cpp_1ad401258db30c7f01e449ad69db27a166" kind="define"><name>DIAMETRE_ROUE_CODEUSE_GAUCHE</name></member>
+    <member refid="_robot_8cpp_1a7e1a33ec58c1942860ad583207b8430f" kind="define"><name>TICKS_PER_ROUND</name></member>
+    <member refid="_robot_8cpp_1a04e124417277d71d188ef748cedcfc63" kind="define"><name>SKIP_TELEMETRY_LONG</name></member>
+    <member refid="_robot_8cpp_1ac3f77660393cacf6e335da076d545770" kind="define"><name>SKIP_TELEMETRY_FAST</name></member>
+  </compound>
+  <compound refid="_robot_8h" kind="file"><name>Robot.h</name>
+  </compound>
+  <compound refid="_robot_simu_8cpp" kind="file"><name>RobotSimu.cpp</name>
+  </compound>
+  <compound refid="_robot_simu_8h" kind="file"><name>RobotSimu.h</name>
+  </compound>
+  <compound refid="rplidar__cmd_8h" kind="file"><name>rplidar_cmd.h</name>
+    <member refid="rplidar__cmd_8h_1a06032ea65248bbbafb6a3e27ab2d1798" kind="define"><name>RPLIDAR_CMD_STOP</name></member>
+    <member refid="rplidar__cmd_8h_1a94138abd61d3133709bd6ebd80575b0b" kind="define"><name>RPLIDAR_CMD_SCAN</name></member>
+    <member refid="rplidar__cmd_8h_1ab76598a7b76df3db0de3f2571f7a027e" kind="define"><name>RPLIDAR_CMD_FORCE_SCAN</name></member>
+    <member refid="rplidar__cmd_8h_1accd66bb886456cd959f344b4f0742bf6" kind="define"><name>RPLIDAR_CMD_RESET</name></member>
+    <member refid="rplidar__cmd_8h_1a39ce7c2792e936c59030373a2221d0ca" kind="define"><name>RPLIDAR_CMD_GET_DEVICE_INFO</name></member>
+    <member refid="rplidar__cmd_8h_1ac32d9664c30b33b3686204baad582e56" kind="define"><name>RPLIDAR_CMD_GET_DEVICE_HEALTH</name></member>
+    <member refid="rplidar__cmd_8h_1acb97e916d859e6e053e43b33661543ca" kind="define"><name>RPLIDAR_ANS_TYPE_MEASUREMENT</name></member>
+    <member refid="rplidar__cmd_8h_1a40ba95bc8a8b5724b30d509fbad5975e" kind="define"><name>RPLIDAR_ANS_TYPE_DEVINFO</name></member>
+    <member refid="rplidar__cmd_8h_1ac4be632d7073aa295f876719aa602568" kind="define"><name>RPLIDAR_ANS_TYPE_DEVHEALTH</name></member>
+    <member refid="rplidar__cmd_8h_1ad4069ed2bd795e2d2b8129e77f3f5bc7" kind="define"><name>RPLIDAR_STATUS_OK</name></member>
+    <member refid="rplidar__cmd_8h_1a15449e6e10e97bacace2fcf8a84d485c" kind="define"><name>RPLIDAR_STATUS_WARNING</name></member>
+    <member refid="rplidar__cmd_8h_1ad6fc32d4a7d3ef8809a3d39df8087693" kind="define"><name>RPLIDAR_STATUS_ERROR</name></member>
+    <member refid="rplidar__cmd_8h_1a05f0c00f4888efd878d6c8b3a812d29c" kind="define"><name>RPLIDAR_RESP_MEASUREMENT_SYNCBIT</name></member>
+    <member refid="rplidar__cmd_8h_1a2985ae1d9c620d539721269102757b2a" kind="define"><name>RPLIDAR_RESP_MEASUREMENT_QUALITY_SHIFT</name></member>
+    <member refid="rplidar__cmd_8h_1a0503f4a0850417252d0dd6af80657512" kind="define"><name>RPLIDAR_RESP_MEASUREMENT_CHECKBIT</name></member>
+    <member refid="rplidar__cmd_8h_1addccf37a516632b7e057b9ac0b628360" kind="define"><name>RPLIDAR_RESP_MEASUREMENT_ANGLE_SHIFT</name></member>
+    <member refid="rplidar__cmd_8h_1a11b77416bcbd71c82f58a4b04a4b3029" kind="variable"><name>sync_quality</name></member>
+    <member refid="rplidar__cmd_8h_1a3b0df92c1f6c7db03be3c121f4fea584" kind="variable"><name>angle_q6_checkbit</name></member>
+    <member refid="rplidar__cmd_8h_1addb4299654e0a5216b92cd52cafaf32a" kind="variable"><name>distance_q2</name></member>
+    <member refid="rplidar__cmd_8h_1a65325158b4dfcd74f93a9c316957e8a1" kind="variable"><name>model</name></member>
+    <member refid="rplidar__cmd_8h_1a4c512696ea17633a0d088ce2bb40e436" kind="variable"><name>firmware_version</name></member>
+    <member refid="rplidar__cmd_8h_1af6f1422e96abaf28bfb9429008eade14" kind="variable"><name>hardware_version</name></member>
+    <member refid="rplidar__cmd_8h_1ad46ba16b43b6e2ef04bce0ca0fa7ecbb" kind="variable"><name>serialnum</name></member>
+    <member refid="rplidar__cmd_8h_1a5c6d194e1240ce3ea95de901c960da0c" kind="variable"><name>status</name></member>
+    <member refid="rplidar__cmd_8h_1a48ca2d907f036e37615dc33cc91e7115" kind="variable"><name>error_code</name></member>
+    <member refid="rplidar__cmd_8h_1a207f2fc758e5ac8644ea07e732cefebd" kind="function"><name>__attribute__</name></member>
+  </compound>
+  <compound refid="rplidar__protocol_8h" kind="file"><name>rplidar_protocol.h</name>
+    <member refid="rplidar__protocol_8h_1ab3e49fd8f459749bc840649fbf522244" kind="define"><name>RPLIDAR_CMD_SYNC_BYTE</name></member>
+    <member refid="rplidar__protocol_8h_1a44143778aa5087206b320d7562b028df" kind="define"><name>RPLIDAR_CMDFLAG_HAS_PAYLOAD</name></member>
+    <member refid="rplidar__protocol_8h_1a8a454e15a0b13a7ec641137d38920719" kind="define"><name>RPLIDAR_ANS_SYNC_BYTE1</name></member>
+    <member refid="rplidar__protocol_8h_1a0fe547f97017a3f2ba2f8ed890059e94" kind="define"><name>RPLIDAR_ANS_SYNC_BYTE2</name></member>
+    <member refid="rplidar__protocol_8h_1a046e557c7f79b52c59b5c6b67e87c1e6" kind="define"><name>RPLIDAR_ANS_PKTFLAG_LOOP</name></member>
+    <member refid="rplidar__protocol_8h_1a091360146540adad39023ef92f0ab0a9" kind="variable"><name>syncByte</name></member>
+    <member refid="rplidar__protocol_8h_1ad3af6076328f707a6b8a7704bf9b3437" kind="variable"><name>cmd_flag</name></member>
+    <member refid="rplidar__protocol_8h_1a5c96d7c1d0c77382b26f365b4cf544c0" kind="variable"><name>size</name></member>
+    <member refid="rplidar__protocol_8h_1a9e1fb613e68ae873f82dc8162b0e35ce" kind="variable"><name>data</name></member>
+    <member refid="rplidar__protocol_8h_1a1b8334b1d5cce79d3465646a3ad6a6b1" kind="variable"><name>syncByte1</name></member>
+    <member refid="rplidar__protocol_8h_1aa8507b9b9b8499fb81b757587ac2efba" kind="variable"><name>syncByte2</name></member>
+    <member refid="rplidar__protocol_8h_1ac050dddaf8ca7d66b498ef2e045089a5" kind="variable"><name>subType</name></member>
+    <member refid="rplidar__protocol_8h_1a525a5ef247f93f470f4f5e2b5cc59dce" kind="variable"><name>type</name></member>
+    <member refid="rplidar__protocol_8h_1ad93895ed389e9354d065b7074610af9c" kind="function"><name>__attribute__</name></member>
+  </compound>
+  <compound refid="rptypes_8h" kind="file"><name>rptypes.h</name>
+    <member refid="rptypes_8h_1a8bdb84e658f7f9c819d9e284aac0876e" kind="define"><name>__small_endian</name></member>
+    <member refid="rptypes_8h_1a9d373a9b65ff25b2db84c07394e1c212" kind="define"><name>__attribute__</name></member>
+    <member refid="rptypes_8h_1a2618c097a9f7213a8b01afbcf0d3936e" kind="define"><name>RESULT_OK</name></member>
+    <member refid="rptypes_8h_1a7680b3678306a6e21e23557d5ccb83ac" kind="define"><name>RESULT_FAIL_BIT</name></member>
+    <member refid="rptypes_8h_1a3024157b51e04d74a09712f819f71076" kind="define"><name>RESULT_ALREADY_DONE</name></member>
+    <member refid="rptypes_8h_1ac185ffa60faf217f221ba8fca8b35fe9" kind="define"><name>RESULT_INVALID_DATA</name></member>
+    <member refid="rptypes_8h_1a789f1eb7c04ace1cd61e2dbf7e239ac5" kind="define"><name>RESULT_OPERATION_FAIL</name></member>
+    <member refid="rptypes_8h_1a643f71140ee9631574bfc7f8442b5db6" kind="define"><name>RESULT_OPERATION_TIMEOUT</name></member>
+    <member refid="rptypes_8h_1a313a1360d26fecb31adeefc372c83abd" kind="define"><name>RESULT_OPERATION_STOP</name></member>
+    <member refid="rptypes_8h_1abe3ac0cf8ea1297874aa52fdf901a724" kind="define"><name>RESULT_OPERATION_NOT_SUPPORT</name></member>
+    <member refid="rptypes_8h_1a13329d60601e220848f45a1bd40369ab" kind="define"><name>RESULT_FORMAT_NOT_SUPPORT</name></member>
+    <member refid="rptypes_8h_1a32d624c523e0b76df9b5654b2baecaa9" kind="define"><name>RESULT_INSUFFICIENT_MEMORY</name></member>
+    <member refid="rptypes_8h_1aa9af8e76797e08dba1b1e541971e20e5" kind="define"><name>IS_OK</name></member>
+    <member refid="rptypes_8h_1aab0adb4ddb301fc29e5260dd871772dc" kind="define"><name>IS_FAIL</name></member>
+    <member refid="rptypes_8h_1a8c1c46c75cbdda3d86969aa28157aad2" kind="typedef"><name>_s8</name></member>
+    <member refid="rptypes_8h_1af2b0f13cffd24f6dddf794ae0c7472b4" kind="typedef"><name>_u8</name></member>
+    <member refid="rptypes_8h_1afe7a44df84382fc8a5f84f9575b6c009" kind="typedef"><name>_s16</name></member>
+    <member refid="rptypes_8h_1a0ff807843ee3edd61b33fa0425b571e6" kind="typedef"><name>_u16</name></member>
+    <member refid="rptypes_8h_1a72ba73aa9146e63093239a2606c75a80" kind="typedef"><name>_s32</name></member>
+    <member refid="rptypes_8h_1a07491c35a48354e0e7b56974a04cc3de" kind="typedef"><name>_u32</name></member>
+    <member refid="rptypes_8h_1ac0186bf12dd93f8087975e20cd10866f" kind="typedef"><name>_s64</name></member>
+    <member refid="rptypes_8h_1ab6cc27767e5120b044fbfefc322304fc" kind="typedef"><name>_u64</name></member>
+    <member refid="rptypes_8h_1aae3c3046a3ac6b72370c3d3c9c9061db" kind="typedef"><name>u_result</name></member>
+    <member refid="rptypes_8h_1a4771db3b1758bdddc709e86b91dcc364" kind="function"><name>_word_size_t</name></member>
+  </compound>
+  <compound refid="_r_p_lidar_8cpp" kind="file"><name>RPLidar.cpp</name>
+  </compound>
+  <compound refid="_r_p_lidar_8h" kind="file"><name>RPLidar.h</name>
+  </compound>
+  <compound refid="_simulator_8cpp" kind="file"><name>Simulator.cpp</name>
+    <member refid="_simulator_8cpp_1a5de940f4d5e50fe83402a7b65216acf2" kind="define"><name>MAX_PERCENT_DEFECT</name></member>
+    <member refid="_simulator_8cpp_1ac377db81b810bff5ff74221befd2ccc0" kind="define"><name>AVG</name></member>
+    <member refid="_simulator_8cpp_1a6081907e729b8745b52bd2883301bedf" kind="define"><name>AVD</name></member>
+    <member refid="_simulator_8cpp_1a15daceb4f37933a09e36c0bfc3e32a98" kind="define"><name>ARG</name></member>
+    <member refid="_simulator_8cpp_1aa9701b150e0589afb638c82a498d1dcb" kind="define"><name>ARD</name></member>
+    <member refid="_simulator_8cpp_1a303eae0da1ba8b57c3665fc49a209c63" kind="function"><name>outOfBound</name></member>
+  </compound>
+  <compound refid="_simulator_8h" kind="file"><name>Simulator.h</name>
+  </compound>
+  <compound refid="main_test_8cpp" kind="file"><name>mainTest.cpp</name>
+  </compound>
+  <compound refid="md__ensmasteel__bot_2020__arduino__mega__lib__stepper_driver__r_e_a_d_m_e" kind="page"><name>md_Ensmasteel_Bot_2020_Arduino_Mega_Lib_StepperDriver_README</name>
+  </compound>
+  <compound refid="md__ensmasteel__bot_2020__r_e_a_d_m_e" kind="page"><name>md_Ensmasteel_Bot_2020_README</name>
+  </compound>
+  <compound refid="md__ensmasteel__bot_2020__teensy_lib__encoder_docs_issue_template" kind="page"><name>md_Ensmasteel_Bot_2020_Teensy_lib_Encoder_docs_issue_template</name>
+  </compound>
+  <compound refid="dir_48573d241fb389d2ff612852912df186" kind="dir"><name>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators</name>
+  </compound>
+  <compound refid="dir_379e92d4d6c93310137fd537e060806a" kind="dir"><name>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager</name>
+  </compound>
+  <compound refid="dir_f7cbe6f65ad0da53051fcf327f4a163c" kind="dir"><name>Ensmasteel_Bot_2020/Arduino_Mega</name>
+  </compound>
+  <compound refid="dir_47dd4e27fa9d4b7a7a4021f9eaa28af8" kind="dir"><name>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/avr</name>
+  </compound>
+  <compound refid="dir_960944d17bb9908cc20828053789155c" kind="dir"><name>Ensmasteel_Bot_2020/Libraries_shared/Communication</name>
+  </compound>
+  <compound refid="dir_a2c7893d6c300d499de90dd644c84de0" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib/Encoder/docs</name>
+  </compound>
+  <compound refid="dir_55bbd1c294f1c160e25f4515bea82940" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib/Encoder</name>
+  </compound>
+  <compound refid="dir_48bd753c6c5e9a3fef65fbb33bf3afe9" kind="dir"><name>Ensmasteel_Bot_2020</name>
+  </compound>
+  <compound refid="dir_1a2cec80f1b777604ee3389c1fb79b75" kind="dir"><name>Ensmasteel_Bot_2020/Libraries_shared/Enums</name>
+  </compound>
+  <compound refid="dir_55a387168c8caedff86b848653020f20" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib/ErrorManager</name>
+  </compound>
+  <compound refid="dir_e9dc1e786813592c13617d126af03a71" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib/Filtre</name>
+  </compound>
+  <compound refid="dir_011ed229200d2462d81755e0f6873632" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib/Ghost</name>
+  </compound>
+  <compound refid="dir_946c90d085c63e7e9a41da9eacfb64f1" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc</name>
+  </compound>
+  <compound refid="dir_5983d1d0609e8b895385350f524ae4af" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib/LesInseparables</name>
+  </compound>
+  <compound refid="dir_289582af866b524415c4c821d13ca37a" kind="dir"><name>Ensmasteel_Bot_2020/Arduino_Mega/Lib</name>
+  </compound>
+  <compound refid="dir_301fdd5971c0643d964412ae0d9c61f2" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib</name>
+  </compound>
+  <compound refid="dir_0d616f11f612dd92310f5da468ec7d69" kind="dir"><name>Ensmasteel_Bot_2020/Libraries_shared</name>
+  </compound>
+  <compound refid="dir_d4a568bc0ce9c13cf25ecf6c163a690b" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib/LIDAR</name>
+  </compound>
+  <compound refid="dir_4e86625ed2ec04d3df1f6ce0168d4d43" kind="dir"><name>Ensmasteel_Bot_2020/Libraries_shared/Logger</name>
+  </compound>
+  <compound refid="dir_f93a9891e8744ea30ed6f7dacdf432b9" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib/Math_functions</name>
+  </compound>
+  <compound refid="dir_8bfeb6dd924efb546631aa5ab1b9ccd5" kind="dir"><name>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/megaavr</name>
+  </compound>
+  <compound refid="dir_0650113f4d1fbff982f5861608e7bc47" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib/Moteur</name>
+  </compound>
+  <compound refid="dir_c7f42bea3559830fbeb817b6eca3eff4" kind="dir"><name>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/nrf52</name>
+  </compound>
+  <compound refid="dir_fac49b89fdf5ec81cc812b9db94c0cc0" kind="dir"><name>Ensmasteel_Bot_2020/Phare</name>
+  </compound>
+  <compound refid="dir_3a247f6103118c3274037f4787c19a2c" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib/PID</name>
+  </compound>
+  <compound refid="dir_0e61542421ffc15a00a508fe403c016e" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib/Robot</name>
+  </compound>
+  <compound refid="dir_2f3088c2f2e283b04f778848dc135860" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver</name>
+  </compound>
+  <compound refid="dir_e460d772424f243001cbc4105834d905" kind="dir"><name>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/sam</name>
+  </compound>
+  <compound refid="dir_0f45dc8d53dc49ecab984be4b0e77cdc" kind="dir"><name>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/samd</name>
+  </compound>
+  <compound refid="dir_549daf9b9a6efc05d1cb49ff07e34550" kind="dir"><name>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo</name>
+  </compound>
+  <compound refid="dir_328f8974ff34e494183a4bcc57957b05" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib/Simulator</name>
+  </compound>
+  <compound refid="dir_ba7b793df51b521c6729e5ba049a830a" kind="dir"><name>Ensmasteel_Bot_2020/Phare/src</name>
+  </compound>
+  <compound refid="dir_bb21e3a16f5a2abbbe932d0abfcf3141" kind="dir"><name>Ensmasteel_Bot_2020/test led/src</name>
+  </compound>
+  <compound refid="dir_4c3b738b09b0098e76c4aa8996fb1266" kind="dir"><name>Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src</name>
+  </compound>
+  <compound refid="dir_6e2fd84dad77f97c738c5c7ae00e6f3f" kind="dir"><name>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src</name>
+  </compound>
+  <compound refid="dir_369a4359ddfb69e2e0ad932dc0a7b096" kind="dir"><name>Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver</name>
+  </compound>
+  <compound refid="dir_a8ac6e30dedf3289b040229fcb13841a" kind="dir"><name>Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ</name>
+  </compound>
+  <compound refid="dir_b120cde4ae6666356b12375609e60b91" kind="dir"><name>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/stm32f4</name>
+  </compound>
+  <compound refid="dir_c20c35889baa51bf9afad9f56b0fa759" kind="dir"><name>Ensmasteel_Bot_2020/Teensy</name>
+  </compound>
+  <compound refid="dir_09d07ecc9b76e24e17fc0511be095241" kind="dir"><name>Ensmasteel_Bot_2020/test led</name>
+  </compound>
+  <compound refid="dir_0dafaba44fa21bf771be70f1f6725d4c" kind="dir"><name>Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/utility</name>
+  </compound>
+  <compound refid="dir_4bbc47c58cb332afd0ef0723b6568229" kind="dir"><name>Ensmasteel_Bot_2020/Libraries_shared/Vector</name>
+  </compound>
+</doxygenindex>

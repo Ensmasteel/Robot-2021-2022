@@ -1,0 +1,122 @@
+\hypertarget{rptypes_8h_source}{}\doxysection{rptypes.\+h}
+\label{rptypes_8h_source}\index{Ensmasteel\_Bot\_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h@{Ensmasteel\_Bot\_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * Copyright (c) 2014, RoboPeak}}
+\DoxyCodeLine{3 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{4 \textcolor{comment}{ *}}
+\DoxyCodeLine{5 \textcolor{comment}{ * Redistribution and use in source and binary forms, with or without modification, }}
+\DoxyCodeLine{6 \textcolor{comment}{ * are permitted provided that the following conditions are met:}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * 1. Redistributions of source code must retain the above copyright notice, }}
+\DoxyCodeLine{9 \textcolor{comment}{ *    this list of conditions and the following disclaimer.}}
+\DoxyCodeLine{10 \textcolor{comment}{ *}}
+\DoxyCodeLine{11 \textcolor{comment}{ * 2. Redistributions in binary form must reproduce the above copyright notice, }}
+\DoxyCodeLine{12 \textcolor{comment}{ *    this list of conditions and the following disclaimer in the documentation }}
+\DoxyCodeLine{13 \textcolor{comment}{ *    and/or other materials provided with the distribution.}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "{}AS IS"{} AND ANY }}
+\DoxyCodeLine{16 \textcolor{comment}{ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES }}
+\DoxyCodeLine{17 \textcolor{comment}{ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT }}
+\DoxyCodeLine{18 \textcolor{comment}{ * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, }}
+\DoxyCodeLine{19 \textcolor{comment}{ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT }}
+\DoxyCodeLine{20 \textcolor{comment}{ * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) }}
+\DoxyCodeLine{21 \textcolor{comment}{ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR }}
+\DoxyCodeLine{22 \textcolor{comment}{ * TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, }}
+\DoxyCodeLine{23 \textcolor{comment}{ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}}
+\DoxyCodeLine{24 \textcolor{comment}{ *}}
+\DoxyCodeLine{25 \textcolor{comment}{ */}}
+\DoxyCodeLine{26 \textcolor{comment}{/*}}
+\DoxyCodeLine{27 \textcolor{comment}{ *  RoboPeak LIDAR System}}
+\DoxyCodeLine{28 \textcolor{comment}{ *  Common Types definition}}
+\DoxyCodeLine{29 \textcolor{comment}{ *}}
+\DoxyCodeLine{30 \textcolor{comment}{ *  Copyright 2009 -\/ 2014 RoboPeak Team}}
+\DoxyCodeLine{31 \textcolor{comment}{ *  http://www.robopeak.com}}
+\DoxyCodeLine{32 \textcolor{comment}{ * }}
+\DoxyCodeLine{33 \textcolor{comment}{ */}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#ifdef \_WIN32}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{comment}{//fake stdint.h for VC only}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{keyword}{typedef} \textcolor{keywordtype}{signed}   \textcolor{keywordtype}{char}     int8\_t;}
+\DoxyCodeLine{43 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}     uint8\_t;}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{keyword}{typedef} \_\_int16           int16\_t;}
+\DoxyCodeLine{46 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \_\_int16  uint16\_t;}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{keyword}{typedef} \_\_int32           int32\_t;}
+\DoxyCodeLine{49 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \_\_int32  uint32\_t;}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keyword}{typedef} \_\_int64           int64\_t;}
+\DoxyCodeLine{52 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \_\_int64  uint64\_t;}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{comment}{//based on stdint.h}}
+\DoxyCodeLine{62 \textcolor{keyword}{typedef} int8\_t         \_s8;}
+\DoxyCodeLine{63 \textcolor{keyword}{typedef} uint8\_t        \_u8;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{keyword}{typedef} int16\_t        \_s16;}
+\DoxyCodeLine{66 \textcolor{keyword}{typedef} uint16\_t       \_u16;}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{keyword}{typedef} int32\_t        \_s32;}
+\DoxyCodeLine{69 \textcolor{keyword}{typedef} uint32\_t       \_u32;}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{keyword}{typedef} int64\_t        \_s64;}
+\DoxyCodeLine{72 \textcolor{keyword}{typedef} uint64\_t       \_u64;}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#define \_\_small\_endian}}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#ifndef \_\_GNUC\_\_}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#define \_\_attribute\_\_(x)}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{comment}{// The \_word\_size\_t uses actual data bus width of the current CPU}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#ifdef \_AVR\_}}
+\DoxyCodeLine{83 \textcolor{keyword}{typedef} \_u8            \_word\_size\_t;}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#define THREAD\_PROC    }}
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#elif defined (WIN64)}}
+\DoxyCodeLine{86 \textcolor{keyword}{typedef} \_u64           \_word\_size\_t;}
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#define THREAD\_PROC    \_\_stdcall}}
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#elif defined (WIN32)}}
+\DoxyCodeLine{89 \textcolor{keyword}{typedef} \_u32           \_word\_size\_t;}
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#define THREAD\_PROC    \_\_stdcall}}
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#elif defined (\_\_GNUC\_\_)}}
+\DoxyCodeLine{92 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long}  \_word\_size\_t;}
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#define THREAD\_PROC   }}
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#elif defined (\_\_ICCARM\_\_)}}
+\DoxyCodeLine{95 \textcolor{keyword}{typedef} \_u32            \_word\_size\_t;}
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#define THREAD\_PROC  }}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100 \textcolor{keyword}{typedef} uint32\_t u\_result;}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#define RESULT\_OK              0}}
+\DoxyCodeLine{103 \textcolor{preprocessor}{\#define RESULT\_FAIL\_BIT        0x80000000}}
+\DoxyCodeLine{104 \textcolor{preprocessor}{\#define RESULT\_ALREADY\_DONE    0x20}}
+\DoxyCodeLine{105 \textcolor{preprocessor}{\#define RESULT\_INVALID\_DATA    (0x8000 | RESULT\_FAIL\_BIT)}}
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#define RESULT\_OPERATION\_FAIL  (0x8001 | RESULT\_FAIL\_BIT)}}
+\DoxyCodeLine{107 \textcolor{preprocessor}{\#define RESULT\_OPERATION\_TIMEOUT  (0x8002 | RESULT\_FAIL\_BIT)}}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#define RESULT\_OPERATION\_STOP    (0x8003 | RESULT\_FAIL\_BIT)}}
+\DoxyCodeLine{109 \textcolor{preprocessor}{\#define RESULT\_OPERATION\_NOT\_SUPPORT    (0x8004 | RESULT\_FAIL\_BIT)}}
+\DoxyCodeLine{110 \textcolor{preprocessor}{\#define RESULT\_FORMAT\_NOT\_SUPPORT    (0x8005 | RESULT\_FAIL\_BIT)}}
+\DoxyCodeLine{111 \textcolor{preprocessor}{\#define RESULT\_INSUFFICIENT\_MEMORY   (0x8006 | RESULT\_FAIL\_BIT)}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113 \textcolor{preprocessor}{\#define IS\_OK(x)    ( ((x) \& RESULT\_FAIL\_BIT) == 0 )}}
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#define IS\_FAIL(x)  ( ((x) \& RESULT\_FAIL\_BIT) )}}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116 \textcolor{keyword}{typedef} \_word\_size\_t (THREAD\_PROC * thread\_proc\_t ) ( \textcolor{keywordtype}{void} * );}
+
+\end{DoxyCode}

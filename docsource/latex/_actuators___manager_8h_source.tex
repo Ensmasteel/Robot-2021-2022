@@ -1,0 +1,74 @@
+\hypertarget{_actuators___manager_8h_source}{}\doxysection{Actuators\+\_\+\+Manager.\+h}
+\label{_actuators___manager_8h_source}\index{Ensmasteel\_Bot\_2020/Arduino\_Mega/Lib/Actuators\_Manager/Actuators\_Manager.h@{Ensmasteel\_Bot\_2020/Arduino\_Mega/Lib/Actuators\_Manager/Actuators\_Manager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef ACTUATORS\_MANAGER\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define ACTUATORS\_MANAGER\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Communication.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}MessageID.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Actuators.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define NBR\_ACTUATORS 6}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_manager}{Manager}}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16 \textcolor{keyword}{public}:}
+\DoxyCodeLine{22     \mbox{\hyperlink{class_manager_a063a10df590ee1f84bb7a6fc7d046998}{Manager}}(Stream* serControllerStream, HardwareSerial* serDebug = \&Serial);}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} Update();}
+\DoxyCodeLine{24 \textcolor{keyword}{private}:}
+\DoxyCodeLine{25     HardwareSerial* serialDebug;}
+\DoxyCodeLine{26     \mbox{\hyperlink{class_communication}{Communication}} comController;}
+\DoxyCodeLine{27     }
+\DoxyCodeLine{28     \textcolor{comment}{// ACTUATORS //}}
+\DoxyCodeLine{29     \mbox{\hyperlink{class_actuator}{Actuator}}* listActuators[NBR\_ACTUATORS];}
+\DoxyCodeLine{30     \mbox{\hyperlink{class_pavillon}{Pavillon}} pavillon;}
+\DoxyCodeLine{31     \mbox{\hyperlink{class_bras}{Bras}} brasGauche;}
+\DoxyCodeLine{32     \mbox{\hyperlink{class_bras}{Bras}} brasDroit;}
+\DoxyCodeLine{33     \mbox{\hyperlink{class_pince_avant}{PinceAvant}} pinceAvantGauche;}
+\DoxyCodeLine{34     \mbox{\hyperlink{class_pince_avant}{PinceAvant}} pinceAvantDroite;}
+\DoxyCodeLine{35     \mbox{\hyperlink{class_pince_arriere}{PinceArriere}} pinceArr;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{comment}{// PINS //}}
+\DoxyCodeLine{39 \textcolor{comment}{}    }
+\DoxyCodeLine{40     \textcolor{comment}{// Bras}}
+\DoxyCodeLine{41     uint8\_t brasGauche\_servoPWM = 3;}
+\DoxyCodeLine{42     uint8\_t brasDroit\_servoPWM = 4;}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{comment}{// Pavillon}}
+\DoxyCodeLine{45     uint8\_t pav\_Dir = 35;}
+\DoxyCodeLine{46     uint8\_t pav\_Step = 34;}
+\DoxyCodeLine{47     uint8\_t pav\_Sleep = 22;}
+\DoxyCodeLine{48     uint8\_t pav\_M0 = 37;}
+\DoxyCodeLine{49     uint8\_t pav\_M1 = 36;}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51     \textcolor{comment}{// Pinces}}
+\DoxyCodeLine{52     uint8\_t pinceArr\_servoPWM = 5;}
+\DoxyCodeLine{53     uint8\_t pinceAvG\_servoPWM = 6;}
+\DoxyCodeLine{54     uint8\_t pinceAvD\_servoPWM = 7;}
+\DoxyCodeLine{55     }
+\DoxyCodeLine{56     uint8\_t pinceAvG\_Dir = 24;}
+\DoxyCodeLine{57     uint8\_t pinceAvG\_Step = 23;}
+\DoxyCodeLine{58     uint8\_t pinceAvD\_Dir = 26;}
+\DoxyCodeLine{59     uint8\_t pinceAvD\_Step = 25;}
+\DoxyCodeLine{60     uint8\_t pinceArr\_Dir = 31;}
+\DoxyCodeLine{61     uint8\_t pinceArr\_Step = 30;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63     uint8\_t pincesAv\_M0 = 29;}
+\DoxyCodeLine{64     uint8\_t pincesAv\_M1 = 28;}
+\DoxyCodeLine{65     uint8\_t pincesArr\_M0 = 33;}
+\DoxyCodeLine{66     uint8\_t pincesArr\_M1 = 32;}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     uint8\_t pinces\_Sleep = 27;}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{comment}{// DATA MESSAGE //}}
+\DoxyCodeLine{71     \mbox{\hyperlink{struct_message}{Message}} currentMessage;}
+\DoxyCodeLine{72     MessageID currentID = MessageID::Stop\_M;}
+\DoxyCodeLine{73     \mbox{\hyperlink{struct_four_bytes}{FourBytes}} currentBytes;}
+\DoxyCodeLine{74     Actuator\_Order currentOrder;}
+\DoxyCodeLine{75 \};}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

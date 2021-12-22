@@ -1,0 +1,49 @@
+\hypertarget{class_spin___action}{}\doxysection{Spin\+\_\+\+Action Class Reference}
+\label{class_spin___action}\index{Spin\_Action@{Spin\_Action}}
+
+
+{\ttfamily \#include $<$Actions.\+h$>$}
+
+Inheritance diagram for Spin\+\_\+\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_spin___action}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_spin___action_a7d4117e13534e7181daec9cae51a07dd}\label{class_spin___action_a7d4117e13534e7181daec9cae51a07dd}} 
+{\bfseries Spin\+\_\+\+Action} (float timeout, \mbox{\hyperlink{class_target_vector_e}{Target\+VectorE}} target, Move\+Profile\+Name profile\+Name, int16\+\_\+t require=NO\+\_\+\+REQUIREMENT)
+\item 
+void \mbox{\hyperlink{class_spin___action_a3882bdfcf8262e22c4e71b2d9ef4e5cc}{start}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Rotates on place to get to target position. \begin{DoxyWarning}{Warning}
+this function is team dependant. 
+\end{DoxyWarning}
+\begin{DoxyNote}{Note}
+Deprecated for 2022 edition. Has to be updated. 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_spin___action_a3882bdfcf8262e22c4e71b2d9ef4e5cc}\label{class_spin___action_a3882bdfcf8262e22c4e71b2d9ef4e5cc}} 
+\index{Spin\_Action@{Spin\_Action}!start@{start}}
+\index{start@{start}!Spin\_Action@{Spin\_Action}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Spin\+\_\+\+Action\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+The start function is called once at action\textquotesingle{}s beginning, if the action requirement did not fail. Else the fail is immediate. Is the action is interrupted by \mbox{\hyperlink{class_sequence_a77dcfee1093388c7b283c5ebcd0556fc}{Sequence\+::pause}}, start function will be re-\/called during resume. 
+
+Reimplemented from \mbox{\hyperlink{class_move___action_a67ba96921f67ba91f6d34f3245bc34c8}{Move\+\_\+\+Action}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+cpp\end{DoxyCompactItemize}

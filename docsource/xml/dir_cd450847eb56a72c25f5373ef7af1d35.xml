@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_cd450847eb56a72c25f5373ef7af1d35" kind="dir">
+    <compoundname>D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver</compoundname>
+    <innerdir refid="dir_10abf012574cb73cf643454aa79c63ae">D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/"/>
+  </compounddef>
+</doxygen>

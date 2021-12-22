@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_p_i_d_8h" kind="file" language="C++">
+    <compoundname>PID.h</compoundname>
+    <includes refid="_move_profile_8h" local="yes">MoveProfile.h</includes>
+    <includes refid="_filtre_8h" local="yes">Filtre.h</includes>
+    <includes refid="_vector_8h" local="yes">Vector.h</includes>
+    <includedby refid="_p_i_d_8cpp" local="yes">Ensmasteel_Bot_2020/Teensy/lib/PID/PID.cpp</includedby>
+    <includedby refid="_robot_8h" local="yes">Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h</includedby>
+    <includedby refid="_teensy_2main_8cpp" local="yes">Ensmasteel_Bot_2020/Teensy/main.cpp</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>Arduino.h</label>
+      </node>
+      <node id="2">
+        <label>MoveProfile.h</label>
+        <link refid="_move_profile_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Logger.h</label>
+        <link refid="_logger_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Vector.h</label>
+        <link refid="_vector_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Filtre.h</label>
+        <link refid="_filtre_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h</label>
+        <link refid="_p_i_d_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Print.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h</label>
+        <link refid="_p_i_d_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h</label>
+        <link refid="_robot_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Robot/RobotSimu.h</label>
+        <link refid="_robot_simu_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_score" prot="public">Score</innerclass>
+    <innerclass refid="class_p_i_d" prot="public">PID</innerclass>
+    <innerclass refid="class_asservissement" prot="public">Asservissement</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_p_i_d_8h_1ae20f005d2ba9b44753f24e421249f4f0" prot="public" static="no">
+        <name>NBPROFILES</name>
+        <initializer>((int)Pace::NB_PACE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="4" column="18" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_p_i_d_8h_1ad21a62148d32f81ad29dcfdf91c55e92" prot="public" static="no">
+        <name>TIMETOOFAR</name>
+        <initializer>0.2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="5" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>PID_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PID_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;MoveProfile.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NBPROFILES<sp/>((int)Pace::NB_PACE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TIMETOOFAR<sp/>0.2<sp/></highlight><highlight class="comment">//Temps<sp/>qu&apos;il<sp/>faut<sp/>rester<sp/>trop<sp/>loin<sp/>pour<sp/>etre<sp/>considere<sp/>tooFar</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Filtre.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Vector.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>La<sp/>variable<sp/>x<sp/>définit<sp/>une<sp/>grandeur<sp/>quelconque.<sp/>dx<sp/>est<sp/>sa<sp/>derivee.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="class_score" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_score" kindref="compound">Score</ref></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>cumulError=0;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>maxOvershoot=0;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>nbInversion=0;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>reset();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>toTelemetry(String<sp/>prefix);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="class_p_i_d" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_p_i_d" kindref="compound">PID</ref></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_move_profile" kindref="compound">MoveProfile</ref>*<sp/>currentProfile;<sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>iTerm;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>modulo360;<sp/><sp/><sp/></highlight><highlight class="comment">//Permet<sp/>de<sp/>dire<sp/>si<sp/>les<sp/>valeurs<sp/>sont<sp/>a<sp/>interprété<sp/>modulo<sp/>360</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_filtre" kindref="compound">Filtre</ref><sp/>dxF;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Filtre<sp/>de<sp/>la<sp/>derivee</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>timeTooFar;<sp/></highlight><highlight class="comment">//Temps<sp/>depuis<sp/>lequel<sp/>on<sp/>est<sp/>trop<sp/>loin</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>close;<sp/><sp/></highlight><highlight class="comment">//Est<sp/>ce<sp/>qu&apos;on<sp/>est<sp/>proche<sp/>de<sp/>la<sp/>target<sp/>(cf<sp/>epsilon<sp/>et<sp/>depsilon)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>tooFar;<sp/></highlight><highlight class="comment">//Est<sp/>ce<sp/>qu&apos;on<sp/>est<sp/>trop<sp/>loin<sp/>(cf<sp/>errMax)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lastOut;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_score" kindref="compound">Score</ref><sp/>score;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_score" kindref="compound">Score</ref><sp/>getScore();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>reset();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setCurrentProfile(MoveProfileName<sp/>pace);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>compute(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>xTarget,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dxTarget,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dx,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt);<sp/></highlight><highlight class="comment">//Renvoie<sp/>un<sp/>ordre<sp/>entre<sp/>-1<sp/>et<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_move_profile" kindref="compound">MoveProfile</ref>*<sp/>getCurrentProfile();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_i_d" kindref="compound">PID</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>modulo360,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>frequency);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_i_d" kindref="compound">PID</ref>();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_asservissement" kindref="compound">Asservissement</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">//Rien<sp/>n&apos;est<sp/>privé<sp/>pour<sp/>l&apos;asservissement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="class_asservissement" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_asservissement" kindref="compound">Asservissement</ref></highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_i_d" kindref="compound">PID</ref><sp/>pidTranslation;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_i_d" kindref="compound">PID</ref><sp/>pidRotation;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_cinetique" kindref="compound">Cinetique</ref><sp/>*cGhost,<sp/>*cRobot;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*outTranslation,<sp/>*outRotation;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>close;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Est<sp/>ce<sp/>qu&apos;on<sp/>est<sp/>proche<sp/>a<sp/>la<sp/>fois<sp/>en<sp/>position<sp/>(projetée)<sp/>ET<sp/>en<sp/>theta</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Il<sp/>faut<sp/>regarder<sp/>la<sp/>position<sp/>projetée<sp/>car<sp/>le<sp/>PID<sp/>ne<sp/>pourra<sp/>rien<sp/>y<sp/>faire<sp/>si<sp/>on<sp/>est<sp/>à<sp/>coté</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>tooFar;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Est<sp/>ce<sp/>qu&apos;on<sp/>est<sp/>trop<sp/>loin<sp/>position<sp/>(absolue)<sp/>OU<sp/>en<sp/>theta</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>needToGoForward;<sp/></highlight><highlight class="comment">//Est<sp/>ce<sp/>qu&apos;on<sp/>va<sp/>devoir<sp/>avancer<sp/>?<sp/>Utile<sp/>pour<sp/>l&apos;évitemment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Place<sp/>dans<sp/>outTranslation<sp/>et<sp/>outRotation<sp/>les<sp/>deux<sp/>ordres<sp/>(entre<sp/>-1<sp/>et<sp/>1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>compute(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//void<sp/>compute_dev(float<sp/>dt);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setCurrentProfile(MoveProfileName<sp/>pace);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>reset();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sendScoreToTelemetry();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_asservissement" kindref="compound">Asservissement</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*outTranslation,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*outRotation,<sp/><ref refid="class_cinetique" kindref="compound">Cinetique</ref><sp/>*cRobot,<sp/><ref refid="class_cinetique" kindref="compound">Cinetique</ref><sp/>*cGhost,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>frequency);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_asservissement" kindref="compound">Asservissement</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>tweak(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>incr,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>translation,<sp/>uint8_t<sp/>whichOne);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h"/>
+  </compounddef>
+</doxygen>

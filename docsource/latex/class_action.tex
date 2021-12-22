@@ -1,0 +1,158 @@
+\hypertarget{class_action}{}\doxysection{Action Class Reference}
+\label{class_action}\index{Action@{Action}}
+
+
+{\ttfamily \#include $<$Actions.\+h$>$}
+
+Inheritance diagram for Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{class_action}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_action_a3e06aaadebfc669ac6ff988e1de9abc7}{start}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_action_a3e524a7ba7014522e5111e06cc9b963b}{is\+Finished}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_action_a82a24a3b95fb310326e649402fbcef11}{has\+Failed}} ()
+\item 
+\mbox{\hyperlink{class_action_a28dfd4b726854360b99c8bda70e7da6d}{Action}} (String \mbox{\hyperlink{class_action_aa4672a5030b15430c86b33903609d172}{name}}=\char`\"{}Action\char`\"{}, float timeout=0.\+1, int16\+\_\+t require=NO\+\_\+\+REQUIREMENT)
+\item 
+bool \mbox{\hyperlink{class_action_a09d6aee36ccd353f55f073b73dd64f9b}{has\+Started}} ()
+\item 
+virtual void \mbox{\hyperlink{class_action_a2d8cdbdc551331ea33f6661837e32904}{do\+At\+End}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_action_a80945e7aeba19e727952b9dd3059c99f}{set\+Pointer}} (\mbox{\hyperlink{class_robot}{Robot}} $\ast$robot)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+String \mbox{\hyperlink{class_action_aa4672a5030b15430c86b33903609d172}{name}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_action_a169d6ae96ebfe59864f7936d964f4604}\label{class_action_a169d6ae96ebfe59864f7936d964f4604}} 
+bool {\bfseries done}
+\item 
+\mbox{\Hypertarget{class_action_a377ebdc2c58b64af1978a64e7ca0c399}\label{class_action_a377ebdc2c58b64af1978a64e7ca0c399}} 
+bool {\bfseries started}
+\item 
+\mbox{\Hypertarget{class_action_a393f04c3c18e212220fd56cca4fcd4c9}\label{class_action_a393f04c3c18e212220fd56cca4fcd4c9}} 
+float {\bfseries timeout}
+\item 
+\mbox{\Hypertarget{class_action_af0308aeb6255207896180aec072f8b88}\label{class_action_af0308aeb6255207896180aec072f8b88}} 
+float {\bfseries time\+Started}
+\item 
+\mbox{\Hypertarget{class_action_ab7d4c5ae380f7457d22a4b77575e7a70}\label{class_action_ab7d4c5ae380f7457d22a4b77575e7a70}} 
+\mbox{\hyperlink{class_sequence}{Sequence}} $\ast$ {\bfseries my\+Sequence}
+\item 
+\mbox{\Hypertarget{class_action_a722960e240576a3c6192f6783df7d1fe}\label{class_action_a722960e240576a3c6192f6783df7d1fe}} 
+int16\+\_\+t {\bfseries require}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_action_ad6ddf3a19a26193c69a64a37dbffb27a}\label{class_action_ad6ddf3a19a26193c69a64a37dbffb27a}} 
+static \mbox{\hyperlink{class_robot}{Robot}} $\ast$ {\bfseries robot}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_action_a26271d5afaff6e6d3f00c055c63d0b24}\label{class_action_a26271d5afaff6e6d3f00c055c63d0b24}} 
+class {\bfseries Sequence}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+ABSTRACT CLASS. DO NOT INSTANCE. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_action_a28dfd4b726854360b99c8bda70e7da6d}\label{class_action_a28dfd4b726854360b99c8bda70e7da6d}} 
+\index{Action@{Action}!Action@{Action}}
+\index{Action@{Action}!Action@{Action}}
+\doxysubsubsection{\texorpdfstring{Action()}{Action()}}
+{\footnotesize\ttfamily Action\+::\+Action (\begin{DoxyParamCaption}\item[{String}]{name = {\ttfamily \char`\"{}Action\char`\"{}},  }\item[{float}]{timeout = {\ttfamily 0.1},  }\item[{int16\+\_\+t}]{require = {\ttfamily NO\+\_\+REQUIREMENT} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Creates a basic action. \begin{DoxyWarning}{Warning}
+This class is Abstract and cannot be instantiated. 
+\end{DoxyWarning}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_action_a2d8cdbdc551331ea33f6661837e32904}\label{class_action_a2d8cdbdc551331ea33f6661837e32904}} 
+\index{Action@{Action}!doAtEnd@{doAtEnd}}
+\index{doAtEnd@{doAtEnd}!Action@{Action}}
+\doxysubsubsection{\texorpdfstring{doAtEnd()}{doAtEnd()}}
+{\footnotesize\ttfamily virtual void Action\+::do\+At\+End (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+This function is called in case of success. Do not do anything by default. 
+
+Reimplemented in \mbox{\hyperlink{class_double___action_a3443c27e08e7af8bd8b4380ecf67c8ce}{Double\+\_\+\+Action}}, and \mbox{\hyperlink{class_move___action_a04c6d71f3a87e4f201d8daf6af917dee}{Move\+\_\+\+Action}}.
+
+\mbox{\Hypertarget{class_action_a82a24a3b95fb310326e649402fbcef11}\label{class_action_a82a24a3b95fb310326e649402fbcef11}} 
+\index{Action@{Action}!hasFailed@{hasFailed}}
+\index{hasFailed@{hasFailed}!Action@{Action}}
+\doxysubsubsection{\texorpdfstring{hasFailed()}{hasFailed()}}
+{\footnotesize\ttfamily bool Action\+::has\+Failed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Has\+Failed is called endlessly. Returns if the action failed and should be left aside. The sequence will remember the function failed (useful for requirement). By default, an action fails if it exceeds the time duration allowed by the timer. \begin{DoxyNote}{Note}
+A timeout set to -\/1 indicates the action has an unlimited time. 
+\end{DoxyNote}
+
+
+Reimplemented in \mbox{\hyperlink{class_double___action_aa287df168e59626573cb6a20ef827f69}{Double\+\_\+\+Action}}, \mbox{\hyperlink{class_move___action_ae52a50ebb8ef41c1436c4c209a430a09}{Move\+\_\+\+Action}}, \mbox{\hyperlink{class_backward___action_acd5d5be5f21f69a8b39af514145d95f8}{Backward\+\_\+\+Action}}, \mbox{\hyperlink{class_sleep___action_a9b2c383ba14fb557753ee07cda8b831f}{Sleep\+\_\+\+Action}}, \mbox{\hyperlink{class_null___action_a972d555c7cebec548229e28742ff8493}{Null\+\_\+\+Action}}, \mbox{\hyperlink{class_end___action_a5df9ad29a4343e3e4603ed1667b94ed6}{End\+\_\+\+Action}}, and \mbox{\hyperlink{class_wait___tirette___action_a0a924abbdf802411df11a8d8410808b5}{Wait\+\_\+\+Tirette\+\_\+\+Action}}.
+
+\mbox{\Hypertarget{class_action_a09d6aee36ccd353f55f073b73dd64f9b}\label{class_action_a09d6aee36ccd353f55f073b73dd64f9b}} 
+\index{Action@{Action}!hasStarted@{hasStarted}}
+\index{hasStarted@{hasStarted}!Action@{Action}}
+\doxysubsubsection{\texorpdfstring{hasStarted()}{hasStarted()}}
+{\footnotesize\ttfamily bool Action\+::has\+Started (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns if the actions started or not. \mbox{\Hypertarget{class_action_a3e524a7ba7014522e5111e06cc9b963b}\label{class_action_a3e524a7ba7014522e5111e06cc9b963b}} 
+\index{Action@{Action}!isFinished@{isFinished}}
+\index{isFinished@{isFinished}!Action@{Action}}
+\doxysubsubsection{\texorpdfstring{isFinished()}{isFinished()}}
+{\footnotesize\ttfamily virtual bool Action\+::is\+Finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Is\+Finished is called endlessly. Returns if the action is done. Can also be an update function. 
+
+Reimplemented in \mbox{\hyperlink{class_double___action_a5d7683eb93c3ec650695e84426d910ee}{Double\+\_\+\+Action}}, \mbox{\hyperlink{class_move___action_a6bdc7828e769bd5cd12fcb42b30807d0}{Move\+\_\+\+Action}}, \mbox{\hyperlink{class_backward___action_a5d51dbcc69485283babaacbcefec1b21}{Backward\+\_\+\+Action}}, \mbox{\hyperlink{class_wait___message___action_a3fa2293c84671cc0b98c04d512d45ecf}{Wait\+\_\+\+Message\+\_\+\+Action}}, \mbox{\hyperlink{class_switch___message___action_a94155ed47d3b75155c67caf5176104aa}{Switch\+\_\+\+Message\+\_\+\+Action}}, \mbox{\hyperlink{class_sleep___action_a2dba37ac963b41b36ce043a6f32a91a7}{Sleep\+\_\+\+Action}}, \mbox{\hyperlink{class_null___action_a5ef08097e316435552daf168bb95bc6b}{Null\+\_\+\+Action}}, \mbox{\hyperlink{class_end___action_a32a9535c29bc2feaca200d57fd5c3835}{End\+\_\+\+Action}}, \mbox{\hyperlink{class_wait___error___action_a52d821062719ac34012f0d735292a46c}{Wait\+\_\+\+Error\+\_\+\+Action}}, and \mbox{\hyperlink{class_wait___tirette___action_afc60fc24eb07b790ef6386ca5cb40342}{Wait\+\_\+\+Tirette\+\_\+\+Action}}.
+
+\mbox{\Hypertarget{class_action_a80945e7aeba19e727952b9dd3059c99f}\label{class_action_a80945e7aeba19e727952b9dd3059c99f}} 
+\index{Action@{Action}!setPointer@{setPointer}}
+\index{setPointer@{setPointer}!Action@{Action}}
+\doxysubsubsection{\texorpdfstring{setPointer()}{setPointer()}}
+{\footnotesize\ttfamily void Action\+::set\+Pointer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_robot}{Robot}} $\ast$}]{robot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Gives to all current and future actions a pointer to the robot. \mbox{\Hypertarget{class_action_a3e06aaadebfc669ac6ff988e1de9abc7}\label{class_action_a3e06aaadebfc669ac6ff988e1de9abc7}} 
+\index{Action@{Action}!start@{start}}
+\index{start@{start}!Action@{Action}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Action\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+The start function is called once at action\textquotesingle{}s beginning, if the action requirement did not fail. Else the fail is immediate. Is the action is interrupted by \mbox{\hyperlink{class_sequence_a77dcfee1093388c7b283c5ebcd0556fc}{Sequence\+::pause}}, start function will be re-\/called during resume. 
+
+Reimplemented in \mbox{\hyperlink{class_double___action_aac46b3f8dad147fde4f7934e6f86649d}{Double\+\_\+\+Action}}, \mbox{\hyperlink{class_move___action_a67ba96921f67ba91f6d34f3245bc34c8}{Move\+\_\+\+Action}}, \mbox{\hyperlink{class_spin___action_a3882bdfcf8262e22c4e71b2d9ef4e5cc}{Spin\+\_\+\+Action}}, \mbox{\hyperlink{class_rotate___action_a82ca14c8704f027ec4108c034514ed1e}{Rotate\+\_\+\+Action}}, \mbox{\hyperlink{class_forward___action_a70fc0a87198c554f1b93940f3ed0051d}{Forward\+\_\+\+Action}}, \mbox{\hyperlink{class_backward___action_a9592f176269cf3ad8877f349631ca1b4}{Backward\+\_\+\+Action}}, \mbox{\hyperlink{class_straight_to___action_a0f46eb20b076167e4e659076e24080b5}{Straight\+To\+\_\+\+Action}}, \mbox{\hyperlink{class_brake___action_ac12a69bd60cae53f1b21522325c9dae4}{Brake\+\_\+\+Action}}, \mbox{\hyperlink{class_send___action_a6f93337d56933a890c1189f20af824fa}{Send\+\_\+\+Action}}, \mbox{\hyperlink{class_end___action_aad151db7bde008e76cfa5e22197112d0}{End\+\_\+\+Action}}, \mbox{\hyperlink{class_do___action_a28e1938a014380f0d4098fe0c11e71ce}{Do\+\_\+\+Action}}, \mbox{\hyperlink{class_pause_seq___action_a7993501a1f5b396852844da7e1fa5e69}{Pause\+Seq\+\_\+\+Action}}, \mbox{\hyperlink{class_resume_seq___action_ad1c47e0c5aa21d38a16fdb2bb0f9407e}{Resume\+Seq\+\_\+\+Action}}, and \mbox{\hyperlink{class_wait___tirette___action_a085ae6d8d59d25385c0e7b49f0e34616}{Wait\+\_\+\+Tirette\+\_\+\+Action}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_action_aa4672a5030b15430c86b33903609d172}\label{class_action_aa4672a5030b15430c86b33903609d172}} 
+\index{Action@{Action}!name@{name}}
+\index{name@{name}!Action@{Action}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily String Action\+::name}
+
+\mbox{\hyperlink{class_action}{Action}}\textquotesingle{}s name. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+cpp\end{DoxyCompactItemize}
