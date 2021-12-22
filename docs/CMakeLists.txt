@@ -1,3 +1,0 @@
-find_package(Doxygen REQUIRED)
-
-get_target_property(ENSMASTEEL_PUBLIC_HEADER_DIR )
