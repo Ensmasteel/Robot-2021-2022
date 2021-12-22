@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="struct_u_int_vector_e" kind="struct" language="C++" prot="public">
+    <compoundname>UIntVectorE</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_u_int_vector_e_1a7ca298f87d138719ef79fee2540e6244" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t UIntVectorE::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="15" column="13" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_u_int_vector_e_1a74b26ee561d5fccf8365d0ba5f15280d" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t UIntVectorE::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="16" column="13" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_u_int_vector_e_1abba4847c88b707367351538d75a9c5ae" prot="public" static="no" mutable="no">
+        <type>int16_t</type>
+        <definition>int16_t UIntVectorE::theta</definition>
+        <argsstring></argsstring>
+        <name>theta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="17" column="13" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" line="13" column="1" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp" bodystart="14" bodyend="18"/>
+    <listofallmembers>
+      <member refid="struct_u_int_vector_e_1abba4847c88b707367351538d75a9c5ae" prot="public" virt="non-virtual"><scope>UIntVectorE</scope><name>theta</name></member>
+      <member refid="struct_u_int_vector_e_1a7ca298f87d138719ef79fee2540e6244" prot="public" virt="non-virtual"><scope>UIntVectorE</scope><name>x</name></member>
+      <member refid="struct_u_int_vector_e_1a74b26ee561d5fccf8365d0ba5f15280d" prot="public" virt="non-virtual"><scope>UIntVectorE</scope><name>y</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

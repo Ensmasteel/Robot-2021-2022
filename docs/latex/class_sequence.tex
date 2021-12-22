@@ -1,0 +1,124 @@
+\hypertarget{class_sequence}{}\doxysection{Sequence Class Reference}
+\label{class_sequence}\index{Sequence@{Sequence}}
+
+
+{\ttfamily \#include $<$Sequence.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_sequence_a2fb9f7c393bdaa32c4137b77fadc46d4}\label{class_sequence_a2fb9f7c393bdaa32c4137b77fadc46d4}} 
+Sequence\+Name {\bfseries get\+Name} ()
+\item 
+void \mbox{\hyperlink{class_sequence_acebd3c2005a27c52d7f1adc19d33a4ad}{start\+Selected}} ()
+\item 
+void \mbox{\hyperlink{class_sequence_a0cd6f19d2c11f877ce7a051bdb634ec9}{start\+Following}} ()
+\item 
+void \mbox{\hyperlink{class_sequence_a62b11638d83715206d83220f42819960}{force\+Following}} ()
+\item 
+void \mbox{\hyperlink{class_sequence_a61025e7cf286a8650ac84c5fb4684964}{update}} ()
+\item 
+void \mbox{\hyperlink{class_sequence_a273d3169e9fd50d9ad799330c02f6fa8}{set\+Next\+Index}} (uint8\+\_\+t index)
+\item 
+\mbox{\hyperlink{class_sequence_a47134cdefcffb1a183e5f99262f4aed7}{Sequence}} (int my\+Seq\+Index)
+\item 
+void \mbox{\hyperlink{class_sequence_a29a4d1973ee94ab5819fd06c2c6f24e4}{add}} (\mbox{\hyperlink{class_action}{Action}} $\ast$action)
+\item 
+void \mbox{\hyperlink{class_sequence_a3bd0fb86694929dab9483cc609d55742}{to\+Telemetry}} ()
+\item 
+void \mbox{\hyperlink{class_sequence_a77dcfee1093388c7b283c5ebcd0556fc}{pause}} (bool lock\+Ghost)
+\item 
+void \mbox{\hyperlink{class_sequence_a45a319c7314cedbc60be48cd879df7b5}{reset}} (bool lock\+Ghost)
+\item 
+void \mbox{\hyperlink{class_sequence_a3eb07e08e59b731d6d950fac7140697e}{resume}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_sequence_af0b8170b92a963836d6fe1c41e55e31b}\label{class_sequence_af0b8170b92a963836d6fe1c41e55e31b}} 
+uint8\+\_\+t {\bfseries next\+Index}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Creates a sequence class defining the action queue and all parameters. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_sequence_a47134cdefcffb1a183e5f99262f4aed7}\label{class_sequence_a47134cdefcffb1a183e5f99262f4aed7}} 
+\index{Sequence@{Sequence}!Sequence@{Sequence}}
+\index{Sequence@{Sequence}!Sequence@{Sequence}}
+\doxysubsubsection{\texorpdfstring{Sequence()}{Sequence()}}
+{\footnotesize\ttfamily Sequence\+::\+Sequence (\begin{DoxyParamCaption}\item[{int}]{my\+Seq\+Index }\end{DoxyParamCaption})}
+
+Creates an empty sequence. By default, sequence is set on pause. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sequence_a29a4d1973ee94ab5819fd06c2c6f24e4}\label{class_sequence_a29a4d1973ee94ab5819fd06c2c6f24e4}} 
+\index{Sequence@{Sequence}!add@{add}}
+\index{add@{add}!Sequence@{Sequence}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void Sequence\+::add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_action}{Action}} $\ast$}]{action }\end{DoxyParamCaption})}
+
+Add an action at the end of sequence queue. \mbox{\Hypertarget{class_sequence_a62b11638d83715206d83220f42819960}\label{class_sequence_a62b11638d83715206d83220f42819960}} 
+\index{Sequence@{Sequence}!forceFollowing@{forceFollowing}}
+\index{forceFollowing@{forceFollowing}!Sequence@{Sequence}}
+\doxysubsubsection{\texorpdfstring{forceFollowing()}{forceFollowing()}}
+{\footnotesize\ttfamily void Sequence\+::force\+Following (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Starts the action designated by next\+Index and indicates the previous action ended normally. \mbox{\Hypertarget{class_sequence_a77dcfee1093388c7b283c5ebcd0556fc}\label{class_sequence_a77dcfee1093388c7b283c5ebcd0556fc}} 
+\index{Sequence@{Sequence}!pause@{pause}}
+\index{pause@{pause}!Sequence@{Sequence}}
+\doxysubsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily void Sequence\+::pause (\begin{DoxyParamCaption}\item[{bool}]{lock\+Ghost }\end{DoxyParamCaption})}
+
+Prevent the actualisation of sequence and lock the ghost. \mbox{\Hypertarget{class_sequence_a45a319c7314cedbc60be48cd879df7b5}\label{class_sequence_a45a319c7314cedbc60be48cd879df7b5}} 
+\index{Sequence@{Sequence}!reset@{reset}}
+\index{reset@{reset}!Sequence@{Sequence}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Sequence\+::reset (\begin{DoxyParamCaption}\item[{bool}]{lock\+Ghost }\end{DoxyParamCaption})}
+
+Set the current\+Index to first action. \mbox{\Hypertarget{class_sequence_a3eb07e08e59b731d6d950fac7140697e}\label{class_sequence_a3eb07e08e59b731d6d950fac7140697e}} 
+\index{Sequence@{Sequence}!resume@{resume}}
+\index{resume@{resume}!Sequence@{Sequence}}
+\doxysubsubsection{\texorpdfstring{resume()}{resume()}}
+{\footnotesize\ttfamily void Sequence\+::resume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Unlock the sequence and restarts the current action. \mbox{\Hypertarget{class_sequence_a273d3169e9fd50d9ad799330c02f6fa8}\label{class_sequence_a273d3169e9fd50d9ad799330c02f6fa8}} 
+\index{Sequence@{Sequence}!setNextIndex@{setNextIndex}}
+\index{setNextIndex@{setNextIndex}!Sequence@{Sequence}}
+\doxysubsubsection{\texorpdfstring{setNextIndex()}{setNextIndex()}}
+{\footnotesize\ttfamily void Sequence\+::set\+Next\+Index (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+Changes the next\+Index value. \mbox{\Hypertarget{class_sequence_a0cd6f19d2c11f877ce7a051bdb634ec9}\label{class_sequence_a0cd6f19d2c11f877ce7a051bdb634ec9}} 
+\index{Sequence@{Sequence}!startFollowing@{startFollowing}}
+\index{startFollowing@{startFollowing}!Sequence@{Sequence}}
+\doxysubsubsection{\texorpdfstring{startFollowing()}{startFollowing()}}
+{\footnotesize\ttfamily void Sequence\+::start\+Following (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Starts the action designated by next\+Index. \mbox{\Hypertarget{class_sequence_acebd3c2005a27c52d7f1adc19d33a4ad}\label{class_sequence_acebd3c2005a27c52d7f1adc19d33a4ad}} 
+\index{Sequence@{Sequence}!startSelected@{startSelected}}
+\index{startSelected@{startSelected}!Sequence@{Sequence}}
+\doxysubsubsection{\texorpdfstring{startSelected()}{startSelected()}}
+{\footnotesize\ttfamily void Sequence\+::start\+Selected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Start the action designated by current\+Index (unlock the sequence if necessary). \mbox{\Hypertarget{class_sequence_a3bd0fb86694929dab9483cc609d55742}\label{class_sequence_a3bd0fb86694929dab9483cc609d55742}} 
+\index{Sequence@{Sequence}!toTelemetry@{toTelemetry}}
+\index{toTelemetry@{toTelemetry}!Sequence@{Sequence}}
+\doxysubsubsection{\texorpdfstring{toTelemetry()}{toTelemetry()}}
+{\footnotesize\ttfamily void Sequence\+::to\+Telemetry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Uploads infos concerning this sequence. \begin{DoxyWarning}{Warning}
+To use on only one sequence. 
+\end{DoxyWarning}
+\mbox{\Hypertarget{class_sequence_a61025e7cf286a8650ac84c5fb4684964}\label{class_sequence_a61025e7cf286a8650ac84c5fb4684964}} 
+\index{Sequence@{Sequence}!update@{update}}
+\index{update@{update}!Sequence@{Sequence}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Sequence\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Verify the state of current action and acts if the action succeeds or fails. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Sequence.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Sequence.\+cpp\end{DoxyCompactItemize}

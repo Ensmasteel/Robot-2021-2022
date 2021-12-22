@@ -1,0 +1,56 @@
+\hypertarget{_message_i_d_8h_source}{}\doxysection{Message\+ID.\+h}
+\label{_message_i_d_8h_source}\index{Ensmasteel\_Bot\_2020/Libraries\_shared/Enums/MessageID.h@{Ensmasteel\_Bot\_2020/Libraries\_shared/Enums/MessageID.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef MESSAGEID\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define MESSAGEID\_H\_}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define DROIT\_byteM 0}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define GAUCHE\_byteM 1}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{comment}{// COMPLETER LES ENUMERATIONS PAR LA FIN //}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{// En-\/tete de message //}}
+\DoxyCodeLine{13 \textcolor{comment}{}}
+\DoxyCodeLine{22 \textcolor{keyword}{enum} MessageID : uint16\_t}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24     Empty\_M,        }
+\DoxyCodeLine{25     Stop\_M,         }
+\DoxyCodeLine{26     Tirette\_M,      }
+\DoxyCodeLine{27     PID\_tweak\_M,    }
+\DoxyCodeLine{28     add\_forward\_M,  }
+\DoxyCodeLine{29     add\_backward\_M, }
+\DoxyCodeLine{30     add\_spin\_M,     }
+\DoxyCodeLine{31     Em\_Stop\_M,      }
+\DoxyCodeLine{32     Evitemment\_M,   }
+\DoxyCodeLine{33     North\_M,        }
+\DoxyCodeLine{34     South\_M,        }
+\DoxyCodeLine{35     Pavillon\_M,     }
+\DoxyCodeLine{36     BrasG\_M,        }
+\DoxyCodeLine{37     BrasD\_M,        }
+\DoxyCodeLine{38     PinceAvG\_M,     }
+\DoxyCodeLine{39     PinceAvD\_M,     }
+\DoxyCodeLine{40     PinceArr\_M      }
+\DoxyCodeLine{41 \};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{comment}{// Complements d'ordres //}}
+\DoxyCodeLine{45 \textcolor{comment}{}}
+\DoxyCodeLine{46 \textcolor{comment}{// Byte 0}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{53 \textcolor{keyword}{enum} Actuator\_Order : uint8\_t}
+\DoxyCodeLine{54 \{}
+\DoxyCodeLine{55     Sortir,     }
+\DoxyCodeLine{56     Rentrer,    }
+\DoxyCodeLine{57     Monter,     }
+\DoxyCodeLine{58     Descendre,  }
+\DoxyCodeLine{59     Stock,      }
+\DoxyCodeLine{60     Destock,    }
+\DoxyCodeLine{61     Fermer,     }
+\DoxyCodeLine{62     Ouvrir      }
+\DoxyCodeLine{63 \};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

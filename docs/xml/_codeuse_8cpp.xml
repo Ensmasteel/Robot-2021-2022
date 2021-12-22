@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_codeuse_8cpp" kind="file" language="C++">
+    <compoundname>Codeuse.cpp</compoundname>
+    <includes refid="_codeuse_8h" local="yes">Codeuse.h</includes>
+    <incdepgraph>
+      <node id="4">
+        <label>Arduino.h</label>
+      </node>
+      <node id="5">
+        <label>Logger.h</label>
+        <link refid="_logger_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Vector.h</label>
+        <link refid="_vector_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.cpp</label>
+        <link refid="_codeuse_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Codeuse.h</label>
+        <link refid="_codeuse_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Encoder.h</label>
+        <link refid="_encoder_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>utility/direct_pin_read.h</label>
+        <link refid="direct__pin__read_8h_source"/>
+      </node>
+      <node id="11">
+        <label>utility/interrupt_pins.h</label>
+        <link refid="interrupt__pins_8h_source"/>
+      </node>
+      <node id="6">
+        <label>Print.h</label>
+      </node>
+      <node id="8">
+        <label>WProgram.h</label>
+      </node>
+      <node id="9">
+        <label>pins_arduino.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;Codeuse.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal">Interrupteur::Interrupteur(uint8_t<sp/>pin)</highlight></codeline>
+<codeline lineno="4"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;pin<sp/>=<sp/>pin;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>pinMode(pin,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>contact<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Interrupteur::updateContact()</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>contact<sp/>=<sp/>(digitalRead(pin)<sp/>==<sp/>LOW);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>Interrupteur::isContact()</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>contact;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Codeuse::actuate(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>ticks<sp/>=<sp/>enc-&gt;read();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//On<sp/>recupère<sp/>les<sp/>ticks<sp/>de<sp/>l&apos;objet<sp/>Encoder<sp/>(automatiquement<sp/>mis<sp/>a<sp/>jour<sp/>par<sp/>interruptions<sp/>cf<sp/>cours<sp/>ISE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>deltaAvance<sp/>=<sp/>(ticks<sp/>-<sp/>oldTicks)<sp/>*<sp/>(PI<sp/>*<sp/>diametreRoue)<sp/>/<sp/>ticksPerRound;<sp/></highlight><highlight class="comment">//Simple<sp/>géométrie</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>v<sp/>=<sp/>deltaAvance<sp/>/<sp/>dt;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>debug<sp/>+=<sp/>deltaAvance;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>oldTicks<sp/>=<sp/>ticks;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">Codeuse::Codeuse(uint8_t<sp/>pinA,<sp/>uint8_t<sp/>pinB,<sp/>uint16_t<sp/>ticksPerRound,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>diametreRoue)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>enc<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_encoder" kindref="compound">Encoder</ref>(pinA,<sp/>pinB);<sp/></highlight><highlight class="comment">//Objet<sp/>Encoder<sp/>de<sp/>la<sp/>librairie<sp/>Encoder.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;diametreRoue<sp/>=<sp/>diametreRoue;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;ticksPerRound<sp/>=<sp/>ticksPerRound;<sp/></highlight><highlight class="comment">//Nombe<sp/>de<sp/>ticks<sp/>par<sp/>tour</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>ticks<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>oldTicks<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>v<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>deltaAvance<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>debug<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">Codeuse::Codeuse()<sp/>{}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Odometrie::updateCinetique(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>codeuseGauche.actuate(dt);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>codeuseDroite.actuate(dt);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>cinetique-&gt;<ref refid="class_cinetique_1a7fbbeae0349326d9ba8c8677a775f0ab" kindref="member">_v</ref><sp/>=<sp/>(codeuseDroite.v<sp/>+<sp/>codeuseGauche.v)<sp/>/<sp/>2.0;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>cinetique-&gt;<ref refid="class_cinetique_1a605427ec93a1ea4b2460d0f6307e1e31" kindref="member">_w</ref><sp/>=<sp/>(codeuseDroite.v<sp/>-<sp/>codeuseGauche.v)<sp/>/<sp/>eloignementCodeuses;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>cinetique-&gt;_theta<sp/>+=<sp/>(codeuseDroite.deltaAvance<sp/>-<sp/>codeuseGauche.deltaAvance)<sp/>/<sp/>eloignementCodeuses;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>cinetique-&gt;<ref refid="class_vector_e_1add2733ccf3d8e7dc816ba952fa4120fb" kindref="member">normalizeTheta</ref>();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>(*cinetique)<sp/>+=<sp/>directeur(cinetique-&gt;_theta)<sp/>*<sp/>((codeuseDroite.deltaAvance<sp/>+<sp/>codeuseGauche.deltaAvance)<sp/>/<sp/>2);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>interGauche-&gt;updateContact();</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>interDroite-&gt;updateContact();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">Odometrie::Odometrie(){}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal">Odometrie::Odometrie(uint16_t<sp/>ticksPerRound,<sp/><ref refid="class_cinetique" kindref="compound">Cinetique</ref><sp/>*cinetique,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>eloignementCodeuses,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>pinACodeuseGauche,<sp/>uint8_t<sp/>pinBCodeuseGauche,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>diametreRoueGauche,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>pinACodeuseDroite,<sp/>uint8_t<sp/>pinBCodeuseDroite,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>diametreRoueDroite,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>pinInterDroite,<sp/>uint8_t<sp/>pinInterGauche)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>codeuseGauche<sp/>=<sp/><ref refid="class_codeuse" kindref="compound">Codeuse</ref>(pinACodeuseGauche,<sp/>pinBCodeuseGauche,<sp/>ticksPerRound,<sp/>diametreRoueGauche);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>codeuseDroite<sp/>=<sp/><ref refid="class_codeuse" kindref="compound">Codeuse</ref>(pinACodeuseDroite,<sp/>pinBCodeuseDroite,<sp/>ticksPerRound,<sp/>diametreRoueDroite);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;cinetique<sp/>=<sp/>cinetique;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;eloignementCodeuses<sp/>=<sp/>eloignementCodeuses;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>interGauche<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_interrupteur" kindref="compound">Interrupteur</ref>(pinInterGauche);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>interDroite<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_interrupteur" kindref="compound">Interrupteur</ref>(pinInterDroite);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>Odometrie::getInterDroiteContact()</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>interDroite-&gt;isContact();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>Odometrie::getInterGaucheContact()</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>interGauche-&gt;isContact();</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.cpp"/>
+  </compounddef>
+</doxygen>

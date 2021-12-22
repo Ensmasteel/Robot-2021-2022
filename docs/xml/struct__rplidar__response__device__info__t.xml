@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="struct__rplidar__response__device__info__t" kind="struct" language="C++" prot="public">
+    <compoundname>_rplidar_response_device_info_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__rplidar__response__device__info__t_1afaaa8feaddc8c8b9b878b6ec1490f5c2" prot="public" static="no" mutable="no">
+        <type>_u8</type>
+        <definition>_u8 _rplidar_response_device_info_t::model</definition>
+        <argsstring></argsstring>
+        <name>model</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rplidar_cmd.h" line="85" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rplidar_cmd.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__rplidar__response__device__info__t_1ab515d2f3fe2aaa5722814747c0b471c3" prot="public" static="no" mutable="no">
+        <type>_u16</type>
+        <definition>_u16 _rplidar_response_device_info_t::firmware_version</definition>
+        <argsstring></argsstring>
+        <name>firmware_version</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rplidar_cmd.h" line="86" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rplidar_cmd.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__rplidar__response__device__info__t_1ae52338a4fe7f11183d10457e8ecc9d7a" prot="public" static="no" mutable="no">
+        <type>_u8</type>
+        <definition>_u8 _rplidar_response_device_info_t::hardware_version</definition>
+        <argsstring></argsstring>
+        <name>hardware_version</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rplidar_cmd.h" line="87" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rplidar_cmd.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__rplidar__response__device__info__t_1a3a059e4f4e76b6c34d6482ce104954e0" prot="public" static="no" mutable="no">
+        <type>_u8</type>
+        <definition>_u8 _rplidar_response_device_info_t::serialnum[16]</definition>
+        <argsstring>[16]</argsstring>
+        <name>serialnum</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rplidar_cmd.h" line="88" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rplidar_cmd.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rplidar_cmd.h" line="84" column="1" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rplidar_cmd.h" bodystart="84" bodyend="89"/>
+    <listofallmembers>
+      <member refid="struct__rplidar__response__device__info__t_1ab515d2f3fe2aaa5722814747c0b471c3" prot="public" virt="non-virtual"><scope>_rplidar_response_device_info_t</scope><name>firmware_version</name></member>
+      <member refid="struct__rplidar__response__device__info__t_1ae52338a4fe7f11183d10457e8ecc9d7a" prot="public" virt="non-virtual"><scope>_rplidar_response_device_info_t</scope><name>hardware_version</name></member>
+      <member refid="struct__rplidar__response__device__info__t_1afaaa8feaddc8c8b9b878b6ec1490f5c2" prot="public" virt="non-virtual"><scope>_rplidar_response_device_info_t</scope><name>model</name></member>
+      <member refid="struct__rplidar__response__device__info__t_1a3a059e4f4e76b6c34d6482ce104954e0" prot="public" virt="non-virtual"><scope>_rplidar_response_device_info_t</scope><name>serialnum</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

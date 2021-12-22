@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_c7f42bea3559830fbeb817b6eca3eff4" kind="dir">
+    <compoundname>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/nrf52</compoundname>
+    <innerfile refid="nrf52_2_servo_8cpp">Servo.cpp</innerfile>
+    <innerfile refid="nrf52_2_servo_timers_8h">ServoTimers.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo/src/nrf52/"/>
+  </compounddef>
+</doxygen>

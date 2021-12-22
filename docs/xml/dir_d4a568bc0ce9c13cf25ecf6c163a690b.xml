@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_d4a568bc0ce9c13cf25ecf6c163a690b" kind="dir">
+    <compoundname>Ensmasteel_Bot_2020/Teensy/lib/LIDAR</compoundname>
+    <innerfile refid="_l_i_d_a_r_8cpp">LIDAR.cpp</innerfile>
+    <innerfile refid="_l_i_d_a_r_8h">LIDAR.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/LIDAR/"/>
+  </compounddef>
+</doxygen>

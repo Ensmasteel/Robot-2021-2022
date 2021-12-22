@@ -1,0 +1,32 @@
+
+
+🚧 Markd\+Down file in progress {\ucr}
+
+Presentation and source code of Ensmasteel\textquotesingle{}s bot.
+
+
+\begin{DoxyItemize}
+\item \href{\#robot-configuration}{\texttt{ Robot configuration}}
+\begin{DoxyItemize}
+\item \href{\#sequences}{\texttt{ Sequences}}
+\item \href{\#actions}{\texttt{ Actions}}
+\end{DoxyItemize}
+\item \href{\#navigation}{\texttt{ Navigation}}
+\begin{DoxyItemize}
+\item \href{\#trajectory-computation}{\texttt{ Trajectory computation}}
+\item \href{\#odometry}{\texttt{ Odometry}}
+\item \href{\#position-control}{\texttt{ Position control}}
+\end{DoxyItemize}
+\item \href{\#electronics}{\texttt{ Electronics}}
+\item \href{\#mecanics}{\texttt{ Mecanics}}
+\end{DoxyItemize}\hypertarget{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md13}{}\doxysection{Robot configuration}\label{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md13}
+\hypertarget{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md14}{}\doxysubsection{Sequences}\label{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md14}
+Present \mbox{\hyperlink{class_sequence}{Sequence}} type\hypertarget{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md15}{}\doxysubsection{Actions}\label{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md15}
+Present possible actions to stack in sequences\hypertarget{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md16}{}\doxysection{Navigation}\label{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md16}
+\hypertarget{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md17}{}\doxysubsection{Trajectory computation}\label{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md17}
+Commençons par déterminer la trajectoire du robot lorsqu\textquotesingle{}il se déplace d\textquotesingle{}un point A à un point B. Pour se faire nous calculons deux polynômes définissant l\textquotesingle{}abscisse X et l\textquotesingle{}ordonnée Y en fonction d\textquotesingle{}une variable arbitraire notée t$\ast$. Ces fonctions sont des \href{https://www.desmos.com/calculator/cahqdxeshd}{\texttt{ courbes de Bézier d\textquotesingle{}ordre 3}}. On peut alors tracer la trajectoire en connaissant le point de départ \+\_\+\+\_\+(\+X0,\+Y0)\+\_\+\+\_\+, le point d\textquotesingle{}arrivé \+\_\+\+\_\+(\+X3,\+Y3)\+\_\+\+\_\+ et les points intermédiaires \+\_\+\+\_\+(\+X1,\+Y1)\+\_\+\+\_\+ et \+\_\+\+\_\+(\+X2,\+Y2)\+\_\+\+\_\+. Ces points intermédiraires sont déterminés pour obtenir la courbure et plus particulièrement, l\textquotesingle{}orientation initiale et finale du robot. L\textquotesingle{}orientation du robot est essentielle pour effectuer les actions, nous devons donc pouvoir contrôler l\textquotesingle{}orientation d\textquotesingle{}arrivé en \+\_\+\+\_\+(\+X3,\+Y3)\+\_\+\+\_\+. On se contentera de partir dans le sens initial du robot en début de trajectoire, quitte à tourner avant.
+
+Nous stockons toutes les informations relatives à la trajectoire dans un objet {\itshape \mbox{\hyperlink{class_ghost}{Ghost}}}. Le robot physique se contentera de suivre cette trajectoire par un asservissement en position. Afin de permettre au robot de suivre la trajectoire, la position ne suffit pas, il faut aussi la vitesse de déplacement. La variable t$\ast$ des courbes de Beziers n\textquotesingle{}a aucun sens temporellement. On souhaite imposer la vitesse progressivement. On définit alors une fonction {\itshape V(t)} déterminant la vitesse d\textquotesingle{}avancer le long de l\textquotesingle{}abscisse curviligne décrivant la trajectoire. On a alors {\itshape dt$\ast$=(V(t)/\+V$\ast$(t$\ast$))x(dt)} avec {\itshape dt} le temps écoulé entre deux tour de boucle (de calcul), {\itshape V$\ast$(t$\ast$)} la vitesse réelles {\itshape V$\ast$²(t$\ast$)=X’(t$\ast$)²+\+Y’(t$\ast$)²} où {\itshape X} et {\itshape Y} sont les courbes de Beziers) et {\itshape dt$\ast$} le pas d\textquotesingle{}incrémentation de {\itshape t$\ast$} pour le calcul de la position suivante. \+\_\+(cf Passation-\/\+CODE.\+docx pour plus de détails)\+\_\+\hypertarget{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md18}{}\doxysubsection{Odometry}\label{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md18}
+\hypertarget{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md19}{}\doxysubsection{Position control}\label{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md19}
+L\textquotesingle{}ensembles des positions sont stocker sous forme de {\itshape \mbox{\hyperlink{class_vector_e}{Vector\+E(x, y, theta)}}} indiquant la position en coordonées x,y en mètres et l\textquotesingle{}orientation du robot en radiants \+\_\+(note \+: theta est toujours compris dans \mbox{[}-\/PI; PI\mbox{]})\+\_\+. Le type {\itshape \mbox{\hyperlink{class_cinetique}{Cinetique}}} est attendu en entrée d\textquotesingle{}asservissement. Il contient la position et l\textquotesingle{}orientation du \mbox{\hyperlink{class_ghost}{Ghost}} en temps réelle et sa vitesse linéaire et en rotation dans le futur d\textquotesingle{}un délai de {\itshape delay\+Position} en milli-\/secondes. Ce délai permet à l\textquotesingle{}asservissement de \char`\"{}prédire\char`\"{} les accélérations/décélérations afin d\textquotesingle{}etre plus fluide.\hypertarget{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md20}{}\doxysection{Electronics}\label{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md20}
+\hypertarget{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md21}{}\doxysection{Mecanics}\label{md__ensmasteel__bot_2020__r_e_a_d_m_e_autotoc_md21}

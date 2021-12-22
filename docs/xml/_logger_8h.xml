@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_logger_8h" kind="file" language="C++">
+    <compoundname>Logger.h</compoundname>
+    <includes local="no">Print.h</includes>
+    <includes local="yes">Arduino.h</includes>
+    <includedby refid="_communication_8cpp" local="yes">Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.cpp</includedby>
+    <includedby refid="_logger_8cpp" local="yes">Ensmasteel_Bot_2020/Libraries_shared/Logger/Logger.cpp</includedby>
+    <includedby refid="_vector_8h" local="yes">Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h</includedby>
+    <includedby refid="_error_manager_8cpp" local="yes">Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/ErrorManager.cpp</includedby>
+    <includedby refid="_math__functions_8cpp" local="yes">Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.cpp</includedby>
+    <includedby refid="_teensy_2main_8cpp" local="yes">Ensmasteel_Bot_2020/Teensy/main.cpp</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>Arduino.h</label>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Libraries_shared/Logger/Logger.h</label>
+        <link refid="_logger_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Print.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h</label>
+        <link refid="_actuators_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h</label>
+        <link refid="_actuators___manager_8h_source"/>
+      </node>
+      <node id="3">
+        <label>Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h</label>
+        <link refid="_communication_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Libraries_shared/Logger/Logger.h</label>
+        <link refid="_logger_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h</label>
+        <link refid="_vector_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Ghost/Ghost.h</label>
+        <link refid="_ghost_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/LIDAR/LIDAR.h</label>
+        <link refid="_l_i_d_a_r_8h_source"/>
+      </node>
+      <node id="6">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h</label>
+        <link refid="_actions_8h_source"/>
+      </node>
+      <node id="11">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h</label>
+        <link refid="_codeuse_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h</label>
+        <link refid="_p_i_d_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h</label>
+        <link refid="_robot_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Robot/RobotSimu.h</label>
+        <link refid="_robot_simu_8h_source"/>
+      </node>
+      <node id="13">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h</label>
+        <link refid="_simulator_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_logger" prot="public">Logger</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_logger_8h_1a05e904c1e2c50934da8bf0ba1ad909f2" prot="public" static="no">
+        <name>nameValue</name>
+        <param><defname>a</defname></param>
+        <initializer>#a+&quot;= &quot;+String(a)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This class is used to write debug or info messages.</para>
+<para>To write a debug message use : &apos;&apos;Logger::debug(String message)&apos;&apos;</para>
+<para>To write an info message use : &apos;&apos;Logger::infoln(String infoMessage)</para>
+<para>To add a variable to telemetry use : &apos;&apos;Logger::toTelemetry(String message, String(variable to get in telemetry))&apos;&apos;</para>
+<para>Returns : Between # and EndLine, you&apos;ll have an informative message Between @ and | you&apos;ll have a parameter&apos;s name Between | and EndLine, you&apos;ll have its value Everything before @ or # will be debugging information. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Logger/Logger.h" line="26" column="9" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Logger/Logger.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LOGGER_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Print.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>nameValue(a)<sp/>#a+&quot;=<sp/>&quot;</highlight><highlight class="normal">+String(a)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="class_logger" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_logger" kindref="compound">Logger</ref></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Print*<sp/>telemetryPort;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Fait<sp/>passer<sp/>des<sp/>infos<sp/>formattées<sp/>pour<sp/>l&apos;affichage<sp/>ensuite</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Print*<sp/>infoPort;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Infos<sp/>ponctuelles</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Print*<sp/>debugPort;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Conversation<sp/>cancer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>telemetryEnabled;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>infoEnabled;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>debugEnabled;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Affiche<sp/>un<sp/>message<sp/>d&apos;une<sp/>pertinance<sp/>approximative<sp/>sur<sp/>le<sp/>debugPort</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_logger_1afdad0b5c9123fb3a3e7c70b71a78216f" kindref="member">debug</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>message);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Affiche<sp/>un<sp/>message<sp/>d&apos;une<sp/>pertinance<sp/>approximative<sp/>sur<sp/>le<sp/>debugPort<sp/>et<sp/>passe<sp/>a<sp/>la<sp/>ligne</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_logger_1a2b76efaa0362d362a706bd511169e401" kindref="member">debugln</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>message);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Affiche<sp/>un<sp/>message<sp/>important<sp/>sur<sp/>le<sp/>infoPort<sp/>et<sp/>passe<sp/>a<sp/>la<sp/>ligne<sp/>(obligatoire)</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">infoln</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>message);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Envoie<sp/>un<sp/>parametre<sp/>nommé<sp/>a<sp/>la<sp/>telemetry</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_logger_1ae363ca6abc4efcf0c8b89a4ea520a4a3" kindref="member">toTelemetry</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>value);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Attention,<sp/>les<sp/>port<sp/>doivent<sp/>déja<sp/>être<sp/>ouvert<sp/>avant<sp/>d&apos;etre<sp/>passé<sp/>en<sp/>argument<sp/>de<sp/>cette<sp/>fonction</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_logger_1a28d9c8374090b32982cdab8ba3e032e9" kindref="member">setup</ref>(Print*<sp/>telemetryPort=&amp;Serial,Print*<sp/>infoPort=&amp;Serial,Print*<sp/>debugPort=&amp;Serial,</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>telemetry=</highlight><highlight class="keyword">true</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>info=</highlight><highlight class="keyword">true</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_logger_1afdad0b5c9123fb3a3e7c70b71a78216f" kindref="member">debug</ref>=</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>!LOGGER_H_</highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Libraries_shared/Logger/Logger.h"/>
+  </compounddef>
+</doxygen>

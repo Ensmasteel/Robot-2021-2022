@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_odometrie" kind="class" language="C++" prot="public">
+    <compoundname>Odometrie</compoundname>
+    <includes refid="_codeuse_8h" local="no">Codeuse.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_odometrie_1af669e2c274c19a1a20c150e80bf4fa46" prot="private" static="no" mutable="no">
+        <type><ref refid="class_interrupteur" kindref="compound">Interrupteur</ref> *</type>
+        <definition>Interrupteur* Odometrie::interGauche</definition>
+        <argsstring></argsstring>
+        <name>interGauche</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" line="63" column="18" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_odometrie_1a3ef9e525a6b3a3c99cdffc72ebe691b4" prot="private" static="no" mutable="no">
+        <type><ref refid="class_interrupteur" kindref="compound">Interrupteur</ref> *</type>
+        <definition>Interrupteur * Odometrie::interDroite</definition>
+        <argsstring></argsstring>
+        <name>interDroite</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" line="63" column="30" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_odometrie_1a5c54de725abdcd07f54abb227f5e7510" prot="private" static="no" mutable="no">
+        <type><ref refid="class_cinetique" kindref="compound">Cinetique</ref> *</type>
+        <definition>Cinetique* Odometrie::cinetique</definition>
+        <argsstring></argsstring>
+        <name>cinetique</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" line="64" column="15" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_odometrie_1a8404aca892ac2722cd3afbf3d27cfb03" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Odometrie::eloignementCodeuses</definition>
+        <argsstring></argsstring>
+        <name>eloignementCodeuses</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" line="65" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_odometrie_1a4e9c2ff55987783485da2b187aa58fc1" prot="public" static="no" mutable="no">
+        <type><ref refid="class_codeuse" kindref="compound">Codeuse</ref></type>
+        <definition>Codeuse Odometrie::codeuseGauche</definition>
+        <argsstring></argsstring>
+        <name>codeuseGauche</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" line="68" column="13" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_odometrie_1a9870210ccd779d4fbf29c54e5a26a2c2" prot="public" static="no" mutable="no">
+        <type><ref refid="class_codeuse" kindref="compound">Codeuse</ref></type>
+        <definition>Codeuse Odometrie::codeuseDroite</definition>
+        <argsstring></argsstring>
+        <name>codeuseDroite</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" line="68" column="27" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_odometrie_1a4732108bcd1705847f316ff468668916" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Odometrie::updateCinetique</definition>
+        <argsstring>(float dt)</argsstring>
+        <name>updateCinetique</name>
+        <param>
+          <type>float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" line="69" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.cpp" bodystart="43" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_odometrie_1a1a0cbea2f7eda59fa2ae96236056b024" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Odometrie::Odometrie</definition>
+        <argsstring>()</argsstring>
+        <name>Odometrie</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" line="70" column="5" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.cpp" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_odometrie_1adafed9f5ea5bf53e4b510671f79aed65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Odometrie::Odometrie</definition>
+        <argsstring>(uint16_t ticksPerRound, Cinetique *cinetique, float eloignementCodeuses, uint8_t pinACodeuseGauche, uint8_t pinBCodeuseGauche, float diametreRoueGauche, uint8_t pinACodeuseDroite, uint8_t pinBCodeuseDroite, float diametreRoueDroite, uint8_t pinInterDroite, uint8_t pinInterGauche)</argsstring>
+        <name>Odometrie</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>ticksPerRound</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cinetique" kindref="compound">Cinetique</ref> *</type>
+          <declname>cinetique</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>eloignementCodeuses</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinACodeuseGauche</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinBCodeuseGauche</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>diametreRoueGauche</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinACodeuseDroite</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinBCodeuseDroite</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>diametreRoueDroite</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinInterDroite</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinInterGauche</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" line="71" column="5" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.cpp" bodystart="59" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_odometrie_1a11a3120dcb0a66f8a364c1d063c02763" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Odometrie::getInterDroiteContact</definition>
+        <argsstring>()</argsstring>
+        <name>getInterDroiteContact</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" line="75" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.cpp" bodystart="72" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_odometrie_1afa4a98c7382655da3aad2bd79c0ac1d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Odometrie::getInterGaucheContact</definition>
+        <argsstring>()</argsstring>
+        <name>getInterGaucheContact</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" line="76" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.cpp" bodystart="77" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Creates a class for odometry. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Codeuse</label>
+        <link refid="class_codeuse"/>
+      </node>
+      <node id="1">
+        <label>Odometrie</label>
+        <link refid="class_odometrie"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>codeuseDroite</edgelabel>
+          <edgelabel>codeuseGauche</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" line="59" column="1" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h" bodystart="60" bodyend="77"/>
+    <listofallmembers>
+      <member refid="class_odometrie_1a5c54de725abdcd07f54abb227f5e7510" prot="private" virt="non-virtual"><scope>Odometrie</scope><name>cinetique</name></member>
+      <member refid="class_odometrie_1a9870210ccd779d4fbf29c54e5a26a2c2" prot="public" virt="non-virtual"><scope>Odometrie</scope><name>codeuseDroite</name></member>
+      <member refid="class_odometrie_1a4e9c2ff55987783485da2b187aa58fc1" prot="public" virt="non-virtual"><scope>Odometrie</scope><name>codeuseGauche</name></member>
+      <member refid="class_odometrie_1a8404aca892ac2722cd3afbf3d27cfb03" prot="private" virt="non-virtual"><scope>Odometrie</scope><name>eloignementCodeuses</name></member>
+      <member refid="class_odometrie_1a11a3120dcb0a66f8a364c1d063c02763" prot="public" virt="non-virtual"><scope>Odometrie</scope><name>getInterDroiteContact</name></member>
+      <member refid="class_odometrie_1afa4a98c7382655da3aad2bd79c0ac1d4" prot="public" virt="non-virtual"><scope>Odometrie</scope><name>getInterGaucheContact</name></member>
+      <member refid="class_odometrie_1a3ef9e525a6b3a3c99cdffc72ebe691b4" prot="private" virt="non-virtual"><scope>Odometrie</scope><name>interDroite</name></member>
+      <member refid="class_odometrie_1af669e2c274c19a1a20c150e80bf4fa46" prot="private" virt="non-virtual"><scope>Odometrie</scope><name>interGauche</name></member>
+      <member refid="class_odometrie_1a1a0cbea2f7eda59fa2ae96236056b024" prot="public" virt="non-virtual"><scope>Odometrie</scope><name>Odometrie</name></member>
+      <member refid="class_odometrie_1adafed9f5ea5bf53e4b510671f79aed65" prot="public" virt="non-virtual"><scope>Odometrie</scope><name>Odometrie</name></member>
+      <member refid="class_odometrie_1a4732108bcd1705847f316ff468668916" prot="public" virt="non-virtual"><scope>Odometrie</scope><name>updateCinetique</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

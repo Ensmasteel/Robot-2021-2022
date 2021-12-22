@@ -1,0 +1,302 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_actuators_8h" kind="file" language="C++">
+    <compoundname>Actuators.h</compoundname>
+    <includes local="yes">Arduino.h</includes>
+    <includes refid="_communication_8h" local="yes">Communication.h</includes>
+    <includes refid="_message_i_d_8h" local="yes">MessageID.h</includes>
+    <includes refid="_servo_8h" local="yes">Servo.h</includes>
+    <includes refid="_stepper_motor_j_8h" local="yes">StepperMotorJ.h</includes>
+    <includedby refid="_actuators_8cpp" local="yes">Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.cpp</includedby>
+    <includedby refid="_actuators___manager_8h" local="yes">Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h</includedby>
+    <includedby refid="_arduino___mega_2main_8cpp" local="yes">Ensmasteel_Bot_2020/Arduino_Mega/main.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h</label>
+        <link refid="_actuators_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>Servo.h</label>
+        <link refid="_servo_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>StepperMotorJ.h</label>
+        <link refid="_stepper_motor_j_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Communication.h</label>
+        <link refid="_communication_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>MessageID.h</label>
+        <link refid="_message_i_d_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Logger.h</label>
+        <link refid="_logger_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Vector.h</label>
+        <link refid="_vector_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Print.h</label>
+      </node>
+      <node id="6">
+        <label>Stream.h</label>
+      </node>
+      <node id="11">
+        <label>inttypes.h</label>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h</label>
+        <link refid="_actuators_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h</label>
+        <link refid="_actuators___manager_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_actuator" prot="public">Actuator</innerclass>
+    <innerclass refid="class_pavillon" prot="public">Pavillon</innerclass>
+    <innerclass refid="class_bras" prot="public">Bras</innerclass>
+    <innerclass refid="class_pince" prot="public">Pince</innerclass>
+    <innerclass refid="class_pince_avant" prot="public">PinceAvant</innerclass>
+    <innerclass refid="class_pince_arriere" prot="public">PinceArriere</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="_actuators_8h_1acdf5c8a0885e2dc44b0016323f3f1bc9" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>Actuator_State</name>
+        <enumvalue id="_actuators_8h_1acdf5c8a0885e2dc44b0016323f3f1bc9aa3bcfe6e2a4c647c0817d980f0bf1f1b" prot="public">
+          <name>Attente</name>
+          <briefdescription>
+<para>Waiting for an order. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_actuators_8h_1acdf5c8a0885e2dc44b0016323f3f1bc9acbd64bae61d20f913681ebdfdd8c842d" prot="public">
+          <name>NewMess</name>
+          <briefdescription>
+<para>getting a new order </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_actuators_8h_1acdf5c8a0885e2dc44b0016323f3f1bc9a97e3e5896fa18483094ee59f03255972" prot="public">
+          <name>Mouvement</name>
+          <briefdescription>
+<para>During the movement. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_actuators_8h_1acdf5c8a0885e2dc44b0016323f3f1bc9a9551112f579bc8d676fb19ee47924b2c" prot="public">
+          <name>MouvFinished</name>
+          <briefdescription>
+<para>Just ending the action asked. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enum class to give the different states of an <ref refid="class_actuator" kindref="compound">Actuator</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="22" column="1" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="23" bodyend="29"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2021.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>code<sp/>has<sp/>been<sp/>written<sp/>by<sp/>student<sp/>members<sp/>of<sp/>ISAE-ENSMA<sp/>Ensmasteel<sp/>association.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>This<sp/>file<sp/>provides<sp/>a<sp/>generic<sp/>implementation<sp/>of<sp/>robotics<sp/>actuators<sp/>in<sp/>place<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Ensmasteel<sp/>robot.<sp/>This<sp/>module<sp/>may<sp/>be<sp/>re-written<sp/>if<sp/>there<sp/>is<sp/>any<sp/>changes<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>general<sp/>structure<sp/>of<sp/>the<sp/>robot<sp/>or<sp/>in<sp/>the<sp/>general<sp/>code<sp/>architecture.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>ACTUATORS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ACTUATORS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Communication.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;MessageID.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Servo.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;StepperMotorJ.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>Actuator_State</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>Attente,<sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>NewMess,<sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>Mouvement,<sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>MouvFinished<sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="class_actuator" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_actuator" kindref="compound">Actuator</ref></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_actuator_1a813e211d860d125a45d713775c19d38b" kindref="member">Actuator</ref>(String<sp/>name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Actuator&quot;</highlight><highlight class="normal">,<sp/>MessageID<sp/>messID<sp/>=<sp/>MessageID::Empty_M);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>appeler<sp/>a<sp/>chaque<sp/>boucle,<sp/>commande<sp/>les<sp/>actionneurs<sp/>et<sp/>mise<sp/>a<sp/>jour<sp/>de<sp/>l&apos;etat.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Actuator_State<sp/><ref refid="class_actuator_1abcd50fd00e60c114afde31648403e780" kindref="member">Update</ref>();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reception<sp/>d&apos;un<sp/>nouvel<sp/>ordre.</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_actuator_1a0834ccb419fcc7340391b9ef5a564343" kindref="member">NewOrder</ref>(Actuator_Order<sp/>order);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Genere<sp/>le<sp/>message<sp/>de<sp/>validation<sp/>de<sp/>l&apos;action<sp/>dedie<sp/>au<sp/>donneur<sp/>d&apos;ordre</highlight></codeline>
+<codeline lineno="75" refid="class_actuator_1a6f2502f7dfe2f59d7f58f6053c8574c6" refkind="member"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_message" kindref="compound">Message</ref><sp/><ref refid="class_actuator_1a6f2502f7dfe2f59d7f58f6053c8574c6" kindref="member">OrderCompleted</ref>(){</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>newMessage(messID,currentOrder,0,0,0);}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="class_actuator_1a466fe2e29b99bf66f08116ff8ba46acb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="class_actuator_1a466fe2e29b99bf66f08116ff8ba46acb" kindref="member">GetName</ref>(){</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>name;}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="class_actuator_1aff3a744eecf74c4b52a8a6b30ca0eb88" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Actuator_State<sp/><ref refid="class_actuator_1aff3a744eecf74c4b52a8a6b30ca0eb88" kindref="member">GetEtat</ref>(){</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>etat;}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="class_actuator_1a0819fc5a7749335bf3b5caa8f524ef87" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Actuator_Order<sp/><ref refid="class_actuator_1a0819fc5a7749335bf3b5caa8f524ef87" kindref="member">GetOrder</ref>(){</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>currentOrder;}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="class_actuator_1ae5c55e58f214e70c0cf16e9e81111063" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>MessageID<sp/><ref refid="class_actuator_1ae5c55e58f214e70c0cf16e9e81111063" kindref="member">GetID</ref>(){</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>messID;}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/>name;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>Actuator_State<sp/>etat;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>Actuator_Order<sp/>currentOrder;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>MessageID<sp/>messID<sp/>=<sp/>MessageID::Empty_M;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="class_pavillon" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">[[deprecated<sp/>(&quot;Deprecated<sp/>because<sp/>unused<sp/>after<sp/>2021<sp/>cup.<sp/>Will<sp/>be<sp/>removed<sp/>soon&quot;)]]</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_pavillon" kindref="compound">Pavillon</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_actuator" kindref="compound">Actuator</ref></highlight></codeline>
+<codeline lineno="120"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_pavillon" kindref="compound">Pavillon</ref>();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Init(uint8_t<sp/>pinDir,<sp/>uint8_t<sp/>pinStep,<sp/>uint8_t<sp/>pinSleep,<sp/>uint8_t<sp/>pinM0,<sp/>uint8_t<sp/>pinM1);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>Actuator_State<sp/><ref refid="class_actuator_1abcd50fd00e60c114afde31648403e780" kindref="member">Update</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>STEPPER<sp/>PARAMETERS<sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>motorSteps<sp/>=<sp/>200;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>actionStep<sp/>=<sp/>2000;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>pinDir<sp/>=<sp/>35;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>pinStep<sp/>=<sp/>34;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>pinSleep<sp/>=<sp/>22;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>pinM0<sp/>=<sp/>37;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>pinM1<sp/>=<sp/>36;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_stepper_motor_j" kindref="compound">StepperMotorJ</ref>*<sp/>stepperMotor;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="class_bras" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_bras" kindref="compound">Bras</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_actuator" kindref="compound">Actuator</ref></highlight></codeline>
+<codeline lineno="148"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_bras_1a7fe274afc6082a4ac295b8fcaf7f5b45" kindref="member">Bras</ref>();</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bras_1af984b9621fde5644bdee51ec3bcb3c38" kindref="member">Init</ref>(uint8_t<sp/>pinServo,<sp/>MessageID<sp/>ID,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>posRentre<sp/>=<sp/>0,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>posSortie<sp/>=<sp/>100);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>Actuator_State<sp/><ref refid="class_bras_1a3e97c50a972a0e32bd8a807871c220fb" kindref="member">Update</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>posRentre<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>posSortie<sp/>=<sp/>100;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>pinServo;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_servo" kindref="compound">Servo</ref><sp/>servo;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="class_pince" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">[[deprecated<sp/>(&quot;Deprecated<sp/>in<sp/>the<sp/>2022<sp/>edition&quot;)]]<sp/><ref refid="class_pince" kindref="compound">Pince</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_actuator" kindref="compound">Actuator</ref></highlight></codeline>
+<codeline lineno="181"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_pince" kindref="compound">Pince</ref>();</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Init(uint8_t<sp/>pinServo,<sp/>uint8_t<sp/>pinDir,<sp/>uint8_t<sp/>pinStep,<sp/>uint8_t<sp/>pinSleep,<sp/>uint8_t<sp/>pinM0,<sp/>uint8_t<sp/>pinM1,</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MessageID<sp/>ID,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ferme<sp/>=<sp/>70,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ouvert<sp/>=<sp/>100,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>actionStep<sp/>=<sp/>400);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>Actuator_State<sp/><ref refid="class_actuator_1abcd50fd00e60c114afde31648403e780" kindref="member">Update</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_servo" kindref="compound">Servo</ref><sp/>servo;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_stepper_motor_j" kindref="compound">StepperMotorJ</ref>*<sp/>stepperMotor;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>pinServo;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>pinDir;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>pinStep;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>pinSleep;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>pinM0;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>pinM1;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>motorSteps<sp/>=<sp/>200;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>actionStep<sp/>=<sp/><sp/>400;<sp/></highlight><highlight class="comment">//200<sp/>pince<sp/>arr</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>posFermee<sp/>=<sp/>70;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>posOuverte<sp/>=<sp/>100;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>standardDelay<sp/>=<sp/>2000;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223" refid="class_pince_avant" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_pince_avant" kindref="compound">PinceAvant</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_pince" kindref="compound">Pince</ref></highlight></codeline>
+<codeline lineno="224"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>Actuator_State<sp/><ref refid="class_pince_avant_1a29a479ea81391943af4a02f62fcdbbb2" kindref="member">Update</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>miniStep<sp/>=<sp/>40;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>posTresOuverte<sp/>=<sp/>110;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233" refid="class_pince_arriere" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_pince_arriere" kindref="compound">PinceArriere</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_pince" kindref="compound">Pince</ref></highlight></codeline>
+<codeline lineno="234"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>Actuator_State<sp/><ref refid="class_pince_arriere_1ac7d442bef84237e9df70272365c593fa" kindref="member">Update</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h"/>
+  </compounddef>
+</doxygen>

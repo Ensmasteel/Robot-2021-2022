@@ -1,0 +1,58 @@
+\hypertarget{class_pavillon}{}\doxysection{Pavillon Class Reference}
+\label{class_pavillon}\index{Pavillon@{Pavillon}}
+
+
+{\ttfamily \#include $<$Actuators.\+h$>$}
+
+Inheritance diagram for Pavillon\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_pavillon}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pavillon_a5c789899efc7b221ce6b90ebd0a1cff7}{Pavillon}} ()
+\item 
+\mbox{\Hypertarget{class_pavillon_a7eadaa8f4f4d05c98dad48f632d2138c}\label{class_pavillon_a7eadaa8f4f4d05c98dad48f632d2138c}} 
+void {\bfseries Init} (uint8\+\_\+t pin\+Dir, uint8\+\_\+t pin\+Step, uint8\+\_\+t pin\+Sleep, uint8\+\_\+t pin\+M0, uint8\+\_\+t pin\+M1)
+\item 
+Actuator\+\_\+\+State \mbox{\hyperlink{class_pavillon_a34608a3ff17a2c9eb4d15ddcd58a9f55}{Update}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Public class extending the actuator abstract class.
+
+Used to define the \textquotesingle{}\mbox{\hyperlink{class_pavillon}{Pavillon}}\textquotesingle{} actuator. Deprecated for the 2022 edition. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pavillon_a5c789899efc7b221ce6b90ebd0a1cff7}\label{class_pavillon_a5c789899efc7b221ce6b90ebd0a1cff7}} 
+\index{Pavillon@{Pavillon}!Pavillon@{Pavillon}}
+\index{Pavillon@{Pavillon}!Pavillon@{Pavillon}}
+\doxysubsubsection{\texorpdfstring{Pavillon()}{Pavillon()}}
+{\footnotesize\ttfamily Pavillon\+::\+Pavillon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Public constructor of the \mbox{\hyperlink{class_pavillon}{Pavillon}} class. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pavillon_a34608a3ff17a2c9eb4d15ddcd58a9f55}\label{class_pavillon_a34608a3ff17a2c9eb4d15ddcd58a9f55}} 
+\index{Pavillon@{Pavillon}!Update@{Update}}
+\index{Update@{Update}!Pavillon@{Pavillon}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily Actuator\+\_\+\+State Pavillon\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Virtual method, to call before each loop.
+
+Commands each actuator and updates the robot state. 
+
+Reimplemented from \mbox{\hyperlink{class_actuator_abcd50fd00e60c114afde31648403e780}{Actuator}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Arduino\+\_\+\+Mega/\+Lib/\+Actuators/Actuators.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Arduino\+\_\+\+Mega/\+Lib/\+Actuators/Actuators.\+cpp\end{DoxyCompactItemize}

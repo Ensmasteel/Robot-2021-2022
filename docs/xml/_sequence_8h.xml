@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_sequence_8h" kind="file" language="C++">
+    <compoundname>Sequence.h</compoundname>
+    <includes local="yes">Arduino.h</includes>
+    <includes refid="_sequence_name_8h" local="yes">SequenceName.h</includes>
+    <includedby refid="_actions_8cpp" local="yes">Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.cpp</includedby>
+    <includedby refid="_sequence_8cpp" local="yes">Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Sequence.cpp</includedby>
+    <includedby refid="_robot_8h" local="yes">Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h</includedby>
+    <includedby refid="_teensy_2main_8cpp" local="yes">Ensmasteel_Bot_2020/Teensy/main.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="3">
+        <label>SequenceName.h</label>
+        <link refid="_sequence_name_8h_source"/>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Sequence.h</label>
+        <link refid="_sequence_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Sequence.h</label>
+        <link refid="_sequence_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h</label>
+        <link refid="_robot_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Robot/RobotSimu.h</label>
+        <link refid="_robot_simu_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_sequence" prot="public">Sequence</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_sequence_8h_1a728ecd802fdf86886c7f66efe8c07a97" prot="public" static="no">
+        <name>TAILLESEQUENCE</name>
+        <initializer>50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Sequence.h" line="15" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Sequence.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>SEQUENCE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SEQUENCE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">Chose<sp/>qu&apos;il<sp/>est<sp/>possible<sp/>de<sp/>faire:</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"></highlight></codeline>
+<codeline lineno="6"><highlight class="comment">0:<sp/>Forward_Action<sp/>1.0<sp/>Fast<sp/><sp/><sp/><sp/><sp/><sp/>//L&apos;action<sp/>0<sp/>avance<sp/>de<sp/>1m<sp/>rapidement</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">1:<sp/>Set_Action<sp/>0<sp/>true<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//L&apos;action<sp/>1<sp/>incrémente<sp/>de<sp/>2<sp/>la<sp/>variable<sp/>globale<sp/>d&apos;indice<sp/>0</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">2:<sp/>Jump_Action<sp/>0<sp/>sup<sp/>10<sp/>3<sp/>0<sp/><sp/><sp/><sp/><sp/>//L&apos;action<sp/>2<sp/>passe<sp/>a<sp/>l&apos;instruction<sp/>3<sp/>si<sp/>la<sp/>variable<sp/>globale<sp/>d&apos;indice<sp/>0<sp/>est<sp/>superieur<sp/>à<sp/>10.<sp/>Sinon<sp/>elle<sp/>passe<sp/>à<sp/>0</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">3:<sp/>Send_Action<sp/>Ouvre_Pince<sp/><sp/><sp/><sp/><sp/><sp/>//L&apos;action<sp/>3<sp/>envoie<sp/>le<sp/>message<sp/>Ouvre_Pince<sp/>a<sp/>l&apos;arduino</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">4:<sp/>Wait_Action<sp/>500<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//L&apos;action<sp/>4<sp/>bloque<sp/>la<sp/>queue<sp/>pendant<sp/>500<sp/>secondes</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">5:<sp/>Spin_Action<sp/>3.14<sp/>fast<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//L&apos;action<sp/>5<sp/>tourne<sp/>le<sp/>robot<sp/>vers<sp/>pi</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TAILLESEQUENCE<sp/>50</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;SequenceName.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_action" kindref="compound">Action</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="class_sequence" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_sequence" kindref="compound">Sequence</ref></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_action" kindref="compound">Action</ref>*<sp/>queue[TAILLESEQUENCE];</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fails[TAILLESEQUENCE];</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>currentIndex;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>int16_t<sp/>lastIndex;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>paused;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mySeqIndex;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>nextIndex;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>SequenceName<sp/>getName();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_sequence_1acebd3c2005a27c52d7f1adc19d33a4ad" kindref="member">startSelected</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_sequence_1a0cd6f19d2c11f877ce7a051bdb634ec9" kindref="member">startFollowing</ref>();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_sequence_1a62b11638d83715206d83220f42819960" kindref="member">forceFollowing</ref>();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_sequence_1a61025e7cf286a8650ac84c5fb4684964" kindref="member">update</ref>();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_sequence_1a273d3169e9fd50d9ad799330c02f6fa8" kindref="member">setNextIndex</ref>(uint8_t<sp/>index);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_sequence_1a47134cdefcffb1a183e5f99262f4aed7" kindref="member">Sequence</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mySeqIndex);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_sequence_1a29a4d1973ee94ab5819fd06c2c6f24e4" kindref="member">add</ref>(<ref refid="class_action" kindref="compound">Action</ref>*<sp/>action);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_sequence_1a3bd0fb86694929dab9483cc609d55742" kindref="member">toTelemetry</ref>();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_sequence_1a77dcfee1093388c7b283c5ebcd0556fc" kindref="member">pause</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>lockGhost);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_sequence_1a45a319c7314cedbc60be48cd879df7b5" kindref="member">reset</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>lockGhost);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_sequence_1a3eb07e08e59b731d6d950fac7140697e" kindref="member">resume</ref>();</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>!SEQUENCE_H_</highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Sequence.h"/>
+  </compounddef>
+</doxygen>

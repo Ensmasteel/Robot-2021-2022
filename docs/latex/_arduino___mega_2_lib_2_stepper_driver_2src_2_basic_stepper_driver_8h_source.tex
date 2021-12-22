@@ -1,0 +1,257 @@
+\hypertarget{_arduino___mega_2_lib_2_stepper_driver_2src_2_basic_stepper_driver_8h_source}{}\doxysection{Basic\+Stepper\+Driver.\+h}
+\label{_arduino___mega_2_lib_2_stepper_driver_2src_2_basic_stepper_driver_8h_source}\index{Ensmasteel\_Bot\_2020/Arduino\_Mega/Lib/StepperDriver/src/BasicStepperDriver.h@{Ensmasteel\_Bot\_2020/Arduino\_Mega/Lib/StepperDriver/src/BasicStepperDriver.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * Generic Stepper Motor Driver Driver}}
+\DoxyCodeLine{3 \textcolor{comment}{ * Indexer mode only.}}
+\DoxyCodeLine{4 \textcolor{comment}{ *}}
+\DoxyCodeLine{5 \textcolor{comment}{ * Copyright (C)2015-\/2018 Laurentiu Badea}}
+\DoxyCodeLine{6 \textcolor{comment}{ *}}
+\DoxyCodeLine{7 \textcolor{comment}{ * This file may be redistributed under the terms of the MIT license.}}
+\DoxyCodeLine{8 \textcolor{comment}{ * A copy of this license has been included with this distribution in the file LICENSE.}}
+\DoxyCodeLine{9 \textcolor{comment}{ */}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#ifndef STEPPER\_DRIVER\_BASE\_H}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define STEPPER\_DRIVER\_BASE\_H}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{comment}{// used internally by the library to mark unconnected pins}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define PIN\_UNCONNECTED -\/1}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define IS\_CONNECTED(pin) (pin != PIN\_UNCONNECTED)}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{/*}}
+\DoxyCodeLine{19 \textcolor{comment}{ * calculate the step pulse in microseconds for a given rpm value.}}
+\DoxyCodeLine{20 \textcolor{comment}{ * 60[s/min] * 1000000[us/s] / microsteps / steps / rpm}}
+\DoxyCodeLine{21 \textcolor{comment}{ */}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define STEP\_PULSE(steps, microsteps, rpm) (60.0*1000000L/steps/microsteps/rpm)}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{comment}{// don't call yield if we have a wait shorter than this}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MIN\_YIELD\_MICROS 50}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{comment}{/*}}
+\DoxyCodeLine{28 \textcolor{comment}{ * Basic Stepper Driver class.}}
+\DoxyCodeLine{29 \textcolor{comment}{ * Microstepping level should be externally controlled or hardwired.}}
+\DoxyCodeLine{30 \textcolor{comment}{ */}}
+\DoxyCodeLine{31 \textcolor{keyword}{class }\mbox{\hyperlink{class_basic_stepper_driver}{BasicStepperDriver}} \{}
+\DoxyCodeLine{32 \textcolor{keyword}{public}:}
+\DoxyCodeLine{33     \textcolor{keyword}{enum} Mode \{CONSTANT\_SPEED, LINEAR\_SPEED\};}
+\DoxyCodeLine{34     \textcolor{keyword}{enum} State \{STOPPED, ACCELERATING, CRUISING, DECELERATING\};}
+\DoxyCodeLine{35     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_basic_stepper_driver_1_1_profile}{Profile}} \{}
+\DoxyCodeLine{36         Mode mode = CONSTANT\_SPEED;}
+\DoxyCodeLine{37         \textcolor{keywordtype}{short} accel = 1000;     \textcolor{comment}{// acceleration [steps/s\string^2]}}
+\DoxyCodeLine{38         \textcolor{keywordtype}{short} decel = 1000;     \textcolor{comment}{// deceleration [steps/s\string^2]    }}
+\DoxyCodeLine{39     \};}
+\DoxyCodeLine{40     \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} delayMicros(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} delay\_us, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} start\_us = 0)\{}
+\DoxyCodeLine{41         \textcolor{keywordflow}{if} (delay\_us)\{}
+\DoxyCodeLine{42             \textcolor{keywordflow}{if} (!start\_us)\{}
+\DoxyCodeLine{43                 start\_us = micros();}
+\DoxyCodeLine{44             \}}
+\DoxyCodeLine{45             \textcolor{keywordflow}{if} (delay\_us > MIN\_YIELD\_MICROS)\{}
+\DoxyCodeLine{46                 yield();}
+\DoxyCodeLine{47             \}}
+\DoxyCodeLine{48             \textcolor{comment}{// See https://www.gammon.com.au/millis}}
+\DoxyCodeLine{49             \textcolor{keywordflow}{while} (micros() -\/ start\_us < delay\_us);}
+\DoxyCodeLine{50         \}}
+\DoxyCodeLine{51     \}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{keyword}{private}:}
+\DoxyCodeLine{54     \textcolor{comment}{// calculation remainder to be fed into successive steps to increase accuracy (Atmel DOC8017)}}
+\DoxyCodeLine{55     \textcolor{keywordtype}{long} rest;}
+\DoxyCodeLine{56     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} last\_action\_end = 0;}
+\DoxyCodeLine{57     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} next\_action\_interval = 0;}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{60     \textcolor{comment}{/*}}
+\DoxyCodeLine{61 \textcolor{comment}{     * Motor Configuration}}
+\DoxyCodeLine{62 \textcolor{comment}{     */}}
+\DoxyCodeLine{63     \textcolor{keywordtype}{short} motor\_steps;           \textcolor{comment}{// motor steps per revolution (usually 200)}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \textcolor{comment}{/*}}
+\DoxyCodeLine{66 \textcolor{comment}{     * Driver Configuration}}
+\DoxyCodeLine{67 \textcolor{comment}{     */}}
+\DoxyCodeLine{68     \textcolor{keywordtype}{short} dir\_pin;}
+\DoxyCodeLine{69     \textcolor{keywordtype}{short} step\_pin;}
+\DoxyCodeLine{70     \textcolor{keywordtype}{short} enable\_pin = PIN\_UNCONNECTED;}
+\DoxyCodeLine{71     \textcolor{keywordtype}{short} enable\_active\_state = HIGH;}
+\DoxyCodeLine{72     \textcolor{comment}{// Get max microsteps supported by the device}}
+\DoxyCodeLine{73     \textcolor{keyword}{virtual} \textcolor{keywordtype}{short} getMaxMicrostep();}
+\DoxyCodeLine{74     \textcolor{comment}{// current microstep level (1,2,4,8,...), must be < getMaxMicrostep()}}
+\DoxyCodeLine{75     \textcolor{keywordtype}{short} microsteps = 1;}
+\DoxyCodeLine{76     \textcolor{comment}{// tWH(STEP) pulse duration, STEP high, min value (us)}}
+\DoxyCodeLine{77     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} step\_high\_min = 1;}
+\DoxyCodeLine{78     \textcolor{comment}{// tWL(STEP) pulse duration, STEP low, min value (us)}}
+\DoxyCodeLine{79     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} step\_low\_min = 1;}
+\DoxyCodeLine{80     \textcolor{comment}{// tWAKE wakeup time, nSLEEP inactive to STEP (us)}}
+\DoxyCodeLine{81     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} wakeup\_time = 0;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     \textcolor{keywordtype}{float} rpm = 0;}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{comment}{/*}}
+\DoxyCodeLine{86 \textcolor{comment}{     * Movement state}}
+\DoxyCodeLine{87 \textcolor{comment}{     */}}
+\DoxyCodeLine{88     \textcolor{keyword}{struct }Profile profile;}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     \textcolor{keywordtype}{long} step\_count;        \textcolor{comment}{// current position}}
+\DoxyCodeLine{91     \textcolor{keywordtype}{long} steps\_remaining;   \textcolor{comment}{// to complete the current move (absolute value)}}
+\DoxyCodeLine{92     \textcolor{keywordtype}{long} steps\_to\_cruise;   \textcolor{comment}{// steps to reach cruising (max) rpm}}
+\DoxyCodeLine{93     \textcolor{keywordtype}{long} steps\_to\_brake;    \textcolor{comment}{// steps needed to come to a full stop}}
+\DoxyCodeLine{94     \textcolor{keywordtype}{long} step\_pulse;        \textcolor{comment}{// step pulse duration (microseconds)}}
+\DoxyCodeLine{95     \textcolor{keywordtype}{long} cruise\_step\_pulse; \textcolor{comment}{// step pulse duration for constant speed section (max rpm)}}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     \textcolor{comment}{// DIR pin state}}
+\DoxyCodeLine{98     \textcolor{keywordtype}{short} dir\_state;}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     \textcolor{keywordtype}{void} calcStepPulse(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102     \textcolor{comment}{// this is internal because one can call the start methods while CRUISING to get here}}
+\DoxyCodeLine{103     \textcolor{keywordtype}{void} alterMove(\textcolor{keywordtype}{long} steps);}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 \textcolor{keyword}{private}:}
+\DoxyCodeLine{106     \textcolor{comment}{// microstep range (1, 16, 32 etc)}}
+\DoxyCodeLine{107     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{short} MAX\_MICROSTEP = 128;}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{keyword}{public}:}
+\DoxyCodeLine{110     \textcolor{comment}{/*}}
+\DoxyCodeLine{111 \textcolor{comment}{     * Basic connection: DIR, STEP are connected.}}
+\DoxyCodeLine{112 \textcolor{comment}{     */}}
+\DoxyCodeLine{113     \mbox{\hyperlink{class_basic_stepper_driver}{BasicStepperDriver}}(\textcolor{keywordtype}{short} steps, \textcolor{keywordtype}{short} dir\_pin, \textcolor{keywordtype}{short} step\_pin);}
+\DoxyCodeLine{114     \mbox{\hyperlink{class_basic_stepper_driver}{BasicStepperDriver}}(\textcolor{keywordtype}{short} steps, \textcolor{keywordtype}{short} dir\_pin, \textcolor{keywordtype}{short} step\_pin, \textcolor{keywordtype}{short} enable\_pin);}
+\DoxyCodeLine{115     \textcolor{comment}{/*}}
+\DoxyCodeLine{116 \textcolor{comment}{     * Initialize pins, calculate timings etc}}
+\DoxyCodeLine{117 \textcolor{comment}{     */}}
+\DoxyCodeLine{118     \textcolor{keywordtype}{void} begin(\textcolor{keywordtype}{float} rpm=60, \textcolor{keywordtype}{short} microsteps=1);}
+\DoxyCodeLine{119     \textcolor{comment}{/*}}
+\DoxyCodeLine{120 \textcolor{comment}{     * Set current microstep level, 1=full speed, 32=fine microstepping}}
+\DoxyCodeLine{121 \textcolor{comment}{     * Returns new level or previous level if value out of range}}
+\DoxyCodeLine{122 \textcolor{comment}{     */}}
+\DoxyCodeLine{123     \textcolor{keyword}{virtual} \textcolor{keywordtype}{short} setMicrostep(\textcolor{keywordtype}{short} microsteps);}
+\DoxyCodeLine{124     \textcolor{keywordtype}{short} getMicrostep(\textcolor{keywordtype}{void})\{}
+\DoxyCodeLine{125         \textcolor{keywordflow}{return} microsteps;}
+\DoxyCodeLine{126     \}}
+\DoxyCodeLine{127     \textcolor{keywordtype}{short} getSteps(\textcolor{keywordtype}{void})\{}
+\DoxyCodeLine{128         \textcolor{keywordflow}{return} motor\_steps;}
+\DoxyCodeLine{129     \}}
+\DoxyCodeLine{130     \textcolor{comment}{/*}}
+\DoxyCodeLine{131 \textcolor{comment}{     * Set target motor RPM (1-\/200 is a reasonable range)}}
+\DoxyCodeLine{132 \textcolor{comment}{     */}}
+\DoxyCodeLine{133     \textcolor{keywordtype}{void} setRPM(\textcolor{keywordtype}{float} rpm);}
+\DoxyCodeLine{134     \textcolor{keywordtype}{float} getRPM(\textcolor{keywordtype}{void})\{}
+\DoxyCodeLine{135         \textcolor{keywordflow}{return} rpm;}
+\DoxyCodeLine{136     \};}
+\DoxyCodeLine{137     \textcolor{keywordtype}{float} getCurrentRPM(\textcolor{keywordtype}{void})\{}
+\DoxyCodeLine{138         \textcolor{keywordflow}{return} (60.0*1000000L / step\_pulse / microsteps / motor\_steps);}
+\DoxyCodeLine{139     \}}
+\DoxyCodeLine{140     \textcolor{comment}{/*}}
+\DoxyCodeLine{141 \textcolor{comment}{     * Set speed profile -\/ CONSTANT\_SPEED, LINEAR\_SPEED (accelerated)}}
+\DoxyCodeLine{142 \textcolor{comment}{     * accel and decel are given in [full steps/s\string^2]}}
+\DoxyCodeLine{143 \textcolor{comment}{     */}}
+\DoxyCodeLine{144     \textcolor{keywordtype}{void} setSpeedProfile(Mode mode, \textcolor{keywordtype}{short} accel=1000, \textcolor{keywordtype}{short} decel=1000);}
+\DoxyCodeLine{145     \textcolor{keywordtype}{void} setSpeedProfile(\textcolor{keyword}{struct} Profile profile);}
+\DoxyCodeLine{146     \textcolor{keyword}{struct }Profile getSpeedProfile(void)\{}
+\DoxyCodeLine{147         \textcolor{keywordflow}{return} profile;}
+\DoxyCodeLine{148     \}}
+\DoxyCodeLine{149     \textcolor{keywordtype}{short} getAcceleration(\textcolor{keywordtype}{void})\{}
+\DoxyCodeLine{150         \textcolor{keywordflow}{return} profile.accel;}
+\DoxyCodeLine{151     \}}
+\DoxyCodeLine{152     \textcolor{keywordtype}{short} getDeceleration(\textcolor{keywordtype}{void})\{}
+\DoxyCodeLine{153         \textcolor{keywordflow}{return} profile.decel;}
+\DoxyCodeLine{154     \}}
+\DoxyCodeLine{155     \textcolor{comment}{/*}}
+\DoxyCodeLine{156 \textcolor{comment}{     * Move the motor a given number of steps.}}
+\DoxyCodeLine{157 \textcolor{comment}{     * positive to move forward, negative to reverse}}
+\DoxyCodeLine{158 \textcolor{comment}{     */}}
+\DoxyCodeLine{159     \textcolor{keywordtype}{void} move(\textcolor{keywordtype}{long} steps);}
+\DoxyCodeLine{160     \textcolor{comment}{/*}}
+\DoxyCodeLine{161 \textcolor{comment}{     * Rotate the motor a given number of degrees (1-\/360)}}
+\DoxyCodeLine{162 \textcolor{comment}{     */}}
+\DoxyCodeLine{163     \textcolor{keywordtype}{void} rotate(\textcolor{keywordtype}{long} deg);}
+\DoxyCodeLine{164     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} rotate(\textcolor{keywordtype}{int} deg)\{}
+\DoxyCodeLine{165         rotate((\textcolor{keywordtype}{long})deg);}
+\DoxyCodeLine{166     \};}
+\DoxyCodeLine{167     \textcolor{comment}{/*}}
+\DoxyCodeLine{168 \textcolor{comment}{     * Rotate using a float or double for increased movement precision.}}
+\DoxyCodeLine{169 \textcolor{comment}{     */}}
+\DoxyCodeLine{170     \textcolor{keywordtype}{void} rotate(\textcolor{keywordtype}{double} deg);}
+\DoxyCodeLine{171     \textcolor{comment}{/*}}
+\DoxyCodeLine{172 \textcolor{comment}{     * Configure which logic state on ENABLE pin means active}}
+\DoxyCodeLine{173 \textcolor{comment}{     * when using SLEEP (default) this is active HIGH}}
+\DoxyCodeLine{174 \textcolor{comment}{     */}}
+\DoxyCodeLine{175     \textcolor{keywordtype}{void} setEnableActiveState(\textcolor{keywordtype}{short} state);}
+\DoxyCodeLine{176     \textcolor{comment}{/*}}
+\DoxyCodeLine{177 \textcolor{comment}{     * Turn off/on motor to allow the motor to be moved by hand/hold the position in place}}
+\DoxyCodeLine{178 \textcolor{comment}{     */}}
+\DoxyCodeLine{179     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} enable(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{180     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} disable(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{181     \textcolor{comment}{/*}}
+\DoxyCodeLine{182 \textcolor{comment}{     * Methods for non-\/blocking mode.}}
+\DoxyCodeLine{183 \textcolor{comment}{     * They use more code but allow doing other operations between impulses.}}
+\DoxyCodeLine{184 \textcolor{comment}{     * The flow has two parts -\/ start/initiate followed by looping with nextAction.}}
+\DoxyCodeLine{185 \textcolor{comment}{     * See NonBlocking example.}}
+\DoxyCodeLine{186 \textcolor{comment}{     */}}
+\DoxyCodeLine{187     \textcolor{comment}{/*}}
+\DoxyCodeLine{188 \textcolor{comment}{     * Initiate a move over known distance (calculate and save the parameters)}}
+\DoxyCodeLine{189 \textcolor{comment}{     * Pick just one based on move type and distance type.}}
+\DoxyCodeLine{190 \textcolor{comment}{     * If time (microseconds) is given, the driver will attempt to execute the move in exactly that time}}
+\DoxyCodeLine{191 \textcolor{comment}{     * by altering rpm for this move only (up to preset rpm).}}
+\DoxyCodeLine{192 \textcolor{comment}{     */}}
+\DoxyCodeLine{193     \textcolor{keywordtype}{void} startMove(\textcolor{keywordtype}{long} steps, \textcolor{keywordtype}{long} time=0);}
+\DoxyCodeLine{194     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} startRotate(\textcolor{keywordtype}{int} deg)\{}
+\DoxyCodeLine{195         startRotate((\textcolor{keywordtype}{long})deg);}
+\DoxyCodeLine{196     \};}
+\DoxyCodeLine{197     \textcolor{keywordtype}{void} startRotate(\textcolor{keywordtype}{long} deg);}
+\DoxyCodeLine{198     \textcolor{keywordtype}{void} startRotate(\textcolor{keywordtype}{double} deg);}
+\DoxyCodeLine{199     \textcolor{comment}{/*}}
+\DoxyCodeLine{200 \textcolor{comment}{     * Toggle step at the right time and return time until next change is needed (micros)}}
+\DoxyCodeLine{201 \textcolor{comment}{     */}}
+\DoxyCodeLine{202     \textcolor{keywordtype}{long} nextAction(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{203     \textcolor{comment}{/*}}
+\DoxyCodeLine{204 \textcolor{comment}{     * Optionally, call this to begin braking (and then stop) early}}
+\DoxyCodeLine{205 \textcolor{comment}{     * For constant speed, this is the same as stop()}}
+\DoxyCodeLine{206 \textcolor{comment}{     */}}
+\DoxyCodeLine{207     \textcolor{keywordtype}{void} startBrake(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{208     \textcolor{comment}{/*}}
+\DoxyCodeLine{209 \textcolor{comment}{     * Immediate stop}}
+\DoxyCodeLine{210 \textcolor{comment}{     * Returns the number of steps remaining.}}
+\DoxyCodeLine{211 \textcolor{comment}{     */}}
+\DoxyCodeLine{212     \textcolor{keywordtype}{long} stop(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{213     \textcolor{comment}{/*}}
+\DoxyCodeLine{214 \textcolor{comment}{     * State querying}}
+\DoxyCodeLine{215 \textcolor{comment}{     */}}
+\DoxyCodeLine{216     \textcolor{keyword}{enum} State getCurrentState(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{217     \textcolor{comment}{/*}}
+\DoxyCodeLine{218 \textcolor{comment}{     * Get the number of completed steps so far.}}
+\DoxyCodeLine{219 \textcolor{comment}{     * This is always a positive number}}
+\DoxyCodeLine{220 \textcolor{comment}{     */}}
+\DoxyCodeLine{221     \textcolor{keywordtype}{long} getStepsCompleted(\textcolor{keywordtype}{void})\{}
+\DoxyCodeLine{222         \textcolor{keywordflow}{return} step\_count;}
+\DoxyCodeLine{223     \}}
+\DoxyCodeLine{224     \textcolor{comment}{/*}}
+\DoxyCodeLine{225 \textcolor{comment}{     * Get the number of steps remaining to complete the move}}
+\DoxyCodeLine{226 \textcolor{comment}{     * This is always a positive number}}
+\DoxyCodeLine{227 \textcolor{comment}{     */}}
+\DoxyCodeLine{228     \textcolor{keywordtype}{long} getStepsRemaining(\textcolor{keywordtype}{void})\{}
+\DoxyCodeLine{229         \textcolor{keywordflow}{return} steps\_remaining;}
+\DoxyCodeLine{230     \}}
+\DoxyCodeLine{231     \textcolor{comment}{/*}}
+\DoxyCodeLine{232 \textcolor{comment}{     * Get movement direction: forward +1, back -\/1}}
+\DoxyCodeLine{233 \textcolor{comment}{     */}}
+\DoxyCodeLine{234     \textcolor{keywordtype}{int} getDirection(\textcolor{keywordtype}{void})\{}
+\DoxyCodeLine{235         \textcolor{keywordflow}{return} (dir\_state == HIGH) ? 1 : -\/1;}
+\DoxyCodeLine{236     \}}
+\DoxyCodeLine{237     \textcolor{comment}{/*}}
+\DoxyCodeLine{238 \textcolor{comment}{     * Return calculated time to complete the given move}}
+\DoxyCodeLine{239 \textcolor{comment}{     */}}
+\DoxyCodeLine{240     \textcolor{keywordtype}{long} getTimeForMove(\textcolor{keywordtype}{long} steps);}
+\DoxyCodeLine{241     \textcolor{comment}{/*}}
+\DoxyCodeLine{242 \textcolor{comment}{     * Calculate steps needed to rotate requested angle, given in degrees}}
+\DoxyCodeLine{243 \textcolor{comment}{     */}}
+\DoxyCodeLine{244     \textcolor{keywordtype}{long} calcStepsForRotation(\textcolor{keywordtype}{long} deg)\{}
+\DoxyCodeLine{245         \textcolor{keywordflow}{return} deg * motor\_steps * (long)microsteps / 360;}
+\DoxyCodeLine{246     \}}
+\DoxyCodeLine{247     \textcolor{keywordtype}{long} calcStepsForRotation(\textcolor{keywordtype}{double} deg)\{}
+\DoxyCodeLine{248         \textcolor{keywordflow}{return} deg * motor\_steps * microsteps / 360;}
+\DoxyCodeLine{249     \}}
+\DoxyCodeLine{250 \};}
+\DoxyCodeLine{251 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// STEPPER\_DRIVER\_BASE\_H}}
+
+\end{DoxyCode}

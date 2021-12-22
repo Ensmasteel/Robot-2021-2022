@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_simulator" kind="class" language="C++" prot="public">
+    <compoundname>Simulator</compoundname>
+    <includes refid="_simulator_8h" local="no">Simulator.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_simulator_1a3deda07c4357cb0c562161b71ee4cb00" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Simulator::mass</definition>
+        <argsstring></argsstring>
+        <name>mass</name>
+        <briefdescription>
+<para>Mass. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" line="10" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_simulator_1a18e0dc2c8a0d5145c10841228cfc9088" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Simulator::J</definition>
+        <argsstring></argsstring>
+        <name>J</name>
+        <briefdescription>
+<para>Rotational Inertia. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" line="11" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_simulator_1a244df1e804d0c115610f22c99c31b081" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Simulator::maxMotorForce</definition>
+        <argsstring></argsstring>
+        <name>maxMotorForce</name>
+        <briefdescription>
+<para>Newton. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" line="12" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_simulator_1a2d87c96362c94f7deb7dd9112611502a" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Simulator::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+<para>Size of one side of the robot, considering its template is a square. We also consider that the motors are at the extremity. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" line="13" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_simulator_1afd9f829c5231b1ba2910ad39bd500e72" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Simulator::friction</definition>
+        <argsstring></argsstring>
+        <name>friction</name>
+        <briefdescription>
+<para>friction frictionForce=friction*(-V) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" line="14" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_simulator_1ae1967ab9ca33c4a373b442970632ccf0" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Simulator::health</definition>
+        <argsstring></argsstring>
+        <name>health</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" line="15" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_simulator_1a230bc6b0fb2e5487e42c13e256c9245e" prot="private" static="no" mutable="no">
+        <type><ref refid="class_cinetique" kindref="compound">Cinetique</ref> *</type>
+        <definition>Cinetique* Simulator::cinetique</definition>
+        <argsstring></argsstring>
+        <name>cinetique</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" line="16" column="16" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_simulator_1afa65bb3656063caeec5bcdbef739ab96" prot="private" static="no" mutable="no">
+        <type>float *</type>
+        <definition>float* Simulator::orderMotorLeft</definition>
+        <argsstring></argsstring>
+        <name>orderMotorLeft</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" line="17" column="12" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_simulator_1aa4b6e4ac9b082cf1135cd067f7e57d42" prot="private" static="no" mutable="no">
+        <type>float *</type>
+        <definition>float* Simulator::orderMotorRight</definition>
+        <argsstring></argsstring>
+        <name>orderMotorRight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" line="18" column="12" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_simulator_1a353366a6bbfacab492131f74a89f5a38" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Simulator::computeCollision</definition>
+        <argsstring>()</argsstring>
+        <name>computeCollision</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" line="20" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.cpp" bodystart="40" bodyend="56"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_simulator_1a495361aeb3e8466eb51a5ef63a8f2b85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Simulator::Simulator</definition>
+        <argsstring>(float size, float mass, float maxAcc, float maxSpeed, Cinetique *cinetique, float *orderMotorLeft, float *orderMotorRight, float health=1)</argsstring>
+        <name>Simulator</name>
+        <param>
+          <type>float</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>mass</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>maxAcc</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>maxSpeed</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cinetique" kindref="compound">Cinetique</ref> *</type>
+          <declname>cinetique</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>orderMotorLeft</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>orderMotorRight</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>health</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" line="23" column="5" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.cpp" bodystart="4" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_simulator_1a031573bfcfe2e0f5c9539bcc1c7fc5d9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Simulator::Simulator</definition>
+        <argsstring>()</argsstring>
+        <name>Simulator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" line="25" column="5" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" bodystart="25" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="class_simulator_1ac0406499caa24c61e98fd14322e3f700" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Simulator::updateCinetique</definition>
+        <argsstring>(float dt)</argsstring>
+        <name>updateCinetique</name>
+        <param>
+          <type>float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" line="26" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.cpp" bodystart="58" bodyend="76"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class enabling to create a simulator to test the robot&apos;s functions. </para>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" line="8" column="1" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h" bodystart="9" bodyend="27"/>
+    <listofallmembers>
+      <member refid="class_simulator_1a230bc6b0fb2e5487e42c13e256c9245e" prot="private" virt="non-virtual"><scope>Simulator</scope><name>cinetique</name></member>
+      <member refid="class_simulator_1a353366a6bbfacab492131f74a89f5a38" prot="private" virt="non-virtual"><scope>Simulator</scope><name>computeCollision</name></member>
+      <member refid="class_simulator_1afd9f829c5231b1ba2910ad39bd500e72" prot="private" virt="non-virtual"><scope>Simulator</scope><name>friction</name></member>
+      <member refid="class_simulator_1ae1967ab9ca33c4a373b442970632ccf0" prot="private" virt="non-virtual"><scope>Simulator</scope><name>health</name></member>
+      <member refid="class_simulator_1a18e0dc2c8a0d5145c10841228cfc9088" prot="private" virt="non-virtual"><scope>Simulator</scope><name>J</name></member>
+      <member refid="class_simulator_1a3deda07c4357cb0c562161b71ee4cb00" prot="private" virt="non-virtual"><scope>Simulator</scope><name>mass</name></member>
+      <member refid="class_simulator_1a244df1e804d0c115610f22c99c31b081" prot="private" virt="non-virtual"><scope>Simulator</scope><name>maxMotorForce</name></member>
+      <member refid="class_simulator_1afa65bb3656063caeec5bcdbef739ab96" prot="private" virt="non-virtual"><scope>Simulator</scope><name>orderMotorLeft</name></member>
+      <member refid="class_simulator_1aa4b6e4ac9b082cf1135cd067f7e57d42" prot="private" virt="non-virtual"><scope>Simulator</scope><name>orderMotorRight</name></member>
+      <member refid="class_simulator_1a495361aeb3e8466eb51a5ef63a8f2b85" prot="public" virt="non-virtual"><scope>Simulator</scope><name>Simulator</name></member>
+      <member refid="class_simulator_1a031573bfcfe2e0f5c9539bcc1c7fc5d9" prot="public" virt="non-virtual"><scope>Simulator</scope><name>Simulator</name></member>
+      <member refid="class_simulator_1a2d87c96362c94f7deb7dd9112611502a" prot="private" virt="non-virtual"><scope>Simulator</scope><name>size</name></member>
+      <member refid="class_simulator_1ac0406499caa24c61e98fd14322e3f700" prot="public" virt="non-virtual"><scope>Simulator</scope><name>updateCinetique</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

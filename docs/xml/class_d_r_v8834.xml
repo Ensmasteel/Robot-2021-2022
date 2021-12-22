@@ -1,0 +1,573 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_d_r_v8834" kind="class" language="C++" prot="public">
+    <compoundname>DRV8834</compoundname>
+    <basecompoundref refid="class_basic_stepper_driver" prot="public" virt="non-virtual">BasicStepperDriver</basecompoundref>
+    <basecompoundref refid="class_basic_stepper_driver" prot="public" virt="non-virtual">BasicStepperDriver</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_d_r_v8834_1a7b43b6943650c290e9d9f02b1f346ddb" prot="protected" static="no" mutable="no">
+        <type>short</type>
+        <definition>short DRV8834::m0_pin</definition>
+        <argsstring></argsstring>
+        <name>m0_pin</name>
+        <initializer>= PIN_UNCONNECTED</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" line="17" column="11" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_d_r_v8834_1ae3cf4330553ed6a107930fc697e57b3e" prot="protected" static="no" mutable="no">
+        <type>short</type>
+        <definition>short DRV8834::m1_pin</definition>
+        <argsstring></argsstring>
+        <name>m1_pin</name>
+        <initializer>= PIN_UNCONNECTED</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" line="18" column="11" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="class_d_r_v8834_1af4e38a8521a944ac70efc8525b35075a" prot="protected" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>static const int DRV8834::step_high_min</definition>
+        <argsstring></argsstring>
+        <name>step_high_min</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" line="20" column="22" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_d_r_v8834_1a6db77fe9dbb77e73fe9658ce233fe710" prot="protected" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>static const int DRV8834::step_low_min</definition>
+        <argsstring></argsstring>
+        <name>step_low_min</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" line="22" column="22" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_d_r_v8834_1ae76c7f7173c57815817c4b4b15da185c" prot="protected" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>static const int DRV8834::wakeup_time</definition>
+        <argsstring></argsstring>
+        <name>wakeup_time</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" line="24" column="22" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_d_r_v8834_1a2687a24102d2bc432d84f1c60d28c3d6" prot="private" static="yes" mutable="no">
+        <type>const short</type>
+        <definition>static const short DRV8834::MAX_MICROSTEP</definition>
+        <argsstring></argsstring>
+        <name>MAX_MICROSTEP</name>
+        <initializer>= 32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" line="32" column="24" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_d_r_v8834_1a49982ab8521966dd90e884afbbcd540c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>short</type>
+        <definition>short DRV8834::getMaxMicrostep</definition>
+        <argsstring>() override</argsstring>
+        <name>getMaxMicrostep</name>
+        <reimplements refid="class_basic_stepper_driver_1a38c63513054e73b268783e2ee05ee50b">getMaxMicrostep</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" line="28" column="11" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.cpp" bodystart="83" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_d_r_v8834_1a49982ab8521966dd90e884afbbcd540c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>short</type>
+        <definition>short DRV8834::getMaxMicrostep</definition>
+        <argsstring>() override</argsstring>
+        <name>getMaxMicrostep</name>
+        <reimplements refid="class_basic_stepper_driver_1a38c63513054e73b268783e2ee05ee50b">getMaxMicrostep</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/DRV8834.h" line="28" column="11"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_d_r_v8834_1a0e20a9029f8ebd6f6cda8cc6fe9b1469" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DRV8834::DRV8834</definition>
+        <argsstring>(short steps, short dir_pin, short step_pin)</argsstring>
+        <name>DRV8834</name>
+        <param>
+          <type>short</type>
+          <declname>steps</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>dir_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>step_pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" line="39" column="5" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.cpp" bodystart="16" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_d_r_v8834_1a67146ab2c5a8e80685fcd87bfb773866" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DRV8834::DRV8834</definition>
+        <argsstring>(short steps, short dir_pin, short step_pin, short enable_pin)</argsstring>
+        <name>DRV8834</name>
+        <param>
+          <type>short</type>
+          <declname>steps</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>dir_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>step_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>enable_pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" line="40" column="5" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.cpp" bodystart="20" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_d_r_v8834_1a481734cf09f7e75b7030a915d8ab261c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DRV8834::DRV8834</definition>
+        <argsstring>(short steps, short dir_pin, short step_pin, short m0_pin, short m1_pin)</argsstring>
+        <name>DRV8834</name>
+        <param>
+          <type>short</type>
+          <declname>steps</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>dir_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>step_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>m0_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>m1_pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" line="44" column="5" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.cpp" bodystart="27" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_d_r_v8834_1aafd53beb1053536baee481db090fd63c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DRV8834::DRV8834</definition>
+        <argsstring>(short steps, short dir_pin, short step_pin, short enable_pin, short m0_pin, short m1_pin)</argsstring>
+        <name>DRV8834</name>
+        <param>
+          <type>short</type>
+          <declname>steps</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>dir_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>step_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>enable_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>m0_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>m1_pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" line="45" column="5" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.cpp" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_d_r_v8834_1ac5e4994c722b5782690d5adaafc0d2f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>short</type>
+        <definition>short DRV8834::setMicrostep</definition>
+        <argsstring>(short microsteps) override</argsstring>
+        <name>setMicrostep</name>
+        <reimplements refid="class_basic_stepper_driver_1a3e29828a5ab24534fef8199acab4d2f7">setMicrostep</reimplements>
+        <param>
+          <type>short</type>
+          <declname>microsteps</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" line="46" column="11" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.cpp" bodystart="41" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="class_d_r_v8834_1a0e20a9029f8ebd6f6cda8cc6fe9b1469" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DRV8834::DRV8834</definition>
+        <argsstring>(short steps, short dir_pin, short step_pin)</argsstring>
+        <name>DRV8834</name>
+        <param>
+          <type>short</type>
+          <declname>steps</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>dir_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>step_pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/DRV8834.h" line="39" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_d_r_v8834_1a67146ab2c5a8e80685fcd87bfb773866" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DRV8834::DRV8834</definition>
+        <argsstring>(short steps, short dir_pin, short step_pin, short enable_pin)</argsstring>
+        <name>DRV8834</name>
+        <param>
+          <type>short</type>
+          <declname>steps</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>dir_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>step_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>enable_pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/DRV8834.h" line="40" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_d_r_v8834_1a481734cf09f7e75b7030a915d8ab261c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DRV8834::DRV8834</definition>
+        <argsstring>(short steps, short dir_pin, short step_pin, short m0_pin, short m1_pin)</argsstring>
+        <name>DRV8834</name>
+        <param>
+          <type>short</type>
+          <declname>steps</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>dir_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>step_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>m0_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>m1_pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/DRV8834.h" line="44" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_d_r_v8834_1aafd53beb1053536baee481db090fd63c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DRV8834::DRV8834</definition>
+        <argsstring>(short steps, short dir_pin, short step_pin, short enable_pin, short m0_pin, short m1_pin)</argsstring>
+        <name>DRV8834</name>
+        <param>
+          <type>short</type>
+          <declname>steps</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>dir_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>step_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>enable_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>m0_pin</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>m1_pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/DRV8834.h" line="45" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_d_r_v8834_1ac5e4994c722b5782690d5adaafc0d2f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>short</type>
+        <definition>short DRV8834::setMicrostep</definition>
+        <argsstring>(short microsteps) override</argsstring>
+        <name>setMicrostep</name>
+        <reimplements refid="class_basic_stepper_driver_1a3e29828a5ab24534fef8199acab4d2f7">setMicrostep</reimplements>
+        <param>
+          <type>short</type>
+          <declname>microsteps</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/test led/src/DRV8834.h" line="46" column="11"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BasicStepperDriver</label>
+        <link refid="class_basic_stepper_driver"/>
+      </node>
+      <node id="1">
+        <label>DRV8834</label>
+        <link refid="class_d_r_v8834"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BasicStepperDriver</label>
+        <link refid="class_basic_stepper_driver"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>profile</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>BasicStepperDriver::Profile</label>
+        <link refid="struct_basic_stepper_driver_1_1_profile"/>
+      </node>
+      <node id="1">
+        <label>DRV8834</label>
+        <link refid="class_d_r_v8834"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" line="15" column="1" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/DRV8834.h" bodystart="15" bodyend="47"/>
+    <listofallmembers>
+      <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0a0db8eabc38c5e6c30e34c785f22a49d4" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>ACCELERATING</name></member>
+      <member refid="class_basic_stepper_driver_1ab944ccc390a7bb3b0113403e9bbb305c" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>alterMove</name></member>
+      <member refid="class_basic_stepper_driver_1ab944ccc390a7bb3b0113403e9bbb305c" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>alterMove</name></member>
+      <member refid="class_basic_stepper_driver_1a51e279a5df4868176eb6ae833041a50d" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>BasicStepperDriver</name></member>
+      <member refid="class_basic_stepper_driver_1a1b3a53e06690b60abee1d0d9127ec75e" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>BasicStepperDriver</name></member>
+      <member refid="class_basic_stepper_driver_1a51e279a5df4868176eb6ae833041a50d" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>BasicStepperDriver</name></member>
+      <member refid="class_basic_stepper_driver_1a1b3a53e06690b60abee1d0d9127ec75e" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>BasicStepperDriver</name></member>
+      <member refid="class_basic_stepper_driver_1a3b195930a8e2792e8cf5dea6ab3df4c0" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>begin</name></member>
+      <member refid="class_basic_stepper_driver_1a3b195930a8e2792e8cf5dea6ab3df4c0" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>begin</name></member>
+      <member refid="class_basic_stepper_driver_1a74e1f72d8199829ff42afc2875c8d799" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>calcStepPulse</name></member>
+      <member refid="class_basic_stepper_driver_1a74e1f72d8199829ff42afc2875c8d799" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>calcStepPulse</name></member>
+      <member refid="class_basic_stepper_driver_1afc7cd752e20207d4172ad042fc2d481b" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>calcStepsForRotation</name></member>
+      <member refid="class_basic_stepper_driver_1a5027ddc407f5e73d9f130230dc41711d" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>calcStepsForRotation</name></member>
+      <member refid="class_basic_stepper_driver_1afc7cd752e20207d4172ad042fc2d481b" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>calcStepsForRotation</name></member>
+      <member refid="class_basic_stepper_driver_1a5027ddc407f5e73d9f130230dc41711d" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>calcStepsForRotation</name></member>
+      <member refid="class_basic_stepper_driver_1af1b4082102ecbef61fe24891716f1162a004423f13cf13ef8af38852156925801" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>CONSTANT_SPEED</name></member>
+      <member refid="class_basic_stepper_driver_1ac7214e4a8f86aa486e2b4ada5dbc2d82" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>cruise_step_pulse</name></member>
+      <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0a8725782a851d4a1f62f18599bf42cd95" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>CRUISING</name></member>
+      <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0aa51ee63a6545c1ff17800bd43b9327a8" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>DECELERATING</name></member>
+      <member refid="class_basic_stepper_driver_1a08143baf33993ba48953201c060f09c1" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>delayMicros</name></member>
+      <member refid="class_basic_stepper_driver_1a08143baf33993ba48953201c060f09c1" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>delayMicros</name></member>
+      <member refid="class_basic_stepper_driver_1adc1086a4d1964a509b97e9d0e0988fb5" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>dir_pin</name></member>
+      <member refid="class_basic_stepper_driver_1ab6082e691d61ccbf49fca7bde3af919e" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>dir_state</name></member>
+      <member refid="class_basic_stepper_driver_1a15ac3a56f2108808a957c816ddbc0c6d" prot="public" virt="virtual"><scope>DRV8834</scope><name>disable</name></member>
+      <member refid="class_basic_stepper_driver_1ae294cdfebadb11a72d0f4bed6813c471" prot="public" virt="virtual"><scope>DRV8834</scope><name>disable</name></member>
+      <member refid="class_d_r_v8834_1a0e20a9029f8ebd6f6cda8cc6fe9b1469" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>DRV8834</name></member>
+      <member refid="class_d_r_v8834_1a67146ab2c5a8e80685fcd87bfb773866" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>DRV8834</name></member>
+      <member refid="class_d_r_v8834_1a481734cf09f7e75b7030a915d8ab261c" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>DRV8834</name></member>
+      <member refid="class_d_r_v8834_1aafd53beb1053536baee481db090fd63c" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>DRV8834</name></member>
+      <member refid="class_d_r_v8834_1a0e20a9029f8ebd6f6cda8cc6fe9b1469" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>DRV8834</name></member>
+      <member refid="class_d_r_v8834_1a67146ab2c5a8e80685fcd87bfb773866" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>DRV8834</name></member>
+      <member refid="class_d_r_v8834_1a481734cf09f7e75b7030a915d8ab261c" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>DRV8834</name></member>
+      <member refid="class_d_r_v8834_1aafd53beb1053536baee481db090fd63c" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>DRV8834</name></member>
+      <member refid="class_basic_stepper_driver_1a1a4f459b0bddc1e3e0616fa96c0db064" prot="public" virt="virtual"><scope>DRV8834</scope><name>enable</name></member>
+      <member refid="class_basic_stepper_driver_1a98c259d26995c1c5d2ce3b0295772451" prot="public" virt="virtual"><scope>DRV8834</scope><name>enable</name></member>
+      <member refid="class_basic_stepper_driver_1ad8d499549d46ad45fa8c5c2a2342c30b" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>enable_active_state</name></member>
+      <member refid="class_basic_stepper_driver_1aa24e3b7ae20eed14ba8b24300e8e7c61" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>enable_pin</name></member>
+      <member refid="class_basic_stepper_driver_1af6f97f7416a86f2d346e229f091d92ff" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getAcceleration</name></member>
+      <member refid="class_basic_stepper_driver_1af6f97f7416a86f2d346e229f091d92ff" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getAcceleration</name></member>
+      <member refid="class_basic_stepper_driver_1a0dbf0716e619cdd78874d474f6ea74e8" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getCurrentRPM</name></member>
+      <member refid="class_basic_stepper_driver_1a0dbf0716e619cdd78874d474f6ea74e8" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getCurrentRPM</name></member>
+      <member refid="class_basic_stepper_driver_1af0d6952ec9c2ba8849c15272b5659aae" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getCurrentState</name></member>
+      <member refid="class_basic_stepper_driver_1a809a36552b76b3a0d019b60e185ab3b1" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getCurrentState</name></member>
+      <member refid="class_basic_stepper_driver_1adb99e19bf4c310126150a87153edfa52" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getDeceleration</name></member>
+      <member refid="class_basic_stepper_driver_1adb99e19bf4c310126150a87153edfa52" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getDeceleration</name></member>
+      <member refid="class_basic_stepper_driver_1a0e9ef559ceeefc4daf321e0bb4389691" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getDirection</name></member>
+      <member refid="class_basic_stepper_driver_1a0e9ef559ceeefc4daf321e0bb4389691" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getDirection</name></member>
+      <member refid="class_d_r_v8834_1a49982ab8521966dd90e884afbbcd540c" prot="protected" virt="virtual"><scope>DRV8834</scope><name>getMaxMicrostep</name></member>
+      <member refid="class_d_r_v8834_1a49982ab8521966dd90e884afbbcd540c" prot="protected" virt="virtual"><scope>DRV8834</scope><name>getMaxMicrostep</name></member>
+      <member refid="class_basic_stepper_driver_1af2b2e205ae51a33bf3db0542d190cd2f" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getMicrostep</name></member>
+      <member refid="class_basic_stepper_driver_1af2b2e205ae51a33bf3db0542d190cd2f" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getMicrostep</name></member>
+      <member refid="class_basic_stepper_driver_1aed4be1409d0c78ece661a6e0602aef79" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getRPM</name></member>
+      <member refid="class_basic_stepper_driver_1aed4be1409d0c78ece661a6e0602aef79" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getRPM</name></member>
+      <member refid="class_basic_stepper_driver_1a9b6046c612cac57a931a1fac13cd015a" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getSpeedProfile</name></member>
+      <member refid="class_basic_stepper_driver_1a9b6046c612cac57a931a1fac13cd015a" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getSpeedProfile</name></member>
+      <member refid="class_basic_stepper_driver_1a1c743c5764fa397b15cf1afe546f55b8" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getSteps</name></member>
+      <member refid="class_basic_stepper_driver_1a1c743c5764fa397b15cf1afe546f55b8" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getSteps</name></member>
+      <member refid="class_basic_stepper_driver_1ab9e2cb26ef02f2b16f701b68e1d38dd8" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getStepsCompleted</name></member>
+      <member refid="class_basic_stepper_driver_1ab9e2cb26ef02f2b16f701b68e1d38dd8" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getStepsCompleted</name></member>
+      <member refid="class_basic_stepper_driver_1a575d0ce92e6a04585f3bd9559faaba3e" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getStepsRemaining</name></member>
+      <member refid="class_basic_stepper_driver_1a575d0ce92e6a04585f3bd9559faaba3e" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getStepsRemaining</name></member>
+      <member refid="class_basic_stepper_driver_1af0ff14d9feff51b6a13c975a10371376" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getTimeForMove</name></member>
+      <member refid="class_basic_stepper_driver_1af0ff14d9feff51b6a13c975a10371376" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>getTimeForMove</name></member>
+      <member refid="class_basic_stepper_driver_1af1b4082102ecbef61fe24891716f1162a1f4fc322c6d5fbd7d74cf27c52781b7f" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>LINEAR_SPEED</name></member>
+      <member refid="class_d_r_v8834_1a7b43b6943650c290e9d9f02b1f346ddb" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>m0_pin</name></member>
+      <member refid="class_d_r_v8834_1ae3cf4330553ed6a107930fc697e57b3e" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>m1_pin</name></member>
+      <member refid="class_d_r_v8834_1a2687a24102d2bc432d84f1c60d28c3d6" prot="private" virt="non-virtual"><scope>DRV8834</scope><name>MAX_MICROSTEP</name></member>
+      <member refid="class_basic_stepper_driver_1a1ecc60cbf4edacb8487bd0651f3d2b49" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>microsteps</name></member>
+      <member refid="class_basic_stepper_driver_1af1b4082102ecbef61fe24891716f1162" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>Mode</name></member>
+      <member refid="class_basic_stepper_driver_1af1b4082102ecbef61fe24891716f1162" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>Mode</name></member>
+      <member refid="class_basic_stepper_driver_1a18f465de00856fc589bb4479b1276d02" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>motor_steps</name></member>
+      <member refid="class_basic_stepper_driver_1a6be7d04095bd50a54ae28b6183d72ff7" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>move</name></member>
+      <member refid="class_basic_stepper_driver_1a6be7d04095bd50a54ae28b6183d72ff7" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>move</name></member>
+      <member refid="class_basic_stepper_driver_1a808df7c3413dc287299a7db7649c0b1d" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>nextAction</name></member>
+      <member refid="class_basic_stepper_driver_1a808df7c3413dc287299a7db7649c0b1d" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>nextAction</name></member>
+      <member refid="class_basic_stepper_driver_1a72218544e49175309a772ec3cec706d2" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>profile</name></member>
+      <member refid="class_basic_stepper_driver_1a03847762fe040ca5c6707e0cc71767d4" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>rotate</name></member>
+      <member refid="class_basic_stepper_driver_1a987b70d95bcaf52a390c9cbb8534c8ac" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>rotate</name></member>
+      <member refid="class_basic_stepper_driver_1a5c9f879156d317774fd7b39ed0ae8d99" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>rotate</name></member>
+      <member refid="class_basic_stepper_driver_1a03847762fe040ca5c6707e0cc71767d4" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>rotate</name></member>
+      <member refid="class_basic_stepper_driver_1a987b70d95bcaf52a390c9cbb8534c8ac" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>rotate</name></member>
+      <member refid="class_basic_stepper_driver_1a5c9f879156d317774fd7b39ed0ae8d99" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>rotate</name></member>
+      <member refid="class_basic_stepper_driver_1a6db6f9430a17954a94ac4c40fda62389" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>rpm</name></member>
+      <member refid="class_basic_stepper_driver_1a4f83c21fa80163c4b9db9c8177b715bd" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>setEnableActiveState</name></member>
+      <member refid="class_basic_stepper_driver_1a4f83c21fa80163c4b9db9c8177b715bd" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>setEnableActiveState</name></member>
+      <member refid="class_d_r_v8834_1ac5e4994c722b5782690d5adaafc0d2f9" prot="public" virt="virtual"><scope>DRV8834</scope><name>setMicrostep</name></member>
+      <member refid="class_d_r_v8834_1ac5e4994c722b5782690d5adaafc0d2f9" prot="public" virt="virtual"><scope>DRV8834</scope><name>setMicrostep</name></member>
+      <member refid="class_basic_stepper_driver_1a317ab852d4d95e2c8cad21ba6f003560" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>setRPM</name></member>
+      <member refid="class_basic_stepper_driver_1a317ab852d4d95e2c8cad21ba6f003560" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>setRPM</name></member>
+      <member refid="class_basic_stepper_driver_1a588c213e9a54c71a118ec74213bb8c11" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>setSpeedProfile</name></member>
+      <member refid="class_basic_stepper_driver_1a8e8e8d230ef2cecda0fba796e537124f" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>setSpeedProfile</name></member>
+      <member refid="class_basic_stepper_driver_1a588c213e9a54c71a118ec74213bb8c11" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>setSpeedProfile</name></member>
+      <member refid="class_basic_stepper_driver_1a8e8e8d230ef2cecda0fba796e537124f" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>setSpeedProfile</name></member>
+      <member refid="class_basic_stepper_driver_1aa3ab78db814ffb286718a0a051cd50ae" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>startBrake</name></member>
+      <member refid="class_basic_stepper_driver_1aa3ab78db814ffb286718a0a051cd50ae" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>startBrake</name></member>
+      <member refid="class_basic_stepper_driver_1a15b747acf8f1499e6e01bd7a58bfd178" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>startMove</name></member>
+      <member refid="class_basic_stepper_driver_1a15b747acf8f1499e6e01bd7a58bfd178" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>startMove</name></member>
+      <member refid="class_basic_stepper_driver_1a9993a2daa9cc68aaa673d41b0ac51003" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>startRotate</name></member>
+      <member refid="class_basic_stepper_driver_1acc033aae0c5d845f4a3d00da1af3e706" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>startRotate</name></member>
+      <member refid="class_basic_stepper_driver_1aa4c0a684d10596312359b49cb3d02471" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>startRotate</name></member>
+      <member refid="class_basic_stepper_driver_1a9993a2daa9cc68aaa673d41b0ac51003" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>startRotate</name></member>
+      <member refid="class_basic_stepper_driver_1acc033aae0c5d845f4a3d00da1af3e706" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>startRotate</name></member>
+      <member refid="class_basic_stepper_driver_1aa4c0a684d10596312359b49cb3d02471" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>startRotate</name></member>
+      <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>State</name></member>
+      <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>State</name></member>
+      <member refid="class_basic_stepper_driver_1a1eebfbb380b3a0ce91937226d30c3a2c" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>step_count</name></member>
+      <member refid="class_d_r_v8834_1af4e38a8521a944ac70efc8525b35075a" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>step_high_min</name></member>
+      <member refid="class_d_r_v8834_1a6db77fe9dbb77e73fe9658ce233fe710" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>step_low_min</name></member>
+      <member refid="class_basic_stepper_driver_1a8e03b42484a94ec3daad9a4f2d4583a7" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>step_pin</name></member>
+      <member refid="class_basic_stepper_driver_1ad4707a140bfb77f38f532c6f07bc0a3f" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>step_pulse</name></member>
+      <member refid="class_basic_stepper_driver_1a1f1ae8a85101f01decf8ae3e39aa574b" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>steps_remaining</name></member>
+      <member refid="class_basic_stepper_driver_1aaae54a86b961a9d418bdea86b413405d" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>steps_to_brake</name></member>
+      <member refid="class_basic_stepper_driver_1a914ea715ce08cf4b50631a69ae9e9e3e" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>steps_to_cruise</name></member>
+      <member refid="class_basic_stepper_driver_1a2ce5102250c5cf867748c13f55f126be" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>stop</name></member>
+      <member refid="class_basic_stepper_driver_1a2ce5102250c5cf867748c13f55f126be" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>stop</name></member>
+      <member refid="class_basic_stepper_driver_1aedacc779e4f10ba6fb43fe8ed6c1e0d0acd1764adc7fff1517bbbabec98d179c4" prot="public" virt="non-virtual"><scope>DRV8834</scope><name>STOPPED</name></member>
+      <member refid="class_d_r_v8834_1ae76c7f7173c57815817c4b4b15da185c" prot="protected" virt="non-virtual"><scope>DRV8834</scope><name>wakeup_time</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="struct_basic_stepper_driver_1_1_profile" kind="struct" language="C++" prot="public">
+    <compoundname>BasicStepperDriver::Profile</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_basic_stepper_driver_1_1_profile_1acb8c6b0551e293398b78b232608f759b" prot="public" static="no" mutable="no">
+        <type>Mode</type>
+        <definition>Mode BasicStepperDriver::Profile::mode</definition>
+        <argsstring></argsstring>
+        <name>mode</name>
+        <initializer>= CONSTANT_SPEED</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/BasicStepperDriver.h" line="36" column="14" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/BasicStepperDriver.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_basic_stepper_driver_1_1_profile_1a41a0a21ee1dda66841660649526f9dea" prot="public" static="no" mutable="no">
+        <type>short</type>
+        <definition>short BasicStepperDriver::Profile::accel</definition>
+        <argsstring></argsstring>
+        <name>accel</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/BasicStepperDriver.h" line="37" column="15" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/BasicStepperDriver.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_basic_stepper_driver_1_1_profile_1a1387285befeb669e6bb50153b6e44438" prot="public" static="no" mutable="no">
+        <type>short</type>
+        <definition>short BasicStepperDriver::Profile::decel</definition>
+        <argsstring></argsstring>
+        <name>decel</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/BasicStepperDriver.h" line="38" column="15" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/BasicStepperDriver.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/BasicStepperDriver.h" line="35" column="5" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/BasicStepperDriver.h" bodystart="35" bodyend="39"/>
+    <listofallmembers>
+      <member refid="struct_basic_stepper_driver_1_1_profile_1a41a0a21ee1dda66841660649526f9dea" prot="public" virt="non-virtual"><scope>BasicStepperDriver::Profile</scope><name>accel</name></member>
+      <member refid="struct_basic_stepper_driver_1_1_profile_1a1387285befeb669e6bb50153b6e44438" prot="public" virt="non-virtual"><scope>BasicStepperDriver::Profile</scope><name>decel</name></member>
+      <member refid="struct_basic_stepper_driver_1_1_profile_1acb8c6b0551e293398b78b232608f759b" prot="public" virt="non-virtual"><scope>BasicStepperDriver::Profile</scope><name>mode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

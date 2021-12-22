@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_90f751a02063dda984ca18f0b628d299" kind="dir">
+    <compoundname>D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib</compoundname>
+    <innerdir refid="dir_06c706a7d155f030b0b5a4d0ee0c41dd">D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators</innerdir>
+    <innerdir refid="dir_4f37e9a5a010fa940645b1199c543870">D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager</innerdir>
+    <innerdir refid="dir_5669bf5acdab7bafcb2f3403e8be8101">D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/Servo</innerdir>
+    <innerdir refid="dir_cd450847eb56a72c25f5373ef7af1d35">D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver</innerdir>
+    <innerdir refid="dir_40f928f2a86070880d48e7f01dd6bc52">D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/ENSMASTEEL/Ensmasteel_Bot_2020/Arduino_Mega/Lib/"/>
+  </compounddef>
+</doxygen>

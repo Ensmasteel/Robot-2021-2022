@@ -1,0 +1,295 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_p_i_d" kind="class" language="C++" prot="public">
+    <compoundname>PID</compoundname>
+    <includes refid="_p_i_d_8h" local="no">PID.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_p_i_d_1aa64e007c8f4728016527564cda7da8d7" prot="private" static="no" mutable="no">
+        <type><ref refid="class_move_profile" kindref="compound">MoveProfile</ref> *</type>
+        <definition>MoveProfile* PID::currentProfile</definition>
+        <argsstring></argsstring>
+        <name>currentProfile</name>
+        <briefdescription>
+<para>Pointer to ensure there is only one instance of profile (no intern copy) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="35" column="17" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_i_d_1a940a94095581f2d32d1ed3426a2cdf4b" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float PID::iTerm</definition>
+        <argsstring></argsstring>
+        <name>iTerm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="36" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_i_d_1affe3eb15c93aed4cd7ff39f31ed932f7" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool PID::modulo360</definition>
+        <argsstring></argsstring>
+        <name>modulo360</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="37" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_i_d_1ad65d72b08de8e8ae71aa7236dd3bba19" prot="private" static="no" mutable="no">
+        <type><ref refid="class_filtre" kindref="compound">Filtre</ref></type>
+        <definition>Filtre PID::dxF</definition>
+        <argsstring></argsstring>
+        <name>dxF</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="38" column="12" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_i_d_1ad3185efcf7c81f04c28150703b9ba2a5" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float PID::timeTooFar</definition>
+        <argsstring></argsstring>
+        <name>timeTooFar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="39" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_i_d_1acfab9e5b576b290f0bcd62e29393988e" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool PID::close</definition>
+        <argsstring></argsstring>
+        <name>close</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="40" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_i_d_1ae659f57f16efbea8756bc6dfb9ca7745" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool PID::tooFar</definition>
+        <argsstring></argsstring>
+        <name>tooFar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="41" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_i_d_1a4f1ecc586a1b730380f7c5fb2fe4b82d" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float PID::lastOut</definition>
+        <argsstring></argsstring>
+        <name>lastOut</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="42" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_i_d_1a0f02fde1ab6315e18946540cc56538c0" prot="private" static="no" mutable="no">
+        <type><ref refid="class_score" kindref="compound">Score</ref></type>
+        <definition>Score PID::score</definition>
+        <argsstring></argsstring>
+        <name>score</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="43" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_p_i_d_1a5ac6d3f35c5e847dab600e39a9390316" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class Asservissement</definition>
+        <argsstring></argsstring>
+        <name>Asservissement</name>
+        <param>
+          <type><ref refid="class_asservissement" kindref="compound">Asservissement</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="54" column="14" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_p_i_d_1a837541cd6eb4f4bff142650ad7f74e34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_score" kindref="compound">Score</ref></type>
+        <definition>Score PID::getScore</definition>
+        <argsstring>()</argsstring>
+        <name>getScore</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="46" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.cpp" bodystart="27" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_i_d_1af9677e76cb1beffbcf3f54cbc627c530" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PID::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="47" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.cpp" bodystart="21" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_i_d_1a0c499b668d25de33ca8e09d020413132" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PID::setCurrentProfile</definition>
+        <argsstring>(MoveProfileName pace)</argsstring>
+        <name>setCurrentProfile</name>
+        <param>
+          <type>MoveProfileName</type>
+          <declname>pace</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="48" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.cpp" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_i_d_1ae1fd8dcbd62e86705aa859efd1c17d4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float PID::compute</definition>
+        <argsstring>(float xTarget, float dxTarget, float x, float dx, float dt)</argsstring>
+        <name>compute</name>
+        <param>
+          <type>float</type>
+          <declname>xTarget</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>dxTarget</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>dx</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="49" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.cpp" bodystart="39" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_i_d_1a67fa92341d178bb94fca0f414a688df0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_move_profile" kindref="compound">MoveProfile</ref> *</type>
+        <definition>MoveProfile * PID::getCurrentProfile</definition>
+        <argsstring>()</argsstring>
+        <name>getCurrentProfile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="50" column="17" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.cpp" bodystart="35" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_i_d_1a0845e43f34d381e441596bdd7a80ceb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PID::PID</definition>
+        <argsstring>(bool modulo360, float frequency)</argsstring>
+        <name>PID</name>
+        <param>
+          <type>bool</type>
+          <declname>modulo360</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>frequency</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="51" column="5" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.cpp" bodystart="78" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_i_d_1a0311b6f7de348499ce24e53ba353514a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PID::PID</definition>
+        <argsstring>()</argsstring>
+        <name>PID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="52" column="5" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.cpp" bodystart="89" bodyend="89"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Defines the <ref refid="class_p_i_d" kindref="compound">PID</ref> class and its factors. </para>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" line="32" column="1" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h" bodystart="33" bodyend="55"/>
+    <listofallmembers>
+      <member refid="class_p_i_d_1a5ac6d3f35c5e847dab600e39a9390316" prot="public" virt="non-virtual"><scope>PID</scope><name>Asservissement</name></member>
+      <member refid="class_p_i_d_1acfab9e5b576b290f0bcd62e29393988e" prot="private" virt="non-virtual"><scope>PID</scope><name>close</name></member>
+      <member refid="class_p_i_d_1ae1fd8dcbd62e86705aa859efd1c17d4a" prot="public" virt="non-virtual"><scope>PID</scope><name>compute</name></member>
+      <member refid="class_p_i_d_1aa64e007c8f4728016527564cda7da8d7" prot="private" virt="non-virtual"><scope>PID</scope><name>currentProfile</name></member>
+      <member refid="class_p_i_d_1ad65d72b08de8e8ae71aa7236dd3bba19" prot="private" virt="non-virtual"><scope>PID</scope><name>dxF</name></member>
+      <member refid="class_p_i_d_1a67fa92341d178bb94fca0f414a688df0" prot="public" virt="non-virtual"><scope>PID</scope><name>getCurrentProfile</name></member>
+      <member refid="class_p_i_d_1a837541cd6eb4f4bff142650ad7f74e34" prot="public" virt="non-virtual"><scope>PID</scope><name>getScore</name></member>
+      <member refid="class_p_i_d_1a940a94095581f2d32d1ed3426a2cdf4b" prot="private" virt="non-virtual"><scope>PID</scope><name>iTerm</name></member>
+      <member refid="class_p_i_d_1a4f1ecc586a1b730380f7c5fb2fe4b82d" prot="private" virt="non-virtual"><scope>PID</scope><name>lastOut</name></member>
+      <member refid="class_p_i_d_1affe3eb15c93aed4cd7ff39f31ed932f7" prot="private" virt="non-virtual"><scope>PID</scope><name>modulo360</name></member>
+      <member refid="class_p_i_d_1a0845e43f34d381e441596bdd7a80ceb5" prot="public" virt="non-virtual"><scope>PID</scope><name>PID</name></member>
+      <member refid="class_p_i_d_1a0311b6f7de348499ce24e53ba353514a" prot="public" virt="non-virtual"><scope>PID</scope><name>PID</name></member>
+      <member refid="class_p_i_d_1af9677e76cb1beffbcf3f54cbc627c530" prot="public" virt="non-virtual"><scope>PID</scope><name>reset</name></member>
+      <member refid="class_p_i_d_1a0f02fde1ab6315e18946540cc56538c0" prot="private" virt="non-virtual"><scope>PID</scope><name>score</name></member>
+      <member refid="class_p_i_d_1a0c499b668d25de33ca8e09d020413132" prot="public" virt="non-virtual"><scope>PID</scope><name>setCurrentProfile</name></member>
+      <member refid="class_p_i_d_1ad3185efcf7c81f04c28150703b9ba2a5" prot="private" virt="non-virtual"><scope>PID</scope><name>timeTooFar</name></member>
+      <member refid="class_p_i_d_1ae659f57f16efbea8756bc6dfb9ca7745" prot="private" virt="non-virtual"><scope>PID</scope><name>tooFar</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

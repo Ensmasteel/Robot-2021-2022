@@ -1,0 +1,444 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_pince" kind="class" language="C++" prot="public">
+    <compoundname>Pince</compoundname>
+    <basecompoundref refid="class_actuator" prot="public" virt="non-virtual">Actuator</basecompoundref>
+    <derivedcompoundref refid="class_pince_arriere" prot="public" virt="non-virtual">PinceArriere</derivedcompoundref>
+    <derivedcompoundref refid="class_pince_avant" prot="public" virt="non-virtual">PinceAvant</derivedcompoundref>
+    <includes refid="_actuators_8h" local="no">Actuators.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_pince_1ade569d63ec4b82dd24cb12afb77197e2" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_servo" kindref="compound">Servo</ref></type>
+        <definition>Servo Pince::servo</definition>
+        <argsstring></argsstring>
+        <name>servo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="206" column="11" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="206" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pince_1a2f028a8d492d579c8c2753203a6ce325" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_stepper_motor_j" kindref="compound">StepperMotorJ</ref> *</type>
+        <definition>StepperMotorJ* Pince::stepperMotor</definition>
+        <argsstring></argsstring>
+        <name>stepperMotor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="207" column="19" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pince_1a520a09e99aa93c6007a200a818fb15fa" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Pince::pinServo</definition>
+        <argsstring></argsstring>
+        <name>pinServo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="209" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pince_1a03ae3ce45c584ee4babf6b84841bf518" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Pince::pinDir</definition>
+        <argsstring></argsstring>
+        <name>pinDir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="210" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pince_1a0af82a7a90d6fdcb0839dfc654694ac1" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Pince::pinStep</definition>
+        <argsstring></argsstring>
+        <name>pinStep</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="211" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="211" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pince_1abd8aebec9b2f705c658a778183b90042" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Pince::pinSleep</definition>
+        <argsstring></argsstring>
+        <name>pinSleep</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="212" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="212" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pince_1ac449f0f6dff79be627d82644ac252a56" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Pince::pinM0</definition>
+        <argsstring></argsstring>
+        <name>pinM0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="213" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pince_1ab49408bd0827582f15ce724666185101" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Pince::pinM1</definition>
+        <argsstring></argsstring>
+        <name>pinM1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="214" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="214" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pince_1a8e0b222ff1a89e6b0335d21639018ccb" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Pince::motorSteps</definition>
+        <argsstring></argsstring>
+        <name>motorSteps</name>
+        <initializer>= 200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="216" column="13" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pince_1a7725882b2fc328820cebabc00e7cd2b9" prot="protected" static="no" mutable="no">
+        <type>long</type>
+        <definition>long Pince::actionStep</definition>
+        <argsstring></argsstring>
+        <name>actionStep</name>
+        <initializer>=  400</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="217" column="10" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pince_1aef415b97e8489b599ba2ad61a87a1e11" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Pince::posFermee</definition>
+        <argsstring></argsstring>
+        <name>posFermee</name>
+        <initializer>= 70</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="218" column="9" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pince_1a729fefaa34fbc0bccbaf39f93efbdb10" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Pince::posOuverte</definition>
+        <argsstring></argsstring>
+        <name>posOuverte</name>
+        <initializer>= 100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="219" column="9" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_pince_1a5834c386f0296e73e39c75ea9af84414" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Pince::standardDelay</definition>
+        <argsstring></argsstring>
+        <name>standardDelay</name>
+        <initializer>= 2000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="220" column="9" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="220" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_pince_1a631a01a2192fe014b2bcb54706e04b57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Pince::Pince</definition>
+        <argsstring>()</argsstring>
+        <name>Pince</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Basic public constructor with no params. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="186" column="5" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.cpp" bodystart="137" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pince_1a1db2a77e3139df907791d02bb34566ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Pince::Init</definition>
+        <argsstring>(uint8_t pinServo, uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1, MessageID ID, int ferme=70, int ouvert=100, int actionStep=400)</argsstring>
+        <name>Init</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinServo</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinDir</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinStep</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinSleep</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinM0</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>pinM1</declname>
+        </param>
+        <param>
+          <type>MessageID</type>
+          <declname>ID</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ferme</declname>
+          <defval>70</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ouvert</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>actionStep</declname>
+          <defval>400</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializing function. Enables you to give the primary parameters to the pince. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pinServo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: the pin number on wich the gripper is connected. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinDir</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: the pin number on wich the direction is given to the stepperMotor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinStep</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: the pin number giving the step information to the stepperMotor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinSleep</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: the pin number giving the sleep information to the stepperMotor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinM0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: the pin number of the first motor of the stepperMotor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pinM1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: the second pin number of the stepperMotor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: Default message ID of the stepperMotor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ferme</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: The initial position given in degrees. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ouvert</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: The final position given in degrees. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>actionStep</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: The step of the stepperMotor. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="201" column="10" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.cpp" bodystart="141" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="class_pince_1a276034390a36625be28299c0db1c3c54" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>Actuator_State</type>
+        <definition>Actuator_State Pince::Update</definition>
+        <argsstring>() override</argsstring>
+        <name>Update</name>
+        <reimplements refid="class_actuator_1abcd50fd00e60c114afde31648403e780">Update</reimplements>
+        <reimplementedby refid="class_pince_avant_1a29a479ea81391943af4a02f62fcdbbb2">Update</reimplementedby>
+        <reimplementedby refid="class_pince_arriere_1ac7d442bef84237e9df70272365c593fa">Update</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Virtual method, to call before each loop.</para>
+<para>Commands each actuator and updates the robot state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="204" column="20" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.cpp" bodystart="180" bodyend="218"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The public class to construct a robot gripper. Extends the abstract class <ref refid="class_actuator" kindref="compound">Actuator</ref>.</para>
+<para>This class is deprecated in the 2022 edition. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Actuator</label>
+        <link refid="class_actuator"/>
+      </node>
+      <node id="1">
+        <label>Pince</label>
+        <link refid="class_pince"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>PinceArriere</label>
+        <link refid="class_pince_arriere"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>PinceAvant</label>
+        <link refid="class_pince_avant"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Actuator</label>
+        <link refid="class_actuator"/>
+      </node>
+      <node id="1">
+        <label>Pince</label>
+        <link refid="class_pince"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>servo</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>stepperMotor</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Servo</label>
+        <link refid="class_servo"/>
+      </node>
+      <node id="4">
+        <label>StepperMotorJ</label>
+        <link refid="class_stepper_motor_j"/>
+      </node>
+    </collaborationgraph>
+    <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="180" column="1" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="181" bodyend="221"/>
+    <listofallmembers>
+      <member refid="class_pince_1a7725882b2fc328820cebabc00e7cd2b9" prot="protected" virt="non-virtual"><scope>Pince</scope><name>actionStep</name></member>
+      <member refid="class_actuator_1a813e211d860d125a45d713775c19d38b" prot="public" virt="non-virtual"><scope>Pince</scope><name>Actuator</name></member>
+      <member refid="class_actuator_1a40d4d6ecd707964f3a9a30fc02384e29" prot="protected" virt="non-virtual"><scope>Pince</scope><name>currentOrder</name></member>
+      <member refid="class_actuator_1a40a6e3266cfb00a66b104317c4d68a31" prot="protected" virt="non-virtual"><scope>Pince</scope><name>etat</name></member>
+      <member refid="class_actuator_1aff3a744eecf74c4b52a8a6b30ca0eb88" prot="public" virt="non-virtual"><scope>Pince</scope><name>GetEtat</name></member>
+      <member refid="class_actuator_1ae5c55e58f214e70c0cf16e9e81111063" prot="public" virt="non-virtual"><scope>Pince</scope><name>GetID</name></member>
+      <member refid="class_actuator_1a466fe2e29b99bf66f08116ff8ba46acb" prot="public" virt="non-virtual"><scope>Pince</scope><name>GetName</name></member>
+      <member refid="class_actuator_1a0819fc5a7749335bf3b5caa8f524ef87" prot="public" virt="non-virtual"><scope>Pince</scope><name>GetOrder</name></member>
+      <member refid="class_pince_1a1db2a77e3139df907791d02bb34566ab" prot="public" virt="non-virtual"><scope>Pince</scope><name>Init</name></member>
+      <member refid="class_actuator_1ab8ff5826f0a87b53d119c752d25af88a" prot="protected" virt="non-virtual"><scope>Pince</scope><name>messID</name></member>
+      <member refid="class_pince_1a8e0b222ff1a89e6b0335d21639018ccb" prot="protected" virt="non-virtual"><scope>Pince</scope><name>motorSteps</name></member>
+      <member refid="class_actuator_1a20f429b3963d3402b4788774b434ba87" prot="protected" virt="non-virtual"><scope>Pince</scope><name>name</name></member>
+      <member refid="class_actuator_1a0834ccb419fcc7340391b9ef5a564343" prot="public" virt="non-virtual"><scope>Pince</scope><name>NewOrder</name></member>
+      <member refid="class_actuator_1a6f2502f7dfe2f59d7f58f6053c8574c6" prot="public" virt="non-virtual"><scope>Pince</scope><name>OrderCompleted</name></member>
+      <member refid="class_pince_1a631a01a2192fe014b2bcb54706e04b57" prot="public" virt="non-virtual"><scope>Pince</scope><name>Pince</name></member>
+      <member refid="class_pince_1a03ae3ce45c584ee4babf6b84841bf518" prot="protected" virt="non-virtual"><scope>Pince</scope><name>pinDir</name></member>
+      <member refid="class_pince_1ac449f0f6dff79be627d82644ac252a56" prot="protected" virt="non-virtual"><scope>Pince</scope><name>pinM0</name></member>
+      <member refid="class_pince_1ab49408bd0827582f15ce724666185101" prot="protected" virt="non-virtual"><scope>Pince</scope><name>pinM1</name></member>
+      <member refid="class_pince_1a520a09e99aa93c6007a200a818fb15fa" prot="protected" virt="non-virtual"><scope>Pince</scope><name>pinServo</name></member>
+      <member refid="class_pince_1abd8aebec9b2f705c658a778183b90042" prot="protected" virt="non-virtual"><scope>Pince</scope><name>pinSleep</name></member>
+      <member refid="class_pince_1a0af82a7a90d6fdcb0839dfc654694ac1" prot="protected" virt="non-virtual"><scope>Pince</scope><name>pinStep</name></member>
+      <member refid="class_pince_1aef415b97e8489b599ba2ad61a87a1e11" prot="protected" virt="non-virtual"><scope>Pince</scope><name>posFermee</name></member>
+      <member refid="class_pince_1a729fefaa34fbc0bccbaf39f93efbdb10" prot="protected" virt="non-virtual"><scope>Pince</scope><name>posOuverte</name></member>
+      <member refid="class_pince_1ade569d63ec4b82dd24cb12afb77197e2" prot="protected" virt="non-virtual"><scope>Pince</scope><name>servo</name></member>
+      <member refid="class_pince_1a5834c386f0296e73e39c75ea9af84414" prot="protected" virt="non-virtual"><scope>Pince</scope><name>standardDelay</name></member>
+      <member refid="class_pince_1a2f028a8d492d579c8c2753203a6ce325" prot="protected" virt="non-virtual"><scope>Pince</scope><name>stepperMotor</name></member>
+      <member refid="class_pince_1a276034390a36625be28299c0db1c3c54" prot="public" virt="virtual"><scope>Pince</scope><name>Update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

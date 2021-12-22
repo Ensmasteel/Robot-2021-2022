@@ -1,0 +1,779 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_robot" kind="class" language="C++" prot="public">
+    <compoundname>Robot</compoundname>
+    <derivedcompoundref refid="class_robot_simu" prot="public" virt="non-virtual">RobotSimu</derivedcompoundref>
+    <includes refid="_robot_8h" local="no">Robot.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_robot_1aaa0f7501e3230d2bf19a6d563c36ce03" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Robot::filterFrequency</definition>
+        <argsstring></argsstring>
+        <name>filterFrequency</name>
+        <initializer>= 20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="20" column="13" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1a4feb9dbee81f6b9518ed80357ac75e99" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_odometrie" kindref="compound">Odometrie</ref></type>
+        <definition>Odometrie Robot::odometrie</definition>
+        <argsstring></argsstring>
+        <name>odometrie</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="21" column="15" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1a5c0764e23f8293713559ce71f107f424" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_cinetique" kindref="compound">Cinetique</ref></type>
+        <definition>Cinetique Robot::cinetiqueNext</definition>
+        <argsstring></argsstring>
+        <name>cinetiqueNext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="22" column="15" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1a76f2b0c63263ffabf6579d1d3e133248" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_motor" kindref="compound">Motor</ref></type>
+        <definition>Motor Robot::motorLeft</definition>
+        <argsstring></argsstring>
+        <name>motorLeft</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="23" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1afec293b443364a081199dcf45b7c2b71" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_motor" kindref="compound">Motor</ref></type>
+        <definition>Motor Robot::motorRight</definition>
+        <argsstring></argsstring>
+        <name>motorRight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="23" column="21" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1a49fd643c38bd74f0e8a30cbbfdcf2f5d" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Robot::translationOrderPID</definition>
+        <argsstring></argsstring>
+        <name>translationOrderPID</name>
+        <initializer>= 0.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="24" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1ae65cbb4874ef57f13dddc9af2fc6704e" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Robot::rotationOrderPID</definition>
+        <argsstring></argsstring>
+        <name>rotationOrderPID</name>
+        <initializer>= 0.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="24" column="32" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1ac357047ceae5a5740ecb9230ee584b4b" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Robot::compteur</definition>
+        <argsstring></argsstring>
+        <name>compteur</name>
+        <initializer>=0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="25" column="13" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1ad2e0c6c452f37bcfcb19c45fdb75a0a6" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_sequence" kindref="compound">Sequence</ref> **</type>
+        <definition>Sequence** Robot::sequences</definition>
+        <argsstring></argsstring>
+        <name>sequences</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="27" column="14" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1a08e7c0bb16d6e4438c1d4dd8e88ae527" prot="protected" static="no" mutable="no">
+        <type>TeamColor</type>
+        <definition>TeamColor Robot::teamColor</definition>
+        <argsstring></argsstring>
+        <name>teamColor</name>
+        <initializer>= BLEU</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="28" column="15" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_robot_1a437d1cd6fffaaf92f7c532c283a5220b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Robot::endNorth</definition>
+        <argsstring></argsstring>
+        <name>endNorth</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="32" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1acd05c56cacaa606c9e8f11a1346d3b1e" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Robot::timeStarted</definition>
+        <argsstring></argsstring>
+        <name>timeStarted</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="33" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1aeb09313b522d104848b29098ff8cb024" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Robot::backLength</definition>
+        <argsstring></argsstring>
+        <name>backLength</name>
+        <initializer>= 0.15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="34" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1a018a9e63a2e6a2b0746a8d7ed754f510" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Robot::frontLength</definition>
+        <argsstring></argsstring>
+        <name>frontLength</name>
+        <initializer>= 0.15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="35" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1aa0ceb40e2292e3634abbf28ea76b1040" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Robot::length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <initializer>= backLength + frontLength</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="36" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1a19eea4b4224ed1e1acefa444f6233886" prot="public" static="no" mutable="no">
+        <type>Stream *</type>
+        <definition>Stream* Robot::espPort</definition>
+        <argsstring></argsstring>
+        <name>espPort</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="38" column="12" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1a6f7eb3bbd80031903c36f5b67ec1464b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Robot::rangeAdversaryFoward</definition>
+        <argsstring></argsstring>
+        <name>rangeAdversaryFoward</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="39" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1a120a1f51da1f30a44ce29c8835fdcf91" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Robot::rangeAdversaryBackward</definition>
+        <argsstring></argsstring>
+        <name>rangeAdversaryBackward</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="40" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1a16b31bea9d53ab19288ac21952625d26" prot="public" static="no" mutable="no">
+        <type>String</type>
+        <definition>String Robot::readString</definition>
+        <argsstring></argsstring>
+        <name>readString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="41" column="12" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1a398ba33d237078392c33c61ef93bef85" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Robot::stopped</definition>
+        <argsstring></argsstring>
+        <name>stopped</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="42" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1afa169e4860b1d83fc50b66f441b4ed21" prot="public" static="no" mutable="no">
+        <type><ref refid="class_cinetique" kindref="compound">Cinetique</ref></type>
+        <definition>Cinetique Robot::cinetiqueCurrent</definition>
+        <argsstring></argsstring>
+        <name>cinetiqueCurrent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="46" column="15" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1a10ea24c7d245cb0daade9f896e0ab5ab" prot="public" static="no" mutable="no">
+        <type><ref refid="class_ghost" kindref="compound">Ghost</ref></type>
+        <definition>Ghost Robot::ghost</definition>
+        <argsstring></argsstring>
+        <name>ghost</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="47" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1ab65954b9435b949f274c525ef2b31a94" prot="public" static="no" mutable="no">
+        <type><ref refid="class_asservissement" kindref="compound">Asservissement</ref></type>
+        <definition>Asservissement Robot::controller</definition>
+        <argsstring></argsstring>
+        <name>controller</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="48" column="20" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1af6df1ada112187b5dc66c693c83d6c38" prot="public" static="no" mutable="no">
+        <type><ref refid="class_communication" kindref="compound">Communication</ref></type>
+        <definition>Communication Robot::communication</definition>
+        <argsstring></argsstring>
+        <name>communication</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="49" column="19" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_robot_1a16902068d3ad57f3a7971cdef155a86e" prot="public" static="no" mutable="no">
+        <type><ref refid="class_communication" kindref="compound">Communication</ref></type>
+        <definition>Communication Robot::commActionneurs</definition>
+        <argsstring></argsstring>
+        <name>commActionneurs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="50" column="19" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_robot_1a8646551dca73b9db02fd5aa4c56bf0c3" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Robot::Update_Cinetique</definition>
+        <argsstring>(float dt)</argsstring>
+        <name>Update_Cinetique</name>
+        <reimplementedby refid="class_robot_simu_1a04626b8b8ab78480c21b925a38d93de4">Update_Cinetique</reimplementedby>
+        <param>
+          <type>float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="26" column="18" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.cpp" bodystart="205" bodyend="211"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_robot_1a574586aaa849cb0affb7809ab843e250" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Robot::Robot</definition>
+        <argsstring>(float xIni=0.0, float yIni=0.0, float thetaIni=0.0, Stream *commPort=&amp;Serial, Stream *actuPort=&amp;Serial, Stream *espPort=&amp;Serial4)</argsstring>
+        <name>Robot</name>
+        <param>
+          <type>float</type>
+          <declname>xIni</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>yIni</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>thetaIni</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>Stream *</type>
+          <declname>commPort</declname>
+          <defval>&amp;Serial</defval>
+        </param>
+        <param>
+          <type>Stream *</type>
+          <declname>actuPort</declname>
+          <defval>&amp;Serial</defval>
+        </param>
+        <param>
+          <type>Stream *</type>
+          <declname>espPort</declname>
+          <defval>&amp;Serial4</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor of the robot class. Set up all references to variables of other classes. Definition of all the sequence of the actions. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>xIni</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: float, initial X-axis coordinates of the robot. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>yIni</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: float, initial Y-axis coordinates of the robot. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>thetaIni</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: float, initial angle of the robot. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commPort</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: pointer to current communication port. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>actuPort</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: pointer to the actuator port. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="66" column="5" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.cpp" bodystart="31" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="class_robot_1ac5e473914be046e6f20bb5300298db73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Robot::Update</definition>
+        <argsstring>(float dt)</argsstring>
+        <name>Update</name>
+        <param>
+          <type>float</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Updates information about real position, ghost&apos;s position, compute output and send orders to motors. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: time since last call. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="77" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.cpp" bodystart="213" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="class_robot_1a8ef961d074427230155b47a0be36684c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Robot::telemetry</definition>
+        <argsstring>(bool odometrie, bool other)</argsstring>
+        <name>telemetry</name>
+        <param>
+          <type>bool</type>
+          <declname>odometrie</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Send current robot state on telemetry serial. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>odometrie</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: bool. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: bool. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="90" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.cpp" bodystart="304" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="class_robot_1a92dfc164f4b5687a7ffc1dab1cf7bfbe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_sequence" kindref="compound">Sequence</ref> *</type>
+        <definition>Sequence * Robot::getSequenceByName</definition>
+        <argsstring>(SequenceName name)</argsstring>
+        <name>getSequenceByName</name>
+        <param>
+          <type>SequenceName</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return sequence named &apos;name&apos; <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: String, name of the wanted sequence. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="class_sequence" kindref="compound">Sequence</ref>, the sequences searched. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="97" column="14" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.cpp" bodystart="320" bodyend="322"/>
+      </memberdef>
+      <memberdef kind="function" id="class_robot_1af639da058cf55f8fc03038d43c76a992" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float Robot::getTime</definition>
+        <argsstring>()</argsstring>
+        <name>getTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="99" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.cpp" bodystart="324" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="class_robot_1abb5c7fe3cd18368412caf0a543af2f34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Robot::setTeamColor</definition>
+        <argsstring>(TeamColor teamColor)</argsstring>
+        <name>setTeamColor</name>
+        <param>
+          <type>TeamColor</type>
+          <declname>teamColor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="101" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.cpp" bodystart="328" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="class_robot_1af88b8ed8519f9e5b40829c0f18688871" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>TeamColor</type>
+        <definition>TeamColor Robot::getTeamColor</definition>
+        <argsstring>()</argsstring>
+        <name>getTeamColor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="103" column="15" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.cpp" bodystart="333" bodyend="335"/>
+      </memberdef>
+      <memberdef kind="function" id="class_robot_1afd23988945672e7b1fd11311820aac7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Robot::move</definition>
+        <argsstring>(VectorE where)</argsstring>
+        <name>move</name>
+        <param>
+          <type><ref refid="class_vector_e" kindref="compound">VectorE</ref></type>
+          <declname>where</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="105" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.cpp" bodystart="337" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="class_robot_1aee05cc448dffd1c15fbfedc7c654270c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Robot::move</definition>
+        <argsstring>(TargetVectorE whereTarget)</argsstring>
+        <name>move</name>
+        <param>
+          <type><ref refid="class_target_vector_e" kindref="compound">TargetVectorE</ref></type>
+          <declname>whereTarget</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="106" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.cpp" bodystart="344" bodyend="346"/>
+      </memberdef>
+      <memberdef kind="function" id="class_robot_1a3a45a43ad7dace7c8817c144fad227fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Robot::recalibrateGhost</definition>
+        <argsstring>()</argsstring>
+        <name>recalibrateGhost</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Teleports <ref refid="class_ghost" kindref="compound">Ghost</ref> on <ref refid="class_robot" kindref="compound">Robot</ref>&apos;s actual position. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="112" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.cpp" bodystart="348" bodyend="351"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Defines a robot class, including all parameters to set it up. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Robot</label>
+        <link refid="class_robot"/>
+      </node>
+      <node id="2">
+        <label>RobotSimu</label>
+        <link refid="class_robot_simu"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="10">
+        <label>Asservissement</label>
+        <link refid="class_asservissement"/>
+      </node>
+      <node id="4">
+        <label>Cinetique</label>
+        <link refid="class_cinetique"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Codeuse</label>
+        <link refid="class_codeuse"/>
+      </node>
+      <node id="11">
+        <label>Communication</label>
+        <link refid="class_communication"/>
+      </node>
+      <node id="9">
+        <label>Ghost</label>
+        <link refid="class_ghost"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>cinetiqueController</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Motor</label>
+        <link refid="class_motor"/>
+      </node>
+      <node id="2">
+        <label>Odometrie</label>
+        <link refid="class_odometrie"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>codeuseDroite</edgelabel>
+          <edgelabel>codeuseGauche</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Robot</label>
+        <link refid="class_robot"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>odometrie</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>cinetiqueCurrent</edgelabel>
+          <edgelabel>cinetiqueNext</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>motorLeft</edgelabel>
+          <edgelabel>motorRight</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>sequences</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>ghost</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>controller</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>commActionneurs</edgelabel>
+          <edgelabel>communication</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Sequence</label>
+        <link refid="class_sequence"/>
+      </node>
+      <node id="6">
+        <label>Vector</label>
+        <link refid="class_vector"/>
+      </node>
+      <node id="5">
+        <label>VectorE</label>
+        <link refid="class_vector_e"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" line="17" column="1" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h" bodystart="18" bodyend="113"/>
+    <listofallmembers>
+      <member refid="class_robot_1aeb09313b522d104848b29098ff8cb024" prot="public" virt="non-virtual"><scope>Robot</scope><name>backLength</name></member>
+      <member refid="class_robot_1afa169e4860b1d83fc50b66f441b4ed21" prot="public" virt="non-virtual"><scope>Robot</scope><name>cinetiqueCurrent</name></member>
+      <member refid="class_robot_1a5c0764e23f8293713559ce71f107f424" prot="protected" virt="non-virtual"><scope>Robot</scope><name>cinetiqueNext</name></member>
+      <member refid="class_robot_1a16902068d3ad57f3a7971cdef155a86e" prot="public" virt="non-virtual"><scope>Robot</scope><name>commActionneurs</name></member>
+      <member refid="class_robot_1af6df1ada112187b5dc66c693c83d6c38" prot="public" virt="non-virtual"><scope>Robot</scope><name>communication</name></member>
+      <member refid="class_robot_1ac357047ceae5a5740ecb9230ee584b4b" prot="protected" virt="non-virtual"><scope>Robot</scope><name>compteur</name></member>
+      <member refid="class_robot_1ab65954b9435b949f274c525ef2b31a94" prot="public" virt="non-virtual"><scope>Robot</scope><name>controller</name></member>
+      <member refid="class_robot_1a437d1cd6fffaaf92f7c532c283a5220b" prot="public" virt="non-virtual"><scope>Robot</scope><name>endNorth</name></member>
+      <member refid="class_robot_1a19eea4b4224ed1e1acefa444f6233886" prot="public" virt="non-virtual"><scope>Robot</scope><name>espPort</name></member>
+      <member refid="class_robot_1aaa0f7501e3230d2bf19a6d563c36ce03" prot="protected" virt="non-virtual"><scope>Robot</scope><name>filterFrequency</name></member>
+      <member refid="class_robot_1a018a9e63a2e6a2b0746a8d7ed754f510" prot="public" virt="non-virtual"><scope>Robot</scope><name>frontLength</name></member>
+      <member refid="class_robot_1a92dfc164f4b5687a7ffc1dab1cf7bfbe" prot="public" virt="non-virtual"><scope>Robot</scope><name>getSequenceByName</name></member>
+      <member refid="class_robot_1af88b8ed8519f9e5b40829c0f18688871" prot="public" virt="non-virtual"><scope>Robot</scope><name>getTeamColor</name></member>
+      <member refid="class_robot_1af639da058cf55f8fc03038d43c76a992" prot="public" virt="non-virtual"><scope>Robot</scope><name>getTime</name></member>
+      <member refid="class_robot_1a10ea24c7d245cb0daade9f896e0ab5ab" prot="public" virt="non-virtual"><scope>Robot</scope><name>ghost</name></member>
+      <member refid="class_robot_1aa0ceb40e2292e3634abbf28ea76b1040" prot="public" virt="non-virtual"><scope>Robot</scope><name>length</name></member>
+      <member refid="class_robot_1a76f2b0c63263ffabf6579d1d3e133248" prot="protected" virt="non-virtual"><scope>Robot</scope><name>motorLeft</name></member>
+      <member refid="class_robot_1afec293b443364a081199dcf45b7c2b71" prot="protected" virt="non-virtual"><scope>Robot</scope><name>motorRight</name></member>
+      <member refid="class_robot_1afd23988945672e7b1fd11311820aac7e" prot="public" virt="non-virtual"><scope>Robot</scope><name>move</name></member>
+      <member refid="class_robot_1aee05cc448dffd1c15fbfedc7c654270c" prot="public" virt="non-virtual"><scope>Robot</scope><name>move</name></member>
+      <member refid="class_robot_1a4feb9dbee81f6b9518ed80357ac75e99" prot="protected" virt="non-virtual"><scope>Robot</scope><name>odometrie</name></member>
+      <member refid="class_robot_1a120a1f51da1f30a44ce29c8835fdcf91" prot="public" virt="non-virtual"><scope>Robot</scope><name>rangeAdversaryBackward</name></member>
+      <member refid="class_robot_1a6f7eb3bbd80031903c36f5b67ec1464b" prot="public" virt="non-virtual"><scope>Robot</scope><name>rangeAdversaryFoward</name></member>
+      <member refid="class_robot_1a16b31bea9d53ab19288ac21952625d26" prot="public" virt="non-virtual"><scope>Robot</scope><name>readString</name></member>
+      <member refid="class_robot_1a3a45a43ad7dace7c8817c144fad227fa" prot="public" virt="non-virtual"><scope>Robot</scope><name>recalibrateGhost</name></member>
+      <member refid="class_robot_1a574586aaa849cb0affb7809ab843e250" prot="public" virt="non-virtual"><scope>Robot</scope><name>Robot</name></member>
+      <member refid="class_robot_1ae65cbb4874ef57f13dddc9af2fc6704e" prot="protected" virt="non-virtual"><scope>Robot</scope><name>rotationOrderPID</name></member>
+      <member refid="class_robot_1ad2e0c6c452f37bcfcb19c45fdb75a0a6" prot="protected" virt="non-virtual"><scope>Robot</scope><name>sequences</name></member>
+      <member refid="class_robot_1abb5c7fe3cd18368412caf0a543af2f34" prot="public" virt="non-virtual"><scope>Robot</scope><name>setTeamColor</name></member>
+      <member refid="class_robot_1a398ba33d237078392c33c61ef93bef85" prot="public" virt="non-virtual"><scope>Robot</scope><name>stopped</name></member>
+      <member refid="class_robot_1a08e7c0bb16d6e4438c1d4dd8e88ae527" prot="protected" virt="non-virtual"><scope>Robot</scope><name>teamColor</name></member>
+      <member refid="class_robot_1a8ef961d074427230155b47a0be36684c" prot="public" virt="non-virtual"><scope>Robot</scope><name>telemetry</name></member>
+      <member refid="class_robot_1acd05c56cacaa606c9e8f11a1346d3b1e" prot="public" virt="non-virtual"><scope>Robot</scope><name>timeStarted</name></member>
+      <member refid="class_robot_1a49fd643c38bd74f0e8a30cbbfdcf2f5d" prot="protected" virt="non-virtual"><scope>Robot</scope><name>translationOrderPID</name></member>
+      <member refid="class_robot_1ac5e473914be046e6f20bb5300298db73" prot="public" virt="non-virtual"><scope>Robot</scope><name>Update</name></member>
+      <member refid="class_robot_1a8646551dca73b9db02fd5aa4c56bf0c3" prot="protected" virt="virtual"><scope>Robot</scope><name>Update_Cinetique</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,46 @@
+\hypertarget{class_straight_to___action}{}\doxysection{Straight\+To\+\_\+\+Action Class Reference}
+\label{class_straight_to___action}\index{StraightTo\_Action@{StraightTo\_Action}}
+
+
+{\ttfamily \#include $<$Actions.\+h$>$}
+
+Inheritance diagram for Straight\+To\+\_\+\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_straight_to___action}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_straight_to___action_a0f46eb20b076167e4e659076e24080b5}{start}} ()
+\item 
+\mbox{\Hypertarget{class_straight_to___action_a61ef7b90aa8ca4aa2a284477ab1d4f86}\label{class_straight_to___action_a61ef7b90aa8ca4aa2a284477ab1d4f86}} 
+{\bfseries Straight\+To\+\_\+\+Action} (float timeout, \mbox{\hyperlink{class_target_vector}{Target\+Vector}} target, Move\+Profile\+Name profile\+Name, int16\+\_\+t require=NO\+\_\+\+REQUIREMENT)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Goes to target and does a spin and a straight line before. \begin{DoxyWarning}{Warning}
+team dependant! 
+\end{DoxyWarning}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_straight_to___action_a0f46eb20b076167e4e659076e24080b5}\label{class_straight_to___action_a0f46eb20b076167e4e659076e24080b5}} 
+\index{StraightTo\_Action@{StraightTo\_Action}!start@{start}}
+\index{start@{start}!StraightTo\_Action@{StraightTo\_Action}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Straight\+To\+\_\+\+Action\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+The start function is called once at action\textquotesingle{}s beginning, if the action requirement did not fail. Else the fail is immediate. Is the action is interrupted by \mbox{\hyperlink{class_sequence_a77dcfee1093388c7b283c5ebcd0556fc}{Sequence\+::pause}}, start function will be re-\/called during resume. 
+
+Reimplemented from \mbox{\hyperlink{class_double___action_aac46b3f8dad147fde4f7934e6f86649d}{Double\+\_\+\+Action}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+cpp\end{DoxyCompactItemize}

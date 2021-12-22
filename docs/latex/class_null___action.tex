@@ -1,0 +1,55 @@
+\hypertarget{class_null___action}{}\doxysection{Null\+\_\+\+Action Class Reference}
+\label{class_null___action}\index{Null\_Action@{Null\_Action}}
+
+
+{\ttfamily \#include $<$Actions.\+h$>$}
+
+Inheritance diagram for Null\+\_\+\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_null___action}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_null___action_a5ef08097e316435552daf168bb95bc6b}{is\+Finished}} ()
+\item 
+bool \mbox{\hyperlink{class_null___action_a972d555c7cebec548229e28742ff8493}{has\+Failed}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Does nothing. Can disable an action of a double action. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_null___action_a972d555c7cebec548229e28742ff8493}\label{class_null___action_a972d555c7cebec548229e28742ff8493}} 
+\index{Null\_Action@{Null\_Action}!hasFailed@{hasFailed}}
+\index{hasFailed@{hasFailed}!Null\_Action@{Null\_Action}}
+\doxysubsubsection{\texorpdfstring{hasFailed()}{hasFailed()}}
+{\footnotesize\ttfamily bool Null\+\_\+\+Action\+::has\+Failed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Has\+Failed is called endlessly. Returns if the action failed and should be left aside. The sequence will remember the function failed (useful for requirement). By default, an action fails if it exceeds the time duration allowed by the timer. \begin{DoxyNote}{Note}
+A timeout set to -\/1 indicates the action has an unlimited time. 
+\end{DoxyNote}
+
+
+Reimplemented from \mbox{\hyperlink{class_action_a82a24a3b95fb310326e649402fbcef11}{Action}}.
+
+\mbox{\Hypertarget{class_null___action_a5ef08097e316435552daf168bb95bc6b}\label{class_null___action_a5ef08097e316435552daf168bb95bc6b}} 
+\index{Null\_Action@{Null\_Action}!isFinished@{isFinished}}
+\index{isFinished@{isFinished}!Null\_Action@{Null\_Action}}
+\doxysubsubsection{\texorpdfstring{isFinished()}{isFinished()}}
+{\footnotesize\ttfamily bool Null\+\_\+\+Action\+::is\+Finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Is\+Finished is called endlessly. Returns if the action is done. Can also be an update function. 
+
+Reimplemented from \mbox{\hyperlink{class_action_a3e524a7ba7014522e5111e06cc9b963b}{Action}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+cpp\end{DoxyCompactItemize}

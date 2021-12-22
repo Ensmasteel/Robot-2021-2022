@@ -1,0 +1,395 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_functions_8h" kind="file" language="C++">
+    <compoundname>Functions.h</compoundname>
+    <includedby refid="_functions_8cpp" local="yes">Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp</includedby>
+    <includedby refid="_robot_8cpp" local="yes">Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.cpp</includedby>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_functions_8h_1aad4d89f12e7489987d81ce306848a176" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PID_tweak</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>PID_tweak</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Send a tweak to the <ref refid="class_p_i_d" kindref="compound">PID</ref> <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+<parametername>pointer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to the robot. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" line="14" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="9" bodyend="16" declfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" declline="14" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8h_1a9dbb6dbb28cf28648fcbdfe3dff95da7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void add_backward</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>add_backward</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a <ref refid="class_backward___action" kindref="compound">Backward_Action</ref> to the sequence running. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+<parametername>pointer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to the robot. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" line="20" column="6" declfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" declline="20" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8h_1a331f1178d15168f1b4483da6cf06c679" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void add_spin</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>add_spin</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a <ref refid="class_spin___action" kindref="compound">Spin_Action</ref> to the sequence running. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+<parametername>pointer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to the robot. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" line="26" column="6" declfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" declline="26" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8h_1ac0365b40cba3567e81c253171651edb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pauseNlockMainSequence</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>pauseNlockMainSequence</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pauses and locks the main sequence on the robot. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+<parametername>pointer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to the robot. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" line="32" column="6" declfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" declline="32" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8h_1a677849c660fdfac1e34b096ebded5be3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ping</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>ping</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Send a ping to the robot, to verify the connection. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+<parametername>pointer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to the robot. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" line="38" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="18" bodyend="21" declfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" declline="38" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8h_1a508b2b06a873ae70b67ad93c07cc9bd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void shutdown</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>shutdown</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shutdown the robot. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" line="44" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="23" bodyend="29" declfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" declline="44" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8h_1addd0c38132a8c0a09f8a08bdf66f6de9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setTimeStart</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>setTimeStart</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" line="46" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="31" bodyend="34" declfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" declline="46" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8h_1ab36c4f0e40ddd497e9ff5e775cd9dfcc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void startBackHomeSeq</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>startBackHomeSeq</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a backHomme sequence to the sequence running. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" line="52" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="36" bodyend="45" declfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" declline="52" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8h_1af86618c886085e6ff28aa390fc8d8e43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setNorth</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>setNorth</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the nuorth to robot. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" line="58" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="47" bodyend="51" declfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" declline="58" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8h_1a9f804dcb0c9218ee302cae54b460a90e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setSouth</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>setSouth</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set South to robot. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" line="64" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="53" bodyend="57" declfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" declline="64" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8h_1a844d711a870ff9d0766293e798f62c3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void recallageBordure</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>recallageBordure</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Recalibrating with the edges of the table. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" line="70" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="59" bodyend="100" declfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" declline="70" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8h_1a343e950a028c6c26540afa9ab5def893" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void forceMainSeqNext</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>forceMainSeqNext</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Forces main sequence to start. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" line="76" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="102" bodyend="105" declfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" declline="76" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_functions_8h_1a905531278dabf6d2c78d097cdcff4fd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void startTimeSeq</definition>
+        <argsstring>(Robot *robot)</argsstring>
+        <name>startTimeSeq</name>
+        <param>
+          <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+          <declname>robot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Starts time sequence. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>robot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" line="82" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.cpp" bodystart="107" bodyend="110" declfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h" declline="82" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>FUNCTIONS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FUNCTIONS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_robot" kindref="compound">Robot</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PID_tweak(<ref refid="class_robot" kindref="compound">Robot</ref>*<sp/>robot);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>add_backward(<ref refid="class_robot" kindref="compound">Robot</ref>*<sp/>robot);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>add_spin(<ref refid="class_robot" kindref="compound">Robot</ref>*<sp/>robot);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>pauseNlockMainSequence(<ref refid="class_robot" kindref="compound">Robot</ref>*<sp/>robot);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ping(<ref refid="class_robot" kindref="compound">Robot</ref>*<sp/>robot);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>shutdown(<ref refid="class_robot" kindref="compound">Robot</ref>*<sp/>robot);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setTimeStart(<ref refid="class_robot" kindref="compound">Robot</ref>*<sp/>robot);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>startBackHomeSeq(<ref refid="class_robot" kindref="compound">Robot</ref>*<sp/>robot);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setNorth(<ref refid="class_robot" kindref="compound">Robot</ref>*<sp/>robot);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setSouth(<ref refid="class_robot" kindref="compound">Robot</ref>*<sp/>robot);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>recallageBordure(<ref refid="class_robot" kindref="compound">Robot</ref>*<sp/>robot);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>forceMainSeqNext(<ref refid="class_robot" kindref="compound">Robot</ref>*<sp/>robot);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>startTimeSeq(<ref refid="class_robot" kindref="compound">Robot</ref>*<sp/>robot);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>!FUNCTIONS_H_</highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Functions.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,76 @@
+\hypertarget{class_bras}{}\doxysection{Bras Class Reference}
+\label{class_bras}\index{Bras@{Bras}}
+
+
+{\ttfamily \#include $<$Actuators.\+h$>$}
+
+Inheritance diagram for Bras\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_bras}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bras_a7fe274afc6082a4ac295b8fcaf7f5b45}{Bras}} ()
+\item 
+void \mbox{\hyperlink{class_bras_af984b9621fde5644bdee51ec3bcb3c38}{Init}} (uint8\+\_\+t pin\+Servo, Message\+ID ID, int pos\+Rentre=0, int pos\+Sortie=100)
+\item 
+Actuator\+\_\+\+State \mbox{\hyperlink{class_bras_a3e97c50a972a0e32bd8a807871c220fb}{Update}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Public class that extends the abstract actuator class.
+
+Enables you to create a class containting the information to control a robot arm equipped with a servomotor and 2 positions \+: the initial pos and the deployed position. Both are given in degrees. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bras_a7fe274afc6082a4ac295b8fcaf7f5b45}\label{class_bras_a7fe274afc6082a4ac295b8fcaf7f5b45}} 
+\index{Bras@{Bras}!Bras@{Bras}}
+\index{Bras@{Bras}!Bras@{Bras}}
+\doxysubsubsection{\texorpdfstring{Bras()}{Bras()}}
+{\footnotesize\ttfamily Bras\+::\+Bras (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Public basic constructor. Does not require any parameters. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bras_af984b9621fde5644bdee51ec3bcb3c38}\label{class_bras_af984b9621fde5644bdee51ec3bcb3c38}} 
+\index{Bras@{Bras}!Init@{Init}}
+\index{Init@{Init}!Bras@{Bras}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Bras\+::\+Init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{pin\+Servo,  }\item[{Message\+ID}]{ID,  }\item[{int}]{pos\+Rentre = {\ttfamily 0},  }\item[{int}]{pos\+Sortie = {\ttfamily 100} }\end{DoxyParamCaption})}
+
+Initialises the robot arm with some parameters.
+
+Enables you to give the initial parameters to the arm previously instantiated. 
+\begin{DoxyParams}{Parameters}
+{\em pin\+Servo} & \+: the pin number on wich the servomotor is connected. \\
+\hline
+{\em ID} & \+: The message ID of the default state of the arm \\
+\hline
+{\em pos\+Rentre} & The angle given in degree of the initial position. \\
+\hline
+{\em pos\+Sortie} & The angle given in degree of the final position. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_bras_a3e97c50a972a0e32bd8a807871c220fb}\label{class_bras_a3e97c50a972a0e32bd8a807871c220fb}} 
+\index{Bras@{Bras}!Update@{Update}}
+\index{Update@{Update}!Bras@{Bras}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily Actuator\+\_\+\+State Bras\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Virtual method, to call before each loop.
+
+Commands each actuator and updates the robot state. 
+
+Reimplemented from \mbox{\hyperlink{class_actuator_abcd50fd00e60c114afde31648403e780}{Actuator}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Arduino\+\_\+\+Mega/\+Lib/\+Actuators/Actuators.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Arduino\+\_\+\+Mega/\+Lib/\+Actuators/Actuators.\+cpp\end{DoxyCompactItemize}

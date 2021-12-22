@@ -1,0 +1,130 @@
+\hypertarget{_vector_8h_source}{}\doxysection{Vector.\+h}
+\label{_vector_8h_source}\index{Ensmasteel\_Bot\_2020/Libraries\_shared/Vector/Vector.h@{Ensmasteel\_Bot\_2020/Libraries\_shared/Vector/Vector.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef VECTOR\_H\_}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define VECTOR\_H\_}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}Logger.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{18 \textcolor{keywordtype}{float} normalizeAngle(\textcolor{keywordtype}{float} angle);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{class_vector}{Vector}}}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25 \textcolor{keyword}{public}:}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{keywordtype}{float} \_x, \mbox{\hyperlink{class_vector_acfd6a472304b3832fd37b4dbf3c90c9b}{\_y}}; }
+\DoxyCodeLine{34     \mbox{\hyperlink{class_vector_a2bf51c822183b84dc44304cb1cf48fa3}{Vector}}(\textcolor{keywordtype}{float} x = 0.0, \textcolor{keywordtype}{float} y = 0.0);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \mbox{\hyperlink{class_vector}{Vector}} \mbox{\hyperlink{class_vector_a8636c13924ae2a8f08a5c56c1bdee35d}{operator+}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_vector}{Vector}} \&other); }
+\DoxyCodeLine{37     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_vector_aad6b7dcfd087005378aa64e506cf03d2}{operator+=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_vector}{Vector}} \&other); }
+\DoxyCodeLine{38     \mbox{\hyperlink{class_vector}{Vector}} \mbox{\hyperlink{class_vector_a78273e8287626f263ca0cfb26a6f9770}{operator-\/}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_vector}{Vector}} \&other); }
+\DoxyCodeLine{39     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_vector_a4bb01f8acdc32d677ddadf9d0896cc1c}{operator\%}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_vector}{Vector}} \&other); }
+\DoxyCodeLine{40     \mbox{\hyperlink{class_vector}{Vector}} \mbox{\hyperlink{class_vector_a2cd6694ac4999ed6686d9d149de999ea}{operator*}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} scalaire); }
+\DoxyCodeLine{41     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_vector_ae485d630cc9cbbfcec82f93ab4d5ee6c}{operator==}}(\mbox{\hyperlink{class_vector}{Vector}} \textcolor{keyword}{const} \&other); }
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_vector_a4d643a71ea7c87cb77ab7bdfb26b42ba}{norm}}(); }
+\DoxyCodeLine{44     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_vector_ac83edd3ce21c2eea555a360f64cf0acc}{angle}}(); }
+\DoxyCodeLine{45     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_vector_a44b5d0725bbfe4baa9e5485b50aede9a}{distanceWith}}(\mbox{\hyperlink{class_vector}{Vector}} \&other); }
+\DoxyCodeLine{46     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_vector_abd1526dde6917905a9331e0b16d9fe2a}{print}}(\textcolor{keyword}{const} String\& prefix=\textcolor{stringliteral}{"{}"{}},\textcolor{keywordtype}{bool} info=\textcolor{keyword}{false});}
+\DoxyCodeLine{47     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_vector_ac12c872fc6337ea5992e2b91d35ca5b9}{toTelemetry}}(\textcolor{keyword}{const} String\& prefix=\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{48     \mbox{\hyperlink{class_vector}{Vector}} \mbox{\hyperlink{class_vector_a3879877fbfc3752e7ca1b64af6d557e6}{rotate}}(\textcolor{keywordtype}{float} theta);}
+\DoxyCodeLine{49 \};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \mbox{\hyperlink{class_vector}{Vector}} directeur(\textcolor{keywordtype}{float} theta);}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{56 \textcolor{keyword}{class }\mbox{\hyperlink{class_vector_e}{VectorE}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_vector}{Vector}}}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58 \textcolor{keyword}{public}:}
+\DoxyCodeLine{59     \textcolor{keywordtype}{float} \_theta; \textcolor{comment}{//<Angle of vector}}
+\DoxyCodeLine{66 \textcolor{comment}{}    \mbox{\hyperlink{class_vector_e_a5b9897cfe6407e9504b9efdba349f51b}{VectorE}}(\textcolor{keywordtype}{float} x = 0.0, \textcolor{keywordtype}{float} y = 0.0, \textcolor{keywordtype}{float} theta = 0.0);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_vector_e_add2733ccf3d8e7dc816ba952fa4120fb}{normalizeTheta}}();}
+\DoxyCodeLine{69     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_vector_e_a29db572cad2265dd57c32a0923221a8c}{print}}(\textcolor{keyword}{const} String\& prefix=\textcolor{stringliteral}{"{}"{}},\textcolor{keywordtype}{bool} info=\textcolor{keyword}{false});}
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_vector_e_a62e9a0a3cde04daa20f322a6d852693c}{toTelemetry}}(\textcolor{keyword}{const} String\& prefix=\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{71     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_vector_e_a52eeb7fe68286c810caef10e2b5467bc}{operator==}}(\mbox{\hyperlink{class_vector_e}{VectorE}} \textcolor{keyword}{const} \&other);}
+\DoxyCodeLine{72 \};}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 }
+\DoxyCodeLine{78 \textcolor{keyword}{class }\mbox{\hyperlink{class_cinetique}{Cinetique}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_vector_e}{VectorE}}}
+\DoxyCodeLine{79 \{}
+\DoxyCodeLine{80 \textcolor{keyword}{public}:}
+\DoxyCodeLine{81     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_cinetique_a7fbbeae0349326d9ba8c8677a775f0ab}{\_v}}; }
+\DoxyCodeLine{82     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_cinetique_a605427ec93a1ea4b2460d0f6307e1e31}{\_w}}; }
+\DoxyCodeLine{91     \mbox{\hyperlink{class_cinetique_adf5ef593311b41036cf0f81d24b6d0bb}{Cinetique}}(\textcolor{keywordtype}{float} x = 0.0, \textcolor{keywordtype}{float} y = 0.0, \textcolor{keywordtype}{float} theta = 0.0, \textcolor{keywordtype}{float} v = 0.0, \textcolor{keywordtype}{float} w = 0.0);}
+\DoxyCodeLine{92     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cinetique_a3d712c5f685be073b402cc33e1ab038c}{print}}(\textcolor{keyword}{const} String\& prefix=\textcolor{stringliteral}{"{}"{}},\textcolor{keywordtype}{bool} info=\textcolor{keyword}{false});}
+\DoxyCodeLine{93     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cinetique_a1aab1668c139a7040c4a0d83d85422c7}{toTelemetry}}(\textcolor{keyword}{const} String\& prefix=\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{94     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_cinetique_a3aaa4453fad5ffc7b730db1c100a35b1}{operator==}}(\mbox{\hyperlink{class_cinetique}{Cinetique}} \textcolor{keyword}{const} \&other);}
+\DoxyCodeLine{95 \};}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97 \textcolor{comment}{// =======     TARGETS    =======}}
+\DoxyCodeLine{98 \textcolor{comment}{// ==============================}}
+\DoxyCodeLine{102 \textcolor{comment}{}\textcolor{keyword}{enum} TeamColor}
+\DoxyCodeLine{103 \{}
+\DoxyCodeLine{104     BLEU,}
+\DoxyCodeLine{105     JAUNE,}
+\DoxyCodeLine{106 \};}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{111 \textcolor{keyword}{class }\mbox{\hyperlink{class_target}{Target}}}
+\DoxyCodeLine{112 \{}
+\DoxyCodeLine{113 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{114     \textcolor{keyword}{enum} Type}
+\DoxyCodeLine{115     \{}
+\DoxyCodeLine{116         RELATIVE, \textcolor{comment}{// Si Jaune alors getX renvoie 3.0 -\/ \_x   et  getTheta renvoie PI -\/ \_theta}}
+\DoxyCodeLine{117         ABSOLUTE, \textcolor{comment}{// Independant du coté}}
+\DoxyCodeLine{118         SPECIFIC  \textcolor{comment}{// X Y Theta dépendent du coté}}
+\DoxyCodeLine{119     \};}
+\DoxyCodeLine{120     \textcolor{keyword}{static} TeamColor teamColor;}
+\DoxyCodeLine{121     Type type;}
+\DoxyCodeLine{122     \textcolor{keyword}{constexpr} \textcolor{keyword}{static} \textcolor{keywordtype}{float} LENGTH\_TABLE = 3.0; \textcolor{comment}{// meters}}
+\DoxyCodeLine{123     \textcolor{keyword}{constexpr} \textcolor{keyword}{static} \textcolor{keywordtype}{float} WIDTH\_TABLE = 2.0; \textcolor{comment}{//meters}}
+\DoxyCodeLine{124 \textcolor{keyword}{public}:}
+\DoxyCodeLine{125     \textcolor{keyword}{static} \textcolor{keywordtype}{void} setTeamColor(TeamColor color);}
+\DoxyCodeLine{126     \mbox{\hyperlink{class_target}{Target}}();\textcolor{comment}{//<Public constructor for target.}}
+\DoxyCodeLine{127 \};}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{132 \textcolor{keyword}{class }\mbox{\hyperlink{class_target_vector}{TargetVector}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_target}{Target}}}
+\DoxyCodeLine{133 \{}
+\DoxyCodeLine{134 \textcolor{keyword}{private}:}
+\DoxyCodeLine{135     \textcolor{keywordtype}{float} \_xB,\_yB;}
+\DoxyCodeLine{136     \textcolor{keywordtype}{float} \_xJ,\_yJ;}
+\DoxyCodeLine{137 \textcolor{keyword}{public}:}
+\DoxyCodeLine{138     \mbox{\hyperlink{class_vector}{Vector}} getVector();}
+\DoxyCodeLine{139     \mbox{\hyperlink{class_target_vector}{TargetVector}}(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{bool} absolute);}
+\DoxyCodeLine{140     \mbox{\hyperlink{class_target_vector}{TargetVector}}(\textcolor{keywordtype}{float} xB, \textcolor{keywordtype}{float} yB, \textcolor{keywordtype}{float} xJ, \textcolor{keywordtype}{float} yJ);}
+\DoxyCodeLine{141     \mbox{\hyperlink{class_target_vector}{TargetVector}}()\{\}}
+\DoxyCodeLine{142 \};}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{147 \textcolor{keyword}{class }\mbox{\hyperlink{class_target_vector_e}{TargetVectorE}}: \textcolor{keyword}{public} \mbox{\hyperlink{class_target}{Target}}}
+\DoxyCodeLine{148 \{}
+\DoxyCodeLine{149 \textcolor{keyword}{private}:}
+\DoxyCodeLine{150     \textcolor{keywordtype}{float} \_xB,\_yB,\_thetaB;}
+\DoxyCodeLine{151     \textcolor{keywordtype}{float} \_xJ,\_yJ,\_thetaJ;}
+\DoxyCodeLine{152 \textcolor{keyword}{public}:}
+\DoxyCodeLine{153     \mbox{\hyperlink{class_vector_e}{VectorE}} getVectorE();}
+\DoxyCodeLine{154     \mbox{\hyperlink{class_target_vector_e}{TargetVectorE}}(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} theta, \textcolor{keywordtype}{bool} absolute);}
+\DoxyCodeLine{155     \mbox{\hyperlink{class_target_vector_e}{TargetVectorE}}(\textcolor{keywordtype}{float} xB, \textcolor{keywordtype}{float} yB, \textcolor{keywordtype}{float} thetaB, \textcolor{keywordtype}{float} xJ, \textcolor{keywordtype}{float} yJ, \textcolor{keywordtype}{float} thetaJ);}
+\DoxyCodeLine{156     \mbox{\hyperlink{class_target_vector_e}{TargetVectorE}}(\textcolor{keywordtype}{float} theta, \textcolor{keywordtype}{bool} absolute);}
+\DoxyCodeLine{157     \mbox{\hyperlink{class_target_vector_e}{TargetVectorE}}(\textcolor{keywordtype}{float} thetaB, \textcolor{keywordtype}{float} thetaJ);}
+\DoxyCodeLine{158     \mbox{\hyperlink{class_target_vector_e}{TargetVectorE}}()\{\}}
+\DoxyCodeLine{159 \};}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{164 \textcolor{keyword}{class }\mbox{\hyperlink{class_target_cinetique}{TargetCinetique}}: \textcolor{keyword}{public} \mbox{\hyperlink{class_target}{Target}}}
+\DoxyCodeLine{165 \{}
+\DoxyCodeLine{166 \textcolor{keyword}{private}:}
+\DoxyCodeLine{167     \textcolor{keywordtype}{float} \_xB,\_yB,\_thetaB;}
+\DoxyCodeLine{168     \textcolor{keywordtype}{float} \_xJ,\_yJ,\_thetaJ;}
+\DoxyCodeLine{169     \textcolor{keywordtype}{float} \_v,\_w;}
+\DoxyCodeLine{170 \textcolor{keyword}{public}:}
+\DoxyCodeLine{171     \mbox{\hyperlink{class_cinetique}{Cinetique}} getCinetique();}
+\DoxyCodeLine{172     \mbox{\hyperlink{class_target_cinetique}{TargetCinetique}}(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} theta, \textcolor{keywordtype}{float} v, \textcolor{keywordtype}{float} w, \textcolor{keywordtype}{bool} absolute);}
+\DoxyCodeLine{173     \mbox{\hyperlink{class_target_cinetique}{TargetCinetique}}(\textcolor{keywordtype}{float} xB, \textcolor{keywordtype}{float} yB, \textcolor{keywordtype}{float} thetaB, \textcolor{keywordtype}{float} xJ, \textcolor{keywordtype}{float} yJ, \textcolor{keywordtype}{float} thetaJ, \textcolor{keywordtype}{float} v, \textcolor{keywordtype}{float} w);}
+\DoxyCodeLine{174     \mbox{\hyperlink{class_target_cinetique}{TargetCinetique}}()\{\}}
+\DoxyCodeLine{175 \};}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

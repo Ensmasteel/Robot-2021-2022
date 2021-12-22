@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_multi_driver_8h" kind="file" language="C++">
+    <compoundname>MultiDriver.h</compoundname>
+    <includes local="no">Arduino.h</includes>
+    <includes refid="_arduino___mega_2_lib_2_stepper_driver_2src_2_basic_stepper_driver_8h" local="yes">BasicStepperDriver.h</includes>
+    <includedby refid="_multi_driver_8cpp" local="yes">Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/MultiDriver.cpp</includedby>
+    <includedby refid="_sync_driver_8h" local="yes">Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/SyncDriver.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="3">
+        <label>BasicStepperDriver.h</label>
+        <link refid="_arduino___mega_2_lib_2_stepper_driver_2src_2_basic_stepper_driver_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/MultiDriver.h</label>
+        <link refid="_multi_driver_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/MultiDriver.h</label>
+        <link refid="_multi_driver_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/SyncDriver.h</label>
+        <link refid="_sync_driver_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_multi_driver" prot="public">MultiDriver</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_multi_driver_8h_1a40dfd7fdfce455ce507bf3fed368c2ed" prot="public" static="no">
+        <name>MAX_MOTORS</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/MultiDriver.h" line="14" column="9" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/MultiDriver.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_multi_driver_8h_1ae6a7bff6d45f5fdc7f2ae0d6a8add5ec" prot="public" static="no">
+        <name>Motor</name>
+        <initializer><ref refid="class_basic_stepper_driver" kindref="compound">BasicStepperDriver</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/MultiDriver.h" line="15" column="9" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/MultiDriver.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Multi-motor<sp/>group<sp/>driver</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)2017<sp/>Laurentiu<sp/>Badea</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>This<sp/>file<sp/>may<sp/>be<sp/>redistributed<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>MIT<sp/>license.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>A<sp/>copy<sp/>of<sp/>this<sp/>license<sp/>has<sp/>been<sp/>included<sp/>with<sp/>this<sp/>distribution<sp/>in<sp/>the<sp/>file<sp/>LICENSE.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MULTI_DRIVER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MULTI_DRIVER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;BasicStepperDriver.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_MOTORS<sp/>3<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>reasonable<sp/>but<sp/>arbitrary<sp/>limit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>Motor<sp/>BasicStepperDriver</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>Multi-motor<sp/>group<sp/>driver<sp/>class.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="class_multi_driver" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_multi_driver" kindref="compound">MultiDriver</ref><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Configuration</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">short</highlight><highlight class="normal"><sp/>count;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_motor" kindref="compound">Motor</ref>*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>*motors;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Generic<sp/>initializer,<sp/>will<sp/>be<sp/>called<sp/>by<sp/>the<sp/>others</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_multi_driver" kindref="compound">MultiDriver</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">short</highlight><highlight class="normal"><sp/>count,<sp/><ref refid="class_motor" kindref="compound">Motor</ref>*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>*motors)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>:count(count),<sp/>motors(motors)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>{};</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Movement<sp/>state</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ready<sp/>to<sp/>start<sp/>a<sp/>new<sp/>move</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ready<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>when<sp/>next<sp/>state<sp/>change<sp/>is<sp/>due<sp/>for<sp/>each<sp/>motor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>event_timers[MAX_MOTORS];</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>next_action_interval<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>last_action_end<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Two-motor<sp/>setup</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_multi_driver" kindref="compound">MultiDriver</ref>(<ref refid="class_motor" kindref="compound">Motor</ref>&amp;<sp/>motor1,<sp/><ref refid="class_motor" kindref="compound">Motor</ref>&amp;<sp/>motor2)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>:<ref refid="class_multi_driver" kindref="compound">MultiDriver</ref>(2,<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_motor" kindref="compound">Motor</ref>*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">[2]{&amp;motor1,<sp/>&amp;motor2})</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>{};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Three-motor<sp/>setup<sp/>(X,<sp/>Y,<sp/>Z<sp/>for<sp/>example)</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_multi_driver" kindref="compound">MultiDriver</ref>(<ref refid="class_motor" kindref="compound">Motor</ref>&amp;<sp/>motor1,<sp/><ref refid="class_motor" kindref="compound">Motor</ref>&amp;<sp/>motor2,<sp/><ref refid="class_motor" kindref="compound">Motor</ref>&amp;<sp/>motor3)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>:<ref refid="class_multi_driver" kindref="compound">MultiDriver</ref>(3,<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_motor" kindref="compound">Motor</ref>*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">[3]{&amp;motor1,<sp/>&amp;motor2,<sp/>&amp;motor3})</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>{};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">short</highlight><highlight class="normal"><sp/>getCount(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>count;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_motor" kindref="compound">Motor</ref>&amp;<sp/>getMotor(</highlight><highlight class="keywordtype">short</highlight><highlight class="normal"><sp/>index){</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*motors[index];</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Move<sp/>the<sp/>motors<sp/>a<sp/>given<sp/>number<sp/>of<sp/>steps.</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>positive<sp/>to<sp/>move<sp/>forward,<sp/>negative<sp/>to<sp/>reverse</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>move(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>steps1,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>steps2,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>steps3=0);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rotate(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>deg1,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>deg2,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>deg3=0){</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rotate((</highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)deg1,<sp/>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)deg2,<sp/>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)deg3);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rotate(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>deg1,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>deg2,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>deg3=0);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rotate(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>deg1,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>deg2,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>deg3=0);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Motor<sp/>movement<sp/>with<sp/>external<sp/>control<sp/>of<sp/>timing</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>startMove(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>steps1,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>steps2,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>steps3=0);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>startRotate(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>deg1,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>deg2,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>deg3=0){</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>startRotate((</highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)deg1,<sp/>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)deg2,<sp/>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)deg3);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>startRotate(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>deg1,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>deg2,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>deg3=0);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>startRotate(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>deg1,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>deg2,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>deg3=0);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Toggle<sp/>step<sp/>and<sp/>return<sp/>time<sp/>until<sp/>next<sp/>change<sp/>is<sp/>needed<sp/>(micros)</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>nextAction(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Optionally,<sp/>call<sp/>this<sp/>to<sp/>begin<sp/>braking<sp/>to<sp/>stop<sp/>early</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>startBrake(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>State<sp/>querying</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isRunning(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Set<sp/>the<sp/>same<sp/>microstepping<sp/>level<sp/>on<sp/>all<sp/>motors</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setMicrostep(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>microsteps);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Turn<sp/>all<sp/>motors<sp/>on<sp/>or<sp/>off</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>enable(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>disable(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>MULTI_DRIVER_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperDriver/src/MultiDriver.h"/>
+  </compounddef>
+</doxygen>

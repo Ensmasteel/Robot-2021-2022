@@ -1,0 +1,95 @@
+\hypertarget{class_double___action}{}\doxysection{Double\+\_\+\+Action Class Reference}
+\label{class_double___action}\index{Double\_Action@{Double\_Action}}
+
+
+{\ttfamily \#include $<$Actions.\+h$>$}
+
+Inheritance diagram for Double\+\_\+\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_double___action}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_double___action_aac46b3f8dad147fde4f7934e6f86649d}{start}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_double___action_a5d7683eb93c3ec650695e84426d910ee}{is\+Finished}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_double___action_aa287df168e59626573cb6a20ef827f69}{has\+Failed}} ()
+\item 
+void \mbox{\hyperlink{class_double___action_a3443c27e08e7af8bd8b4380ecf67c8ce}{do\+At\+End}} () override
+\item 
+\mbox{\Hypertarget{class_double___action_a29adf8e0933045ce8fa1f0fb2701c73f}\label{class_double___action_a29adf8e0933045ce8fa1f0fb2701c73f}} 
+{\bfseries Double\+\_\+\+Action} (float timeout, String \mbox{\hyperlink{class_action_aa4672a5030b15430c86b33903609d172}{name}}=\char`\"{}Twin\char`\"{}, int16\+\_\+t require=NO\+\_\+\+REQUIREMENT)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_double___action_ab027da4d0e91a7b057a4915087908531}\label{class_double___action_ab027da4d0e91a7b057a4915087908531}} 
+\mbox{\hyperlink{class_action}{Action}} $\ast$ {\bfseries action1}
+\item 
+\mbox{\Hypertarget{class_double___action_ae3958355ab2906e09020975ec34a7181}\label{class_double___action_ae3958355ab2906e09020975ec34a7181}} 
+\mbox{\hyperlink{class_action}{Action}} $\ast$ {\bfseries action2}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+This class instantiates a double action. A double action is a sequence of two consecutive actions. The handle of those actions is encapsulated. There is nothing to do in particular. A double action is finished if both actions is finished. A double action fails if at least one of them fails. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_double___action_a3443c27e08e7af8bd8b4380ecf67c8ce}\label{class_double___action_a3443c27e08e7af8bd8b4380ecf67c8ce}} 
+\index{Double\_Action@{Double\_Action}!doAtEnd@{doAtEnd}}
+\index{doAtEnd@{doAtEnd}!Double\_Action@{Double\_Action}}
+\doxysubsubsection{\texorpdfstring{doAtEnd()}{doAtEnd()}}
+{\footnotesize\ttfamily void Double\+\_\+\+Action\+::do\+At\+End (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+This function is called in case of success. Do not do anything by default. 
+
+Reimplemented from \mbox{\hyperlink{class_action_a2d8cdbdc551331ea33f6661837e32904}{Action}}.
+
+\mbox{\Hypertarget{class_double___action_aa287df168e59626573cb6a20ef827f69}\label{class_double___action_aa287df168e59626573cb6a20ef827f69}} 
+\index{Double\_Action@{Double\_Action}!hasFailed@{hasFailed}}
+\index{hasFailed@{hasFailed}!Double\_Action@{Double\_Action}}
+\doxysubsubsection{\texorpdfstring{hasFailed()}{hasFailed()}}
+{\footnotesize\ttfamily bool Double\+\_\+\+Action\+::has\+Failed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Has\+Failed is called endlessly. Returns if the action failed and should be left aside. The sequence will remember the function failed (useful for requirement). By default, an action fails if it exceeds the time duration allowed by the timer. \begin{DoxyNote}{Note}
+A timeout set to -\/1 indicates the action has an unlimited time. 
+\end{DoxyNote}
+
+
+Reimplemented from \mbox{\hyperlink{class_action_a82a24a3b95fb310326e649402fbcef11}{Action}}.
+
+\mbox{\Hypertarget{class_double___action_a5d7683eb93c3ec650695e84426d910ee}\label{class_double___action_a5d7683eb93c3ec650695e84426d910ee}} 
+\index{Double\_Action@{Double\_Action}!isFinished@{isFinished}}
+\index{isFinished@{isFinished}!Double\_Action@{Double\_Action}}
+\doxysubsubsection{\texorpdfstring{isFinished()}{isFinished()}}
+{\footnotesize\ttfamily bool Double\+\_\+\+Action\+::is\+Finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Is\+Finished is called endlessly. Returns if the action is done. Can also be an update function. 
+
+Reimplemented from \mbox{\hyperlink{class_action_a3e524a7ba7014522e5111e06cc9b963b}{Action}}.
+
+\mbox{\Hypertarget{class_double___action_aac46b3f8dad147fde4f7934e6f86649d}\label{class_double___action_aac46b3f8dad147fde4f7934e6f86649d}} 
+\index{Double\_Action@{Double\_Action}!start@{start}}
+\index{start@{start}!Double\_Action@{Double\_Action}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Double\+\_\+\+Action\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+The start function is called once at action\textquotesingle{}s beginning, if the action requirement did not fail. Else the fail is immediate. Is the action is interrupted by \mbox{\hyperlink{class_sequence_a77dcfee1093388c7b283c5ebcd0556fc}{Sequence\+::pause}}, start function will be re-\/called during resume. 
+
+Reimplemented from \mbox{\hyperlink{class_action_a3e06aaadebfc669ac6ff988e1de9abc7}{Action}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_straight_to___action_a0f46eb20b076167e4e659076e24080b5}{Straight\+To\+\_\+\+Action}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_robot_simu_8cpp" kind="file" language="C++">
+    <compoundname>RobotSimu.cpp</compoundname>
+    <includes refid="_robot_simu_8h" local="yes">RobotSimu.h</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>Arduino.h</label>
+      </node>
+      <node id="21">
+        <label>Communication.h</label>
+        <link refid="_communication_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>MessageID.h</label>
+        <link refid="_message_i_d_8h_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>MoveProfile.h</label>
+        <link refid="_move_profile_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>SequenceName.h</label>
+        <link refid="_sequence_name_8h_source"/>
+      </node>
+      <node id="6">
+        <label>Logger.h</label>
+        <link refid="_logger_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Vector.h</label>
+        <link refid="_vector_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>Filtre.h</label>
+        <link refid="_filtre_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>Ghost.h</label>
+        <link refid="_ghost_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Codeuse.h</label>
+        <link refid="_codeuse_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>Encoder.h</label>
+        <link refid="_encoder_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>Sequence.h</label>
+        <link refid="_sequence_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>utility/direct_pin_read.h</label>
+        <link refid="direct__pin__read_8h_source"/>
+      </node>
+      <node id="14">
+        <label>utility/interrupt_pins.h</label>
+        <link refid="interrupt__pins_8h_source"/>
+      </node>
+      <node id="20">
+        <label>Math_functions.h</label>
+        <link refid="_math__functions_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>Moteur.h</label>
+        <link refid="_moteur_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>PID.h</label>
+        <link refid="_p_i_d_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Robot.h</label>
+        <link refid="_robot_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Robot/RobotSimu.cpp</label>
+        <link refid="_robot_simu_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>RobotSimu.h</label>
+        <link refid="_robot_simu_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Simulator.h</label>
+        <link refid="_simulator_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Print.h</label>
+      </node>
+      <node id="24">
+        <label>Stream.h</label>
+      </node>
+      <node id="11">
+        <label>WProgram.h</label>
+      </node>
+      <node id="12">
+        <label>pins_arduino.h</label>
+      </node>
+      <node id="23">
+        <label>stdint.h</label>
+      </node>
+      <node id="27">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;RobotSimu.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal">RobotSimu::RobotSimu(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>xIni<sp/>,</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>yIni<sp/>,</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>thetaIni,<sp/>Stream*<sp/>commPortStream,<sp/>Stream*<sp/>actuPort)<sp/>:<sp/><ref refid="class_robot" kindref="compound">Robot</ref>(xIni,yIni,thetaIni,commPortStream,actuPort){</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/>simu<sp/>=<sp/><ref refid="class_simulator" kindref="compound">Simulator</ref>(0.30,<sp/>9.0,<sp/>6.5,<sp/>1.5,<sp/>&amp;cinetiqueCurrent,<sp/>&amp;motorLeft.order,<sp/>&amp;motorRight.order);</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(</highlight><highlight class="stringliteral">&quot;SIMULATOR<sp/>MODE&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>RobotSimu::Update_Cinetique(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dt){</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>simu.updateCinetique(dt);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/Robot/RobotSimu.cpp"/>
+  </compounddef>
+</doxygen>

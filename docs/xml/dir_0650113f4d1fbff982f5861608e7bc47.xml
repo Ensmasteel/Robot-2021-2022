@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_0650113f4d1fbff982f5861608e7bc47" kind="dir">
+    <compoundname>Ensmasteel_Bot_2020/Teensy/lib/Moteur</compoundname>
+    <innerfile refid="_moteur_8cpp">Moteur.cpp</innerfile>
+    <innerfile refid="_moteur_8h">Moteur.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/Moteur/"/>
+  </compounddef>
+</doxygen>

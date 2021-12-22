@@ -1,0 +1,99 @@
+\hypertarget{_ghost_8h_source}{}\doxysection{Ghost.\+h}
+\label{_ghost_8h_source}\index{Ensmasteel\_Bot\_2020/Teensy/lib/Ghost/Ghost.h@{Ensmasteel\_Bot\_2020/Teensy/lib/Ghost/Ghost.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef GHOST\_H}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define GHOST\_H}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}Vector.h"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Math\_functions.h"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{class_ghost}{Ghost}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{24     \mbox{\hyperlink{class_ghost_add32788778aeaa7f0bb6da1077e715db}{Ghost}}(\mbox{\hyperlink{class_vector_e}{VectorE}} posEini = \mbox{\hyperlink{class_vector_e}{VectorE}}(0.0, 0.0, 0.0));}
+\DoxyCodeLine{25     \textcolor{comment}{//Ghost() \{\}}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \mbox{\hyperlink{class_cinetique}{Cinetique}} cinetiqueController; }
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{comment}{// ===    METHODES    ===}}
+\DoxyCodeLine{30     \textcolor{comment}{// ======================}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{comment}{// GOAL / IsVar() gives Var status}}
+\DoxyCodeLine{33     \textcolor{comment}{// OUT  / bool Status}}
+\DoxyCodeLine{38 \textcolor{comment}{}    \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ghost_a9740f250aaee829a8445903b8a1eb4f3}{IsLocked}}();}
+\DoxyCodeLine{43     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ghost_aa88463d4a6de0a3292757e4bfdb144ff}{IsRotating}}();}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{49     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ghost_aad4f81f6c7618bcfb7c3346662745922}{IsBackward}}();}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{55     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_ghost_a5ec1fe41bceee34af769297400340b06}{trajectoryIsFinished}}();}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{62     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ghost_a698731ea2bd0f163ef7686a208569af7}{Lock}}(\textcolor{keywordtype}{bool} state);}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 }
+\DoxyCodeLine{70     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ghost_a3d1ecc6bd1cb8bc973781aa3e693d432}{ActuatePosition}}(\textcolor{keywordtype}{float} dt);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 }
+\DoxyCodeLine{85     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ghost_a2332189de8523d9c2c36433192da2689}{Compute\_Trajectory}}(\mbox{\hyperlink{class_vector_e}{VectorE}} posFinal,}
+\DoxyCodeLine{86                            \textcolor{keywordtype}{float} deltaCurve,}
+\DoxyCodeLine{87                            \textcolor{keywordtype}{float} speedRamps,}
+\DoxyCodeLine{88                            \textcolor{keywordtype}{float} cruisingSpeed,}
+\DoxyCodeLine{89                            \textcolor{keywordtype}{bool} pureRotation = \textcolor{keyword}{false},}
+\DoxyCodeLine{90                            \textcolor{keywordtype}{bool} backward = \textcolor{keyword}{false});}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     \textcolor{comment}{// GOAL / Teleport the ghost to \_newPos\_}}
+\DoxyCodeLine{93     \textcolor{comment}{// IN   / VectorE newPos OR Cinetique newPos : only consider position}}
+\DoxyCodeLine{94     \textcolor{comment}{// OUT  / The position of the ghost is set to VectorE. Speed are not affected by this action}}
+\DoxyCodeLine{99 \textcolor{comment}{}    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ghost_add43b77dc94db3414adb4cb34249068f}{moveGhost}}(\mbox{\hyperlink{class_vector_e}{VectorE}} newPos);}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{105     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ghost_add43b77dc94db3414adb4cb34249068f}{moveGhost}}(\mbox{\hyperlink{class_cinetique}{Cinetique}} newPos);}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107     \mbox{\hyperlink{class_cinetique}{Cinetique}} Get\_Controller\_Cinetique();}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{keyword}{private}:}
+\DoxyCodeLine{110     \textcolor{comment}{// ===    PARAMETERS    ===}}
+\DoxyCodeLine{111     \textcolor{comment}{// ========================}}
+\DoxyCodeLine{112     \textcolor{keywordtype}{float} MIN\_MOVEMENT = 0.005; \textcolor{comment}{// Minimal distance to allow trajectory computation}}
+\DoxyCodeLine{113     \textcolor{keywordtype}{float} MIN\_ROTATION = 0.1*DEG\_TO\_RAD; \textcolor{comment}{// Minimal angle to allow trajectory computation}}
+\DoxyCodeLine{114     \textcolor{keywordtype}{float} DELAY\_POSITION = 40.0; \textcolor{comment}{// [...] = ms, Delay between posCurrent and posDelayed}}
+\DoxyCodeLine{115     \textcolor{keywordtype}{float} MAX\_SPEED = 50.0; \textcolor{comment}{// ... if linear speed above the limit, block movement}}
+\DoxyCodeLine{116     \textcolor{keywordtype}{float} MAX\_DISTANCE = 5.0; \textcolor{comment}{// ... if distance between to consecutive position, block movement }}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118     \textcolor{comment}{// ===    VARIABLES    ===}}
+\DoxyCodeLine{119     \textcolor{comment}{// =======================}}
+\DoxyCodeLine{120     \mbox{\hyperlink{class_vector_e}{VectorE}} posCurrent, posPrevious, posAim;   \textcolor{comment}{// VectorE : struct type containing X,Y,Orientation}}
+\DoxyCodeLine{121     \mbox{\hyperlink{class_vector_e}{VectorE}} posDelayed;                        \textcolor{comment}{// Position \_delayPosition\_ ms ago. Used as input for the position controller}}
+\DoxyCodeLine{122     \mbox{\hyperlink{class_polynome}{Polynome}} trajectory\_X, trajectory\_Y;       \textcolor{comment}{// Bezier curves, function of t*}}
+\DoxyCodeLine{123     \mbox{\hyperlink{class_polynome}{Polynome}} speedSquare\_e;                    \textcolor{comment}{// (V*)\string^2 Evolution speed of the theorical trajectory}}
+\DoxyCodeLine{124     \mbox{\hyperlink{class_trapezoidal___function}{Trapezoidal\_Function}} speedProfileLinear;   \textcolor{comment}{// wanted speed of the bot along the trajectory [...] = cm/s}}
+\DoxyCodeLine{125     \mbox{\hyperlink{class_trapezoidal___function}{Trapezoidal\_Function}} speedProfileRotation; \textcolor{comment}{// wanted speed in rotation [...] = rad/s}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127     \textcolor{keywordtype}{float} t = 0.0, t\_delayed = 0.0;                             \textcolor{comment}{// t : time since new trajectory setup}}
+\DoxyCodeLine{128     \textcolor{keywordtype}{float} t\_e = 0.0, t\_e\_delayed = 0.0;          \textcolor{comment}{// 0<t\_e<1 virtual time of Bezier curves}}
+\DoxyCodeLine{129     \textcolor{keywordtype}{float} durationTrajectory = 0.0, lengthTrajectory = 0.0;       \textcolor{comment}{// [...] = s ; [...] = (rotating ? rad : cm)}}
+\DoxyCodeLine{130     \textcolor{keywordtype}{float} speedLinearCurrent = 0.0, speedRotationalCurrent = 0.0; \textcolor{comment}{// Current speeds}}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132     \textcolor{comment}{// ===    STATE    ===}}
+\DoxyCodeLine{133     \textcolor{comment}{// ===================}}
+\DoxyCodeLine{134     \textcolor{keywordtype}{bool} locked = \textcolor{keyword}{true};              \textcolor{comment}{// locked=true => no movement allowed}}
+\DoxyCodeLine{135     \textcolor{keywordtype}{bool} rotating = \textcolor{keyword}{false};           \textcolor{comment}{// rotating=true => the robot is doing a pure rotation}}
+\DoxyCodeLine{136     \textcolor{keywordtype}{bool} backward = \textcolor{keyword}{false};           \textcolor{comment}{// backward=true => the robot is going backward}}
+\DoxyCodeLine{137     \textcolor{keywordtype}{bool} trajectoryFinished = \textcolor{keyword}{false}; \textcolor{comment}{// trajectoryFinished=true => the robot has reached posAim}}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139     \textcolor{comment}{// ===    PRIVATE METHODES    ===}}
+\DoxyCodeLine{140     \textcolor{comment}{// ==============================}}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142     \textcolor{comment}{// GOAL / Determine linear and rotational speed between to positions}}
+\DoxyCodeLine{143     \textcolor{comment}{// IN   / VectorE posNow, posLast}}
+\DoxyCodeLine{144     \textcolor{comment}{//      / float dt : delay between posNow and posLast}}
+\DoxyCodeLine{145     \textcolor{comment}{// OUT  / float : speedLinearCurrent, speedRotationalCurrent}}
+\DoxyCodeLine{146     \textcolor{keywordtype}{void} Update\_Speeds(\mbox{\hyperlink{class_vector_e}{VectorE}} posNow, \mbox{\hyperlink{class_vector_e}{VectorE}} posLast, \textcolor{keywordtype}{float} dt);}
+\DoxyCodeLine{147     \textcolor{keywordtype}{void} Set\_NewTrajectory(\mbox{\hyperlink{class_polynome}{Polynome}} newTrajectoryX, \mbox{\hyperlink{class_polynome}{Polynome}} newTrajectoryY, \mbox{\hyperlink{class_trapezoidal___function}{Trapezoidal\_Function}} newSpeed); \textcolor{comment}{// store new trajectories}}
+\DoxyCodeLine{148     \textcolor{keywordtype}{int} StateManager(); \textcolor{comment}{// Cancel coming movement if teleportation (movement > deltaPositionMax)}}
+\DoxyCodeLine{149 \};}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

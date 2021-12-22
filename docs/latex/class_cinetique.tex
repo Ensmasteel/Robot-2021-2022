@@ -1,0 +1,66 @@
+\hypertarget{class_cinetique}{}\doxysection{Cinetique Class Reference}
+\label{class_cinetique}\index{Cinetique@{Cinetique}}
+
+
+{\ttfamily \#include $<$Vector.\+h$>$}
+
+Inheritance diagram for Cinetique\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_cinetique}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cinetique_adf5ef593311b41036cf0f81d24b6d0bb}{Cinetique}} (float x=0.\+0, float y=0.\+0, float theta=0.\+0, float v=0.\+0, float w=0.\+0)
+\item 
+\mbox{\Hypertarget{class_cinetique_a3d712c5f685be073b402cc33e1ab038c}\label{class_cinetique_a3d712c5f685be073b402cc33e1ab038c}} 
+void {\bfseries print} (const String \&prefix=\char`\"{}\char`\"{}, bool info=false)
+\begin{DoxyCompactList}\small\item\em Prints kinetic vector values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cinetique_a1aab1668c139a7040c4a0d83d85422c7}\label{class_cinetique_a1aab1668c139a7040c4a0d83d85422c7}} 
+void {\bfseries to\+Telemetry} (const String \&prefix=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Send kinetic vector values to telemetry. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cinetique_a3aaa4453fad5ffc7b730db1c100a35b1}\label{class_cinetique_a3aaa4453fad5ffc7b730db1c100a35b1}} 
+bool {\bfseries operator==} (\mbox{\hyperlink{class_cinetique}{Cinetique}} const \&other)
+\begin{DoxyCompactList}\small\item\em Redefines the == operator to work with kinetic vectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_cinetique_a7fbbeae0349326d9ba8c8677a775f0ab}\label{class_cinetique_a7fbbeae0349326d9ba8c8677a775f0ab}} 
+float {\bfseries \+\_\+v}
+\begin{DoxyCompactList}\small\item\em Speed value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cinetique_a605427ec93a1ea4b2460d0f6307e1e31}\label{class_cinetique_a605427ec93a1ea4b2460d0f6307e1e31}} 
+float {\bfseries \+\_\+w}
+\begin{DoxyCompactList}\small\item\em Rotation speed value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines a kinetic vector class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_cinetique_adf5ef593311b41036cf0f81d24b6d0bb}\label{class_cinetique_adf5ef593311b41036cf0f81d24b6d0bb}} 
+\index{Cinetique@{Cinetique}!Cinetique@{Cinetique}}
+\index{Cinetique@{Cinetique}!Cinetique@{Cinetique}}
+\doxysubsubsection{\texorpdfstring{Cinetique()}{Cinetique()}}
+{\footnotesize\ttfamily Cinetique\+::\+Cinetique (\begin{DoxyParamCaption}\item[{float}]{x = {\ttfamily 0.0},  }\item[{float}]{y = {\ttfamily 0.0},  }\item[{float}]{theta = {\ttfamily 0.0},  }\item[{float}]{v = {\ttfamily 0.0},  }\item[{float}]{w = {\ttfamily 0.0} }\end{DoxyParamCaption})}
+
+Public constructor of the kinetic vector class 
+\begin{DoxyParams}{Parameters}
+{\em x} & \+: float, X-\/axis coordinate \\
+\hline
+{\em y} & \+: float, Y-\/axis coordinate \\
+\hline
+{\em theta} & \+: float, \mbox{\hyperlink{class_vector}{Vector}}\textquotesingle{}s angle \\
+\hline
+{\em v} & \+: Speed value \\
+\hline
+{\em w} & \+: Rotation speed value \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Libraries\+\_\+shared/\+Vector/Vector.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Libraries\+\_\+shared/\+Vector/Vector.\+cpp\end{DoxyCompactItemize}

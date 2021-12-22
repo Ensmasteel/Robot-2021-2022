@@ -1,0 +1,428 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_teensy_2main_8cpp" kind="file" language="C++">
+    <compoundname>main.cpp</compoundname>
+    <includes refid="_logger_8h" local="yes">Logger.h</includes>
+    <includes local="yes">Arduino.h</includes>
+    <includes refid="_vector_8h" local="yes">Vector.h</includes>
+    <includes refid="_math__functions_8h" local="yes">Math_functions.h</includes>
+    <includes refid="_ghost_8h" local="yes">Ghost.h</includes>
+    <includes refid="_p_i_d_8h" local="yes">PID.h</includes>
+    <includes refid="_moteur_8h" local="yes">Moteur.h</includes>
+    <includes refid="_codeuse_8h" local="yes">Codeuse.h</includes>
+    <includes refid="_simulator_8h" local="yes">Simulator.h</includes>
+    <includes refid="_sequence_8h" local="yes">Sequence.h</includes>
+    <includes refid="_robot_simu_8h" local="yes">RobotSimu.h</includes>
+    <includes refid="_error_manager_8h" local="yes">ErrorManager.h</includes>
+    <incdepgraph>
+      <node id="4">
+        <label>Arduino.h</label>
+      </node>
+      <node id="23">
+        <label>Communication.h</label>
+        <link refid="_communication_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>MessageID.h</label>
+        <link refid="_message_i_d_8h_source"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>MoveProfile.h</label>
+        <link refid="_move_profile_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>SequenceName.h</label>
+        <link refid="_sequence_name_8h_source"/>
+      </node>
+      <node id="2">
+        <label>Logger.h</label>
+        <link refid="_logger_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Vector.h</label>
+        <link refid="_vector_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>ErrorManager.h</label>
+        <link refid="_error_manager_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>Filtre.h</label>
+        <link refid="_filtre_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Ghost.h</label>
+        <link refid="_ghost_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>Codeuse.h</label>
+        <link refid="_codeuse_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>Encoder.h</label>
+        <link refid="_encoder_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>Sequence.h</label>
+        <link refid="_sequence_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>utility/direct_pin_read.h</label>
+        <link refid="direct__pin__read_8h_source"/>
+      </node>
+      <node id="17">
+        <label>utility/interrupt_pins.h</label>
+        <link refid="interrupt__pins_8h_source"/>
+      </node>
+      <node id="6">
+        <label>Math_functions.h</label>
+        <link refid="_math__functions_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Moteur.h</label>
+        <link refid="_moteur_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>PID.h</label>
+        <link refid="_p_i_d_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>Robot.h</label>
+        <link refid="_robot_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>RobotSimu.h</label>
+        <link refid="_robot_simu_8h_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>Simulator.h</label>
+        <link refid="_simulator_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Teensy/main.cpp</label>
+        <link refid="_teensy_2main_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Print.h</label>
+      </node>
+      <node id="26">
+        <label>Stream.h</label>
+      </node>
+      <node id="14">
+        <label>WProgram.h</label>
+      </node>
+      <node id="15">
+        <label>pins_arduino.h</label>
+      </node>
+      <node id="25">
+        <label>stdint.h</label>
+      </node>
+      <node id="27">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_teensy_2main_8cpp_1a84142cd3e3bf14c4ecd4b6707a808c39" prot="public" static="no">
+        <name>FREQUENCY</name>
+        <initializer>1.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/main.cpp" line="17" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/main.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_teensy_2main_8cpp_1ac4832b6f5177da0a16f6704443c13217" prot="public" static="no" mutable="no">
+        <type><ref refid="class_robot" kindref="compound">Robot</ref> *</type>
+        <definition>Robot* bender</definition>
+        <argsstring></argsstring>
+        <name>bender</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/main.cpp" line="19" column="7" bodyfile="Ensmasteel_Bot_2020/Teensy/main.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_teensy_2main_8cpp_1a925fe9258b8f192060c4a955a8e23b0d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t currentMillis</definition>
+        <argsstring></argsstring>
+        <name>currentMillis</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/main.cpp" line="20" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/main.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_teensy_2main_8cpp_1a98ea8ba32ed7f3c3253c2b92b9b34f85" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t lastMillis</definition>
+        <argsstring></argsstring>
+        <name>lastMillis</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/main.cpp" line="20" column="25" bodyfile="Ensmasteel_Bot_2020/Teensy/main.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_teensy_2main_8cpp_1ab21c0fe9c1c95719c659863233dc8de8" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t topWarn</definition>
+        <argsstring></argsstring>
+        <name>topWarn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/main.cpp" line="24" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/main.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_teensy_2main_8cpp_1af4ee819f73e669cacfea5ecf67331820" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t moy</definition>
+        <argsstring></argsstring>
+        <name>moy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/main.cpp" line="25" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/main.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_teensy_2main_8cpp_1a1bc83f7345700067c3962ee5283c2439" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t compteur</definition>
+        <argsstring></argsstring>
+        <name>compteur</name>
+        <initializer>=0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/main.cpp" line="26" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/main.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_teensy_2main_8cpp_1a4fc01d736fe50cf5b977f755b675f11d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setup</definition>
+        <argsstring>()</argsstring>
+        <name>setup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/main.cpp" line="28" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/main.cpp" bodystart="28" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="_teensy_2main_8cpp_1afe461d27b9c48d5921c00d521181f12f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void loop</definition>
+        <argsstring>()</argsstring>
+        <name>loop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/main.cpp" line="49" column="6" bodyfile="Ensmasteel_Bot_2020/Teensy/main.cpp" bodystart="49" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>=============================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>===<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Libraries<sp/><sp/><sp/><sp/><sp/><sp/><sp/>===</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>=============================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Logger.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Vector.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Math_functions.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Ghost.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;PID.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Moteur.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Codeuse.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Simulator.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Sequence.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;RobotSimu.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ErrorManager.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQUENCY<sp/>1.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><ref refid="class_robot" kindref="compound">Robot</ref><sp/>*bender;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">uint32_t<sp/>currentMillis<sp/>=<sp/>0,<sp/>lastMillis<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>STM32BOTH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">HardwareSerial<sp/>Serial1(PA10,<sp/>PA9);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">uint32_t<sp/>topWarn;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">uint32_t<sp/>moy;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">uint32_t<sp/>compteur=0;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setup()</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>Serial.begin(115200);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>USB</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>Serial3.begin(115200);<sp/><sp/></highlight><highlight class="comment">//<sp/>HC05</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>Serial2.begin(115200);<sp/><sp/></highlight><highlight class="comment">//<sp/>Arduino<sp/>Mega</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>Serial4.begin(115200);<sp/><sp/></highlight><highlight class="comment">//esp<sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>delay(500);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="class_logger_1a28d9c8374090b32982cdab8ba3e032e9" kindref="member">Logger::setup</ref>(&amp;Serial,<sp/>&amp;Serial,<sp/>&amp;Serial,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><ref refid="class_error_manager_1ab8d360ce5ae97dc3e08a4459d830ac27" kindref="member">ErrorManager::setup</ref>();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>delay(10000);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(</highlight><highlight class="stringliteral">&quot;REBOOT%&quot;</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//Le<sp/>caractère<sp/>%<sp/>permet<sp/>de<sp/>faire<sp/>sauter<sp/>le<sp/>parsing<sp/>en<sp/>cours<sp/>sur<sp/>la<sp/>station<sp/>sol</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(</highlight><highlight class="stringliteral">&quot;Bender&apos;s<sp/>booting<sp/>up&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>bender<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_robot" kindref="compound">Robot</ref>(0.22,1.20,0,&amp;Serial,&amp;Serial2,&amp;Serial4);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//bender=new<sp/>RobotSimu(0.22,1.20,0,&amp;Serial,&amp;Serial2);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>bender-&gt;setTeamColor(TeamColor::BLEU);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(</highlight><highlight class="stringliteral">&quot;Hello,<sp/>I&apos;m<sp/>bender&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>topWarn=millis();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>loop()</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>currentMillis<sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currentMillis-topWarn&gt;25000)<sp/></highlight><highlight class="comment">//Affichage<sp/>toute<sp/>les<sp/>25<sp/>seconde<sp/>de<sp/>la<sp/>freq<sp/>moyenne</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_logger_1a9a94fd1ce9c8008bfa9dcea344506c57" kindref="member">Logger::infoln</ref>(</highlight><highlight class="stringliteral">&quot;Actual<sp/>Frequency:<sp/>&quot;</highlight><highlight class="normal">+String(1000.0/moy*compteur)+</highlight><highlight class="stringliteral">&quot;<sp/>Hz&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>topWarn=millis();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((currentMillis<sp/>-<sp/>lastMillis)<sp/>/<sp/>1e3<sp/>&gt;=<sp/>1.0<sp/>/<sp/>FREQUENCY)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>moy+=(currentMillis<sp/>-<sp/>lastMillis);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>compteur++;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>bender-&gt;<ref refid="class_robot_1ac5e473914be046e6f20bb5300298db73" kindref="member">Update</ref>(1.0<sp/>/<sp/>FREQUENCY);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>lastMillis<sp/>=<sp/>currentMillis;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Teensy/main.cpp"/>
+  </compounddef>
+</doxygen>

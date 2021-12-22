@@ -1,0 +1,340 @@
+\hypertarget{_actions_8h_source}{}\doxysection{Actions.\+h}
+\label{_actions_8h_source}\index{Ensmasteel\_Bot\_2020/Teensy/lib/LesInseparables/Actions.h@{Ensmasteel\_Bot\_2020/Teensy/lib/LesInseparables/Actions.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef ACTIONS\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define ACTIONS\_H\_}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}Vector.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}MoveProfile.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Communication.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}SequenceName.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}ErrorManager.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <cstdint>} \textcolor{comment}{//for macro INT16\_MAX}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{class_robot}{Robot}};}
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{class_sequence}{Sequence}};}
+\DoxyCodeLine{18 \textcolor{keyword}{typedef} void (*Fct)(\mbox{\hyperlink{class_robot}{Robot}} *robot);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{comment}{//========================================ACTION GENERIQUES========================================}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define NO\_REQUIREMENT INT16\_MAX}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{26 \textcolor{keyword}{class }\mbox{\hyperlink{class_action}{Action}}}
+\DoxyCodeLine{27 \{}
+\DoxyCodeLine{28 \textcolor{keyword}{public}:}
+\DoxyCodeLine{32     String \mbox{\hyperlink{class_action_aa4672a5030b15430c86b33903609d172}{name}};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{39     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_action_a3e06aaadebfc669ac6ff988e1de9abc7}{start}}();}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{45     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_action_a3e524a7ba7014522e5111e06cc9b963b}{isFinished}}() \{ \textcolor{keywordflow}{return} done; \}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{53     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_action_a82a24a3b95fb310326e649402fbcef11}{hasFailed}}();}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{58     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_action_a80945e7aeba19e727952b9dd3059c99f}{setPointer}}(\mbox{\hyperlink{class_robot}{Robot}} *robot);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{64     \mbox{\hyperlink{class_action_a28dfd4b726854360b99c8bda70e7da6d}{Action}}(String \mbox{\hyperlink{class_action_aa4672a5030b15430c86b33903609d172}{name}} = \textcolor{stringliteral}{"{}Action"{}}, \textcolor{keywordtype}{float} timeout = 0.1, int16\_t require = NO\_REQUIREMENT)}
+\DoxyCodeLine{65     \{}
+\DoxyCodeLine{66         this-\/>name = \mbox{\hyperlink{class_action_aa4672a5030b15430c86b33903609d172}{name}};}
+\DoxyCodeLine{67         this-\/>timeout = timeout;}
+\DoxyCodeLine{68         this-\/>require = require;}
+\DoxyCodeLine{69         done = \textcolor{keyword}{false};}
+\DoxyCodeLine{70         started = \textcolor{keyword}{false};}
+\DoxyCodeLine{71     \}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{76     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_action_a09d6aee36ccd353f55f073b73dd64f9b}{hasStarted}}() \{ \textcolor{keywordflow}{return} started; \}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{81     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_action_a2d8cdbdc551331ea33f6661837e32904}{doAtEnd}}()}
+\DoxyCodeLine{82     \{ \textcolor{comment}{/*Ne fait rien par défaut. Il faudra override plus tard*/}}
+\DoxyCodeLine{83     \}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{86     \textcolor{keywordtype}{bool} done;}
+\DoxyCodeLine{87     \textcolor{keywordtype}{bool} started;}
+\DoxyCodeLine{88     \textcolor{keywordtype}{float} timeout;}
+\DoxyCodeLine{89     \textcolor{keywordtype}{float} timeStarted;}
+\DoxyCodeLine{90     \textcolor{keyword}{static} \mbox{\hyperlink{class_robot}{Robot}} *robot;}
+\DoxyCodeLine{91     \mbox{\hyperlink{class_sequence}{Sequence}} *mySequence;}
+\DoxyCodeLine{92     int16\_t require;}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94     \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{class_sequence}{Sequence}};}
+\DoxyCodeLine{95 \};}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{103 \textcolor{keyword}{class }\mbox{\hyperlink{class_double___action}{Double\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_action}{Action}}}
+\DoxyCodeLine{104 \{}
+\DoxyCodeLine{105 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{106     \mbox{\hyperlink{class_action}{Action}} *action1;}
+\DoxyCodeLine{107     \mbox{\hyperlink{class_action}{Action}} *action2;}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{keyword}{public}:}
+\DoxyCodeLine{110     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_double___action_aac46b3f8dad147fde4f7934e6f86649d}{start}}();}
+\DoxyCodeLine{111     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_double___action_a5d7683eb93c3ec650695e84426d910ee}{isFinished}}();}
+\DoxyCodeLine{112     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_double___action_aa287df168e59626573cb6a20ef827f69}{hasFailed}}();}
+\DoxyCodeLine{113     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_double___action_a3443c27e08e7af8bd8b4380ecf67c8ce}{doAtEnd}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{114     \mbox{\hyperlink{class_double___action}{Double\_Action}}(\textcolor{keywordtype}{float} timeout, String \mbox{\hyperlink{class_action_aa4672a5030b15430c86b33903609d172}{name}} = \textcolor{stringliteral}{"{}Twin"{}}, int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{115 \};}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117 \textcolor{comment}{//========================================ACTION MOVES========================================}}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{125 \textcolor{keyword}{class }\mbox{\hyperlink{class_move___action}{Move\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_action}{Action}} \textcolor{comment}{//Classe abstraite}}
+\DoxyCodeLine{126 \{}
+\DoxyCodeLine{127 \textcolor{keyword}{public}:}
+\DoxyCodeLine{128     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_move___action_a67ba96921f67ba91f6d34f3245bc34c8}{start}}();      \textcolor{comment}{//(Action+Move)Dump les parametres dans le ghost et appelle Action::start() et debloque le ghost}}
+\DoxyCodeLine{129     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_move___action_a6bdc7828e769bd5cd12fcb42b30807d0}{isFinished}}(); \textcolor{comment}{//(Move) Verifie que le ghost est arrive et que le robot est sur le ghost}}
+\DoxyCodeLine{130     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_move___action_ae52a50ebb8ef41c1436c4c209a430a09}{hasFailed}}();  \textcolor{comment}{//(Action+Move) Verifie que le pid n'a pas retourné d'erreur ou que Action::hasFailed n'est pas true}}
+\DoxyCodeLine{131     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_move___action_a04c6d71f3a87e4f201d8daf6af917dee}{doAtEnd}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{132     \mbox{\hyperlink{class_move___action}{Move\_Action}}(\textcolor{keywordtype}{float} timeout, \mbox{\hyperlink{class_vector_e}{VectorE}} posFinal, \textcolor{keywordtype}{float} deltaCurve,}
+\DoxyCodeLine{133                 MoveProfileName profileName, \textcolor{keywordtype}{bool} pureRotation, \textcolor{keywordtype}{bool} backward, String \mbox{\hyperlink{class_action_aa4672a5030b15430c86b33903609d172}{name}} = \textcolor{stringliteral}{"{}Move"{}}, int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{136     \mbox{\hyperlink{class_vector_e}{VectorE}} posFinal;}
+\DoxyCodeLine{137     \textcolor{keywordtype}{float} deltaCurve;}
+\DoxyCodeLine{138     MoveProfileName profileName;}
+\DoxyCodeLine{139     \textcolor{keywordtype}{bool} pureRotation, backward;}
+\DoxyCodeLine{140 \};}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{148 \textcolor{keyword}{class }\mbox{\hyperlink{class_goto___action}{Goto\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_move___action}{Move\_Action}}}
+\DoxyCodeLine{149 \{}
+\DoxyCodeLine{150 \textcolor{keyword}{public}:}
+\DoxyCodeLine{151     \mbox{\hyperlink{class_goto___action}{Goto\_Action}}(\textcolor{keywordtype}{float} timeout,}
+\DoxyCodeLine{152                 \mbox{\hyperlink{class_target_vector_e}{TargetVectorE}} target,}
+\DoxyCodeLine{153                 \textcolor{keywordtype}{float} deltaCurve,}
+\DoxyCodeLine{154                 MoveProfileName profileName,}
+\DoxyCodeLine{155                 \textcolor{keywordtype}{bool} backward = \textcolor{keyword}{false},}
+\DoxyCodeLine{156                 int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{157     \textcolor{comment}{//start (Action+Move)}}
+\DoxyCodeLine{158     \textcolor{comment}{//isFinished (Move)}}
+\DoxyCodeLine{159     \textcolor{comment}{//hasFailed (Action+Move)}}
+\DoxyCodeLine{160 \};}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{167 \textcolor{keyword}{class }\mbox{\hyperlink{class_spin___action}{Spin\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_move___action}{Move\_Action}}}
+\DoxyCodeLine{168 \{}
+\DoxyCodeLine{169 \textcolor{keyword}{public}:}
+\DoxyCodeLine{170     \mbox{\hyperlink{class_spin___action}{Spin\_Action}}(\textcolor{keywordtype}{float} timeout, \mbox{\hyperlink{class_target_vector_e}{TargetVectorE}} target, MoveProfileName profileName, int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{171     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_spin___action_a3882bdfcf8262e22c4e71b2d9ef4e5cc}{start}}(); \textcolor{comment}{//(Action + Spin) Le start doit etre redéfini car on ne connait pas posFinal a l'avance}}
+\DoxyCodeLine{172     \textcolor{comment}{//isFinished(Move)}}
+\DoxyCodeLine{173     \textcolor{comment}{//hasFailed(Action+Move)}}
+\DoxyCodeLine{174 \};}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{180 \textcolor{keyword}{class }\mbox{\hyperlink{class_rotate___action}{Rotate\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_move___action}{Move\_Action}} \textcolor{comment}{//Tourne en relatif}}
+\DoxyCodeLine{181 \{}
+\DoxyCodeLine{182 \textcolor{keyword}{private}:}
+\DoxyCodeLine{183     \textcolor{keywordtype}{float} deltaTheta;}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{185 \textcolor{keyword}{public}:}
+\DoxyCodeLine{186     \mbox{\hyperlink{class_rotate___action}{Rotate\_Action}}(\textcolor{keywordtype}{float} timeout, \textcolor{keywordtype}{float} deltaTheta, MoveProfileName profileName, int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{187     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_rotate___action_a82ca14c8704f027ec4108c034514ed1e}{start}}(); \textcolor{comment}{//(Action + Spin) Le start doit etre redéfini car on ne connait pas posFinal a l'avance}}
+\DoxyCodeLine{188     \textcolor{comment}{//isFinished(Move)}}
+\DoxyCodeLine{189     \textcolor{comment}{//hasFailed(Action+Move)}}
+\DoxyCodeLine{190 \};}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{196 \textcolor{keyword}{class }\mbox{\hyperlink{class_forward___action}{Forward\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_move___action}{Move\_Action}}}
+\DoxyCodeLine{197 \{}
+\DoxyCodeLine{198 \textcolor{keyword}{private}:}
+\DoxyCodeLine{199     \textcolor{keywordtype}{float} dist;}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201 \textcolor{keyword}{public}:}
+\DoxyCodeLine{202     \mbox{\hyperlink{class_forward___action}{Forward\_Action}}(\textcolor{keywordtype}{float} timeout, \textcolor{keywordtype}{float} dist, MoveProfileName profileName, int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{203     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_forward___action_a70fc0a87198c554f1b93940f3ed0051d}{start}}(); \textcolor{comment}{//(Action + Forward)Le start doit etre redéfini car on ne connait pas posFinal a l'avance}}
+\DoxyCodeLine{204     \textcolor{comment}{//isFinished(Move)}}
+\DoxyCodeLine{205     \textcolor{comment}{//hasFailed(Action+Move)}}
+\DoxyCodeLine{206 \};}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{212 \textcolor{keyword}{class }\mbox{\hyperlink{class_backward___action}{Backward\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_move___action}{Move\_Action}}}
+\DoxyCodeLine{213 \{}
+\DoxyCodeLine{214 \textcolor{keyword}{private}:}
+\DoxyCodeLine{215     \textcolor{keywordtype}{float} dist;}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217 \textcolor{keyword}{public}:}
+\DoxyCodeLine{218     \mbox{\hyperlink{class_backward___action}{Backward\_Action}}(\textcolor{keywordtype}{float} timeout, \textcolor{keywordtype}{float} dist, MoveProfileName profileName, int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{219     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_backward___action_a9592f176269cf3ad8877f349631ca1b4}{start}}(); \textcolor{comment}{//(Action + Backward)Le start doit etre redéfini car on ne connait pas posFinal a l'avance}}
+\DoxyCodeLine{220     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_backward___action_a5d51dbcc69485283babaacbcefec1b21}{isFinished}}();}
+\DoxyCodeLine{221     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_backward___action_acd5d5be5f21f69a8b39af514145d95f8}{hasFailed}}();}
+\DoxyCodeLine{222     \textcolor{comment}{//hasFailed(Action+Move)}}
+\DoxyCodeLine{223 \};}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{229 \textcolor{keyword}{class }\mbox{\hyperlink{class_straight_to___action}{StraightTo\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_double___action}{Double\_Action}}}
+\DoxyCodeLine{230 \{}
+\DoxyCodeLine{231 \textcolor{keyword}{private}:}
+\DoxyCodeLine{232     \mbox{\hyperlink{class_spin___action}{Spin\_Action}} *spin;}
+\DoxyCodeLine{233     \mbox{\hyperlink{class_goto___action}{Goto\_Action}} *goTo;}
+\DoxyCodeLine{234     \textcolor{keywordtype}{float} x, y;}
+\DoxyCodeLine{235     MoveProfileName profileName;}
+\DoxyCodeLine{236     \textcolor{keywordtype}{float} timeout;}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238 \textcolor{keyword}{public}:}
+\DoxyCodeLine{239     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_straight_to___action_a0f46eb20b076167e4e659076e24080b5}{start}}();}
+\DoxyCodeLine{240     \mbox{\hyperlink{class_straight_to___action}{StraightTo\_Action}}(\textcolor{keywordtype}{float} timeout, \mbox{\hyperlink{class_target_vector}{TargetVector}} target, MoveProfileName profileName, int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{241 \};}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{247 \textcolor{keyword}{class }\mbox{\hyperlink{class_brake___action}{Brake\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_move___action}{Move\_Action}}}
+\DoxyCodeLine{248 \{}
+\DoxyCodeLine{249 \textcolor{keyword}{public}:}
+\DoxyCodeLine{250     \mbox{\hyperlink{class_brake___action}{Brake\_Action}}(\textcolor{keywordtype}{float} timeout, int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{251     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_brake___action_ac12a69bd60cae53f1b21522325c9dae4}{start}}();}
+\DoxyCodeLine{252 \};}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254 \textcolor{comment}{//========================================ACTION COMM========================================}}
+\DoxyCodeLine{255 }
+\DoxyCodeLine{259 \textcolor{keyword}{class }\mbox{\hyperlink{class_send___action}{Send\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_action}{Action}}}
+\DoxyCodeLine{260 \{}
+\DoxyCodeLine{261 \textcolor{keyword}{private}:}
+\DoxyCodeLine{262     \mbox{\hyperlink{struct_message}{Message}} message;}
+\DoxyCodeLine{263     \mbox{\hyperlink{class_communication}{Communication}}* \_commLocal;}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{265 \textcolor{keyword}{public}:}
+\DoxyCodeLine{266     \mbox{\hyperlink{class_send___action}{Send\_Action}}(\mbox{\hyperlink{struct_message}{Message}} message, \mbox{\hyperlink{class_communication}{Communication}}* comm, int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{267     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_send___action_a6f93337d56933a890c1189f20af824fa}{start}}(); \textcolor{comment}{//(Action+Send)}}
+\DoxyCodeLine{268     \textcolor{comment}{//isFinished(Action)}}
+\DoxyCodeLine{269     \textcolor{comment}{//hasFailed(Action)}}
+\DoxyCodeLine{270 \};}
+\DoxyCodeLine{271 }
+\DoxyCodeLine{275 \textcolor{keyword}{class }\mbox{\hyperlink{class_wait___message___action}{Wait\_Message\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_action}{Action}}}
+\DoxyCodeLine{276 \{}
+\DoxyCodeLine{277 \textcolor{keyword}{private}:}
+\DoxyCodeLine{278     MessageID messageId;}
+\DoxyCodeLine{279     \mbox{\hyperlink{class_communication}{Communication}}* \_commLocal;}
+\DoxyCodeLine{280 }
+\DoxyCodeLine{281 \textcolor{keyword}{public}:}
+\DoxyCodeLine{282     \mbox{\hyperlink{class_wait___message___action}{Wait\_Message\_Action}}(MessageID messageId, \textcolor{keywordtype}{float} timeout, \mbox{\hyperlink{class_communication}{Communication}}* comm, int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{283     \textcolor{comment}{//start(Action)}}
+\DoxyCodeLine{284     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_wait___message___action_a3fa2293c84671cc0b98c04d512d45ecf}{isFinished}}(); \textcolor{comment}{//(Wait\_Message) verifie que le message est recu}}
+\DoxyCodeLine{285     \textcolor{comment}{//hasFailed(Action)}}
+\DoxyCodeLine{286 \};}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{291 \textcolor{keyword}{class }\mbox{\hyperlink{class_switch___message___action}{Switch\_Message\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_action}{Action}}}
+\DoxyCodeLine{292 \{}
+\DoxyCodeLine{293 \textcolor{keyword}{private}:}
+\DoxyCodeLine{294     std::vector<MessageID> onMessage;}
+\DoxyCodeLine{295     std::vector<Fct> doFct;}
+\DoxyCodeLine{296     uint8\_t size;}
+\DoxyCodeLine{297     \mbox{\hyperlink{class_communication}{Communication}}* \_commLocal;}
+\DoxyCodeLine{298 }
+\DoxyCodeLine{299 \textcolor{keyword}{public}:}
+\DoxyCodeLine{300     \mbox{\hyperlink{class_switch___message___action}{Switch\_Message\_Action}}(\textcolor{keywordtype}{float} timeout, \mbox{\hyperlink{class_communication}{Communication}}* comm, int16\_t require);}
+\DoxyCodeLine{301     \textcolor{keywordtype}{void} addPair(MessageID messageId, Fct fct);}
+\DoxyCodeLine{302     \textcolor{comment}{//start : inherited from Action}}
+\DoxyCodeLine{303     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_switch___message___action_a94155ed47d3b75155c67caf5176104aa}{isFinished}}();}
+\DoxyCodeLine{304     \textcolor{comment}{//has failed : inherited from Action}}
+\DoxyCodeLine{305 \};}
+\DoxyCodeLine{306 }
+\DoxyCodeLine{311 \textcolor{keyword}{class }\mbox{\hyperlink{class_send___order___action}{Send\_Order\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_double___action}{Double\_Action}}}
+\DoxyCodeLine{312 \{}
+\DoxyCodeLine{313 \textcolor{keyword}{private}:}
+\DoxyCodeLine{314     \mbox{\hyperlink{class_send___action}{Send\_Action}}* sendAction;}
+\DoxyCodeLine{315     \mbox{\hyperlink{class_wait___message___action}{Wait\_Message\_Action}}* waitAction;}
+\DoxyCodeLine{316 }
+\DoxyCodeLine{317     \mbox{\hyperlink{struct_message}{Message}} message;}
+\DoxyCodeLine{318 \textcolor{keyword}{public}:}
+\DoxyCodeLine{319     \mbox{\hyperlink{class_send___order___action}{Send\_Order\_Action}}(MessageID actuatorID,}
+\DoxyCodeLine{320                       Actuator\_Order actuatorOrder,}
+\DoxyCodeLine{321                       \textcolor{keywordtype}{float} timeout,}
+\DoxyCodeLine{322                       \mbox{\hyperlink{class_communication}{Communication}} *comm,}
+\DoxyCodeLine{323                       \textcolor{keywordtype}{boolean} waitCompletion,}
+\DoxyCodeLine{324                       int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{325 \};}
+\DoxyCodeLine{326 }
+\DoxyCodeLine{327 \textcolor{comment}{//========================================ACTION MISC========================================}}
+\DoxyCodeLine{328 }
+\DoxyCodeLine{333 \textcolor{keyword}{class }\mbox{\hyperlink{class_sleep___action}{Sleep\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_action}{Action}}}
+\DoxyCodeLine{334 \{}
+\DoxyCodeLine{335 \textcolor{keyword}{private}:}
+\DoxyCodeLine{336     \textcolor{keywordtype}{float} timeToWait;}
+\DoxyCodeLine{337 }
+\DoxyCodeLine{338 \textcolor{keyword}{public}:}
+\DoxyCodeLine{339     \mbox{\hyperlink{class_sleep___action}{Sleep\_Action}}(\textcolor{keywordtype}{float} timeToWait, int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{340     \textcolor{comment}{//start(Action)}}
+\DoxyCodeLine{341     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_sleep___action_a2dba37ac963b41b36ce043a6f32a91a7}{isFinished}}();                 \textcolor{comment}{//(Sleep) verifie que le temps prévu s'est ecoulé}}
+\DoxyCodeLine{342     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_sleep___action_a9b2c383ba14fb557753ee07cda8b831f}{hasFailed}}() \{ \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \} \textcolor{comment}{//(Sleep) on en peut pas fail d'attendre}}
+\DoxyCodeLine{343 \};}
+\DoxyCodeLine{344 }
+\DoxyCodeLine{349 \textcolor{keyword}{class }\mbox{\hyperlink{class_null___action}{Null\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_action}{Action}}}
+\DoxyCodeLine{350 \{}
+\DoxyCodeLine{351 \textcolor{keyword}{public}:}
+\DoxyCodeLine{352     \mbox{\hyperlink{class_null___action}{Null\_Action}}();}
+\DoxyCodeLine{353     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_null___action_a5ef08097e316435552daf168bb95bc6b}{isFinished}}() \{\textcolor{keywordflow}{return} \textcolor{keyword}{true};\}}
+\DoxyCodeLine{354     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_null___action_a972d555c7cebec548229e28742ff8493}{hasFailed}}() \{\textcolor{keywordflow}{return} \textcolor{keyword}{false};\}}
+\DoxyCodeLine{355 \};}
+\DoxyCodeLine{356 }
+\DoxyCodeLine{364 \textcolor{keyword}{class }\mbox{\hyperlink{class_end___action}{End\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_action}{Action}} \textcolor{comment}{//Une End\_Action ne passe jamais a la suite}}
+\DoxyCodeLine{365 \{}
+\DoxyCodeLine{366 \textcolor{keyword}{private}:}
+\DoxyCodeLine{367     \textcolor{keywordtype}{bool} loop;}
+\DoxyCodeLine{368     \textcolor{keywordtype}{bool} pause;}
+\DoxyCodeLine{369     \textcolor{keywordtype}{bool} lockGhost;}
+\DoxyCodeLine{370 }
+\DoxyCodeLine{371 \textcolor{keyword}{public}:}
+\DoxyCodeLine{372     \mbox{\hyperlink{class_end___action}{End\_Action}}(\textcolor{keywordtype}{bool} loop = \textcolor{keyword}{false}, \textcolor{keywordtype}{bool} pause = \textcolor{keyword}{true}, \textcolor{keywordtype}{bool} lockGhost = \textcolor{keyword}{false});}
+\DoxyCodeLine{373     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_end___action_aad151db7bde008e76cfa5e22197112d0}{start}}();}
+\DoxyCodeLine{374     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_end___action_a32a9535c29bc2feaca200d57fd5c3835}{isFinished}}() \{ \textcolor{keywordflow}{return} done; \}}
+\DoxyCodeLine{375     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_end___action_a5df9ad29a4343e3e4603ed1667b94ed6}{hasFailed}}() \{ \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \}}
+\DoxyCodeLine{376 \};}
+\DoxyCodeLine{377 }
+\DoxyCodeLine{381 \textcolor{keyword}{class }\mbox{\hyperlink{class_do___action}{Do\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_action}{Action}}}
+\DoxyCodeLine{382 \{}
+\DoxyCodeLine{383 \textcolor{keyword}{private}:}
+\DoxyCodeLine{384     Fct functionToCall;}
+\DoxyCodeLine{385 }
+\DoxyCodeLine{386 \textcolor{keyword}{public}:}
+\DoxyCodeLine{387     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_do___action_a28e1938a014380f0d4098fe0c11e71ce}{start}}();}
+\DoxyCodeLine{388     \mbox{\hyperlink{class_do___action}{Do\_Action}}(Fct functionToCall, int16\_t require = NO\_REQUIREMENT)}
+\DoxyCodeLine{389     : \mbox{\hyperlink{class_action_a28dfd4b726854360b99c8bda70e7da6d}{Action}}(\textcolor{stringliteral}{"{}DoAc"{}}, 0.1, require) \{ this-\/>functionToCall = functionToCall; \}}
+\DoxyCodeLine{390 \};}
+\DoxyCodeLine{391 }
+\DoxyCodeLine{395 \textcolor{keyword}{class }\mbox{\hyperlink{class_pause_seq___action}{PauseSeq\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_action}{Action}}}
+\DoxyCodeLine{396 \{}
+\DoxyCodeLine{397 \textcolor{keyword}{private}:}
+\DoxyCodeLine{398     SequenceName nameSeq;}
+\DoxyCodeLine{399     \textcolor{keywordtype}{bool} lockGhost;}
+\DoxyCodeLine{400 }
+\DoxyCodeLine{401 \textcolor{keyword}{public}:}
+\DoxyCodeLine{402     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pause_seq___action_a7993501a1f5b396852844da7e1fa5e69}{start}}();}
+\DoxyCodeLine{403     \mbox{\hyperlink{class_pause_seq___action}{PauseSeq\_Action}}(SequenceName nameSeq, \textcolor{keywordtype}{bool} lockGhost, int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{404 \};}
+\DoxyCodeLine{405 }
+\DoxyCodeLine{409 \textcolor{keyword}{class }\mbox{\hyperlink{class_resume_seq___action}{ResumeSeq\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_action}{Action}}}
+\DoxyCodeLine{410 \{}
+\DoxyCodeLine{411 \textcolor{keyword}{private}:}
+\DoxyCodeLine{412     SequenceName nameSeq;}
+\DoxyCodeLine{413 }
+\DoxyCodeLine{414 \textcolor{keyword}{public}:}
+\DoxyCodeLine{415     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_resume_seq___action_ad1c47e0c5aa21d38a16fdb2bb0f9407e}{start}}();}
+\DoxyCodeLine{416     \mbox{\hyperlink{class_resume_seq___action}{ResumeSeq\_Action}}(SequenceName nameSeq, int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{417 \};}
+\DoxyCodeLine{418 }
+\DoxyCodeLine{422 \textcolor{keyword}{class }\mbox{\hyperlink{class_wait___error___action}{Wait\_Error\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_action}{Action}}}
+\DoxyCodeLine{423 \{}
+\DoxyCodeLine{424 \textcolor{keyword}{private}:}
+\DoxyCodeLine{425     Error error;}
+\DoxyCodeLine{426 }
+\DoxyCodeLine{427 \textcolor{keyword}{public}:}
+\DoxyCodeLine{428     \mbox{\hyperlink{class_wait___error___action}{Wait\_Error\_Action}}(Error error, \textcolor{keywordtype}{float} timeout, int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{429     \textcolor{comment}{//void start();}}
+\DoxyCodeLine{430     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_wait___error___action_a52d821062719ac34012f0d735292a46c}{isFinished}}(); \textcolor{comment}{//(Wait\_Error) verifie que l'erreur s'est produite}}
+\DoxyCodeLine{431     \textcolor{comment}{//hasFailed(Action)}}
+\DoxyCodeLine{432 \};}
+\DoxyCodeLine{433 }
+\DoxyCodeLine{437 \textcolor{keyword}{class }\mbox{\hyperlink{class_recallage___action}{Recallage\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_double___action}{Double\_Action}}}
+\DoxyCodeLine{438 \{}
+\DoxyCodeLine{439 \textcolor{keyword}{public}:}
+\DoxyCodeLine{440     \mbox{\hyperlink{class_recallage___action}{Recallage\_Action}}(\textcolor{keywordtype}{bool} arriere, \textcolor{keywordtype}{float} dist, \textcolor{keywordtype}{float} timeout);}
+\DoxyCodeLine{441 \};}
+\DoxyCodeLine{442 }
+\DoxyCodeLine{443 \textcolor{comment}{//========================================ACTION INPUT========================================}}
+\DoxyCodeLine{444 }
+\DoxyCodeLine{449 \textcolor{keyword}{class }\mbox{\hyperlink{class_wait___tirette___action}{Wait\_Tirette\_Action}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_action}{Action}}}
+\DoxyCodeLine{450 \{}
+\DoxyCodeLine{451 \textcolor{keyword}{private}:}
+\DoxyCodeLine{452     uint8\_t pinIN;}
+\DoxyCodeLine{453     \textcolor{keywordtype}{bool} initOK = \textcolor{keyword}{false};}
+\DoxyCodeLine{454 }
+\DoxyCodeLine{455 \textcolor{keyword}{public}:}
+\DoxyCodeLine{456     \mbox{\hyperlink{class_wait___tirette___action}{Wait\_Tirette\_Action}}(uint8\_t pinIN, int16\_t require = NO\_REQUIREMENT);}
+\DoxyCodeLine{457     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_wait___tirette___action_a085ae6d8d59d25385c0e7b49f0e34616}{start}}();}
+\DoxyCodeLine{458     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_wait___tirette___action_afc60fc24eb07b790ef6386ca5cb40342}{isFinished}}();}
+\DoxyCodeLine{459     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_wait___tirette___action_a0a924abbdf802411df11a8d8410808b5}{hasFailed}}() \{ \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \} \textcolor{comment}{// On ne peut pas fail l'attente}}
+\DoxyCodeLine{460 \};}
+\DoxyCodeLine{461 }
+\DoxyCodeLine{462 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !ACTION\_H\_}}
+
+\end{DoxyCode}

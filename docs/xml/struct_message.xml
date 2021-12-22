@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="struct_message" kind="struct" language="C++" prot="public">
+    <compoundname>Message</compoundname>
+    <includes refid="_communication_8h" local="no">Communication.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_message_1acb8910eb659cd2cdef84a9597443fff0" prot="public" static="no" mutable="no">
+        <type>int32_t</type>
+        <definition>int32_t Message::_data</definition>
+        <argsstring></argsstring>
+        <name>_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="26" column="13" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_message_1a23722cc684bdba25bc03486ff31d8539" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t Message::_ID</definition>
+        <argsstring></argsstring>
+        <name>_ID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="27" column="14" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Struct to ensure the message is encoded on 6 bytes. </para>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" line="24" column="1" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h" bodystart="25" bodyend="28"/>
+    <listofallmembers>
+      <member refid="struct_message_1acb8910eb659cd2cdef84a9597443fff0" prot="public" virt="non-virtual"><scope>Message</scope><name>_data</name></member>
+      <member refid="struct_message_1a23722cc684bdba25bc03486ff31d8539" prot="public" virt="non-virtual"><scope>Message</scope><name>_ID</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

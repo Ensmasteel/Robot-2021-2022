@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_polynome" kind="class" language="C++" prot="public">
+    <compoundname>Polynome</compoundname>
+    <includes refid="_math__functions_8h" local="no">Math_functions.h</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_polynome_1a3a3c50178a8c0df41d5bcd0c44afd778" prot="public" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int Polynome::DEGRE_MAX</definition>
+        <argsstring></argsstring>
+        <name>DEGRE_MAX</name>
+        <initializer>= 7</initializer>
+        <briefdescription>
+<para>Max degree of polynomial function. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.h" line="21" column="22" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_polynome_1a2673e8bb2b601ce3243fc356797de8e3" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Polynome::K[DEGRE_MAX]</definition>
+        <argsstring>[DEGRE_MAX]</argsstring>
+        <name>K</name>
+        <briefdescription>
+<para>the DEGRE_MAX+1 coefficients. K[i] coefficient is in front of x^i </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.h" line="23" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_polynome_1aeea64292b22b736bc60675ea757d50ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Polynome::Polynome</definition>
+        <argsstring>(float a0=0.0, float a1=0.0, float a2=0.0, float a3=0.0, float a4=0.0, float a5=0.0, float a6=0.0)</argsstring>
+        <name>Polynome</name>
+        <param>
+          <type>float</type>
+          <declname>a0</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>a1</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>a2</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>a3</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>a4</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>a5</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>a6</declname>
+          <defval>0.0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.h" line="18" column="5" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.cpp" bodystart="4" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_polynome_1a5103725c5ea2d5ebb30b1dbab7c6b9cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float Polynome::f</definition>
+        <argsstring>(float x)</argsstring>
+        <name>f</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>value of the function in x </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.h" line="24" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.cpp" bodystart="15" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="class_polynome_1a0182419d4f284852199e7eee0ab75a8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float Polynome::df</definition>
+        <argsstring>(float x)</argsstring>
+        <name>df</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>value of the derivative function in x </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.h" line="25" column="11" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.cpp" bodystart="27" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_polynome_1ac00f8dfa64f26db7f39d8fe2a621a534" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float Polynome::ddf</definition>
+        <argsstring>(float x)</argsstring>
+        <name>ddf</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>value of double derivative function in x </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.h" line="26" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="class_polynome_1a3a882ec43f76d9f4ca089a5dc7583606" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Polynome::set</definition>
+        <argsstring>(float a0=0.0, float a1=0.0, float a2=0.0, float a3=0.0, float a4=0.0, float a5=0.0, float a6=0.0)</argsstring>
+        <name>set</name>
+        <param>
+          <type>float</type>
+          <declname>a0</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>a1</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>a2</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>a3</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>a4</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>a5</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>a6</declname>
+          <defval>0.0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.h" line="27" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.cpp" bodystart="39" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_polynome_1a6caed698c4b3cb0fee80020c5e00b04b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Polynome::toDebug</definition>
+        <argsstring>()</argsstring>
+        <name>toDebug</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.h" line="28" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.cpp" bodystart="50" bodyend="61"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Ensmasteel Library - <ref refid="class_polynome" kindref="compound">Polynome</ref> and trapezoidale functions modelisation</para>
+<para>author : Arthur FINDELAIR - EnsmaSteel, github.com/ArthurFDLR date : October 2019 Creates a polynomial function to interpolate a trajectory. </para>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.h" line="15" column="1" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/Math_functions/Math_functions.h" bodystart="16" bodyend="29"/>
+    <listofallmembers>
+      <member refid="class_polynome_1ac00f8dfa64f26db7f39d8fe2a621a534" prot="public" virt="non-virtual"><scope>Polynome</scope><name>ddf</name></member>
+      <member refid="class_polynome_1a3a3c50178a8c0df41d5bcd0c44afd778" prot="public" virt="non-virtual"><scope>Polynome</scope><name>DEGRE_MAX</name></member>
+      <member refid="class_polynome_1a0182419d4f284852199e7eee0ab75a8e" prot="public" virt="non-virtual"><scope>Polynome</scope><name>df</name></member>
+      <member refid="class_polynome_1a5103725c5ea2d5ebb30b1dbab7c6b9cb" prot="public" virt="non-virtual"><scope>Polynome</scope><name>f</name></member>
+      <member refid="class_polynome_1a2673e8bb2b601ce3243fc356797de8e3" prot="public" virt="non-virtual"><scope>Polynome</scope><name>K</name></member>
+      <member refid="class_polynome_1aeea64292b22b736bc60675ea757d50ee" prot="public" virt="non-virtual"><scope>Polynome</scope><name>Polynome</name></member>
+      <member refid="class_polynome_1a3a882ec43f76d9f4ca089a5dc7583606" prot="public" virt="non-virtual"><scope>Polynome</scope><name>set</name></member>
+      <member refid="class_polynome_1a6caed698c4b3cb0fee80020c5e00b04b" prot="public" virt="non-virtual"><scope>Polynome</scope><name>toDebug</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

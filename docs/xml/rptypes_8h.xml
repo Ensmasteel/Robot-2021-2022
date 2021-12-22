@@ -1,0 +1,455 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="rptypes_8h" kind="file" language="C++">
+    <compoundname>rptypes.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includedby refid="_r_p_lidar_8h" local="yes">Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/RPLidar.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h</label>
+        <link refid="rptypes_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/LIDAR/LIDAR.h</label>
+        <link refid="_l_i_d_a_r_8h_source"/>
+      </node>
+      <node id="2">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/RPLidar.h</label>
+        <link refid="_r_p_lidar_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h</label>
+        <link refid="rptypes_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="rptypes_8h_1a8bdb84e658f7f9c819d9e284aac0876e" prot="public" static="no">
+        <name>__small_endian</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="74" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="rptypes_8h_1a9d373a9b65ff25b2db84c07394e1c212" prot="public" static="no">
+        <name>__attribute__</name>
+        <param><defname>x</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="77" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="rptypes_8h_1a2618c097a9f7213a8b01afbcf0d3936e" prot="public" static="no">
+        <name>RESULT_OK</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="102" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="rptypes_8h_1a7680b3678306a6e21e23557d5ccb83ac" prot="public" static="no">
+        <name>RESULT_FAIL_BIT</name>
+        <initializer>0x80000000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="103" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="rptypes_8h_1a3024157b51e04d74a09712f819f71076" prot="public" static="no">
+        <name>RESULT_ALREADY_DONE</name>
+        <initializer>0x20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="104" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="rptypes_8h_1ac185ffa60faf217f221ba8fca8b35fe9" prot="public" static="no">
+        <name>RESULT_INVALID_DATA</name>
+        <initializer>(0x8000 | RESULT_FAIL_BIT)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="105" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="rptypes_8h_1a789f1eb7c04ace1cd61e2dbf7e239ac5" prot="public" static="no">
+        <name>RESULT_OPERATION_FAIL</name>
+        <initializer>(0x8001 | RESULT_FAIL_BIT)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="106" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="rptypes_8h_1a643f71140ee9631574bfc7f8442b5db6" prot="public" static="no">
+        <name>RESULT_OPERATION_TIMEOUT</name>
+        <initializer>(0x8002 | RESULT_FAIL_BIT)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="107" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="rptypes_8h_1a313a1360d26fecb31adeefc372c83abd" prot="public" static="no">
+        <name>RESULT_OPERATION_STOP</name>
+        <initializer>(0x8003 | RESULT_FAIL_BIT)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="108" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="rptypes_8h_1abe3ac0cf8ea1297874aa52fdf901a724" prot="public" static="no">
+        <name>RESULT_OPERATION_NOT_SUPPORT</name>
+        <initializer>(0x8004 | RESULT_FAIL_BIT)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="109" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="rptypes_8h_1a13329d60601e220848f45a1bd40369ab" prot="public" static="no">
+        <name>RESULT_FORMAT_NOT_SUPPORT</name>
+        <initializer>(0x8005 | RESULT_FAIL_BIT)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="110" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="rptypes_8h_1a32d624c523e0b76df9b5654b2baecaa9" prot="public" static="no">
+        <name>RESULT_INSUFFICIENT_MEMORY</name>
+        <initializer>(0x8006 | RESULT_FAIL_BIT)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="111" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="rptypes_8h_1aa9af8e76797e08dba1b1e541971e20e5" prot="public" static="no">
+        <name>IS_OK</name>
+        <param><defname>x</defname></param>
+        <initializer>( ((x) &amp; RESULT_FAIL_BIT) == 0 )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="113" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="rptypes_8h_1aab0adb4ddb301fc29e5260dd871772dc" prot="public" static="no">
+        <name>IS_FAIL</name>
+        <param><defname>x</defname></param>
+        <initializer>( ((x) &amp; RESULT_FAIL_BIT) )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="114" column="9" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="rptypes_8h_1a8c1c46c75cbdda3d86969aa28157aad2" prot="public" static="no">
+        <type>int8_t</type>
+        <definition>typedef int8_t _s8</definition>
+        <argsstring></argsstring>
+        <name>_s8</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="62" column="24" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="rptypes_8h_1af2b0f13cffd24f6dddf794ae0c7472b4" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>typedef uint8_t _u8</definition>
+        <argsstring></argsstring>
+        <name>_u8</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="63" column="24" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="rptypes_8h_1afe7a44df84382fc8a5f84f9575b6c009" prot="public" static="no">
+        <type>int16_t</type>
+        <definition>typedef int16_t _s16</definition>
+        <argsstring></argsstring>
+        <name>_s16</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="65" column="24" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="rptypes_8h_1a0ff807843ee3edd61b33fa0425b571e6" prot="public" static="no">
+        <type>uint16_t</type>
+        <definition>typedef uint16_t _u16</definition>
+        <argsstring></argsstring>
+        <name>_u16</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="66" column="24" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="rptypes_8h_1a72ba73aa9146e63093239a2606c75a80" prot="public" static="no">
+        <type>int32_t</type>
+        <definition>typedef int32_t _s32</definition>
+        <argsstring></argsstring>
+        <name>_s32</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="68" column="24" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="rptypes_8h_1a07491c35a48354e0e7b56974a04cc3de" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>typedef uint32_t _u32</definition>
+        <argsstring></argsstring>
+        <name>_u32</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="69" column="24" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="rptypes_8h_1ac0186bf12dd93f8087975e20cd10866f" prot="public" static="no">
+        <type>int64_t</type>
+        <definition>typedef int64_t _s64</definition>
+        <argsstring></argsstring>
+        <name>_s64</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="71" column="24" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="rptypes_8h_1ab6cc27767e5120b044fbfefc322304fc" prot="public" static="no">
+        <type>uint64_t</type>
+        <definition>typedef uint64_t _u64</definition>
+        <argsstring></argsstring>
+        <name>_u64</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="72" column="24" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="rptypes_8h_1aae3c3046a3ac6b72370c3d3c9c9061db" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>typedef uint32_t u_result</definition>
+        <argsstring></argsstring>
+        <name>u_result</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="100" column="18" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="rptypes_8h_1a4771db3b1758bdddc709e86b91dcc364" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>typedef</type>
+        <definition>typedef _word_size_t</definition>
+        <argsstring>(THREAD_PROC *thread_proc_t)(void *)</argsstring>
+        <name>_word_size_t</name>
+        <param>
+          <type>THREAD_PROC *</type>
+          <declname>thread_proc_t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" line="116" column="9" declfile="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h" declline="116" declcolumn="9"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2014,<sp/>RoboPeak</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,<sp/></highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>1.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/></highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>2.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/></highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/></highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/></highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/></highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/></highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/><sp/>RoboPeak<sp/>LIDAR<sp/>System</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/><sp/>Common<sp/>Types<sp/>definition</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/><sp/>Copyright<sp/>2009<sp/>-<sp/>2014<sp/>RoboPeak<sp/>Team</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/><sp/>http://www.robopeak.com</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>_WIN32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//fake<sp/>stdint.h<sp/>for<sp/>VC<sp/>only</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>int8_t;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>uint8_t;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>__int16<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int16_t;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>__int16<sp/><sp/>uint16_t;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>__int32<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>__int32<sp/><sp/>uint32_t;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>__int64<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int64_t;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>__int64<sp/><sp/>uint64_t;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//based<sp/>on<sp/>stdint.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>int8_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_s8;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_u8;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>int16_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_s16;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint16_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/>_u16;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>int32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_s32;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/>_u32;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>int64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_s64;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/>_u64;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__small_endian</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__GNUC__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__attribute__(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>_word_size_t<sp/>uses<sp/>actual<sp/>data<sp/>bus<sp/>width<sp/>of<sp/>the<sp/>current<sp/>CPU</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>_AVR_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>_u8<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_word_size_t;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>THREAD_PROC<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined<sp/>(WIN64)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>_u64<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_word_size_t;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>THREAD_PROC<sp/><sp/><sp/><sp/>__stdcall</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined<sp/>(WIN32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>_u32<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_word_size_t;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>THREAD_PROC<sp/><sp/><sp/><sp/>__stdcall</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined<sp/>(__GNUC__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><sp/>_word_size_t;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>THREAD_PROC<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined<sp/>(__ICCARM__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>_u32<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_word_size_t;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>THREAD_PROC<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint32_t<sp/>u_result;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RESULT_OK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RESULT_FAIL_BIT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x80000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RESULT_ALREADY_DONE<sp/><sp/><sp/><sp/>0x20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RESULT_INVALID_DATA<sp/><sp/><sp/><sp/>(0x8000<sp/>|<sp/>RESULT_FAIL_BIT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RESULT_OPERATION_FAIL<sp/><sp/>(0x8001<sp/>|<sp/>RESULT_FAIL_BIT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RESULT_OPERATION_TIMEOUT<sp/><sp/>(0x8002<sp/>|<sp/>RESULT_FAIL_BIT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RESULT_OPERATION_STOP<sp/><sp/><sp/><sp/>(0x8003<sp/>|<sp/>RESULT_FAIL_BIT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RESULT_OPERATION_NOT_SUPPORT<sp/><sp/><sp/><sp/>(0x8004<sp/>|<sp/>RESULT_FAIL_BIT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RESULT_FORMAT_NOT_SUPPORT<sp/><sp/><sp/><sp/>(0x8005<sp/>|<sp/>RESULT_FAIL_BIT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RESULT_INSUFFICIENT_MEMORY<sp/><sp/><sp/>(0x8006<sp/>|<sp/>RESULT_FAIL_BIT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IS_OK(x)<sp/><sp/><sp/><sp/>(<sp/>((x)<sp/>&amp;<sp/>RESULT_FAIL_BIT)<sp/>==<sp/>0<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IS_FAIL(x)<sp/><sp/>(<sp/>((x)<sp/>&amp;<sp/>RESULT_FAIL_BIT)<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>_word_size_t<sp/>(THREAD_PROC<sp/>*<sp/>thread_proc_t<sp/>)<sp/>(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>);</highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/RPLidarDriver/inc/rptypes.h"/>
+  </compounddef>
+</doxygen>

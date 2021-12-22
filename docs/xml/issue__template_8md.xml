@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="issue__template_8md" kind="file" language="Markdown">
+    <compoundname>issue_template.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">Please<sp/>use<sp/>this<sp/>form<sp/>only<sp/>to<sp/>report<sp/>code<sp/>defects<sp/>or<sp/>bugs.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>any<sp/>question,<sp/>even<sp/>questions<sp/>directly<sp/>pertaining<sp/>to<sp/>this<sp/>code,<sp/>post<sp/>your<sp/>question<sp/>on<sp/>the<sp/>forums<sp/>related<sp/>to<sp/>the<sp/>board<sp/>you<sp/>are<sp/>using.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Arduino:<sp/>forum.arduino.cc</highlight></codeline>
+<codeline><highlight class="normal">Teensy:<sp/>forum.pjrc.com</highlight></codeline>
+<codeline><highlight class="normal">ESP8266:<sp/>www.esp8266.com</highlight></codeline>
+<codeline><highlight class="normal">ESP32:<sp/>www.esp32.com</highlight></codeline>
+<codeline><highlight class="normal">Adafruit<sp/>Feather/Metro/Trinket:<sp/>forums.adafruit.com</highlight></codeline>
+<codeline><highlight class="normal">Particle<sp/>Photon:<sp/>community.particle.io</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>you<sp/>are<sp/>experiencing<sp/>trouble<sp/>but<sp/>not<sp/>certain<sp/>of<sp/>the<sp/>cause,<sp/>or<sp/>need<sp/>help<sp/>using<sp/>this<sp/>code,<sp/>ask<sp/>on<sp/>the<sp/>appropriate<sp/>forum.<sp/><sp/>This<sp/>is<sp/>not<sp/>the<sp/>place<sp/>to<sp/>ask<sp/>for<sp/>support<sp/>or<sp/>help,<sp/>even<sp/>directly<sp/>related<sp/>to<sp/>this<sp/>code.<sp/><sp/>Only<sp/>use<sp/>this<sp/>form<sp/>you<sp/>are<sp/>certain<sp/>you<sp/>have<sp/>discovered<sp/>a<sp/>defect<sp/>in<sp/>this<sp/>code!</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Please<sp/>verify<sp/>the<sp/>problem<sp/>occurs<sp/>when<sp/>using<sp/>the<sp/>very<sp/>latest<sp/>version,<sp/>using<sp/>the<sp/>newest<sp/>version<sp/>of<sp/>Arduino<sp/>and<sp/>any<sp/>other<sp/>related<sp/>software.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-----------------------------<sp/>Remove<sp/>above<sp/>-----------------------------</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Description</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Describe<sp/>your<sp/>problem.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Steps<sp/>To<sp/>Reproduce<sp/>Problem</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Please<sp/>give<sp/>detailed<sp/>instructions<sp/>needed<sp/>for<sp/>anyone<sp/>to<sp/>attempt<sp/>to<sp/>reproduce<sp/>the<sp/>problem.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Hardware<sp/>&amp;<sp/>Software</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Board</highlight></codeline>
+<codeline><highlight class="normal">Shields<sp/>/<sp/>modules<sp/>used</highlight></codeline>
+<codeline><highlight class="normal">Arduino<sp/>IDE<sp/>version</highlight></codeline>
+<codeline><highlight class="normal">Teensyduino<sp/>version<sp/>(if<sp/>using<sp/>Teensy)</highlight></codeline>
+<codeline><highlight class="normal">Version<sp/>info<sp/>&amp;<sp/>package<sp/>name<sp/>(from<sp/>Tools<sp/>&gt;<sp/>Boards<sp/>&gt;<sp/>Board<sp/>Manager)</highlight></codeline>
+<codeline><highlight class="normal">Operating<sp/>system<sp/>&amp;<sp/>version</highlight></codeline>
+<codeline><highlight class="normal">Any<sp/>other<sp/>software<sp/>or<sp/>hardware?</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Arduino<sp/>Sketch</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Change<sp/>the<sp/>code<sp/>below<sp/>by<sp/>your<sp/>sketch<sp/>(please<sp/>try<sp/>to<sp/>give<sp/>the<sp/>smallest<sp/>code<sp/>which<sp/>demonstrates<sp/>the<sp/>problem)</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;Arduino.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>libraries:<sp/>give<sp/>links/details<sp/>so<sp/>anyone<sp/>can<sp/>compile<sp/>your<sp/>code<sp/>for<sp/>the<sp/>same<sp/>result</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Errors<sp/>or<sp/>Incorrect<sp/>Output</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>you<sp/>see<sp/>any<sp/>errors<sp/>or<sp/>incorrect<sp/>output,<sp/>please<sp/>show<sp/>it<sp/>here.<sp/><sp/>Please<sp/>use<sp/>copy<sp/>&amp;<sp/>paste<sp/>to<sp/>give<sp/>an<sp/>exact<sp/>copy<sp/>of<sp/>the<sp/>message.<sp/><sp/>Details<sp/>matter,<sp/>so<sp/>please<sp/>show<sp/>(not<sp/>merely<sp/>describe)<sp/>the<sp/>actual<sp/>message<sp/>or<sp/>error<sp/>exactly<sp/>as<sp/>it<sp/>appears.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/Encoder/docs/issue_template.md"/>
+  </compounddef>
+</doxygen>

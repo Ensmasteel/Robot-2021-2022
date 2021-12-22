@@ -1,0 +1,43 @@
+\hypertarget{class_wait___message___action}{}\doxysection{Wait\+\_\+\+Message\+\_\+\+Action Class Reference}
+\label{class_wait___message___action}\index{Wait\_Message\_Action@{Wait\_Message\_Action}}
+
+
+{\ttfamily \#include $<$Actions.\+h$>$}
+
+Inheritance diagram for Wait\+\_\+\+Message\+\_\+\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_wait___message___action}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_wait___message___action_a2962054653b4d85a9c16232c18d66e93}\label{class_wait___message___action_a2962054653b4d85a9c16232c18d66e93}} 
+{\bfseries Wait\+\_\+\+Message\+\_\+\+Action} (Message\+ID message\+Id, float timeout, \mbox{\hyperlink{class_communication}{Communication}} $\ast$comm, int16\+\_\+t require=NO\+\_\+\+REQUIREMENT)
+\item 
+bool \mbox{\hyperlink{class_wait___message___action_a3fa2293c84671cc0b98c04d512d45ecf}{is\+Finished}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Blocking instruction \+: waits for a message on communication port. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_wait___message___action_a3fa2293c84671cc0b98c04d512d45ecf}\label{class_wait___message___action_a3fa2293c84671cc0b98c04d512d45ecf}} 
+\index{Wait\_Message\_Action@{Wait\_Message\_Action}!isFinished@{isFinished}}
+\index{isFinished@{isFinished}!Wait\_Message\_Action@{Wait\_Message\_Action}}
+\doxysubsubsection{\texorpdfstring{isFinished()}{isFinished()}}
+{\footnotesize\ttfamily bool Wait\+\_\+\+Message\+\_\+\+Action\+::is\+Finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Is\+Finished is called endlessly. Returns if the action is done. Can also be an update function. 
+
+Reimplemented from \mbox{\hyperlink{class_action_a3e524a7ba7014522e5111e06cc9b963b}{Action}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Les\+Inseparables/Actions.\+cpp\end{DoxyCompactItemize}

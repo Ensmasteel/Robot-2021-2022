@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_pince_arriere" kind="class" language="C++" prot="public">
+    <compoundname>PinceArriere</compoundname>
+    <basecompoundref refid="class_pince" prot="public" virt="non-virtual">Pince</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_pince_arriere_1ac7d442bef84237e9df70272365c593fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>Actuator_State</type>
+        <definition>Actuator_State PinceArriere::Update</definition>
+        <argsstring>() override</argsstring>
+        <name>Update</name>
+        <reimplements refid="class_pince_1a276034390a36625be28299c0db1c3c54">Update</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Virtual method, to call before each loop.</para>
+<para>Commands each actuator and updates the robot state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="236" column="20" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.cpp" bodystart="262" bodyend="292"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>Actuator</label>
+        <link refid="class_actuator"/>
+      </node>
+      <node id="2">
+        <label>Pince</label>
+        <link refid="class_pince"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>PinceArriere</label>
+        <link refid="class_pince_arriere"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>Actuator</label>
+        <link refid="class_actuator"/>
+      </node>
+      <node id="2">
+        <label>Pince</label>
+        <link refid="class_pince"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>servo</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>stepperMotor</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>PinceArriere</label>
+        <link refid="class_pince_arriere"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Servo</label>
+        <link refid="class_servo"/>
+      </node>
+      <node id="5">
+        <label>StepperMotorJ</label>
+        <link refid="class_stepper_motor_j"/>
+      </node>
+    </collaborationgraph>
+    <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" line="233" column="1" bodyfile="Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h" bodystart="234" bodyend="237"/>
+    <listofallmembers>
+      <member refid="class_pince_1a7725882b2fc328820cebabc00e7cd2b9" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>actionStep</name></member>
+      <member refid="class_actuator_1a813e211d860d125a45d713775c19d38b" prot="public" virt="non-virtual"><scope>PinceArriere</scope><name>Actuator</name></member>
+      <member refid="class_actuator_1a40d4d6ecd707964f3a9a30fc02384e29" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>currentOrder</name></member>
+      <member refid="class_actuator_1a40a6e3266cfb00a66b104317c4d68a31" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>etat</name></member>
+      <member refid="class_actuator_1aff3a744eecf74c4b52a8a6b30ca0eb88" prot="public" virt="non-virtual"><scope>PinceArriere</scope><name>GetEtat</name></member>
+      <member refid="class_actuator_1ae5c55e58f214e70c0cf16e9e81111063" prot="public" virt="non-virtual"><scope>PinceArriere</scope><name>GetID</name></member>
+      <member refid="class_actuator_1a466fe2e29b99bf66f08116ff8ba46acb" prot="public" virt="non-virtual"><scope>PinceArriere</scope><name>GetName</name></member>
+      <member refid="class_actuator_1a0819fc5a7749335bf3b5caa8f524ef87" prot="public" virt="non-virtual"><scope>PinceArriere</scope><name>GetOrder</name></member>
+      <member refid="class_pince_1a1db2a77e3139df907791d02bb34566ab" prot="public" virt="non-virtual"><scope>PinceArriere</scope><name>Init</name></member>
+      <member refid="class_actuator_1ab8ff5826f0a87b53d119c752d25af88a" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>messID</name></member>
+      <member refid="class_pince_1a8e0b222ff1a89e6b0335d21639018ccb" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>motorSteps</name></member>
+      <member refid="class_actuator_1a20f429b3963d3402b4788774b434ba87" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>name</name></member>
+      <member refid="class_actuator_1a0834ccb419fcc7340391b9ef5a564343" prot="public" virt="non-virtual"><scope>PinceArriere</scope><name>NewOrder</name></member>
+      <member refid="class_actuator_1a6f2502f7dfe2f59d7f58f6053c8574c6" prot="public" virt="non-virtual"><scope>PinceArriere</scope><name>OrderCompleted</name></member>
+      <member refid="class_pince_1a631a01a2192fe014b2bcb54706e04b57" prot="public" virt="non-virtual"><scope>PinceArriere</scope><name>Pince</name></member>
+      <member refid="class_pince_1a03ae3ce45c584ee4babf6b84841bf518" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>pinDir</name></member>
+      <member refid="class_pince_1ac449f0f6dff79be627d82644ac252a56" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>pinM0</name></member>
+      <member refid="class_pince_1ab49408bd0827582f15ce724666185101" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>pinM1</name></member>
+      <member refid="class_pince_1a520a09e99aa93c6007a200a818fb15fa" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>pinServo</name></member>
+      <member refid="class_pince_1abd8aebec9b2f705c658a778183b90042" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>pinSleep</name></member>
+      <member refid="class_pince_1a0af82a7a90d6fdcb0839dfc654694ac1" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>pinStep</name></member>
+      <member refid="class_pince_1aef415b97e8489b599ba2ad61a87a1e11" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>posFermee</name></member>
+      <member refid="class_pince_1a729fefaa34fbc0bccbaf39f93efbdb10" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>posOuverte</name></member>
+      <member refid="class_pince_1ade569d63ec4b82dd24cb12afb77197e2" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>servo</name></member>
+      <member refid="class_pince_1a5834c386f0296e73e39c75ea9af84414" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>standardDelay</name></member>
+      <member refid="class_pince_1a2f028a8d492d579c8c2753203a6ce325" prot="protected" virt="non-virtual"><scope>PinceArriere</scope><name>stepperMotor</name></member>
+      <member refid="class_pince_arriere_1ac7d442bef84237e9df70272365c593fa" prot="public" virt="virtual"><scope>PinceArriere</scope><name>Update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

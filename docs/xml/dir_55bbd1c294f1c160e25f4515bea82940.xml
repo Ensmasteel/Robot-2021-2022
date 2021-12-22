@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_55bbd1c294f1c160e25f4515bea82940" kind="dir">
+    <compoundname>Ensmasteel_Bot_2020/Teensy/lib/Encoder</compoundname>
+    <innerdir refid="dir_a2c7893d6c300d499de90dd644c84de0">Ensmasteel_Bot_2020/Teensy/lib/Encoder/docs</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/Encoder/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_stepper_motor_j_8h" kind="file" language="C++">
+    <compoundname>StepperMotorJ.h</compoundname>
+    <includes local="yes">Arduino.h</includes>
+    <includedby refid="_actuators_8h" local="yes">Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h</includedby>
+    <includedby refid="_stepper_motor_j_8cpp" local="yes">Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h</label>
+        <link refid="_stepper_motor_j_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h</label>
+        <link refid="_actuators_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h</label>
+        <link refid="_actuators___manager_8h_source"/>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h</label>
+        <link refid="_stepper_motor_j_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_stepper_motor_j" prot="public">StepperMotorJ</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>STEPPERMOTORJ_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STEPPERMOTORJ_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="class_stepper_motor_j" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_stepper_motor_j" kindref="compound">StepperMotorJ</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_stepper_motor_j_1a09a9900155e29af1a89587604d2bee4f" kindref="member">StepperMotorJ</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stepPin,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dirPin,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sleepPin,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pinM0,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pinM1);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_stepper_motor_j_1a67cc9a64c2854cbfa003fa68e32e2c98" kindref="member">move</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>steps,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>delay,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>up,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>holdPosition);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stepPin;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dirPin;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sleepPin;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pinM0;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pinM1;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Arduino_Mega/Lib/StepperMotorJ/StepperMotorJ.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,73 @@
+\hypertarget{_codeuse_8h_source}{}\doxysection{Codeuse.\+h}
+\label{_codeuse_8h_source}\index{Ensmasteel\_Bot\_2020/Teensy/lib/LesInseparables/Codeuse.h@{Ensmasteel\_Bot\_2020/Teensy/lib/LesInseparables/Codeuse.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef CODEUSE\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define CODEUSE\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Vector.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef STM32BOTH}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <Encoder.h>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#else }\textcolor{comment}{// !STM32BOTH}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{class_encoder}{Encoder}}}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18     \mbox{\hyperlink{class_encoder}{Encoder}}(uint8\_t pinA, uint8\_t pinB) \{\}}
+\DoxyCodeLine{19     int32\_t read() \{ \textcolor{keywordflow}{return} 0; \}}
+\DoxyCodeLine{20 \};}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{26 \textcolor{keyword}{class }\mbox{\hyperlink{class_interrupteur}{Interrupteur}}}
+\DoxyCodeLine{27 \{}
+\DoxyCodeLine{28     \textcolor{keyword}{private}:}
+\DoxyCodeLine{29         uint8\_t pin;}
+\DoxyCodeLine{30         \textcolor{keywordtype}{bool} contact;}
+\DoxyCodeLine{31     \textcolor{keyword}{public}:}
+\DoxyCodeLine{32         \mbox{\hyperlink{class_interrupteur}{Interrupteur}}(uint8\_t pin);}
+\DoxyCodeLine{33         \textcolor{keywordtype}{void} updateContact();}
+\DoxyCodeLine{34         \textcolor{keywordtype}{bool} isContact();}
+\DoxyCodeLine{35 \};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{40 \textcolor{keyword}{class }\mbox{\hyperlink{class_codeuse}{Codeuse}}}
+\DoxyCodeLine{41 \{}
+\DoxyCodeLine{42     int32\_t oldTicks; \textcolor{comment}{//Nombre de ticks compté, nombre de ticks compté au dernier appel}}
+\DoxyCodeLine{43     \textcolor{keywordtype}{float} debug;             \textcolor{comment}{//Distance parcourue par la codeuse depuis l'alllumage}}
+\DoxyCodeLine{44     \textcolor{keywordtype}{float} diametreRoue;}
+\DoxyCodeLine{45     uint16\_t ticksPerRound; \textcolor{comment}{//Nombre de ticks par tours de roue}}
+\DoxyCodeLine{46     \mbox{\hyperlink{class_encoder}{Encoder}} *enc;           \textcolor{comment}{//Objet Encoder de la librairie Encoder.}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{keyword}{public}:}
+\DoxyCodeLine{49     \textcolor{keywordtype}{float} v, deltaAvance; \textcolor{comment}{//Vitesse et avance du robot AU NIVEAU DE LA ROUE CODEUSE}}
+\DoxyCodeLine{50     int32\_t ticks;}
+\DoxyCodeLine{51     \textcolor{keywordtype}{void} actuate(\textcolor{keywordtype}{float} dt); \textcolor{comment}{//Actualise (transforme les ticks en vitesse puis en avance)}}
+\DoxyCodeLine{52     \mbox{\hyperlink{class_codeuse}{Codeuse}}();}
+\DoxyCodeLine{53     \mbox{\hyperlink{class_codeuse}{Codeuse}}(uint8\_t pinA, uint8\_t pinB, uint16\_t ticksPerRound, \textcolor{keywordtype}{float} diametreRoue);}
+\DoxyCodeLine{54 \};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{59 \textcolor{keyword}{class }\mbox{\hyperlink{class_odometrie}{Odometrie}}}
+\DoxyCodeLine{60 \{}
+\DoxyCodeLine{61 \textcolor{keyword}{private}:}
+\DoxyCodeLine{62     \textcolor{comment}{//Codeuse codeuseGauche, codeuseDroite;}}
+\DoxyCodeLine{63     \mbox{\hyperlink{class_interrupteur}{Interrupteur}} *interGauche, *interDroite;}
+\DoxyCodeLine{64     \mbox{\hyperlink{class_cinetique}{Cinetique}} *cinetique;}
+\DoxyCodeLine{65     \textcolor{keywordtype}{float} eloignementCodeuses;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{keyword}{public}:}
+\DoxyCodeLine{68     \mbox{\hyperlink{class_codeuse}{Codeuse}} codeuseGauche, codeuseDroite;}
+\DoxyCodeLine{69     \textcolor{keywordtype}{void} updateCinetique(\textcolor{keywordtype}{float} dt);}
+\DoxyCodeLine{70     \mbox{\hyperlink{class_odometrie}{Odometrie}}();}
+\DoxyCodeLine{71     \mbox{\hyperlink{class_odometrie}{Odometrie}}(uint16\_t ticksPerRound, \mbox{\hyperlink{class_cinetique}{Cinetique}} *cinetique, \textcolor{keywordtype}{float} eloignementCodeuses,}
+\DoxyCodeLine{72               uint8\_t pinACodeuseGauche, uint8\_t pinBCodeuseGauche, \textcolor{keywordtype}{float} diametreRoueGauche,}
+\DoxyCodeLine{73               uint8\_t pinACodeuseDroite, uint8\_t pinBCodeuseDroite, \textcolor{keywordtype}{float} diametreRoueDroite,}
+\DoxyCodeLine{74               uint8\_t pinInterDroite, uint8\_t pinInterGauche);}
+\DoxyCodeLine{75     \textcolor{keywordtype}{bool} getInterDroiteContact();}
+\DoxyCodeLine{76     \textcolor{keywordtype}{bool} getInterGaucheContact();}
+\DoxyCodeLine{77 \};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

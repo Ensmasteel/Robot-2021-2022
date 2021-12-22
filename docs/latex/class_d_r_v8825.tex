@@ -1,0 +1,87 @@
+\hypertarget{class_d_r_v8825}{}\doxysection{DRV8825 Class Reference}
+\label{class_d_r_v8825}\index{DRV8825@{DRV8825}}
+Inheritance diagram for DRV8825\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_d_r_v8825}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_d_r_v8825_aee4f48c92aba458613384a206c1baff2}\label{class_d_r_v8825_aee4f48c92aba458613384a206c1baff2}} 
+{\bfseries DRV8825} (short steps, short dir\+\_\+pin, short step\+\_\+pin)
+\item 
+\mbox{\Hypertarget{class_d_r_v8825_a058b6ca167afb2c6fbb5b7fa4f626dbe}\label{class_d_r_v8825_a058b6ca167afb2c6fbb5b7fa4f626dbe}} 
+{\bfseries DRV8825} (short steps, short dir\+\_\+pin, short step\+\_\+pin, short enable\+\_\+pin)
+\item 
+\mbox{\Hypertarget{class_d_r_v8825_ad98fb3f5707bb90a9c10b01e10869f7c}\label{class_d_r_v8825_ad98fb3f5707bb90a9c10b01e10869f7c}} 
+{\bfseries DRV8825} (short steps, short dir\+\_\+pin, short step\+\_\+pin, short mode0\+\_\+pin, short mode1\+\_\+pin, short mode2\+\_\+pin)
+\item 
+\mbox{\Hypertarget{class_d_r_v8825_a08d5b966199b132c5063001140b6a8db}\label{class_d_r_v8825_a08d5b966199b132c5063001140b6a8db}} 
+{\bfseries DRV8825} (short steps, short dir\+\_\+pin, short step\+\_\+pin, short enable\+\_\+pin, short mode0\+\_\+pin, short mode1\+\_\+pin, short mode2\+\_\+pin)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const uint8\+\_\+t $\ast$ \mbox{\hyperlink{class_d_r_v8825_a3650c70de245ed6f283ed975b77d03bc}{get\+Microstep\+Table}} () override
+\item 
+size\+\_\+t \mbox{\hyperlink{class_d_r_v8825_a71f7f93d9a1a52af37ecccda42868206}{get\+Microstep\+Table\+Size}} () override
+\item 
+short \mbox{\hyperlink{class_d_r_v8825_a69a55bb439172740e5bb9a2f5e43e511}{get\+Max\+Microstep}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_d_r_v8825_a8cfd666d75f891930be0bc34f75bd3fc}\label{class_d_r_v8825_a8cfd666d75f891930be0bc34f75bd3fc}} 
+static const uint8\+\_\+t {\bfseries MS\+\_\+\+TABLE} \mbox{[}$\,$\mbox{]} = \{0b000, 0b001, 0b010, 0b011, 0b100, 0b111\}
+\item 
+\mbox{\Hypertarget{class_d_r_v8825_a8e8911db46092516a96ac8cc086ee0bc}\label{class_d_r_v8825_a8e8911db46092516a96ac8cc086ee0bc}} 
+static const int {\bfseries step\+\_\+high\+\_\+min} = 2
+\item 
+\mbox{\Hypertarget{class_d_r_v8825_a423f12b4bfbf1b93966de659d156c4d1}\label{class_d_r_v8825_a423f12b4bfbf1b93966de659d156c4d1}} 
+static const int {\bfseries step\+\_\+low\+\_\+min} = 2
+\item 
+\mbox{\Hypertarget{class_d_r_v8825_ac0b740268ab0665e08e66cb8282acbc4}\label{class_d_r_v8825_ac0b740268ab0665e08e66cb8282acbc4}} 
+static const int {\bfseries wakeup\+\_\+time} = 1700
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_d_r_v8825_a69a55bb439172740e5bb9a2f5e43e511}\label{class_d_r_v8825_a69a55bb439172740e5bb9a2f5e43e511}} 
+\index{DRV8825@{DRV8825}!getMaxMicrostep@{getMaxMicrostep}}
+\index{getMaxMicrostep@{getMaxMicrostep}!DRV8825@{DRV8825}}
+\doxysubsubsection{\texorpdfstring{getMaxMicrostep()}{getMaxMicrostep()}}
+{\footnotesize\ttfamily short DRV8825\+::get\+Max\+Microstep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_a4988}{A4988}}.
+
+\mbox{\Hypertarget{class_d_r_v8825_a3650c70de245ed6f283ed975b77d03bc}\label{class_d_r_v8825_a3650c70de245ed6f283ed975b77d03bc}} 
+\index{DRV8825@{DRV8825}!getMicrostepTable@{getMicrostepTable}}
+\index{getMicrostepTable@{getMicrostepTable}!DRV8825@{DRV8825}}
+\doxysubsubsection{\texorpdfstring{getMicrostepTable()}{getMicrostepTable()}}
+{\footnotesize\ttfamily const uint8\+\_\+t $\ast$ DRV8825\+::get\+Microstep\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_a4988}{A4988}}.
+
+\mbox{\Hypertarget{class_d_r_v8825_a71f7f93d9a1a52af37ecccda42868206}\label{class_d_r_v8825_a71f7f93d9a1a52af37ecccda42868206}} 
+\index{DRV8825@{DRV8825}!getMicrostepTableSize@{getMicrostepTableSize}}
+\index{getMicrostepTableSize@{getMicrostepTableSize}!DRV8825@{DRV8825}}
+\doxysubsubsection{\texorpdfstring{getMicrostepTableSize()}{getMicrostepTableSize()}}
+{\footnotesize\ttfamily size\+\_\+t DRV8825\+::get\+Microstep\+Table\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_a4988}{A4988}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Arduino\+\_\+\+Mega/\+Lib/\+Stepper\+Driver/src/DRV8825.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Arduino\+\_\+\+Mega/\+Lib/\+Stepper\+Driver/src/DRV8825.\+cpp\end{DoxyCompactItemize}

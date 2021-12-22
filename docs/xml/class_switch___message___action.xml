@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_switch___message___action" kind="class" language="C++" prot="public">
+    <compoundname>Switch_Message_Action</compoundname>
+    <basecompoundref refid="class_action" prot="public" virt="non-virtual">Action</basecompoundref>
+    <includes refid="_actions_8h" local="no">Actions.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_switch___message___action_1aa0e762c74494bd71ec54f1530a5b1d1d" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; MessageID &gt;</type>
+        <definition>std::vector&lt;MessageID&gt; Switch_Message_Action::onMessage</definition>
+        <argsstring></argsstring>
+        <name>onMessage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" line="294" column="17" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" bodystart="294" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_switch___message___action_1a7033583dfe306b411224ee1a0efa7d1e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; Fct &gt;</type>
+        <definition>std::vector&lt;Fct&gt; Switch_Message_Action::doFct</definition>
+        <argsstring></argsstring>
+        <name>doFct</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" line="295" column="17" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" bodystart="295" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_switch___message___action_1abf952d129f49c8139a2c6b513adcced7" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Switch_Message_Action::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" line="296" column="13" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" bodystart="296" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_switch___message___action_1a0bfbb674aba8acd4a7df83c8b560691c" prot="private" static="no" mutable="no">
+        <type><ref refid="class_communication" kindref="compound">Communication</ref> *</type>
+        <definition>Communication* Switch_Message_Action::_commLocal</definition>
+        <argsstring></argsstring>
+        <name>_commLocal</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" line="297" column="19" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" bodystart="297" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_switch___message___action_1ae8712b2e86380f75904c94eeb756eb4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Switch_Message_Action::Switch_Message_Action</definition>
+        <argsstring>(float timeout, Communication *comm, int16_t require)</argsstring>
+        <name>Switch_Message_Action</name>
+        <param>
+          <type>float</type>
+          <declname>timeout</declname>
+        </param>
+        <param>
+          <type><ref refid="class_communication" kindref="compound">Communication</ref> *</type>
+          <declname>comm</declname>
+        </param>
+        <param>
+          <type>int16_t</type>
+          <declname>require</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" line="300" column="5" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.cpp" bodystart="249" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="class_switch___message___action_1a8507fc1281538e204e76be01f15d14b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Switch_Message_Action::addPair</definition>
+        <argsstring>(MessageID messageId, Fct fct)</argsstring>
+        <name>addPair</name>
+        <param>
+          <type>MessageID</type>
+          <declname>messageId</declname>
+        </param>
+        <param>
+          <type>Fct</type>
+          <declname>fct</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" line="301" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.cpp" bodystart="257" bodyend="262"/>
+      </memberdef>
+      <memberdef kind="function" id="class_switch___message___action_1a94155ed47d3b75155c67caf5176104aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Switch_Message_Action::isFinished</definition>
+        <argsstring>()</argsstring>
+        <name>isFinished</name>
+        <reimplements refid="class_action_1a3e524a7ba7014522e5111e06cc9b963b">isFinished</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>IsFinished is called endlessly. Returns if the action is done. Can also be an update function. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" line="303" column="10" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.cpp" bodystart="264" bodyend="278"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Enables to assign a function to each possible message. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Action</label>
+        <link refid="class_action"/>
+      </node>
+      <node id="1">
+        <label>Switch_Message_Action</label>
+        <link refid="class_switch___message___action"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Action</label>
+        <link refid="class_action"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>robot</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>mySequence</edgelabel>
+        </childnode>
+      </node>
+      <node id="12">
+        <label>Asservissement</label>
+        <link refid="class_asservissement"/>
+      </node>
+      <node id="6">
+        <label>Cinetique</label>
+        <link refid="class_cinetique"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Codeuse</label>
+        <link refid="class_codeuse"/>
+      </node>
+      <node id="13">
+        <label>Communication</label>
+        <link refid="class_communication"/>
+      </node>
+      <node id="11">
+        <label>Ghost</label>
+        <link refid="class_ghost"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>cinetiqueController</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Motor</label>
+        <link refid="class_motor"/>
+      </node>
+      <node id="4">
+        <label>Odometrie</label>
+        <link refid="class_odometrie"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>codeuseDroite</edgelabel>
+          <edgelabel>codeuseGauche</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Robot</label>
+        <link refid="class_robot"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>odometrie</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>cinetiqueCurrent</edgelabel>
+          <edgelabel>cinetiqueNext</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>motorLeft</edgelabel>
+          <edgelabel>motorRight</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>sequences</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>ghost</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>controller</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>commActionneurs</edgelabel>
+          <edgelabel>communication</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>Sequence</label>
+        <link refid="class_sequence"/>
+      </node>
+      <node id="1">
+        <label>Switch_Message_Action</label>
+        <link refid="class_switch___message___action"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Vector</label>
+        <link refid="class_vector"/>
+      </node>
+      <node id="7">
+        <label>VectorE</label>
+        <link refid="class_vector_e"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" line="291" column="1" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" bodystart="292" bodyend="305"/>
+    <listofallmembers>
+      <member refid="class_switch___message___action_1a0bfbb674aba8acd4a7df83c8b560691c" prot="private" virt="non-virtual"><scope>Switch_Message_Action</scope><name>_commLocal</name></member>
+      <member refid="class_action_1a28dfd4b726854360b99c8bda70e7da6d" prot="public" virt="non-virtual"><scope>Switch_Message_Action</scope><name>Action</name></member>
+      <member refid="class_switch___message___action_1a8507fc1281538e204e76be01f15d14b5" prot="public" virt="non-virtual"><scope>Switch_Message_Action</scope><name>addPair</name></member>
+      <member refid="class_action_1a2d8cdbdc551331ea33f6661837e32904" prot="public" virt="virtual"><scope>Switch_Message_Action</scope><name>doAtEnd</name></member>
+      <member refid="class_switch___message___action_1a7033583dfe306b411224ee1a0efa7d1e" prot="private" virt="non-virtual"><scope>Switch_Message_Action</scope><name>doFct</name></member>
+      <member refid="class_action_1a169d6ae96ebfe59864f7936d964f4604" prot="protected" virt="non-virtual"><scope>Switch_Message_Action</scope><name>done</name></member>
+      <member refid="class_action_1a82a24a3b95fb310326e649402fbcef11" prot="public" virt="virtual"><scope>Switch_Message_Action</scope><name>hasFailed</name></member>
+      <member refid="class_action_1a09d6aee36ccd353f55f073b73dd64f9b" prot="public" virt="non-virtual"><scope>Switch_Message_Action</scope><name>hasStarted</name></member>
+      <member refid="class_switch___message___action_1a94155ed47d3b75155c67caf5176104aa" prot="public" virt="virtual"><scope>Switch_Message_Action</scope><name>isFinished</name></member>
+      <member refid="class_action_1ab7d4c5ae380f7457d22a4b77575e7a70" prot="protected" virt="non-virtual"><scope>Switch_Message_Action</scope><name>mySequence</name></member>
+      <member refid="class_action_1aa4672a5030b15430c86b33903609d172" prot="public" virt="non-virtual"><scope>Switch_Message_Action</scope><name>name</name></member>
+      <member refid="class_switch___message___action_1aa0e762c74494bd71ec54f1530a5b1d1d" prot="private" virt="non-virtual"><scope>Switch_Message_Action</scope><name>onMessage</name></member>
+      <member refid="class_action_1a722960e240576a3c6192f6783df7d1fe" prot="protected" virt="non-virtual"><scope>Switch_Message_Action</scope><name>require</name></member>
+      <member refid="class_action_1ad6ddf3a19a26193c69a64a37dbffb27a" prot="protected" virt="non-virtual"><scope>Switch_Message_Action</scope><name>robot</name></member>
+      <member refid="class_action_1a80945e7aeba19e727952b9dd3059c99f" prot="public" virt="non-virtual"><scope>Switch_Message_Action</scope><name>setPointer</name></member>
+      <member refid="class_switch___message___action_1abf952d129f49c8139a2c6b513adcced7" prot="private" virt="non-virtual"><scope>Switch_Message_Action</scope><name>size</name></member>
+      <member refid="class_action_1a3e06aaadebfc669ac6ff988e1de9abc7" prot="public" virt="virtual"><scope>Switch_Message_Action</scope><name>start</name></member>
+      <member refid="class_action_1a377ebdc2c58b64af1978a64e7ca0c399" prot="protected" virt="non-virtual"><scope>Switch_Message_Action</scope><name>started</name></member>
+      <member refid="class_switch___message___action_1ae8712b2e86380f75904c94eeb756eb4c" prot="public" virt="non-virtual"><scope>Switch_Message_Action</scope><name>Switch_Message_Action</name></member>
+      <member refid="class_action_1a393f04c3c18e212220fd56cca4fcd4c9" prot="protected" virt="non-virtual"><scope>Switch_Message_Action</scope><name>timeout</name></member>
+      <member refid="class_action_1af0308aeb6255207896180aec072f8b88" prot="protected" virt="non-virtual"><scope>Switch_Message_Action</scope><name>timeStarted</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

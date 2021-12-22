@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="dir_55a387168c8caedff86b848653020f20" kind="dir">
+    <compoundname>Ensmasteel_Bot_2020/Teensy/lib/ErrorManager</compoundname>
+    <innerfile refid="_error_manager_8cpp">ErrorManager.cpp</innerfile>
+    <innerfile refid="_error_manager_8h">ErrorManager.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/ErrorManager/"/>
+  </compounddef>
+</doxygen>

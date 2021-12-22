@@ -1,0 +1,205 @@
+\hypertarget{class_robot}{}\doxysection{Robot Class Reference}
+\label{class_robot}\index{Robot@{Robot}}
+
+
+{\ttfamily \#include $<$Robot.\+h$>$}
+
+Inheritance diagram for Robot\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_robot}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_robot_a574586aaa849cb0affb7809ab843e250}{Robot}} (float x\+Ini=0.\+0, float y\+Ini=0.\+0, float theta\+Ini=0.\+0, Stream $\ast$comm\+Port=\&Serial, Stream $\ast$actu\+Port=\&Serial, Stream $\ast$esp\+Port=\&Serial4)
+\item 
+void \mbox{\hyperlink{class_robot_ac5e473914be046e6f20bb5300298db73}{Update}} (float dt)
+\item 
+void \mbox{\hyperlink{class_robot_a8ef961d074427230155b47a0be36684c}{telemetry}} (bool odometrie, bool other)
+\item 
+\mbox{\hyperlink{class_sequence}{Sequence}} $\ast$ \mbox{\hyperlink{class_robot_a92dfc164f4b5687a7ffc1dab1cf7bfbe}{get\+Sequence\+By\+Name}} (Sequence\+Name name)
+\item 
+\mbox{\Hypertarget{class_robot_af639da058cf55f8fc03038d43c76a992}\label{class_robot_af639da058cf55f8fc03038d43c76a992}} 
+float {\bfseries get\+Time} ()
+\item 
+\mbox{\Hypertarget{class_robot_abb5c7fe3cd18368412caf0a543af2f34}\label{class_robot_abb5c7fe3cd18368412caf0a543af2f34}} 
+void {\bfseries set\+Team\+Color} (Team\+Color team\+Color)
+\item 
+\mbox{\Hypertarget{class_robot_af88b8ed8519f9e5b40829c0f18688871}\label{class_robot_af88b8ed8519f9e5b40829c0f18688871}} 
+Team\+Color {\bfseries get\+Team\+Color} ()
+\item 
+\mbox{\Hypertarget{class_robot_afd23988945672e7b1fd11311820aac7e}\label{class_robot_afd23988945672e7b1fd11311820aac7e}} 
+void {\bfseries move} (\mbox{\hyperlink{class_vector_e}{VectorE}} where)
+\item 
+\mbox{\Hypertarget{class_robot_aee05cc448dffd1c15fbfedc7c654270c}\label{class_robot_aee05cc448dffd1c15fbfedc7c654270c}} 
+void {\bfseries move} (\mbox{\hyperlink{class_target_vector_e}{Target\+VectorE}} where\+Target)
+\item 
+void \mbox{\hyperlink{class_robot_a3a45a43ad7dace7c8817c144fad227fa}{recalibrate\+Ghost}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_robot_a437d1cd6fffaaf92f7c532c283a5220b}\label{class_robot_a437d1cd6fffaaf92f7c532c283a5220b}} 
+bool {\bfseries end\+North} = true
+\item 
+\mbox{\Hypertarget{class_robot_acd05c56cacaa606c9e8f11a1346d3b1e}\label{class_robot_acd05c56cacaa606c9e8f11a1346d3b1e}} 
+float {\bfseries time\+Started}
+\item 
+\mbox{\Hypertarget{class_robot_aeb09313b522d104848b29098ff8cb024}\label{class_robot_aeb09313b522d104848b29098ff8cb024}} 
+float {\bfseries back\+Length} = 0.\+15
+\item 
+\mbox{\Hypertarget{class_robot_a018a9e63a2e6a2b0746a8d7ed754f510}\label{class_robot_a018a9e63a2e6a2b0746a8d7ed754f510}} 
+float {\bfseries front\+Length} = 0.\+15
+\item 
+\mbox{\Hypertarget{class_robot_aa0ceb40e2292e3634abbf28ea76b1040}\label{class_robot_aa0ceb40e2292e3634abbf28ea76b1040}} 
+float {\bfseries length} = back\+Length + front\+Length
+\item 
+\mbox{\Hypertarget{class_robot_a19eea4b4224ed1e1acefa444f6233886}\label{class_robot_a19eea4b4224ed1e1acefa444f6233886}} 
+Stream $\ast$ {\bfseries esp\+Port}
+\item 
+\mbox{\Hypertarget{class_robot_a6f7eb3bbd80031903c36f5b67ec1464b}\label{class_robot_a6f7eb3bbd80031903c36f5b67ec1464b}} 
+int {\bfseries range\+Adversary\+Foward} = -\/1
+\item 
+\mbox{\Hypertarget{class_robot_a120a1f51da1f30a44ce29c8835fdcf91}\label{class_robot_a120a1f51da1f30a44ce29c8835fdcf91}} 
+int {\bfseries range\+Adversary\+Backward} = -\/1
+\item 
+\mbox{\Hypertarget{class_robot_a16b31bea9d53ab19288ac21952625d26}\label{class_robot_a16b31bea9d53ab19288ac21952625d26}} 
+String {\bfseries read\+String}
+\item 
+\mbox{\Hypertarget{class_robot_a398ba33d237078392c33c61ef93bef85}\label{class_robot_a398ba33d237078392c33c61ef93bef85}} 
+bool {\bfseries stopped} = false
+\item 
+\mbox{\Hypertarget{class_robot_afa169e4860b1d83fc50b66f441b4ed21}\label{class_robot_afa169e4860b1d83fc50b66f441b4ed21}} 
+\mbox{\hyperlink{class_cinetique}{Cinetique}} {\bfseries cinetique\+Current}
+\item 
+\mbox{\Hypertarget{class_robot_a10ea24c7d245cb0daade9f896e0ab5ab}\label{class_robot_a10ea24c7d245cb0daade9f896e0ab5ab}} 
+\mbox{\hyperlink{class_ghost}{Ghost}} {\bfseries ghost}
+\item 
+\mbox{\Hypertarget{class_robot_ab65954b9435b949f274c525ef2b31a94}\label{class_robot_ab65954b9435b949f274c525ef2b31a94}} 
+\mbox{\hyperlink{class_asservissement}{Asservissement}} {\bfseries controller}
+\item 
+\mbox{\Hypertarget{class_robot_af6df1ada112187b5dc66c693c83d6c38}\label{class_robot_af6df1ada112187b5dc66c693c83d6c38}} 
+\mbox{\hyperlink{class_communication}{Communication}} {\bfseries communication}
+\item 
+\mbox{\Hypertarget{class_robot_a16902068d3ad57f3a7971cdef155a86e}\label{class_robot_a16902068d3ad57f3a7971cdef155a86e}} 
+\mbox{\hyperlink{class_communication}{Communication}} {\bfseries comm\+Actionneurs}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_robot_a8646551dca73b9db02fd5aa4c56bf0c3}\label{class_robot_a8646551dca73b9db02fd5aa4c56bf0c3}} 
+virtual void {\bfseries Update\+\_\+\+Cinetique} (float dt)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_robot_aaa0f7501e3230d2bf19a6d563c36ce03}\label{class_robot_aaa0f7501e3230d2bf19a6d563c36ce03}} 
+uint8\+\_\+t {\bfseries filter\+Frequency} = 20
+\item 
+\mbox{\Hypertarget{class_robot_a4feb9dbee81f6b9518ed80357ac75e99}\label{class_robot_a4feb9dbee81f6b9518ed80357ac75e99}} 
+\mbox{\hyperlink{class_odometrie}{Odometrie}} {\bfseries odometrie}
+\item 
+\mbox{\Hypertarget{class_robot_a5c0764e23f8293713559ce71f107f424}\label{class_robot_a5c0764e23f8293713559ce71f107f424}} 
+\mbox{\hyperlink{class_cinetique}{Cinetique}} {\bfseries cinetique\+Next}
+\item 
+\mbox{\Hypertarget{class_robot_a76f2b0c63263ffabf6579d1d3e133248}\label{class_robot_a76f2b0c63263ffabf6579d1d3e133248}} 
+\mbox{\hyperlink{class_motor}{Motor}} {\bfseries motor\+Left}
+\item 
+\mbox{\Hypertarget{class_robot_afec293b443364a081199dcf45b7c2b71}\label{class_robot_afec293b443364a081199dcf45b7c2b71}} 
+\mbox{\hyperlink{class_motor}{Motor}} {\bfseries motor\+Right}
+\item 
+\mbox{\Hypertarget{class_robot_a49fd643c38bd74f0e8a30cbbfdcf2f5d}\label{class_robot_a49fd643c38bd74f0e8a30cbbfdcf2f5d}} 
+float {\bfseries translation\+Order\+PID} = 0.\+0
+\item 
+\mbox{\Hypertarget{class_robot_ae65cbb4874ef57f13dddc9af2fc6704e}\label{class_robot_ae65cbb4874ef57f13dddc9af2fc6704e}} 
+float {\bfseries rotation\+Order\+PID} = 0.\+0
+\item 
+\mbox{\Hypertarget{class_robot_ac357047ceae5a5740ecb9230ee584b4b}\label{class_robot_ac357047ceae5a5740ecb9230ee584b4b}} 
+uint8\+\_\+t {\bfseries compteur} =0
+\item 
+\mbox{\Hypertarget{class_robot_ad2e0c6c452f37bcfcb19c45fdb75a0a6}\label{class_robot_ad2e0c6c452f37bcfcb19c45fdb75a0a6}} 
+\mbox{\hyperlink{class_sequence}{Sequence}} $\ast$$\ast$ {\bfseries sequences}
+\item 
+\mbox{\Hypertarget{class_robot_a08e7c0bb16d6e4438c1d4dd8e88ae527}\label{class_robot_a08e7c0bb16d6e4438c1d4dd8e88ae527}} 
+Team\+Color {\bfseries team\+Color} = BLEU
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines a robot class, including all parameters to set it up. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_robot_a574586aaa849cb0affb7809ab843e250}\label{class_robot_a574586aaa849cb0affb7809ab843e250}} 
+\index{Robot@{Robot}!Robot@{Robot}}
+\index{Robot@{Robot}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{Robot()}{Robot()}}
+{\footnotesize\ttfamily Robot\+::\+Robot (\begin{DoxyParamCaption}\item[{float}]{x\+Ini = {\ttfamily 0.0},  }\item[{float}]{y\+Ini = {\ttfamily 0.0},  }\item[{float}]{theta\+Ini = {\ttfamily 0.0},  }\item[{Stream $\ast$}]{comm\+Port = {\ttfamily \&Serial},  }\item[{Stream $\ast$}]{actu\+Port = {\ttfamily \&Serial},  }\item[{Stream $\ast$}]{esp\+Port = {\ttfamily \&Serial4} }\end{DoxyParamCaption})}
+
+Constructor of the robot class. Set up all references to variables of other classes. Definition of all the sequence of the actions. 
+\begin{DoxyParams}{Parameters}
+{\em x\+Ini} & \+: float, initial X-\/axis coordinates of the robot. \\
+\hline
+{\em y\+Ini} & \+: float, initial Y-\/axis coordinates of the robot. \\
+\hline
+{\em theta\+Ini} & \+: float, initial angle of the robot. \\
+\hline
+{\em comm\+Port} & \+: pointer to current communication port. \\
+\hline
+{\em actu\+Port} & \+: pointer to the actuator port. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_robot_a92dfc164f4b5687a7ffc1dab1cf7bfbe}\label{class_robot_a92dfc164f4b5687a7ffc1dab1cf7bfbe}} 
+\index{Robot@{Robot}!getSequenceByName@{getSequenceByName}}
+\index{getSequenceByName@{getSequenceByName}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getSequenceByName()}{getSequenceByName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sequence}{Sequence}} $\ast$ Robot\+::get\+Sequence\+By\+Name (\begin{DoxyParamCaption}\item[{Sequence\+Name}]{name }\end{DoxyParamCaption})}
+
+Return sequence named \textquotesingle{}name\textquotesingle{} 
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: String, name of the wanted sequence. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_sequence}{Sequence}}, the sequences searched. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a3a45a43ad7dace7c8817c144fad227fa}\label{class_robot_a3a45a43ad7dace7c8817c144fad227fa}} 
+\index{Robot@{Robot}!recalibrateGhost@{recalibrateGhost}}
+\index{recalibrateGhost@{recalibrateGhost}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{recalibrateGhost()}{recalibrateGhost()}}
+{\footnotesize\ttfamily void Robot\+::recalibrate\+Ghost (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Teleports \mbox{\hyperlink{class_ghost}{Ghost}} on \mbox{\hyperlink{class_robot}{Robot}}\textquotesingle{}s actual position. \mbox{\Hypertarget{class_robot_a8ef961d074427230155b47a0be36684c}\label{class_robot_a8ef961d074427230155b47a0be36684c}} 
+\index{Robot@{Robot}!telemetry@{telemetry}}
+\index{telemetry@{telemetry}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{telemetry()}{telemetry()}}
+{\footnotesize\ttfamily void Robot\+::telemetry (\begin{DoxyParamCaption}\item[{bool}]{odometrie,  }\item[{bool}]{other }\end{DoxyParamCaption})}
+
+Send current robot state on telemetry serial. 
+\begin{DoxyParams}{Parameters}
+{\em odometrie} & \+: bool. \\
+\hline
+{\em other} & \+: bool. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_ac5e473914be046e6f20bb5300298db73}\label{class_robot_ac5e473914be046e6f20bb5300298db73}} 
+\index{Robot@{Robot}!Update@{Update}}
+\index{Update@{Update}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Robot\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})}
+
+Updates information about real position, ghost\textquotesingle{}s position, compute output and send orders to motors. 
+\begin{DoxyParams}{Parameters}
+{\em dt} & \+: time since last call. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Robot/Robot.\+h\item 
+Ensmasteel\+\_\+\+Bot\+\_\+2020/\+Teensy/lib/\+Robot/Robot.\+cpp\end{DoxyCompactItemize}

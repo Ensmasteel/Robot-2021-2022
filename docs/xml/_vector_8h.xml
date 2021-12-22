@@ -1,0 +1,343 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="_vector_8h" kind="file" language="C++">
+    <compoundname>Vector.h</compoundname>
+    <includes local="yes">Arduino.h</includes>
+    <includes refid="_logger_8h" local="yes">Logger.h</includes>
+    <includedby refid="_communication_8h" local="yes">Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h</includedby>
+    <includedby refid="_vector_8cpp" local="yes">Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.cpp</includedby>
+    <includedby refid="_filtre_8cpp" local="yes">Ensmasteel_Bot_2020/Teensy/lib/Filtre/Filtre.cpp</includedby>
+    <includedby refid="_ghost_8h" local="yes">Ensmasteel_Bot_2020/Teensy/lib/Ghost/Ghost.h</includedby>
+    <includedby refid="_l_i_d_a_r_8cpp" local="yes">Ensmasteel_Bot_2020/Teensy/lib/LIDAR/LIDAR.cpp</includedby>
+    <includedby refid="_l_i_d_a_r_8h" local="yes">Ensmasteel_Bot_2020/Teensy/lib/LIDAR/LIDAR.h</includedby>
+    <includedby refid="_actions_8h" local="yes">Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h</includedby>
+    <includedby refid="_codeuse_8h" local="yes">Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h</includedby>
+    <includedby refid="_p_i_d_8h" local="yes">Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h</includedby>
+    <includedby refid="_simulator_8h" local="yes">Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h</includedby>
+    <includedby refid="_teensy_2main_8cpp" local="yes">Ensmasteel_Bot_2020/Teensy/main.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="3">
+        <label>Logger.h</label>
+        <link refid="_logger_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h</label>
+        <link refid="_vector_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Print.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators/Actuators.h</label>
+        <link refid="_actuators_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Ensmasteel_Bot_2020/Arduino_Mega/Lib/Actuators_Manager/Actuators_Manager.h</label>
+        <link refid="_actuators___manager_8h_source"/>
+      </node>
+      <node id="2">
+        <label>Ensmasteel_Bot_2020/Libraries_shared/Communication/Communication.h</label>
+        <link refid="_communication_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h</label>
+        <link refid="_vector_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Ghost/Ghost.h</label>
+        <link refid="_ghost_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/LIDAR/LIDAR.h</label>
+        <link refid="_l_i_d_a_r_8h_source"/>
+      </node>
+      <node id="5">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h</label>
+        <link refid="_actions_8h_source"/>
+      </node>
+      <node id="10">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Codeuse.h</label>
+        <link refid="_codeuse_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/PID/PID.h</label>
+        <link refid="_p_i_d_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Robot/Robot.h</label>
+        <link refid="_robot_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Robot/RobotSimu.h</label>
+        <link refid="_robot_simu_8h_source"/>
+      </node>
+      <node id="12">
+        <label>Ensmasteel_Bot_2020/Teensy/lib/Simulator/Simulator.h</label>
+        <link refid="_simulator_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_vector" prot="public">Vector</innerclass>
+    <innerclass refid="class_vector_e" prot="public">VectorE</innerclass>
+    <innerclass refid="class_cinetique" prot="public">Cinetique</innerclass>
+    <innerclass refid="class_target" prot="public">Target</innerclass>
+    <innerclass refid="class_target_vector" prot="public">TargetVector</innerclass>
+    <innerclass refid="class_target_vector_e" prot="public">TargetVectorE</innerclass>
+    <innerclass refid="class_target_cinetique" prot="public">TargetCinetique</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="_vector_8h_1adedc1c7a6f9eae4d7b207f3e33cbff8d" prot="public" static="no" strong="no">
+        <type></type>
+        <name>TeamColor</name>
+        <enumvalue id="_vector_8h_1adedc1c7a6f9eae4d7b207f3e33cbff8da1b592b20aeb91b073f8f249231622230" prot="public">
+          <name>BLEU</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_vector_8h_1adedc1c7a6f9eae4d7b207f3e33cbff8daeb840a0760d5c5122e980d507891c1a1" prot="public">
+          <name>JAUNE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enum defining the color team [[deprecated in 2022 edition]] </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" line="102" column="1" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" bodystart="103" bodyend="106"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_vector_8h_1a1de8b424552bdcaeb85fb794107081d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float normalizeAngle</definition>
+        <argsstring>(float angle)</argsstring>
+        <name>normalizeAngle</name>
+        <param>
+          <type>float</type>
+          <declname>angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Ensmasteel Library - <ref refid="class_vector" kindref="compound">Vector</ref> modelisation</para>
+<para>author : Arthur FINDELAIR - EnsmaSteel, github.com/ArthurFDLR date : October 2019 Normalize an angle, from degree to rad. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: float, angle value in degree. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>: float, angle value in rad. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" line="18" column="7" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.cpp" bodystart="4" bodyend="14" declfile="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" declline="18" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="_vector_8h_1a57bf3435d9cb0c28955ddf459723fb34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_vector" kindref="compound">Vector</ref></type>
+        <definition>Vector directeur</definition>
+        <argsstring>(float theta)</argsstring>
+        <name>directeur</name>
+        <param>
+          <type>float</type>
+          <declname>theta</declname>
+        </param>
+        <briefdescription>
+<para>Defines the principal vector. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" line="51" column="8" bodyfile="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.cpp" bodystart="97" bodyend="100" declfile="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h" declline="51" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>VECTOR_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VECTOR_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Logger.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>normalizeAngle(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>angle);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="class_vector" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_vector" kindref="compound">Vector</ref></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="class_vector_1acfd6a472304b3832fd37b4dbf3c90c9b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_x,<sp/><ref refid="class_vector_1acfd6a472304b3832fd37b4dbf3c90c9b" kindref="member">_y</ref>;<sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_vector_1a2bf51c822183b84dc44304cb1cf48fa3" kindref="member">Vector</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>0.0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>0.0);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_vector" kindref="compound">Vector</ref><sp/><ref refid="class_vector_1a8636c13924ae2a8f08a5c56c1bdee35d" kindref="member">operator+</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_vector" kindref="compound">Vector</ref><sp/>&amp;other);<sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_vector_1aad6b7dcfd087005378aa64e506cf03d2" kindref="member">operator+=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_vector" kindref="compound">Vector</ref><sp/>&amp;other);<sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_vector" kindref="compound">Vector</ref><sp/><ref refid="class_vector_1a78273e8287626f263ca0cfb26a6f9770" kindref="member">operator-</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_vector" kindref="compound">Vector</ref><sp/>&amp;other);<sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_vector_1a4bb01f8acdc32d677ddadf9d0896cc1c" kindref="member">operator%</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_vector" kindref="compound">Vector</ref><sp/>&amp;other);<sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_vector" kindref="compound">Vector</ref><sp/><ref refid="class_vector_1a2cd6694ac4999ed6686d9d149de999ea" kindref="member">operator*</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scalaire);<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_vector_1ae485d630cc9cbbfcec82f93ab4d5ee6c" kindref="member">operator==</ref>(<ref refid="class_vector" kindref="compound">Vector</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;other);<sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_vector_1a4d643a71ea7c87cb77ab7bdfb26b42ba" kindref="member">norm</ref>();<sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_vector_1ac83edd3ce21c2eea555a360f64cf0acc" kindref="member">angle</ref>();<sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_vector_1a44b5d0725bbfe4baa9e5485b50aede9a" kindref="member">distanceWith</ref>(<ref refid="class_vector" kindref="compound">Vector</ref><sp/>&amp;other);<sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_vector_1abd1526dde6917905a9331e0b16d9fe2a" kindref="member">print</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>prefix=</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>info=</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_vector_1ac12c872fc6337ea5992e2b91d35ca5b9" kindref="member">toTelemetry</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>prefix=</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_vector" kindref="compound">Vector</ref><sp/><ref refid="class_vector_1a3879877fbfc3752e7ca1b64af6d557e6" kindref="member">rotate</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>theta);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><ref refid="class_vector" kindref="compound">Vector</ref><sp/>directeur(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>theta);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="class_vector_e" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_vector_e" kindref="compound">VectorE</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_vector" kindref="compound">Vector</ref></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_theta;<sp/></highlight><highlight class="comment">//&lt;Angle<sp/>of<sp/>vector</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_vector_e_1a5b9897cfe6407e9504b9efdba349f51b" kindref="member">VectorE</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>0.0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>0.0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>theta<sp/>=<sp/>0.0);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_vector_e_1add2733ccf3d8e7dc816ba952fa4120fb" kindref="member">normalizeTheta</ref>();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_vector_e_1a29db572cad2265dd57c32a0923221a8c" kindref="member">print</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>prefix=</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>info=</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_vector_e_1a62e9a0a3cde04daa20f322a6d852693c" kindref="member">toTelemetry</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>prefix=</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_vector_e_1a52eeb7fe68286c810caef10e2b5467bc" kindref="member">operator==</ref>(<ref refid="class_vector_e" kindref="compound">VectorE</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="class_cinetique" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_cinetique" kindref="compound">Cinetique</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_vector_e" kindref="compound">VectorE</ref></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="81" refid="class_cinetique_1a7fbbeae0349326d9ba8c8677a775f0ab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_cinetique_1a7fbbeae0349326d9ba8c8677a775f0ab" kindref="member">_v</ref>;<sp/></highlight></codeline>
+<codeline lineno="82" refid="class_cinetique_1a605427ec93a1ea4b2460d0f6307e1e31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_cinetique_1a605427ec93a1ea4b2460d0f6307e1e31" kindref="member">_w</ref>;<sp/></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_cinetique_1adf5ef593311b41036cf0f81d24b6d0bb" kindref="member">Cinetique</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>0.0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>0.0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>theta<sp/>=<sp/>0.0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>v<sp/>=<sp/>0.0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>w<sp/>=<sp/>0.0);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_cinetique_1a3d712c5f685be073b402cc33e1ab038c" kindref="member">print</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>prefix=</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>info=</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_cinetique_1a1aab1668c139a7040c4a0d83d85422c7" kindref="member">toTelemetry</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>prefix=</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_cinetique_1a3aaa4453fad5ffc7b730db1c100a35b1" kindref="member">operator==</ref>(<ref refid="class_cinetique" kindref="compound">Cinetique</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment">//<sp/>=======<sp/><sp/><sp/><sp/><sp/>TARGETS<sp/><sp/><sp/><sp/>=======</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment">//<sp/>==============================</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>TeamColor</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>BLEU,</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>JAUNE,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="class_target" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_target" kindref="compound">Target</ref></highlight></codeline>
+<codeline lineno="112"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>Type</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RELATIVE,<sp/></highlight><highlight class="comment">//<sp/>Si<sp/>Jaune<sp/>alors<sp/>getX<sp/>renvoie<sp/>3.0<sp/>-<sp/>_x<sp/><sp/><sp/>et<sp/><sp/>getTheta<sp/>renvoie<sp/>PI<sp/>-<sp/>_theta</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ABSOLUTE,<sp/></highlight><highlight class="comment">//<sp/>Independant<sp/>du<sp/>coté</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SPECIFIC<sp/><sp/></highlight><highlight class="comment">//<sp/>X<sp/>Y<sp/>Theta<sp/>dépendent<sp/>du<sp/>coté</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>TeamColor<sp/>teamColor;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>Type<sp/>type;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>LENGTH_TABLE<sp/>=<sp/>3.0;<sp/></highlight><highlight class="comment">//<sp/>meters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>WIDTH_TABLE<sp/>=<sp/>2.0;<sp/></highlight><highlight class="comment">//meters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setTeamColor(TeamColor<sp/>color);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_target" kindref="compound">Target</ref>();</highlight><highlight class="comment">//&lt;Public<sp/>constructor<sp/>for<sp/>target.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="class_target_vector" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_target_vector" kindref="compound">TargetVector</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_target" kindref="compound">Target</ref></highlight></codeline>
+<codeline lineno="133"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_xB,_yB;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_xJ,_yJ;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_vector" kindref="compound">Vector</ref><sp/>getVector();</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_target_vector" kindref="compound">TargetVector</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>absolute);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_target_vector" kindref="compound">TargetVector</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>xB,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>yB,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>xJ,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>yJ);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_target_vector" kindref="compound">TargetVector</ref>(){}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="class_target_vector_e" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_target_vector_e" kindref="compound">TargetVectorE</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_target" kindref="compound">Target</ref></highlight></codeline>
+<codeline lineno="148"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_xB,_yB,_thetaB;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_xJ,_yJ,_thetaJ;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_vector_e" kindref="compound">VectorE</ref><sp/>getVectorE();</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_target_vector_e" kindref="compound">TargetVectorE</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>theta,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>absolute);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_target_vector_e" kindref="compound">TargetVectorE</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>xB,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>yB,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>thetaB,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>xJ,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>yJ,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>thetaJ);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_target_vector_e" kindref="compound">TargetVectorE</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>theta,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>absolute);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_target_vector_e" kindref="compound">TargetVectorE</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>thetaB,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>thetaJ);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_target_vector_e" kindref="compound">TargetVectorE</ref>(){}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="class_target_cinetique" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_target_cinetique" kindref="compound">TargetCinetique</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_target" kindref="compound">Target</ref></highlight></codeline>
+<codeline lineno="165"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_xB,_yB,_thetaB;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_xJ,_yJ,_thetaJ;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_v,_w;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_cinetique" kindref="compound">Cinetique</ref><sp/>getCinetique();</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_target_cinetique" kindref="compound">TargetCinetique</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>theta,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>v,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>w,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>absolute);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_target_cinetique" kindref="compound">TargetCinetique</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>xB,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>yB,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>thetaB,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>xJ,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>yJ,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>thetaJ,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>v,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>w);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_target_cinetique" kindref="compound">TargetCinetique</ref>(){}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Ensmasteel_Bot_2020/Libraries_shared/Vector/Vector.h"/>
+  </compounddef>
+</doxygen>

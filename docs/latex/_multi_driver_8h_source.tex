@@ -1,0 +1,111 @@
+\hypertarget{_multi_driver_8h_source}{}\doxysection{Multi\+Driver.\+h}
+\label{_multi_driver_8h_source}\index{Ensmasteel\_Bot\_2020/Arduino\_Mega/Lib/StepperDriver/src/MultiDriver.h@{Ensmasteel\_Bot\_2020/Arduino\_Mega/Lib/StepperDriver/src/MultiDriver.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * Multi-\/motor group driver}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ * Copyright (C)2017 Laurentiu Badea}}
+\DoxyCodeLine{5 \textcolor{comment}{ *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * This file may be redistributed under the terms of the MIT license.}}
+\DoxyCodeLine{7 \textcolor{comment}{ * A copy of this license has been included with this distribution in the file LICENSE.}}
+\DoxyCodeLine{8 \textcolor{comment}{ */}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#ifndef MULTI\_DRIVER\_H}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define MULTI\_DRIVER\_H}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}BasicStepperDriver.h"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define MAX\_MOTORS 3    }\textcolor{comment}{// a reasonable but arbitrary limit}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define Motor BasicStepperDriver}}
+\DoxyCodeLine{16 \textcolor{comment}{/*}}
+\DoxyCodeLine{17 \textcolor{comment}{ * Multi-\/motor group driver class.}}
+\DoxyCodeLine{18 \textcolor{comment}{ */}}
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{class_multi_driver}{MultiDriver}} \{}
+\DoxyCodeLine{20 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{21     \textcolor{comment}{/*}}
+\DoxyCodeLine{22 \textcolor{comment}{     * Configuration}}
+\DoxyCodeLine{23 \textcolor{comment}{     */}}
+\DoxyCodeLine{24     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} count;}
+\DoxyCodeLine{25     \mbox{\hyperlink{class_motor}{Motor}}* \textcolor{keyword}{const} *motors;}
+\DoxyCodeLine{26     \textcolor{comment}{/*}}
+\DoxyCodeLine{27 \textcolor{comment}{     * Generic initializer, will be called by the others}}
+\DoxyCodeLine{28 \textcolor{comment}{     */}}
+\DoxyCodeLine{29     \mbox{\hyperlink{class_multi_driver}{MultiDriver}}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} count, \mbox{\hyperlink{class_motor}{Motor}}* \textcolor{keyword}{const} *motors)}
+\DoxyCodeLine{30     :count(count), motors(motors)}
+\DoxyCodeLine{31     \{\};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{comment}{/*}}
+\DoxyCodeLine{34 \textcolor{comment}{     * Movement state}}
+\DoxyCodeLine{35 \textcolor{comment}{     */}}
+\DoxyCodeLine{36     \textcolor{comment}{// ready to start a new move}}
+\DoxyCodeLine{37     \textcolor{keywordtype}{bool} ready = \textcolor{keyword}{true};}
+\DoxyCodeLine{38     \textcolor{comment}{// when next state change is due for each motor}}
+\DoxyCodeLine{39     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} event\_timers[MAX\_MOTORS];}
+\DoxyCodeLine{40     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} next\_action\_interval = 0;}
+\DoxyCodeLine{41     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} last\_action\_end = 0;}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keyword}{public}:}
+\DoxyCodeLine{44     \textcolor{comment}{/*}}
+\DoxyCodeLine{45 \textcolor{comment}{     * Two-\/motor setup}}
+\DoxyCodeLine{46 \textcolor{comment}{     */}}
+\DoxyCodeLine{47     \mbox{\hyperlink{class_multi_driver}{MultiDriver}}(\mbox{\hyperlink{class_motor}{Motor}}\& motor1, \mbox{\hyperlink{class_motor}{Motor}}\& motor2)}
+\DoxyCodeLine{48     :\mbox{\hyperlink{class_multi_driver}{MultiDriver}}(2, \textcolor{keyword}{new} \mbox{\hyperlink{class_motor}{Motor}}* \textcolor{keyword}{const}[2]\{\&motor1, \&motor2\})}
+\DoxyCodeLine{49     \{\};}
+\DoxyCodeLine{50     \textcolor{comment}{/*}}
+\DoxyCodeLine{51 \textcolor{comment}{     * Three-\/motor setup (X, Y, Z for example)}}
+\DoxyCodeLine{52 \textcolor{comment}{     */}}
+\DoxyCodeLine{53     \mbox{\hyperlink{class_multi_driver}{MultiDriver}}(\mbox{\hyperlink{class_motor}{Motor}}\& motor1, \mbox{\hyperlink{class_motor}{Motor}}\& motor2, \mbox{\hyperlink{class_motor}{Motor}}\& motor3)}
+\DoxyCodeLine{54     :\mbox{\hyperlink{class_multi_driver}{MultiDriver}}(3, \textcolor{keyword}{new} \mbox{\hyperlink{class_motor}{Motor}}* \textcolor{keyword}{const}[3]\{\&motor1, \&motor2, \&motor3\})}
+\DoxyCodeLine{55     \{\};}
+\DoxyCodeLine{56     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} getCount(\textcolor{keywordtype}{void})\{}
+\DoxyCodeLine{57         \textcolor{keywordflow}{return} count;}
+\DoxyCodeLine{58     \}}
+\DoxyCodeLine{59     \mbox{\hyperlink{class_motor}{Motor}}\& getMotor(\textcolor{keywordtype}{short} index)\{}
+\DoxyCodeLine{60         \textcolor{keywordflow}{return} *motors[index];}
+\DoxyCodeLine{61     \}}
+\DoxyCodeLine{62     \textcolor{comment}{/*}}
+\DoxyCodeLine{63 \textcolor{comment}{     * Move the motors a given number of steps.}}
+\DoxyCodeLine{64 \textcolor{comment}{     * positive to move forward, negative to reverse}}
+\DoxyCodeLine{65 \textcolor{comment}{     */}}
+\DoxyCodeLine{66     \textcolor{keywordtype}{void} move(\textcolor{keywordtype}{long} steps1, \textcolor{keywordtype}{long} steps2, \textcolor{keywordtype}{long} steps3=0);}
+\DoxyCodeLine{67     \textcolor{keywordtype}{void} rotate(\textcolor{keywordtype}{int} deg1, \textcolor{keywordtype}{int} deg2, \textcolor{keywordtype}{int} deg3=0)\{}
+\DoxyCodeLine{68         rotate((\textcolor{keywordtype}{long})deg1, (\textcolor{keywordtype}{long})deg2, (\textcolor{keywordtype}{long})deg3);}
+\DoxyCodeLine{69     \};}
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} rotate(\textcolor{keywordtype}{long} deg1, \textcolor{keywordtype}{long} deg2, \textcolor{keywordtype}{long} deg3=0);}
+\DoxyCodeLine{71     \textcolor{keywordtype}{void} rotate(\textcolor{keywordtype}{double} deg1, \textcolor{keywordtype}{double} deg2, \textcolor{keywordtype}{double} deg3=0);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{comment}{/*}}
+\DoxyCodeLine{74 \textcolor{comment}{     * Motor movement with external control of timing}}
+\DoxyCodeLine{75 \textcolor{comment}{     */}}
+\DoxyCodeLine{76     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} startMove(\textcolor{keywordtype}{long} steps1, \textcolor{keywordtype}{long} steps2, \textcolor{keywordtype}{long} steps3=0);}
+\DoxyCodeLine{77     \textcolor{keywordtype}{void} startRotate(\textcolor{keywordtype}{int} deg1, \textcolor{keywordtype}{int} deg2, \textcolor{keywordtype}{int} deg3=0)\{}
+\DoxyCodeLine{78         startRotate((\textcolor{keywordtype}{long})deg1, (\textcolor{keywordtype}{long})deg2, (\textcolor{keywordtype}{long})deg3);}
+\DoxyCodeLine{79     \};}
+\DoxyCodeLine{80     \textcolor{keywordtype}{void} startRotate(\textcolor{keywordtype}{long} deg1, \textcolor{keywordtype}{long} deg2, \textcolor{keywordtype}{long} deg3=0);}
+\DoxyCodeLine{81     \textcolor{keywordtype}{void} startRotate(\textcolor{keywordtype}{double} deg1, \textcolor{keywordtype}{double} deg2, \textcolor{keywordtype}{double} deg3=0);}
+\DoxyCodeLine{82     \textcolor{comment}{/*}}
+\DoxyCodeLine{83 \textcolor{comment}{     * Toggle step and return time until next change is needed (micros)}}
+\DoxyCodeLine{84 \textcolor{comment}{     */}}
+\DoxyCodeLine{85     \textcolor{keyword}{virtual} \textcolor{keywordtype}{long} nextAction(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{86     \textcolor{comment}{/*}}
+\DoxyCodeLine{87 \textcolor{comment}{     * Optionally, call this to begin braking to stop early}}
+\DoxyCodeLine{88 \textcolor{comment}{     */}}
+\DoxyCodeLine{89     \textcolor{keywordtype}{void} startBrake(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{90     \textcolor{comment}{/*}}
+\DoxyCodeLine{91 \textcolor{comment}{     * State querying}}
+\DoxyCodeLine{92 \textcolor{comment}{     */}}
+\DoxyCodeLine{93     \textcolor{keywordtype}{bool} isRunning(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{94      }
+\DoxyCodeLine{95     \textcolor{comment}{/*}}
+\DoxyCodeLine{96 \textcolor{comment}{     * Set the same microstepping level on all motors}}
+\DoxyCodeLine{97 \textcolor{comment}{     */}}
+\DoxyCodeLine{98     \textcolor{keywordtype}{void} setMicrostep(\textcolor{keywordtype}{unsigned} microsteps);}
+\DoxyCodeLine{99     \textcolor{comment}{/*}}
+\DoxyCodeLine{100 \textcolor{comment}{     * Turn all motors on or off}}
+\DoxyCodeLine{101 \textcolor{comment}{     */}}
+\DoxyCodeLine{102     \textcolor{keywordtype}{void} enable(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{103     \textcolor{keywordtype}{void} disable(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{104 \};}
+\DoxyCodeLine{105 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// MULTI\_DRIVER\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="class_recallage___action" kind="class" language="C++" prot="public">
+    <compoundname>Recallage_Action</compoundname>
+    <basecompoundref refid="class_double___action" prot="public" virt="non-virtual">Double_Action</basecompoundref>
+    <includes refid="_actions_8h" local="no">Actions.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_recallage___action_1a07ce162d45f9f6f01f1feff212393c63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Recallage_Action::Recallage_Action</definition>
+        <argsstring>(bool arriere, float dist, float timeout)</argsstring>
+        <name>Recallage_Action</name>
+        <param>
+          <type>bool</type>
+          <declname>arriere</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>dist</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>timeout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" line="440" column="5" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.cpp" bodystart="377" bodyend="384"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Recalibrate the <ref refid="class_p_i_d" kindref="compound">PID</ref> and position. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>Action</label>
+        <link refid="class_action"/>
+      </node>
+      <node id="2">
+        <label>Double_Action</label>
+        <link refid="class_double___action"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Recallage_Action</label>
+        <link refid="class_recallage___action"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>Action</label>
+        <link refid="class_action"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>robot</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>mySequence</edgelabel>
+        </childnode>
+      </node>
+      <node id="13">
+        <label>Asservissement</label>
+        <link refid="class_asservissement"/>
+      </node>
+      <node id="7">
+        <label>Cinetique</label>
+        <link refid="class_cinetique"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Codeuse</label>
+        <link refid="class_codeuse"/>
+      </node>
+      <node id="14">
+        <label>Communication</label>
+        <link refid="class_communication"/>
+      </node>
+      <node id="2">
+        <label>Double_Action</label>
+        <link refid="class_double___action"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>action1</edgelabel>
+          <edgelabel>action2</edgelabel>
+        </childnode>
+      </node>
+      <node id="12">
+        <label>Ghost</label>
+        <link refid="class_ghost"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>cinetiqueController</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>Motor</label>
+        <link refid="class_motor"/>
+      </node>
+      <node id="5">
+        <label>Odometrie</label>
+        <link refid="class_odometrie"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>codeuseDroite</edgelabel>
+          <edgelabel>codeuseGauche</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Recallage_Action</label>
+        <link refid="class_recallage___action"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Robot</label>
+        <link refid="class_robot"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>odometrie</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>cinetiqueCurrent</edgelabel>
+          <edgelabel>cinetiqueNext</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>motorLeft</edgelabel>
+          <edgelabel>motorRight</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>sequences</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>ghost</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>controller</edgelabel>
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>commActionneurs</edgelabel>
+          <edgelabel>communication</edgelabel>
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Sequence</label>
+        <link refid="class_sequence"/>
+      </node>
+      <node id="9">
+        <label>Vector</label>
+        <link refid="class_vector"/>
+      </node>
+      <node id="8">
+        <label>VectorE</label>
+        <link refid="class_vector_e"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" line="437" column="1" bodyfile="Ensmasteel_Bot_2020/Teensy/lib/LesInseparables/Actions.h" bodystart="438" bodyend="441"/>
+    <listofallmembers>
+      <member refid="class_action_1a28dfd4b726854360b99c8bda70e7da6d" prot="public" virt="non-virtual"><scope>Recallage_Action</scope><name>Action</name></member>
+      <member refid="class_double___action_1ab027da4d0e91a7b057a4915087908531" prot="protected" virt="non-virtual"><scope>Recallage_Action</scope><name>action1</name></member>
+      <member refid="class_double___action_1ae3958355ab2906e09020975ec34a7181" prot="protected" virt="non-virtual"><scope>Recallage_Action</scope><name>action2</name></member>
+      <member refid="class_double___action_1a3443c27e08e7af8bd8b4380ecf67c8ce" prot="public" virt="virtual"><scope>Recallage_Action</scope><name>doAtEnd</name></member>
+      <member refid="class_action_1a169d6ae96ebfe59864f7936d964f4604" prot="protected" virt="non-virtual"><scope>Recallage_Action</scope><name>done</name></member>
+      <member refid="class_double___action_1a29adf8e0933045ce8fa1f0fb2701c73f" prot="public" virt="non-virtual"><scope>Recallage_Action</scope><name>Double_Action</name></member>
+      <member refid="class_double___action_1aa287df168e59626573cb6a20ef827f69" prot="public" virt="virtual"><scope>Recallage_Action</scope><name>hasFailed</name></member>
+      <member refid="class_action_1a09d6aee36ccd353f55f073b73dd64f9b" prot="public" virt="non-virtual"><scope>Recallage_Action</scope><name>hasStarted</name></member>
+      <member refid="class_double___action_1a5d7683eb93c3ec650695e84426d910ee" prot="public" virt="virtual"><scope>Recallage_Action</scope><name>isFinished</name></member>
+      <member refid="class_action_1ab7d4c5ae380f7457d22a4b77575e7a70" prot="protected" virt="non-virtual"><scope>Recallage_Action</scope><name>mySequence</name></member>
+      <member refid="class_action_1aa4672a5030b15430c86b33903609d172" prot="public" virt="non-virtual"><scope>Recallage_Action</scope><name>name</name></member>
+      <member refid="class_recallage___action_1a07ce162d45f9f6f01f1feff212393c63" prot="public" virt="non-virtual"><scope>Recallage_Action</scope><name>Recallage_Action</name></member>
+      <member refid="class_action_1a722960e240576a3c6192f6783df7d1fe" prot="protected" virt="non-virtual"><scope>Recallage_Action</scope><name>require</name></member>
+      <member refid="class_action_1ad6ddf3a19a26193c69a64a37dbffb27a" prot="protected" virt="non-virtual"><scope>Recallage_Action</scope><name>robot</name></member>
+      <member refid="class_action_1a80945e7aeba19e727952b9dd3059c99f" prot="public" virt="non-virtual"><scope>Recallage_Action</scope><name>setPointer</name></member>
+      <member refid="class_double___action_1aac46b3f8dad147fde4f7934e6f86649d" prot="public" virt="virtual"><scope>Recallage_Action</scope><name>start</name></member>
+      <member refid="class_action_1a377ebdc2c58b64af1978a64e7ca0c399" prot="protected" virt="non-virtual"><scope>Recallage_Action</scope><name>started</name></member>
+      <member refid="class_action_1a393f04c3c18e212220fd56cca4fcd4c9" prot="protected" virt="non-virtual"><scope>Recallage_Action</scope><name>timeout</name></member>
+      <member refid="class_action_1af0308aeb6255207896180aec072f8b88" prot="protected" virt="non-virtual"><scope>Recallage_Action</scope><name>timeStarted</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
