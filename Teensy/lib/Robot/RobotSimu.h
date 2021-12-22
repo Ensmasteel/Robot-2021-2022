@@ -3,6 +3,9 @@
 #include "Simulator.h"
 #include "Robot.h"
 
+/**
+ * Creates a class that simulates the robot behavior to start the simulator.
+ */
 class RobotSimu : public Robot
 {
 private:
@@ -10,7 +13,11 @@ private:
     void Update_Cinetique(float dt) override;
 
 public:
-    RobotSimu(float xIni=0.0,float yIni=0.0,float thetaIni=0.0, Stream* commPortStream = &Serial, Stream *actuPort = &Serial);
+    RobotSimu(float xIni=0.0,
+              float yIni=0.0,
+              float thetaIni=0.0,
+              Stream* commPortStream =&Serial,
+              Stream *actuPort = &Serial);
 };
 
 

@@ -37,12 +37,21 @@ Serial.write(buf, len)
 //1 detect objects
 //2 identify objects
 
+/**
+ * Struct building a point with angle and distance from robot.
+ */
 struct point
 {
     float angle;
     float distance;
 };
 
+/**
+ * Calculates the distance between two points.
+ * @param p1 : Point, first point
+ * @param p2 : Point, first point
+ * @return float, distance between the two.
+ */
 float dist(point p1,point p2);
 
 enum BotIdentificater
@@ -57,16 +66,19 @@ enum BotIdentificater
 
 };
 
+/**
+ * Enable to save data about abjects.
+ */
 class object_data
 {
 public:
     //data about the objects
     BotIdentificater Bot_name = unknown;
     Cinetique Bot_cinetique;
-    point points[max_objects_detected];//previous points associated to this object
+    point points[max_objects_detected];///<previous points associated to this object
     int length = 0;
-    uint32_t age; // age of the last detection of the object
-    bool state; //if true the object is tracked, if false object inexistant
+    uint32_t age; ///< age of the last detection of the object
+    bool state; ///<if true the object is tracked, if false object inexistant
     void calculateCG();
 };
 
@@ -78,18 +90,31 @@ public:
 
     // GOAL / Constructor
     // IN   / bool secondaryBot : An ally is on the table => true
+    /**
+     * Public constructor
+     * @param secondaryBot : if true, an ally is on table.
+     */
     LIDAR(bool secondaryBot = false);
 
 
     //Serial conection with Lidar
+    /**
+     * Serial connection with LIDAR
+     * @param serialobj
+     */
     void Begin(HardwareSerial &serialobj);
 
-    uint8_t botDetected = 0; //Number of enemy bot detected by the LIDAR
+    uint8_t botDetected = 0; ///<Number of enemy bot detected by the LIDAR
 
 
     // GOAL / Give speed and position of a specific bot identify by its identificater
     // IN   / BotIdentificater id
     // OUT  / Cinetique : speed and position of _id_ bot
+    /**
+     * Gives speed and position of specific bot identified by its identifier.
+     * @param id
+     * @return
+     */
     Cinetique get_Cinetique(BotIdentificater id);
 
     // GOAL / Warn against incoming collision
@@ -97,13 +122,18 @@ public:
     //                      false => watch behind
     // OUT  / bool : Trajectory blocked => true
     //               Free to move => false
+    /**
+     * Warn against incoming collision.
+     * @param forward : Bool, indicates if the LIDAR watches in front of the bot or not.
+     * @return : bool, if trajectory blocked => true, if not => false.
+     */
     bool trajectoryBlocked(bool forward = true);
 
-    void detect(); //detect all objects (cluster of points being in range of each others)
+    void detect(); ///<detect all objects (cluster of points being in range of each others)
 
-    void identify();//identify detected object initially
+    void identify();///<identify detected object initially
 
-    void track(); //identify detected object concidering previous objects
+    void track(); ///<identify detected object considering previous objects
 
 private:
 

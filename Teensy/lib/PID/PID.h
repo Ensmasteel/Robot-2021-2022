@@ -9,7 +9,13 @@
 
 // La variable x définit une grandeur quelconque. dx est sa derivee.
 
+/**
+ * Defines a class to control PID factors and behaviour.
+ */
 
+/**
+ * Class to save score and predictions.
+ */
 class Score
 {
 public:
@@ -20,10 +26,13 @@ public:
     void toTelemetry(String prefix);
 };
 
+/**
+ * Defines the PID class and its factors.
+ */
 class PID
 {
 private:
-    MoveProfile* currentProfile; //C'est u pointeur car on veut etre sur qu'il n'y a qu'une seule version d'un profile (pas de copies !)
+    MoveProfile* currentProfile; ///<Pointer to ensure there is only one instance of profile (no intern copy)
     float iTerm;
     bool modulo360;   //Permet de dire si les valeurs sont a interprété modulo 360
     Filtre dxF;       //Filtre de la derivee
@@ -45,6 +54,9 @@ public:
 friend class Asservissement;   //Rien n'est privé pour l'asservissement
 };
 
+/**
+ * Defines the enslavement class.
+ */
 class Asservissement
 {
     PID pidTranslation;

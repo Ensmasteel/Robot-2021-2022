@@ -2,13 +2,16 @@
 #define SIMULATOR_H_
 #include "Vector.h"
 
+/**
+ * Class enabling to create a simulator to test the robot's functions.
+ */
 class Simulator
 {
-    float mass; //Mass
-    float J;    //Rotational Inertie
-    float maxMotorForce;    //Newton
-    float size; //Size of one side of the robot, considering its template is a square. We also consider that the motors are at the extremity
-    float friction;  //friction  frictionForce=friction*(-V)
+    float mass; ///<Mass
+    float J;    ///<Rotational Inertia
+    float maxMotorForce;    ///<Newton
+    float size; ///<Size of one side of the robot, considering its template is a square. We also consider that the motors are at the extremity
+    float friction;  ///<friction  frictionForce=friction*(-V)
     float health;
     Cinetique * cinetique;
     float * orderMotorLeft;

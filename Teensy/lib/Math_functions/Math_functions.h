@@ -9,30 +9,38 @@
 
 #include "Arduino.h"
 
+/**
+ * Creates a polynomial function to interpolate a trajectory.
+ */
 class Polynome
 {
 public:
-    Polynome(float a0 = 0.0, float a1 = 0.0, float a2 = 0.0, float a3 = 0.0, float a4 = 0.0, float a5 = 0.0, float a6 = 0.0);
-    static const int DEGRE_MAX = 7;
+    Polynome(float a0 = 0.0, float a1 = 0.0,
+             float a2 = 0.0, float a3 = 0.0,
+             float a4 = 0.0, float a5 = 0.0, float a6 = 0.0);
+    static const int DEGRE_MAX = 7;///<Max degree of polynomial function.
 
-    float K[DEGRE_MAX]; //Les 10 coefficients du polynome, K[i] est le coefficient devant x^i
-    float f(float x);   //value of the function in x
-    float df(float x);  //value of the derivative function in x
-    float ddf(float x);
+    float K[DEGRE_MAX]; ///< the DEGRE_MAX+1 coefficients. K[i] coefficient is in front of x^i
+    float f(float x);   ///<value of the function in x
+    float df(float x);  ///<value of the derivative function in x
+    float ddf(float x); ///<value of double derivative function in x
     void set(float a0 = 0.0, float a1 = 0.0, float a2 = 0.0, float a3 = 0.0, float a4 = 0.0, float a5 = 0.0, float a6 = 0.0);
     void toDebug();
 };
 
 Polynome init_polynome(float a0 = 0.0, float a1 = 0.0, float a2 = 0.0, float a3 = 0.0, float a4 = 0.0, float a5 = 0.0, float a6 = 0.0);
-Polynome Derivative_ptr(Polynome *P);
-Polynome Derivative(Polynome P);
-Polynome Multiplication_ptr(Polynome *P1, Polynome *P2); // Need K[i>=4] = 0 !
+Polynome Derivative_ptr(Polynome *P); ///< pointer on derivative function
+Polynome Derivative(Polynome P); ///< derivative of the polynomial function
+Polynome Multiplication_ptr(Polynome *P1, Polynome *P2); ///< Need K[i>=4] = 0 !
 Polynome Multiplication(Polynome P1, Polynome P2);
 Polynome Square_ptr(Polynome *P);
 Polynome Square(Polynome P);
 Polynome Sum_ptr(Polynome *P1, Polynome *P2);
 Polynome Sum(Polynome P1, Polynome P2);
 
+/**
+ * Creates a trapezoidal function to model speed ramps.
+ */
 class Trapezoidal_Function
 {
 public:
@@ -44,15 +52,39 @@ public:
     //      / float max : max value of the function
     //      / float distance : integer of the function (name given in reference to speed functions)
     // OUT  / float duration : (homogeneous to the IN variables) The function is define in [0,duration]
+    /**
+     * Creates a new function given acceleration, max speed and deceleration.
+     * If max speed is unreachable given ramps and distance, a triangle function is used instead.
+     * @param upRamp : derivative of the start function
+     * @param downRamp : same as upRamp but of the end function. @warning always positive even if derivative is negative.
+     * @param max : max speed.
+     * @param distance : integer of the function (name given in reference of speed function)
+     * @return float, duration. This function is defined on [0,duration]
+     */
     float set(float upRamp, float downRamp, float max, float distance);
 
     // GOAL / Create a new constant function always returning 0
+    /**
+     * Creates a new constant function always returning 0.
+     */
     void setZero();
 
     // GOAL / Get value of the function in x (0 < x < duration).
+    /**
+     * Get value of the function in x
+     * @warning Be aware of x € [0, duration]
+     * @param x
+     * @return
+     */
     float f(float x);
 
     // GOAL / Get value of the derivate function in x (0 < x < duration).
+    /**
+     * Get the derivative value in x.
+     * @warning be aware of x € [0,duration]
+     * @param x
+     * @return
+     */
     float df(float x);
 
     float getDuration();
