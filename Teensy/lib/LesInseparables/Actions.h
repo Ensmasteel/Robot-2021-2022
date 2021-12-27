@@ -34,7 +34,7 @@ public:
     /**
      * The start function is called once at action's beginning, if the action requirement did not fail.
      * Else the fail is immediate.
-     * Is the action is interrupted by Sequence::pause, start function will be re-called during resume.
+     * If the action is interrupted by Sequence::pause, start function will be re-called during resume.
      */
     virtual void start();
 
@@ -71,12 +71,12 @@ public:
     }
 
     /**
-     * Returns if the actions started or not.
+     * Returns whether the actions started or not.
      */
     bool hasStarted() { return started; }
 
     /**
-     * This function is called in case of success. Do not do anything by default.
+     * This function is called in case of success. Doesn't do anything by default.
      */
     virtual void doAtEnd()
     { /*Ne fait rien par défaut. Il faudra override plus tard*/
@@ -97,7 +97,7 @@ protected:
 /**
  * This class instantiates a double action. A double action is a sequence of two consecutive actions.
  * The handle of those actions is encapsulated. There is nothing to do in particular.
- * A double action is finished if both actions is finished.
+ * A double action is finished if both actions are finished.
  * A double action fails if at least one of them fails.
  */
 class Double_Action : public Action
@@ -125,8 +125,8 @@ public:
 class Move_Action : public Action //Classe abstraite
 {
 public:
-    virtual void start();      //(Action+Move)Dump les parametres dans le ghost et appelle Action::start() et debloque le ghost
-    virtual bool isFinished(); //(Move) Verifie que le ghost est arrive et que le robot est sur le ghost
+    virtual void start();      //(Action+Move) Dump les parametres dans le ghost et appelle Action::start() et debloque le ghost
+    virtual bool isFinished(); //(Move) Verifie que le ghost est arrivé et que le robot est sur le ghost
     virtual bool hasFailed();  //(Action+Move) Verifie que le pid n'a pas retourné d'erreur ou que Action::hasFailed n'est pas true
     void doAtEnd() override;
     Move_Action(float timeout, VectorE posFinal, float deltaCurve,
