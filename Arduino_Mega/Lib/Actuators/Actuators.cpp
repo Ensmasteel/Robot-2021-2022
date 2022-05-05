@@ -18,7 +18,7 @@ void Actuator::NewOrder(Actuator_Order order)
     etat = Actuator_State::NewMess;
 }
 
-Pavillon::Pavillon() : Actuator("Pav", MessageID::Pavillon_M)
+/**Pavillon::Pavillon() : Actuator("Pav", MessageID::Pavillon_M)
 {
     stepperMotor = new StepperMotorJ(pinStep, pinDir, pinSleep, pinM0, pinM1);
 }
@@ -37,7 +37,7 @@ Actuator_State Pavillon::Update()
 {   
     /*Serial.println("Pavillon");
     Serial.println(int(etat));
-    Serial.println(String(currentOrder));*/
+    Serial.println(String(currentOrder));
     Serial.print("etat :");
     Serial.println(int(etat));
     switch (etat)
@@ -68,7 +68,72 @@ Actuator_State Pavillon::Update()
     }
 
    return Actuator::Update();
+}*/
+
+Tourelle::Tourelle() : Actuator("Tourelle")
+{
 }
+
+void Tourelle::Init(uint8_t pinDir, uint8_t pinStep, uint8_t pinM0, uint8_t pinM1, MessageID ID)
+{
+    messID = ID;
+    switch (messID)
+    {
+    case MessageID::BrasD_M:
+        name += "D";
+        break;
+
+    case MessageID::BrasG_M:
+        name += "G";
+        break;
+    
+    default:
+        break;
+    }
+    this->pinDir = pinDir;
+    this->pinStep = pinStep;
+    this->pinM0 = pinM0;
+    this->pinM1 = pinM1;
+    etat = Actuator_State::Attente;
+}
+
+Actuator_State Tourelle::Update()
+{
+    switch (etat)
+    {
+    case Actuator_State::NewMess:
+        switch (currentOrder)
+        {
+        case Actuator_Order::TournerHoraire:
+            stepperMotor->move(actionStep,50,true,false);
+            break;
+
+        case Actuator_Order::TournerAntiHoraire:
+            stepperMotor->move(actionStep,50,false,false);
+            break;
+
+        default:
+            break;
+        }
+        etat = Actuator_State::MouvFinished;
+        break;
+
+    case Actuator_State::MouvFinished:
+        etat = Actuator_State::Attente;
+        break;
+
+    default:
+        break;
+    }
+    return Actuator::Update();
+}
+
+void Position::Init(int posServo1,int posServo2,int posServo3){
+    this->posServo1=posServo1;
+    this->posServo=posServo2;
+    this->posServo3=posServo3;
+}  
+
 
 Bras::Bras() : Actuator("Bras")
 {
@@ -111,11 +176,11 @@ void Bras::Init(uint8_t pinServo, MessageID ID, int posRentre, int posSortie)
     messID = ID;
     switch (messID)
     {
-    case MessageID::BrasD_M:
+    case MessageID::TourelleD_M:
         name += "D";
         break;
 
-    case MessageID::BrasG_M:
+    case MessageID::TourelleG_M:
         name += "G";
         break;
     
