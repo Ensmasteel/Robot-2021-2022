@@ -1,4 +1,3 @@
-
 // Copyright (c) 2021.
 // This code has been written by student members of ISAE-ENSMA Ensmasteel association.
 /*
@@ -9,6 +8,7 @@
 
 #ifndef ACTUATORS_H_
 #define ACTUATORS_H_
+
 
 #include "Arduino.h"
 #include "Communication.h"
@@ -114,14 +114,14 @@ protected:
  * Used to define the 'Pavillon' actuator.
  *Deprecated for the 2022 edition.
  *
- */
+ *
 class [[deprecated ("Deprecated because unused after 2021 cup. Will be removed soon")]]
         Pavillon : public Actuator
 {
 public:
     /**
      * Public constructor of the Pavillon class.
-     */
+     *
     Pavillon();
     void Init(uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1);
     Actuator_State Update() override;
@@ -136,7 +136,7 @@ private:
     uint8_t pinM0 = 37;
     uint8_t pinM1 = 36;
     StepperMotorJ* stepperMotor;
-};
+};/
 
 /**
  * Public class that extends the abstract actuator class.
@@ -144,6 +144,55 @@ private:
  * Enables you to create a class containting the information to control a robot arm equipped with
  * a servomotor and 2 positions : the initial pos and the deployed position. Both are given in degrees.
  */
+
+
+
+class PositionBras 
+{   
+
+public :
+
+    PositionBras();
+    /**
+    @param posServo1
+    @param posServo2
+    @param posServo3
+    */
+   void Init(int posServo1, int posServo2, int posServo3);
+
+   protected:
+    int posServo1;
+    int posServo2;
+    int posServo3;
+};
+
+class Tourelle : public Actuator 
+{
+public:
+    /**
+     * Public basic constructor. Does not require any parameters.
+     */
+    Tourelle();
+
+    /**
+    @param pinStep 
+    @param pinDir 
+    @param pinM0 
+    @param pinM1 
+    */
+   void Init(uint8_t pinStep, uint8_t pinDir, uint8_t pinM0, uint8_t pinM1,MessageID ID);
+   Actuator_State Update() override;
+
+   protected:
+    uint8_t motorSteps = 200;
+    long actionStep = 2000;
+    StepperMotorJ StepperMotor;
+    uint8_t pinDir;
+    uint8_t pinStep;
+    uint8_t pinM0;
+    uint8_t pinM1;
+};
+
 class Bras : public Actuator
 {
 public:
@@ -165,12 +214,19 @@ public:
     Actuator_State Update() override;
 
 private:
-    int posRentre = 0;
-    int posSortie = 100;
+    PositionBras::posRepos(int, int, int);
+    PositionBras::posStockage(0,0,0);
+    PositionBras::posRamassage(0,0,0);
+    PositionBras::posEchange(0,0,0);
+    PositionBras::pos(0,0,0);
 
     uint8_t pinServo;
-    Servo servo;
+    Servo servo1;
+    Servo servo2;
+    Servo servo3;
+
 };
+
 
 /**
  * The public class to construct a robot gripper. Extends the abstract class Actuator.
