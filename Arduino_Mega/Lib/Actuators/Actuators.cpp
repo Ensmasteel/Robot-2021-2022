@@ -198,6 +198,11 @@ uint8_t Pompe::getState()
     return digitalRead(pinInterrupt);
 }
 
+PositionBras::PositionBras()
+{
+
+}
+
 PositionBras PositionBras::Init(int posServo1,int posServo2,int posServo3){
     this->posServo1=posServo1;
     this->posServo2=posServo2;

@@ -64,7 +64,7 @@ private:
     uint8_t pompeBrasDroit_PIN = 30;
     uint8_t pompeBrasGauche_PIN = 31;
     uint8_t pompeStockageDroit_PIN = 32;
-    uint8_t pompeStockageGauche_PÏN = 33;
+    uint8_t pompeStockageGauche_PIN = 33;
 
     // DATA MESSAGE //
     Message currentMessage;

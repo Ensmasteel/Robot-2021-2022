@@ -106,12 +106,9 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
         mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Ouvrir, 0, 0, 0),&commActionneurs));
         mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Descendre, 0, 0, 0),&commActionneurs));*/
-        
-        mainSequence->add(new Send_Action(newMessage(BrasD_M, Actuator_Order::Sortir, 0, 0, 0),&commActionneurs));
-        mainSequence->add(new Send_Action(newMessage(BrasD_M, Actuator_Order::Rentrer, 0, 0, 0),&commActionneurs));
-        mainSequence->add(new Send_Action(newMessage(BrasG_M, Actuator_Order::Sortir, 0, 0, 0),&commActionneurs));
-        mainSequence->add(new Send_Action(newMessage(BrasG_M, Actuator_Order::Rentrer, 0, 0, 0),&commActionneurs));
-
+        Serial.println("test stepper");
+        mainSequence->add(new Send_Action(newMessage(TourelleD_M, Actuator_Order::TournerHoraire, 0, 0, 0),&commActionneurs));
+        Serial.println("fin test stepper");
         /*mainSequence->add(new Forward_Action(5,0.2,standard));
         //mainSequence->add(new Send_Action(newMessage(BrasG_M, Actuator_Order::Sortir, 0, 0, 0), &commActionneurs));
         //mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));

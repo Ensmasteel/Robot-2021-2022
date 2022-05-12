@@ -14,7 +14,7 @@ Manager::Manager(Stream *serController, HardwareSerial *serDebug)
     pompeBrasDroit.Init(pompeBrasDroit_PIN, MessageID::Pompe_BrasD_M);
     pompeBrasGauche.Init(pompeBrasGauche_PIN, MessageID::Pompe_BrasG_M);
     pompeStockageDroit.Init(pompeStockageDroit_PIN, MessageID::Pompe_StockageD_M);
-    pompeStockageGauche.Init(pompeStockageGauche_PÏN, MessageID::Pompe_StockageG_M);
+    pompeStockageGauche.Init(pompeStockageGauche_PIN, MessageID::Pompe_StockageG_M);
 
     listActuators[0] = &tourelleDroite;
     listActuators[1] = &tourelleGauche;
