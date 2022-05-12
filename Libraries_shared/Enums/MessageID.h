@@ -66,10 +66,8 @@ enum Actuator_Order : uint8_t
     Destock,    ///<  Rails | assembly of actions, ascending arm, getting cup, downing it, open gripper.
     Fermer,     ///<  Gripper | close it.
     Ouvrir,      ///<  Gripper | open it.
-
     TournerHoraire, //Tourelle
     TournerAntiHoraire, //Tourelle
-
     PositionRepos,
     PositionStockagePalet,
     PositionPaletSol,

@@ -90,7 +90,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         //mainSequence->add(new Do_Action(startTimeSeq));
         //mainSequence->add(new Wait_Message_Action(Tirette_M,-1,&communication));
         //mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));
-        mainSequence->add(new Sleep_Action(3000));
+        //mainSequence->add(new Sleep_Action(3));
         /*mainSequence->add(new Send_Action(newMessage(Pavillon_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
         
         mainSequence->add(new Wait_Message_Action(Pavillon_M, 5, &commActionneurs));
@@ -288,7 +288,6 @@ void Robot::Update(float dt)
     } else if (compteur%SKIP_TELEMETRY_FAST==0){
         telemetry(true,false);
     }
-
     if (communication.inWaitingRx() > 0)
         communication.popOldestMessage(); //Tout le monde a eu l'occasion de le peek, on le vire.
     if (commActionneurs.inWaitingRx() > 0)

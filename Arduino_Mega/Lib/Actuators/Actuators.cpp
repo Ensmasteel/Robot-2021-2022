@@ -74,7 +74,7 @@ Actuator_State Pavillon::Update()
 
 Tourelle::Tourelle() : Actuator("Tourelle")
 {
-    stepperMotor = new StepperMotorJ(pinDir, pinStep, pinM0, pinM1);
+
 }
 
 void Tourelle::Init(uint8_t pinDir, uint8_t pinStep, uint8_t pinM0, uint8_t pinM1, MessageID ID)
@@ -97,6 +97,7 @@ void Tourelle::Init(uint8_t pinDir, uint8_t pinStep, uint8_t pinM0, uint8_t pinM
     this->pinStep = pinStep;
     this->pinM0 = pinM0;
     this->pinM1 = pinM1;
+    stepperMotor = new StepperMotorJ(pinDir, pinStep, pinM0, pinM1);
     etat = Actuator_State::Attente;
 }
 
@@ -105,14 +106,16 @@ Actuator_State Tourelle::Update()
     switch (etat)
     {
     case Actuator_State::NewMess:
+        Serial.println("go");
         switch (currentOrder)
         {
         case Actuator_Order::TournerHoraire:
-            stepperMotor->move(actionStep,50,true,false);
+            Serial.println("gogogo");
+            stepperMotor->move(500,50,true,false);
             break;
 
         case Actuator_Order::TournerAntiHoraire:
-            stepperMotor->move(actionStep,50,false,false);
+            stepperMotor->move(500,50,false,false);
             break;
 
         default:
@@ -122,6 +125,7 @@ Actuator_State Tourelle::Update()
         break;
 
     case Actuator_State::MouvFinished:
+        Serial.println("Fin du go");
         etat = Actuator_State::Attente;
         break;
 
@@ -207,7 +211,7 @@ PositionBras PositionBras::Init(int posServo1,int posServo2,int posServo3){
     this->posServo1=posServo1;
     this->posServo2=posServo2;
     this->posServo3=posServo3;
-    return ;
+    return *this;
 }  
 
 PositionBras &PositionBras::operator=(const PositionBras &source){

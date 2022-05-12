@@ -18,6 +18,7 @@ void setup()
   Serial.begin(115200);
   Serial2.begin(115200);
   Serial.println("STARTED");
+  Logger::setup(&Serial, &Serial, &Serial, true, true, true  );
   manager = new Manager(&Serial2, &Serial);
   lastMillis = millis();
   

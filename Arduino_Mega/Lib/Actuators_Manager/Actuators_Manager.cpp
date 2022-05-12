@@ -35,11 +35,10 @@ void Manager::Update()
     if (comController.inWaitingRx() > 0)
     {
         currentMessage = comController.peekOldestMessage();
+        
         currentID = extractID(currentMessage);
-        // currentBytes = extract4Bytes(currentMessage);
+        //currentBytes = extract4Bytes(currentMessage);
         currentOrder = extractOrder(currentMessage);
-
-        serialDebug->println(int(currentID));
 
         for (int i = 0; i < NBR_ACTUATORS; i++)
         {

@@ -178,7 +178,10 @@ void Communication::update()
     if (port->available() >= 6) //On attend de voir 6 octets dans le buffer pour lire le message entier d'un coup
     {
         uint8_t in[6];
-        for (int i = 0; i < 6; i++)
+        while(port->available()!=6){
+            port->read();
+        }
+        for (int i = 0 ; i < 6; i++)
             in[i] = port->read();
         Message out;
         memcpy(&out, in, sizeof(out)); //On convertit les octets en message

@@ -11,5 +11,11 @@
 			"path": "Libraries_shared"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.associations": {
+			"*.tcc": "cpp",
+			"streambuf": "cpp",
+			"cstdlib": "cpp"
+		}
+	}
 }
