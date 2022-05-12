@@ -28,9 +28,8 @@ uint32_t compteur=0;
 void setup()
 {
   Serial.begin(115200);   // USB
-  Serial3.begin(115200);  // HC05
   Serial2.begin(115200);  // Arduino Mega
-
+  Serial3.begin(115200);  // HC05
   Serial4.begin(115200);  //esp 32
   
   delay(500);
