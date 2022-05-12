@@ -107,7 +107,8 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Ouvrir, 0, 0, 0),&commActionneurs));
         mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Descendre, 0, 0, 0),&commActionneurs));*/
         Serial.println("test stepper");
-        mainSequence->add(new Send_Action(newMessage(TourelleD_M, Actuator_Order::TournerHoraire, 0, 0, 0),&commActionneurs));
+        mainSequence->add(new Send_Order_Action(TourelleD_M, Actuator_Order::TournerAntiHoraire,(float)5.0,&commActionneurs, true));
+        mainSequence->add(new Send_Order_Action(TourelleD_M, Actuator_Order::TournerHoraire, (float)5.0, &commActionneurs, true));
         Serial.println("fin test stepper");
         /*mainSequence->add(new Forward_Action(5,0.2,standard));
         //mainSequence->add(new Send_Action(newMessage(BrasG_M, Actuator_Order::Sortir, 0, 0, 0), &commActionneurs));
@@ -146,7 +147,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         mainSequence->add(new Sleep_Action(1));
         mainSequence->add(new Send_Order_Action(PinceArr_M, Actuator_Order::Destock, (float)5.0, &commActionneurs, true));
         mainSequence->add(new Sleep_Action(1000));*/
-        mainSequence->add(new End_Action(true,false));
+        mainSequence->add(new End_Action(false,true));
         Serial.println("avant StartSequence");
         mainSequence->startSelected();
     
@@ -209,7 +210,7 @@ void Robot::Update_Cinetique(float dt)
 
 void Robot::Update(float dt)
 {   
-    
+    /*
     //================= communication with esp ==========
     while(this->espPort->available()){
         char c= this->espPort->read();
@@ -232,11 +233,13 @@ void Robot::Update(float dt)
         }
     }
     //================= communication with esp ==========
+    */
 
     communication.update();
     commActionneurs.update();
 
     if(rangeAdversaryFoward<200 || rangeAdversaryBackward<150){//no mater if the robot move fowar/backard, stop if an obstacle
+        //Logger::debugln("go in the if ??");
         motorLeft.stop();
         motorRight.stop();
         stopped = true;
@@ -248,11 +251,12 @@ void Robot::Update(float dt)
             motorRight.resume();
             stopped = false;
         }
+        /*
         Update_Cinetique(dt);
         ghost.ActuatePosition(dt);
         cinetiqueNext = ghost.Get_Controller_Cinetique();
         controller.compute(dt);
-
+        
         //================= recalage ==========
         if (odometrie.getInterGaucheContact()) {
             motorLeft.setOrder(translationOrderPID - rotationOrderPID);
@@ -263,9 +267,13 @@ void Robot::Update(float dt)
             motorRight.actuate();
         }
         //================= recalage ==========
-
-        for (int i=0;i<__NBSEQUENCES__;i++)
+        */
+        for (int i=0; i<__NBSEQUENCES__;i++){
+            Logger::debugln(i);
             sequences[i]->update();
+        }
+
+        
     }
 
     /*

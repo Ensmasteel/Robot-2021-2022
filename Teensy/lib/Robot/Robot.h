@@ -36,8 +36,8 @@ public :
     float length = backLength + frontLength; //Longueur du robot
 
     Stream *espPort;
-    int rangeAdversaryFoward = -1;
-    int rangeAdversaryBackward = -1;
+    int rangeAdversaryFoward = 500;
+    int rangeAdversaryBackward = 500;
     String readString;
     bool stopped = false;
     //===============

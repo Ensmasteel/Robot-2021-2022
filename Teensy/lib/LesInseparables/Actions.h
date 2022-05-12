@@ -322,6 +322,8 @@ public:
                       Communication *comm,
                       boolean waitCompletion,
                       int16_t require = NO_REQUIREMENT);
+    
+    bool isFinished();
 };
 
 //========================================ACTION MISC========================================

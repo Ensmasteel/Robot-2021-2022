@@ -289,6 +289,9 @@ Send_Order_Action::Send_Order_Action(MessageID actuatorID, Actuator_Order actuat
         action2 = new Null_Action();
 }
 
+bool Send_Order_Action::isFinished(){
+    return action2->isFinished(); 
+}
 
 //========================================ACTION MISC========================================
 
