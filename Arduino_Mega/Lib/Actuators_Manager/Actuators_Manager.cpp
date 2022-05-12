@@ -5,19 +5,23 @@ Manager::Manager(Stream *serController, HardwareSerial *serDebug)
     comController = Communication(serController);
     serialDebug = serDebug;
 
-    pavillon.Init(pav_Dir, pav_Step, pav_Sleep, pav_M0, pav_M1);
-    brasGauche.Init(brasGauche_servoPWM, MessageID::BrasG_M, 90, 180);
-    brasDroit.Init(brasDroit_servoPWM, MessageID::BrasD_M, 90, 0);
-    pinceAvantGauche.Init(pinceAvG_servoPWM, pinceAvG_Dir, pinceAvG_Step, pinces_Sleep, pincesAv_M0, pincesAv_M1, MessageID::PinceAvG_M);
-    pinceAvantDroite.Init(pinceAvD_servoPWM, pinceAvD_Dir, pinceAvD_Step, pinces_Sleep, pincesAv_M0, pincesAv_M1, MessageID::PinceAvD_M);
-    pinceArr.Init(pinceArr_servoPWM, pinceArr_Dir, pinceArr_Step, pinces_Sleep, pincesArr_M0, pincesArr_M1, MessageID::PinceArr_M, 175, 120, 200);
+    tourelleDroite.Init(tourelleDroite_Dir, tourelleDroite_Step, tourelleDroite_M0, tourelleDroite_M1,MessageID::TourelleD_M);
+    tourelleGauche.Init(tourelleGauche_Dir, tourelleGauche_Step, tourelleGauche_M0, tourelleGauche_M1,MessageID::TourelleG_M);
+    brasGauche.Init(brasGauche_servoPWM1,brasGauche_servoPWM2,brasGauche_servoPWM3, MessageID::BrasG_M);
+    brasDroit.Init(brasDroit_servoPWM1,brasDroit_servoPWM2,brasDroit_servoPWM3, MessageID::BrasD_M);
+    pompeBrasDroit.Init(pompeBrasDroit_PIN, MessageID::Pompe_BrasD_M);
+    pompeBrasGauche.Init(pompeBrasGauche_PIN, MessageID::Pompe_BrasG_M);
+    pompeStockageDroit.Init(pompeStockageDroit_PIN, MessageID::Pompe_StockageD_M);
+    pompeStockageGauche.Init(pompeStockageGauche_PÏN, MessageID::Pompe_StockageG_M);
 
-    listActuators[0] = &pavillon;
-    listActuators[1] = &brasGauche;
+    listActuators[0] = &tourelleDroite;
+    listActuators[1] = &tourelleGauche;
     listActuators[2] = &brasDroit;
-    listActuators[3] = &pinceAvantGauche;
-    listActuators[4] = &pinceAvantDroite;
-    listActuators[5] = &pinceArr;
+    listActuators[3] = &brasGauche;
+    listActuators[4] = &pompeBrasDroit;
+    listActuators[5] = &pompeBrasGauche;
+    listActuators[6] = &pompeStockageDroit;
+    listActuators[7] = &pompeStockageGauche;
     // Check NBR_ACTUATORS when actuators added
 }
 

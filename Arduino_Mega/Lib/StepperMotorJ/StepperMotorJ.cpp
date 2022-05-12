@@ -1,14 +1,14 @@
 #include "StepperMotorJ.h"
 
-StepperMotorJ::StepperMotorJ(int stepPin, int dirPin, int sleepPin, int pinM0, int pinM1) {
+StepperMotorJ::StepperMotorJ(int stepPin, int dirPin, int pinM0, int pinM1) {
     this->stepPin = stepPin;
     this->dirPin = dirPin;
-    this->sleepPin = sleepPin;
+    //this->sleepPin = sleepPin;
     this->pinM0 = pinM0;
     this->pinM1 = pinM1;
     pinMode(stepPin, OUTPUT);
     pinMode(dirPin, OUTPUT);
-    pinMode(sleepPin, OUTPUT);
+    //pinMode(sleepPin, OUTPUT);
     pinMode(pinM0, OUTPUT);
     pinMode(pinM1, OUTPUT);
 
@@ -17,7 +17,7 @@ StepperMotorJ::StepperMotorJ(int stepPin, int dirPin, int sleepPin, int pinM0, i
 }
 
 void StepperMotorJ::move(int steps, int delay, bool up, bool holdPosition) {
-    digitalWrite(sleepPin, HIGH);
+    //digitalWrite(sleepPin, HIGH);
     digitalWrite(dirPin, up ? HIGH : LOW);
     for(int x = 0; x < steps; x++) {
         digitalWrite(stepPin,HIGH);
@@ -25,5 +25,5 @@ void StepperMotorJ::move(int steps, int delay, bool up, bool holdPosition) {
         digitalWrite(stepPin,LOW);
         delayMicroseconds(delay);
     }
-    digitalWrite(sleepPin, holdPosition ? HIGH : LOW);
+    //digitalWrite(sleepPin, holdPosition ? HIGH : LOW);
 }

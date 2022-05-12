@@ -17,7 +17,7 @@ class StepperMotorJ {
          * @param pinM0 : pin number of the first motor.
          * @param pinM1 : pin number of the second motor.
          */
-        StepperMotorJ(int stepPin, int dirPin, int sleepPin, int pinM0, int pinM1);
+        StepperMotorJ(int stepPin, int dirPin, int pinM0, int pinM1);
 
         /**
          * Method to make the motor move.
@@ -32,8 +32,9 @@ class StepperMotorJ {
     private:
         int stepPin;
         int dirPin;
-        int sleepPin;
+        //int sleepPin;
         int pinM0;
         int pinM1;
 };
+
 #endif 

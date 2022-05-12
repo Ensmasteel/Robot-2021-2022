@@ -1,3 +1,4 @@
+
 // Copyright (c) 2021.
 // This code has been written by student members of ISAE-ENSMA Ensmasteel association.
 /*
@@ -8,7 +9,6 @@
 
 #ifndef ACTUATORS_H_
 #define ACTUATORS_H_
-
 
 #include "Arduino.h"
 #include "Communication.h"
@@ -148,17 +148,22 @@ private:
 
 
 class PositionBras 
-{   
-
-public :
-
+{
+public:
     PositionBras();
     /**
-    @param posServo1
-    @param posServo2
-    @param posServo3
+    @param posServo1 //angle du servo 1
+    @param posServo2 //angle du servo 2
+    @param posServo3 //angle du servo 3
     */
-   void Init(int posServo1, int posServo2, int posServo3);
+   PositionBras Init(int posServo1, int posServo2, int posServo3);
+
+   PositionBras &PositionBras::operator=(const PositionBras &source);
+
+   int getPosServo1();
+   int getPosServo2();
+   int getPosServo3();
+
 
    protected:
     int posServo1;
@@ -186,11 +191,27 @@ public:
    protected:
     uint8_t motorSteps = 200;
     long actionStep = 2000;
-    StepperMotorJ StepperMotor;
+    StepperMotorJ* stepperMotor;
     uint8_t pinDir;
     uint8_t pinStep;
     uint8_t pinM0;
     uint8_t pinM1;
+};
+
+class Pompe : public Actuator
+{
+public: 
+
+    Pompe();
+
+    void Init(uint8_t pinTinterrupt,MessageID ID);
+    Actuator_State Update() override;
+    uint8_t getState();
+
+private:
+    uint8_t pinInterrupt;
+    MessageID ID;
+
 };
 
 class Bras : public Actuator
@@ -210,35 +231,48 @@ public:
      * @param posRentre The angle given in degree of the initial position.
      * @param posSortie The angle given in degree of the final position.
      */
-    void Init(uint8_t pinServo, MessageID ID, int posRentre = 0, int posSortie = 100);
+    void Init(uint8_t pinServo1, uint8_t pinServo2, uint8_t pinServo3, MessageID ID);
     Actuator_State Update() override;
 
 private:
-    PositionBras::posRepos(int, int, int);
-    PositionBras::posStockage(0,0,0);
-    PositionBras::posRamassage(0,0,0);
-    PositionBras::posEchange(0,0,0);
-    PositionBras::pos(0,0,0);
+    PositionBras posRepos;
+    PositionBras posStockagePalet;
+    PositionBras posPaletSol;
+    PositionBras posPaletDistributeur;
+    PositionBras posPaletStatuette;
+    PositionBras posRamassageStatuette;
+    PositionBras posDepotStatuette;
+    PositionBras posStockageStatuette;
+    PositionBras posDepotReplique;
+    PositionBras posEchange;
+    PositionBras posDepotPaletGallerieB;
+    PositionBras posDepotPaletGallerieH;
+    PositionBras posIntermediaire;
+    PositionBras posStart;
 
-    uint8_t pinServo;
+    MessageID ID;
+
+    uint8_t pinServo1;
+    uint8_t pinServo2;
+    uint8_t pinServo3;
+
     Servo servo1;
     Servo servo2;
     Servo servo3;
 
 };
 
-
 /**
  * The public class to construct a robot gripper. Extends the abstract class Actuator.
  *
  * This class is deprecated in the 2022 edition.
  */
-class [[deprecated ("Deprecated in the 2022 edition")]] Pince : public Actuator
+/*class [[deprecated ("Deprecated in the 2022 edition")]] Pince : public Actuator
 {
 public:
     /**
      * Basic public constructor with no params.
-     */
+     
     Pince();
 
     /**
@@ -253,7 +287,7 @@ public:
      * @param ferme : The initial position given in degrees.
      * @param ouvert : The final position given in degrees.
      * @param actionStep : The step of the stepperMotor.
-     */
+     
     void Init(uint8_t pinServo, uint8_t pinDir, uint8_t pinStep, uint8_t pinSleep, uint8_t pinM0, uint8_t pinM1,
               MessageID ID, int ferme = 70, int ouvert = 100, int actionStep = 400);
 
@@ -290,7 +324,7 @@ class PinceArriere : public Pince
 {
 public:
     Actuator_State Update() override;
-};
+};*/
 
 
 

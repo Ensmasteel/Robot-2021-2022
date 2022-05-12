@@ -37,7 +37,13 @@ enum MessageID : uint16_t
     BrasD_M,        ///<[Teensy -> Mega]:     Get the right arm IN or OUT | byte0 = Actuator_Order |
     PinceAvG_M,     ///<[Teensy -> Mega]:     Ascend, descend, open or close the left front gripper | byte0 = Actuator_Order |
     PinceAvD_M,     ///<[Teensy -> Mega]:     Ascend, descend, open or close the right front gripper | byte0 = Actuator_Order |
-    PinceArr_M      ///<[Teensy -> Mega]:     Ascend, descend, open or close the back gripper | byte0 = Actuator_Order |
+    PinceArr_M,      ///<[Teensy -> Mega]:     Ascend, descend, open or close the back gripper | byte0 = Actuator_Order |
+    TourelleD_M,
+    TourelleG_M,
+    Pompe_BrasD_M,
+    Pompe_BrasG_M,
+    Pompe_StockageD_M,
+    Pompe_StockageG_M
 };
 
 // Complements d'ordres //
@@ -59,7 +65,29 @@ enum Actuator_Order : uint8_t
     Stock,      ///<  Rails | assembly of action, getting a cup, ascending arm, downing it.
     Destock,    ///<  Rails | assembly of actions, ascending arm, getting cup, downing it, open gripper.
     Fermer,     ///<  Gripper | close it.
-    Ouvrir      ///<  Gripper | open it.
+    Ouvrir,      ///<  Gripper | open it.
+
+    TournerHoraire, //Tourelle
+    TournerAntiHoraire, //Tourelle
+
+    PositionRepos,
+    PositionStockagePalet,
+    PositionPaletSol,
+    PositionPaletDistributeur,
+    PositionPaletStatuette,
+    PositionRamassageStatuette,
+    PositionDepotStatuette,
+    PositionStockageStatuette,
+    PositionDepotReplique,
+    PositionEchange,
+    PositionDepotPaletGallerieB,
+    PositionDepotPaletGallerieH,
+
+    ActiverPompe,
+    DesactiverPompe
+
+
+    
 };
 
 #endif

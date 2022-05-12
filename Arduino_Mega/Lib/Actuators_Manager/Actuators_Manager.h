@@ -6,7 +6,7 @@
 #include "MessageID.h"
 #include "Actuators.h"
 
-#define NBR_ACTUATORS 6
+#define NBR_ACTUATORS 8
 
 /**
  * Basic class to declare an actuator manager wich will organize all the actions during the match.
@@ -27,45 +27,44 @@ private:
     
     // ACTUATORS //
     Actuator* listActuators[NBR_ACTUATORS];
-    Pavillon pavillon;
+    Pompe pompeBrasGauche;
+    Pompe pompeBrasDroit;
+    Pompe pompeStockageGauche;
+    Pompe pompeStockageDroit;
     Bras brasGauche;
     Bras brasDroit;
-    PinceAvant pinceAvantGauche;
-    PinceAvant pinceAvantDroite;
-    PinceArriere pinceArr;
+    Tourelle tourelleGauche;
+    Tourelle tourelleDroite;
 
     // PINS //
     //////////
     
     // Bras
-    uint8_t brasGauche_servoPWM = 3;
-    uint8_t brasDroit_servoPWM = 4;
+    uint8_t brasGauche_servoPWM1 = 2;
+    uint8_t brasGauche_servoPWM2 = 3;
+    uint8_t brasGauche_servoPWM3 = 4;
+    uint8_t brasDroit_servoPWM1 = 5;
+    uint8_t brasDroit_servoPWM2 = 6;
+    uint8_t brasDroit_servoPWM3 = 7;
 
-    // Pavillon
-    uint8_t pav_Dir = 35;
-    uint8_t pav_Step = 34;
-    uint8_t pav_Sleep = 22;
-    uint8_t pav_M0 = 37;
-    uint8_t pav_M1 = 36;
+    // Tourelle
+    uint8_t tourelleGauche_Dir = 22;
+    uint8_t tourelleGauche_Step = 23;
+    //uint8_t pav_Sleep = 22;
+    uint8_t tourelleGauche_M0 = 26;
+    uint8_t tourelleGauche_M1 = 27;
 
-    // Pinces
-    uint8_t pinceArr_servoPWM = 5;
-    uint8_t pinceAvG_servoPWM = 6;
-    uint8_t pinceAvD_servoPWM = 7;
-    
-    uint8_t pinceAvG_Dir = 24;
-    uint8_t pinceAvG_Step = 23;
-    uint8_t pinceAvD_Dir = 26;
-    uint8_t pinceAvD_Step = 25;
-    uint8_t pinceArr_Dir = 31;
-    uint8_t pinceArr_Step = 30;
+    uint8_t tourelleDroite_Dir = 24;
+    uint8_t tourelleDroite_Step = 25;
+    //uint8_t pav_Sleep = 22;
+    uint8_t tourelleDroite_M0 = 28;
+    uint8_t tourelleDroite_M1 = 29;
 
-    uint8_t pincesAv_M0 = 29;
-    uint8_t pincesAv_M1 = 28;
-    uint8_t pincesArr_M0 = 33;
-    uint8_t pincesArr_M1 = 32;
-
-    uint8_t pinces_Sleep = 27;
+    // Pompes
+    uint8_t pompeBrasDroit_PIN = 30;
+    uint8_t pompeBrasGauche_PIN = 31;
+    uint8_t pompeStockageDroit_PIN = 32;
+    uint8_t pompeStockageGauche_PÏN = 33;
 
     // DATA MESSAGE //
     Message currentMessage;
