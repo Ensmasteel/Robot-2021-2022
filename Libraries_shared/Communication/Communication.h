@@ -157,7 +157,7 @@ public:
      */
     void toTelemetry();
 
-private: //test git commentaire
+private:
     Stream* port;
     uint32_t millisLastSend;
     MessageBox* sendingBox;

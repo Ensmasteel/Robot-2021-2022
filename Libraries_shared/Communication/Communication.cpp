@@ -247,7 +247,6 @@ void Communication::operator=(const Communication &other)
 }
 
 
-
 void Communication::toTelemetry()
 {
     if (inWaitingRx()>0)
