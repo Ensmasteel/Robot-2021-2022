@@ -18,8 +18,10 @@ void Action::start()
 
 bool Action::hasFailed()
 {
-    if (timeout < 0)
+  
+    if (timeout < 0){
         return false;
+    }
     return millis() / 1e3 > timeStarted + timeout;
 }
 
@@ -51,10 +53,13 @@ bool Double_Action::isFinished()
 
 bool Double_Action::hasFailed()
 {
-    if (action2->hasStarted())
+    if (action2->hasStarted()){
+        
         return action2->hasFailed();
-    else //On s'occupe de action1
+        }
+    else {//On s'occupe de action1
         return action1->hasFailed();
+        }
 }
 
 Double_Action::Double_Action(float timeout, String name, int16_t require) : Action(name, timeout, require)
@@ -221,7 +226,7 @@ void Brake_Action::start()
 }
 //========================================ACTION COMM========================================
 
-Send_Action::Send_Action(Message message, Communication *comm, int16_t require) : Action("Send", 0.1, require)
+Send_Action::Send_Action(Message message, float timeout,Communication *comm, int16_t require) : Action("Send", timeout, require)
 {
     this->message = message;
     this->_commLocal = comm;
@@ -229,7 +234,6 @@ Send_Action::Send_Action(Message message, Communication *comm, int16_t require) 
 
 void Send_Action::start()
 {   
-    Serial.println("Start");
     this->_commLocal->send(message);
     done = true;
     Action::start();
@@ -280,8 +284,8 @@ bool Switch_Message_Action::isFinished()
 Send_Order_Action::Send_Order_Action(MessageID actuatorID, Actuator_Order actuatorOrder, float timeout, Communication *comm, boolean waitCompletion, int16_t require) : Double_Action(timeout, "Order",require)
 {
     message = newMessage(actuatorID, actuatorOrder, 0, 0, 0);
-    sendAction = new Send_Action(message, comm);
-    waitAction = new Wait_Message_Action(actuatorID,-1, comm);
+    sendAction = new Send_Action(message, timeout, comm);
+    waitAction = new Wait_Message_Action(actuatorID,-1.0, comm);
     action1 = sendAction;
     if(waitCompletion)
         action2 = waitAction;

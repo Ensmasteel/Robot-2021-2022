@@ -92,7 +92,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         //mainSequence->add(new Do_Action(startTimeSeq));
         //mainSequence->add(new Wait_Message_Action(Tirette_M,-1,&communication));
         //mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));
-        //mainSequence->add(new Sleep_Action(3));
+        mainSequence->add(new Sleep_Action(3));
         /*mainSequence->add(new Send_Action(newMessage(Pavillon_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
         
         mainSequence->add(new Wait_Message_Action(Pavillon_M, 5, &commActionneurs));
@@ -109,8 +109,9 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Ouvrir, 0, 0, 0),&commActionneurs));
         mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Descendre, 0, 0, 0),&commActionneurs));*/
         Serial.println("test stepper");
-        mainSequence->add(new Send_Order_Action(TourelleD_M, Actuator_Order::TournerAntiHoraire,(float)5.0,&commActionneurs, true));
-        mainSequence->add(new Send_Order_Action(TourelleD_M, Actuator_Order::TournerHoraire, (float)5.0, &commActionneurs, true));
+        mainSequence->add(new Send_Order_Action(TourelleD_M, Actuator_Order::TournerAntiHoraire, 5.0,&commActionneurs, true));
+        mainSequence->add(new Send_Order_Action(TourelleD_M, Actuator_Order::TournerHoraire, 5.0, &commActionneurs, true));
+        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionStockagePalet, 10.0, &commActionneurs, true));
         Serial.println("fin test stepper");
         /*mainSequence->add(new Forward_Action(5,0.2,standard));
         //mainSequence->add(new Send_Action(newMessage(BrasG_M, Actuator_Order::Sortir, 0, 0, 0), &commActionneurs));
@@ -149,7 +150,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         mainSequence->add(new Sleep_Action(1));
         mainSequence->add(new Send_Order_Action(PinceArr_M, Actuator_Order::Destock, (float)5.0, &commActionneurs, true));
         mainSequence->add(new Sleep_Action(1000));*/
-        mainSequence->add(new End_Action(false,true));
+        mainSequence->add(new End_Action(false,false));
         Serial.println("avant StartSequence");
         mainSequence->startSelected();
     
@@ -271,7 +272,6 @@ void Robot::Update(float dt)
         //================= recalage ==========
         */
         for (int i=0; i<__NBSEQUENCES__;i++){
-            Logger::debugln(i);
             sequences[i]->update();
         }
 

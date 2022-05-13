@@ -61,7 +61,7 @@ public:
      * Creates a basic action.
      * @warning This class is Abstract and cannot be instantiated.
      */
-    Action(String name = "Action", float timeout = 0.1, int16_t require = NO_REQUIREMENT)
+    Action(String name = "Action", float timeout = -1.0, int16_t require = NO_REQUIREMENT)
     {
         this->name = name;
         this->timeout = timeout;
@@ -260,10 +260,11 @@ class Send_Action : public Action
 {
 private:
     Message message;
+    float timeout;
     Communication* _commLocal;
 
 public:
-    Send_Action(Message message, Communication* comm, int16_t require = NO_REQUIREMENT);
+    Send_Action(Message message, float timeout, Communication* comm, int16_t require = NO_REQUIREMENT);
     void start(); //(Action+Send)
     //isFinished(Action)
     //hasFailed(Action)
