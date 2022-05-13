@@ -106,16 +106,14 @@ Actuator_State Tourelle::Update()
     switch (etat)
     {
     case Actuator_State::NewMess:
-        Serial.println("go");
         switch (currentOrder)
         {
         case Actuator_Order::TournerHoraire:
-            Serial.println("gogogo");
-            stepperMotor->move(500,50,true,false);
+            stepperMotor->move(50,2000,true,false);
             break;
 
         case Actuator_Order::TournerAntiHoraire:
-            stepperMotor->move(500,50,false,false);
+            stepperMotor->move(50,2000,false,false);
             break;
 
         default:
@@ -125,7 +123,6 @@ Actuator_State Tourelle::Update()
         break;
 
     case Actuator_State::MouvFinished:
-        Serial.println("Fin du go");
         etat = Actuator_State::Attente;
         break;
 
@@ -236,10 +233,10 @@ int PositionBras::getPosServo3(){
 
 Bras::Bras() : Actuator("Bras")
 {
-    posRepos.Init(0,0,0);
-    posStockagePalet.Init(0,0,0);
-    posPaletSol.Init(0,0,0);
-    posPaletDistributeur.Init(0,0,0);
+    this->posRepos.Init(90,90,90);
+    this->posStockagePalet.Init(100,120,130);
+    this->posPaletSol.Init(0,0,0);
+    this->posPaletDistributeur.Init(0,0,0);
     this->posPaletStatuette = posPaletStatuette.Init(0,0,0);
     this->posRamassageStatuette = posRamassageStatuette.Init(0,0,0);
     this->posDepotStatuette = posDepotStatuette.Init(0,0,0);
