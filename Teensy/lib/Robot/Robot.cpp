@@ -34,9 +34,9 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
 
     MoveProfiles::setup();
     cinetiqueCurrent = Cinetique(xIni, yIni, thetaIni);
-    //odometrie = Odometrie(TICKS_PER_ROUND, &cinetiqueCurrent, ELOIGNEMENT_CODEUSES, PIN_CODEUSE_GAUCHE_A, PIN_CODEUSE_GAUCHE_B, 
-    //                      DIAMETRE_ROUE_CODEUSE_GAUCHE, PIN_CODEUSE_DROITE_A, PIN_CODEUSE_DROITE_B, DIAMETRE_ROUE_CODEUSE_DROITE, 
-    //                      PIN_INTERRUPTEUR_ARR_DROITE, PIN_INTERRUPTEUR_ARR_GAUCHE);
+    odometrie = Odometrie(TICKS_PER_ROUND, &cinetiqueCurrent, ELOIGNEMENT_CODEUSES, PIN_CODEUSE_GAUCHE_A, PIN_CODEUSE_GAUCHE_B, 
+                          DIAMETRE_ROUE_CODEUSE_GAUCHE, PIN_CODEUSE_DROITE_A, PIN_CODEUSE_DROITE_B, DIAMETRE_ROUE_CODEUSE_DROITE, 
+                          PIN_INTERRUPTEUR_ARR_DROITE, PIN_INTERRUPTEUR_ARR_GAUCHE);
 
     motorLeft = Motor(PIN_MOTEUR_GAUCHE_PWR, PIN_MOTEUR_GAUCHE_SENS, 10);
     pinMode(PIN_MOTEUR_DROITE_BRAKE, OUTPUT);
@@ -204,11 +204,11 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
 }
 
 void Robot::Update_Cinetique(float dt)
-{
+{   Logger::debugln("Update_Cinetique");
     odometrie.updateCinetique(dt);
-    Serial.println("odometrie : ");
-    Serial.println(odometrie.codeuseDroite.ticks);
-    Serial.println(odometrie.codeuseGauche.ticks);
+    Logger::debugln("odometrie : ");
+    Logger::debugln(String(odometrie.codeuseDroite.ticks));
+    Logger::debugln(String(odometrie.codeuseGauche.ticks));
 }
 
 void Robot::Update(float dt)
@@ -254,7 +254,7 @@ void Robot::Update(float dt)
             motorRight.resume();
             stopped = false;
         }
-        /*
+        
         Update_Cinetique(dt);
         ghost.ActuatePosition(dt);
         cinetiqueNext = ghost.Get_Controller_Cinetique();
@@ -270,7 +270,7 @@ void Robot::Update(float dt)
             motorRight.actuate();
         }
         //================= recalage ==========
-        */
+        
         for (int i=0; i<__NBSEQUENCES__;i++){
             sequences[i]->update();
         }
