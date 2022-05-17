@@ -4,3 +4,4 @@
 *.eps linguist-vendored
 *.tex linguist-vendored
 *.sty linguist-vendored
+docsource/* linguist-documentation
