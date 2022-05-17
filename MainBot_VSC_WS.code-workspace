@@ -15,7 +15,22 @@
 		"files.associations": {
 			"*.tcc": "cpp",
 			"streambuf": "cpp",
-			"cstdlib": "cpp"
+			"cstdlib": "cpp",
+			"array": "cpp",
+			"deque": "cpp",
+			"string": "cpp",
+			"unordered_map": "cpp",
+			"vector": "cpp",
+			"functional": "cpp",
+			"iterator": "cpp",
+			"memory_resource": "cpp",
+			"optional": "cpp",
+			"fstream": "cpp",
+			"istream": "cpp",
+			"ostream": "cpp",
+			"sstream": "cpp",
+			"tuple": "cpp",
+			"utility": "cpp"
 		}
 	}
 }

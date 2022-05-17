@@ -30,7 +30,7 @@ void setup()
   Serial.begin(115200);   // USB
   Serial2.begin(115200);  // Arduino Mega
   Serial3.begin(115200);  // HC05
-  Serial4.begin(115200);  //esp 32
+  Serial4.begin(115200);  // esp 32
   
   delay(500);
   Logger::setup(&Serial, &Serial, &Serial, true, true, true  );

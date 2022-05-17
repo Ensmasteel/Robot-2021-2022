@@ -1,6 +1,6 @@
 #include "Moteur.h"
 #include "Arduino.h"
-
+#include "Logger.h"
 //Il faut accorder le nombre de bit de la résolution du PWM avec sa fréquence
 //cf la table sur le site: https://www.pjrc.com/teensy/td_pulse.html
 double idealFrequency(uint8_t bitResolution)
@@ -45,9 +45,10 @@ void Motor::actuate()
     if (bypass)
         order = orderByPass;
 
-    uint16_t pwmValue = round(abs(order) * maxPwm);
+    uint16_t pwmValue = round(abs(order) * 500);
 
     analogWrite(pinPWR, pwmValue);
+    
     if (order >= 0)
         digitalWrite(pinSens, HIGH);
     else
@@ -59,10 +60,11 @@ Motor::Motor(uint8_t pinPWR, uint8_t pinSens, uint8_t bitResolution)
 
     this->bitResolution = bitResolution;
     this->maxPwm = (uint16_t)round(pow(2, bitResolution)) - 1;
-#ifdef TEENSY35
+    
+//#ifdef TEENSY35
     analogWriteResolution(bitResolution);
     analogWriteFrequency(pinPWR, idealFrequency(bitResolution));
-#endif
+//#endif
     bypass = false;
     this->pinPWR = pinPWR;
     pinMode(pinPWR, OUTPUT);

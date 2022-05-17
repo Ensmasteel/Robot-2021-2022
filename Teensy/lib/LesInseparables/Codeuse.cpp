@@ -26,7 +26,7 @@ void Codeuse::actuate(float dt)
     oldTicks = ticks;
 }
 
-Codeuse::Codeuse(uint8_t pinA, uint8_t pinB, uint16_t ticksPerRound, float diametreRoue)
+Codeuse::Codeuse(uint8_t pinA, uint8_t pinB, double ticksPerRound, float diametreRoue)
 {
     enc = new Encoder(pinA, pinB); //Objet Encoder de la librairie Encoder.
     this->diametreRoue = diametreRoue;
@@ -56,12 +56,12 @@ void Odometrie::updateCinetique(float dt)
 
 Odometrie::Odometrie(){}
 
-Odometrie::Odometrie(uint16_t ticksPerRound, Cinetique *cinetique, float eloignementCodeuses,
+Odometrie::Odometrie(double ticksPerRound, Cinetique *cinetique, float eloignementCodeuses,
                     uint8_t pinACodeuseGauche, uint8_t pinBCodeuseGauche, float diametreRoueGauche,
                     uint8_t pinACodeuseDroite, uint8_t pinBCodeuseDroite, float diametreRoueDroite,
                     uint8_t pinInterDroite, uint8_t pinInterGauche)
 {
-    codeuseGauche = Codeuse(pinACodeuseGauche, pinBCodeuseGauche, 2*ticksPerRound, diametreRoueGauche);
+    codeuseGauche = Codeuse(pinACodeuseGauche, pinBCodeuseGauche, -round(ticksPerRound / 2), diametreRoueGauche); //codeuse montée a l'enver cette anné (-)
     codeuseDroite = Codeuse(pinACodeuseDroite, pinBCodeuseDroite, ticksPerRound, diametreRoueDroite);
     this->cinetique = cinetique;
     this->eloignementCodeuses = eloignementCodeuses;
