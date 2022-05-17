@@ -61,7 +61,7 @@ Odometrie::Odometrie(uint16_t ticksPerRound, Cinetique *cinetique, float eloigne
                     uint8_t pinACodeuseDroite, uint8_t pinBCodeuseDroite, float diametreRoueDroite,
                     uint8_t pinInterDroite, uint8_t pinInterGauche)
 {
-    codeuseGauche = Codeuse(pinACodeuseGauche, pinBCodeuseGauche, ticksPerRound, diametreRoueGauche);
+    codeuseGauche = Codeuse(pinACodeuseGauche, pinBCodeuseGauche, 2*ticksPerRound, diametreRoueGauche);
     codeuseDroite = Codeuse(pinACodeuseDroite, pinBCodeuseDroite, ticksPerRound, diametreRoueDroite);
     this->cinetique = cinetique;
     this->eloignementCodeuses = eloignementCodeuses;

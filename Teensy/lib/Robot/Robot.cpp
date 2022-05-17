@@ -58,30 +58,30 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
     //ATTENTION, LES ACTIONS DOIVENT ETRE DEFINIE EN TANT QUE ROBOT BLEU !
     // Might be define in main.cpp->setup
 
-    TargetVector base = TargetVector(0.22,1.20,false);
+    TargetVector base = TargetVector(0.20,0.70,false);
     TargetVector northBase = TargetVector(0.22,1.65,false);
     TargetVector southBase = TargetVector(0.22,0.70,false);
 
-    TargetVector gobeletR1 = TargetVector(0.300,1.600,false);
-    TargetVector gobeletV1 = TargetVector(0.445,1.485,false);
-    TargetVector gobeletR2 = TargetVector(0.445,0.915,false);
-    TargetVector gobeletV2 = TargetVector(0.300,0.800,false);
+    TargetVector paletVCote = TargetVector(-0.65,.300,false);
+    TargetVector paletBCote = TargetVector(0.121,1.688,false);
+    TargetVector paletRCote = TargetVector(0.312,1.880,false);
+    //TargetVector gobeletV2 = TargetVector(0.300,0.800,false);
 
-    TargetVector gobeletR3 = TargetVector(0.670,1.900,false);
-    TargetVector gobeletV3 = TargetVector(0.965,1.600,false);
-    TargetVector gobeletR4 = TargetVector(1.100,1.200,false);
-    TargetVector gobeletV4 = TargetVector(1.270,0.800,false);
+    TargetVector paletBCentreCache = TargetVector(0.900,0.555,false);
+    TargetVector paletRCentreCache = TargetVector(0.900,0.795,false);
+    TargetVector paletVCentreCache = TargetVector(0.830,1.675,false);
+    //TargetVector gobeletV4 = TargetVector(1.270,0.800,false);
     
-    TargetVector gobeletR5 = TargetVector(1.605,0.045,false);
-    TargetVector gobeletV5 = TargetVector(1.665,0.345,false);
-    TargetVector gobeletR6 = TargetVector(1.935,0.345,false);
-    TargetVector gobeletV6 = TargetVector(1.995,0.045,false);
+    TargetVector paletZoneBas = TargetVector(0.800,1.375,false); //par rapport a ou vous regardez les peintres (pour le nom)
+    TargetVector paletZoneHaut = TargetVector(1.150,1.375,false);
+    TargetVector paletZoneGauche = TargetVector(0.975,1.200,false); //Enfin sauf la c'est inverse en fonction du cote
+    TargetVector paletZoneDroite = TargetVector(0.975,1.550,false);
     
-    TargetVector rack1 = TargetVector(0.000,1.600,false);
-    TargetVector rack2 = TargetVector(0.850,2.000,false);
+    TargetVector paletsDistributeur = TargetVector(0.121,1.250,false);
+    TargetVector devantGallerie = TargetVector(0.830,0.300,false);
     
-    TargetVector manche1 = TargetVector(0.230,0.000,false);
-    TargetVector manche2 = TargetVector(0.635,0.000,false);
+    TargetVector vitrine = TargetVector(0.225,0.000,false);
+    TargetVector statuette = TargetVector(0.255,1.750,false);
 
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         Serial.println("entree dans main");
