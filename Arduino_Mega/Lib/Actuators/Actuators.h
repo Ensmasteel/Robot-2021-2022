@@ -187,15 +187,20 @@ public:
     */
    void Init(uint8_t pinStep, uint8_t pinDir, uint8_t pinM0, uint8_t pinM1,MessageID ID);
    Actuator_State Update() override;
+   void setAngleTourelleVoulu(int angle);
+   int calculateStepsByAngle(int angle);
 
    protected:
     uint8_t motorSteps = 200;
     long actionStep = 2000;
     StepperMotorJ* stepperMotor;
+    int angleTourelleVoulu; //angle prevu entre 0 et 180
+    int angleTourelle=90; //prevu entre 0 et 180
     uint8_t pinDir;
     uint8_t pinStep;
     uint8_t pinM0;
     uint8_t pinM1;
+    int step;
 };
 
 class Pompe : public Actuator
@@ -204,12 +209,12 @@ public:
 
     Pompe();
 
-    void Init(uint8_t pinTinterrupt,MessageID ID);
+    void Init(uint8_t pinMOSFET,MessageID ID);
     Actuator_State Update() override;
     uint8_t getState();
 
 private:
-    uint8_t pinInterrupt;
+    uint8_t pinMOSFET;
     MessageID ID;
 
 };

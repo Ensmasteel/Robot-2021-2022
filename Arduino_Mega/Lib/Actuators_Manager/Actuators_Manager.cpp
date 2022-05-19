@@ -37,14 +37,22 @@ void Manager::Update()
         currentMessage = comController.peekOldestMessage();
         
         currentID = extractID(currentMessage);
-        //currentBytes = extract4Bytes(currentMessage);
+        currentBytes = extract4Bytes(currentMessage);
         currentOrder = extractOrder(currentMessage);
 
         for (int i = 0; i < NBR_ACTUATORS; i++)
         {
+
             if (currentID == listActuators[i]->GetID())
             {
+                if (currentID==17){
+                    tourelleDroite.setAngleTourelleVoulu(currentBytes.byte1);
+                }
+                if (currentID==18){
+                    tourelleGauche.setAngleTourelleVoulu(currentBytes.byte1);
+                }
                 listActuators[i]->NewOrder(currentOrder);
+                
                 serialDebug->println(listActuators[i]->GetOrder());
             }
         }
