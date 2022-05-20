@@ -32,12 +32,8 @@ enum MessageID : uint16_t
     Evitemment_M,   ///<[Mega/Aux -> Teensy]:  There might be an obstacle | DATA: Vector (obstacle pos)
     North_M,        ///<[Camera -> Teensy]:   It must end at north [[deprecated in the 2022 edition]]
     South_M,        ///<[Camera -> Teensy]:   It must end at south [[deprecated in the 2022 edition]]
-    Pavillon_M,     ///<[Teensy -> Mega]:     Rise the 'Pavillon'! | byte0 = Actuator_Order |
-    BrasG_M,        ///<[Teensy -> Mega]:     Get the left arm IN or OUT  | byte0 = Actuator_Order |
-    BrasD_M,        ///<[Teensy -> Mega]:     Get the right arm IN or OUT | byte0 = Actuator_Order |
-    PinceAvG_M,     ///<[Teensy -> Mega]:     Ascend, descend, open or close the left front gripper | byte0 = Actuator_Order |
-    PinceAvD_M,     ///<[Teensy -> Mega]:     Ascend, descend, open or close the right front gripper | byte0 = Actuator_Order |
-    PinceArr_M,      ///<[Teensy -> Mega]:     Ascend, descend, open or close the back gripper | byte0 = Actuator_Order |
+    
+    //***2022***//
     TourelleD_M,
     TourelleG_M,
     Pompe_BrasD_M,
@@ -58,14 +54,6 @@ enum MessageID : uint16_t
  */
 enum Actuator_Order : uint8_t
 {
-    Sortir,     ///< arm | getting out the arm
-    Rentrer,    ///< arm | getting in the arm
-    Monter,     ///<  Pavillon | Rails, ascend
-    Descendre,  ///<  Pavillon | Rails, downing
-    Stock,      ///<  Rails | assembly of action, getting a cup, ascending arm, downing it.
-    Destock,    ///<  Rails | assembly of actions, ascending arm, getting cup, downing it, open gripper.
-    Fermer,     ///<  Gripper | close it.
-    Ouvrir,      ///<  Gripper | open it.
     TournerHoraire, //Tourelle
     TournerAntiHoraire, //Tourelle
     PositionRepos,

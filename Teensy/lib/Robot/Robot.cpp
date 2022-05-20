@@ -58,31 +58,10 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
     //ATTENTION, LES ACTIONS DOIVENT ETRE DEFINIE EN TANT QUE ROBOT BLEU !
     // Might be define in main.cpp->setup
 
-    TargetVector base = TargetVector(0.20,0.70,false);
+    
     TargetVector northBase = TargetVector(0.22,1.65,false);
     TargetVector southBase = TargetVector(0.22,0.70,false);
-
-    TargetVector paletVCote = TargetVector(-0.65,.300,false);
-    TargetVector paletBCote = TargetVector(0.121,1.688,false);
-    TargetVector paletRCote = TargetVector(0.312,1.880,false);
-    //TargetVector gobeletV2 = TargetVector(0.300,0.800,false);
-
-    TargetVector paletBCentreCache = TargetVector(0.900,0.555,false);
-    TargetVector paletRCentreCache = TargetVector(0.900,0.795,false);
-    TargetVector paletVCentreCache = TargetVector(0.830,1.675,false);
-    //TargetVector gobeletV4 = TargetVector(1.270,0.800,false);
     
-    TargetVector paletZoneBas = TargetVector(0.800,1.375,false); //par rapport a ou vous regardez les peintres (pour le nom)
-    TargetVector paletZoneHaut = TargetVector(1.150,1.375,false);
-    TargetVector paletZoneGauche = TargetVector(0.975,1.200,false); //Enfin sauf la c'est inverse en fonction du cote
-    TargetVector paletZoneDroite = TargetVector(0.975,1.550,false);
-    
-    TargetVector paletsDistributeur = TargetVector(0.121,1.250,false);
-    TargetVector devantGallerie = TargetVector(0.830,0.300,false);
-    
-    TargetVector vitrine = TargetVector(0.225,0.000,false);
-    TargetVector statuette = TargetVector(0.255,1.750,false);
-
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         Serial.println("entree dans main");
        
@@ -93,21 +72,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         //mainSequence->add(new Wait_Message_Action(Tirette_M,-1,&communication));
         //mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));
         mainSequence->add(new Sleep_Action(3));
-        /*mainSequence->add(new Send_Action(newMessage(Pavillon_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
-        
-        mainSequence->add(new Wait_Message_Action(Pavillon_M, 5, &commActionneurs));
-        mainSequence->add(new Send_Action(newMessage(Pavillon_M, Actuator_Order::Descendre, 0, 0, 0),&commActionneurs));
-        mainSequence->add(new Wait_Message_Action(Pavillon_M, 5, &commActionneurs));
-        mainSequence->add(new Send_Action(newMessage(PinceAvD_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
-        mainSequence->add(new Send_Action(newMessage(PinceAvG_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
-        mainSequence->add(new Send_Action(newMessage(PinceAvD_M, Actuator_Order::Ouvrir, 0, 0, 0),&commActionneurs));
-        mainSequence->add(new Send_Action(newMessage(PinceAvG_M, Actuator_Order::Ouvrir, 0, 0, 0),&commActionneurs));
-        mainSequence->add(new Send_Action(newMessage(PinceAvD_M, Actuator_Order::Fermer, 0, 0, 0),&commActionneurs));
-        mainSequence->add(new Send_Action(newMessage(PinceAvG_M, Actuator_Order::Fermer, 0, 0, 0),&commActionneurs));
 
-        mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
-        mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Ouvrir, 0, 0, 0),&commActionneurs));
-        mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Descendre, 0, 0, 0),&commActionneurs));*/
 
         /*Serial.println("test stepper");
         mainSequence->add(new Send_Order_Action(TourelleD_M, Actuator_Order::TournerAntiHoraire, 5.0,&commActionneurs, true));
@@ -123,27 +88,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         mainSequence->add(new Send_Action(newMessage(TourelleG_M, Actuator_Order::Tourner, 0, 0, 0), -1, &commActionneurs));
         mainSequence->add(new Sleep_Action(3));
         mainSequence->add(new Send_Action(newMessage(TourelleG_M, Actuator_Order::Tourner, 180, 0, 0), -1, &commActionneurs));
-        /*
-        mainSequence->add(new Forward_Action(-1,0.20,standard));
         
-        mainSequence->add(new Spin_Action(10,TargetVectorE(-PI/2,false),standard));
-        mainSequence->add(new Forward_Action(-1,0.20,standard));
-        mainSequence->add(new Send_Order_Action(TourelleG_M, Actuator_Order::TournerAntiHoraire, 5.0,&commActionneurs, true));
-
-        mainSequence->add(new Send_Order_Action(TourelleG_M, Actuator_Order::TournerHoraire, -1.0,&commActionneurs, false));
-        mainSequence->add(new Backward_Action(-1,0.20,standard));
-        */
-        
-
-        //mainSequence->add(new Send_Action(newMessage(BrasG_M, Actuator_Order::Sortir, 0, 0, 0), &commActionneurs));
-        //mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));
-        //mainSequence->add(new Backward_Action(5,0.5,standard));
-        //mainSequence->add(new Spin_Action(10,TargetVectorE(PI/2,false),standard));
-        //mainSequence->add(new Goto_Action(5,TargetVectorE(1.2,1.7,0,false),0.5,standard));
-        
-        //mainSequence->add(new Spin_Action(10,TargetVectorE(PI/2,false),standard));
-        
-        //mainSequence->add(new Goto_Action(5,TargetVectorE(2.5,0.3,PI,false),0.5,standard,true));*/
 
         /*
         * Lors des "5.0" prochaines secondes, si une erreur PID est levée
@@ -152,6 +97,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         * sinon
         *       le timeout est appelé et on passe a l'action suivante (au prochain move start, le ghost sera recallé sur le robot)
         */
+
         //mainSequence->add(new Recallage_Action(true,1.0,5.0));  
         //mainSequence->add(new Brake_Action(-1));
 
@@ -258,10 +204,7 @@ void Robot::Update(float dt)
         ghost.ActuatePosition(dt);
         cinetiqueNext = ghost.Get_Controller_Cinetique();
         controller.compute(dt);
-        
-        //Logger::debugln("translation OrderPID :" + String(translationOrderPID));
-        //Logger::debugln("rotation OrderPID :" + String(rotationOrderPID));
-        
+   
         //================= recalage ==========
         //if (odometrie.getInterGaucheContact()) {
             motorLeft.setOrder(-(translationOrderPID - rotationOrderPID));
@@ -276,8 +219,6 @@ void Robot::Update(float dt)
         for (int i=0; i<__NBSEQUENCES__;i++){
             sequences[i]->update();
         }
-
-        
     }
 
     /*
