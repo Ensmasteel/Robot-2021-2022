@@ -85,8 +85,8 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
 
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         Serial.println("entree dans main");
-        //TODO config recalage etc
-
+       
+       
         //Attend le message Tirette
         //mainSequence->add(new Wait_Tirette_Action(30));
         //mainSequence->add(new Do_Action(startTimeSeq));
@@ -109,16 +109,31 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Ouvrir, 0, 0, 0),&commActionneurs));
         mainSequence->add(new Send_Action(newMessage(PinceArr_M, Actuator_Order::Descendre, 0, 0, 0),&commActionneurs));*/
 
-/*         Serial.println("test stepper");
+        /*Serial.println("test stepper");
         mainSequence->add(new Send_Order_Action(TourelleD_M, Actuator_Order::TournerAntiHoraire, 5.0,&commActionneurs, true));
         mainSequence->add(new Send_Order_Action(TourelleD_M, Actuator_Order::TournerHoraire, 5.0, &commActionneurs, true));
         mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionStockagePalet, 10.0, &commActionneurs, true));
         Serial.println("fin test stepper"); */
 
+        mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
+        mainSequence->add(new Sleep_Action(3));
+        mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
+        mainSequence->add(new Send_Action(newMessage(TourelleG_M, Actuator_Order::Tourner, 90, 0, 0), -1, &commActionneurs));
+        mainSequence->add(new Sleep_Action(3));
+        mainSequence->add(new Send_Action(newMessage(TourelleG_M, Actuator_Order::Tourner, 0, 0, 0), -1, &commActionneurs));
+        mainSequence->add(new Sleep_Action(3));
+        mainSequence->add(new Send_Action(newMessage(TourelleG_M, Actuator_Order::Tourner, 180, 0, 0), -1, &commActionneurs));
+        /*
+        mainSequence->add(new Forward_Action(-1,0.20,standard));
         
+        mainSequence->add(new Spin_Action(10,TargetVectorE(-PI/2,false),standard));
         mainSequence->add(new Forward_Action(-1,0.20,standard));
-        mainSequence->add(new Spin_Action(10,TargetVectorE(PI/2,false),standard));
-        mainSequence->add(new Forward_Action(-1,0.20,standard));
+        mainSequence->add(new Send_Order_Action(TourelleG_M, Actuator_Order::TournerAntiHoraire, 5.0,&commActionneurs, true));
+
+        mainSequence->add(new Send_Order_Action(TourelleG_M, Actuator_Order::TournerHoraire, -1.0,&commActionneurs, false));
+        mainSequence->add(new Backward_Action(-1,0.20,standard));
+        */
+        
 
         //mainSequence->add(new Send_Action(newMessage(BrasG_M, Actuator_Order::Sortir, 0, 0, 0), &commActionneurs));
         //mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));
@@ -221,31 +236,7 @@ void Robot::Update_Cinetique(float dt)
 
 void Robot::Update(float dt)
 {   
-    /*
-    //================= communication with esp ==========
-    while(this->espPort->available()){
-        char c= this->espPort->read();
-        if ( c != '\n')
-        {
-            readString += c;
-        }
-        else
-        {
-            if(readString[0] == 'f'){
-                readString.remove(0);
-                rangeAdversaryFoward = readString.toInt();
-            }
-            else if (readString[0] == 'b')
-            {
-                readString.remove(0);
-                rangeAdversaryBackward = readString.toInt();
-            }
-            readString = "";
-        }
-    }
-    //================= communication with esp ==========
-    */
-
+   
     communication.update();
     commActionneurs.update();
 

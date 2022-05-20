@@ -80,6 +80,7 @@ enum Actuator_Order : uint8_t
     PositionEchange,
     PositionDepotPaletGallerieB,
     PositionDepotPaletGallerieH,
+    Tourner, // Tourelle
 
     ActiverPompe,
     DesactiverPompe

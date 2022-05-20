@@ -282,7 +282,8 @@ bool Switch_Message_Action::isFinished()
     return false;
 }
 
-Send_Order_Action::Send_Order_Action(MessageID actuatorID, Actuator_Order actuatorOrder, float timeout, Communication *comm, boolean waitCompletion, int16_t require) : Double_Action(timeout, "Order",require)
+Send_Order_Action::Send_Order_Action(MessageID actuatorID, Actuator_Order actuatorOrder, float timeout, Communication *comm, boolean waitCompletion, int16_t require) 
+                : Double_Action(timeout, "Order",require)
 {
     message = newMessage(actuatorID, actuatorOrder, 0, 0, 0);
     sendAction = new Send_Action(message, timeout, comm);
