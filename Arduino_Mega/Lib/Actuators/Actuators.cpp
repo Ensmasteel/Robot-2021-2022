@@ -72,6 +72,8 @@ Actuator_State Pavillon::Update()
    return Actuator::Update();
 }*/
 
+
+// A utiliser avec la fonction sendAction et pas sendOrderAction
 Tourelle::Tourelle() : Actuator("Tourelle")
 {
 
@@ -101,6 +103,15 @@ void Tourelle::Init(uint8_t pinDir, uint8_t pinStep, uint8_t pinM0, uint8_t pinM
     etat = Actuator_State::Attente;
 }
 
+void Tourelle::setAngleTourelleVoulu(int angle){
+    this->angleTourelleVoulu=angle;
+}
+
+int Tourelle::calculateStepsByAngle(int angle){
+    float rapport = 3;
+    return round(rapport*angle/1.8);
+}
+
 Actuator_State Tourelle::Update()
 {
     switch (etat)
@@ -108,14 +119,28 @@ Actuator_State Tourelle::Update()
     case Actuator_State::NewMess:
         switch (currentOrder)
         {
-        case Actuator_Order::TournerHoraire:
-            stepperMotor->move(50,2000,true,false);
+        case Actuator_Order::Tourner:
+            step=calculateStepsByAngle(abs(angleTourelle-angleTourelleVoulu));
+            Logger::debugln("steps :" + (String) step);
+            if(angleTourelle>angleTourelleVoulu){
+                stepperMotor->move(step,4000,true,false);
+            }
+            else{
+                stepperMotor->move(step,4000,false,false);
+            }
+            
+            Logger::debugln("angleT :" + (String) angleTourelle);
+            Logger::debugln("angleTV :" + (String) angleTourelleVoulu);
+            angleTourelle=angleTourelleVoulu;
+            Logger::debugln("angleTF :" + (String) angleTourelle);
             break;
 
-        case Actuator_Order::TournerAntiHoraire:
-            stepperMotor->move(50,2000,false,false);
+        /*case Actuator_Order::TournerAntiHoraire:
+            step=calculateStepsByAngle(angleTourelle-angleTourelleVoulu);
+            stepperMotor->move(step,2000,false,false);
+            angleTourelle=angleTourelleVoulu;
             break;
-
+        */
         default:
             break;
         }
@@ -136,7 +161,7 @@ Pompe::Pompe() : Actuator("Pompe"){
 
 }
 
-void Pompe::Init(uint8_t pinInterrupt,MessageID ID){
+void Pompe::Init(uint8_t pinMOSFET,MessageID ID){
     messID=ID;
     switch(messID){
         case MessageID::Pompe_BrasD_M:
@@ -159,7 +184,7 @@ void Pompe::Init(uint8_t pinInterrupt,MessageID ID){
             break;
     }
 
-    this->pinInterrupt=pinInterrupt;
+    this->pinMOSFET=pinMOSFET;
     etat = Actuator_State::Attente;
 }
 
@@ -171,11 +196,13 @@ Actuator_State Pompe::Update()
         switch (currentOrder)
         {
         case Actuator_Order::ActiverPompe:
-            digitalWrite(pinInterrupt,HIGH);
+            Logger::debugln("actif");
+            digitalWrite(pinMOSFET,HIGH);
             break;
 
         case Actuator_Order::DesactiverPompe:
-            digitalWrite(pinInterrupt,LOW);
+            Logger::debugln("desactif");
+            digitalWrite(pinMOSFET,LOW);
             break;
 
         default:
@@ -196,7 +223,7 @@ Actuator_State Pompe::Update()
 
 uint8_t Pompe::getState()
 {
-    return digitalRead(pinInterrupt);
+    return digitalRead(pinMOSFET);
 }
 
 PositionBras::PositionBras()

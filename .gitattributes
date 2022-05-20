@@ -1,0 +1,7 @@
+*.css linguist-vendored
+*.html linguist-vendored
+*.js linguist-vendored
+*.eps linguist-vendored
+*.tex linguist-vendored
+*.sty linguist-vendored
+docsource/* linguist-documentation
