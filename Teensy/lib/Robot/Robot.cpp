@@ -77,18 +77,47 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         /*Serial.println("test stepper");
         mainSequence->add(new Send_Order_Action(TourelleD_M, Actuator_Order::TournerAntiHoraire, 5.0,&commActionneurs, true));
         mainSequence->add(new Send_Order_Action(TourelleD_M, Actuator_Order::TournerHoraire, 5.0, &commActionneurs, true));
-        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionStockagePalet, 10.0, &commActionneurs, true));
-        Serial.println("fin test stepper"); */
-
-        mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
-        mainSequence->add(new Sleep_Action(3));
-        mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
-        mainSequence->add(new Send_Action(newMessage(TourelleG_M, Actuator_Order::Tourner, 90, 0, 0), -1, &commActionneurs));
-        mainSequence->add(new Sleep_Action(3));
-        mainSequence->add(new Send_Action(newMessage(TourelleG_M, Actuator_Order::Tourner, 0, 0, 0), -1, &commActionneurs));
-        mainSequence->add(new Sleep_Action(3));
-        mainSequence->add(new Send_Action(newMessage(TourelleG_M, Actuator_Order::Tourner, 180, 0, 0), -1, &commActionneurs));
+        */
+        //mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionStockagePalet, 10.0, &commActionneurs, true));
         
+        
+        //mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
+        //mainSequence->add(new Sleep_Action(1));
+        //mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
+        
+        
+        
+        //mainSequence->add(new Forward_Action(5, 0.1,standard));
+        
+        //mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
+        //mainSequence->add(new Goto_Action(10, TargetVectorE(0.30,0.30,0, true), 0.3, standard));
+
+
+        mainSequence->add(new StraightTo_Action( -1, TargetVector(0.33,0, true), standard));
+        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
+        mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
+        mainSequence->add(new Sleep_Action(1));
+        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true)); // à changer pour une Position Stockage ?
+        mainSequence->add(new Sleep_Action(1));
+        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
+        mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
+        mainSequence->add(new Sleep_Action(1));
+        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true)); // à changer pour une Position Stockage ?
+        mainSequence->add(new Backward_Action(10, 0.33, standard));    
+
+        //mainSequence->add(new Spin_Action(5, TargetVectorE(PI, false), standard));
+        mainSequence->add(new Goto_Action( 10, TargetVectorE(0.7,0.5,PI/2, true), 0.6 ,standard));
+        //mainSequence->add(new Spin_Action(5, TargetVectorE(PI, false), standard));
+        //mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
+        //mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
+        
+        /*
+        mainSequence->add(new Send_Action(newMessage(TourelleD_M, Actuator_Order::Tourner, 90, 0, 0), -1, &commActionneurs));
+        mainSequence->add(new Sleep_Action(3));
+        mainSequence->add(new Send_Action(newMessage(TourelleD_M, Actuator_Order::Tourner, 0, 0, 0), -1, &commActionneurs));
+        mainSequence->add(new Sleep_Action(3));
+        mainSequence->add(new Send_Action(newMessage(TourelleD_M, Actuator_Order::Tourner, 180, 0, 0), -1, &commActionneurs));
+        */
 
         /*
         * Lors des "5.0" prochaines secondes, si une erreur PID est levée

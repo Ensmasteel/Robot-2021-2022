@@ -32,7 +32,8 @@ enum MessageID : uint16_t
     Evitemment_M,   ///<[Mega/Aux -> Teensy]:  There might be an obstacle | DATA: Vector (obstacle pos)
     North_M,        ///<[Camera -> Teensy]:   It must end at north [[deprecated in the 2022 edition]]
     South_M,        ///<[Camera -> Teensy]:   It must end at south [[deprecated in the 2022 edition]]
-    
+    BrasG_M,
+    BrasD_M,
     //***2022***//
     TourelleD_M,
     TourelleG_M,
@@ -54,8 +55,6 @@ enum MessageID : uint16_t
  */
 enum Actuator_Order : uint8_t
 {
-    TournerHoraire, //Tourelle
-    TournerAntiHoraire, //Tourelle
     PositionRepos,
     PositionStockagePalet,
     PositionPaletSol,

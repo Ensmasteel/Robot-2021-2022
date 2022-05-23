@@ -30,8 +30,8 @@ void MoveProfiles::setup() {
     get(accurate,true)->set(34000,0.01,0.01,1,1*mm,0.5*mm/s,20*mm,0.3,200*mm/s);
     get(accurate,false)->set(4500,0.01,0.01,1, 1*DEG_TO_RAD, 1*DEG_TO_RAD/s, 15*DEG_TO_RAD,1.5,90*DEG_TO_RAD/s);
     
-    get(standard,true)->set(34000,0.01,0.01,1, 10*mm, 3*mm/s,50*mm,1.0,0.7); 
-    get(standard,false)->set(4500,0.01,0.01,1, 0.05, 0.01, 0.05,3.2,2.5);
+    get(standard,true)->set(40000,0.02,0.01,1, 10*mm, 3*mm/s,50*mm,0.1,0.5); 
+    get(standard,false)->set(2500,0.005,0.02,1, 0.05, 0.01, 0.05,3.2,2.5);
 
     get(fast,true)->set(34000,0.01,1500,0.8, 0.15, 0.01, 0.10,2.1,1.5);
     get(fast,false)->set(4500,0.01,200,1, 0.05, 0.01, 0.05,30.0,999.0);

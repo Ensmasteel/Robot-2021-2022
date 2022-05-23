@@ -14,7 +14,7 @@
 #include "RobotSimu.h"
 #include "ErrorManager.h"
 
-#define FREQUENCY 50.0
+#define FREQUENCY 150
 
 Robot *bender;
 uint32_t currentMillis = 0, lastMillis = 0;
@@ -38,7 +38,7 @@ void setup()
   delay(10000);
   Logger::infoln("REBOOT%"); //Le caractère % permet de faire sauter le parsing en cours sur la station sol
   Logger::infoln("Bender's booting up");
-  bender = new Robot(0.22,1.20,0,&Serial,&Serial2,&Serial4);
+  bender = new Robot(0,0,0,&Serial,&Serial2,&Serial4);
   //bender=new RobotSimu(0.22,1.20,0,&Serial,&Serial2);
   bender->setTeamColor(TeamColor::BLEU);
   Logger::infoln("Hello, I'm bender");
