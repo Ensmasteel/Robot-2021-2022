@@ -173,8 +173,8 @@ int MessageBox::size()
 void Communication::update()
 {
     //RECEPTION
-    if (port->available()>0)
-        Logger::debugln(String(port->available())+" bytes available");
+    /*if (port->available()>0)
+        Logger::debugln(String(port->available())+" bytes available");*/
     if (port->available() >= 6) //On attend de voir 6 octets dans le buffer pour lire le message entier d'un coup
     {
         uint8_t in[6];

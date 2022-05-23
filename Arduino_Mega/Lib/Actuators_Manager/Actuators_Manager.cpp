@@ -45,10 +45,10 @@ void Manager::Update()
 
             if (currentID == listActuators[i]->GetID())
             {
-                if (currentID==17){
+                if (currentID==13){
                     tourelleDroite.setAngleTourelleVoulu(currentBytes.byte1);
                 }
-                if (currentID==18){
+                if (currentID==14){
                     tourelleGauche.setAngleTourelleVoulu(currentBytes.byte1);
                 }
                 listActuators[i]->NewOrder(currentOrder);
