@@ -94,8 +94,11 @@ void Move_Action::doAtEnd()
 bool Move_Action::isFinished()
 {
     bool out = robot->ghost.trajectoryIsFinished() && robot->controller.close;
-    if (out)
+    //Logger::debugln("Robot->controller.close " + String(robot->controller.close));
+    if (out) {
+        //Logger::debugln("movee action has finished " + String(out));
         Logger::infoln("MOVE FINISHED");
+        }
     return out;
 }
 
