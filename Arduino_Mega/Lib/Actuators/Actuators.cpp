@@ -262,7 +262,7 @@ Bras::Bras() : Actuator("Bras")
 {
     this->posRepos.Init(90,90,90);
     this->posStockagePalet.Init(50,30,20);
-    this->posPaletSol.Init(110,130,130);
+    this->posPaletSol.Init(105,130,138);
     this->posPaletDistributeur.Init(0,0,0);
     this->posPaletStatuette = posPaletStatuette.Init(0,0,0);
     this->posRamassageStatuette = posRamassageStatuette.Init(0,0,0);
@@ -272,7 +272,7 @@ Bras::Bras() : Actuator("Bras")
     this->posDepotPaletGallerieB = posDepotPaletGallerieB.Init(0,0,0);
     this->posDepotPaletGallerieH = posDepotPaletGallerieH.Init(0,0,0);
 
-    this->posIntermediaire = posIntermediaire.Init(0,0,0);
+    this->posIntermediaire = posIntermediaire.Init(80,70,80);
 }
 
 Actuator_State Bras::Update()
@@ -284,9 +284,9 @@ Actuator_State Bras::Update()
         {
         case Actuator_Order::PositionRepos:
             servo1.write(posRepos.getPosServo1());
+            servo3.write(posRepos.getPosServo3());
             delay(200);
             servo2.write(posRepos.getPosServo2());
-            servo3.write(posRepos.getPosServo3());
             break;
 
         case Actuator_Order::PositionStockagePalet:

@@ -13,10 +13,12 @@
 #include "Sequence.h"
 #include "RobotSimu.h"
 #include "ErrorManager.h"
+#include "Lidar2022.h"
 
 #define FREQUENCY 50.0
 
 Robot *bender;
+Lidar2022 *lidar;
 uint32_t currentMillis = 0, lastMillis = 0;
 #ifdef STM32BOTH
 HardwareSerial Serial1(PA10, PA9);
@@ -39,6 +41,7 @@ void setup()
   Logger::infoln("REBOOT%"); //Le caractère % permet de faire sauter le parsing en cours sur la station sol
   Logger::infoln("Bender's booting up");
   bender = new Robot(0.22,1.20,0,&Serial,&Serial2,&Serial4);
+  lidar = new Lidar2022(bender);
   //bender=new RobotSimu(0.22,1.20,0,&Serial,&Serial2);
   bender->setTeamColor(TeamColor::BLEU);
   Logger::infoln("Hello, I'm bender");
@@ -60,6 +63,10 @@ void loop()
     moy+=(currentMillis - lastMillis);
     compteur++;
     bender->Update(1.0 / FREQUENCY);
+    lidar->detect();
+    if (lidar->getDetectClose()){
+      bender->stopped=true;
+    }
     lastMillis = currentMillis;
   }
 }

@@ -34,6 +34,8 @@ enum MessageID : uint16_t
     South_M,        ///<[Camera -> Teensy]:   It must end at south [[deprecated in the 2022 edition]]
     BrasG_M,        ///<[Teensy -> Mega]:     Get the left arm IN or OUT  | byte0 = Actuator_Order |
     BrasD_M,        ///<[Teensy -> Mega]:     Get the right arm IN or OUT | byte0 = Actuator_Order |
+    
+    //***2022***//
     TourelleD_M,
     TourelleG_M,
     Pompe_BrasD_M,
@@ -66,7 +68,8 @@ enum Actuator_Order : uint8_t
     PositionEchange,
     PositionDepotPaletGallerieB,
     PositionDepotPaletGallerieH,
-    Tourner,
+    Tourner, // Tourelle
+
     ActiverPompe,
     DesactiverPompe
 

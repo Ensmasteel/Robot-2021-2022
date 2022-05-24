@@ -249,19 +249,12 @@ void Robot::Update(float dt)
     communication.update();
     commActionneurs.update();
 
-    if(rangeAdversaryFoward<200 || rangeAdversaryBackward<150){//no mater if the robot move fowar/backard, stop if an obstacle
+    if(stopped){//no mater if the robot move fowar/backard, stop if an obstacle
         //Logger::debugln("go in the if ??");
         motorLeft.stop();
         motorRight.stop();
-        stopped = true;
     }
     else{
-        if(stopped){
-            //if the engines where stopped by an obstacle, resume movement
-            motorLeft.resume();
-            motorRight.resume();
-            stopped = false;
-        }
         
         Update_Cinetique(dt);
         ghost.ActuatePosition(dt);
