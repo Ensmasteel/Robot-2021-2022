@@ -6,7 +6,7 @@
 #include "RPLidar.h"
 #include "Robot.h"
 
-#define dist_arret 200 
+#define dist_arret 350 
 #define max_dist_regard 2000 //max distance a regarder
 
 struct point{

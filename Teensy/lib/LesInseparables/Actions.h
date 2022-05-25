@@ -8,7 +8,9 @@
 #include "ErrorManager.h"
 #include <vector>
 #include <cstdint> //for macro INT16_MAX
-
+#include "Moteur.h"
+#include "PID.h"
+#include "Ghost.h"
 /**
  * Defines the generic actions for the robot.
  */

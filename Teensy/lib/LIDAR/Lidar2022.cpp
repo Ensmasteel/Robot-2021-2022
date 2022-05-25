@@ -42,13 +42,22 @@ Lidar2022::Lidar2022(Robot* r) : Lidar2022(){
 void Lidar2022::Begin(HardwareSerial &serialobj)
 {
     lidar.begin(serialobj);
+    lidar.startScan();
 };
 
 void Lidar2022::detect()
 {   
-    while(IS_OK(lidar.waitPoint()) && detecting_a_point_close == false){
+    int nb_iter=0;
+    float tm=millis();
+    while(detecting_a_point_close == false && nb_iter<1){
+        Logger::debugln("before");
+        Logger::debugln(String(IS_FAIL(lidar.waitPoint())));
+        nb_iter++;
+        //Logger::debugln("nbiter" + (String) nb_iter);
         float distance = lidar.getCurrentPoint().distance;
+        Logger::debugln("distance" + (String) distance);
         float angle = lidar.getCurrentPoint().angle;
+        Logger::debugln("angle" + (String) angle);
         point p = {angle,distance};
         Vector pVectRel = coordonneeRelativePointDetecte(p);
         Vector pVectAbs = coordonneeAbsolueParRelative(pVectRel,robot);
@@ -59,6 +68,10 @@ void Lidar2022::detect()
             detecting_a_point_close=false;
         }
     }
+    float tm1=millis();
+    //Logger::debugln("time : "+ (String)(tm1-tm));
+    //lidar.stop();
+    Logger::debugln((String) detecting_a_point_close);
 };
 
 

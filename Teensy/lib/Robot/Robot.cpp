@@ -122,12 +122,12 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         
         
         
-        //mainSequence->add(new Forward_Action(5, 0.1,standard));
+        mainSequence->add(new Forward_Action(5, 0.70,standard));
         
         //mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
         //mainSequence->add(new Goto_Action(10, TargetVectorE(0.30,0.30,0, true), 0.3, standard));
 
-
+        /*
         mainSequence->add(new StraightTo_Action( -1, TargetVector(0.33,0, true), standard));
         mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
         mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
@@ -145,7 +145,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         //mainSequence->add(new Spin_Action(5, TargetVectorE(PI, false), standard));
         //mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
         //mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
-        
+        */
         /*
         mainSequence->add(new Send_Action(newMessage(TourelleD_M, Actuator_Order::Tourner, 90, 0, 0), -1, &commActionneurs));
         mainSequence->add(new Sleep_Action(3));
@@ -238,9 +238,9 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
 void Robot::Update_Cinetique(float dt)
 {   //Logger::debugln("Update_Cinetique");
     odometrie.updateCinetique(dt);
-    //Logger::debugln("odometrie : ");
-    //Logger::debugln(String(odometrie.codeuseDroite.ticks));
-    //Logger::debugln(String(odometrie.codeuseGauche.ticks));
+    Logger::debugln("odometrie : ");
+    Logger::debugln(String(odometrie.codeuseDroite.ticks));
+    Logger::debugln(String(odometrie.codeuseGauche.ticks));
 }
 
 void Robot::Update(float dt)
@@ -277,6 +277,10 @@ void Robot::Update(float dt)
         //Logger::debugln("go in the if ??");
         motorLeft.stop();
         motorRight.stop();
+        Update_Cinetique(dt);
+        motorLeft.actuate();
+        motorRight.actuate();
+        Logger::debugln("STOP!!!!");
     }
     else{
         

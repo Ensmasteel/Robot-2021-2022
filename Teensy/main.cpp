@@ -32,7 +32,7 @@ void setup()
   Serial.begin(115200);   // USB
   Serial2.begin(115200);  // Arduino Mega
   Serial3.begin(115200);  // HC05
-  Serial4.begin(115200);  // esp 32
+  Serial4.begin(115200);  // LIDAR
   
   delay(500);
   Logger::setup(&Serial, &Serial, &Serial, true, true, true  );
@@ -42,6 +42,8 @@ void setup()
   Logger::infoln("Bender's booting up");
   bender = new Robot(0.0,0,0,&Serial,&Serial2,&Serial4);
   lidar = new Lidar2022(bender);
+  lidar->Begin(Serial4);
+  
   //bender=new RobotSimu(0.22,1.20,0,&Serial,&Serial2);
   bender->setTeamColor(TeamColor::BLEU);
   Logger::infoln("Hello, I'm bender");

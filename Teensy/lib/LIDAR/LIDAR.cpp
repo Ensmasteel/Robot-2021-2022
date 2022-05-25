@@ -76,6 +76,7 @@ void LIDAR::detect()
 {
     if (IS_OK(lidar.waitPoint())) { //take the data from the lidar
         float distance = lidar.getCurrentPoint().distance;
+        Logger::debugln("distance" + String(distance));
         float angle = lidar.getCurrentPoint().angle;
         point p = {angle,distance};
         if(detectinging_an_object){
