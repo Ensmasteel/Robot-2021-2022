@@ -242,6 +242,7 @@ public:
 private:
     PositionBras posRepos;
     PositionBras posStockagePalet;
+    PositionBras posStockagePalet2;
     PositionBras posPaletSol;
     PositionBras posPaletDistributeur;
     PositionBras posPaletStatuette;

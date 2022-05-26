@@ -15,7 +15,7 @@
 #include "ErrorManager.h"
 #include "Lidar2022.h"
 
-#define FREQUENCY 150
+#define FREQUENCY 100
 
 Robot *bender;
 Lidar2022 *lidar;
@@ -40,7 +40,7 @@ void setup()
   delay(10000);
   Logger::infoln("REBOOT%"); //Le caractère % permet de faire sauter le parsing en cours sur la station sol
   Logger::infoln("Bender's booting up");
-  bender = new Robot(0.0,0,0,&Serial,&Serial2,&Serial4);
+  bender = new Robot(0.10,1.435,0,&Serial,&Serial2,&Serial4);
   lidar = new Lidar2022(bender);
   lidar->Begin(Serial4);
   
@@ -66,9 +66,15 @@ void loop()
     compteur++;
     bender->Update(1.0 / FREQUENCY);
     lidar->detect();
+    //bender->dem=false;
     if (lidar->getDetectClose()){
       bender->stopped=true;
     }
+    /*if (!(lidar->getDetectClose()) && bender->stopped==true){
+      Logger::debugln("ET MAINTENANT LAAAAAAA");
+      bender->stopped=false;
+      bender->dem=true;
+    }*/
     lastMillis = currentMillis;
   }
 }

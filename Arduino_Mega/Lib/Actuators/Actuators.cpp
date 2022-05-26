@@ -185,6 +185,7 @@ void Pompe::Init(uint8_t pinMOSFET,MessageID ID){
     }
 
     this->pinMOSFET=pinMOSFET;
+    pinMode(pinMOSFET,OUTPUT);
     etat = Actuator_State::Attente;
 }
 
@@ -260,8 +261,9 @@ int PositionBras::getPosServo3(){
 
 Bras::Bras() : Actuator("Bras")
 {
-    this->posRepos.Init(90,90,90);
-    this->posStockagePalet.Init(50,30,20);
+    this->posRepos.Init(30,140,120);
+    this->posStockagePalet.Init(20,30,15);
+    this->posStockagePalet2.Init(40,10,7);
     this->posPaletSol.Init(105,130,138);
     this->posPaletDistributeur.Init(0,0,0);
     this->posPaletStatuette = posPaletStatuette.Init(0,0,0);

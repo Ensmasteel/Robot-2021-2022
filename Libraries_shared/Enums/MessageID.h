@@ -58,6 +58,7 @@ enum Actuator_Order : uint8_t
 {
     PositionRepos,
     PositionStockagePalet,
+    PositionStockagePalet2,
     PositionPaletSol,
     PositionPaletDistributeur,
     PositionPaletStatuette,

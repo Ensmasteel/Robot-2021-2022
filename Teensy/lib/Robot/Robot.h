@@ -11,6 +11,7 @@
 #include "SequenceName.h"
 #include <vector>
 
+
 /**
  * Defines a robot class, including all parameters to set it up.
  */
@@ -40,6 +41,9 @@ public :
     int rangeAdversaryBackward = 500;
     String readString;
     bool stopped = false;
+    bool dem=false;
+    float dist_arrivee = 0.240;
+    TargetVector paletVCentreCache = TargetVector(0.830,1.325,true);
     //===============
 
     //=== Composants ===
@@ -110,6 +114,8 @@ public :
      * Teleports Ghost on Robot's actual position.
      */
     void recalibrateGhost();
+    float calculateTheta(Vector depart, Vector arrivee){return atan((arrivee._y-depart._y)/(arrivee._x-depart._x));};
+    Vector approcheElementbyVector(Vector depart,Vector arrivee);
 };
 
 #endif

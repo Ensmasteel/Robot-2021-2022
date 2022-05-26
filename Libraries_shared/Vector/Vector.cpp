@@ -194,6 +194,12 @@ TargetVector::TargetVector(float x, float y, bool absolute) : Target()
     _yB=y;
 }
 
+TargetVector::TargetVector(Vector v,bool absolute) : Target(){
+    type = (absolute)?(ABSOLUTE):(RELATIVE);
+    _xB=v._x;
+    _yB=v._y;
+}
+
 TargetVector::TargetVector(float xB, float yB, float xJ, float yJ) : Target()
 {
     type = SPECIFIC;

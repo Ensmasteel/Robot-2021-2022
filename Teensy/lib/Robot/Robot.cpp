@@ -58,30 +58,33 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
     //ATTENTION, LES ACTIONS DOIVENT ETRE DEFINIE EN TANT QUE ROBOT BLEU !
     // Might be define in main.cpp->setup
 
-    TargetVector base = TargetVector(0.20,0.70,false);
-    TargetVector northBase = TargetVector(0.22,1.65,false);
-    TargetVector southBase = TargetVector(0.22,0.70,false);
+    TargetVector base = TargetVector(0.10,1.435,false);
+    TargetVector baseJ = TargetVector(2.90,1.435,false);
+    TargetVector northBase = TargetVector(0.22,0.35,false);
+    TargetVector southBase = TargetVector(0.22,1.3,false);
 
-    TargetVector paletVCote = TargetVector(-0.65,.300,false);
-    TargetVector paletBCote = TargetVector(0.121,1.688,false);
-    TargetVector paletRCote = TargetVector(0.312,1.880,false);
+    TargetVector paletVCote = TargetVector(-0.65,1.7,false);
+    TargetVector paletBCote = TargetVector(0.121,0.312,false);
+    TargetVector paletRCote = TargetVector(0.312,0.120,false);
     //TargetVector gobeletV2 = TargetVector(0.300,0.800,false);
 
-    TargetVector paletBCentreCache = TargetVector(0.900,0.555,false);
-    TargetVector paletRCentreCache = TargetVector(0.900,0.795,false);
-    TargetVector paletVCentreCache = TargetVector(0.830,1.675,false);
+    TargetVector paletBCentreCache = TargetVector(0.900,1.445,false);
+    TargetVector paletRCentreCache = TargetVector(0.900,1.205,false);
+    //TargetVector paletVCentreCache = TargetVector(0.830,1.325,true);
+    TargetVector paletVCentreCacheJ = TargetVector(2.170,1.325,false);
     //TargetVector gobeletV4 = TargetVector(1.270,0.800,false);
     
-    TargetVector paletZoneBas = TargetVector(0.800,1.375,false); //par rapport a ou vous regardez les peintres (pour le nom)
-    TargetVector paletZoneHaut = TargetVector(1.150,1.375,false);
-    TargetVector paletZoneGauche = TargetVector(0.975,1.200,false); //Enfin sauf la c'est inverse en fonction du cote
-    TargetVector paletZoneDroite = TargetVector(0.975,1.550,false);
+    TargetVector paletZoneBas = TargetVector(0.800,0.625,false); //par rapport a ou vous regardez les peintres (pour le nom)
+    TargetVector paletZoneHaut = TargetVector(1.150,0.625,false);
+    TargetVector paletZoneGauche = TargetVector(0.975,0.800,false); //Enfin sauf la c'est inverse en fonction du cote
+    TargetVector paletZoneDroite = TargetVector(0.975,0.450,false);
     
-    TargetVector paletsDistributeur = TargetVector(0.121,1.250,false);
-    TargetVector devantGallerie = TargetVector(0.830,0.300,false);
+    TargetVector paletsDistributeur = TargetVector(0.121,0.750,false);
+    TargetVector devantGallerie = TargetVector(0.830,1.700,false);
+    TargetVector devantGallerieJ = TargetVector(2.170,1.700,false);
     
-    TargetVector vitrine = TargetVector(0.225,0.000,false);
-    TargetVector statuette = TargetVector(0.255,1.750,false);
+    TargetVector vitrine = TargetVector(0.225,2.000,false);
+    TargetVector statuette = TargetVector(0.255,0.250,false);
 
     Sequence* mainSequence = getSequenceByName(mainSequenceName);
         Serial.println("entree dans main");
@@ -119,13 +122,39 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         //mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
         //mainSequence->add(new Sleep_Action(1));
         //mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
+        TargetVector tmp = TargetVector(approcheElementbyVector(base.getVector(),paletVCentreCache.getVector()),true);
+        mainSequence->add(new StraightTo_Action( -1,tmp, standard));
+        //TargetVector tmp = TargetVector(approcheElementbyVector(tmp.getVector(),vitrine.getVector()),true);
         
-        
-        
-        mainSequence->add(new Forward_Action(5, 0.70,standard));
+        //mainSequence->add(new Forward_Action(5, 0.40,standard));
+        /*mainSequence->add(new Backward_Action(5,0.4,standard));
+        mainSequence->add(new Spin_Action(5, TargetVectorE(PI/4, false), standard));
+        mainSequence->add(new Forward_Action(5,0.3,standard));*/
+        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
+        //mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
+        mainSequence->add(new Sleep_Action(3));
+        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
+        tmp = TargetVector(approcheElementbyVector(tmp.getVector(),vitrine.getVector()),true);
+        mainSequence->add(new StraightTo_Action( -1,tmp, standard));
+        //tmp = TargetVector(approcheElementbyVector(tmp.getVector(),devantGallerie.getVector()),false);
+
+        /*mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true)); // à changer pour une Position Stockage ?
+        mainSequence->add(new Sleep_Action(1));
+        //mainSequence->add(new Backward_Action(5,0.2,standard));
+        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionStockagePalet, 10.0, &commActionneurs, true));
+        mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
+        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
+        mainSequence->add(new Sleep_Action(1));
+        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
+        mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
+        mainSequence->add(new Sleep_Action(1));
+        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true)); // à changer pour une Position Stockage ?
+        mainSequence->add(new Sleep_Action(1));*/
+        //mainSequence->add(new Backward_Action(5,0.2,standard));
+        //mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionStockagePalet, 10.0, &commActionneurs, true));
         
         //mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
-        //mainSequence->add(new Goto_Action(10, TargetVectorE(0.30,0.30,0, true), 0.3, standard));
+        //mainSequence->add(new StraightTo_Action(10, TargetVector(1.1,0.30, true), standard));
 
         /*
         mainSequence->add(new StraightTo_Action( -1, TargetVector(0.33,0, true), standard));
@@ -238,9 +267,9 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
 void Robot::Update_Cinetique(float dt)
 {   //Logger::debugln("Update_Cinetique");
     odometrie.updateCinetique(dt);
-    Logger::debugln("odometrie : ");
+    /*Logger::debugln("odometrie : ");
     Logger::debugln(String(odometrie.codeuseDroite.ticks));
-    Logger::debugln(String(odometrie.codeuseGauche.ticks));
+    Logger::debugln(String(odometrie.codeuseGauche.ticks));*/
 }
 
 void Robot::Update(float dt)
@@ -280,11 +309,19 @@ void Robot::Update(float dt)
         Update_Cinetique(dt);
         motorLeft.actuate();
         motorRight.actuate();
-        Logger::debugln("STOP!!!!");
+        Logger::debugln("STOP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
-    else{
-        
+    /*else if(dem){
+        motorLeft.resume();
+        motorRight.resume();
         Update_Cinetique(dt);
+        motorLeft.actuate();
+        motorRight.actuate();
+    }*/
+    else{
+        //Logger::debugln("update");
+        Update_Cinetique(dt);
+        //Logger::debugln("ghost");
         ghost.ActuatePosition(dt);
         cinetiqueNext = ghost.Get_Controller_Cinetique();
         controller.compute(dt);
@@ -387,3 +424,9 @@ void Robot::recalibrateGhost()
 {
     ghost.moveGhost(cinetiqueCurrent);
 }
+
+/*Vector Robot::approcheElementbyVector(Vector depart,Vector arrivee){
+    float x = arrivee._x - cos(calculateTheta(depart,arrivee)) * dist_arrivee;
+    float y = arrivee._y - sin(calculateTheta(depart,arrivee)) * dist_arrivee;
+    return Vector(x,y);
+}*/

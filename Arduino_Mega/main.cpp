@@ -21,7 +21,6 @@ void setup()
   Logger::setup(&Serial, &Serial, &Serial, true, true, true  );
   manager = new Manager(&Serial2, &Serial);
   lastMillis = millis();
-  
 }
 
 void loop()

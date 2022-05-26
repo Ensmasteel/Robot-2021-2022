@@ -138,6 +138,7 @@ public:
     Vector getVector();
     TargetVector(float x, float y, bool absolute);
     TargetVector(float xB, float yB, float xJ, float yJ);
+    TargetVector::TargetVector(Vector v,bool absolute);
     TargetVector(){}
 };
 

@@ -96,8 +96,9 @@ void Asservissement::compute(float dt)
 
     needToGoForward = (lagBehind > 0);
     *outRotation = pidRotation.compute(cGhost->_theta, cGhost->_w, cRobot->_theta, cRobot->_w, dt);
-    *outTranslation = constrain(pidTranslation.compute(lagBehind, cGhost->_v, 0, cRobot->_v, dt)
-                    , -(1 - abs(*outRotation)), 1 - abs(*outRotation)); //La rotation est prioritaire
+    *outTranslation = pidTranslation.compute(lagBehind, cGhost->_v, 0, cRobot->_v, dt);
+    /*outTranslation = constrain(pidTranslation.compute(lagBehind, cGhost->_v, 0, cRobot->_v, dt)
+                    , -(1 - abs(*outRotation)), 1 - abs(*outRotation)); //La rotation est prioritaire*/
     close = pidTranslation.close && pidRotation.close;
     tooFar = pidTranslation.tooFar || pidRotation.tooFar || (*cGhost - *cRobot).norm() > pidTranslation.getCurrentProfile()->epsilon;
 }

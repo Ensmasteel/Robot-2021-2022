@@ -47,31 +47,69 @@ void Lidar2022::Begin(HardwareSerial &serialobj)
 
 void Lidar2022::detect()
 {   
+
     int nb_iter=0;
     float tm=millis();
-    while(detecting_a_point_close == false && nb_iter<1){
-        Logger::debugln("before");
-        Logger::debugln(String(IS_FAIL(lidar.waitPoint())));
-        nb_iter++;
-        //Logger::debugln("nbiter" + (String) nb_iter);
-        float distance = lidar.getCurrentPoint().distance;
-        Logger::debugln("distance" + (String) distance);
-        float angle = lidar.getCurrentPoint().angle;
-        Logger::debugln("angle" + (String) angle);
-        point p = {angle,distance};
-        Vector pVectRel = coordonneeRelativePointDetecte(p);
-        Vector pVectAbs = coordonneeAbsolueParRelative(pVectRel,robot);
-        if (distance<dist_arret && pointInTable(pVectAbs)==true){
-            detecting_a_point_close=true;
+    while(nb_iter<10 && !detecting_a_point_close){
+        //Logger::debugln(detecting_a_point_close);
+        /*if (detecting_an_old_point==true){
+            //Logger::debugln("ou PT LAAAAAAAAAA");
+            int nbiter2=0;
+            bool detecting_a_new_point_close = false;
+            while(nbiter2<200){
+                //Logger::debugln("JE SUIS LAAAAAAAAAAAAA");
+                nbiter2++;
+                lidar.waitPoint();
+                float distancer = lidar.getCurrentPoint().distance;
+                if (distancer<400){
+                    detecting_a_new_point_close=true;
+                }
+            }
+            detecting_a_point_close=detecting_a_new_point_close;
         }
-        else{
-            detecting_a_point_close=false;
+        else{*/
+            lidar.waitPoint();
+            nb_iter++;
+            //Logger::debugln("nbiter" + (String) nb_iter);
+            float distance = lidar.getCurrentPoint().distance;
+            //Logger::debugln("distance" + (String) distance);
+            float angle = lidar.getCurrentPoint().angle;
+            //Logger::debugln("angle" + (String) angle);
+            point p = {angle,distance};
+            Vector pVectRel = coordonneeRelativePointDetecte(p);
+            Vector pVectAbs = coordonneeAbsolueParRelative(pVectRel,robot);
+            if (distance<dist_arret && distance > 150 ){
+                lidar.waitPoint();
+                Logger::debugln("Help");
+                float distance = lidar.getCurrentPoint().distance;
+                //Logger::debugln("distance" + (String) distance);
+                float angle = lidar.getCurrentPoint().angle;
+                //Logger::debugln("angle" + (String) angle);
+                if (distance<dist_arret && distance > 150){
+
+                    lidar.waitPoint();
+                    Logger::debugln("Help");
+                    float distance = lidar.getCurrentPoint().distance;
+                    //Logger::debugln("distance" + (String) distance);
+                    float angle = lidar.getCurrentPoint().angle;
+                    //Logger::debugln("angle" + (String) angle);
+                    if (distance<dist_arret && distance > 150){
+
+                        detecting_a_point_close=true;
+                    }
+                }
+            }
+            else{
+                detecting_a_point_close=false;
+            }
+
         }
-    }
+
+    
     float tm1=millis();
     //Logger::debugln("time : "+ (String)(tm1-tm));
     //lidar.stop();
-    Logger::debugln((String) detecting_a_point_close);
+    //Logger::debugln((String) detecting_a_point_close);
 };
 
 

@@ -61,8 +61,8 @@ private:
     uint8_t tourelleDroite_M1 = 29;
 
     // Pompes
-    uint8_t pompeBrasDroit_PIN = 30;
-    uint8_t pompeBrasGauche_PIN = 31;
+    uint8_t pompeBrasDroit_PIN = 32; //Ne pas utiliser la pin 30
+    uint8_t pompeBrasGauche_PIN = 30;
     uint8_t pompeStockageDroit_PIN = 32;
     uint8_t pompeStockageGauche_PIN = 33;
 
