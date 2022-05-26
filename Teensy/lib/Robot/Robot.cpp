@@ -22,7 +22,7 @@
 
 #define ELOIGNEMENT_CODEUSES 0.275
 #define DIAMETRE_ROUE_CODEUSE_DROITE 0.053
-#define DIAMETRE_ROUE_CODEUSE_GAUCHE 0.054
+#define DIAMETRE_ROUE_CODEUSE_GAUCHE 0.0545
 #define TICKS_PER_ROUND 16384
 
 #define SKIP_TELEMETRY_LONG 10000
@@ -123,23 +123,26 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         //mainSequence->add(new Sleep_Action(1));
         //mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
         
-        mainSequence->add(new Forward_Action(-1,2.5,standard));
+        //mainSequence->add(new Forward_Action(-1,2.5,standard));
         TargetVector tmp = TargetVector(0.250,1.370,true);
         mainSequence->add(new StraightTo_Action( -1,tmp, standard));
-        mainSequence->add(new StraightTo_Action( -1,TargetVector(0.661,0.606, true), standard));
+        mainSequence->add(new StraightTo_Action( -1,TargetVector(0.661,0.595, true), standard));
 
         mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
         mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
         
-        mainSequence->add(new Spin_Action(5, TargetVectorE(-3*PI/4+ 0.174533, false), standard));
+        mainSequence->add(new Spin_Action(5, TargetVectorE(-3*PI/4+ 0.05, false), standard));
         //mainSequence->add(new StraightTo_Action( -1,TargetVector(0.500,0.400,true), standard));
         mainSequence->add(new Forward_Action(-1,0.200,standard));
-        mainSequence->add(new Backward_Action(-1,0.2,standard));
+        
+        //mainSequence->add(new Backward_Action(-1,0.2,standard));
         mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionStockageStatuette, 10.0, &commActionneurs, true));
-        
-        mainSequence->add(new StraightTo_Action( -1,TargetVector(0.2,1.85, true), standard));
-        mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
-        
+        mainSequence->add(new Sleep_Action(1));
+        mainSequence->add(new StraightTo_Action( -1,TargetVector(0.100,1.750, true), standard));
+
+        mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
+
+        mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));        
         //TargetVector tmp = TargetVector(approcheElementbyVector(tmp.getVector(),vitrine.getVector()),true);
         
         //mainSequence->add(new Forward_Action(5, 0.40,standard));
