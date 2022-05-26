@@ -267,9 +267,9 @@ Bras::Bras() : Actuator("Bras")
     this->posPaletSol.Init(105,130,138);
     this->posPaletDistributeur.Init(0,0,0);
     this->posPaletStatuette = posPaletStatuette.Init(0,0,0);
-    this->posRamassageStatuette = posRamassageStatuette.Init(0,0,0);
+    this->posRamassageStatuette = posRamassageStatuette.Init(90,88,85);
     this->posDepotStatuette = posDepotStatuette.Init(0,0,0);
-    this->posStockageStatuette = posStockageStatuette.Init(0,0,0);
+    this->posStockageStatuette = posStockageStatuette.Init(90,20,90);
     this->posDepotReplique = posDepotReplique.Init(0,0,0);
     this->posDepotPaletGallerieB = posDepotPaletGallerieB.Init(0,0,0);
     this->posDepotPaletGallerieH = posDepotPaletGallerieH.Init(0,0,0);

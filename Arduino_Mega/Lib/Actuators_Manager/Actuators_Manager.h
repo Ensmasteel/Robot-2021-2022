@@ -62,7 +62,7 @@ private:
 
     // Pompes
     uint8_t pompeBrasDroit_PIN = 32; //Ne pas utiliser la pin 30
-    uint8_t pompeBrasGauche_PIN = 30;
+    uint8_t pompeBrasGauche_PIN = 34;
     uint8_t pompeStockageDroit_PIN = 32;
     uint8_t pompeStockageGauche_PIN = 33;
 
