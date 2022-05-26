@@ -37,10 +37,10 @@ void setup()
   delay(500);
   Logger::setup(&Serial, &Serial, &Serial, true, true, true  );
   ErrorManager::setup();
-  delay(10000);
+  delay(5000);
   Logger::infoln("REBOOT%"); //Le caractère % permet de faire sauter le parsing en cours sur la station sol
   Logger::infoln("Bender's booting up");
-  bender = new Robot(0.10,1.435,0,&Serial,&Serial2,&Serial4);
+  bender = new Robot(0.150,1.370,0,&Serial,&Serial2,&Serial4);
   lidar = new Lidar2022(bender);
   lidar->Begin(Serial4);
   

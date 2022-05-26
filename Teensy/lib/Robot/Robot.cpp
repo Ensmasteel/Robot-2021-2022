@@ -91,11 +91,11 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         //TODO config recalage etc
 
         //Attend le message Tirette
-        //mainSequence->add(new Wait_Tirette_Action(30));
+        mainSequence->add(new Wait_Tirette_Action(33));
         //mainSequence->add(new Do_Action(startTimeSeq));
         //mainSequence->add(new Wait_Message_Action(Tirette_M,-1,&communication));
         //mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));
-        mainSequence->add(new Sleep_Action(3));
+        //mainSequence->add(new Sleep_Action(3));
         /*mainSequence->add(new Send_Action(newMessage(Pavillon_M, Actuator_Order::Monter, 0, 0, 0),&commActionneurs));
         
         mainSequence->add(new Wait_Message_Action(Pavillon_M, 5, &commActionneurs));
@@ -122,7 +122,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         //mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
         //mainSequence->add(new Sleep_Action(1));
         //mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
-        TargetVector tmp = TargetVector(approcheElementbyVector(base.getVector(),paletVCentreCache.getVector()),true);
+        TargetVector tmp = TargetVector(0.615,1.370,true);
         mainSequence->add(new StraightTo_Action( -1,tmp, standard));
         //TargetVector tmp = TargetVector(approcheElementbyVector(tmp.getVector(),vitrine.getVector()),true);
         
@@ -130,21 +130,35 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         /*mainSequence->add(new Backward_Action(5,0.4,standard));
         mainSequence->add(new Spin_Action(5, TargetVectorE(PI/4, false), standard));
         mainSequence->add(new Forward_Action(5,0.3,standard));*/
-        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
-        //mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
-        mainSequence->add(new Sleep_Action(3));
-        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
-        tmp = TargetVector(approcheElementbyVector(tmp.getVector(),vitrine.getVector()),true);
+        mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
+        mainSequence->add(new Sleep_Action(1));
+        mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
+
+        mainSequence->add(new Sleep_Action(1));
+        mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
+        mainSequence->add(new Backward_Action(5, 0.20,standard));
+        tmp = TargetVector(0.390,1.370,true);
         mainSequence->add(new StraightTo_Action( -1,tmp, standard));
+        //mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
+        /*TargetVector tmp1 = TargetVector(approcheElementbyVector(tmp.getVector(),vitrine.getVector()),true);
+        mainSequence->add(new StraightTo_Action( -1,tmp1, standard));*/
         //tmp = TargetVector(approcheElementbyVector(tmp.getVector(),devantGallerie.getVector()),false);
 
-        /*mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true)); // à changer pour une Position Stockage ?
-        mainSequence->add(new Sleep_Action(1));
+        mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true)); // à changer pour une Position Stockage ?
+        /*mainSequence->add(new Sleep_Action(1));
         //mainSequence->add(new Backward_Action(5,0.2,standard));
-        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionStockagePalet, 10.0, &commActionneurs, true));
+        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionStockagePalet, 10.0, &commActionneurs, true));*/
         mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
-        mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
+        mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
         mainSequence->add(new Sleep_Action(1));
+        tmp = TargetVector(0.380,1.370,true);
+        mainSequence->add(new StraightTo_Action( -1,tmp, standard));
+        mainSequence->add(new Sleep_Action(5));
+        for(int i=0;!(i>10);i++){
+            mainSequence->add(new Backward_Action(5, 0.40,standard));
+            mainSequence->add(new Forward_Action(5,0.4,standard));
+        }
+        /*mainSequence->add(new Sleep_Action(1));
         mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
         mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
         mainSequence->add(new Sleep_Action(1));
@@ -425,8 +439,10 @@ void Robot::recalibrateGhost()
     ghost.moveGhost(cinetiqueCurrent);
 }
 
-/*Vector Robot::approcheElementbyVector(Vector depart,Vector arrivee){
+Vector Robot::approcheElementbyVector(Vector depart,Vector arrivee){
     float x = arrivee._x - cos(calculateTheta(depart,arrivee)) * dist_arrivee;
     float y = arrivee._y - sin(calculateTheta(depart,arrivee)) * dist_arrivee;
+    Logger::debugln("x : " + (String) x);
+    Logger::debugln("y : " + (String) y);
     return Vector(x,y);
-}*/
+}

@@ -261,7 +261,7 @@ int PositionBras::getPosServo3(){
 
 Bras::Bras() : Actuator("Bras")
 {
-    this->posRepos.Init(30,140,120);
+    this->posRepos.Init(30,60,90);
     this->posStockagePalet.Init(20,30,15);
     this->posStockagePalet2.Init(40,10,7);
     this->posPaletSol.Init(105,130,138);

@@ -78,14 +78,14 @@ void Lidar2022::detect()
             point p = {angle,distance};
             Vector pVectRel = coordonneeRelativePointDetecte(p);
             Vector pVectAbs = coordonneeAbsolueParRelative(pVectRel,robot);
-            if (distance<dist_arret && distance > 150 ){
+            if (distance<dist_arret && distance > 150 && angle>45 && !(angle>135) ){
                 lidar.waitPoint();
                 Logger::debugln("Help");
                 float distance = lidar.getCurrentPoint().distance;
                 //Logger::debugln("distance" + (String) distance);
                 float angle = lidar.getCurrentPoint().angle;
                 //Logger::debugln("angle" + (String) angle);
-                if (distance<dist_arret && distance > 150){
+                if (distance<dist_arret && distance > 150 && angle>45 && !(angle>135)){
 
                     lidar.waitPoint();
                     Logger::debugln("Help");
@@ -93,9 +93,16 @@ void Lidar2022::detect()
                     //Logger::debugln("distance" + (String) distance);
                     float angle = lidar.getCurrentPoint().angle;
                     //Logger::debugln("angle" + (String) angle);
-                    if (distance<dist_arret && distance > 150){
-
-                        detecting_a_point_close=true;
+                    if (distance<dist_arret && distance > 150 && angle>45 && !(angle>135) ){
+                        lidar.waitPoint();
+                        Logger::debugln("Help");
+                        float distance = lidar.getCurrentPoint().distance;
+                        Logger::debugln("distance" + (String) distance);
+                        float angle = lidar.getCurrentPoint().angle;
+                        Logger::debugln("angle" + (String) angle);
+                        if (distance<dist_arret && distance > 150 && angle>45 && !(angle>135)){
+                            detecting_a_point_close=true;
+                        }                    
                     }
                 }
             }
