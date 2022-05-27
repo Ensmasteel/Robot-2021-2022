@@ -420,9 +420,9 @@ void Bras::Init(uint8_t pinServo1, uint8_t pinServo2, uint8_t pinServo3, Message
     servo2.attach(pinServo2);
     servo3.attach(pinServo3);
 
-    servo1.write(posRepos.getPosServo1() + erreurS1);
-    servo2.write(posRepos.getPosServo2() + erreurS2);
-    servo3.write(posRepos.getPosServo3() + erreurS3);
+    servo1.write(posStockageStatuette.getPosServo1() + erreurS1);
+    servo2.write(posStockageStatuette.getPosServo2() + erreurS2);
+    servo3.write(posStockageStatuette.getPosServo3() + erreurS3);
 
     etat = Actuator_State::Attente;
 }

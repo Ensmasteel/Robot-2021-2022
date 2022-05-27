@@ -92,6 +92,13 @@ Robot::Robot(float xIni, float yIni, float thetaIni, TeamColor tc, Stream *commP
         //TODO config recalage etc
 
         //Attend le message Tirette
+        //mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionStockageStatuette, 10.0, &commActionneurs, true));
+        if(teamColor==BLEU){
+            mainSequence->add(new Send_Order_Action(Pompe_BrasG_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
+        }
+        else{
+            mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
+        }
         mainSequence->add(new Wait_Tirette_Action(33));
         mainSequence->add(new Do_Action(startTimeSeq));
         //mainSequence->add(new Wait_Message_Action(Tirette_M,-1,&communication));
@@ -127,13 +134,23 @@ Robot::Robot(float xIni, float yIni, float thetaIni, TeamColor tc, Stream *commP
         //mainSequence->add(new Forward_Action(-1,2.5,standard));
         TargetVector tmp = TargetVector(0.250,1.370,false);
         mainSequence->add(new StraightTo_Action( -1,tmp, standard));
-        mainSequence->add(new StraightTo_Action( -1,TargetVector(0.661,0.606, false), standard));
-        if (teamColor==BLEU){
+        mainSequence->add(new StraightTo_Action(-1,TargetVector(0.90,0.370,false),standard));
+        mainSequence->add(new Spin_Action( -1,TargetVectorE(-PI/2, false), standard));
+        if(teamColor==BLEU){
             mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
-            mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
         }
         else{
             mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
+        }
+        mainSequence->add(new Forward_Action(-1,0.100,standard));
+        mainSequence->add(new Backward_Action(-1,0.100,standard));
+        mainSequence->add(new StraightTo_Action( -1,TargetVector(0.661,0.606, false), standard));
+        if (teamColor==BLEU){
+            //mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
+            mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
+        }
+        else{
+            //mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
             mainSequence->add(new Send_Order_Action(Pompe_BrasG_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
         }
         mainSequence->add(new Spin_Action(5, TargetVectorE(-3*PI/4, false), standard));
@@ -145,16 +162,26 @@ Robot::Robot(float xIni, float yIni, float thetaIni, TeamColor tc, Stream *commP
         else{
             mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionStockageStatuette, 10.0, &commActionneurs, true));
         }
-        //mainSequence->add(new Forward_Action(-1,0.060,standard));
-        mainSequence->add(new Spin_Action(5, TargetVectorE(-3*PI/4 - 0.5, false), standard));
+        //mainSequence->add(new Backward_Action(-1,0.020,standard));
+        mainSequence->add(new Spin_Action(5, TargetVectorE(-3*PI/4 - 0.65, false), standard));
+        mainSequence->add(new Backward_Action(-1,0.020,standard));
+        //mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
         if (teamColor==BLEU){
             mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
         }
         else{
             mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
         }
+        mainSequence->add(new Sleep_Action(1));
+        if (teamColor==BLEU){
+            mainSequence->add(new Send_Order_Action(Pompe_BrasG_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
+        }
+        else{
+            mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
+        }
         mainSequence->add(new Backward_Action(-1,0.100,standard));
-        mainSequence->add(new StraightTo_Action( -1,TargetVector(0.2,1.75, false), standard));
+        mainSequence->add(new StraightTo_Action( -1,TargetVector(0.27,1.50, false), standard));
+        mainSequence->add(new StraightTo_Action( -1,TargetVector(0.27,1.75, false), standard));
         if (teamColor==BLEU){
             mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
             mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
@@ -168,8 +195,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, TeamColor tc, Stream *commP
          //mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionStockagePalet2, 10.0, &commActionneurs, true));
          mainSequence->add(new Spin_Action( -1,TargetVectorE(PI/6, false), standard));
          mainSequence->add(new Spin_Action( -1,TargetVectorE(-PI/6, false), standard));
-         mainSequence->add(new Spin_Action( -1,TargetVectorE(-PI/4, false), standard));
-         mainSequence->add(new StraightTo_Action( -1,TargetVector(0.63,1.55, false), standard));
+         mainSequence->add(new StraightTo_Action( -1,TargetVector(0.66,1.52, false), standard));
          mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
          mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
          mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
@@ -182,22 +208,15 @@ Robot::Robot(float xIni, float yIni, float thetaIni, TeamColor tc, Stream *commP
         //mainSequence->add(new Forward_Action(-1,0.400,standard));
         mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionDepotPaletGallerieB, 10.0, &commActionneurs, true));
          mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionDepotPaletGallerieB, 10.0, &commActionneurs, true));
-          mainSequence->add(new Forward_Action(-1,0.170,standard));
+          mainSequence->add(new Forward_Action(-1,0.240,standard));
          mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
          mainSequence->add(new Send_Order_Action(Pompe_BrasG_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
          mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
         mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
         mainSequence->add(new Backward_Action(-1,0.100,standard));
-        mainSequence->add(new StraightTo_Action(-1,TargetVector(0.90,0.370,false),standard));
-        mainSequence->add(new Spin_Action( -1,TargetVectorE(-PI/2, false), standard));
-        if(teamColor==BLEU){
-            mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
-        }
-        else{
-            mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
-        }
-        mainSequence->add(new Forward_Action(-1,0.100,standard));
-        mainSequence->add(new Backward_Action(-1,0.100,standard));
+
+        /*mainSequence->add(new Forward_Action(-1,0.100,standard));
+        mainSequence->add(new Backward_Action(-1,0.100,standard));*/
 
 
         // mainSequence->add(new Forward_Action(-1,0.250,standard));
