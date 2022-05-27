@@ -59,7 +59,7 @@ void Lidar2022::detect()
             float distance = lidar.getCurrentPoint().distance;
             //Logger::debugln("distance" + (String) distance);
             float angle = lidar.getCurrentPoint().angle;
-            if (distance<dist_arret && distance > 150 && angle>45 && !(angle>135) && redemarrage){
+            if (distance<dist_arret && distance > 150 && angle>50 && !(angle>130) && redemarrage){
                 redemarrage=false;
             }
             nb_redemarrage++;
@@ -97,14 +97,14 @@ void Lidar2022::detect()
             point p = {angle,distance};
             /*Vector pVectRel = coordonneeRelativePointDetecte(p);
             Vector pVectAbs = coordonneeAbsolueParRelative(pVectRel,robot);*/
-            if (distance<dist_arret && distance > 150 && angle>45 && !(angle>135)){
+            if (distance<dist_arret && distance > 150 && angle>50 && !(angle>130)){
                 lidar.waitPoint();
                 Logger::debugln("Help");
                 float distance = lidar.getCurrentPoint().distance;
                 //Logger::debugln("distance" + (String) distance);
                 float angle = lidar.getCurrentPoint().angle;
                 //Logger::debugln("angle" + (String) angle);
-                if (distance<dist_arret && distance > 150 && angle>45 && !(angle>135)){
+                if (distance<dist_arret && distance > 150 && angle>50 && !(angle>130)){
 
                     lidar.waitPoint();
                     Logger::debugln("Help");
@@ -112,14 +112,14 @@ void Lidar2022::detect()
                     //Logger::debugln("distance" + (String) distance);
                     float angle = lidar.getCurrentPoint().angle;
                     //Logger::debugln("angle" + (String) angle);
-                    if (distance<dist_arret && distance > 150 && angle>45 && !(angle>135) ){
+                    if (distance<dist_arret && distance > 150 && angle>50 && !(angle>130) ){
                         lidar.waitPoint();
                         Logger::debugln("Help");
                         float distance = lidar.getCurrentPoint().distance;
                         //Logger::debugln("distance" + (String) distance);
                         float angle = lidar.getCurrentPoint().angle;
                         //Logger::debugln("angle" + (String) angle);
-                        if (distance<dist_arret && distance > 150 && angle>45 && !(angle>135)){
+                        if (distance<dist_arret && distance > 150 && angle>50 && !(angle>130)){
                             detecting_a_point_close=true;
                         }                    
                     }
