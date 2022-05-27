@@ -40,8 +40,8 @@ void setup()
   delay(5000);
   Logger::infoln("REBOOT%"); //Le caractère % permet de faire sauter le parsing en cours sur la station sol
   Logger::infoln("Bender's booting up");
-  bender = new Robot(0.110,1.370,0,BLEU,&Serial,&Serial2,&Serial4);
-  //bender = new Robot(2.880,1.370,PI,JAUNE,&Serial,&Serial2,&Serial4);
+  bender = new Robot(0.110,1.370,0,BLEU,&Serial,&Serial2,&Serial4);           //C'est le JAUNE PUTAIN !!!!!!
+  //bender = new Robot(2.880,1.370,PI,JAUNE,&Serial,&Serial2,&Serial4);       //C'est le BLEU ca ducoup
   lidar = new Lidar2022(bender);
   lidar->Begin(Serial4);
   
