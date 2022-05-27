@@ -6,7 +6,7 @@
 #include "RPLidar.h"
 #include "Robot.h"
 
-#define dist_arret 500
+#define dist_arret 450
 #define max_dist_regard 2000 //max distance a regarder
 
 struct point{
@@ -26,9 +26,11 @@ public:
     void Begin(HardwareSerial &serialobj);
     void detect();
     bool getDetectClose(){return detecting_a_point_close;};
+    bool getRedemarrage(){return redemarrage;};
 private:
     RPLidar lidar;
     bool detecting_a_point_close = false;
+    bool redemarrage=false;
     Robot* robot;
 };
 

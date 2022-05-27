@@ -40,12 +40,13 @@ void setup()
   delay(5000);
   Logger::infoln("REBOOT%"); //Le caractère % permet de faire sauter le parsing en cours sur la station sol
   Logger::infoln("Bender's booting up");
-  bender = new Robot(0.150,1.370,0,&Serial,&Serial2,&Serial4);
+  //bender = new Robot(0.150,1.370,0,BLEU,&Serial,&Serial2,&Serial4);
+  bender = new Robot(2.850,1.370,PI,JAUNE,&Serial,&Serial2,&Serial4);
   lidar = new Lidar2022(bender);
   lidar->Begin(Serial4);
   
   //bender=new RobotSimu(0.22,1.20,0,&Serial,&Serial2);
-  bender->setTeamColor(TeamColor::BLEU);
+  //bender->setTeamColor(TeamColor::JAUNE); 
   Logger::infoln("Hello, I'm bender");
   topWarn=millis();
 }
@@ -70,11 +71,11 @@ void loop()
     if (lidar->getDetectClose()){
       bender->stopped=true;
     }
-    /*if (!(lidar->getDetectClose()) && bender->stopped==true){
+    if (bender->stopped==true && lidar->getRedemarrage()){
       Logger::debugln("ET MAINTENANT LAAAAAAA");
       bender->stopped=false;
       bender->dem=true;
-    }*/
+    }
     lastMillis = currentMillis;
   }
 }

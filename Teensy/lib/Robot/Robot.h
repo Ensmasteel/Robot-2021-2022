@@ -70,6 +70,7 @@ public :
     Robot(float xIni = 0.0,
           float yIni = 0.0,
           float thetaIni = 0.0,
+          TeamColor tc = BLEU,
           Stream *commPort = &Serial,
           Stream *actuPort = &Serial,
           Stream *espPort = &Serial4);

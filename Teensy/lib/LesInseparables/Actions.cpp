@@ -215,6 +215,7 @@ void StraightTo_Action::start()
 StraightTo_Action::StraightTo_Action(float timeout, TargetVector target, MoveProfileName profileName, int16_t require) : Double_Action(timeout, "stTo", require)
 {
     Vector targetV = target.getVector();
+    Logger::debugln(targetV._x);
     this->x = targetV._x;
     this->y = targetV._y;
     this->profileName = profileName;

@@ -21,14 +21,14 @@
 #define PIN_INTERRUPTEUR_ARR_GAUCHE 33
 
 #define ELOIGNEMENT_CODEUSES 0.275
-#define DIAMETRE_ROUE_CODEUSE_DROITE 0.053
-#define DIAMETRE_ROUE_CODEUSE_GAUCHE 0.055
+#define DIAMETRE_ROUE_CODEUSE_DROITE 0.0532
+#define DIAMETRE_ROUE_CODEUSE_GAUCHE 0.0535
 #define TICKS_PER_ROUND 16384
 
 #define SKIP_TELEMETRY_LONG 10000
 #define SKIP_TELEMETRY_FAST 50
 
-Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *actuPort, Stream *espPort)
+Robot::Robot(float xIni, float yIni, float thetaIni, TeamColor tc, Stream *commPort, Stream *actuPort, Stream *espPort)
 {
     this->espPort = espPort;//=====================================
 
@@ -49,6 +49,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
     controller = Asservissement(&translationOrderPID, &rotationOrderPID, &cinetiqueCurrent, &cinetiqueNext, filterFrequency);
     communication = Communication(commPort);
     commActionneurs = Communication(actuPort);
+    this->setTeamColor(tc);
 
     sequences = new Sequence*[__NBSEQUENCES__]; //On définit un array de la bonne taille
     Action::setPointer(this);
@@ -92,7 +93,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
 
         //Attend le message Tirette
         mainSequence->add(new Wait_Tirette_Action(33));
-        //mainSequence->add(new Do_Action(startTimeSeq));
+        mainSequence->add(new Do_Action(startTimeSeq));
         //mainSequence->add(new Wait_Message_Action(Tirette_M,-1,&communication));
         //mainSequence->add(new Spin_Action(10,TargetVectorE(PI/4,false),standard));
         //mainSequence->add(new Sleep_Action(3));
@@ -124,42 +125,79 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         //mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
         
         //mainSequence->add(new Forward_Action(-1,2.5,standard));
-        TargetVector tmp = TargetVector(0.250,1.370,true);
+        TargetVector tmp = TargetVector(0.250,1.370,false);
         mainSequence->add(new StraightTo_Action( -1,tmp, standard));
-        mainSequence->add(new StraightTo_Action( -1,TargetVector(0.661,0.606, true), standard));
-
-        mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
-        mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
-        
+        mainSequence->add(new StraightTo_Action( -1,TargetVector(0.661,0.606, false), standard));
+        if (teamColor==BLEU){
+            mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
+            mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
+        }
+        else{
+            mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
+            mainSequence->add(new Send_Order_Action(Pompe_BrasG_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
+        }
         mainSequence->add(new Spin_Action(5, TargetVectorE(-3*PI/4, false), standard));
         //mainSequence->add(new StraightTo_Action( -1,TargetVector(0.500,0.400,true), standard));
-        mainSequence->add(new Forward_Action(-1,0.250,standard));
-        
-        mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionStockageStatuette, 10.0, &commActionneurs, true));
-        
-        mainSequence->add(new StraightTo_Action( -1,TargetVector(0.1,1.70, true), standard));
-         mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
-        mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
-        mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
-         
+        mainSequence->add(new Forward_Action(-1,0.270,standard));
+        if (teamColor==BLEU){
+            mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionStockageStatuette, 10.0, &commActionneurs, true));
+        }
+        else{
+            mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionStockageStatuette, 10.0, &commActionneurs, true));
+        }
+        //mainSequence->add(new Forward_Action(-1,0.060,standard));
+        mainSequence->add(new Spin_Action(5, TargetVectorE(-3*PI/4 - 0.5, false), standard));
+        if (teamColor==BLEU){
+            mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
+        }
+        else{
+            mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
+        }
+        mainSequence->add(new Backward_Action(-1,0.100,standard));
+        mainSequence->add(new StraightTo_Action( -1,TargetVector(0.2,1.75, false), standard));
+        if (teamColor==BLEU){
+            mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
+            mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
+            mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
+        }
+        else{
+            mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
+            mainSequence->add(new Send_Order_Action(Pompe_BrasG_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
+            mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));            
+        }
          //mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionStockagePalet2, 10.0, &commActionneurs, true));
          mainSequence->add(new Spin_Action( -1,TargetVectorE(PI/6, false), standard));
          mainSequence->add(new Spin_Action( -1,TargetVectorE(-PI/6, false), standard));
          mainSequence->add(new Spin_Action( -1,TargetVectorE(-PI/4, false), standard));
-         mainSequence->add(new StraightTo_Action( -1,TargetVector(0.56,1.60, true), standard));
+         mainSequence->add(new StraightTo_Action( -1,TargetVector(0.63,1.55, false), standard));
          mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
          mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
          mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
          mainSequence->add(new Send_Order_Action(Pompe_BrasG_M, Actuator_Order::ActiverPompe, -1,&commActionneurs, true));
         mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
         mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
-        mainSequence->add(new Forward_Action(-1,0.400,standard));
-        mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
-         mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionPaletSol, 10.0, &commActionneurs, true));
+        mainSequence->add(new Spin_Action( -1,TargetVectorE(0, false), standard));
+         mainSequence->add(new Spin_Action( -1,TargetVectorE(PI/4, false), standard));
+         mainSequence->add(new Spin_Action( -1,TargetVectorE(PI/2, false), standard));
+        //mainSequence->add(new Forward_Action(-1,0.400,standard));
+        mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionDepotPaletGallerieB, 10.0, &commActionneurs, true));
+         mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionDepotPaletGallerieB, 10.0, &commActionneurs, true));
+          mainSequence->add(new Forward_Action(-1,0.170,standard));
          mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
          mainSequence->add(new Send_Order_Action(Pompe_BrasG_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
          mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
         mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
+        mainSequence->add(new Backward_Action(-1,0.100,standard));
+        mainSequence->add(new StraightTo_Action(-1,TargetVector(0.90,0.370,false),standard));
+        mainSequence->add(new Spin_Action( -1,TargetVectorE(-PI/2, false), standard));
+        if(teamColor=BLEU){
+            mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
+        }
+        else{
+            mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
+        }
+        mainSequence->add(new Forward_Action(-1,0.100,standard));
+        mainSequence->add(new Backward_Action(-1,0.100,standard));
 
 
         // mainSequence->add(new Forward_Action(-1,0.250,standard));
@@ -278,7 +316,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
     Serial.println("mainpass");
         //déclenchée par timeSequence
     Sequence* goNorth = getSequenceByName(goNorthName);
-        goNorth->add(new StraightTo_Action(-1,northBase,standard));
+        goNorth->add(new StraightTo_Action(-1,base,standard));
         goNorth->add(new End_Action());
         goNorth->pause(false);//Cette action ne doit pas se lancer dès le début
 
@@ -304,9 +342,9 @@ Robot::Robot(float xIni, float yIni, float thetaIni, Stream *commPort, Stream *a
         //déclenchée par mainSequence juste après la tirette
     Sequence* timeSequence = getSequenceByName(timeSequenceName);
         timeSequence->add(new Do_Action(setTimeStart));
-        timeSequence->add(new Sleep_Action(30));
+        timeSequence->add(new Sleep_Action(92));
         timeSequence->add(new Do_Action(startBackHomeSeq));
-        timeSequence->add(new Sleep_Action(10));
+        timeSequence->add(new Sleep_Action(8));
         timeSequence->add(new Do_Action(shutdown));
         timeSequence->add(new End_Action());
         timeSequence->pause(true); //La time sequence ne doit s'écouler qu'a partir du tiré de la tirette !!
@@ -370,6 +408,15 @@ void Robot::Update(float dt)
         motorLeft.actuate();
         motorRight.actuate();
         Logger::debugln("STOP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    }
+    else if (dem){
+        motorLeft.resume();
+        motorRight.resume();
+        Update_Cinetique(dt);
+        motorLeft.actuate();
+        motorRight.actuate();
+        dem=false;
+        Logger::debugln("Demarrage!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
     /*else if(dem){
         motorLeft.resume();

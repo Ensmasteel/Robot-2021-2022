@@ -262,6 +262,10 @@ private:
     uint8_t pinServo2;
     uint8_t pinServo3;
 
+    float erreurS1;
+    float erreurS2;
+    float erreurS3;
+
     Servo servo1;
     Servo servo2;
     Servo servo3;

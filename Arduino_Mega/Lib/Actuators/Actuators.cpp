@@ -271,7 +271,7 @@ Bras::Bras() : Actuator("Bras")
     this->posDepotStatuette = posDepotStatuette.Init(0,0,0);
     this->posStockageStatuette = posStockageStatuette.Init(90,20,90);
     this->posDepotReplique = posDepotReplique.Init(0,0,0);
-    this->posDepotPaletGallerieB = posDepotPaletGallerieB.Init(0,0,0);
+    this->posDepotPaletGallerieB = posDepotPaletGallerieB.Init(45,90,180);
     this->posDepotPaletGallerieH = posDepotPaletGallerieH.Init(0,0,0);
 
     this->posIntermediaire = posIntermediaire.Init(80,70,80);
@@ -285,87 +285,87 @@ Actuator_State Bras::Update()
         switch (currentOrder)
         {
         case Actuator_Order::PositionRepos:
-            servo1.write(posRepos.getPosServo1());
-            servo3.write(posRepos.getPosServo3());
+            servo1.write(posRepos.getPosServo1()+this->erreurS1);
+            servo3.write(posRepos.getPosServo3()+this->erreurS3);
             delay(200);
-            servo2.write(posRepos.getPosServo2());
+            servo2.write(posRepos.getPosServo2()+this->erreurS2);
             break;
 
         case Actuator_Order::PositionStockagePalet:
-            servo1.write(posStockagePalet.getPosServo1());
+            servo1.write(posStockagePalet.getPosServo1()+this->erreurS1);
             delay(200);
-            servo2.write(posStockagePalet.getPosServo2());
-            servo3.write(posStockagePalet.getPosServo3());
+            servo2.write(posStockagePalet.getPosServo2()+this->erreurS2);
+            servo3.write(posStockagePalet.getPosServo3()+this->erreurS3);
             break;
 
         case Actuator_Order::PositionPaletSol:
-            servo1.write(posPaletSol.getPosServo1());
+            servo1.write(posPaletSol.getPosServo1()+this->erreurS1);
             delay(200);
-            servo2.write(posPaletSol.getPosServo2());
-            servo3.write(posPaletSol.getPosServo3());
+            servo2.write(posPaletSol.getPosServo2()+this->erreurS2);
+            servo3.write(posPaletSol.getPosServo3()+this->erreurS3);
             break;        
         
         case Actuator_Order::PositionPaletDistributeur:
-            servo1.write(posPaletDistributeur.getPosServo1());
+            servo1.write(posPaletDistributeur.getPosServo1()+this->erreurS1);
             delay(200);
-            servo2.write(posPaletDistributeur.getPosServo2());
-            servo3.write(posPaletDistributeur.getPosServo3());
+            servo2.write(posPaletDistributeur.getPosServo2()+this->erreurS2);
+            servo3.write(posPaletDistributeur.getPosServo3()+this->erreurS3);
             break;
 
         case Actuator_Order::PositionPaletStatuette:
-            servo1.write(posPaletStatuette.getPosServo1());
+            servo1.write(posPaletStatuette.getPosServo1()+this->erreurS1);
             delay(200);
-            servo2.write(posPaletStatuette.getPosServo2());
-            servo3.write(posPaletStatuette.getPosServo3());
+            servo2.write(posPaletStatuette.getPosServo2()+this->erreurS2);
+            servo3.write(posPaletStatuette.getPosServo3()+this->erreurS3);
             break;
 
         case Actuator_Order::PositionRamassageStatuette:
-            servo1.write(posRamassageStatuette.getPosServo1());
+            servo1.write(posRamassageStatuette.getPosServo1()+this->erreurS1);
             delay(200);
-            servo2.write(posRamassageStatuette.getPosServo2());
-            servo3.write(posRamassageStatuette.getPosServo3());
+            servo2.write(posRamassageStatuette.getPosServo2()+this->erreurS2);
+            servo3.write(posRamassageStatuette.getPosServo3()+this->erreurS3);
             break;
 
         case Actuator_Order::PositionDepotStatuette:
-            servo1.write(posDepotStatuette.getPosServo1());
+            servo1.write(posDepotStatuette.getPosServo1()+this->erreurS1);
             delay(200);
-            servo2.write(posDepotStatuette.getPosServo2());
-            servo3.write(posDepotStatuette.getPosServo3());
+            servo2.write(posDepotStatuette.getPosServo2()+this->erreurS2);
+            servo3.write(posDepotStatuette.getPosServo3()+this->erreurS3);
             break;
 
         case Actuator_Order::PositionStockageStatuette:
-            servo1.write(posStockageStatuette.getPosServo1());
+            servo1.write(posStockageStatuette.getPosServo1()+this->erreurS1);
             delay(200);
-            servo2.write(posStockageStatuette.getPosServo2());
-            servo3.write(posStockageStatuette.getPosServo3());
+            servo2.write(posStockageStatuette.getPosServo2()+this->erreurS2);
+            servo3.write(posStockageStatuette.getPosServo3()+this->erreurS3);
             break;
 
         case Actuator_Order::PositionDepotReplique:
-            servo1.write(posDepotReplique.getPosServo1());
+            servo1.write(posDepotReplique.getPosServo1()+this->erreurS1);
             delay(200);
-            servo2.write(posDepotReplique.getPosServo2());
-            servo3.write(posDepotReplique.getPosServo3());
+            servo2.write(posDepotReplique.getPosServo2()+this->erreurS2);
+            servo3.write(posDepotReplique.getPosServo3()+this->erreurS3);
             break;
 
         case Actuator_Order::PositionEchange:
-            servo1.write(posEchange.getPosServo1());
+            servo1.write(posEchange.getPosServo1()+this->erreurS1);
             delay(200);
-            servo2.write(posEchange.getPosServo2());
-            servo3.write(posEchange.getPosServo3());
+            servo2.write(posEchange.getPosServo2()+this->erreurS2);
+            servo3.write(posEchange.getPosServo3()+this->erreurS3);
             break;
 
         case Actuator_Order::PositionDepotPaletGallerieB:
-            servo1.write(posDepotPaletGallerieB.getPosServo1());
+            servo1.write(posDepotPaletGallerieB.getPosServo1()+this->erreurS1);
             delay(200);
-            servo2.write(posDepotPaletGallerieB.getPosServo2());
-            servo3.write(posDepotPaletGallerieB.getPosServo3());
+            servo2.write(posDepotPaletGallerieB.getPosServo2()+this->erreurS2);
+            servo3.write(posDepotPaletGallerieB.getPosServo3()+this->erreurS3);
             break;
 
         case Actuator_Order::PositionDepotPaletGallerieH:
-            servo1.write(posDepotPaletGallerieH.getPosServo1());
+            servo1.write(posDepotPaletGallerieH.getPosServo1()+this->erreurS1);
             delay(200);
-            servo2.write(posDepotPaletGallerieH.getPosServo2());
-            servo3.write(posDepotPaletGallerieH.getPosServo3());
+            servo2.write(posDepotPaletGallerieH.getPosServo2()+this->erreurS2);
+            servo3.write(posDepotPaletGallerieH.getPosServo3()+this->erreurS3);
             break;
 
         default:
@@ -392,10 +392,17 @@ void Bras::Init(uint8_t pinServo1, uint8_t pinServo2, uint8_t pinServo3, Message
     {
     case MessageID::BrasD_M:
         name += "D";
+        this->erreurS1=-3.0;
+        this->erreurS2=-5.0;
+        this->erreurS3=1.0;
+
         break;
 
     case MessageID::BrasG_M:
         name += "G";
+        this->erreurS1=6.0;
+        this->erreurS2=-4.0;
+        this->erreurS3=-2.0;
         break;
     
     default:
@@ -413,9 +420,9 @@ void Bras::Init(uint8_t pinServo1, uint8_t pinServo2, uint8_t pinServo3, Message
     servo2.attach(pinServo2);
     servo3.attach(pinServo3);
 
-    servo1.write(posRepos.getPosServo1());
-    servo2.write(posRepos.getPosServo2());
-    servo3.write(posRepos.getPosServo3());
+    servo1.write(posRepos.getPosServo1() + erreurS1);
+    servo2.write(posRepos.getPosServo2() + erreurS2);
+    servo3.write(posRepos.getPosServo3() + erreurS3);
 
     etat = Actuator_State::Attente;
 }
