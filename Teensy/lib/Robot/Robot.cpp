@@ -190,7 +190,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, TeamColor tc, Stream *commP
         mainSequence->add(new Backward_Action(-1,0.100,standard));
         mainSequence->add(new StraightTo_Action(-1,TargetVector(0.90,0.370,false),standard));
         mainSequence->add(new Spin_Action( -1,TargetVectorE(-PI/2, false), standard));
-        if(teamColor=BLEU){
+        if(teamColor==BLEU){
             mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionRamassageStatuette, 10.0, &commActionneurs, true));
         }
         else{
