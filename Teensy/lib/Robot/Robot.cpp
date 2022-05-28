@@ -270,7 +270,7 @@ Robot::Robot(float xIni, float yIni, float thetaIni, TeamColor tc, Stream *commP
         //mainSequence->add(new Forward_Action(-1,0.400,standard));
         mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionDepotPaletGallerieB, 10.0, &commActionneurs, true));
         mainSequence->add(new Send_Order_Action(BrasG_M, Actuator_Order::PositionDepotPaletGallerieB, 10.0, &commActionneurs, true));
-        mainSequence->add(new Forward_Action(-1,0.250,standard));
+        mainSequence->add(new Forward_Action(-1,0.260,standard));
         mainSequence->add(new Send_Order_Action(Pompe_BrasD_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
         mainSequence->add(new Send_Order_Action(Pompe_BrasG_M, Actuator_Order::DesactiverPompe, -1,&commActionneurs, true));
         mainSequence->add(new Send_Order_Action(BrasD_M, Actuator_Order::PositionRepos, 10.0, &commActionneurs, true));
