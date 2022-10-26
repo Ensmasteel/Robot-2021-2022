@@ -2,7 +2,6 @@
 
 <img src="./.github/images/render robot.png" width="100%" alt="Robot during 2019 competition preparation" class="center">
 
-🚧 MarkdDown file in progress �
 
 Presentation and source code of Ensmasteel's bot. 
 
