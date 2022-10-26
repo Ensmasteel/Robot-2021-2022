@@ -1,6 +1,6 @@
 # <h1 align = "center"> EnsmaSteel bot 2021-2022 </h1> <!-- omit in toc -->
 
-<img src="./.github/images/EnsmaSteel_Bot.png" width="100%" alt="Robot during 2019 competition preparation" class="center">
+<img src="./.github/images/render robot.png" width="100%" alt="Robot during 2019 competition preparation" class="center">
 
 🚧 MarkdDown file in progress �
 
